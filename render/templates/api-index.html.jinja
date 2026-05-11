@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Machine-readable endpoints for the kaos-compliance dashboard — snapshot, schema, signature, history, diffs, per-package bundles.">
+<base href="{{ base_href | default('/kaos-compliance/') }}">
+<title>API endpoints — KAOS Compliance</title>
+<style>
+:root{
+ --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
+ --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
+ --focus:#2563eb;
+ --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+ :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;--focus:#60a5fa;}
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:var(--s-7) var(--s-5)}
+.page-head{border-bottom:1px solid var(--border);padding-bottom:var(--s-4);margin-bottom:var(--s-6)}
+.page-head h1{margin:0;font-size:2rem}
+.page-head p{color:var(--muted);margin:var(--s-2) 0 0}
+nav.crumbs{font-size:0.875rem;color:var(--muted);margin-bottom:var(--s-3)}
+nav.crumbs a{color:var(--muted)}
+h2{font-size:1.25rem;margin:var(--s-6) 0 var(--s-3)}
+table{width:100%;border-collapse:collapse;font-size:0.875rem;margin-bottom:var(--s-5)}
+th,td{padding:var(--s-2) var(--s-3);text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+td.path code,td.media code{font-family:var(--mono);font-size:0.8125rem;background:var(--card-bg);border:1px solid var(--border);padding:1px 4px;border-radius:3px}
+td.curl pre{font-family:var(--mono);font-size:0.75rem;background:var(--card-bg);border:1px solid var(--border);padding:var(--s-2);margin:0;overflow-x:auto;white-space:pre;border-radius:3px}
+.callout{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-3) var(--s-4);margin:var(--s-4) 0;font-size:0.875rem}
+.unavailable{color:var(--muted);font-style:italic}
+footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; API endpoints</nav>
+<header class="page-head">
+ <h1>Machine-readable endpoints</h1>
+ <p>Every claim on the dashboard is backed by a static JSON artifact. This page is the catalog. All endpoints are CORS-open static files served from GitHub Pages.</p>
+</header>
+
+<div class="callout">
+ <strong>Verification chain.</strong> Validate <code>snapshot.json</code> against <code>snapshot.schema.json</code>, then verify <code>snapshot.sig</code> with <code>cosign verify-blob --bundle snapshot.sig snapshot.json</code> against the workflow identity in <code>snapshot.sig.meta.json</code>. If either step fails, do <em>not</em> trust the rendered HTML — see <a href="https://github.com/273v/kaos-compliance/blob/main/docs/EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with">EVIDENCE.md</a>.
+</div>
+
+<h2>Core endpoints</h2>
+<table>
+ <thead><tr><th>Path</th><th>Media type</th><th>Description</th><th>curl</th></tr></thead>
+ <tbody>
+  {% for ep in api_endpoints.endpoints %}
+  <tr>
+   <td class="path"><code>{{ ep.path | safe }}</code></td>
+   <td class="media"><code>{{ ep.media_type }}</code></td>
+   <td>{{ ep.description }}{% if ep.available is defined and not ep.available %} <span class="unavailable">(not present yet)</span>{% endif %}</td>
+   <td class="curl"><pre>{{ ep.curl | safe }}</pre></td>
+  </tr>
+  {% endfor %}
+ </tbody>
+</table>
+
+<h2>Diff endpoints</h2>
+{% if api_endpoints.diff_endpoints %}
+<p style="font-size:0.875rem;color:var(--muted)">Per-package signal diff between two sweeps, computed at render time from <code>history.json</code>. Compute additional pairs locally by downloading <code>history.json</code> and slicing the per-package arrays.</p>
+<table>
+ <thead><tr><th>Path</th><th>Description</th><th>curl</th></tr></thead>
+ <tbody>
+  {% for ep in api_endpoints.diff_endpoints %}
+  <tr>
+   <td class="path"><code>{{ ep.path }}</code></td>
+   <td>{{ ep.description }}</td>
+   <td class="curl"><pre>{{ ep.curl | safe }}</pre></td>
+  </tr>
+  {% endfor %}
+ </tbody>
+</table>
+{% else %}
+<p class="unavailable">No diff endpoints yet — history needs at least two days of data.</p>
+{% endif %}
+
+<h2>Per-package bundles</h2>
+<p style="font-size:0.875rem;color:var(--muted)">Each bundle contains the per-package slice of <code>snapshot.json</code>, the SBOM mirror + upstream Release URL, and the PEP 740 attestation pointer.</p>
+<table>
+ <thead><tr><th>Path</th><th>Description</th><th>curl</th></tr></thead>
+ <tbody>
+  {% for ep in api_endpoints.package_endpoints %}
+  <tr>
+   <td class="path"><code>{{ ep.path }}</code></td>
+   <td>{{ ep.description }}</td>
+   <td class="curl"><pre>{{ ep.curl | safe }}</pre></td>
+  </tr>
+  {% endfor %}
+ </tbody>
+</table>
+
+<footer>
+ Generated {{ generated_at_display | default('—') }}
+ | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
+ | <a href="index.html">Org rollup</a>
+ | <a href="methodology.html">Methodology</a>
+</footer>
+</div>
+</body>
+</html>

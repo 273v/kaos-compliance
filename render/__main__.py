@@ -44,6 +44,12 @@ try:
 except Exception:
     _snapshot_schema = None  # type: ignore[assignment]
 
+# 90-day rolling history (P7). Stdlib-only; the import is unconditional.
+try:
+    from collector import history as _history
+except Exception:
+    _history = None  # type: ignore[assignment]
+
 # Suppressions collector — render-time augmentation. Imported lazily so
 # the renderer still works on a snapshot collected on a host that doesn't
 # have the sibling clones present (e.g. GHA runner with a fetched
@@ -52,7 +58,7 @@ except Exception:
 # zero.
 try:
     from collector import suppressions as _suppressions  # type: ignore[import-not-found]
-except Exception:  # noqa: BLE001
+except Exception:
     _suppressions = None  # type: ignore[assignment]
 
 # Default on-disk root that hosts the public sibling clones. Kept in
@@ -1186,7 +1192,7 @@ def _suppressions_view(modules: list[dict[str, Any]]) -> dict[str, Any]:
         return {
             "available": False,
             "reason": "collector.suppressions import failed",
-            "per_repo": {name: None for name in repo_names},
+            "per_repo": dict.fromkeys(repo_names),
             "org_total": None,
             "repos_inspected": 0,
             "repos_total": len(repo_names),
@@ -1195,7 +1201,7 @@ def _suppressions_view(modules: list[dict[str, Any]]) -> dict[str, Any]:
         return {
             "available": False,
             "reason": f"sibling clone root {_SIBLING_ROOT} not present on this host",
-            "per_repo": {name: None for name in repo_names},
+            "per_repo": dict.fromkeys(repo_names),
             "org_total": None,
             "repos_inspected": 0,
             "repos_total": len(repo_names),
@@ -1212,6 +1218,7 @@ def adapt(
     snapshot: dict[str, Any],
     *,
     integrity: dict[str, Any] | None = None,
+    history_index: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Snapshot JSON → template view-model.
 
@@ -1258,6 +1265,10 @@ def adapt(
         # render the version line + the source link.
         "methodology_version": METHODOLOGY_VERSION,
         "methodology_updated": METHODOLOGY_UPDATED,
+        # P7: 90-day rolling history + previous-sweep baseline. Named
+        # `signal_history` rather than `history` so it doesn't collide
+        # with the diary template's existing diary-entry `history` slot.
+        "signal_history": _history_view(history_index),
     }
 
 
@@ -1298,6 +1309,424 @@ def _integrity_view(
             "https://github.com/273v/kaos-compliance/blob/main/docs/"
             "EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with"
         ),
+    }
+
+
+def _sparkline_svg(
+    values: list[Any],
+    *,
+    width: int = 80,
+    height: int = 16,
+    title: str = "",
+) -> str:
+    """Render a values series as an inline SVG sparkline (no JS).
+
+    Goals:
+      * Single string of HTML/SVG the templates inline verbatim.
+      * One-day-of-history case → a single dot, not a degenerate line.
+      * Boolean series (build_pass etc.) → True is high (top of band),
+        False is low (bottom). None days render as a small open
+        circle marker so a gap in history is visible rather than
+        silent.
+      * Numeric series (commits_90d) → polyline scaled to [min, max]
+        within the series; flat series collapse to a horizontal line.
+
+    The SVG never embeds a <script> — strict CSP-safe by construction.
+    """
+    if not values:
+        return (
+            f'<svg class="spark" width="{width}" height="{height}" '
+            f'viewBox="0 0 {width} {height}" role="img" '
+            f'aria-label="{title or "sparkline"}: no history"></svg>'
+        )
+
+    # Convert booleans → 1/0, ints/floats kept, None → None.
+    numeric: list[float | None] = []
+    for v in values:
+        if v is True:
+            numeric.append(1.0)
+        elif v is False:
+            numeric.append(0.0)
+        elif isinstance(v, (int, float)):
+            numeric.append(float(v))
+        else:
+            numeric.append(None)
+
+    known = [v for v in numeric if v is not None]
+    aria_label = (
+        f"{title}: {len(known)} day{'s' if len(known) != 1 else ''} of history"
+        if title
+        else f"{len(known)} day(s) of history"
+    )
+    if not known:
+        return (
+            f'<svg class="spark" width="{width}" height="{height}" '
+            f'viewBox="0 0 {width} {height}" role="img" '
+            f'aria-label="{aria_label}"></svg>'
+        )
+
+    vmin = min(known)
+    vmax = max(known)
+    span = vmax - vmin if vmax > vmin else 1.0
+
+    n = len(numeric)
+    # When there's only one data point total, dx is undefined; emit a
+    # single dot centered horizontally. The accompanying caller adds
+    # the "accumulating history" label so the dot's meaning is clear.
+    if n == 1 or len(known) == 1:
+        # Find the one known index.
+        try:
+            i = next(j for j, v in enumerate(numeric) if v is not None)
+        except StopIteration:
+            i = 0
+        cx = width / 2 if n == 1 else (i / max(n - 1, 1)) * (width - 4) + 2
+        cy = height / 2
+        return (
+            f'<svg class="spark" width="{width}" height="{height}" '
+            f'viewBox="0 0 {width} {height}" role="img" '
+            f'aria-label="{aria_label}">'
+            f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="2" fill="currentColor"></circle>'
+            f"</svg>"
+        )
+
+    # Multi-point series: build a polyline of the known points and
+    # mark each None with an open marker so a gap is visible.
+    pts: list[str] = []
+    gap_markers: list[str] = []
+    dx = (width - 4) / max(n - 1, 1)
+    for i, v in enumerate(numeric):
+        cx = 2 + i * dx
+        if v is None:
+            gap_markers.append(
+                f'<circle cx="{cx:.1f}" cy="{height / 2:.1f}" r="1" '
+                f'fill="none" stroke="currentColor" stroke-width="0.5" '
+                f'opacity="0.5"></circle>'
+            )
+            continue
+        # Normalize into [2, height-2] band; True/high → top of svg.
+        norm = (v - vmin) / span if span > 0 else 0.5
+        cy = (height - 2) - norm * (height - 4)
+        pts.append(f"{cx:.1f},{cy:.1f}")
+
+    polyline = (
+        f'<polyline fill="none" stroke="currentColor" stroke-width="1.25" '
+        f'points="{" ".join(pts)}"></polyline>'
+        if len(pts) >= 2
+        else ""
+    )
+    # Always mark the last known point with a solid dot so the eye
+    # lands on the current state.
+    last_dot = ""
+    for i in range(n - 1, -1, -1):
+        if numeric[i] is not None:
+            cx = 2 + i * dx
+            v = numeric[i]
+            norm = (v - vmin) / span if span > 0 else 0.5
+            cy = (height - 2) - norm * (height - 4)
+            last_dot = (
+                f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="1.5" '
+                f'fill="currentColor"></circle>'
+            )
+            break
+
+    return (
+        f'<svg class="spark" width="{width}" height="{height}" '
+        f'viewBox="0 0 {width} {height}" role="img" '
+        f'aria-label="{aria_label}">'
+        f"{polyline}{''.join(gap_markers)}{last_dot}"
+        f"</svg>"
+    )
+
+
+def _history_view(
+    index_obj: dict[str, Any] | None,
+    *,
+    packages: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Build the template view-model for trend lines + baseline diff.
+
+    Args:
+        index_obj: The parsed history.json (rolling index), or None
+            if no history exists yet.
+        packages: List of view-model package rows. Used only to enrich
+            the per-package sparkline payload with the package name.
+
+    Returns:
+        {
+          "available": bool,
+          "first_date": str | None,
+          "last_date":  str | None,
+          "dates":      [str],
+          "accumulating": bool,         # True when only one day of history
+          "sparklines": {
+             "<pkg_name>": {
+                "build": "<svg>...</svg>",
+                "tests": "...",
+                "security": "...",
+                "attestation": "...",
+             },
+             ...
+          },
+          "diff": {
+             "from": str | None,
+             "to":   str | None,
+             "packages": {
+                "<pkg_name>": [
+                  {"signal": "build_pass", "from": True, "to": False,
+                   "delta": "worse", "label": "Build"}
+                ]
+             }
+          }
+        }
+
+    When ``index_obj`` is None or empty, "available" is False and
+    the templates surface a "[ no history yet ]" label rather than
+    a degenerate sparkline.
+    """
+    if not index_obj or not index_obj.get("dates"):
+        return {
+            "available": False,
+            "first_date": None,
+            "last_date": None,
+            "dates": [],
+            "accumulating": False,
+            "sparklines": {},
+            "diff": {"from": None, "to": None, "packages": {}},
+        }
+
+    dates = index_obj.get("dates") or []
+    accumulating = len(dates) <= 1
+    # We surface 4 sparkline signals on the index — build/tests are
+    # collapsed to the same CI conclusion in the snapshot today, but
+    # we still draw both because they're separate columns in the
+    # grid + separate signals in the methodology.
+    signal_map = {
+        "build": ("build_pass", "Build"),
+        "tests": ("tests_pass", "Tests"),
+        "security": ("security_pass", "Security"),
+        "attestation": ("attestation_present", "Attestation"),
+    }
+    sparklines: dict[str, dict[str, str]] = {}
+    for pkg_name, sigs in (index_obj.get("packages") or {}).items():
+        per_pkg: dict[str, str] = {}
+        for slot, (snap_key, title) in signal_map.items():
+            arr = sigs.get(snap_key) or []
+            per_pkg[slot] = _sparkline_svg(
+                arr,
+                title=f"{pkg_name} {title}",
+            )
+        sparklines[pkg_name] = per_pkg
+
+    if _history is None:
+        diff_obj: dict[str, Any] = {"from": None, "to": None, "packages": {}}
+    else:
+        diff_obj = _history.diff_packages(index_obj)
+
+    # Decorate each per-signal entry with a human label the templates
+    # can drop directly into the "Changes since last sweep" list.
+    pretty = {
+        "build_pass": "Build",
+        "tests_pass": "Tests",
+        "security_pass": "Security",
+        "attestation_present": "Attestation",
+        "branch_protection_enabled": "Branch protection",
+        "commits_90d": "Commits (90d)",
+    }
+    decorated_packages: dict[str, list[dict[str, Any]]] = {}
+    for name, per_sig in (diff_obj.get("packages") or {}).items():
+        items = []
+        for sig, payload in per_sig.items():
+            if payload.get("delta") not in ("better", "worse"):
+                continue
+            items.append(
+                {
+                    "signal": sig,
+                    "label": pretty.get(sig, sig),
+                    "from": payload.get("from"),
+                    "to": payload.get("to"),
+                    "delta": payload.get("delta"),
+                }
+            )
+        if items:
+            decorated_packages[name] = items
+
+    return {
+        "available": True,
+        "first_date": index_obj.get("first_date"),
+        "last_date": index_obj.get("last_date"),
+        "dates": dates,
+        "accumulating": accumulating,
+        "sparklines": sparklines,
+        "diff": {
+            "from": diff_obj.get("from"),
+            "to": diff_obj.get("to"),
+            "packages": decorated_packages,
+        },
+    }
+
+
+def _download_bundle(module_view: dict[str, Any], raw_module: dict[str, Any]) -> dict[str, Any]:
+    """Per-package downloadable JSON bundle.
+
+    Bundles the package's slice of snapshot.json with the SBOM
+    artifact path + the upstream PEP 740 attestation URL. The user
+    saves this with ``curl -o`` to get one self-contained blob
+    capturing the per-package evidence.
+    """
+    sc = raw_module.get("supply_chain") or {}
+    att = sc.get("attestations") or {}
+    pypi_version = sc.get("pypi_version")
+    sbom_artifact = (sc.get("sbom") or {}).get("sbom_artifact_path")
+    sbom_basename = Path(sbom_artifact).name if sbom_artifact else None
+    return {
+        "schema_version": "1.0",
+        "bundle_kind": "kaos-compliance.package",
+        "package": raw_module.get("name"),
+        "version": pypi_version,
+        "snapshot_slice": raw_module,
+        "sbom": {
+            "mirror_path": (
+                f"api/v1/sbom/{sbom_basename}" if sbom_basename else None
+            ),
+            "github_release_url": (
+                f"https://github.com/273v/{raw_module.get('name')}/releases/download/"
+                f"v{pypi_version}/{raw_module.get('name')}-{pypi_version}.cdx.json"
+                if pypi_version and sbom_basename
+                else None
+            ),
+        },
+        "attestation": {
+            "present": att.get("pep740_present"),
+            "publisher_kind": att.get("publisher_kind"),
+            "publisher_source_repo": att.get("publisher_source_repo"),
+            "publisher_workflow_ref": att.get("publisher_workflow_ref"),
+            "rekor_log_index": att.get("rekor_log_index"),
+            "verified_count": att.get("verified_count"),
+            "total_count": att.get("total_count"),
+            "pypi_simple_index_url": (
+                f"https://pypi.org/simple/{raw_module.get('name')}/"
+            ),
+        },
+    }
+
+
+def _api_endpoints_view(
+    *,
+    integrity: dict[str, Any],
+    history_present: bool,
+    diff_dates: list[tuple[str, str]] | None = None,
+    package_names: list[str] | None = None,
+) -> dict[str, Any]:
+    """View-model for /api/v1/index.html — machine-readable endpoint catalog.
+
+    Lists every JSON endpoint the dashboard publishes, with a one-line
+    description + a curl recipe. This is the answer to "where do I
+    get the data?" — referenced from the footer of every page.
+    """
+    base = "https://273v.github.io/kaos-compliance/"
+    endpoints = [
+        {
+            "path": "api/v1/snapshot.json",
+            "media_type": "application/json",
+            "description": (
+                "Authoritative org-wide snapshot — every per-package "
+                "signal the dashboard reads from."
+            ),
+            "curl": f"curl -O {base}api/v1/snapshot.json",
+        },
+        {
+            "path": "api/v1/snapshot.schema.json",
+            "media_type": "application/schema+json",
+            "description": (
+                "JSON Schema (Draft 2020-12) that snapshot.json conforms to. "
+                "Validate before trusting any field."
+            ),
+            "curl": f"curl -O {base}api/v1/snapshot.schema.json",
+        },
+        {
+            "path": "api/v1/snapshot.sig",
+            "media_type": "application/vnd.dev.sigstore.bundle+json",
+            "description": (
+                "Sigstore-cosign-keyless DSSE bundle for snapshot.json. "
+                "Verify with cosign verify-blob --bundle."
+            ),
+            "curl": f"curl -O {base}api/v1/snapshot.sig",
+            "available": integrity.get("signature_present", False),
+        },
+        {
+            "path": "api/v1/snapshot.sig.meta.json",
+            "media_type": "application/json",
+            "description": (
+                "Signature verification parameters (expected identity, "
+                "issuer, workflow ref). Pinned to the bundle."
+            ),
+            "curl": f"curl -O {base}api/v1/snapshot.sig.meta.json",
+            "available": integrity.get("signature_present", False),
+        },
+        {
+            "path": "heartbeat.json",
+            "media_type": "application/json",
+            "description": (
+                "Heartbeat block — generated_at + last_*_sweep_at timestamps "
+                "for watchdogs."
+            ),
+            "curl": f"curl -O {base}heartbeat.json",
+        },
+        {
+            "path": "api/v1/history.json",
+            "media_type": "application/json",
+            "description": (
+                "Rolling 90-day per-package signal history. "
+                "Source of every sparkline on the dashboard."
+            ),
+            "curl": f"curl -O {base}api/v1/history.json",
+            "available": history_present,
+        },
+        {
+            "path": "api/v1/history/&lt;YYYY-MM-DD&gt;.json",
+            "media_type": "application/json",
+            "description": (
+                "Per-day snapshot summary written by each sweep. "
+                "One file per UTC day."
+            ),
+            "curl": f"curl -O {base}api/v1/history/2026-05-11.json",
+            "available": history_present,
+        },
+    ]
+    diff_endpoints = []
+    if diff_dates:
+        for d_from, d_to in diff_dates:
+            diff_endpoints.append(
+                {
+                    "path": f"api/v1/diff/{d_from}/{d_to}.json",
+                    "media_type": "application/json",
+                    "description": (
+                        f"Per-package signal diff from {d_from} to {d_to}. "
+                        "Computed at render time from history.json."
+                    ),
+                    "curl": (
+                        f"curl -O {base}api/v1/diff/{d_from}/{d_to}.json"
+                    ),
+                }
+            )
+    package_endpoints = []
+    for name in package_names or []:
+        package_endpoints.append(
+            {
+                "path": f"api/v1/package/{name}.json",
+                "media_type": "application/json",
+                "description": (
+                    f"Self-contained evidence bundle for {name}: "
+                    "the package's slice of snapshot.json + SBOM links + "
+                    "PEP 740 attestation pointer."
+                ),
+                "curl": f"curl -O {base}api/v1/package/{name}.json",
+            }
+        )
+    return {
+        "endpoints": endpoints,
+        "diff_endpoints": diff_endpoints,
+        "package_endpoints": package_endpoints,
     }
 
 
@@ -1387,6 +1816,7 @@ def render(
     output_dir: Path,
     base_href: str = "/kaos-compliance/",
     signature_source: Path | None = None,
+    history_append: bool = True,
 ) -> list[Path]:
     """Render the dashboard to ``output_dir``. Returns the list of files written.
 
@@ -1400,6 +1830,12 @@ def render(
             published ``snapshot.json`` and the signature pill in the
             page header turns green. Defaults to ``output_dir/api/v1/``
             so the signing workflow can write directly into the layout.
+        history_append: When True (the default), append today's snapshot
+            to ``api/v1/history/YYYY-MM-DD.json`` and rebuild
+            ``api/v1/history.json``. The sweep workflow drops the prior
+            ``history/`` directory into ``output_dir/api/v1/history/``
+            before calling ``render`` so existing days survive the
+            ``keep_files: false`` deploy.
     """
     written: list[Path] = []
 
@@ -1407,6 +1843,34 @@ def render(
     (output_dir / "package").mkdir(exist_ok=True)
     api_dir = output_dir / "api" / "v1"
     api_dir.mkdir(parents=True, exist_ok=True)
+    history_dir = api_dir / "history"
+    history_index_path = api_dir / "history.json"
+
+    # P7: append today's per-day file + rebuild the rolling index BEFORE
+    # adapting the view-model, so sparklines + baseline-diff see today's
+    # data. ``history_append=False`` is the test escape hatch for callers
+    # that want to render against a pre-existing index without mutating it.
+    history_index: dict[str, Any] | None = None
+    if history_append and _history is not None:
+        try:
+            _history.append_and_index(
+                snapshot,
+                history_dir=history_dir,
+                index_path=history_index_path,
+            )
+        except OSError as exc:
+            print(
+                f"render: WARNING: could not append history: {exc}",
+                file=sys.stderr,
+            )
+    if history_index_path.is_file():
+        try:
+            history_index = json.loads(history_index_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            print(
+                f"render: WARNING: history.json unreadable: {exc}",
+                file=sys.stderr,
+            )
 
     # Discover signature bundle. Looks in the canonical published path
     # by default — that lets the sweep workflow drop the bundle into
@@ -1432,7 +1896,7 @@ def render(
     )
 
     env = _make_env()
-    view = adapt(snapshot, integrity=integrity)
+    view = adapt(snapshot, integrity=integrity, history_index=history_index)
     view["base_href"] = base_href
 
     # index.html
@@ -1464,6 +1928,11 @@ def render(
             "heartbeat": view["heartbeat"],
             "pkg_suppressions": pkg_suppressions,
             "suppressions_available": (view.get("suppressions") or {}).get("available"),
+            # P7: thread the history view-model so the package template
+            # can render "Changes since last sweep" without re-loading
+            # history.json. Named `signal_history` to avoid colliding
+            # with the diary template's pre-existing `history` slot.
+            "signal_history": view.get("signal_history"),
         }
         out = output_dir / "package" / f"{pkg['name']}.html"
         out.write_text(package_tpl.render(**ctx), encoding="utf-8")
@@ -1516,6 +1985,67 @@ def render(
         json.dumps(_heartbeat_block(snapshot), indent=2) + "\n", encoding="utf-8"
     )
     written.append(hb_out)
+
+    # ── P7: machine-readable endpoint polish ──
+    #
+    # Per-package download bundle: a self-contained JSON blob a buyer
+    # can `curl -o` to grab one package's evidence without traversing
+    # the whole snapshot. The package detail template links to this as
+    # the "Download" button next to "Evidence".
+    pkg_api_dir = api_dir / "package"
+    pkg_api_dir.mkdir(parents=True, exist_ok=True)
+    package_names: list[str] = []
+    for pkg in view["packages"]:
+        bundle = _download_bundle(pkg, pkg["_raw"])
+        out_p = pkg_api_dir / f"{pkg['name']}.json"
+        out_p.write_text(json.dumps(bundle, indent=2) + "\n", encoding="utf-8")
+        written.append(out_p)
+        package_names.append(pkg["name"])
+
+    # Render-time diff endpoint: build api/v1/diff/<from>/<to>.json for
+    # the previous-sweep → current-sweep diff. Additional pairwise
+    # diffs over the full window would balloon the published surface
+    # (90 * 90 / 2 = 4005 files); we keep just the one most-asked diff
+    # and the catalog page documents how to compute others locally.
+    diff_dir = api_dir / "diff"
+    diff_pairs: list[tuple[str, str]] = []
+    if (
+        history_index
+        and _history is not None
+        and history_index.get("last_date")
+        and _history.previous_sweep_date(history_index) is not None
+    ):
+        d_from = _history.previous_sweep_date(history_index)
+        d_to = history_index.get("last_date")
+        diff_obj = _history.diff_packages(
+            history_index, from_date=d_from, to_date=d_to
+        )
+        diff_dir_pair = diff_dir / str(d_from)
+        diff_dir_pair.mkdir(parents=True, exist_ok=True)
+        diff_path = diff_dir_pair / f"{d_to}.json"
+        diff_path.write_text(json.dumps(diff_obj, indent=2) + "\n", encoding="utf-8")
+        written.append(diff_path)
+        diff_pairs.append((str(d_from), str(d_to)))
+
+    # Endpoint catalog page (/api/v1/index.html) — the answer to
+    # "where do I get the data?" Linked from every page's footer.
+    try:
+        api_index_tpl = env.get_template("api-index.html.jinja")
+    except jinja2.exceptions.TemplateNotFound:
+        api_index_tpl = None
+    if api_index_tpl is not None:
+        api_index_view = dict(view)
+        api_index_view["api_endpoints"] = _api_endpoints_view(
+            integrity=integrity,
+            history_present=history_index_path.is_file(),
+            diff_dates=diff_pairs or None,
+            package_names=package_names,
+        )
+        api_index_out = api_dir / "index.html"
+        api_index_out.write_text(
+            api_index_tpl.render(**api_index_view), encoding="utf-8"
+        )
+        written.append(api_index_out)
 
     return written
 

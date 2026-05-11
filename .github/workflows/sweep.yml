@@ -102,12 +102,38 @@ jobs:
             --output data/snapshots/latest.json \
             --pretty
 
+      # P7: preserve the rolling 90-day history across the keep_files:false
+      # deploy. We fetch the existing gh-pages tree (best-effort — the
+      # very first deploy has nothing to fetch and the step is a no-op),
+      # then copy api/v1/history/ + api/v1/history.json into _site/ so
+      # the renderer's history-append step appends to the existing files
+      # rather than starting from a one-day window every sweep.
+      - name: Restore history from gh-pages
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          rm -rf _site
+          mkdir -p _site/api/v1/history
+          tmp_pages=$(mktemp -d)
+          git clone --depth=1 --branch gh-pages \
+            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            "${tmp_pages}" 2>/dev/null || true
+          if [ -d "${tmp_pages}/api/v1/history" ]; then
+            cp -a "${tmp_pages}/api/v1/history/." _site/api/v1/history/ || true
+          fi
+          if [ -f "${tmp_pages}/api/v1/history.json" ]; then
+            cp "${tmp_pages}/api/v1/history.json" _site/api/v1/history.json || true
+          fi
+          rm -rf "${tmp_pages}"
+          echo "Restored history files:"
+          ls -la _site/api/v1/history/ 2>/dev/null || echo "(none yet)"
+
       - name: Render dashboard
         run: |
           uv run python -m render \
             --snapshot data/snapshots/latest.json \
-            --output _site \
-            --clean
+            --output _site
 
       # ── R4 + R23: integrity layer ──
       #
@@ -205,12 +231,38 @@ jobs:
             --output data/snapshots/latest.json \
             --pretty
 
+      # P7: preserve the rolling 90-day history across the keep_files:false
+      # deploy. We fetch the existing gh-pages tree (best-effort — the
+      # very first deploy has nothing to fetch and the step is a no-op),
+      # then copy api/v1/history/ + api/v1/history.json into _site/ so
+      # the renderer's history-append step appends to the existing files
+      # rather than starting from a one-day window every sweep.
+      - name: Restore history from gh-pages
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          rm -rf _site
+          mkdir -p _site/api/v1/history
+          tmp_pages=$(mktemp -d)
+          git clone --depth=1 --branch gh-pages \
+            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            "${tmp_pages}" 2>/dev/null || true
+          if [ -d "${tmp_pages}/api/v1/history" ]; then
+            cp -a "${tmp_pages}/api/v1/history/." _site/api/v1/history/ || true
+          fi
+          if [ -f "${tmp_pages}/api/v1/history.json" ]; then
+            cp "${tmp_pages}/api/v1/history.json" _site/api/v1/history.json || true
+          fi
+          rm -rf "${tmp_pages}"
+          echo "Restored history files:"
+          ls -la _site/api/v1/history/ 2>/dev/null || echo "(none yet)"
+
       - name: Render dashboard
         run: |
           uv run python -m render \
             --snapshot data/snapshots/latest.json \
-            --output _site \
-            --clean
+            --output _site
 
       # ── R4 + R23: integrity layer ──
       #
@@ -333,12 +385,38 @@ jobs:
             echo "collector.diary not yet wired — skipping (see docs/METHODOLOGY.md §Cadence)."
           fi
 
+      # P7: preserve the rolling 90-day history across the keep_files:false
+      # deploy. We fetch the existing gh-pages tree (best-effort — the
+      # very first deploy has nothing to fetch and the step is a no-op),
+      # then copy api/v1/history/ + api/v1/history.json into _site/ so
+      # the renderer's history-append step appends to the existing files
+      # rather than starting from a one-day window every sweep.
+      - name: Restore history from gh-pages
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          rm -rf _site
+          mkdir -p _site/api/v1/history
+          tmp_pages=$(mktemp -d)
+          git clone --depth=1 --branch gh-pages \
+            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            "${tmp_pages}" 2>/dev/null || true
+          if [ -d "${tmp_pages}/api/v1/history" ]; then
+            cp -a "${tmp_pages}/api/v1/history/." _site/api/v1/history/ || true
+          fi
+          if [ -f "${tmp_pages}/api/v1/history.json" ]; then
+            cp "${tmp_pages}/api/v1/history.json" _site/api/v1/history.json || true
+          fi
+          rm -rf "${tmp_pages}"
+          echo "Restored history files:"
+          ls -la _site/api/v1/history/ 2>/dev/null || echo "(none yet)"
+
       - name: Render dashboard
         run: |
           uv run python -m render \
             --snapshot data/snapshots/latest.json \
-            --output _site \
-            --clean
+            --output _site
 
       # ── R4 + R23: integrity layer ──
       #
