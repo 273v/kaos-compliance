@@ -608,7 +608,8 @@ def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[s
     def _dash(v: int | None) -> Any:
         return v if v is not None else "—"
 
-    # Org-wide code-surface aggregates (hand-written src + tests).
+    # Org-wide code-surface aggregates (source + tests; AI-assisted —
+    # see the index footnote for authorship disclosure).
     py_src = py_test = rs_src = rs_test = 0
     py_src_files = py_test_files = rs_src_files = rs_test_files = 0
     py_src_known = py_test_known = rs_src_known = rs_test_known = False
