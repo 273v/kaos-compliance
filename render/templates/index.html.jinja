@@ -73,7 +73,9 @@ table.grid tbody tr:nth-child(even){background:rgba(0,0,0,0.02)}
 table.grid td.pkg{font-weight:600}
 table.grid td.ver{font-family:var(--mono);color:var(--muted)}
 table.grid td.age{color:var(--muted);font-size:0.8125rem}
-.pill{display:inline-flex;align-items:center;gap:var(--s-2);padding:2px 8px;border-radius:3px;font-size:0.75rem;font-weight:600;line-height:1.4;border:1px solid transparent}
+.pill{display:inline-flex;align-items:center;gap:var(--s-2);padding:2px 8px;border-radius:3px;font-size:0.75rem;font-weight:600;line-height:1.4;border:1px solid transparent;text-decoration:none}
+a.pill:hover{filter:brightness(0.95);text-decoration:underline}
+a.pill:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .pill .gly{font-family:var(--mono);font-weight:700}
 .pill .wd{font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
 .pill.g{background:var(--g-bg);color:var(--g-fg);border-color:var(--g-fg)}
@@ -152,10 +154,10 @@ nav.subnav a{color:var(--muted)}
 <section aria-labelledby="strip-h">
  <h2 id="strip-h" class="sr-only" style="position:absolute;left:-9999px">Headline metrics</h2>
  <div class="strip">
-  <div class="stat"><span class="n">{{ org.composite_total | default(16) }}</span><span class="lab">Packages tracked</span></div>
-  <div class="stat"><span class="n">{{ org.commits_90d | default('2,341') }}</span><span class="lab">Commits 90d</span></div>
-  <div class="stat"><span class="n">{{ org.maintainers | default(8) }}</span><span class="lab">Maintainers</span></div>
-  <div class="stat"><span class="n">{{ org.advisories.critical | default(0) }}</span><span class="lab">Critical CVEs open</span></div>
+  <div class="stat"><span class="n">{{ org.repos_total | default(16) }}</span><span class="lab">Repositories</span></div>
+  <div class="stat"><span class="n">{{ org.commits_total | default('—') }}</span><span class="lab">Commits</span></div>
+  <div class="stat"><span class="n">{{ org.tests_total | default('—') }}</span><span class="lab">Tests</span></div>
+  <div class="stat"><span class="n">{{ org.platforms_total | default('—') }}</span><span class="lab">Supported platforms</span></div>
  </div>
 </section>
 
@@ -187,10 +189,17 @@ nav.subnav a{color:var(--muted)}
     <td class="ver" data-h="Version">{{ p.version }}</td>
     {% for col in ["build","tests","security","signing","license","deps"] %}
      {% set st = states[p[col]] %}
+     {% set link = (p.pill_links or {})[col] %}
      <td data-h="{{ col | capitalize }}">
-      <span class="pill {{ st[0] }}" aria-label="{{ col | capitalize }}: {{ st[2] }}">
-       <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span>
-      </span>
+      {% if link %}
+       <a class="pill {{ st[0] }}" href="{{ link }}" target="_blank" rel="noopener" aria-label="{{ col | capitalize }}: {{ st[2] }} — open evidence">
+        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span>
+       </a>
+      {% else %}
+       <span class="pill {{ st[0] }}" aria-label="{{ col | capitalize }}: {{ st[2] }}">
+        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span>
+       </span>
+      {% endif %}
      </td>
     {% endfor %}
     <td class="age" data-h="Last release">{{ p.last_release_display }}</td>

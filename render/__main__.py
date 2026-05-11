@@ -156,6 +156,25 @@ def _module_view(module: dict[str, Any]) -> dict[str, Any]:
     ci_section = module.get("ci", {})
     sec_section = module.get("security", {})
 
+    # Per-pill links: every pill in the grid links to the underlying
+    # evidence so a reviewer can verify the claim without grepping the
+    # repo. CI / tests / security all link to their workflow run on
+    # GitHub (free, stable, public). Signing / license / deps link to
+    # the SBOM artifact in /api/v1/ once P2 lands; gray pills get None
+    # and render as a plain span (not an anchor).
+    ci_run_url = ci_section.get("workflow_run_url") or None
+    sec_run_url = sec_section.get("workflow_run_url") or None
+    pill_links = {
+        "build": ci_run_url,
+        "tests": ci_run_url,
+        "security": sec_run_url,
+        # P2 will fill these with PEP 740 attestation URL +
+        # data/sbom/<pkg>-<version>.cdx.json paths respectively.
+        "signing": None,
+        "license": None,
+        "deps": None,
+    }
+
     # Index-grid row uses string pills. Detail-page sections are dicts.
     # We can't reuse the key `security` for both — the per-package
     # detail template walks `pkg.security.open` etc., while the index
@@ -176,6 +195,7 @@ def _module_view(module: dict[str, Any]) -> dict[str, Any]:
         "signing": _pill_signing(module),
         "license": _pill_license(module),
         "deps": _pill_deps(module),
+        "pill_links": pill_links,
         "last_release": last_commit[:10] if last_commit else "—",
         "release_age_days": _release_age_days(module),
     }
@@ -236,14 +256,8 @@ def _org_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
     total = len(modules)
     build_pass = sum(1 for m in modules if _pill_build(m) == "green")
     tests_pass = sum(1 for m in modules if _pill_tests(m) == "green")
-    sec_green = sum(
-        1 for m in modules if _pill_security(m.get("security", {}).get("workflow_conclusion")) == "green"
-    )
     license_clean = sum(1 for m in modules if _pill_license(m) == "green")  # gray for now → 0
     signed_releases = sum(1 for m in modules if _pill_signing(m) == "green")  # gray for now → 0
-    # composite_green = all four pills green for that module (best
-    # available right now; will tighten once P2 lands attestation +
-    # license signals).
     composite_green = sum(
         1
         for m in modules
@@ -251,22 +265,52 @@ def _org_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
         and _pill_tests(m) == "green"
         and _pill_security(m.get("security", {}).get("workflow_conclusion")) == "green"
     )
+
+    # Headline strip — surface-area counts (cardinality, not ratios).
+    #
+    # repos_total      = # of public 273v/kaos-* repos the dashboard tracks.
+    # commits_total    = sum of governance.commits_90d across modules;
+    #                    None until P3 governance fills it.
+    # tests_total      = sum of CI matrix test legs (one leg per
+    #                    (os, python) cell). "How broadly are we testing."
+    # platforms_total  = unique (os, python) cells across the union of
+    #                    every package's CI matrix. Matrix breadth at a
+    #                    glance; bounded above by tests_total.
+    tests_total = 0
+    platform_set: set[tuple[str, str]] = set()
+    for m in modules:
+        ci_matrix = m.get("ci", {}).get("matrix") or []
+        for job in ci_matrix:
+            match = _TEST_JOB_RE.match(job.get("name") or "")
+            if match:
+                tests_total += 1
+                platform_set.add((match.group("os"), match.group("python")))
+
+    commits_values = [
+        m.get("governance", {}).get("commits_90d")
+        for m in modules
+        if isinstance(m.get("governance", {}).get("commits_90d"), int)
+    ]
+    commits_total: int | None = sum(commits_values) if commits_values else None
+
+    # Jinja's `default()` filter matches Undefined, not None. Coerce
+    # honest-gap None values to "—" here so the template never has to
+    # write `default(...) if value is not None else ...`.
+    def _dash(v: int | None) -> Any:
+        return v if v is not None else "—"
+
     return {
         "composite_green": composite_green,
         "composite_total": total,
         "build_pass": build_pass,
         "tests_pass": tests_pass,
-        "advisories": {  # P3 fills the real values
-            "critical": 0,
-            "high": 0,
-            "moderate": 0,
-            "low": 0,
-        },
         "signed_releases": signed_releases,
         "license_clean": license_clean,
-        # P3: commit count over 90d via gh api commits.
-        "commits_90d": 0,
-        "maintainers": 1,  # P3: unique committer set in last 90d
+        # Headline strip:
+        "repos_total": total,
+        "commits_total": _dash(commits_total),
+        "tests_total": _dash(tests_total or None),
+        "platforms_total": _dash(len(platform_set) or None),
     }
 
 
