@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-05-11T15:08:00Z",
+  "generated_at": "2026-05-11T15:21:07Z",
   "generator": {
     "name": "kaos-compliance",
     "version": "0.0.1"
   },
   "heartbeat": {
-    "last_full_sweep_at": "2026-05-11T15:08:00Z",
-    "last_light_sweep_at": "2026-05-11T15:08:00Z",
-    "last_security_sweep_at": "2026-05-11T15:08:00Z",
+    "last_full_sweep_at": "2026-05-11T15:21:07Z",
+    "last_light_sweep_at": "2026-05-11T15:21:07Z",
+    "last_security_sweep_at": "2026-05-11T15:21:07Z",
     "stale_threshold_hours": 26
   },
   "modules": [
@@ -152,8 +152,79 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 3,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a2",
+        "pypi_release_iso": "2026-05-08T02:13:47.454274Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_citations-0.1.0a2-py3-none-any.whl": "07d0e9f3871abaaf17364301231163add8569a457e22f2c287e60d2df6af370b",
+          "kaos_citations-0.1.0a2.tar.gz": "3e304bc99a250139bdbf66d0e2f3d492d8d9f3a29af4aa47575e0fbd23255b10"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-citations",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1466659658,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 28,
+          "license_breakdown": {
+            "MIT": 11,
+            "BSD-3-Clause": 4,
+            "BSD-2-Clause": 4,
+            "Apache-2.0": 5,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-d1f6e926": 1,
+            "LicenseRef-unknown-2035d39c": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "pyahocorasick",
+            "regex"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-citations-0.1.0a2.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.667,
+        "conventional_commits_rate_90d": 0.778,
+        "verified_commit_ratio_90d": 0.333,
+        "commits_90d": 9,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 2,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 53,
+        "errors": []
       },
       "errors": []
     },
@@ -162,13 +233,13 @@
       "identity": {
         "pypi_version": null,
         "pypi_url": null,
-        "main_head_sha": "05035e9e14a829e03eedee4d8d6687ada43e371c",
+        "main_head_sha": "2f527560e8f817e9c2e8801c5f741f9fbff002fb",
         "latest_tag": null,
         "latest_tag_sha": null,
         "tag_at_head": null,
         "commits_past_tag": null,
         "repo_visibility": "public",
-        "last_commit_at": "2026-05-11T14:47:40Z"
+        "last_commit_at": "2026-05-11T15:09:15Z"
       },
       "ci": {
         "workflow_conclusion": null,
@@ -193,6 +264,73 @@
         "days_since_last_commit": 0,
         "days_since_last_release": null,
         "days_since_last_security_scan": null
+      },
+      "supply_chain": {
+        "pypi_version": null,
+        "pypi_release_iso": null,
+        "wheel_platforms": [],
+        "wheel_sha256s": {},
+        "is_abi3": null,
+        "has_musllinux_wheel": null,
+        "license_expression": null,
+        "license_files_in_wheel": [],
+        "attestations": {
+          "pep740_present": null,
+          "publisher_kind": null,
+          "publisher_source_repo": null,
+          "publisher_workflow_ref": null,
+          "rekor_log_index": null,
+          "verified_count": 0,
+          "total_count": 0
+        },
+        "sbom": {
+          "components_count": 31,
+          "license_breakdown": {
+            "MIT": 13,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 8,
+            "Apache-2.0": 3,
+            "LicenseRef-unknown-bad7811d": 1,
+            "LicenseRef-unknown-f1118a10": 2,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "h2",
+            "hpack",
+            "hyperframe"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-compliance-0.0.0+unknown.cdx.json"
+        },
+        "errors": [
+          "pypi_json: HTTPError: HTTP Error 404: Not Found",
+          "pypi_simple: HTTPError: HTTP Error 404: Not Found"
+        ]
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 1.0,
+        "conventional_commits_rate_90d": 0.8,
+        "verified_commit_ratio_90d": 0.0,
+        "commits_90d": 5,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": null,
+        "security_md_present": false,
+        "security_md_disclosure_window_days": null,
+        "notice_present": true,
+        "license_files_in_sdist": [],
+        "releases_90d": 0,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": null,
+        "errors": []
       },
       "errors": []
     },
@@ -330,8 +468,92 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a6",
+        "pypi_release_iso": "2026-05-11T12:53:23.494464Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_content-0.1.0a6-py3-none-any.whl": "3ce3d724396f7e127cc8c951ff5862700a5d6f2063e2a33e3dcf09b7006674d9",
+          "kaos_content-0.1.0a6.tar.gz": "7b6b175183fd1fd8bfb922d3adccab8dfcee57cc4a9b35eecb957390b3c8f240"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-content",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1507031372,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 54,
+          "license_breakdown": {
+            "MIT": 24,
+            "MPL-2.0": 2,
+            "BSD-3-Clause": 8,
+            "Apache-2.0": 9,
+            "LicenseRef-unknown-d55631fb": 1,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-d1d28651": 1,
+            "LicenseRef-unknown-a224975f": 1,
+            "BSD-2-Clause": 1,
+            "MIT AND BSD-3-Clause": 1,
+            "LicenseRef-unknown-80dc4d0a": 1,
+            "ISC": 1,
+            "MPL-2.0 AND MIT": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi",
+            "hypothesis",
+            "tqdm"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "imagehash",
+            "pillow",
+            "polars",
+            "scipy"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-content-0.1.0a6.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.88,
+        "conventional_commits_rate_90d": 0.76,
+        "verified_commit_ratio_90d": 0.28,
+        "commits_90d": 25,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 6,
+        "median_pr_age_days": 0.057,
+        "open_pr_count": 1,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 137,
+        "errors": []
       },
       "errors": []
     },
@@ -475,8 +697,79 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a5",
+        "pypi_release_iso": "2026-05-10T21:07:24.673109Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_core-0.1.0a5-py3-none-any.whl": "64a4b76ff84587351db605eb9a80b5af3063be870ad9718d962dabcfcf843a28",
+          "kaos_core-0.1.0a5.tar.gz": "f246f34d56378365e2da819ffc4cda007295a27b05b7661f383bf9c2537d5498"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-core",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1499063423,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 39,
+          "license_breakdown": {
+            "MIT": 21,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 9,
+            "Apache-2.0": 2,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 2,
+            "Python-2.0": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [],
+          "sbom_artifact_path": "data/sbom/kaos-core-0.1.0a5.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.703,
+        "conventional_commits_rate_90d": 0.838,
+        "verified_commit_ratio_90d": 0.108,
+        "commits_90d": 37,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 5,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 55,
+        "errors": []
       },
       "errors": []
     },
@@ -640,8 +933,137 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a3",
+        "pypi_release_iso": "2026-05-11T01:53:01.987133Z",
+        "wheel_platforms": [
+          "macos-arm64",
+          "linux-aarch64-manylinux_2_28",
+          "linux-x86_64-manylinux_2_28",
+          "win-amd64",
+          "win-arm64"
+        ],
+        "wheel_sha256s": {
+          "kaos_graph-0.1.0a3-cp313-abi3-macosx_11_0_arm64.whl": "3246ca90bd106087e3692a6f61fc84ae70c424e2f9439afa2945ae60c889f5cb",
+          "kaos_graph-0.1.0a3-cp313-abi3-manylinux_2_28_aarch64.whl": "e7f9e98d3d87dc93fb2ee819180bb31bc058fc512dfc55e2598d33c29afafecf",
+          "kaos_graph-0.1.0a3-cp313-abi3-manylinux_2_28_x86_64.whl": "bd6f1a9a282d654b230d076cebf5182706d1a033e30a0e337757f3bdf8012372",
+          "kaos_graph-0.1.0a3-cp313-abi3-win_amd64.whl": "3e55033d88cda3a2872346524af7ae3dfc9b1a564d79c1d14f5387309675cbd2",
+          "kaos_graph-0.1.0a3-cp313-abi3-win_arm64.whl": "b6b9bbd822afcdcc56f10be92b6385f04e1f30e85fff69b97880607975fade10",
+          "kaos_graph-0.1.0a3.tar.gz": "bb46bdbb42a11393e53ce374da0711e0ffe0f4f870f3b5e79150d369340a2be6"
+        },
+        "is_abi3": true,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-graph",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1501440071,
+          "verified_count": 6,
+          "total_count": 6
+        },
+        "sbom": {
+          "components_count": 80,
+          "license_breakdown": {
+            "MIT": 12,
+            "BSD-3-Clause": 6,
+            "Apache-2.0": 4,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Python-2.0": 1,
+            "MIT OR Apache-2.0": 2,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1,
+            "unknown": 51
+          },
+          "weak_copyleft": [],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "cfg-if",
+            "equivalent",
+            "fixedbitset",
+            "foldhash",
+            "getrandom",
+            "hashbrown",
+            "heck",
+            "indexmap",
+            "itoa",
+            "json-event-parser",
+            "libc",
+            "memchr",
+            "once_cell",
+            "oxilangtag",
+            "oxiri",
+            "oxjsonld",
+            "oxrdf",
+            "oxrdfio",
+            "oxrdfxml",
+            "oxttl",
+            "petgraph",
+            "portable-atomic",
+            "ppv-lite86",
+            "proc-macro2",
+            "pyo3",
+            "pyo3-build-config",
+            "pyo3-ffi",
+            "pyo3-macros",
+            "pyo3-macros-backend",
+            "quick-xml",
+            "quote",
+            "r-efi",
+            "rand",
+            "rand_chacha",
+            "rand_core",
+            "ryu-js",
+            "serde",
+            "serde_core",
+            "serde_derive",
+            "serde_json",
+            "syn",
+            "target-lexicon",
+            "thiserror",
+            "thiserror-impl",
+            "unicode-ident",
+            "wasip2",
+            "wit-bindgen",
+            "zerocopy",
+            "zerocopy-derive",
+            "zmij"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-graph-0.1.0a3.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.579,
+        "conventional_commits_rate_90d": 0.737,
+        "verified_commit_ratio_90d": 0.211,
+        "commits_90d": 19,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 3,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 400,
+        "errors": []
       },
       "errors": []
     },
@@ -785,8 +1207,87 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a3",
+        "pypi_release_iso": "2026-05-11T01:33:35.823368Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_llm_client-0.1.0a3-py3-none-any.whl": "9af292d33188a1225dacf7895f7808c4c8cd961ea89cd14add2c270f10632e1f",
+          "kaos_llm_client-0.1.0a3.tar.gz": "64eb93caccb0af6d68799dc7684d921fd58f744b22de955ef9a78e46a3290ac5"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-llm-client",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1501266684,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 41,
+          "license_breakdown": {
+            "MIT": 19,
+            "LicenseRef-unknown-da39a3ee": 2,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 8,
+            "Apache-2.0": 4,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "LicenseRef-unknown-bad7811d": 1,
+            "LicenseRef-unknown-f1118a10": 2,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "azure-core",
+            "azure-identity",
+            "h2",
+            "hpack",
+            "hyperframe"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-llm-client-0.1.0a3.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.615,
+        "conventional_commits_rate_90d": 0.615,
+        "verified_commit_ratio_90d": 0.308,
+        "commits_90d": 13,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 3,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 66,
+        "errors": []
       },
       "errors": []
     },
@@ -930,8 +1431,86 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a5",
+        "pypi_release_iso": "2026-05-11T07:54:08.661211Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_llm_core-0.1.0a5-py3-none-any.whl": "31376b2ed5796724b57ed8b4876ef229751c9dc8547bdf53864c4ab8568468a4",
+          "kaos_llm_core-0.1.0a5.tar.gz": "a611e52cf8194a54d3aa0d1bd55a4d3085b2b94acaf85068b7fcc41a74abacea"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-llm-core",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1504052840,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 38,
+          "license_breakdown": {
+            "MIT": 15,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 6,
+            "Apache-2.0": 8,
+            "LicenseRef-unknown-bad7811d": 1,
+            "LicenseRef-unknown-f1118a10": 2,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-d1d28651": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "h2",
+            "hpack",
+            "hyperframe",
+            "pillow"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-llm-core-0.1.0a5.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.688,
+        "conventional_commits_rate_90d": 0.75,
+        "verified_commit_ratio_90d": 0.438,
+        "commits_90d": 16,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 5,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 205,
+        "errors": []
       },
       "errors": []
     },
@@ -1081,8 +1660,80 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a3",
+        "pypi_release_iso": "2026-05-11T01:30:42.080346Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_mcp-0.1.0a3-py3-none-any.whl": "e6fbc3f803b5fff6f16106b31398cb8cc88100e9cd357c790c3e400d10f266f9",
+          "kaos_mcp-0.1.0a3.tar.gz": "fd9ae284d8f47abdac217431621439c167b05d5a5dd1e6c090a5d8aa34d200b5"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-mcp",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1501241121,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 51,
+          "license_breakdown": {
+            "MIT": 29,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 10,
+            "Apache-2.0": 5,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1,
+            "Python-2.0": 1,
+            "ISC": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [],
+          "sbom_artifact_path": "data/sbom/kaos-mcp-0.1.0a3.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.727,
+        "conventional_commits_rate_90d": 0.727,
+        "verified_commit_ratio_90d": 0.273,
+        "commits_90d": 11,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 3,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 59,
+        "errors": []
       },
       "errors": []
     },
@@ -1246,8 +1897,125 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a2",
+        "pypi_release_iso": "2026-05-11T01:12:10.120066Z",
+        "wheel_platforms": [
+          "macos-arm64",
+          "linux-aarch64-manylinux_2_28",
+          "linux-x86_64-manylinux_2_28",
+          "win-amd64",
+          "win-arm64"
+        ],
+        "wheel_sha256s": {
+          "kaos_ml_core-0.1.0a2-cp313-abi3-macosx_11_0_arm64.whl": "e4e81ce57a6acc496dd25452d2ce9a449f8c6086fe52b0584fc7e2d48c8c9f6b",
+          "kaos_ml_core-0.1.0a2-cp313-abi3-manylinux_2_28_aarch64.whl": "99e8b59dea35e57495ecb067fd43db2ffd040c2d2c87c0b4e90b380779b86046",
+          "kaos_ml_core-0.1.0a2-cp313-abi3-manylinux_2_28_x86_64.whl": "b1b1bd9f4fcd597a1ad449f1a0171214aa50db5f36965ce57acb5f36c922e904",
+          "kaos_ml_core-0.1.0a2-cp313-abi3-win_amd64.whl": "13e7360e8b2a12934ded2beebba543b0371e1a2129ee470e25cce74e8c661202",
+          "kaos_ml_core-0.1.0a2-cp313-abi3-win_arm64.whl": "d8dd80c423cb7e406b4f55410460bc4b15bb6eb82d8230e1cde2706ca138514c",
+          "kaos_ml_core-0.1.0a2.tar.gz": "cb3dde238dc043230c0d92ae2222d83b9d5db5ae2e37ae543dab2e26e69cc710"
+        },
+        "is_abi3": true,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-ml-core",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1501065671,
+          "verified_count": 6,
+          "total_count": 6
+        },
+        "sbom": {
+          "components_count": 102,
+          "license_breakdown": {
+            "MIT": 37,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 14,
+            "Apache-2.0": 17,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "LicenseRef-unknown-bad7811d": 1,
+            "LicenseRef-unknown-f1118a10": 2,
+            "MIT OR Apache-2.0": 1,
+            "LicenseRef-unknown-682ee400": 1,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-d1d28651": 1,
+            "LicenseRef-unknown-909ae7a5": 1,
+            "LicenseRef-unknown-da39a3ee": 1,
+            "BSD-2-Clause": 2,
+            "LicenseRef-unknown-0c07444d": 1,
+            "Python-2.0": 1,
+            "LicenseRef-unknown-80dc4d0a": 1,
+            "ISC": 1,
+            "MPL-2.0 AND MIT": 1,
+            "PSF-2.0": 1,
+            "unknown": 14
+          },
+          "weak_copyleft": [
+            "certifi",
+            "tqdm"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "h2",
+            "heck",
+            "hpack",
+            "hyperframe",
+            "libc",
+            "mmh3",
+            "once_cell",
+            "pillow",
+            "portable-atomic",
+            "proc-macro2",
+            "protobuf",
+            "py-rust-stemmers",
+            "pyo3",
+            "pyo3-build-config",
+            "pyo3-ffi",
+            "pyo3-macros",
+            "pyo3-macros-backend",
+            "pypdfium2",
+            "quote",
+            "scipy",
+            "syn",
+            "target-lexicon",
+            "unicode-ident"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-ml-core-0.1.0a2.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.27,
+        "conventional_commits_rate_90d": 0.757,
+        "verified_commit_ratio_90d": 0.081,
+        "commits_90d": 37,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 2,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 229,
+        "errors": []
       },
       "errors": []
     },
@@ -1383,8 +2151,73 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 4,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a1",
+        "pypi_release_iso": "2026-05-07T14:04:02.495331Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_names-0.1.0a1-py3-none-any.whl": "fb47111bc727dc0e9753efb43bc7a1e4dcc6ccaf1f06d672800ba24f2b84b0d9",
+          "kaos_names-0.1.0a1.tar.gz": "f030ee01ef78b46fba526c9aa00ca4d4be4430ba04da9b1836b5e3e324983d4b"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-names",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1461912545,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 10,
+          "license_breakdown": {
+            "BSD-3-Clause": 1,
+            "Apache-2.0": 1,
+            "MIT": 6,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1
+          },
+          "weak_copyleft": [],
+          "strong_copyleft": [],
+          "unknown_license": [],
+          "sbom_artifact_path": "data/sbom/kaos-names-0.1.0a1.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.833,
+        "conventional_commits_rate_90d": 0.833,
+        "verified_commit_ratio_90d": 0.167,
+        "commits_90d": 6,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 1,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 55,
+        "errors": []
       },
       "errors": []
     },
@@ -1548,8 +2381,260 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a3",
+        "pypi_release_iso": "2026-05-11T01:48:49.726918Z",
+        "wheel_platforms": [
+          "macos-arm64",
+          "linux-aarch64-manylinux_2_28",
+          "linux-x86_64-manylinux_2_28",
+          "win-amd64",
+          "win-arm64"
+        ],
+        "wheel_sha256s": {
+          "kaos_nlp_core-0.1.0a3-cp313-abi3-macosx_11_0_arm64.whl": "2b156f3845c652425f3e3cf420d6bb23d9de276fca3e50560b6e5df54159d3ca",
+          "kaos_nlp_core-0.1.0a3-cp313-abi3-manylinux_2_28_aarch64.whl": "96d734430f6120c54de3480facd32c897dc247e376236a9ead9d00360099fe24",
+          "kaos_nlp_core-0.1.0a3-cp313-abi3-manylinux_2_28_x86_64.whl": "79d4d5ab014ade25941e64c4318e6ad5b7449ff0a31e530a0614e4de3c801d72",
+          "kaos_nlp_core-0.1.0a3-cp313-abi3-win_amd64.whl": "eeb2769580ccd15737b6ff339ba1f7a6fe7411b19db17990d7779f22be34cdd4",
+          "kaos_nlp_core-0.1.0a3-cp313-abi3-win_arm64.whl": "fe92a7d373347c673601d1508efb0f779d7ef73eeed8755aed3aaa1d60b2ae59",
+          "kaos_nlp_core-0.1.0a3.tar.gz": "f04751a156a11dd193407457c36caafb5551e957e8819a4e74183f65488c62af"
+        },
+        "is_abi3": true,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-nlp-core",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1501394728,
+          "verified_count": 6,
+          "total_count": 6
+        },
+        "sbom": {
+          "components_count": 211,
+          "license_breakdown": {
+            "MIT": 15,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 8,
+            "Apache-2.0": 4,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "MIT OR Apache-2.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 2,
+            "PSF-2.0": 1,
+            "unknown": 177
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "adler2",
+            "ahash",
+            "aho-corasick",
+            "alloca",
+            "allocator-api2",
+            "anes",
+            "anstyle",
+            "anyhow",
+            "arrayref",
+            "arrayvec",
+            "autocfg",
+            "bit-set",
+            "bit-vec",
+            "bitflags",
+            "blake3",
+            "bumpalo",
+            "cast",
+            "cc",
+            "cfg-if",
+            "ciborium",
+            "ciborium-io",
+            "ciborium-ll",
+            "clap",
+            "clap_builder",
+            "clap_lex",
+            "cobs",
+            "constant_time_eq",
+            "cpufeatures",
+            "crc32fast",
+            "criterion",
+            "criterion-plot",
+            "crossbeam-deque",
+            "crossbeam-epoch",
+            "crossbeam-utils",
+            "crunchy",
+            "displaydoc",
+            "either",
+            "embedded-io",
+            "equivalent",
+            "errno",
+            "fastbloom",
+            "fastrand",
+            "find-msvc-tools",
+            "flate2",
+            "fnv",
+            "foldhash",
+            "fst",
+            "getrandom",
+            "half",
+            "hashbrown",
+            "heck",
+            "icu_collections",
+            "icu_locale_core",
+            "icu_properties",
+            "icu_properties_data",
+            "icu_provider",
+            "id-arena",
+            "indexmap",
+            "itertools",
+            "itoa",
+            "jobserver",
+            "js-sys",
+            "leb128fmt",
+            "libc",
+            "libm",
+            "linux-raw-sys",
+            "litemap",
+            "log",
+            "lru",
+            "memchr",
+            "miniz_oxide",
+            "num-traits",
+            "once_cell",
+            "oorandom",
+            "page_size",
+            "pkg-config",
+            "plotters",
+            "plotters-backend",
+            "plotters-svg",
+            "portable-atomic",
+            "postcard",
+            "potential_utf",
+            "ppv-lite86",
+            "prettyplease",
+            "proc-macro2",
+            "proptest",
+            "pyo3",
+            "pyo3-build-config",
+            "pyo3-ffi",
+            "pyo3-macros",
+            "pyo3-macros-backend",
+            "quick-error",
+            "quote",
+            "r-efi",
+            "rand",
+            "rand_chacha",
+            "rand_core",
+            "rand_xorshift",
+            "rayon",
+            "rayon-core",
+            "regex",
+            "regex-automata",
+            "regex-syntax",
+            "rustix",
+            "rustversion",
+            "rusty-fork",
+            "same-file",
+            "semver",
+            "serde",
+            "serde_core",
+            "serde_derive",
+            "serde_json",
+            "shlex",
+            "simd-adler32",
+            "siphasher",
+            "smallvec",
+            "stable_deref_trait",
+            "stringzilla",
+            "strsim",
+            "syn",
+            "synstructure",
+            "target-lexicon",
+            "tempfile",
+            "thiserror",
+            "thiserror-impl",
+            "tinystr",
+            "tinytemplate",
+            "unarray",
+            "unicode-ident",
+            "unicode-xid",
+            "utf8-ranges",
+            "utf8_iter",
+            "version_check",
+            "wait-timeout",
+            "walkdir",
+            "wasip2",
+            "wasip3",
+            "wasm-bindgen",
+            "wasm-bindgen-macro",
+            "wasm-bindgen-macro-support",
+            "wasm-bindgen-shared",
+            "wasm-encoder",
+            "wasm-metadata",
+            "wasmparser",
+            "web-sys",
+            "winapi",
+            "winapi-i686-pc-windows-gnu",
+            "winapi-util",
+            "winapi-x86_64-pc-windows-gnu",
+            "windows-link",
+            "windows-sys",
+            "wit-bindgen",
+            "wit-bindgen-core",
+            "wit-bindgen-rust",
+            "wit-bindgen-rust-macro",
+            "wit-component",
+            "wit-parser",
+            "writeable",
+            "yoke",
+            "yoke-derive",
+            "zerocopy",
+            "zerocopy-derive",
+            "zerofrom",
+            "zerofrom-derive",
+            "zerotrie",
+            "zerovec",
+            "zerovec-derive",
+            "zmij",
+            "zstd",
+            "zstd-safe",
+            "zstd-sys"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-nlp-core-0.1.0a3.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.786,
+        "conventional_commits_rate_90d": 0.786,
+        "verified_commit_ratio_90d": 0.143,
+        "commits_90d": 14,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 3,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 1322,
+        "errors": []
       },
       "errors": []
     },
@@ -1713,8 +2798,376 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.2.0a4",
+        "pypi_release_iso": "2026-05-11T02:11:22.315129Z",
+        "wheel_platforms": [
+          "macos-arm64",
+          "linux-aarch64-manylinux_2_28",
+          "linux-x86_64-manylinux_2_28",
+          "win-amd64",
+          "win-arm64"
+        ],
+        "wheel_sha256s": {
+          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-macosx_11_0_arm64.whl": "3e7103e5407d175a9dc1ad5d7871b468e7bd33f31f96d7df13ed2baba41b3a4e",
+          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-manylinux_2_28_aarch64.whl": "c82b0b55c43477de06085775167a1aee6a781ccb2c326714c90b466c7ed787d3",
+          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-manylinux_2_28_x86_64.whl": "fa0e6b0a8026ab3095b0c2f3e0f1fc4c20819f9af6f033257137764d9e5a1200",
+          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-win_amd64.whl": "3cf5d5dd6921f1cfdc6d5e69afda8acad653364d4f9e80573705871b1890c037",
+          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-win_arm64.whl": "c185807a984fe217d313f49c01aaca1309c5487e66b2234efca0a8a97672c26a",
+          "kaos_nlp_transformers-0.2.0a4.tar.gz": "04156de8dbc19b0effa2150647200a8e8a6e176468b297c6434971dbc74b20e2"
+        },
+        "is_abi3": true,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-nlp-transformers",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1501641986,
+          "verified_count": 6,
+          "total_count": 6
+        },
+        "sbom": {
+          "components_count": 371,
+          "license_breakdown": {
+            "MIT": 35,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 14,
+            "Apache-2.0": 12,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "MIT OR Apache-2.0": 1,
+            "LicenseRef-unknown-36a0ab3a": 1,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 2,
+            "Python-2.0": 1,
+            "ISC": 1,
+            "MPL-2.0 AND MIT": 1,
+            "PSF-2.0": 1,
+            "unknown": 298
+          },
+          "weak_copyleft": [
+            "certifi",
+            "tqdm"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "adler2",
+            "ahash",
+            "aho-corasick",
+            "alloca",
+            "anes",
+            "anstyle",
+            "anyhow",
+            "atomic-waker",
+            "autocfg",
+            "base64",
+            "bitflags",
+            "bumpalo",
+            "byteorder",
+            "bytes",
+            "cast",
+            "castaway",
+            "cc",
+            "cfg-if",
+            "cfg_aliases",
+            "ciborium",
+            "ciborium-io",
+            "ciborium-ll",
+            "clap",
+            "clap_builder",
+            "clap_lex",
+            "compact_str",
+            "console",
+            "cookie",
+            "cookie_store",
+            "crc32fast",
+            "criterion",
+            "criterion-plot",
+            "crossbeam-deque",
+            "crossbeam-epoch",
+            "crossbeam-utils",
+            "crunchy",
+            "darling",
+            "darling_core",
+            "darling_macro",
+            "dary_heap",
+            "deranged",
+            "derive_builder",
+            "derive_builder_core",
+            "derive_builder_macro",
+            "dirs",
+            "dirs-sys",
+            "displaydoc",
+            "document-features",
+            "either",
+            "encode_unicode",
+            "equivalent",
+            "errno",
+            "esaxx-rs",
+            "fastrand",
+            "find-msvc-tools",
+            "flate2",
+            "fnv",
+            "foldhash",
+            "form_urlencoded",
+            "futures-channel",
+            "futures-core",
+            "futures-io",
+            "futures-macro",
+            "futures-sink",
+            "futures-task",
+            "futures-util",
+            "getrandom",
+            "half",
+            "hashbrown",
+            "heck",
+            "hf-hub",
+            "hmac-sha256",
+            "http",
+            "http-body",
+            "http-body-util",
+            "httparse",
+            "hyper",
+            "hyper-rustls",
+            "hyper-util",
+            "icu_collections",
+            "icu_locale_core",
+            "icu_normalizer",
+            "icu_normalizer_data",
+            "icu_properties",
+            "icu_properties_data",
+            "icu_provider",
+            "id-arena",
+            "ident_case",
+            "idna",
+            "idna_adapter",
+            "indexmap",
+            "indicatif",
+            "ipnet",
+            "itertools",
+            "itoa",
+            "js-sys",
+            "leb128fmt",
+            "libc",
+            "libredox",
+            "linux-raw-sys",
+            "litemap",
+            "litrs",
+            "log",
+            "lru-slab",
+            "lzma-rust2",
+            "macro_rules_attribute",
+            "macro_rules_attribute-proc_macro",
+            "matrixmultiply",
+            "memchr",
+            "minimal-lexical",
+            "miniz_oxide",
+            "mio",
+            "model2vec",
+            "monostate",
+            "monostate-impl",
+            "ndarray",
+            "nom",
+            "num-complex",
+            "num-conv",
+            "num-integer",
+            "num-traits",
+            "numpy",
+            "once_cell",
+            "onig",
+            "onig_sys",
+            "oorandom",
+            "option-ext",
+            "ort",
+            "ort-sys",
+            "page_size",
+            "paste",
+            "percent-encoding",
+            "pin-project-lite",
+            "pkg-config",
+            "plotters",
+            "plotters-backend",
+            "plotters-svg",
+            "portable-atomic",
+            "portable-atomic-util",
+            "potential_utf",
+            "powerfmt",
+            "ppv-lite86",
+            "prettyplease",
+            "proc-macro2",
+            "pyo3",
+            "pyo3-build-config",
+            "pyo3-ffi",
+            "pyo3-macros",
+            "pyo3-macros-backend",
+            "quinn",
+            "quinn-proto",
+            "quinn-udp",
+            "quote",
+            "r-efi",
+            "rand",
+            "rand_chacha",
+            "rand_core",
+            "rawpointer",
+            "rayon",
+            "rayon-cond",
+            "rayon-core",
+            "redox_users",
+            "regex",
+            "regex-automata",
+            "regex-syntax",
+            "reqwest",
+            "ring",
+            "rustc-hash",
+            "rustix",
+            "rustls",
+            "rustls-pki-types",
+            "rustls-webpki",
+            "rustversion",
+            "ryu",
+            "same-file",
+            "semver",
+            "serde",
+            "serde_core",
+            "serde_derive",
+            "serde_json",
+            "serde_urlencoded",
+            "shlex",
+            "simd-adler32",
+            "slab",
+            "smallvec",
+            "socket2",
+            "socks",
+            "spm_precompiled",
+            "stable_deref_trait",
+            "static_assertions",
+            "strsim",
+            "subtle",
+            "syn",
+            "sync_wrapper",
+            "synstructure",
+            "target-lexicon",
+            "tempfile",
+            "thiserror",
+            "thiserror-impl",
+            "time",
+            "time-core",
+            "time-macros",
+            "tinystr",
+            "tinytemplate",
+            "tinyvec",
+            "tinyvec_macros",
+            "tokenizers",
+            "tokio",
+            "tokio-rustls",
+            "tokio-util",
+            "tower",
+            "tower-http",
+            "tower-layer",
+            "tower-service",
+            "tracing",
+            "tracing-core",
+            "try-lock",
+            "unicode-ident",
+            "unicode-normalization-alignments",
+            "unicode-segmentation",
+            "unicode-width",
+            "unicode-xid",
+            "unicode_categories",
+            "unit-prefix",
+            "untrusted",
+            "ureq",
+            "ureq-proto",
+            "url",
+            "utf8-zero",
+            "utf8_iter",
+            "version_check",
+            "walkdir",
+            "want",
+            "wasi",
+            "wasip2",
+            "wasip3",
+            "wasm-bindgen",
+            "wasm-bindgen-futures",
+            "wasm-bindgen-macro",
+            "wasm-bindgen-macro-support",
+            "wasm-bindgen-shared",
+            "wasm-encoder",
+            "wasm-metadata",
+            "wasm-streams",
+            "wasmparser",
+            "web-sys",
+            "web-time",
+            "webpki-roots",
+            "winapi",
+            "winapi-i686-pc-windows-gnu",
+            "winapi-util",
+            "winapi-x86_64-pc-windows-gnu",
+            "windows-link",
+            "windows-sys",
+            "windows-targets",
+            "windows_aarch64_gnullvm",
+            "windows_aarch64_msvc",
+            "windows_i686_gnu",
+            "windows_i686_gnullvm",
+            "windows_i686_msvc",
+            "windows_x86_64_gnu",
+            "windows_x86_64_gnullvm",
+            "windows_x86_64_msvc",
+            "wit-bindgen",
+            "wit-bindgen-core",
+            "wit-bindgen-rust",
+            "wit-bindgen-rust-macro",
+            "wit-component",
+            "wit-parser",
+            "writeable",
+            "yoke",
+            "yoke-derive",
+            "zerocopy",
+            "zerocopy-derive",
+            "zerofrom",
+            "zerofrom-derive",
+            "zeroize",
+            "zerotrie",
+            "zerovec",
+            "zerovec-derive",
+            "zmij"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-nlp-transformers-0.2.0a4.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.434,
+        "conventional_commits_rate_90d": 0.774,
+        "verified_commit_ratio_90d": 0.151,
+        "commits_90d": 53,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 6,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 350,
+        "errors": []
       },
       "errors": []
     },
@@ -1864,8 +3317,83 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 3,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a2",
+        "pypi_release_iso": "2026-05-08T12:43:04.863078Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_office-0.1.0a2-py3-none-any.whl": "4fe8352f3673b2ade7ec4b813dc7443cef4563d07a2515feff56a5cc96c98f38",
+          "kaos_office-0.1.0a2.tar.gz": "02ec606e53092975307e6a1b79eca6365adb08e36e8904ea445a72d7191ff802"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-office",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1473393556,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 60,
+          "license_breakdown": {
+            "MIT": 33,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 11,
+            "Apache-2.0": 7,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-d1d28651": 1,
+            "BSD-2-Clause": 2,
+            "Python-2.0": 1,
+            "ISC": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "pillow"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-office-0.1.0a2.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.087,
+        "conventional_commits_rate_90d": 0.713,
+        "verified_commit_ratio_90d": 0.05,
+        "commits_90d": 80,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 2,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 98,
+        "errors": []
       },
       "errors": []
     },
@@ -2015,8 +3543,81 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 3,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a2",
+        "pypi_release_iso": "2026-05-08T12:43:10.191513Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_pdf-0.1.0a2-py3-none-any.whl": "e880e1886291331acf68f4b562e7a42c7eae93d06f320735d4baabc8cccb68d6",
+          "kaos_pdf-0.1.0a2.tar.gz": "5f7ef5da746d93358e7438495de400609f1b82165c64e7383b417d1ee4d9e801"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-pdf",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1473394023,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 36,
+          "license_breakdown": {
+            "MIT": 19,
+            "BSD-3-Clause": 4,
+            "Apache-2.0": 6,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-d1d28651": 1,
+            "BSD-2-Clause": 1,
+            "LicenseRef-unknown-0c07444d": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "pillow",
+            "pypdfium2"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-pdf-0.1.0a2.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.455,
+        "conventional_commits_rate_90d": 0.818,
+        "verified_commit_ratio_90d": 0.182,
+        "commits_90d": 11,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 2,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 114,
+        "errors": []
       },
       "errors": []
     },
@@ -2166,8 +3767,83 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a3",
+        "pypi_release_iso": "2026-05-11T01:32:38.012612Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_source-0.1.0a3-py3-none-any.whl": "4e2669d7771a5901f65268f780454ed7d1b3b683a1a3e0ba5d6ea0a0ba04b65f",
+          "kaos_source-0.1.0a3.tar.gz": "a4359e28f0bab5ab1b30ef2cd1d96b72b6653d2ca9b20530446de76e1695454a"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-source",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1501259156,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 34,
+          "license_breakdown": {
+            "MIT": 15,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 7,
+            "Apache-2.0": 5,
+            "MIT AND PSF-2.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-d1d28651": 1,
+            "LicenseRef-unknown-da39a3ee": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "pillow",
+            "playwright"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-source-0.1.0a3.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.145,
+        "conventional_commits_rate_90d": 0.652,
+        "verified_commit_ratio_90d": 0.072,
+        "commits_90d": 69,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 3,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 758,
+        "errors": []
       },
       "errors": []
     },
@@ -2311,8 +3987,80 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 3,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a1",
+        "pypi_release_iso": "2026-05-08T14:59:46.480862Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_tabular-0.1.0a1-py3-none-any.whl": "e27b6dc15305e93e3d94e8884afdce735a320a0af5090aaa7ec549c136f6c09a",
+          "kaos_tabular-0.1.0a1.tar.gz": "967043d1a308e9aa5e86a94e3859bf46b860c90a8814eaf1990d3026c239bf2f"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-tabular",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1474384713,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 53,
+          "license_breakdown": {
+            "MIT": 30,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 10,
+            "Apache-2.0": 6,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1,
+            "Python-2.0": 1,
+            "ISC": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [],
+          "sbom_artifact_path": "data/sbom/kaos-tabular-0.1.0a1.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.667,
+        "conventional_commits_rate_90d": 0.889,
+        "verified_commit_ratio_90d": 0.333,
+        "commits_90d": 9,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 1,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 69,
+        "errors": []
       },
       "errors": []
     },
@@ -2456,8 +4204,91 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": null,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
+      },
+      "supply_chain": {
+        "pypi_version": "0.1.0a2",
+        "pypi_release_iso": "2026-05-11T01:35:01.893176Z",
+        "wheel_platforms": [
+          "any"
+        ],
+        "wheel_sha256s": {
+          "kaos_web-0.1.0a2-py3-none-any.whl": "de0f8fb6c615c4f1c1b01db40dd6fa7536102f45c7e19f7f77da87b573d90b94",
+          "kaos_web-0.1.0a2.tar.gz": "8b55fa64cdcf534c82ce13e2e4247ffc100730b7a260aa66add37329238be588"
+        },
+        "is_abi3": false,
+        "has_musllinux_wheel": false,
+        "license_expression": "Apache-2.0",
+        "license_files_in_wheel": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "attestations": {
+          "pep740_present": true,
+          "publisher_kind": "GitHub",
+          "publisher_source_repo": "273v/kaos-web",
+          "publisher_workflow_ref": "release.yml@pypi",
+          "rekor_log_index": 1501277327,
+          "verified_count": 2,
+          "total_count": 2
+        },
+        "sbom": {
+          "components_count": 64,
+          "license_breakdown": {
+            "MIT": 31,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 11,
+            "Apache-2.0": 7,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "ISC": 2,
+            "MIT AND PSF-2.0": 1,
+            "LicenseRef-unknown-bad7811d": 1,
+            "LicenseRef-unknown-f1118a10": 2,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-da39a3ee": 1,
+            "BSD-2-Clause": 2,
+            "LicenseRef-unknown-06e39335": 1,
+            "Python-2.0": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
+          "strong_copyleft": [],
+          "unknown_license": [
+            "h2",
+            "hpack",
+            "hyperframe",
+            "playwright",
+            "pytest-httpx"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-web-0.1.0a2.cdx.json"
+        },
+        "errors": []
+      },
+      "governance": {
+        "dco_signoff_rate_90d": 0.051,
+        "conventional_commits_rate_90d": 0.387,
+        "verified_commit_ratio_90d": 0.029,
+        "commits_90d": 137,
+        "unique_committers_90d": 1,
+        "branch_protection_enabled": false,
+        "branch_protection_summary": {},
+        "codeowners_path": ".github/CODEOWNERS",
+        "security_md_present": true,
+        "security_md_disclosure_window_days": 90,
+        "notice_present": true,
+        "license_files_in_sdist": [
+          "LICENSE",
+          "NOTICE"
+        ],
+        "releases_90d": 2,
+        "median_pr_age_days": null,
+        "open_pr_count": 0,
+        "open_issue_count": 0,
+        "time_to_pypi_seconds_median": 162,
+        "errors": []
       },
       "errors": []
     }
