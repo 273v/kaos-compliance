@@ -108,7 +108,7 @@ footer a{color:var(--muted)}
 {% set states = {"green":["g","✓","Pass"],"yellow":["y","⚠","Warn"],"red":["r","✗","Fail"],"gray":["n","—","No signal"]} %}
 {% macro pill(state, col) -%}
 {% set st = states[state] %}
-<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span></span>
+<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}</span></span>
 {%- endmacro %}
 <div class="wrap">
 <nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; {{ pkg.name | default('kaos-core') }}</nav>

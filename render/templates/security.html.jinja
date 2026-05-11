@@ -91,6 +91,7 @@ a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:
 nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
 nav.subnav a{color:var(--muted)}
 nav.subnav a[aria-current="page"]{color:var(--text);font-weight:600}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
 h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:600}
@@ -160,11 +161,11 @@ footer a{color:var(--muted)}
 {% set states = {"green":["g","✓","Pass"],"yellow":["y","⚠","Warn"],"red":["r","✗","Fail"],"gray":["n","—","No signal"]} %}
 {% macro pill(state, col) -%}
 {% set st = states.get(state, states["gray"]) %}
-<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span></span>
+<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}</span></span>
 {%- endmacro %}
 {% macro pill_link(state, col, href) -%}
 {% set st = states.get(state, states["gray"]) %}
-{% if href %}<a class="pill {{ st[0] }}" href="{{ href }}" target="_blank" rel="noopener" aria-label="{{ col }}: {{ st[2] }} — open evidence"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span></a>{% else %}<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span></span>{% endif %}
+{% if href %}<a class="pill {{ st[0] }}" href="{{ href }}" target="_blank" rel="noopener" aria-label="{{ col }}: {{ st[2] }} — open evidence"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}</span></a>{% else %}<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}</span></span>{% endif %}
 {%- endmacro %}
 
 <div class="wrap">
@@ -174,11 +175,11 @@ footer a{color:var(--muted)}
   <p>Org-wide advisories, scanner conclusions, and per-repo Security workflow status.</p>
   <nav class="subnav" aria-label="Sections">
    <a href="index.html">Org rollup</a>
+   <a href="methodology.html" class="methodology">Methodology</a>
    <a href="security.html" aria-current="page">Security</a>
    <a href="supply-chain.html">Supply chain</a>
    <a href="governance.html">Governance</a>
    <a href="diary.html">Diary</a>
-   <a href="methodology.html">Methodology</a>
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
