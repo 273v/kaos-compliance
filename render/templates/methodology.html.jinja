@@ -146,6 +146,7 @@ footer a{color:var(--muted)}
    <li><a href="#sec-6">Limits and honest gaps</a></li>
    <li><a href="#sec-7">Snapshot integrity + schema</a></li>
    <li><a href="#sec-8">Methodology versioning</a></li>
+   <li><a href="#sec-trends">Trend lines + baselines</a></li>
   {% endif %}
   </ol>
  </aside>
@@ -484,6 +485,24 @@ footer a{color:var(--muted)}
    </section>
   {% endif %}
 
+  {# P7: trend lines + baseline rationale. The sparklines on the index
+     compress a 90-day rolling history into 80×16px of inline SVG.
+     Documenting what they show is mandatory — a buyer who can't tell
+     "1 day of data" from "90 days of data" at a glance will read the
+     wrong story. #}
+  <section class="block" id="sec-trends">
+   <h2>Trend lines + baselines</h2>
+   <p>Each row of the package grid carries up to four sparklines &mdash; one for build, tests, security, and PEP 740 attestation. Sparklines render as inline SVG (no JavaScript, no client-side state). What you&rsquo;re seeing is the rolling 90-day history of the underlying signal, sampled once per UTC day:</p>
+   <ul>
+    <li><strong>Resolution.</strong> Daily. Each x-axis position is one UTC day; multiple sweeps on the same day collapse to the last write.</li>
+    <li><strong>Encoding.</strong> Booleans (build pass / tests pass / security pass / attestation present) are projected to the top of the band when true and the bottom when false. The right-most marker is a solid dot so the eye lands on the current state. Days where the signal is missing render as a small open dot &mdash; visible gap, not silent.</li>
+    <li><strong>First-deploy behavior.</strong> The first time this dashboard ever ran, it had exactly one day of history. The sparkline collapses to a single dot and the cell carries an <code>accumulating history</code> label so the absence of a line is not mistaken for a flat signal. We never extrapolate, smooth, or backfill historical data.</li>
+    <li><strong>Baseline.</strong> The pill hover-title carries a delta arrow comparing the current state to the <em>previous sweep</em> (the most recent UTC day with data before today). &uarr; for an improvement, &darr; for a regression, &equiv; for no change. We do not implement industry or peer-package baselines; those rolls are a separate compliance question and have their own follow-up entry.</li>
+    <li><strong>Source.</strong> The whole rolling history is published at <a href="api/v1/history.json"><code>api/v1/history.json</code></a> and the per-day raw files live under <code>api/v1/history/YYYY-MM-DD.json</code>. The format is documented at <a href="api/v1/index.html"><code>api/v1/</code></a>.</li>
+   </ul>
+   <p>Per-package detail pages render a separate &ldquo;Changes since last sweep&rdquo; section above the evidence list. That section uses the same previous-sweep baseline and lists every signal that flipped, with a timestamp pair. Packages with no prior sweep show <em>no prior sweep yet</em>.</p>
+  </section>
+
   <p class="versionline">
    Methodology version {{ methodology_version | default('1.0') }}
    &mdash; last updated {{ methodology_updated | default('2026-05-11') }}.
@@ -502,6 +521,7 @@ footer a{color:var(--muted)}
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ | <a href="api/v1/index.html">All endpoints</a>
  {% if integrity is defined and integrity.schema_url %}
   | Schema: <a href="{{ integrity.schema_url }}">snapshot.schema.json</a>
  {% endif %}

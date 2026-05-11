@@ -92,6 +92,13 @@ nav.subnav a{color:var(--muted)}
 nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
+/* P7: sparkline cell styling. Stack the pill atop a tiny SVG so the
+   grid row's vertical rhythm doesn't break. SVG inherits currentColor
+   from the parent pill colour, so the trend line picks up the pill's
+   green/red/etc. without further plumbing. */
+.cell-trend{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.cell-trend .spark{display:block;color:var(--muted);margin-top:1px}
+.cell-trend .spark-note{font-family:var(--mono);font-size:0.625rem;color:var(--muted);line-height:1}
 /* R21: dedicated visually-hidden class so strict CSP (style-src 'self')
    doesn't break on inline ``style="position:absolute;left:-9999px"``.
    The previous pattern blocked any deployment that pinned style-src to
@@ -320,19 +327,48 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
        ``aria-hidden`` so screen readers don't read "Build Pass open
        evidence Pass" with a doubled Pass. The visible label still
        reads "Pass" for sighted users. #}
+    {# P7: per-pill sparkline lookup. The history view-model groups
+       sparklines by snapshot-signal slot (build/tests/security/
+       attestation). The grid columns include four trend-eligible
+       columns plus "signing"/"license"/"deps" which don't yet have
+       a daily-summary history row. We surface a sparkline only for
+       the trend-eligible columns; the others render as before. #}
+    {% set spark_slot = {"build":"build","tests":"tests","security":"security","signing":"attestation"} %}
+    {% set pkg_spark = (signal_history.sparklines or {}).get(p.name, {}) if signal_history is defined else {} %}
+    {% set pkg_diff = (signal_history.diff.packages or {}).get(p.name) if signal_history is defined and signal_history.diff is defined else None %}
     {% for col in ["build","tests","security","signing","license","deps"] %}
      {% set st = states[p[col]] %}
      {% set link = (p.pill_links or {})[col] %}
+     {% set slot = spark_slot.get(col) %}
+     {% set svg = pkg_spark.get(slot) if slot else None %}
+     {% set delta_for_col = None %}
+     {% if pkg_diff %}
+      {% set sig_for_col = {"build":"build_pass","tests":"tests_pass","security":"security_pass","signing":"attestation_present"}.get(col) %}
+      {% if sig_for_col %}
+       {% for d in pkg_diff %}{% if d.signal == sig_for_col %}{% set delta_for_col = d %}{% endif %}{% endfor %}
+      {% endif %}
+     {% endif %}
+     {% set delta_gly = {"better":"▲","worse":"▼","same":"=","unknown":""}.get(delta_for_col.delta if delta_for_col else "", "") %}
+     {% set delta_title = (col | capitalize) + ": changed since " + (signal_history.diff["from"] | string) if delta_for_col and history is defined and signal_history.diff["from"] else "" %}
      <td data-h="{{ col | capitalize }}">
+      <div class="cell-trend">
       {% if link %}
-       <a class="pill {{ st[0] }}" href="{{ link }}" target="_blank" rel="noopener" aria-label="{{ col | capitalize }}: {{ st[2] }} — open evidence">
-        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}</span>
+       <a class="pill {{ st[0] }}" href="{{ link }}" target="_blank" rel="noopener"
+          aria-label="{{ col | capitalize }}: {{ st[2] }} — open evidence{% if delta_for_col %} (changed since {{ signal_history.diff['from'] }}){% endif %}"
+          {% if delta_title %}title="{{ delta_title }} (was {{ delta_for_col['from'] }}, now {{ delta_for_col['to'] }})"{% endif %}>
+        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}{% if delta_gly %} {{ delta_gly }}{% endif %}</span>
        </a>
       {% else %}
-       <span class="pill {{ st[0] }}" aria-label="{{ col | capitalize }}: {{ st[2] }}">
-        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}</span>
+       <span class="pill {{ st[0] }}" aria-label="{{ col | capitalize }}: {{ st[2] }}"
+          {% if delta_title %}title="{{ delta_title }} (was {{ delta_for_col['from'] }}, now {{ delta_for_col['to'] }})"{% endif %}>
+        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}{% if delta_gly %} {{ delta_gly }}{% endif %}</span>
        </span>
       {% endif %}
+      {% if svg %}
+       {{ svg | safe }}
+       {% if signal_history is defined and signal_history.accumulating %}<span class="spark-note">accumulating history</span>{% endif %}
+      {% endif %}
+      </div>
      </td>
     {% endfor %}
     {# R24: per-package branch-protection cell. green=On, yellow="Off (alpha)", gray="?". #}
@@ -362,6 +398,7 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ | <a href="api/v1/index.html">All endpoints</a>
  {% if integrity is defined and integrity.schema_url %}
   | Schema: <a href="{{ integrity.schema_url }}">snapshot.schema.json</a>
  {% endif %}
