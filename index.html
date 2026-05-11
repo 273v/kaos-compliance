@@ -11,16 +11,6 @@
 <link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/dashboard.css">
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
-a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
-.wrap{max-width:1200px;margin:0 auto;padding:var(--s-7) var(--s-5)}
-.page-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--s-3);border-bottom:1px solid var(--border);padding-bottom:var(--s-4);margin-bottom:var(--s-6)}
-.page-head h1{margin:0;font-size:2rem;line-height:1.1}
-.page-head p{margin:var(--s-1) 0 0;color:var(--muted);font-size:0.875rem}
-.page-head .meta{font-family:var(--mono);font-size:0.75rem;color:var(--muted)}
-h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:600}
 .card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-4)}
 .rollup{padding:var(--s-5)}
 .rollup-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--s-3);margin-bottom:var(--s-3)}
@@ -56,13 +46,6 @@ a.pill:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .pill.y{background:var(--y-bg);color:var(--y-fg);border-color:var(--y-fg)}
 .pill.r{background:var(--r-bg);color:var(--r-fg);border-color:var(--r-fg)}
 .pill.n{background:var(--n-bg);color:var(--n-fg);border-color:var(--n-fg)}
-footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
-footer a{color:var(--muted)}
-nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
-nav.subnav a{color:var(--muted)}
-nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
-.skip{position:absolute;left:-9999px}
-.skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
 /* P7: sparkline cell styling. Stack the pill atop a tiny SVG so the
    grid row's vertical rhythm doesn't break. SVG inherits currentColor
    from the parent pill colour, so the trend line picks up the pill's
@@ -89,8 +72,6 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
  table.grid td{border:0;padding:var(--s-1) 0;display:flex;justify-content:space-between;gap:var(--s-3)}
  table.grid td::before{content:attr(data-h);color:var(--muted);font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
 }
-@media print{
- :root{--page-bg:#fff;--card-bg:#fff;--text:#000;--muted:#444;--border:#999}
  a{color:#000;text-decoration:none}
  .wrap{padding:0;max-width:none}
  .card,.strip .stat{box-shadow:none}
@@ -125,7 +106,7 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
    </p>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-11 18:34 UTC
+  Generated 2026-05-11 18:52 UTC
  </div>
 </header>
 
@@ -135,11 +116,11 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
  <div class="card rollup">
   <div class="rollup-grid">
    <div class="cell">
-    <span class="n">9/16</span>
+    <span class="n">15/16</span>
     <span class="lab"><a href="methodology.html#sig-build">Build passing</a></span>
    </div>
    <div class="cell">
-    <span class="n">9/16</span>
+    <span class="n">15/16</span>
     <span class="lab"><a href="methodology.html#sig-tests">Tests passing</a></span>
    </div>
    <div class="cell">
@@ -240,20 +221,20 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-citations/actions/runs/25686965812" target="_blank" rel="noopener"
-          aria-label="Build: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25686965812" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-citations Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-citations/actions/runs/25686965812" target="_blank" rel="noopener"
-          aria-label="Tests: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25686965812" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-citations Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
@@ -372,20 +353,20 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
     <td class="ver" data-h="Version">v0.1.0a5</td>
      <td data-h="Build">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-core/actions/runs/25686969023" target="_blank" rel="noopener"
-          aria-label="Build: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25686969023" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-core Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-core/actions/runs/25686969023" target="_blank" rel="noopener"
-          aria-label="Tests: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25686969023" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-core Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
@@ -438,20 +419,20 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-graph/actions/runs/25686971995" target="_blank" rel="noopener"
-          aria-label="Build: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971995" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-graph Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-graph/actions/runs/25686971995" target="_blank" rel="noopener"
-          aria-label="Tests: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971995" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-graph Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
@@ -504,20 +485,20 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972479" target="_blank" rel="noopener"
-          aria-label="Build: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972479" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-client Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972479" target="_blank" rel="noopener"
-          aria-label="Tests: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972479" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-client Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
@@ -636,20 +617,20 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-mcp/actions/runs/25686966710" target="_blank" rel="noopener"
-          aria-label="Build: No signal — open evidence"
+       <a class="pill r" href="https://github.com/273v/kaos-mcp/actions/runs/25686966710" target="_blank" rel="noopener"
+          aria-label="Build: Fail — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-mcp Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-mcp/actions/runs/25686966710" target="_blank" rel="noopener"
-          aria-label="Tests: No signal — open evidence"
+       <a class="pill r" href="https://github.com/273v/kaos-mcp/actions/runs/25686966710" target="_blank" rel="noopener"
+          aria-label="Tests: Fail — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-mcp Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
@@ -834,20 +815,20 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686968884" target="_blank" rel="noopener"
-          aria-label="Build: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686968884" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-core Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686968884" target="_blank" rel="noopener"
-          aria-label="Tests: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686968884" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-core Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
@@ -1032,20 +1013,20 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-pdf/actions/runs/25686967672" target="_blank" rel="noopener"
-          aria-label="Build: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25686967672" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-pdf Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
       <div class="cell-trend">
-       <a class="pill n" href="https://github.com/273v/kaos-pdf/actions/runs/25686967672" target="_blank" rel="noopener"
-          aria-label="Tests: No signal — open evidence"
+       <a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25686967672" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
 >
-        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
        <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-pdf Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
 <span class="spark-note">accumulating history</span>      </div>
@@ -1297,7 +1278,7 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
 </main>
 
 <footer>
- Generated 2026-05-11 18:34 UTC
+ Generated 2026-05-11 18:52 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

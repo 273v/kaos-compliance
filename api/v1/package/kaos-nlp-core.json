@@ -17,11 +17,11 @@
       "last_commit_at": "2026-05-11T17:43:12Z"
     },
     "ci": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 25686968884,
       "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25686968884",
       "head_sha": "17b93b01af5326cee271e2312996cb99739ac5c0",
-      "run_completed_at": "2026-05-11T18:04:38Z",
+      "run_completed_at": "2026-05-11T18:48:22Z",
       "matrix": [
         {
           "name": "Pre-commit hooks",
@@ -33,27 +33,27 @@
         },
         {
           "name": "Rust tests (no PyO3)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T18:04:38Z",
-          "completed_at": null,
-          "duration_seconds": 1617
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:40:25Z",
+          "completed_at": "2026-05-11T18:42:20Z",
+          "duration_seconds": 115
         },
         {
           "name": "Lint",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T18:04:38Z",
-          "completed_at": null,
-          "duration_seconds": 1617
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:41:33Z",
+          "completed_at": "2026-05-11T18:45:38Z",
+          "duration_seconds": 245
         },
         {
           "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T18:04:38Z",
-          "completed_at": null,
-          "duration_seconds": 1617
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-05-11T18:43:40Z",
+          "completed_at": "2026-05-11T18:44:12Z",
+          "duration_seconds": 32
         },
         {
           "name": "Test (windows-x64 / Python 3.13)",
@@ -73,35 +73,43 @@
         },
         {
           "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T18:04:38Z",
-          "completed_at": null,
-          "duration_seconds": 1617
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:38:10Z",
+          "completed_at": "2026-05-11T18:44:20Z",
+          "duration_seconds": 370
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T18:04:38Z",
-          "completed_at": null,
-          "duration_seconds": 1617
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:39:02Z",
+          "completed_at": "2026-05-11T18:44:50Z",
+          "duration_seconds": 348
         },
         {
           "name": "Test against minimum dependencies",
-          "conclusion": null,
-          "status": "in_progress",
+          "conclusion": "success",
+          "status": "completed",
           "started_at": "2026-05-11T18:28:47Z",
-          "completed_at": null,
-          "duration_seconds": 168
+          "completed_at": "2026-05-11T18:34:32Z",
+          "duration_seconds": 345
         },
         {
           "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T18:04:38Z",
-          "completed_at": null,
-          "duration_seconds": 1617
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:36:41Z",
+          "completed_at": "2026-05-11T18:42:38Z",
+          "duration_seconds": 357
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:45:41Z",
+          "completed_at": "2026-05-11T18:48:21Z",
+          "duration_seconds": 160
         }
       ]
     },
@@ -221,7 +229,7 @@
         "NOTICE"
       ],
       "releases_90d": 3,
-      "median_pr_age_days": 0.054,
+      "median_pr_age_days": 0.067,
       "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 1322,

@@ -17,11 +17,11 @@
       "last_commit_at": "2026-05-11T17:43:12Z"
     },
     "ci": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 25686971995,
       "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/25686971995",
       "head_sha": "af65a8297793b24b58565e5a138c1c3fea33532b",
-      "run_completed_at": "2026-05-11T17:43:23Z",
+      "run_completed_at": "2026-05-11T18:43:41Z",
       "matrix": [
         {
           "name": "Lint",
@@ -49,27 +49,27 @@
         },
         {
           "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T17:43:25Z",
-          "completed_at": null,
-          "duration_seconds": 2753
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:29:19Z",
+          "completed_at": "2026-05-11T18:30:56Z",
+          "duration_seconds": 97
         },
         {
           "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T17:43:25Z",
-          "completed_at": null,
-          "duration_seconds": 2753
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:37:54Z",
+          "completed_at": "2026-05-11T18:39:27Z",
+          "duration_seconds": 93
         },
         {
           "name": "Rust tests (no PyO3)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T17:43:25Z",
-          "completed_at": null,
-          "duration_seconds": 2753
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:38:50Z",
+          "completed_at": "2026-05-11T18:39:11Z",
+          "duration_seconds": 21
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
@@ -89,11 +89,11 @@
         },
         {
           "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-11T17:43:25Z",
-          "completed_at": null,
-          "duration_seconds": 2753
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:33:11Z",
+          "completed_at": "2026-05-11T18:34:47Z",
+          "duration_seconds": 96
         },
         {
           "name": "Test (windows-x64 / Python 3.13)",
@@ -102,6 +102,14 @@
           "started_at": "2026-05-11T17:43:37Z",
           "completed_at": "2026-05-11T17:47:04Z",
           "duration_seconds": 207
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:42:38Z",
+          "completed_at": "2026-05-11T18:43:40Z",
+          "duration_seconds": 62
         }
       ]
     },
@@ -221,7 +229,7 @@
         "NOTICE"
       ],
       "releases_90d": 3,
-      "median_pr_age_days": 0.058,
+      "median_pr_age_days": 0.07,
       "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 400,
