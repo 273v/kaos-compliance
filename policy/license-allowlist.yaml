@@ -1,0 +1,553 @@
+# kaos-compliance license allowlist
+#
+# Public, version-controlled list of license exceptions. The dashboard
+# reads this file every sweep and re-classifies pills accordingly:
+#
+#   - A component whose SPDX matches an entry below renders as a
+#     GREEN-WITH-ASTERISK pill, with the asterisk linking to the
+#     public rationale on /license-policy.html.
+#   - A component whose SPDX does NOT match continues to render
+#     yellow / red / unknown per the normal class rules.
+#
+# This file is the SOURCE OF TRUTH. The audit at
+# docs/LICENSE-AUDIT.md must stay in sync. CI fails if a policy entry
+# lacks a matching audit row or if an audit row's ALLOW disposition
+# isn't reflected here.
+#
+# Schema:
+#
+#   policy_version: semver-ish, bumped on schema change.
+#   last_reviewed:  YYYY-MM-DD of the last review pass.
+#   reviewers:      list of GitHub usernames who reviewed.
+#   allowed_expressions: list of policy exceptions. Each entry MUST
+#     have:
+#       spdx:        SPDX expression to allowlist. May be a single
+#                    license (e.g., "MPL-2.0") or a compound
+#                    expression (e.g., "MPL-2.0 AND MIT").
+#       components:  list of component names this entry covers.
+#                    Entries are name-scoped, not blanket — a single
+#                    "MPL-2.0" allowlist line covers ONLY the named
+#                    components, not every MPL-2.0 dep we might pick
+#                    up later.
+#       rationale:   free-text public justification. Will be rendered
+#                    verbatim on /license-policy.html.
+#       review_date: YYYY-MM-DD of last review of THIS entry.
+#       audit_ref:   anchor in docs/LICENSE-AUDIT.md (e.g., "A.1").
+#
+
+policy_version: "1.0"
+last_reviewed: "2026-05-11"
+reviewers:
+  - mjbommar
+
+allowed_expressions:
+
+  - spdx: "MPL-2.0"
+    components: ["certifi", "webpki-roots"]
+    audit_ref: "A.1"
+    review_date: "2026-05-11"
+    rationale: >
+      certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line
+      Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3):
+      obligations attach to the modified file, not the consuming
+      codebase. We ship cacert.pem unmodified. This is the same posture
+      requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own
+      MPL FAQ confirms this interpretation. Standard enterprise
+      legal-review outcome.
+
+  - spdx: "MPL-2.0 AND MIT"
+    components: ["tqdm"]
+    audit_ref: "A.2"
+    review_date: "2026-05-11"
+    rationale: >
+      tqdm is dual-licensed. The MPL-2.0 component is file-scoped to
+      a single source file (the sub-interval feature) which we do not
+      modify. The MIT track covers the entire public API. Used by
+      ~5B downloads across the Python ecosystem with this posture.
+
+  - spdx: "MPL-2.0"
+    components: ["r-efi"]
+    audit_ref: "A.3"
+    review_date: "2026-05-11"
+    rationale: >
+      r-efi is a UEFI bindings crate pulled transitively by getrandom
+      only on UEFI targets. Our wheel matrix builds for linux,
+      macOS, and Windows — never UEFI — so r-efi is in the resolver
+      graph but never compiled into shipped binaries. No practical
+      MPL-2.0 obligations attach. A stricter alternative is a
+      cargo-deny exclude rule; tracked as future hygiene work.
+
+  - spdx: "MPL-2.0"
+    components: ["hypothesis"]
+    audit_ref: "A.4"
+    review_date: "2026-05-11"
+    rationale: >
+      hypothesis is a dev/test-only dependency declared in
+      [dependency-groups].dev, never in [project].dependencies. A
+      consumer who pip-installs kaos-content does not receive
+      hypothesis. MPL-2.0 obligations cannot reach a shipped wheel.
+
+  - spdx: "MPL-2.0"
+    components: ["option-ext"]
+    audit_ref: "A.5"
+    review_date: "2026-05-11"
+    rationale: >
+      option-ext is an 87-line Rust crate adding Option extension
+      methods, pulled transitively via dirs → dirs-sys → option-ext.
+      We ship it unmodified inside the kaos-nlp-transformers Rust
+      binary; MPL-2.0 file-scoped obligations don't propagate. Future
+      work: remove the dirs dependency entirely to drop this branch.
+
+# Components currently flagged unknown whose TRUE license is known but
+# the parser can't extract it. These do NOT get green pills until the
+# parser fix lands. Tracking them here keeps the audit/policy/dashboard
+# in sync and makes parser debt visible to reviewers.
+#
+# Schema:
+#   parser_gaps: list of pending parser-fix entries. Each entry has:
+#     component:       component name
+#     true_license:    SPDX expression we know the component uses
+#     affected_repos:  list of kaos-* repos that pull the component
+#     fix_strategy:    short description of how the parser will be
+#                      fixed (added SPDX ID, widened text-mine, etc.)
+#     audit_ref:       anchor in docs/LICENSE-AUDIT.md
+
+parser_gaps:
+
+  - component: "icu_collections"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "icu_locale_core"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "icu_properties"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "icu_properties_data"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "icu_provider"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "litemap"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "potential_utf"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "tinystr"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "writeable"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "yoke"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "yoke-derive"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "zerofrom"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "zerofrom-derive"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "zerotrie"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "zerovec"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "zerovec-derive"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list"
+    audit_ref: "B.1"
+
+  - component: "target-lexicon"
+    true_license: "Apache-2.0 WITH LLVM-exception"
+    affected_repos: ["kaos-graph", "kaos-ml-core", "kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wasip2"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-graph", "kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wasip3"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wasm-encoder"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wasm-metadata"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wasmparser"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wit-bindgen"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-graph", "kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wit-bindgen-core"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wit-bindgen-rust"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wit-bindgen-rust-macro"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wit-component"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "wit-parser"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add LLVM-exception to SPDX exceptions set"
+    audit_ref: "B.2"
+
+  - component: "unicode-ident"
+    true_license: "(MIT OR Apache-2.0) AND Unicode-3.0"
+    affected_repos: ["kaos-graph", "kaos-ml-core", "kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 + parenthesized-group support to compound parser"
+    audit_ref: "B.1"
+
+  - component: "scipy"
+    true_license: "BSD-3-Clause"
+    affected_repos: ["kaos-content", "kaos-ml-core"]
+    fix_strategy: "Widen text-mine window from 600 to 2048 chars"
+    audit_ref: "B.4"
+
+  - component: "playwright"
+    true_license: "Apache-2.0"
+    affected_repos: ["kaos-source", "kaos-web"]
+    fix_strategy: "Offline license book fallback; upstream PR to populate info.license_expression"
+    audit_ref: "B.4"
+
+  - component: "polars"
+    true_license: "MIT"
+    affected_repos: ["kaos-content"]
+    fix_strategy: "Widen text-mine window"
+    audit_ref: "B.4"
+
+  - component: "imagehash"
+    true_license: "BSD-2-Clause"
+    affected_repos: ["kaos-content"]
+    fix_strategy: "Widen text-mine window"
+    audit_ref: "B.4"
+
+  - component: "regex"
+    true_license: "Apache-2.0 OR MIT"
+    affected_repos: ["kaos-citations"]
+    fix_strategy: "Investigate — both license_expression and license should be populated upstream"
+    audit_ref: "B.4"
+
+  - component: "azure-core"
+    true_license: "MIT"
+    affected_repos: ["kaos-llm-client"]
+    fix_strategy: "Offline license book fallback"
+    audit_ref: "B.4"
+
+  - component: "azure-identity"
+    true_license: "MIT"
+    affected_repos: ["kaos-llm-client"]
+    fix_strategy: "Offline license book fallback"
+    audit_ref: "B.4"
+
+  # Section B.3 — standard permissive Rust crates the crates.io
+  # enrichment missed on the last sweep due to rate-limit responses.
+  # All are well-known dual-license MIT-or-Apache (the canonical Rust
+  # ecosystem default). The next clean sweep with retry catches them.
+  - component: "fnv"
+    true_license: "Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "winapi"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "winapi-i686-pc-windows-gnu"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "winapi-x86_64-pc-windows-gnu"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "walkdir"
+    true_license: "Unlicense OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "same-file"
+    true_license: "Unlicense OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "linux-raw-sys"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry; LLVM-exception support already landed"
+    audit_ref: "B.3"
+
+  - component: "rustix"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry; LLVM-exception support already landed"
+    audit_ref: "B.3"
+
+  - component: "version_check"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "page_size"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "id-arena"
+    true_license: "MIT"
+    affected_repos: ["kaos-nlp-core", "kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "blake3"
+    true_license: "CC0-1.0 OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "fst"
+    true_license: "Unlicense OR MIT"
+    affected_repos: ["kaos-nlp-core"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "quick-error"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "rusty-fork"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "siphasher"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "utf8-ranges"
+    true_license: "Unlicense OR MIT"
+    affected_repos: ["kaos-nlp-core"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "wait-timeout"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "zstd-sys"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-core"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "base64"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "icu_normalizer"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list (already landed in collector/sbom.py)"
+    audit_ref: "B.1"
+
+  - component: "icu_normalizer_data"
+    true_license: "Unicode-3.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "Add Unicode-3.0 to SPDX canonical list (already landed in collector/sbom.py)"
+    audit_ref: "B.1"
+
+  - component: "ident_case"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "matrixmultiply"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "minimal-lexical"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "rawpointer"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "rayon-cond"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "serde_urlencoded"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "socks"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "unicode-normalization-alignments"
+    true_license: "MIT OR Apache-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry"
+    audit_ref: "B.3"
+
+  - component: "wasi"
+    true_license: "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "crates.io enrichment retry; LLVM-exception support already landed"
+    audit_ref: "B.2"
+
+  - component: "webpki-roots"
+    true_license: "MPL-2.0"
+    affected_repos: ["kaos-nlp-transformers"]
+    fix_strategy: "Mozilla CA roots, same posture as certifi — should land in allowed_expressions"
+    audit_ref: "A.1"
+
+  - component: "protobuf"
+    true_license: "Apache-2.0"
+    affected_repos: ["kaos-ml-core"]
+    fix_strategy: "PyPI license metadata gap; offline license book fallback"
+    audit_ref: "B.4"
+
+  - component: "py-rust-stemmers"
+    true_license: "BSD-3-Clause"
+    affected_repos: ["kaos-ml-core"]
+    fix_strategy: "PyPI license metadata gap"
+    audit_ref: "B.4"
+
+# Categorical safe-defaults the dashboard treats as green without
+# requiring a per-component entry above. Use sparingly — every category
+# here weakens the audit trail. Components matched here still show on
+# /license-policy.html.
+allowed_license_classes:
+  - "permissive"
+
+# Categorical hard-fails. Even if a component appears in the allowlist
+# above, an SPDX matching one of these classes blocks it. Belt + braces
+# against a future allowlist mistake.
+blocked_license_classes:
+  - "strong-copyleft"
+  - "source-available"

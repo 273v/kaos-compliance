@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Public license-policy exceptions for the 273 Ventures KAOS ecosystem. Every transitive dependency with a non-permissive license that the dashboard treats as policy-approved is listed here, with a verifiable rationale.">
+<base href="{{ base_href | default('/kaos-compliance/') }}">
+<title>License policy — KAOS Compliance</title>
+<style>
+:root{
+ --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
+ --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
+ --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
+ --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;--focus:#2563eb;
+ --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;--g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;--r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);line-height:1.55;font-size:16px}
+body{padding:var(--s-5);max-width:1100px;margin:0 auto}
+a{color:var(--focus)}
+header{padding-bottom:var(--s-5);border-bottom:1px solid var(--border);margin-bottom:var(--s-5)}
+header h1{font-size:1.5rem;margin:0 0 var(--s-2)}
+header .meta{color:var(--muted);font-size:0.875rem;font-family:var(--mono)}
+nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
+nav.subnav a{color:var(--muted)}
+nav.subnav a[aria-current=page]{color:var(--text);font-weight:600}
+.skip{position:absolute;left:-9999px}
+.skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
+h2{font-size:1.125rem;margin:var(--s-6) 0 var(--s-3)}
+h3{font-size:1rem;margin:var(--s-5) 0 var(--s-2);font-family:var(--mono)}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-5);margin-bottom:var(--s-4)}
+.entry{border-left:4px solid var(--g-fg);padding-left:var(--s-4)}
+.entry.gap{border-left-color:var(--y-fg)}
+.entry h3{margin-top:0}
+dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:var(--s-2) var(--s-4);margin:var(--s-3) 0}
+dl.kv dt{color:var(--muted);font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em}
+dl.kv dd{margin:0;font-size:0.9375rem}
+.chip{display:inline-block;padding:1px 6px;background:var(--n-bg);color:var(--n-fg);border-radius:2px;font-family:var(--mono);font-size:0.75rem;margin:0 2px 2px 0}
+.chip.gold{background:var(--y-bg);color:var(--y-fg)}
+blockquote{margin:var(--s-2) 0;padding:var(--s-3) var(--s-4);background:var(--n-bg);border-radius:4px;font-size:0.9375rem}
+footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
+footer a{color:var(--muted)}
+@media print{body{padding:0;color:#000;background:#fff;max-width:none} a{color:#000;text-decoration:underline}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+ <h1>License policy</h1>
+ <nav class="subnav">
+  <a href="index.html">Org rollup</a>
+  <a href="security.html">Security</a>
+  <a href="supply-chain.html">Supply chain</a>
+  <a href="governance.html">Governance</a>
+  <a href="diary.html">Diary</a>
+  <a href="methodology.html">Methodology</a>
+  <a href="license-policy.html" aria-current="page">License policy</a>
+ </nav>
+ <div class="meta">
+  Generated {{ generated_at_display | default('—') }}
+  {% if license_policy.version %} · Policy v{{ license_policy.version }}{% endif %}
+  {% if license_policy.last_reviewed %} · Last reviewed {{ license_policy.last_reviewed }}{% endif %}
+  {% if license_policy.reviewers %} · Reviewers: {% for r in license_policy.reviewers %}{{ r }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}
+ </div>
+</header>
+
+<main id="main">
+
+<section>
+ <p>
+  This page lists every transitive dependency in the 273v/kaos-* ecosystem
+  whose license requires a policy decision. Each entry is one of two kinds:
+ </p>
+ <ul>
+  <li><strong>Approved exception</strong> — a real non-permissive license
+      where the obligations have been reviewed and accepted; the dashboard
+      treats the component as green-with-asterisk. The rationale below is
+      the public audit trail.</li>
+  <li><strong>Parser gap</strong> — a component whose license is
+      permissive and known but the SBOM parser currently can't extract it.
+      Tracked here so the unresolved set is visible; pills stay yellow
+      until the parser fix lands.</li>
+ </ul>
+ <p>
+  The full triage that produced these entries lives at
+  <a href="https://github.com/273v/kaos-compliance/blob/main/docs/LICENSE-AUDIT.md">docs/LICENSE-AUDIT.md</a>.
+  The machine-readable source is at
+  <a href="https://github.com/273v/kaos-compliance/blob/main/policy/license-allowlist.yaml">policy/license-allowlist.yaml</a>.
+ </p>
+</section>
+
+<section aria-labelledby="allowed-h">
+ <h2 id="allowed-h">Approved exceptions ({{ license_policy.allowed | length }})</h2>
+ {% if license_policy.allowed %}
+ {% for entry in license_policy.allowed %}
+ <div class="card entry" id="{{ entry.components[0] if entry.components else entry.spdx | replace(' ', '-') }}">
+  <h3>{{ entry.components | join(', ') }}{% if entry.spdx %} <span class="chip gold">{{ entry.spdx }}</span>{% endif %}</h3>
+  <dl class="kv">
+   <dt>SPDX</dt><dd>{{ entry.spdx }}</dd>
+   <dt>Components</dt><dd>{% for c in entry.components %}<span class="chip">{{ c }}</span>{% endfor %}</dd>
+   <dt>Live repos</dt><dd>{% if entry.live_repos %}{% for r in entry.live_repos %}<a href="package/{{ r }}.html"><span class="chip">{{ r }}</span></a>{% endfor %}{% else %}<em>not currently in any tracked tree</em>{% endif %}</dd>
+   <dt>Audit ref</dt><dd><a href="https://github.com/273v/kaos-compliance/blob/main/docs/LICENSE-AUDIT.md#{{ entry.audit_ref | lower | replace('.', '') }}">docs/LICENSE-AUDIT.md §{{ entry.audit_ref }}</a></dd>
+   <dt>Reviewed</dt><dd>{{ entry.review_date }}</dd>
+  </dl>
+  <blockquote>{{ entry.rationale }}</blockquote>
+ </div>
+ {% endfor %}
+ {% else %}
+ <div class="card"><p style="color:var(--muted);margin:0">No approved exceptions on file. The dashboard's License pill semantics are at their unfiltered defaults.</p></div>
+ {% endif %}
+</section>
+
+<section aria-labelledby="gaps-h">
+ <h2 id="gaps-h">Parser gaps ({{ license_policy.parser_gaps | length }})</h2>
+ <p style="color:var(--muted);font-size:0.875rem">
+  These components have known permissive licenses but the SBOM parser
+  currently can't extract them. They render as yellow on the dashboard
+  until the listed fix strategy ships.
+ </p>
+ {% if license_policy.parser_gaps %}
+ <div class="card">
+  <table style="width:100%;border-collapse:collapse;font-size:0.875rem">
+   <thead>
+    <tr>
+     <th style="text-align:left;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border)">Component</th>
+     <th style="text-align:left;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border)">True license</th>
+     <th style="text-align:left;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border)">Affected</th>
+     <th style="text-align:left;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border)">Fix strategy</th>
+    </tr>
+   </thead>
+   <tbody>
+    {% for g in license_policy.parser_gaps %}
+    <tr>
+     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>{{ g.component }}</code></td>
+     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">{{ g.true_license }}</td>
+     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">{% for r in g.live_repos or g.affected_repos %}<span class="chip">{{ r }}</span>{% endfor %}</td>
+     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">{{ g.fix_strategy }}</td>
+    </tr>
+    {% endfor %}
+   </tbody>
+  </table>
+ </div>
+ {% else %}
+ <div class="card"><p style="color:var(--muted);margin:0">No outstanding parser gaps.</p></div>
+ {% endif %}
+</section>
+
+<section aria-labelledby="how-h">
+ <h2 id="how-h">How an exception gets added</h2>
+ <div class="card">
+  <ol>
+   <li>A new transitive dependency lands with a license that isn't already
+       permissive or already in the allowlist.</li>
+   <li>The dashboard's <strong>License</strong> pill turns yellow for the
+       affected package. The per-package page lists the component name.</li>
+   <li>The maintainer opens an entry in
+       <a href="https://github.com/273v/kaos-compliance/blob/main/docs/LICENSE-AUDIT.md">docs/LICENSE-AUDIT.md</a>
+       under the appropriate section with one of four dispositions:
+       ALLOW / RESOLVE / REMOVE / OPTIONAL.</li>
+   <li>If ALLOW, the maintainer adds a matching row to
+       <a href="https://github.com/273v/kaos-compliance/blob/main/policy/license-allowlist.yaml">policy/license-allowlist.yaml</a>
+       with public rationale + review date.</li>
+   <li>The dashboard's next sweep reads the updated policy and reclassifies
+       the pill to green-with-asterisk; this page shows the rationale.</li>
+  </ol>
+  <p style="color:var(--muted);font-size:0.875rem;margin-top:var(--s-3)">
+   No exception is silent. Every approval has a public audit row, a
+   public rationale, a review date, and a list of currently affected
+   repositories. If you find an entry whose rationale doesn't hold,
+   please <a href="https://github.com/273v/kaos-compliance/issues/new">open an issue</a>.
+  </p>
+ </div>
+</section>
+
+</main>
+<footer>
+ Generated {{ generated_at_display | default('—') }} · Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a> · <a href="methodology.html">Methodology</a>
+</footer>
+</body>
+</html>

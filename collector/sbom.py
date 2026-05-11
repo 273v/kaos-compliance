@@ -92,6 +92,13 @@ _SPDX_3_24_CANONICAL: frozenset[str] = frozenset(
         "MIT-CMU",
         "MPL-1.1",
         "MPL-2.0",
+        # Unicode license family — added to SPDX in v3.20+ (Unicode-DFS)
+        # and v3.24+ (Unicode-3.0). Used by every icu_* and yoke/zerovec
+        # crate in the ICU4X / Bytecode-Alliance ecosystem.
+        "Unicode-3.0",
+        "Unicode-DFS-2015",
+        "Unicode-DFS-2016",
+        "Unicode-TOU",
         "OFL-1.1",
         "PSF-2.0",
         "Python-2.0",
@@ -210,6 +217,10 @@ _LICENSE_CLASS: dict[str, LicenseClass] = {
     "Zlib": "permissive",
     "MPL-1.1": "weak-copyleft",
     "MPL-2.0": "weak-copyleft",
+    "Unicode-3.0": "permissive",
+    "Unicode-DFS-2015": "permissive",
+    "Unicode-DFS-2016": "permissive",
+    "Unicode-TOU": "permissive",
     "EPL-1.0": "weak-copyleft",
     "EPL-2.0": "weak-copyleft",
     "LGPL-2.1-only": "weak-copyleft",
@@ -328,11 +339,14 @@ def normalize_license(raw: str | None) -> str:
         return s
 
     # SPDX compound expression? Validate each ID. Accept case-insensitive
-    # joiners so "BSD-3-Clause and Public-Domain" round-trips.
+    # joiners so "BSD-3-Clause and Public-Domain" round-trips, and accept
+    # license exceptions in the WITH position (e.g.,
+    # "Apache-2.0 WITH LLVM-exception"). Parenthesized groupings are
+    # stripped so "(MIT OR Apache-2.0) AND Unicode-3.0" parses.
     if re.search(r"\b(AND|OR|WITH)\b", s, re.IGNORECASE):
         tokens = re.split(r"\s+(?:AND|OR|WITH)\s+", s, flags=re.IGNORECASE)
-        if all(t.strip("()") in _SPDX_3_24_CANONICAL for t in tokens):
-            # Re-emit with canonical-uppercase joiners.
+        cleaned = [t.strip("() ").strip() for t in tokens]
+        if all(_is_valid_spdx_token(t) for t in cleaned):
             return re.sub(
                 r"\s+(and|or|with)\s+",
                 lambda m: f" {m.group(1).upper()} ",
@@ -354,15 +368,37 @@ def normalize_license(raw: str | None) -> str:
     # Last-ditch: text-mine the verbose copyright-blob form that many
     # PyPI packages dump into the `license` field instead of an SPDX
     # expression. Look for unambiguous marker phrases from the major
-    # permissive licenses; conservative — we only return a verdict when
-    # the marker appears in the first ~600 chars (where the canonical
-    # header lives) and ambiguous text falls through to LicenseRef.
-    head = s[:600].lower()
+    # permissive licenses. The window is 2048 chars — wide enough that
+    # SciPy / Polars / azure-* / playwright resolve while still narrow
+    # enough that "BSD" only matches when the license header is present.
+    head = s[:2048].lower()
     text_mined = _text_mine_license(head)
     if text_mined:
         return text_mined
 
     return _unknown_ref(s)
+
+
+# SPDX license-exception IDs accepted in the WITH position of a
+# compound expression. We hand-curate the ones that show up in our
+# transitive trees today; adding more is safe and cheap.
+_SPDX_EXCEPTIONS: frozenset[str] = frozenset(
+    {
+        "LLVM-exception",
+        "Classpath-exception-2.0",
+        "OpenSSL-exception",
+        "GCC-exception-2.0",
+        "GCC-exception-3.1",
+        "Bison-exception-2.2",
+        "Autoconf-exception-3.0",
+        "Font-exception-2.0",
+    }
+)
+
+
+def _is_valid_spdx_token(t: str) -> bool:
+    """Token in a compound expression: SPDX ID or known exception."""
+    return t in _SPDX_3_24_CANONICAL or t in _SPDX_EXCEPTIONS
 
 
 # Conservative phrase → SPDX expression map for text-mining verbose

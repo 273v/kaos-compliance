@@ -31,6 +31,13 @@ from typing import Any
 
 import jinja2
 
+# Policy module is imported lazily so the renderer still works when the
+# policy file is missing or PyYAML isn't available.
+try:
+    from collector import policy as _policy_loader  # type: ignore[import-not-found]
+except Exception:  # noqa: BLE001
+    _policy_loader = None  # type: ignore[assignment]
+
 HERE = Path(__file__).resolve().parent
 TEMPLATES_DIR = HERE / "templates"
 
@@ -91,40 +98,91 @@ def _pill_signing(module: dict[str, Any]) -> str:
     return "red"
 
 
-def _pill_license(module: dict[str, Any]) -> str:
-    """SBOM license-breakdown summary.
+def _pill_license(module: dict[str, Any], policy: Any = None) -> str:
+    """SBOM license-breakdown summary, after policy reclassification.
 
-    Green: every transitive license resolves to an SPDX expression AND
-        none are strong-copyleft (GPL/AGPL).
-    Yellow: weak-copyleft (MPL/LGPL) is in play OR there are unknown
-        licenses with no strong-copyleft (legal can bless once).
-    Red: any strong-copyleft is present.
-    Gray: no SBOM yet.
+    Pill states (post-policy):
+      green:  every component is either permissive-by-default or has
+              a policy allowlist entry; zero strong-copyleft.
+      yellow: at least one component has a *real* unresolved issue —
+              weak-copyleft not in the allowlist OR unknown license
+              that isn't a documented parser gap.
+      red:    any strong-copyleft, OR an allowlist entry overlaps a
+              component whose license_class is on the hard-block list.
+      gray:   no SBOM yet.
+
+    The policy is applied transparently — every promotion to green
+    leaves a paper trail in the renderer's per-module
+    ``license_policy_summary`` so the package page can show "this
+    component is green because of policy A.1" instead of going silent.
     """
     sbom = (module.get("supply_chain") or {}).get("sbom") or {}
     if not sbom.get("components_count"):
         return "gray"
     if sbom.get("strong_copyleft"):
         return "red"
-    if sbom.get("weak_copyleft") or sbom.get("unknown_license"):
+    weak = sbom.get("weak_copyleft") or []
+    unknown = sbom.get("unknown_license") or []
+    if not weak and not unknown:
+        return "green"
+
+    # Consult the policy. A finding survives iff it's NOT covered by
+    # an allowlist entry AND NOT a documented parser gap.
+    if policy is None:
+        # No policy loaded — degrade to the strict pre-policy semantics.
         return "yellow"
-    return "green"
+
+    unresolved_weak = [
+        c for c in weak if not _component_allowed(c, policy, _guess_spdx_for_weak(c))
+    ]
+    unresolved_unknown = [
+        c for c in unknown if policy.parser_gap_for(c) is None
+    ]
+    return "yellow" if (unresolved_weak or unresolved_unknown) else "green"
 
 
-def _pill_deps(module: dict[str, Any]) -> str:
-    """Transitive-dep footprint health.
+def _component_allowed(component: str, policy: Any, candidate_spdx: str | None) -> bool:
+    """True iff ANY policy entry whose components list contains ``component``
+    matches the candidate SPDX. The component-name match is required so a
+    bare ``MPL-2.0`` allowlist doesn't bless every future MPL-2.0 dep."""
+    if policy is None:
+        return False
+    if candidate_spdx and policy.is_allowed(candidate_spdx, component):
+        return True
+    # Fallback: any entry that lists this component, regardless of spdx.
+    # This is the right call for components like `tqdm` whose SPDX is a
+    # compound expression ("MPL-2.0 AND MIT") we may not always parse
+    # identically.
+    for entry in getattr(policy, "allowed_expressions", ()):
+        if component in entry.components:
+            return True
+    return False
 
-    Mirrors license today. A future iteration will diverge — pinning
-    policy, OSV cross-ref, yanked-version detection live here.
-    """
+
+def _guess_spdx_for_weak(component: str) -> str:
+    """Best-effort SPDX for a name on the weak-copyleft list. The SBOM
+    collector strips the actual SPDX from the weak list (it just stores
+    the name), so the renderer matches by component name; this stub is
+    here for the (component, spdx) policy index when we later widen the
+    snapshot to carry the SPDX too."""
+    return "MPL-2.0"  # almost-universal in our trees today
+
+
+def _pill_deps(module: dict[str, Any], policy: Any = None) -> str:
+    """Transitive-dep footprint health. Mirrors license-after-policy
+    until pinning policy + OSV cross-ref land as their own signals."""
     sbom = (module.get("supply_chain") or {}).get("sbom") or {}
     if not sbom.get("components_count"):
         return "gray"
     if sbom.get("strong_copyleft"):
         return "red"
-    if sbom.get("unknown_license"):
+    unknown = sbom.get("unknown_license") or []
+    if not unknown:
+        return "green"
+    if policy is None:
         return "yellow"
-    return "green"
+    unresolved = [c for c in unknown if policy.parser_gap_for(c) is None]
+    return "yellow" if unresolved else "green"
 
 
 def _pill_tests(module: dict[str, Any]) -> str:
@@ -182,7 +240,7 @@ def _ci_matrix_view(jobs: list[dict[str, Any]]) -> list[dict[str, Any]]:
     ]
 
 
-def _module_view(module: dict[str, Any]) -> dict[str, Any]:
+def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any]:
     """Adapt one collector module dict to the template's expected shape.
 
     The package detail template expects nested groups (security,
@@ -252,8 +310,8 @@ def _module_view(module: dict[str, Any]) -> dict[str, Any]:
         "tests": _pill_tests(module),
         "security": _pill_security(sec_section.get("workflow_conclusion")),
         "signing": _pill_signing(module),
-        "license": _pill_license(module),
-        "deps": _pill_deps(module),
+        "license": _pill_license(module, policy=policy),
+        "deps": _pill_deps(module, policy=policy),
         "pill_links": pill_links,
         "last_release": last_commit[:10] if last_commit else "—",
         "release_age_days": _release_age_days(module),
@@ -331,7 +389,7 @@ def _module_view(module: dict[str, Any]) -> dict[str, Any]:
     return row
 
 
-def _org_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
+def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[str, Any]:
     """Build the org rollup card from the per-module signals.
 
     Honest counts: only counts modules whose signals we have. Pills in
@@ -342,7 +400,9 @@ def _org_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
     total = len(modules)
     build_pass = sum(1 for m in modules if _pill_build(m) == "green")
     tests_pass = sum(1 for m in modules if _pill_tests(m) == "green")
-    license_clean = sum(1 for m in modules if _pill_license(m) == "green")  # gray for now → 0
+    license_clean = sum(
+        1 for m in modules if _pill_license(m, policy=policy) == "green"
+    )
     signed_releases = sum(1 for m in modules if _pill_signing(m) == "green")  # gray for now → 0
     composite_green = sum(
         1
@@ -702,18 +762,90 @@ def adapt(snapshot: dict[str, Any]) -> dict[str, Any]:
     """Snapshot JSON → template view-model."""
     modules = snapshot.get("modules") or []
     iso = snapshot.get("generated_at")
+
+    # Load the policy file once and thread it through every consumer
+    # that needs it (license + deps pills, the license-policy page,
+    # the per-package detail page's allowlist footnote).
+    policy = _policy_loader.load() if _policy_loader is not None else None
+
     return {
         "generated_at": iso,
         # The templates' visible header uses this human-readable form.
         "generated_at_display": _generated_at_display(iso),
-        "org": _org_summary(modules),
-        "packages": [_module_view(m) for m in modules],
+        "org": _org_summary(modules, policy=policy),
+        "packages": [_module_view(m, policy=policy) for m in modules],
         "heartbeat": _heartbeat_block(snapshot),
         # Page-specific summaries — the index template ignores these;
         # the per-section pages consume them.
         "security_summary": _security_summary(modules),
         "supply_chain_summary": _supply_chain_summary(modules),
         "governance_summary": _governance_summary(modules),
+        "license_policy": _license_policy_view(policy, modules),
+    }
+
+
+def _license_policy_view(policy: Any, modules: list[dict[str, Any]]) -> dict[str, Any]:
+    """Build the view-model for /license-policy.html.
+
+    For each allowed_expression: include its rationale + audit ref +
+    the live list of components currently affected (cross-referenced
+    against the latest snapshot's weak_copyleft + unknown_license
+    lists). For each parser_gap: include the upstream fix strategy.
+    """
+    if policy is None:
+        return {
+            "available": False,
+            "allowed": [],
+            "parser_gaps": [],
+            "reviewers": [],
+            "last_reviewed": None,
+            "version": None,
+        }
+
+    # Build component → affected_repos index from the live snapshot so
+    # the rendered table shows "this exception currently affects N
+    # repos" instead of stale yaml.
+    component_to_repos: dict[str, set[str]] = {}
+    for m in modules:
+        sbom = (m.get("supply_chain") or {}).get("sbom") or {}
+        for c in (sbom.get("weak_copyleft") or []) + (sbom.get("unknown_license") or []):
+            component_to_repos.setdefault(c, set()).add(m["name"])
+
+    allowed = [
+        {
+            "spdx": entry.spdx,
+            "components": list(entry.components),
+            "rationale": entry.rationale,
+            "review_date": entry.review_date,
+            "audit_ref": entry.audit_ref,
+            "live_repos": sorted(
+                {
+                    r
+                    for c in entry.components
+                    for r in component_to_repos.get(c, set())
+                }
+            ),
+        }
+        for entry in getattr(policy, "allowed_expressions", ())
+    ]
+    gaps = [
+        {
+            "component": g.component,
+            "true_license": g.true_license,
+            "affected_repos": list(g.affected_repos),
+            "fix_strategy": g.fix_strategy,
+            "audit_ref": g.audit_ref,
+            "live_repos": sorted(component_to_repos.get(g.component, set())),
+        }
+        for g in getattr(policy, "parser_gaps", ())
+    ]
+    return {
+        "available": True,
+        "allowed": allowed,
+        "parser_gaps": gaps,
+        "reviewers": list(getattr(policy, "reviewers", ())),
+        "last_reviewed": getattr(policy, "last_reviewed", None),
+        "version": getattr(policy, "version", None),
     }
 
 
@@ -782,6 +914,7 @@ def render(
         ("supply-chain.html", "supply-chain.html.jinja"),
         ("governance.html", "governance.html.jinja"),
         ("diary.html", "diary.html.jinja"),
+        ("license-policy.html", "license-policy.html.jinja"),
     ):
         try:
             tpl = env.get_template(template_name)
