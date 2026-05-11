@@ -466,6 +466,32 @@ def collect_module(repo: str) -> ModuleSnapshot:
         cm = {"errors": [f"code_metrics: {exc}"]}
         errors.append(f"code_metrics: {exc}")
 
+    # Backfill identity.pypi_version + pypi_url from the supply-chain
+    # collector's PyPI lookup. The supply_chain section is the
+    # authoritative source for what's actually published; identity is
+    # the canonical name a renderer reads. Without this, the dashboard
+    # rolls up tag-at-head numbers (which work) but reads
+    # identity.pypi_version as null on every package (the F6 finding
+    # from the process audit). Computing commits_past_tag from the
+    # governance section's commits_90d would require a tag-cursor we
+    # don't yet collect; leaving that for a follow-up.
+    if isinstance(sc, dict) and sc.get("pypi_version") and ident.pypi_version is None:
+        ident = IdentitySection(
+            pypi_version=sc.get("pypi_version"),
+            pypi_url=(
+                f"https://pypi.org/project/{repo}/{sc.get('pypi_version')}/"
+                if sc.get("pypi_version")
+                else None
+            ),
+            main_head_sha=ident.main_head_sha,
+            latest_tag=ident.latest_tag,
+            latest_tag_sha=ident.latest_tag_sha,
+            tag_at_head=ident.tag_at_head,
+            commits_past_tag=ident.commits_past_tag,
+            repo_visibility=ident.repo_visibility,
+            last_commit_at=ident.last_commit_at,
+        )
+
     fresh = FreshnessSection(
         days_since_last_commit=_days_since(ident.last_commit_at),
         days_since_last_release=_days_since(sc.get("pypi_release_iso")),
