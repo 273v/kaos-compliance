@@ -394,6 +394,241 @@ def _generated_at_display(iso_ts: str | None) -> str:
     return dt.strftime("%Y-%m-%d %H:%M UTC")
 
 
+def _security_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
+    """Aggregate Security workflow + per-tool job conclusions across modules."""
+    tools = ("gitleaks", "bandit", "vulture", "pip_audit", "cargo_audit", "cargo_deny")
+    counts = {f"{t}_green": 0 for t in tools} | {f"{t}_total": 0 for t in tools}
+    wf_green = 0
+    wf_total = 0
+    packages: list[dict[str, Any]] = []
+    for m in modules:
+        sec = m.get("security") or {}
+        wf_total += 1
+        if sec.get("workflow_conclusion") == "success":
+            wf_green += 1
+        per_tool: dict[str, dict[str, Any]] = {}
+        for j in sec.get("jobs") or []:
+            name = (j.get("name") or "").lower()
+            for t in tools:
+                # job name like "bandit (static security)" → "bandit"
+                if name.startswith(t.replace("_", "-")) or name.startswith(t):
+                    counts[f"{t}_total"] += 1
+                    if j.get("conclusion") == "success":
+                        counts[f"{t}_green"] += 1
+                    per_tool[t] = {
+                        "state": "green"
+                        if j.get("conclusion") == "success"
+                        else "red"
+                        if j.get("conclusion") in ("failure", "timed_out")
+                        else "yellow"
+                        if j.get("conclusion") == "cancelled"
+                        else "gray",
+                        "url": sec.get("workflow_run_url"),
+                    }
+                    break
+        packages.append(
+            {
+                "name": m["name"],
+                "ecosystem": "rust" if (m.get("supply_chain") or {}).get("is_abi3") else "python",
+                "workflow_state": (
+                    "green"
+                    if sec.get("workflow_conclusion") == "success"
+                    else "red"
+                    if sec.get("workflow_conclusion") in ("failure", "timed_out")
+                    else "gray"
+                ),
+                "workflow_url": sec.get("workflow_run_url"),
+                "workflow_run_id": sec.get("workflow_run_id"),
+                "advisories_open": 0,
+                "last_run_display": "—",
+                "jobs": per_tool,
+            }
+        )
+    return {
+        "advisories": {"critical": 0, "high": 0, "moderate": 0, "low": 0, "total": 0},
+        **counts,
+        "security_workflow_green": wf_green,
+        "security_workflow_total": wf_total,
+        "packages": packages,
+    }
+
+
+def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
+    """Aggregate license breakdown + attestation table across modules."""
+    org_license_breakdown: dict[str, int] = {}
+    packages_with_attestations = 0
+    rows: list[dict[str, Any]] = []
+    for m in modules:
+        sc = m.get("supply_chain") or {}
+        sbom = sc.get("sbom") or {}
+        for spdx, n in (sbom.get("license_breakdown") or {}).items():
+            org_license_breakdown[spdx] = org_license_breakdown.get(spdx, 0) + n
+        att = sc.get("attestations") or {}
+        if att.get("pep740_present"):
+            packages_with_attestations += 1
+        sbom_path = (sc.get("sbom") or {}).get("sbom_artifact_path")
+        rows.append(
+            {
+                "name": m["name"],
+                "version": sc.get("pypi_version") or "—",
+                "wheel_platforms": sc.get("wheel_platforms") or [],
+                "is_abi3": sc.get("is_abi3"),
+                "has_musllinux": sc.get("has_musllinux_wheel"),
+                "pep740_present": att.get("pep740_present"),
+                "publisher_kind": att.get("publisher_kind"),
+                "publisher_source_repo": att.get("publisher_source_repo"),
+                "publisher_workflow_ref": att.get("publisher_workflow_ref"),
+                "rekor_log_index": att.get("rekor_log_index"),
+                "verified_count": att.get("verified_count"),
+                "total_count": att.get("total_count"),
+                "components_count": sbom.get("components_count"),
+                "weak_copyleft": sbom.get("weak_copyleft") or [],
+                "strong_copyleft": sbom.get("strong_copyleft") or [],
+                "unknown_license_count": len(sbom.get("unknown_license") or []),
+                "sbom_url": (
+                    f"api/v1/sbom/{Path(sbom_path).name}" if sbom_path else None
+                ),
+                "pypi_url": (
+                    f"https://pypi.org/project/{m['name']}/{sc.get('pypi_version')}/"
+                    if sc.get("pypi_version")
+                    else None
+                ),
+            }
+        )
+    # Shape the org-wide license breakdown as a list-of-dicts ordered
+    # by count desc; classify each row's state.
+    def _license_state(spdx: str) -> str:
+        s = spdx.lower()
+        if any(t in s for t in ("agpl", "gpl-2", "gpl-3", "gpl-")):
+            return "red"
+        if any(t in s for t in ("mpl", "lgpl", "unknown")):
+            return "yellow"
+        return "green"
+
+    license_rows = [
+        {"spdx": spdx, "count": n, "state": _license_state(spdx)}
+        for spdx, n in sorted(org_license_breakdown.items(), key=lambda kv: (-kv[1], kv[0]))
+    ]
+    return {
+        "org_license_breakdown": license_rows,
+        "packages_with_attestations": packages_with_attestations,
+        "total_packages": len(modules),
+        "packages": rows,
+    }
+
+
+def _governance_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
+    """Aggregate DCO / CC / verified rates + cadence across modules."""
+
+    def _avg(values: list[float]) -> float | None:
+        return sum(values) / len(values) if values else None
+
+    dcos = [
+        m["governance"]["dco_signoff_rate_90d"]
+        for m in modules
+        if isinstance((m.get("governance") or {}).get("dco_signoff_rate_90d"), (int, float))
+    ]
+    ccs = [
+        m["governance"]["conventional_commits_rate_90d"]
+        for m in modules
+        if isinstance(
+            (m.get("governance") or {}).get("conventional_commits_rate_90d"), (int, float)
+        )
+    ]
+    verifieds = [
+        m["governance"]["verified_commit_ratio_90d"]
+        for m in modules
+        if isinstance((m.get("governance") or {}).get("verified_commit_ratio_90d"), (int, float))
+    ]
+    commits = [
+        m["governance"]["commits_90d"]
+        for m in modules
+        if isinstance((m.get("governance") or {}).get("commits_90d"), int)
+    ]
+    releases = [
+        m["governance"]["releases_90d"]
+        for m in modules
+        if isinstance((m.get("governance") or {}).get("releases_90d"), int)
+    ]
+    bp_total = bp_count = 0
+    co_total = co_count = 0
+    sm_total = sm_count = 0
+    nt_total = nt_count = 0
+    rows: list[dict[str, Any]] = []
+    for m in modules:
+        gov = m.get("governance") or {}
+        if gov.get("branch_protection_enabled") is not None:
+            bp_total += 1
+            if gov.get("branch_protection_enabled"):
+                bp_count += 1
+        co_total += 1
+        if gov.get("codeowners_path"):
+            co_count += 1
+        sm_total += 1
+        if gov.get("security_md_present"):
+            sm_count += 1
+        nt_total += 1
+        if gov.get("notice_present"):
+            nt_count += 1
+        rows.append(
+            {
+                "name": m["name"],
+                "dco_rate": gov.get("dco_signoff_rate_90d"),
+                "cc_rate": gov.get("conventional_commits_rate_90d"),
+                "verified_rate": gov.get("verified_commit_ratio_90d"),
+                "commits_90d": gov.get("commits_90d"),
+                "releases_90d": gov.get("releases_90d"),
+                "branch_protection": gov.get("branch_protection_enabled"),
+                "codeowners": bool(gov.get("codeowners_path")),
+                "security_md": bool(gov.get("security_md_present")),
+                "notice": bool(gov.get("notice_present")),
+                "median_pr_age_days": gov.get("median_pr_age_days"),
+                "time_to_pypi_seconds_median": gov.get("time_to_pypi_seconds_median"),
+            }
+        )
+    return {
+        "org_dco_rate": _avg(dcos),
+        "org_cc_rate": _avg(ccs),
+        "org_verified_rate": _avg(verifieds),
+        "commits_90d": sum(commits) if commits else None,
+        "releases_90d": sum(releases) if releases else None,
+        "branch_protection_count": bp_count,
+        "branch_protection_total": bp_total,
+        "codeowners_count": co_count,
+        "codeowners_total": co_total,
+        "security_md_count": sm_count,
+        "security_md_total": sm_total,
+        "notice_count": nt_count,
+        "notice_total": nt_total,
+        "time_to_pypi_median_seconds": (
+            sorted(
+                m["governance"]["time_to_pypi_seconds_median"]
+                for m in modules
+                if isinstance(
+                    (m.get("governance") or {}).get("time_to_pypi_seconds_median"), int
+                )
+            )[
+                len(
+                    [
+                        m
+                        for m in modules
+                        if isinstance(
+                            (m.get("governance") or {}).get("time_to_pypi_seconds_median"), int
+                        )
+                    ]
+                )
+                // 2
+            ]
+            if any(
+                isinstance((m.get("governance") or {}).get("time_to_pypi_seconds_median"), int)
+                for m in modules
+            )
+            else None
+        ),
+        "packages": rows,
+    }
+
+
 def adapt(snapshot: dict[str, Any]) -> dict[str, Any]:
     """Snapshot JSON → template view-model."""
     modules = snapshot.get("modules") or []
@@ -405,6 +640,11 @@ def adapt(snapshot: dict[str, Any]) -> dict[str, Any]:
         "org": _org_summary(modules),
         "packages": [_module_view(m) for m in modules],
         "heartbeat": _heartbeat_block(snapshot),
+        # Page-specific summaries — the index template ignores these;
+        # the per-section pages consume them.
+        "security_summary": _security_summary(modules),
+        "supply_chain_summary": _supply_chain_summary(modules),
+        "governance_summary": _governance_summary(modules),
     }
 
 
@@ -463,6 +703,23 @@ def render(
         }
         out = output_dir / "package" / f"{pkg['name']}.html"
         out.write_text(package_tpl.render(**ctx), encoding="utf-8")
+        written.append(out)
+
+    # Supplementary section pages (each consumes a different summary
+    # from the view-model; index template ignores them).
+    for page_name, template_name in (
+        ("methodology.html", "methodology.html.jinja"),
+        ("security.html", "security.html.jinja"),
+        ("supply-chain.html", "supply-chain.html.jinja"),
+        ("governance.html", "governance.html.jinja"),
+        ("diary.html", "diary.html.jinja"),
+    ):
+        try:
+            tpl = env.get_template(template_name)
+        except jinja2.exceptions.TemplateNotFound:
+            continue
+        out = output_dir / page_name
+        out.write_text(tpl.render(**view), encoding="utf-8")
         written.append(out)
 
     # JSON-as-source-of-truth: republish the snapshot + heartbeat as

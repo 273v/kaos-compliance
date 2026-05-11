@@ -1,0 +1,157 @@
+# Standard PR / push CI for kaos-compliance. Mirrors the kaos-core /
+# kaos-graph shape but slimmed: Linux only (this is a metadata tool,
+# the cross-OS matrix would buy nothing), no live-network tests, no
+# release-publishing path. The build job is kept so we surface
+# distribution-metadata regressions early when we are ready to publish
+# to PyPI.
+
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # ────────────── lint ──────────────
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install Python 3.13
+        run: uv python install 3.13
+
+      - name: Install dependencies
+        run: uv sync --group dev --python 3.13
+
+      - name: Ruff format check
+        run: uv run ruff format --check collector render tests
+
+      - name: Ruff lint
+        run: uv run ruff check collector render tests
+
+      - name: Type check (ty)
+        run: uv run ty check collector render tests
+
+  # ────────────── pre-commit ──────────────
+  # Only runs when a config exists. Avoids a hard failure on repos that
+  # have not yet adopted pre-commit, while still enforcing the contract
+  # once one lands.
+  pre-commit:
+    name: Pre-commit hooks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Check for pre-commit config
+        id: have-config
+        run: |
+          if [ -f .pre-commit-config.yaml ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "no .pre-commit-config.yaml found — skipping."
+          fi
+
+      - name: Set up uv
+        if: steps.have-config.outputs.present == 'true'
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install Python 3.13
+        if: steps.have-config.outputs.present == 'true'
+        run: uv python install 3.13
+
+      - name: Install dependencies (needed by local hooks)
+        if: steps.have-config.outputs.present == 'true'
+        run: uv sync --group dev --python 3.13
+
+      - name: Run pre-commit
+        if: steps.have-config.outputs.present == 'true'
+        run: uvx pre-commit run --all-files --show-diff-on-failure
+
+  # ────────────── test ──────────────
+  test:
+    name: Test (Linux / Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.13", "3.14"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+          cache-suffix: test-linux-py${{ matrix.python-version }}
+
+      - name: Install Python ${{ matrix.python-version }}
+        run: uv python install --preview ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: uv sync --group dev --python ${{ matrix.python-version }}
+
+      - name: Run tests
+        run: |
+          uv run pytest tests/ -q --no-cov
+
+  # ────────────── build ──────────────
+  # Even though we don't publish today, we keep the metadata-clean
+  # contract enforced so a future PyPI release is one decision away.
+  build:
+    name: Build distribution
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [lint, test]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install Python 3.13
+        run: uv python install 3.13
+
+      - name: Build wheel + sdist
+        run: uv build
+
+      - name: Verify metadata (twine check)
+        run: uvx --from twine twine check --strict dist/*
+
+      - name: Upload distribution artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: dist-${{ github.sha }}
+          path: dist/
+          retention-days: 7

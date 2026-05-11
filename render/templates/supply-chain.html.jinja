@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Org-wide supply chain rollup for KAOS — SBOMs, license breakdown, PEP 740 attestations, wheel platform matrix.">
+<base href="{{ base_href | default('/kaos-compliance/') }}">
+<title>Supply chain — KAOS Compliance</title>
+{#
+  Expected data shape for supply-chain.html.jinja
+  ------------------------------------------------
+  Required top-level:
+    generated_at_display : str
+    base_href            : str
+    org                  : dict   # same as index.html.jinja
+    packages             : list   # same per-package items as index.html.jinja
+    supply_chain_summary : dict   # see below
+
+  supply_chain_summary:
+    packages_with_attestations : int   # 0..N
+    total_packages             : int   # N, denominator
+    packages_with_sbom         : int
+    packages_with_dep_graph    : int   # SBOMs that actually contain dependencies[]
+
+    # Aggregated license breakdown across the org.
+    # Order matters: integrator should sort by count desc.
+    org_license_breakdown : list[dict]
+      each item:
+        spdx  : str   # "Apache-2.0", "MIT", "BSD-3-Clause", "Unknown"
+        count : int   # >= 1
+        state : "green"|"yellow"|"red"|"gray"   # green = permissive,
+                                                 # yellow = weak copyleft,
+                                                 # red = strong copyleft / no-redist,
+                                                 # gray = unknown / unresolved
+
+    # Per-package details (collapsible).
+    packages : list[dict]
+      each item:
+        name             : str       # "kaos-core"
+        version          : str
+        sbom_links       : list[(label, href)]   # [("SPDX","sbom/..."),("CycloneDX","sbom/...cdx.json")]
+        sbom_has_depgraph: bool      # if False the SBOM is "manifest, not graph"; flagged yellow
+        license_top      : list[dict]
+            spdx  : str
+            count : int
+            state : str
+        # PEP 740 attestation row
+        attestation : {
+          present       : bool
+          publisher     : str       # "GitHub", "GitLab", "—"
+          source_repo   : str       # "273v/kaos-core" or "—"
+          workflow_ref  : str       # "refs/tags/v1.4.2" or "—"
+          rekor_index   : int|None  # transparency log index
+          rekor_url     : str|None  # https://search.sigstore.dev/?logIndex=…
+          provenance_url: str|None  # PyPI provenance URL
+        }
+        # Wheel platform matrix from PyPI urls[]
+        wheel_platforms : list[dict]
+            tag    : str    # "cp312-cp312-manylinux_2_28_x86_64"
+            size   : str    # "4.2 MB"
+            url    : str    # download URL
+            kind   : str    # "wheel" | "sdist"
+#}
+<style>
+:root{
+ --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
+ --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
+ --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
+ --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;
+ --focus:#2563eb;
+ --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+ :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;
+  --g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;
+  --r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:var(--s-7) var(--s-5)}
+.page-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--s-3);border-bottom:1px solid var(--border);padding-bottom:var(--s-4);margin-bottom:var(--s-6)}
+.page-head h1{margin:0;font-size:2rem;line-height:1.1}
+.page-head p{margin:var(--s-1) 0 0;color:var(--muted);font-size:0.875rem}
+.page-head .meta{font-family:var(--mono);font-size:0.75rem;color:var(--muted)}
+nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
+nav.subnav a{color:var(--muted)}
+nav.subnav a[aria-current="page"]{color:var(--text);font-weight:600}
+.skip{position:absolute;left:-9999px}
+.skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
+h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:600}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-4)}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4);margin-top:var(--s-3)}
+.strip .stat{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-3) var(--s-4)}
+.strip .stat .n{font-family:var(--mono);font-size:1.75rem;font-weight:700;line-height:1.1;display:block}
+.strip .stat .lab{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+.lic-list{display:flex;flex-direction:column;gap:var(--s-2)}
+.lic{display:grid;grid-template-columns:170px 1fr 60px 80px;gap:var(--s-3);align-items:center;font-size:0.875rem}
+.lic .spdx{font-family:var(--mono);font-weight:600}
+.lic .bar{height:8px;background:var(--n-bg);border-radius:2px;overflow:hidden;border:1px solid var(--border)}
+.lic .bar>span{display:block;height:100%}
+.lic.g .bar>span{background:var(--g-fg)}
+.lic.y .bar>span{background:var(--y-fg)}
+.lic.r .bar>span{background:var(--r-fg)}
+.lic.n .bar>span{background:var(--n-fg)}
+.lic .ct{font-family:var(--mono);text-align:right;color:var(--muted)}
+table.grid{width:100%;border-collapse:collapse;font-size:0.875rem}
+table.grid th,table.grid td{padding:var(--s-3) var(--s-2);text-align:left;border-bottom:1px solid var(--border);vertical-align:middle}
+table.grid th{font-weight:600;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;background:transparent}
+table.grid tbody tr:nth-child(even){background:rgba(0,0,0,0.02)}
+@media (prefers-color-scheme: dark){table.grid tbody tr:nth-child(even){background:rgba(255,255,255,0.04)}}
+table.grid td.pkg{font-weight:600}
+table.grid td.mono{font-family:var(--mono);font-size:0.8125rem;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:var(--s-2);padding:2px 8px;border-radius:3px;font-size:0.75rem;font-weight:600;line-height:1.4;border:1px solid transparent;text-decoration:none}
+a.pill:hover{filter:brightness(0.95);text-decoration:underline}
+a.pill:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.pill .gly{font-family:var(--mono);font-weight:700}
+.pill .wd{font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
+.pill.g{background:var(--g-bg);color:var(--g-fg);border-color:var(--g-fg)}
+.pill.y{background:var(--y-bg);color:var(--y-fg);border-color:var(--y-fg)}
+.pill.r{background:var(--r-bg);color:var(--r-fg);border-color:var(--r-fg)}
+.pill.n{background:var(--n-bg);color:var(--n-fg);border-color:var(--n-fg)}
+details.pkg-detail{border:1px solid var(--border);border-radius:6px;background:var(--card-bg);margin-bottom:var(--s-3)}
+details.pkg-detail>summary{cursor:pointer;list-style:none;padding:var(--s-3) var(--s-4);display:flex;justify-content:space-between;align-items:center;gap:var(--s-3);flex-wrap:wrap}
+details.pkg-detail>summary::-webkit-details-marker{display:none}
+details.pkg-detail>summary::after{content:"\25BE";color:var(--muted);font-family:var(--mono)}
+details.pkg-detail[open]>summary::after{content:"\25B4"}
+details.pkg-detail>summary .pname{font-weight:600;font-family:var(--mono)}
+details.pkg-detail>summary .pmeta{color:var(--muted);font-size:0.8125rem;font-family:var(--mono)}
+details.pkg-detail>div.inner{padding:0 var(--s-4) var(--s-4);border-top:1px solid var(--border)}
+.pchips{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-2)}
+.chip{font-family:var(--mono);font-size:0.75rem;padding:2px 8px;border:1px solid var(--border);border-radius:3px;background:var(--card-bg);color:var(--muted)}
+.chip.g{color:var(--g-fg);border-color:var(--g-fg)}
+.chip.y{color:var(--y-fg);border-color:var(--y-fg)}
+.chip.r{color:var(--r-fg);border-color:var(--r-fg)}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:var(--s-1) var(--s-4);font-size:0.875rem;margin-top:var(--s-3)}
+.kv dt{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding-top:var(--s-1)}
+.kv dd{margin:0;font-family:var(--mono);word-break:break-all}
+.callout{border-left:3px solid var(--n-fg);background:var(--n-bg);padding:var(--s-3) var(--s-4);font-size:0.875rem;border-radius:0 4px 4px 0;margin-top:var(--s-4)}
+.callout strong{display:block;margin-bottom:var(--s-1)}
+footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
+footer a{color:var(--muted)}
+@media (max-width:720px){
+ .wrap{padding:var(--s-5) var(--s-4)}
+ .page-head h1{font-size:1.5rem}
+ .strip{grid-template-columns:1fr 1fr}
+ .lic{grid-template-columns:110px 1fr 50px}
+ .lic .pill-wrap{display:none}
+ table.grid thead{display:none}
+ table.grid,table.grid tbody,table.grid tr,table.grid td{display:block;width:100%}
+ table.grid tr{border:1px solid var(--border);border-radius:6px;margin-bottom:var(--s-3);padding:var(--s-3)}
+ table.grid td{border:0;padding:var(--s-1) 0;display:flex;justify-content:space-between;gap:var(--s-3)}
+ table.grid td::before{content:attr(data-h);color:var(--muted);font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
+}
+@media print{
+ :root{--page-bg:#fff;--card-bg:#fff;--text:#000;--muted:#444;--border:#999}
+ a{color:#000;text-decoration:none}
+ .wrap{padding:0;max-width:none}
+ .pill,.chip{background:#fff!important;color:#000!important;border:1px solid #000}
+ details.pkg-detail{break-inside:avoid}
+ details.pkg-detail>summary::after{display:none}
+ details.pkg-detail{border:1px solid #000}
+ nav.subnav,.skip{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+{% set states = {"green":["g","✓","Pass"],"yellow":["y","⚠","Warn"],"red":["r","✗","Fail"],"gray":["n","—","No signal"]} %}
+{% macro pill(state, col) -%}
+{% set st = states.get(state, states["gray"]) %}
+<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span></span>
+{%- endmacro %}
+
+<div class="wrap">
+<header class="page-head">
+ <div>
+  <h1>Supply chain</h1>
+  <p>SBOMs, license aggregation, PEP&nbsp;740 attestations, and the wheel platform matrix per package.</p>
+  <nav class="subnav" aria-label="Sections">
+   <a href="index.html">Org rollup</a>
+   <a href="security.html">Security</a>
+   <a href="supply-chain.html" aria-current="page">Supply chain</a>
+   <a href="governance.html">Governance</a>
+   <a href="diary.html">Diary</a>
+   <a href="methodology.html">Methodology</a>
+  </nav>
+ </div>
+ <div class="meta" aria-label="Last generated">
+  Generated {{ generated_at_display | default('2026-05-11 14:02 UTC') }}
+ </div>
+</header>
+
+<main id="main">
+{% set sup = supply_chain_summary | default({}) %}
+{% set npkgs = sup.total_packages or (packages | default([]) | length) or 0 %}
+{% set n_att = sup.packages_with_attestations or 0 %}
+{% set n_sbom = sup.packages_with_sbom or 0 %}
+{% set n_graph = sup.packages_with_dep_graph or 0 %}
+
+<section aria-labelledby="rollup-h">
+ <h2 id="rollup-h">Org rollup</h2>
+ <div class="strip">
+  <div class="stat"><span class="n">{{ n_att }}/{{ npkgs if npkgs > 0 else '—' }}</span><span class="lab">PEP 740 attested</span></div>
+  <div class="stat"><span class="n">{{ n_sbom }}/{{ npkgs if npkgs > 0 else '—' }}</span><span class="lab">SBOM published</span></div>
+  <div class="stat"><span class="n">{{ n_graph }}/{{ npkgs if npkgs > 0 else '—' }}</span><span class="lab">SBOM has dep graph</span></div>
+  <div class="stat"><span class="n">{{ sup.org_license_breakdown | default([]) | length }}</span><span class="lab">Distinct licenses</span></div>
+ </div>
+</section>
+
+<section aria-labelledby="lic-h">
+ <h2 id="lic-h">License breakdown (org-wide)</h2>
+ <div class="card">
+  {% set lic = sup.org_license_breakdown | default([
+    {"spdx":"Apache-2.0","count":124,"state":"green"},
+    {"spdx":"MIT","count":86,"state":"green"},
+    {"spdx":"BSD-3-Clause","count":31,"state":"green"},
+    {"spdx":"Unknown","count":4,"state":"gray"}
+  ]) %}
+  {% set lic_total = lic | sum(attribute='count') %}
+  {% if lic_total == 0 %}{% set lic_total = 1 %}{% endif %}
+  <div class="lic-list">
+   {% for L in lic %}
+    {% set st = states.get(L.state, states["gray"]) %}
+    {% set width = (L.count * 100 // lic_total) %}
+    <div class="lic {{ st[0] }}">
+     <span class="spdx">{{ L.spdx }}</span>
+     <span class="bar" role="img" aria-label="{{ L.spdx }}: {{ L.count }} of {{ lic_total }} components">
+      <span style="width:{{ width if width > 1 else 1 }}%"></span>
+     </span>
+     <span class="ct">{{ L.count }}</span>
+     <span class="pill-wrap">{{ pill(L.state, L.spdx) }}</span>
+    </div>
+   {% endfor %}
+  </div>
+  <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.8125rem">
+   Aggregated across all direct and transitive components in published
+   SBOMs. <em>Unknown</em> = published license metadata was missing or
+   non-SPDX. Per-package detail below.
+  </p>
+ </div>
+</section>
+
+<section aria-labelledby="att-h">
+ <h2 id="att-h">PEP 740 attestations</h2>
+ <div class="card" style="padding:0;overflow-x:auto">
+ <table class="grid" aria-describedby="att-h">
+  <thead>
+   <tr>
+    <th scope="col">Package</th>
+    <th scope="col">Publisher</th>
+    <th scope="col">Source repo</th>
+    <th scope="col">Workflow ref</th>
+    <th scope="col">Rekor</th>
+    <th scope="col">Provenance</th>
+   </tr>
+  </thead>
+  <tbody>
+   {% set rows = sup.packages | default([
+     {"name":"kaos-core","attestation":{"present":True,"publisher":"GitHub","source_repo":"273v/kaos-core","workflow_ref":"refs/tags/v1.4.2","rekor_index":98765432,"rekor_url":"https://search.sigstore.dev/?logIndex=98765432","provenance_url":"https://pypi.org/project/kaos-core/1.4.2/"}}
+   ]) %}
+   {% for r in rows %}
+   {% set a = r.attestation | default({"present":False}) %}
+   <tr>
+    <td class="pkg" data-h="Package"><a href="package/{{ r.name }}.html">{{ r.name }}</a></td>
+    <td data-h="Publisher">
+     {% if a.present %}{{ pill("green","Attested") }} <span class="mono">{{ a.publisher | default('—') }}</span>
+     {% else %}{{ pill("red","Missing") }}{% endif %}
+    </td>
+    <td class="mono" data-h="Source repo">{{ a.source_repo | default('—') }}</td>
+    <td class="mono" data-h="Workflow ref">{{ a.workflow_ref | default('—') }}</td>
+    <td class="mono" data-h="Rekor">
+     {% if a.rekor_url %}<a href="{{ a.rekor_url }}" target="_blank" rel="noopener">{{ a.rekor_index | default('log') }}</a>
+     {% else %}—{% endif %}
+    </td>
+    <td class="mono" data-h="Provenance">
+     {% if a.provenance_url %}<a href="{{ a.provenance_url }}" target="_blank" rel="noopener">PyPI</a>
+     {% else %}—{% endif %}
+    </td>
+   </tr>
+   {% endfor %}
+  </tbody>
+ </table>
+ </div>
+</section>
+
+<section aria-labelledby="pkg-h">
+ <h2 id="pkg-h">Per-package details</h2>
+ <p style="margin:0 0 var(--s-3);color:var(--muted);font-size:0.875rem">
+  Click a row to expand SBOM links, top licenses, and the wheel platform matrix.
+ </p>
+ {% set pkg_rows = sup.packages | default([
+   {"name":"kaos-core","version":"1.4.2","sbom_links":[("SPDX","sbom/kaos-core.spdx.json"),("CycloneDX","sbom/kaos-core.cdx.json")],"sbom_has_depgraph":True,"license_top":[{"spdx":"Apache-2.0","count":12,"state":"green"}],"wheel_platforms":[{"tag":"cp312-cp312-manylinux_2_28_x86_64","size":"4.2 MB","url":"#","kind":"wheel"}]}
+ ]) %}
+ {% for r in pkg_rows %}
+ <details class="pkg-detail">
+  <summary>
+   <span class="pname">{{ r.name }} <span class="pmeta">{{ r.version | default('') }}</span></span>
+   <span class="pmeta">
+    {% if r.sbom_has_depgraph %}{{ pill("green","SBOM graph") }}
+    {% elif r.sbom_links %}{{ pill("yellow","SBOM (manifest only)") }}
+    {% else %}{{ pill("gray","No SBOM") }}{% endif %}
+    {% if (r.attestation or {}).present %} {{ pill("green","Attested") }}{% else %} {{ pill("red","No attestation") }}{% endif %}
+   </span>
+  </summary>
+  <div class="inner">
+   <dl class="kv">
+    <dt>SBOM</dt>
+    <dd>
+     {% if r.sbom_links %}
+      {% for label, href in r.sbom_links %}
+       <a href="{{ href }}">{{ label }}</a>{% if not loop.last %} &middot; {% endif %}
+      {% endfor %}
+     {% else %}—{% endif %}
+    </dd>
+    <dt>Top licenses</dt>
+    <dd>
+     <span class="pchips">
+      {% for L in r.license_top | default([]) %}
+       {% set st = states.get(L.state, states["gray"]) %}
+       <span class="chip {{ st[0] }}">{{ L.spdx }} &times; {{ L.count }}</span>
+      {% else %}—{% endfor %}
+     </span>
+    </dd>
+    <dt>Wheel matrix</dt>
+    <dd>
+     {% set wheels = r.wheel_platforms | default([]) %}
+     {% if wheels %}
+      <span class="pchips">
+       {% for w in wheels %}
+        {% if w.url %}<a class="chip" href="{{ w.url }}">{{ w.tag }} <span style="color:var(--muted)">&middot; {{ w.size }}</span></a>
+        {% else %}<span class="chip">{{ w.tag }} <span style="color:var(--muted)">&middot; {{ w.size }}</span></span>{% endif %}
+       {% endfor %}
+      </span>
+     {% else %}—{% endif %}
+    </dd>
+   </dl>
+  </div>
+ </details>
+ {% endfor %}
+</section>
+
+<section aria-labelledby="m-h">
+ <h2 id="m-h">How this is collected</h2>
+ <div class="callout">
+  <strong>Source &amp; reproducibility</strong>
+  SBOMs are generated by each package&rsquo;s release workflow and
+  committed under <code>data/sbom/&lt;pkg&gt;-&lt;version&gt;.cdx.json</code>.
+  License rollup is the union of all <code>component[].licenses[].license.id</code>
+  fields. PEP 740 attestation rows come from
+  <code>https://pypi.org/simple/&lt;pkg&gt;/</code> with
+  <code>Accept: application/vnd.pypi.simple.v1+json</code> &mdash;
+  the <code>files[i].provenance</code> URL and the embedded Rekor
+  index. SBOMs without a <code>dependencies[]</code> graph are flagged
+  yellow because a component list without edges is a manifest, not an
+  SBOM. See <a href="methodology.html">methodology.html</a>.
+ </div>
+</section>
+</main>
+
+<footer>
+ Generated {{ generated_at_display | default('2026-05-11 14:02 UTC') }}
+ | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
+ | Methodology: <a href="methodology.html">methodology.html</a>
+ | Data: <a href="assets/snapshot.json">snapshot.json</a>
+</footer>
+</div>
+</body>
+</html>

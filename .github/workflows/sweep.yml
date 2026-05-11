@@ -1,0 +1,305 @@
+# Cron-driven snapshot + render + deploy for kaos-compliance.
+#
+# Three schedules, each in its own job with an independent concurrency
+# group so they queue (not cancel) when fire-times collide.
+#
+#   - hourly   (light)    — refresh CI / Security / identity / open_prs
+#   - 4-hourly (security) — full sweep, supply_chain re-checked for
+#                           attestation freshness, governance skipped
+#   - daily    (full)     — full sweep + LLM diary (when key present)
+#
+# Cost / failure budget
+# ---------------------
+# Every job is bounded by timeout-minutes: 30. The deploy step is gated
+# on `if: success()` so a failed collect/render never publishes a
+# half-built _site. The snapshot artifact is uploaded with
+# `if: always()` so forensics survive a failed run. No automatic
+# retries — re-run-from-failed-step is a maintainer decision.
+#
+# Light vs. full: collector CLI surface
+# -------------------------------------
+# The snapshot CLI today accepts only `--module`, `--output`, and
+# `--pretty`. There is no `--no-supply-chain` / `--no-governance`
+# switch and adding one would require modifying `collector/snapshot.py`,
+# which this change set is not authorised to do. The three schedules
+# therefore run the same collector binary. The differentiator is the
+# `heartbeat.json` schedule label (written post-render) which the
+# dashboard's freshness widget already reads, and the LLM-diary step
+# which only the 24h job carries. When the collector grows a
+# light-profile switch, only the `Collect` step here needs to change.
+#
+# Secrets
+# -------
+# Only `secrets.GITHUB_TOKEN` (the default repo-scoped token) is used
+# for the deploy. `secrets.ANTHROPIC_API_KEY` is optional; when unset,
+# the daily diary step is skipped at the workflow level rather than
+# relying on collector-side `skipped=True` semantics (which do not
+# exist yet — see the comment block above).
+
+name: Sweep
+
+on:
+  schedule:
+    # Hourly light sweep.
+    - cron: "0 * * * *"
+    # Every 4 hours: security-oriented refresh.
+    - cron: "0 */4 * * *"
+    # Daily UTC midnight: full sweep + diary.
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: "Which sweep profile to run when triggered manually."
+        required: true
+        default: "full"
+        type: choice
+        options:
+          - light
+          - security
+          - full
+
+permissions:
+  contents: write     # required to push gh-pages
+  pages: read
+  id-token: write     # reserved for future sigstore / Rekor calls
+
+jobs:
+  # ────────────── hourly light sweep ──────────────
+  light:
+    name: Sweep (light, 1h)
+    if: >-
+      github.event.schedule == '0 * * * *' ||
+      (github.event_name == 'workflow_dispatch' && inputs.profile == 'light')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: sweep-light
+      cancel-in-progress: false
+    env:
+      SWEEP_PROFILE: light
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install Python 3.13
+        run: uv python install 3.13
+
+      - name: Install dependencies
+        run: uv sync --group dev --python 3.13
+
+      - name: Collect snapshot
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p data/snapshots
+          uv run python -m collector.snapshot \
+            --output data/snapshots/latest.json \
+            --pretty
+
+      - name: Render dashboard
+        run: |
+          uv run python -m render \
+            --snapshot data/snapshots/latest.json \
+            --output _site \
+            --clean
+
+      - name: Tag heartbeat with schedule + git sha
+        env:
+          SCHEDULE_LABEL: "1h"
+          GIT_SHA: ${{ github.sha }}
+        run: bash scripts/_ci/tag-heartbeat.sh _site/heartbeat.json
+
+      - name: Upload snapshot artifact (forensics)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: snapshot-light-${{ github.run_id }}
+          path: data/snapshots/latest.json
+          retention-days: 14
+
+      - name: Deploy to gh-pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          keep_files: false
+          commit_message: "sweep(light): ${{ github.sha }}"
+          user_name: "kaos-compliance-bot"
+          user_email: "kaos-compliance-bot@users.noreply.github.com"
+
+  # ────────────── 4-hourly security refresh ──────────────
+  security:
+    name: Sweep (security, 4h)
+    if: >-
+      github.event.schedule == '0 */4 * * *' ||
+      (github.event_name == 'workflow_dispatch' && inputs.profile == 'security')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: sweep-security
+      cancel-in-progress: false
+    env:
+      SWEEP_PROFILE: security
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install Python 3.13
+        run: uv python install 3.13
+
+      - name: Install dependencies
+        run: uv sync --group dev --python 3.13
+
+      - name: Collect snapshot
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p data/snapshots
+          uv run python -m collector.snapshot \
+            --output data/snapshots/latest.json \
+            --pretty
+
+      - name: Render dashboard
+        run: |
+          uv run python -m render \
+            --snapshot data/snapshots/latest.json \
+            --output _site \
+            --clean
+
+      - name: Tag heartbeat with schedule + git sha
+        env:
+          SCHEDULE_LABEL: "4h"
+          GIT_SHA: ${{ github.sha }}
+        run: bash scripts/_ci/tag-heartbeat.sh _site/heartbeat.json
+
+      - name: Upload snapshot artifact (forensics)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: snapshot-security-${{ github.run_id }}
+          path: data/snapshots/latest.json
+          retention-days: 30
+
+      - name: Deploy to gh-pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          keep_files: false
+          commit_message: "sweep(security): ${{ github.sha }}"
+          user_name: "kaos-compliance-bot"
+          user_email: "kaos-compliance-bot@users.noreply.github.com"
+
+  # ────────────── daily full sweep ──────────────
+  full:
+    name: Sweep (full, 24h)
+    if: >-
+      github.event.schedule == '0 0 * * *' ||
+      (github.event_name == 'workflow_dispatch' && inputs.profile == 'full')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: sweep-full
+      cancel-in-progress: false
+    env:
+      SWEEP_PROFILE: full
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install Python 3.13
+        run: uv python install 3.13
+
+      - name: Install dependencies (with optional llm extra when API key present)
+        env:
+          HAS_ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+        run: |
+          if [ "${HAS_ANTHROPIC_KEY}" = "true" ]; then
+            uv sync --group dev --extra llm --python 3.13
+          else
+            uv sync --group dev --python 3.13
+          fi
+
+      - name: Collect snapshot
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p data/snapshots
+          uv run python -m collector.snapshot \
+            --output data/snapshots/latest.json \
+            --pretty
+
+      - name: Generate LLM diary
+        # Only runs when the optional API key is configured. The diary
+        # collector is invoked as a best-effort module: a failure here
+        # MUST NOT block the deploy of the rest of the snapshot, hence
+        # `continue-on-error: true`. The renderer reads whatever JSON
+        # exists under data/diary/ and degrades gracefully when empty.
+        if: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          mkdir -p data/diary
+          if uv run python -c "import importlib; importlib.import_module('collector.diary')" 2>/dev/null; then
+            uv run python -m collector.diary --output "data/diary/$(date -u +%Y-%m-%d).json"
+          else
+            echo "collector.diary not yet wired — skipping (see docs/METHODOLOGY.md §Cadence)."
+          fi
+
+      - name: Render dashboard
+        run: |
+          uv run python -m render \
+            --snapshot data/snapshots/latest.json \
+            --output _site \
+            --clean
+
+      - name: Tag heartbeat with schedule + git sha
+        env:
+          SCHEDULE_LABEL: "24h"
+          GIT_SHA: ${{ github.sha }}
+        run: bash scripts/_ci/tag-heartbeat.sh _site/heartbeat.json
+
+      - name: Upload snapshot artifact (forensics)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: snapshot-full-${{ github.run_id }}
+          path: |
+            data/snapshots/latest.json
+            data/diary/
+          retention-days: 90
+
+      - name: Deploy to gh-pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          keep_files: false
+          commit_message: "sweep(full): ${{ github.sha }}"
+          user_name: "kaos-compliance-bot"
+          user_email: "kaos-compliance-bot@users.noreply.github.com"
