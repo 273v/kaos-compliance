@@ -373,10 +373,16 @@ jobs:
         # MUST NOT block the deploy of the rest of the snapshot, hence
         # `continue-on-error: true`. The renderer reads whatever JSON
         # exists under data/diary/ and degrades gracefully when empty.
-        if: ${{ secrets.ANTHROPIC_API_KEY != '' }}
-        continue-on-error: true
+        #
+        # Note: the `secrets` context is NOT available in step-level
+        # `if:` expressions, so we surface the key as an env var first
+        # and gate on the env var. (Direct `secrets.*` in `if:`
+        # crashes the workflow with a YAML parse error at dispatch
+        # time — that's what broke every sweep after PR #7.)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        if: env.ANTHROPIC_API_KEY != ''
+        continue-on-error: true
         run: |
           mkdir -p data/diary
           if uv run python -c "import importlib; importlib.import_module('collector.diary')" 2>/dev/null; then
