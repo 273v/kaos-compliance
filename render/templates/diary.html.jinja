@@ -54,6 +54,7 @@ a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:
 .page-head .meta{font-family:var(--mono);font-size:0.75rem;color:var(--muted)}
 nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
 nav.subnav a{color:var(--muted)}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:600}
 h3{font-size:1.125rem;line-height:1.25;margin:var(--s-5) 0 var(--s-2);font-weight:600}
 .card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-5)}
@@ -82,6 +83,10 @@ footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--b
 footer a{color:var(--muted)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
+/* R21: dedicated visually-hidden utility for strict-CSP-compatible
+   off-screen headings (no inline ``style``). Mirrors the .sr-only
+   pattern on the index template. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media (max-width:720px){
  .wrap{padding:var(--s-5) var(--s-4)}
  .page-head h1{font-size:1.5rem}
@@ -106,10 +111,10 @@ footer a{color:var(--muted)}
   <p>LLM-generated rolling summary of the last 24h of git activity across the KAOS open-source ecosystem. Auditor view; see <a href="methodology.html">methodology</a> for limits.</p>
   <nav class="subnav" aria-label="Sections">
    <a href="index.html">Org rollup</a>
+   <a href="methodology.html" class="methodology">Methodology</a>
    <a href="security.html">Security</a>
    <a href="supply-chain.html">Supply chain</a>
    <a href="governance.html">Governance</a>
-   <a href="methodology.html">Methodology</a>
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
@@ -120,17 +125,34 @@ footer a{color:var(--muted)}
 <main id="main">
 
 {% set d = diary | default({}) %}
+{# R12: when the diary has no data yet (cold start, first sweep, or LLM
+   provider unavailable), make absolutely clear that this is an active
+   feature with a defined contract — not an abandoned page. The empty
+   state previously read as "feature shipped, then forgotten"; we now
+   surface the cron cadence + LLM-availability contract up front. #}
+{% set has_narrative = (d.narrative is defined and d.narrative and not d.skipped) %}
 
 {% if d.skipped %}
 <div class="banner" role="status">
- <strong>Diary unavailable.</strong>
+ <strong>Diary unavailable for this window.</strong>
  {{ d.skipped_reason | default('No LLM call was made for this window.') }}
- Commit aggregation below is still authoritative.
+ Commit aggregation below is still authoritative; the daily narrative
+ will resume on the next sweep when the model-provider API key is wired
+ (see <a href="methodology.html#cadence">methodology &mdash; cadence</a>).
+</div>
+{% elif not has_narrative and not (history | default([])) %}
+<div class="banner" role="status">
+ <strong>Diary cold start.</strong>
+ The diary collector runs on the 24h Full sweep (see
+ <a href="methodology.html#cadence">methodology &mdash; cadence</a>) and
+ publishes one entry per UTC day. This page populates after the first
+ successful sweep; until then the headline counts and per-package detail
+ pages remain the evidence path.
 </div>
 {% endif %}
 
 <section aria-labelledby="strip-h">
- <h2 id="strip-h" class="sr-only" style="position:absolute;left:-9999px">Headline counts</h2>
+ <h2 id="strip-h" class="sr-only">Headline counts</h2>
  <div class="strip">
   <div class="stat"><span class="n">{{ d.date | default('—') }}</span><span class="lab">Diary date (UTC)</span></div>
   <div class="stat"><span class="n">{{ d.repos_observed | default('—') }}</span><span class="lab">Repos observed</span></div>

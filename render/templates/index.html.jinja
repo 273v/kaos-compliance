@@ -89,13 +89,22 @@ footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--b
 footer a{color:var(--muted)}
 nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
 nav.subnav a{color:var(--muted)}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
+/* R21: dedicated visually-hidden class so strict CSP (style-src 'self')
+   doesn't break on inline ``style="position:absolute;left:-9999px"``.
+   The previous pattern blocked any deployment that pinned style-src to
+   'self' without 'unsafe-inline'; section-h2 elements now use this. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media (max-width:720px){
  .wrap{padding:var(--s-5) var(--s-4)}
  .page-head h1{font-size:1.5rem}
  .rollup-grid{grid-template-columns:1fr 1fr}
  .strip{grid-template-columns:1fr 1fr}
+ /* R22: at <480px the four-up Code-surface strip overflows. Drop to
+    2x2 so the 274,030-class numbers don't push the layout. */
+ .strip .stat .n{font-size:1.5rem}
  table.grid thead{display:none}
  table.grid,table.grid tbody,table.grid tr,table.grid td{display:block;width:100%}
  table.grid tr{border:1px solid var(--border);border-radius:6px;margin-bottom:var(--s-3);padding:var(--s-3)}
@@ -119,12 +128,17 @@ nav.subnav a{color:var(--muted)}
  <div>
   <h1>KAOS Compliance Dashboard</h1>
   <p>273 Ventures open-source packages — auditor view</p>
+  {# R14: Methodology promoted to second-position. For an auditor view
+     the methodology is the second-most-important page after the
+     rollup; the previous rightmost-de-emphasized placement read as a
+     legal footnote. The dotted underline + class signals the elevation
+     without re-skinning the nav. #}
   <nav class="subnav" aria-label="Sections">
+   <a href="methodology.html" class="methodology">Methodology</a>
    <a href="security.html">Security</a>
    <a href="supply-chain.html">Supply chain</a>
    <a href="governance.html">Governance</a>
    <a href="diary.html">Diary</a>
-   <a href="methodology.html">Methodology</a>
    <a href="methodology.html#pill-semantics">Pill semantics</a>
   </nav>
   {# Integrity claim (R4): tie each render to a sigstore signature on
@@ -138,9 +152,9 @@ nav.subnav a{color:var(--muted)}
    {% set _cls = {'green': 'g', 'yellow': 'y', 'red': 'r', 'gray': 'n'}[_state] %}
    {% set _label = 'snapshot signed' if integrity.signature_present else 'snapshot unsigned (local render)' %}
    <p class="integrity-claim" style="margin-top:var(--s-3);font-size:0.8125rem">
-    <span class="pill {{ _cls }}" aria-label="Snapshot signature status">
+    <span class="pill {{ _cls }}" aria-label="Snapshot signature: {{ _label }}">
      <span class="gly" aria-hidden="true">{% if integrity.signature_present %}✓{% else %}—{% endif %}</span>
-     <span class="wd">{{ _label }}</span>
+     <span class="wd" aria-hidden="true">{{ _label }}</span>
     </span>
     {% if integrity.signature_present and integrity.signature_url %}
      &middot; <a href="{{ integrity.signature_url }}">snapshot.sig</a>
@@ -222,7 +236,7 @@ nav.subnav a{color:var(--muted)}
 </section>
 
 <section aria-labelledby="strip-h">
- <h2 id="strip-h" class="sr-only" style="position:absolute;left:-9999px">Headline metrics</h2>
+ <h2 id="strip-h" class="sr-only">Headline metrics</h2>
  <div class="strip">
   <div class="stat"><span class="n">{{ org.repos_total | default(16) }}</span><span class="lab">Repositories</span></div>
   <div class="stat"><span class="n">{{ org.commits_total | default('—') }}</span><span class="lab">Commits</span></div>
@@ -232,11 +246,11 @@ nav.subnav a{color:var(--muted)}
 </section>
 
 <section aria-labelledby="code-strip-h">
- <h2 id="code-strip-h" class="sr-only" style="position:absolute;left:-9999px">Code surface area</h2>
+ <h2 id="code-strip-h" class="sr-only">Code surface area</h2>
  <div class="strip" style="margin-top:var(--s-3)">
   <div class="stat">
    <span class="n">{% if org.loc_total is number %}{{ '{:,}'.format(org.loc_total) }}{% else %}{{ org.loc_total | default('—') }}{% endif %}</span>
-   <span class="lab">Lines of code (hand-written)</span>
+   <span class="lab">Source lines of code</span>
   </div>
   <div class="stat">
    <span class="n">{% if org.files_total is number %}{{ '{:,}'.format(org.files_total) }}{% else %}{{ org.files_total | default('—') }}{% endif %}</span>
@@ -251,6 +265,27 @@ nav.subnav a{color:var(--muted)}
    <span class="lab">Rust src LoC</span>
   </div>
  </div>
+ {# R15: provenance footnote for the LoC headline. Without this the
+    number reads as a vanity stat; with it a reviewer knows what
+    counter, what exclusions, and where the spec lives. The
+    AI-assisted-authorship disclosure is non-negotiable: a "lines of
+    code" headline without it would imply human typing, which is
+    untrue for this codebase. #}
+ <p style="margin:var(--s-2) 0 0;color:var(--muted);font-size:0.75rem">
+  Counter: <code>collector/code_metrics.py</code> (non-blank, non-comment
+  lines; Python via <code>tokenize</code>, Rust via a comment-stripping
+  pass). Excludes <code>.venv</code>, <code>target</code>,
+  <code>dist</code>, <code>build</code>, <code>__pycache__</code>,
+  <code>_site</code>, and lockfiles (<code>uv.lock</code>,
+  <code>Cargo.lock</code>). Tests are paths whose ancestor names match
+  <code>tests</code> / <code>test</code> / <code>benches</code>.
+  <strong>Authorship:</strong> this codebase is AI-assisted &mdash;
+  the lines counted here were generated with Claude (Anthropic) and
+  human-reviewed before commit. We count what's in <code>git</code>;
+  we do not claim humans typed every character. Full spec in
+  <a href="methodology.html#sig-loc">methodology &mdash; lines of
+  code</a>.
+ </p>
 </section>
 
 <section aria-labelledby="grid-h">
@@ -280,17 +315,22 @@ nav.subnav a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/{{ p.name }}.html">{{ p.name }}</a></td>
     <td class="ver" data-h="Version">{{ p.version }}</td>
+    {# R20: ``aria-label`` on the link/span fully describes the pill;
+       the inner ``.gly`` and ``.wd`` spans are decorative and marked
+       ``aria-hidden`` so screen readers don't read "Build Pass open
+       evidence Pass" with a doubled Pass. The visible label still
+       reads "Pass" for sighted users. #}
     {% for col in ["build","tests","security","signing","license","deps"] %}
      {% set st = states[p[col]] %}
      {% set link = (p.pill_links or {})[col] %}
      <td data-h="{{ col | capitalize }}">
       {% if link %}
        <a class="pill {{ st[0] }}" href="{{ link }}" target="_blank" rel="noopener" aria-label="{{ col | capitalize }}: {{ st[2] }} — open evidence">
-        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span>
+        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}</span>
        </a>
       {% else %}
        <span class="pill {{ st[0] }}" aria-label="{{ col | capitalize }}: {{ st[2] }}">
-        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span>
+        <span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}</span>
        </span>
       {% endif %}
      </td>
@@ -306,7 +346,7 @@ nav.subnav a{color:var(--muted)}
     {% endif %}
     <td data-h="Branch prot.">
      <span class="pill {{ bp_st[0] }}" aria-label="Branch protection: {{ bp_st[2] }}">
-      <span class="gly" aria-hidden="true">{{ bp_st[1] }}</span><span class="wd">{{ bp_st[2] }}</span>
+      <span class="gly" aria-hidden="true">{{ bp_st[1] }}</span><span class="wd" aria-hidden="true">{{ bp_st[2] }}</span>
      </span>
     </td>
     <td class="age" data-h="Last release">{{ p.last_release_display | default(p.last_release) }}</td>

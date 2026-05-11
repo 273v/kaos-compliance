@@ -108,7 +108,7 @@ footer a{color:var(--muted)}
 {% set states = {"green":["g","✓","Pass"],"yellow":["y","⚠","Warn"],"red":["r","✗","Fail"],"gray":["n","—","No signal"]} %}
 {% macro pill(state, col) -%}
 {% set st = states[state] %}
-<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span></span>
+<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd" aria-hidden="true">{{ st[2] }}</span></span>
 {%- endmacro %}
 <div class="wrap">
 <nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; {{ pkg.name | default('kaos-core') }}</nav>
@@ -262,7 +262,7 @@ footer a{color:var(--muted)}
    <dd>{% if pkg.code_metrics.rs_src_loc is number and pkg.code_metrics.rs_src_loc > 0 %}{{ '{:,}'.format(pkg.code_metrics.rs_src_loc) }} across {{ pkg.code_metrics.rs_src_files | default(0) }} files{% else %}—{% endif %}</dd>
    <dt>Rust tests (LoC)</dt>
    <dd>{% if pkg.code_metrics.rs_tests_loc is number and pkg.code_metrics.rs_tests_loc > 0 %}{{ '{:,}'.format(pkg.code_metrics.rs_tests_loc) }} across {{ pkg.code_metrics.rs_tests_files | default(0) }} files{% else %}—{% endif %}</dd>
-   <dt>Total (hand-written)</dt>
+   <dt>Source lines of code</dt>
    <dd>{% if pkg.code_metrics.total_loc is number %}{{ '{:,}'.format(pkg.code_metrics.total_loc) }} LoC{% else %}—{% endif %}</dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
@@ -271,7 +271,10 @@ footer a{color:var(--muted)}
    <code>__pycache__</code>, <code>_site</code>, and lockfiles
    (<code>uv.lock</code>, <code>Cargo.lock</code>). Tests are paths whose
    ancestors contain <code>tests</code>, <code>test</code>, or
-   <code>benches</code>.
+   <code>benches</code>. <strong>Authorship:</strong> this codebase is
+   AI-assisted &mdash; lines were generated with Claude (Anthropic) and
+   human-reviewed before commit. We count what's in <code>git</code>;
+   we do not claim humans typed every character.
   </p>
  </div>
 </section>
