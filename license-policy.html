@@ -11,6 +11,22 @@
 <link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/dashboard.css">
 <style>
+@media (prefers-color-scheme: dark){:root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;--g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;--r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);line-height:1.55;font-size:16px}
+body{padding:var(--s-5);max-width:1100px;margin:0 auto}
+a{color:var(--focus)}
+header{padding-bottom:var(--s-5);border-bottom:1px solid var(--border);margin-bottom:var(--s-5)}
+header h1{font-size:1.5rem;margin:0 0 var(--s-2)}
+header .meta{color:var(--muted);font-size:0.875rem;font-family:var(--mono)}
+nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
+nav.subnav a{color:var(--muted)}
+nav.subnav a[aria-current=page]{color:var(--text);font-weight:600}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
+h2{font-size:1.125rem;margin:var(--s-6) 0 var(--s-3)}
+h3{font-size:1rem;margin:var(--s-5) 0 var(--s-2);font-family:var(--mono)}
 .card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-5);margin-bottom:var(--s-4)}
 .entry{border-left:4px solid var(--g-fg);padding-left:var(--s-4)}
 .entry.gap{border-left-color:var(--y-fg)}
@@ -21,13 +37,14 @@ dl.kv dd{margin:0;font-size:0.9375rem}
 .chip{display:inline-block;padding:1px 6px;background:var(--n-bg);color:var(--n-fg);border-radius:2px;font-family:var(--mono);font-size:0.75rem;margin:0 2px 2px 0}
 .chip.gold{background:var(--y-bg);color:var(--y-fg)}
 blockquote{margin:var(--s-2) 0;padding:var(--s-3) var(--s-4);background:var(--n-bg);border-radius:4px;font-size:0.9375rem}
+footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
+footer a{color:var(--muted)}
 @media print{body{padding:0;color:#000;background:#fff;max-width:none} a{color:#000;text-decoration:underline}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="wrap">
-<header class="page-head">
+<header>
  <h1>License policy</h1>
  <nav class="subnav">
   <a href="index.html">Org rollup</a>
@@ -39,7 +56,7 @@ blockquote{margin:var(--s-2) 0;padding:var(--s-3) var(--s-4);background:var(--n-
   <a href="license-policy.html" aria-current="page">License policy</a>
  </nav>
  <div class="meta">
-  Generated 2026-05-11 18:52 UTC
+  Generated 2026-05-11 19:20 UTC
  · Policy v0 </div>
 </header>
 
@@ -171,8 +188,7 @@ blockquote{margin:var(--s-2) 0;padding:var(--s-3) var(--s-4);background:var(--n-
 
 </main>
 <footer>
- Generated 2026-05-11 18:52 UTC · Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a> · <a href="methodology.html">Methodology</a> · <a href="api/v1/index.html">All endpoints</a>
+ Generated 2026-05-11 19:20 UTC · Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a> · <a href="methodology.html">Methodology</a> · <a href="api/v1/index.html">All endpoints</a>
 </footer>
-</div>
 </body>
 </html>
