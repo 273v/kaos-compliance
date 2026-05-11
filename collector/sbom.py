@@ -89,6 +89,7 @@ _SPDX_3_24_CANONICAL: frozenset[str] = frozenset(
         "LGPL-3.0-or-later",
         "MIT",
         "MIT-0",
+        "MIT-CMU",
         "MPL-1.1",
         "MPL-2.0",
         "OFL-1.1",
@@ -124,6 +125,9 @@ _LICENSE_ALIASES: dict[str, str] = {
     "the mit license": "MIT",
     "expat": "MIT",
     "expat license": "MIT",
+    "mit-cmu": "MIT-CMU",
+    "hpnd": "MIT-CMU",  # pillow historically uses HPND-derived MIT-CMU
+    "hpnd license": "MIT-CMU",
     "mit-0": "MIT-0",
     # BSD family
     "bsd": "BSD-3-Clause",
@@ -323,11 +327,18 @@ def normalize_license(raw: str | None) -> str:
     if s in _SPDX_3_24_CANONICAL:
         return s
 
-    # SPDX compound expression? Validate each ID.
-    if re.search(r"\b(AND|OR|WITH)\b", s):
-        tokens = re.split(r"\s+(?:AND|OR|WITH)\s+", s)
+    # SPDX compound expression? Validate each ID. Accept case-insensitive
+    # joiners so "BSD-3-Clause and Public-Domain" round-trips.
+    if re.search(r"\b(AND|OR|WITH)\b", s, re.IGNORECASE):
+        tokens = re.split(r"\s+(?:AND|OR|WITH)\s+", s, flags=re.IGNORECASE)
         if all(t.strip("()") in _SPDX_3_24_CANONICAL for t in tokens):
-            return s
+            # Re-emit with canonical-uppercase joiners.
+            return re.sub(
+                r"\s+(and|or|with)\s+",
+                lambda m: f" {m.group(1).upper()} ",
+                s,
+                flags=re.IGNORECASE,
+            )
 
     folded = _LICENSE_ALIASES.get(s.lower())
     if folded:
@@ -340,7 +351,63 @@ def normalize_license(raw: str | None) -> str:
     if folded:
         return folded
 
+    # Last-ditch: text-mine the verbose copyright-blob form that many
+    # PyPI packages dump into the `license` field instead of an SPDX
+    # expression. Look for unambiguous marker phrases from the major
+    # permissive licenses; conservative — we only return a verdict when
+    # the marker appears in the first ~600 chars (where the canonical
+    # header lives) and ambiguous text falls through to LicenseRef.
+    head = s[:600].lower()
+    text_mined = _text_mine_license(head)
+    if text_mined:
+        return text_mined
+
     return _unknown_ref(s)
+
+
+# Conservative phrase → SPDX expression map for text-mining verbose
+# `info.license` blobs from PyPI. Order matters: longer / more-specific
+# phrases first so "Mozilla Public License Version 2.0" isn't shadowed
+# by a bare "license".
+_LICENSE_TEXT_MARKERS: tuple[tuple[str, str], ...] = (
+    ("apache license, version 2.0", "Apache-2.0"),
+    ("apache-2.0 license", "Apache-2.0"),
+    ("the apache license", "Apache-2.0"),
+    ("mozilla public license, version 2.0", "MPL-2.0"),
+    ("mozilla public license version 2.0", "MPL-2.0"),
+    ("mpl-2.0", "MPL-2.0"),
+    ("gnu general public license, version 3", "GPL-3.0-or-later"),
+    ("gnu general public license, version 2", "GPL-2.0-or-later"),
+    ("gnu lesser general public license, version 3", "LGPL-3.0-or-later"),
+    ("gnu lesser general public license, version 2", "LGPL-2.1-or-later"),
+    ("gnu affero general public license", "AGPL-3.0-or-later"),
+    ("the mit license", "MIT"),
+    ("mit license", "MIT"),
+    ("bsd 3-clause", "BSD-3-Clause"),
+    ("bsd-3-clause", "BSD-3-Clause"),
+    ("bsd 2-clause", "BSD-2-Clause"),
+    ("bsd-2-clause", "BSD-2-Clause"),
+    ("isc license", "ISC"),
+    ("zlib license", "Zlib"),
+    ("the unlicense", "Unlicense"),
+    ("python software foundation license", "PSF-2.0"),
+    ("psf license", "PSF-2.0"),
+)
+
+
+def _text_mine_license(head: str) -> str | None:
+    """Return an SPDX expression for known license phrases, or None.
+
+    ``head`` should already be lowercase and bounded to a small prefix
+    of the input. Matches the first occurring marker phrase in the
+    ordered list so a verbose ``"... MIT and Apache ..."`` blob still
+    resolves to the first license-evidence marker rather than to a
+    LicenseRef-unknown.
+    """
+    for needle, spdx in _LICENSE_TEXT_MARKERS:
+        if needle in head:
+            return spdx
+    return None
 
 
 def _unknown_ref(raw: str) -> str:
@@ -580,6 +647,62 @@ def enrich_from_pypi(
         c.license_hint_from_metadata = raw_license
         c.license_spdx = normalize_license(raw_license)
         c.supplier = _pick_supplier(info)
+    return components
+
+
+def enrich_from_crates_io(
+    components: list[Component],
+    *,
+    gh_run: _UrlFetcher,
+) -> list[Component]:
+    """Populate ``license_spdx`` + ``supplier`` for Rust components.
+
+    Cargo.lock does not carry license metadata — the field lives in
+    each crate's ``Cargo.toml`` on crates.io. Without this enrichment,
+    every Rust transitive dep falls through to ``LicenseRef-unknown``,
+    which is the single biggest source of yellow-pill noise on the
+    dashboard.
+
+    We query ``https://crates.io/api/v1/crates/<name>/<version>`` for
+    each Rust component. The license field there is already an SPDX
+    expression (Cargo enforces this at publish), so the normalization
+    pass simplifies to a direct ``normalize_license`` call.
+
+    Args:
+        components: List of Component records. Mutated in place.
+        gh_run: Retry-aware HTTP fetcher.
+
+    Returns:
+        Same list, with cargo components' ``license_spdx`` filled.
+    """
+    for c in components:
+        if c.ecosystem != "cargo" or c.is_root:
+            continue
+        url = f"https://crates.io/api/v1/crates/{c.name}/{c.version}"
+        payload = gh_run(url)
+        if not payload:
+            continue
+        version_info = payload.get("version") or {}
+        raw_license = version_info.get("license")
+        if raw_license:
+            c.license_hint_from_metadata = raw_license
+            c.license_spdx = normalize_license(raw_license)
+        # crates.io exposes a `published_by.name` field for some
+        # crates; fall back to the crate's `homepage` host. Many crates
+        # leave both empty, in which case we keep whatever the lockfile
+        # supplier sentinel was.
+        published_by = (version_info.get("published_by") or {}).get("name")
+        if isinstance(published_by, str) and published_by.strip():
+            c.supplier = published_by.strip()
+        else:
+            homepage = (payload.get("crate") or {}).get("homepage")
+            if isinstance(homepage, str) and homepage:
+                try:
+                    host = urllib.parse.urlparse(homepage).hostname or ""
+                    if host:
+                        c.supplier = host.lower().removeprefix("www.")
+                except ValueError:
+                    pass
     return components
 
 

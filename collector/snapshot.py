@@ -61,7 +61,7 @@ from pathlib import Path
 from typing import Any
 
 from collector import __version__ as COLLECTOR_VERSION
-from collector import governance, supply_chain
+from collector import code_metrics, governance, supply_chain
 from collector._retry import gh_run, url_get_json
 
 ORG = "273v"
@@ -134,14 +134,15 @@ class ModuleSnapshot:
     security: SecuritySection
     open_prs: OpenPRsSection
     freshness: FreshnessSection
-    # The supply-chain and governance sections are returned as raw
-    # dicts by their dedicated collector modules; we keep them dicts
-    # (rather than refactoring those modules to share dataclasses)
-    # because the dashboard schema is the only place that needs the
-    # exact shape, and adding adapter dataclasses adds friction
+    # The supply-chain, governance, and code-metrics sections are
+    # returned as raw dicts by their dedicated collector modules. We
+    # keep them dicts (rather than refactoring those modules to share
+    # dataclasses) because the dashboard schema is the only place that
+    # needs the exact shape, and adapter dataclasses add friction
     # without buying anything.
     supply_chain: dict[str, Any] = field(default_factory=dict)
     governance: dict[str, Any] = field(default_factory=dict)
+    code_metrics: dict[str, Any] = field(default_factory=dict)
     errors: list[str] = field(default_factory=list)
 
 
@@ -151,7 +152,13 @@ class ModuleSnapshot:
 
 
 def discover_public_kaos_repos() -> list[str]:
-    """List every public ``273v/kaos-*`` repository name."""
+    """List every public ``273v/kaos-*`` repository the dashboard tracks.
+
+    ``kaos-compliance`` is explicitly excluded — it's *this* repo, and
+    self-tracking adds noise without buying signal (the dashboard's own
+    health is observable from its heartbeat, not from a row in its own
+    table).
+    """
     raw = gh_run(
         [
             "repo",
@@ -166,7 +173,7 @@ def discover_public_kaos_repos() -> list[str]:
         ]
     ).stdout
     names = [r["name"] for r in json.loads(raw)]
-    return sorted(n for n in names if n.startswith("kaos-"))
+    return sorted(n for n in names if n.startswith("kaos-") and n != "kaos-compliance")
 
 
 # ---------------------------------------------------------------------------
@@ -450,6 +457,15 @@ def collect_module(repo: str) -> ModuleSnapshot:
         gov = {"errors": [f"governance: {exc}"]}
         errors.append(f"governance: {exc}")
 
+    # Code-metrics (collector/code_metrics.py): hand-written Python +
+    # Rust LoC + file counts from the sibling clone. Pure filesystem
+    # read; cheap relative to the API-bound sections above.
+    try:
+        cm = code_metrics.collect(sibling_dir if sibling_dir.is_dir() else None)
+    except Exception as exc:  # noqa: BLE001
+        cm = {"errors": [f"code_metrics: {exc}"]}
+        errors.append(f"code_metrics: {exc}")
+
     fresh = FreshnessSection(
         days_since_last_commit=_days_since(ident.last_commit_at),
         days_since_last_release=_days_since(sc.get("pypi_release_iso")),
@@ -465,6 +481,7 @@ def collect_module(repo: str) -> ModuleSnapshot:
         freshness=fresh,
         supply_chain=sc,
         governance=gov,
+        code_metrics=cm,
         errors=errors,
     )
 

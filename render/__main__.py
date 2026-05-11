@@ -261,6 +261,33 @@ def _module_view(module: dict[str, Any]) -> dict[str, Any]:
 
     # Per-detail-page enrichments — only used when this row is the
     # `pkg` context object on the package template.
+    # Code-surface signals for the per-package detail page.
+    cm = module.get("code_metrics") or {}
+    py = cm.get("python") or {}
+    rs = cm.get("rust") or {}
+    code_metrics_view = {
+        "py_src_loc": py.get("src_loc"),
+        "py_tests_loc": py.get("tests_loc"),
+        "py_src_files": py.get("src_files"),
+        "py_tests_files": py.get("tests_files"),
+        "rs_src_loc": rs.get("src_loc"),
+        "rs_tests_loc": rs.get("tests_loc"),
+        "rs_src_files": rs.get("src_files"),
+        "rs_tests_files": rs.get("tests_files"),
+        "total_loc": sum(
+            v
+            for v in (
+                py.get("src_loc"),
+                py.get("tests_loc"),
+                rs.get("src_loc"),
+                rs.get("tests_loc"),
+            )
+            if isinstance(v, int)
+        )
+        or None,
+    }
+    row["code_metrics"] = code_metrics_view
+
     row.update(
         {
             # ci_matrix shape expected by the template:
@@ -360,6 +387,36 @@ def _org_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
     def _dash(v: int | None) -> Any:
         return v if v is not None else "—"
 
+    # Org-wide code-surface aggregates (hand-written src + tests).
+    py_src = py_test = rs_src = rs_test = 0
+    py_src_files = py_test_files = rs_src_files = rs_test_files = 0
+    py_src_known = py_test_known = rs_src_known = rs_test_known = False
+    for m in modules:
+        cm = m.get("code_metrics") or {}
+        py = cm.get("python") or {}
+        rs = cm.get("rust") or {}
+        if isinstance(py.get("src_loc"), int):
+            py_src += py["src_loc"]
+            py_src_files += py.get("src_files") or 0
+            py_src_known = True
+        if isinstance(py.get("tests_loc"), int):
+            py_test += py["tests_loc"]
+            py_test_files += py.get("tests_files") or 0
+            py_test_known = True
+        if isinstance(rs.get("src_loc"), int):
+            rs_src += rs["src_loc"]
+            rs_src_files += rs.get("src_files") or 0
+            rs_src_known = True
+        if isinstance(rs.get("tests_loc"), int):
+            rs_test += rs["tests_loc"]
+            rs_test_files += rs.get("tests_files") or 0
+            rs_test_known = True
+
+    loc_total = (py_src + py_test + rs_src + rs_test) if (
+        py_src_known or py_test_known or rs_src_known or rs_test_known
+    ) else None
+    files_total = (py_src_files + py_test_files + rs_src_files + rs_test_files) or None
+
     return {
         "composite_green": composite_green,
         "composite_total": total,
@@ -372,6 +429,18 @@ def _org_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
         "commits_total": _dash(commits_total),
         "tests_total": _dash(tests_total or None),
         "platforms_total": _dash(len(platform_set) or None),
+        # Code-surface aggregates (rendered on the index secondary
+        # strip + the supply-chain / governance pages).
+        "loc_total": _dash(loc_total),
+        "files_total": _dash(files_total),
+        "py_src_loc": py_src if py_src_known else None,
+        "py_tests_loc": py_test if py_test_known else None,
+        "rs_src_loc": rs_src if rs_src_known else None,
+        "rs_tests_loc": rs_test if rs_test_known else None,
+        "py_src_files": py_src_files,
+        "py_tests_files": py_test_files,
+        "rs_src_files": rs_src_files,
+        "rs_tests_files": rs_test_files,
     }
 
 

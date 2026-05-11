@@ -643,10 +643,26 @@ def _fill_sbom(
     except Exception as exc:
         errors.append(f"sbom_enrich: {type(exc).__name__}: {exc}")
 
-    # Cargo lockfile carries no license field; the offline book is a
-    # best-effort backfill for the common Python deps so we don't
-    # under-report the breakdown. ``apply_offline_license_book`` only
-    # touches components whose SPDX is still ``LicenseRef-unknown-*``.
+    # Rust components: crates.io carries the license expression in
+    # crate metadata even though Cargo.lock does not. This single
+    # enrichment pass kills the largest source of "unknown" pill
+    # warnings on the dashboard — without it ~80% of yellow pills
+    # are Cargo crates whose licenses we already know.
+    def _crates_fetcher(url: str) -> dict[str, Any] | None:
+        try:
+            payload = url_get_json(url)
+        except Exception:
+            return None
+        return payload if isinstance(payload, dict) else None
+
+    try:
+        _sbom.enrich_from_crates_io(components, gh_run=_crates_fetcher)
+    except Exception as exc:
+        errors.append(f"sbom_crates_io: {type(exc).__name__}: {exc}")
+
+    # Offline license book is a best-effort backfill for common Python
+    # deps whose PyPI metadata is missing or malformed. Only touches
+    # components whose SPDX is still ``LicenseRef-unknown-*``.
     try:
         _sbom.apply_offline_license_book(components)
     except Exception as exc:

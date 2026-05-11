@@ -161,6 +161,28 @@ nav.subnav a{color:var(--muted)}
  </div>
 </section>
 
+<section aria-labelledby="code-strip-h">
+ <h2 id="code-strip-h" class="sr-only" style="position:absolute;left:-9999px">Code surface area</h2>
+ <div class="strip" style="margin-top:var(--s-3)">
+  <div class="stat">
+   <span class="n">{% if org.loc_total is number %}{{ '{:,}'.format(org.loc_total) }}{% else %}{{ org.loc_total | default('—') }}{% endif %}</span>
+   <span class="lab">Lines of code (hand-written)</span>
+  </div>
+  <div class="stat">
+   <span class="n">{% if org.files_total is number %}{{ '{:,}'.format(org.files_total) }}{% else %}{{ org.files_total | default('—') }}{% endif %}</span>
+   <span class="lab">Source + test files</span>
+  </div>
+  <div class="stat">
+   <span class="n">{% if org.py_src_loc is number %}{{ '{:,}'.format(org.py_src_loc) }}{% else %}—{% endif %}</span>
+   <span class="lab">Python src LoC</span>
+  </div>
+  <div class="stat">
+   <span class="n">{% if org.rs_src_loc is number %}{{ '{:,}'.format(org.rs_src_loc) }}{% else %}—{% endif %}</span>
+   <span class="lab">Rust src LoC</span>
+  </div>
+ </div>
+</section>
+
 <section aria-labelledby="grid-h">
  <h2 id="grid-h">Packages</h2>
  <table class="grid" aria-describedby="grid-h">

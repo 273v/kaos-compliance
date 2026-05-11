@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:0883ead9-c2b4-468f-a922-80eb5fcdd325",
+  "serialNumber": "urn:uuid:c98fcbaa-3a87-4902-9278-b26665f071a3",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-11T15:18:53Z",
+    "timestamp": "2026-05-11T15:58:19Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -1454,7 +1454,7 @@
       "licenses": [
         {
           "license": {
-            "name": "LicenseRef-unknown-bad7811d"
+            "id": "MIT"
           }
         }
       ],
@@ -1471,7 +1471,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -1632,7 +1632,7 @@
       "licenses": [
         {
           "license": {
-            "name": "LicenseRef-unknown-f1118a10"
+            "id": "MIT"
           }
         }
       ],
@@ -1649,7 +1649,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -1847,7 +1847,7 @@
       "licenses": [
         {
           "license": {
-            "name": "LicenseRef-unknown-f1118a10"
+            "id": "MIT"
           }
         }
       ],
@@ -1864,7 +1864,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -3005,7 +3005,7 @@
       "licenses": [
         {
           "license": {
-            "name": "LicenseRef-unknown-682ee400"
+            "id": "MIT"
           }
         }
       ],
@@ -3022,7 +3022,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -3581,7 +3581,7 @@
       "licenses": [
         {
           "license": {
-            "name": "LicenseRef-unknown-d1d28651"
+            "id": "MIT-CMU"
           }
         }
       ],
@@ -4370,7 +4370,7 @@
       "licenses": [
         {
           "license": {
-            "name": "LicenseRef-unknown-0c07444d"
+            "id": "BSD-3-Clause"
           }
         }
       ],
@@ -4387,7 +4387,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6426,10 +6426,18 @@
       "name": "heck",
       "version": "0.5.0",
       "purl": "pkg:cargo/heck@0.5.0",
+      "supplier": {
+        "name": "Jonas Platte"
+      },
       "hashes": [
         {
           "alg": "SHA-256",
           "content": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
         }
       ],
       "externalReferences": [
@@ -6445,7 +6453,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6461,6 +6469,11 @@
           "content": "68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66"
         }
       ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
       "externalReferences": [
         {
           "type": "distribution",
@@ -6474,7 +6487,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6484,10 +6497,18 @@
       "name": "once_cell",
       "version": "1.21.4",
       "purl": "pkg:cargo/once_cell@1.21.4",
+      "supplier": {
+        "name": "Alex Kladov"
+      },
       "hashes": [
         {
           "alg": "SHA-256",
           "content": "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
         }
       ],
       "externalReferences": [
@@ -6503,7 +6524,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6513,10 +6534,18 @@
       "name": "portable-atomic",
       "version": "1.13.1",
       "purl": "pkg:cargo/portable-atomic@1.13.1",
+      "supplier": {
+        "name": "Taiki Endo"
+      },
       "hashes": [
         {
           "alg": "SHA-256",
           "content": "c33a9471896f1c69cecef8d20cbe2f7accd12527ce60845ff44c153bb2a21b49"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "Apache-2.0 OR MIT"
         }
       ],
       "externalReferences": [
@@ -6532,7 +6561,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6542,10 +6571,18 @@
       "name": "proc-macro2",
       "version": "1.0.106",
       "purl": "pkg:cargo/proc-macro2@1.0.106",
+      "supplier": {
+        "name": "David Tolnay"
+      },
       "hashes": [
         {
           "alg": "SHA-256",
           "content": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
         }
       ],
       "externalReferences": [
@@ -6561,7 +6598,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6577,6 +6614,11 @@
           "content": "91fd8e38a3b50ed1167fb981cd6fd60147e091784c427b8f7183a7ee32c31c12"
         }
       ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
       "externalReferences": [
         {
           "type": "distribution",
@@ -6590,7 +6632,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6606,6 +6648,11 @@
           "content": "e368e7ddfdeb98c9bca7f8383be1648fd84ab466bf2bc015e94008db6d35611e"
         }
       ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
       "externalReferences": [
         {
           "type": "distribution",
@@ -6619,7 +6666,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6635,6 +6682,11 @@
           "content": "7f29e10af80b1f7ccaf7f69eace800a03ecd13e883acfacc1e5d0988605f651e"
         }
       ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
       "externalReferences": [
         {
           "type": "distribution",
@@ -6648,7 +6700,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6664,6 +6716,11 @@
           "content": "df6e520eff47c45997d2fc7dd8214b25dd1310918bbb2642156ef66a67f29813"
         }
       ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
       "externalReferences": [
         {
           "type": "distribution",
@@ -6677,7 +6734,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6693,6 +6750,11 @@
           "content": "c4cdc218d835738f81c2338f822078af45b4afdf8b2e33cbb5916f108b813acb"
         }
       ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
       "externalReferences": [
         {
           "type": "distribution",
@@ -6706,7 +6768,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6716,10 +6778,18 @@
       "name": "quote",
       "version": "1.0.45",
       "purl": "pkg:cargo/quote@1.0.45",
+      "supplier": {
+        "name": "David Tolnay"
+      },
       "hashes": [
         {
           "alg": "SHA-256",
           "content": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
         }
       ],
       "externalReferences": [
@@ -6735,7 +6805,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6745,10 +6815,18 @@
       "name": "syn",
       "version": "2.0.117",
       "purl": "pkg:cargo/syn@2.0.117",
+      "supplier": {
+        "name": "David Tolnay"
+      },
       "hashes": [
         {
           "alg": "SHA-256",
           "content": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
         }
       ],
       "externalReferences": [
@@ -6764,7 +6842,7 @@
       "properties": [
         {
           "name": "kaos:license-class",
-          "value": "unknown"
+          "value": "permissive"
         }
       ]
     },
@@ -6774,10 +6852,20 @@
       "name": "target-lexicon",
       "version": "0.13.5",
       "purl": "pkg:cargo/target-lexicon@0.13.5",
+      "supplier": {
+        "name": "Dan Gohman"
+      },
       "hashes": [
         {
           "alg": "SHA-256",
           "content": "adb6935a6f5c20170eeceb1a3835a49e12e19d792f6dd344ccc76a985ca5a6ca"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "LicenseRef-unknown-96ab7523"
+          }
         }
       ],
       "externalReferences": [
@@ -6803,10 +6891,20 @@
       "name": "unicode-ident",
       "version": "1.0.24",
       "purl": "pkg:cargo/unicode-ident@1.0.24",
+      "supplier": {
+        "name": "David Tolnay"
+      },
       "hashes": [
         {
           "alg": "SHA-256",
           "content": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "LicenseRef-unknown-c5779053"
+          }
         }
       ],
       "externalReferences": [
