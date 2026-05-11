@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Methodology — how the KAOS compliance dashboard collects, scores, and surfaces every claim it makes.">
+<base href="/kaos-compliance/">
+<title>Methodology — KAOS Compliance</title>
+<style>
+:root{
+ --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
+ --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
+ --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
+ --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;
+ --focus:#2563eb;
+ --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+ :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;
+  --g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;
+  --r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:var(--s-7) var(--s-5)}
+.page-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--s-3);border-bottom:1px solid var(--border);padding-bottom:var(--s-4);margin-bottom:var(--s-6)}
+.page-head h1{margin:0;font-size:2rem;line-height:1.1}
+.page-head p{margin:var(--s-1) 0 0;color:var(--muted);font-size:0.875rem}
+.page-head .meta{font-family:var(--mono);font-size:0.75rem;color:var(--muted)}
+nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
+nav.subnav a{color:var(--muted)}
+nav.subnav a[aria-current="page"]{color:var(--text);font-weight:600}
+.skip{position:absolute;left:-9999px}
+.skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
+.doc{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--s-6)}
+.toc{position:sticky;top:var(--s-4);align-self:start;font-size:0.8125rem}
+.toc h2{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);margin:0 0 var(--s-2);font-weight:600}
+.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--s-1)}
+.toc a{color:var(--muted);text-decoration:none}
+.toc a:hover{color:var(--text);text-decoration:underline}
+.preamble{border-left:3px solid var(--y-fg);background:var(--y-bg);color:var(--y-fg);padding:var(--s-3) var(--s-4);border-radius:0 4px 4px 0;font-size:0.9375rem;margin:0 0 var(--s-5)}
+.preamble p{margin:0}
+section.block{margin-bottom:var(--s-6)}
+section.block h2{font-size:1.5rem;line-height:1.25;margin:0 0 var(--s-3);font-weight:600;scroll-margin-top:var(--s-5)}
+section.block h3{font-size:1.0625rem;margin:var(--s-4) 0 var(--s-2);font-weight:600}
+section.block p,section.block li{font-size:0.9375rem}
+section.block ul,section.block ol{padding-left:var(--s-5);margin:var(--s-2) 0}
+section.block li{margin-bottom:var(--s-1)}
+section.block code{font-family:var(--mono);font-size:0.875em;background:var(--n-bg);color:var(--n-fg);padding:1px 4px;border-radius:2px}
+section.block a code{color:inherit}
+section.block blockquote{margin:var(--s-3) 0;padding:var(--s-2) var(--s-4);border-left:3px solid var(--border);color:var(--muted);font-style:italic}
+section.block table{width:100%;border-collapse:collapse;font-size:0.875rem;margin:var(--s-3) 0}
+section.block th,section.block td{padding:var(--s-2) var(--s-3);text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+section.block th{font-weight:600;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+section.block hr{border:0;border-top:1px solid var(--border);margin:var(--s-5) 0}
+.versionline{color:var(--muted);font-size:0.8125rem;font-family:var(--mono);margin-top:var(--s-6);padding-top:var(--s-4);border-top:1px solid var(--border)}
+footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
+footer a{color:var(--muted)}
+@media (max-width:720px){
+ .wrap{padding:var(--s-5) var(--s-4)}
+ .page-head h1{font-size:1.5rem}
+ .doc{grid-template-columns:1fr;gap:var(--s-4)}
+ .toc{position:static}
+ section.block table{display:block;overflow-x:auto}
+}
+@media print{
+ :root{--page-bg:#fff;--card-bg:#fff;--text:#000;--muted:#444;--border:#999}
+ a{color:#000;text-decoration:none}
+ .wrap{padding:0;max-width:none}
+ .doc{grid-template-columns:1fr}
+ .toc,nav.subnav,.skip{display:none}
+ .preamble{background:#fff;color:#000;border-left-color:#000}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="page-head">
+ <div>
+  <h1>Methodology</h1>
+  <p>How every claim on this dashboard is collected, scored, and verified.</p>
+  <nav class="subnav" aria-label="Sections">
+   <a href="index.html">Org rollup</a>
+   <a href="security.html">Security</a>
+   <a href="supply-chain.html">Supply chain</a>
+   <a href="governance.html">Governance</a>
+   <a href="diary.html">Diary</a>
+   <a href="methodology.html" aria-current="page">Methodology</a>
+  </nav>
+ </div>
+ <div class="meta" aria-label="Last generated">
+  Generated 2026-05-11 15:39 UTC
+ </div>
+</header>
+
+<main id="main">
+<div class="doc">
+ <aside class="toc" aria-label="On this page">
+  <h2>On this page</h2>
+  <ol>
+   <li><a href="#sec-1">Principles</a></li>
+   <li><a href="#sec-2">Cadence</a></li>
+   <li><a href="#sec-3">Frameworks anchored</a></li>
+   <li><a href="#sec-4">Anti-patterns we explicitly avoid</a></li>
+   <li><a href="#sec-5">Verifying a claim independently</a></li>
+   <li><a href="#sec-6">Limits and honest gaps</a></li>
+  </ol>
+ </aside>
+
+ <article>
+   <div class="preamble"><p>This document explains every claim the kaos-compliance dashboard makes and how a third party can independently reproduce the verification. If a claim doesn&rsquo;t have a verification path here, it&rsquo;s a bug &mdash; please file an issue.</p></div>
+
+   <section class="block" id="sec-1">
+    <h2>Principles</h2>
+    <ol>
+     <li><strong>Public sources only.</strong> Every signal is extracted from a publicly accessible source: GitHub REST API, PyPI JSON + simple-index, the sigstore Rekor transparency log, or files committed to the public <code>273v/kaos-*</code> repos. No private endpoints, no privileged credentials, no internal-only artifacts.</li>
+     <li><strong>JSON is the source of truth.</strong> The dashboard&rsquo;s HTML is one render of <code>data/snapshots/latest.json</code>. The same JSON is published for compliance ingest at <code>https://273v.github.io/kaos-compliance/api/v1/snapshot.json</code>.</li>
+     <li><strong>Every claim links to evidence.</strong> Each card on the dashboard carries a <em>Verify</em> link that opens the underlying source (a GitHub workflow run, a PyPI metadata page, a Rekor log entry, or a file in this repo).</li>
+     <li><strong>No invented scores.</strong> We surface the OpenSSF Scorecard aggregate (a pre-composited industry-standard number) and the underlying signals. We do not compute a competing composite. Buyers compose their own bar from the per-signal evidence.</li>
+     <li><strong>Stale data is loudly marked stale.</strong> Every snapshot carries a generation timestamp; the dashboard shows a freshness indicator on every card. If the cron stops running, the indicator goes amber within 2 hours and red within 24.</li>
+    </ol>
+   </section>
+
+   <section class="block" id="sec-2">
+    <h2>Cadence</h2>
+    <table>
+     <thead><tr><th>Cron</th><th>Cadence</th><th>What runs</th><th>Why</th></tr></thead>
+     <tbody>
+      <tr><td>Light</td><td>every 1h</td><td>CI conclusions, open PR counts, queue depth</td><td>These move fast; staleness is misleading.</td></tr>
+      <tr><td>Security</td><td>every 4h</td><td>bandit / vulture / cargo-* / pip-audit / gitleaks conclusions; OSV cross-check; PyPI attestation refresh</td><td>Slower-moving but high-signal; refresh often enough that a published advisory shows up within a working day.</td></tr>
+      <tr><td>Full</td><td>every 24h (UTC midnight)</td><td>Full sweep + SBOM rebuild + LLM diary + history rotation</td><td>The expensive path. Rebuilds the full transitive dep tree and runs the daily narrative.</td></tr>
+     </tbody>
+    </table>
+    <p>Cron is driven primarily by GitHub Actions on this repo. A local cron job on the developer machine acts as a backup and runs the LLM diary when the GHA secrets don&rsquo;t have the model-provider API key wired.</p>
+   </section>
+
+   <section class="block" id="sec-3">
+    <h2>Frameworks anchored</h2>
+    <p>This dashboard maps signals to:</p>
+    <ul>
+     <li><a href="https://scorecard.dev">OpenSSF Scorecard v5</a> &mdash; all 19 checks.</li>
+     <li><a href="https://slsa.dev">SLSA 1.0</a> &mdash; Build L1&ndash;L3, Source L1&ndash;L3 (Source track still draft as of 2026-05).</li>
+     <li><a href="https://csrc.nist.gov/Projects/ssdf">NIST SSDF (SP 800-218)</a> &mdash; the 12 practice IDs with publicly evidenceable signals.</li>
+     <li><a href="https://www.cisa.gov/sbom">CISA SBOM Minimum Elements</a>.</li>
+     <li><a href="https://peps.python.org/pep-0740/">PEP 740</a> + <a href="https://www.sigstore.dev/">sigstore</a> + PyPI Trusted Publishers.</li>
+     <li><a href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act">Cyber Resilience Act</a> (Annex I Part II conformity signals; full enforcement guidance not expected until 2027).</li>
+    </ul>
+    <p>See <code>docs/research/01-compliance-signal-inventory.md</code> for the per-framework signal-to-source mapping table.</p>
+   </section>
+
+   <section class="block" id="sec-4">
+    <h2>Anti-patterns we explicitly avoid</h2>
+    <p>The dashboard does <strong>not</strong> surface:</p>
+    <ol>
+     <li><strong>Raw test coverage percentage as a top-line metric.</strong> A 90%-covered abandoned project is worse than a 60%-covered actively-maintained one. Coverage <em>trend</em> is shown one click down; coverage absolute is not.</li>
+     <li><strong>&ldquo;Signed commits&rdquo; as a binary green check.</strong> Without policy enforcement, signed-commit ratio is decorative. We show the ratio paired with the branch-protection-required-signature state, or omit.</li>
+     <li><strong>SBOM presence without dependency edges.</strong> A component list with no <code>dependencies[]</code> graph is a manifest, not an SBOM. We visibly downgrade these.</li>
+     <li><strong>A composite &ldquo;compliance score out of 100&rdquo;.</strong> Buyers see through it; it incentivizes gaming cheap signals (badges, file presence) at the cost of expensive ones (review discipline, attestation hygiene).</li>
+     <li><strong>Maintainer-identity signals</strong> (country, employer, real name). Encourages discrimination, generates false positives on pseudonymous-but-trusted maintainers, adds zero supply-chain integrity.</li>
+     <li><strong>GitHub stars.</strong> A popularity metric, not a trust metric.</li>
+    </ol>
+   </section>
+
+   <section class="block" id="sec-5">
+    <h2>Verifying a claim independently</h2>
+    <p>Every dashboard card has a <em>Verify</em> link. Following it should let you reproduce the underlying lookup without any privileged access:</p>
+    <table>
+     <thead><tr><th>Card</th><th>Verify link points at</th></tr></thead>
+     <tbody>
+      <tr><td>Latest PyPI version</td><td><code>https://pypi.org/project/&lt;pkg&gt;/&lt;version&gt;/</code></td></tr>
+      <tr><td>Wheel platform matrix</td><td><code>https://pypi.org/pypi/&lt;pkg&gt;/&lt;version&gt;/json</code> (<code>urls[]</code>)</td></tr>
+      <tr><td>PEP 740 attestation</td><td><code>https://pypi.org/simple/&lt;pkg&gt;/</code> (Accept: <code>application/vnd.pypi.simple.v1+json</code>) &rarr; <code>files[i].provenance</code> URL</td></tr>
+      <tr><td>Sigstore Rekor entry</td><td><code>https://rekor.sigstore.dev/api/v1/log/entries?logIndex=&lt;N&gt;</code></td></tr>
+      <tr><td>CI run</td><td><code>https://github.com/273v/&lt;pkg&gt;/actions/runs/&lt;run-id&gt;</code></td></tr>
+      <tr><td>Security scan</td><td>Same as above for the Security workflow</td></tr>
+      <tr><td>Open advisories</td><td><code>https://api.osv.dev/v1/query</code> with the package PURL</td></tr>
+      <tr><td>SBOM</td><td><code>data/sbom/&lt;pkg&gt;-&lt;version&gt;.cdx.json</code> in this repo</td></tr>
+      <tr><td>Branch protection</td><td><code>gh api repos/273v/&lt;pkg&gt;/branches/main/protection</code></td></tr>
+      <tr><td>Disclosure policy</td><td><code>https://github.com/273v/&lt;pkg&gt;/blob/main/SECURITY.md</code></td></tr>
+     </tbody>
+    </table>
+    <p>If a <em>Verify</em> link doesn&rsquo;t reproduce, the dashboard claim is wrong and should be reported.</p>
+   </section>
+
+   <section class="block" id="sec-6">
+    <h2>Limits and honest gaps</h2>
+    <p>Things this dashboard does <strong>not</strong> prove:</p>
+    <ul>
+     <li><strong>Reproducible builds.</strong> We surface SLSA build-level claims but do not independently rebuild artifacts. A separate effort is required to attest reproducibility.</li>
+     <li><strong>Per-commit author identity beyond GitHub&rsquo;s <code>verification.verified</code> state.</strong> GitHub&rsquo;s GPG-key claim is what we report; deeper identity proofing (e.g., DCO sign-off matching a known steward) is not done.</li>
+     <li><strong>Source-of-truth for transitive licenses.</strong> We rely on the published license metadata of each dep. If a published license is wrong, our aggregation is wrong. We do not legally audit license claims.</li>
+     <li><strong>Operational security of the maintainer machines.</strong> A dashboard can prove the artifact came from a specific workflow; it cannot prove the workflow&rsquo;s secrets weren&rsquo;t exfiltrated upstream. That&rsquo;s outside the scope of any public dashboard.</li>
+    </ul>
+    <p>These gaps are intentionally surfaced so a buyer knows what they still need to ask for in a vendor questionnaire.</p>
+   </section>
+
+  <p class="versionline">
+   Methodology version 1.0
+   &mdash; last updated 2026-05-11.
+    Source: <a href="https://github.com/273v/kaos-compliance/blob/main/docs/METHODOLOGY.md">docs/METHODOLOGY.md</a>.
+  </p>
+ </article>
+</div>
+</main>
+
+<footer>
+ Generated 2026-05-11 15:39 UTC
+ | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
+ | Methodology: <a href="methodology.html">methodology.html</a>
+ | Data: <a href="assets/snapshot.json">snapshot.json</a>
+</footer>
+</div>
+</body>
+</html>
