@@ -1,7 +1,14 @@
 # kaos-compliance
 
 **Continuous compliance and supply-chain dashboard for the KAOS open-source
-ecosystem.** Published at <https://273v.github.io/kaos-compliance/>.
+ecosystem.**
+
+| | |
+|---|---|
+| **Live dashboard** | <https://273v.github.io/kaos-compliance/> |
+| **Methodology** | <https://273v.github.io/kaos-compliance/methodology.html> |
+| **Machine-readable snapshot** | <https://273v.github.io/kaos-compliance/api/v1/snapshot.json> |
+| **Heartbeat (cron watchdog)** | <https://273v.github.io/kaos-compliance/heartbeat.json> |
 
 [![Methodology](https://img.shields.io/badge/methodology-public-blue)](docs/METHODOLOGY.md)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
