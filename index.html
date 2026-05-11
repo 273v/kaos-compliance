@@ -55,7 +55,9 @@ table.grid tbody tr:nth-child(even){background:rgba(0,0,0,0.02)}
 table.grid td.pkg{font-weight:600}
 table.grid td.ver{font-family:var(--mono);color:var(--muted)}
 table.grid td.age{color:var(--muted);font-size:0.8125rem}
-.pill{display:inline-flex;align-items:center;gap:var(--s-2);padding:2px 8px;border-radius:3px;font-size:0.75rem;font-weight:600;line-height:1.4;border:1px solid transparent}
+.pill{display:inline-flex;align-items:center;gap:var(--s-2);padding:2px 8px;border-radius:3px;font-size:0.75rem;font-weight:600;line-height:1.4;border:1px solid transparent;text-decoration:none}
+a.pill:hover{filter:brightness(0.95);text-decoration:underline}
+a.pill:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .pill .gly{font-family:var(--mono);font-weight:700}
 .pill .wd{font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
 .pill.g{background:var(--g-bg);color:var(--g-fg);border-color:var(--g-fg)}
@@ -104,7 +106,7 @@ nav.subnav a{color:var(--muted)}
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-11 14:58 UTC
+  Generated 2026-05-11 15:08 UTC
  </div>
 </header>
 
@@ -115,17 +117,17 @@ nav.subnav a{color:var(--muted)}
   <div class="rollup-head">
    <div class="label">Composite trust</div>
    <div class="score" aria-label="Composite score">
-    16 / 16 packages green
+    16 / 17 packages green
    </div>
   </div>
-  <div class="bar" role="img" aria-label="100 percent of packages meeting bar">
-   <span style="width:100%"></span>
+  <div class="bar" role="img" aria-label="94 percent of packages meeting bar">
+   <span style="width:94%"></span>
   </div>
   <div class="rollup-grid">
-   <div class="cell"><span class="n">16/16</span><span class="lab">Build passing</span></div>
-   <div class="cell"><span class="n">16/16</span><span class="lab">Tests passing</span></div>
-   <div class="cell"><span class="n">0/16</span><span class="lab">Signed releases</span></div>
-   <div class="cell"><span class="n">0/16</span><span class="lab">License clean</span></div>
+   <div class="cell"><span class="n">16/17</span><span class="lab">Build passing</span></div>
+   <div class="cell"><span class="n">16/17</span><span class="lab">Tests passing</span></div>
+   <div class="cell"><span class="n">0/17</span><span class="lab">Signed releases</span></div>
+   <div class="cell"><span class="n">0/17</span><span class="lab">License clean</span></div>
   </div>
  </div>
 </section>
@@ -133,10 +135,10 @@ nav.subnav a{color:var(--muted)}
 <section aria-labelledby="strip-h">
  <h2 id="strip-h" class="sr-only" style="position:absolute;left:-9999px">Headline metrics</h2>
  <div class="strip">
-  <div class="stat"><span class="n">16</span><span class="lab">Packages tracked</span></div>
-  <div class="stat"><span class="n">0</span><span class="lab">Commits 90d</span></div>
-  <div class="stat"><span class="n">1</span><span class="lab">Maintainers</span></div>
-  <div class="stat"><span class="n">0</span><span class="lab">Critical CVEs open</span></div>
+  <div class="stat"><span class="n">17</span><span class="lab">Repositories</span></div>
+  <div class="stat"><span class="n">—</span><span class="lab">Commits</span></div>
+  <div class="stat"><span class="n">95</span><span class="lab">Tests</span></div>
+  <div class="stat"><span class="n">6</span><span class="lab">Supported platforms</span></div>
  </div>
 </section>
 
@@ -161,34 +163,69 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-citations.html">kaos-citations</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25646801624" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25646801624" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25648262692" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
+     </td>
+    <td class="age" data-h="Last release"></td>
+   </tr>
+   <tr>
+    <td class="pkg" data-h="Package"><a href="package/kaos-compliance.html">kaos-compliance</a></td>
+    <td class="ver" data-h="Version">—</td>
+     <td data-h="Build">
+       <span class="pill n" aria-label="Build: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
+     </td>
+     <td data-h="Tests">
+       <span class="pill n" aria-label="Tests: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
+     </td>
+     <td data-h="Security">
+       <span class="pill n" aria-label="Security: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
+     </td>
+     <td data-h="Signing">
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
+     </td>
+     <td data-h="License">
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
+     </td>
+     <td data-h="Deps">
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -196,34 +233,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
     <td class="ver" data-h="Version">v0.1.0a6</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171717" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171717" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171763" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -231,34 +268,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-core.html">kaos-core</a></td>
     <td class="ver" data-h="Version">v0.1.0a5</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25644038516" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25644038516" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25647957874" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -266,34 +303,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-graph.html">kaos-graph</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25646339797" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25646339797" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25648074483" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -301,34 +338,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25646337388" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25646337388" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25648294706" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -336,34 +373,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-llm-core.html">kaos-llm-core</a></td>
     <td class="ver" data-h="Version">v0.1.0a5</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394992" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394992" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394997" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -371,34 +408,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-mcp.html">kaos-mcp</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25646338549" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25646338549" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25648027763" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -406,34 +443,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25646801028" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25646801028" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25648548801" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -441,34 +478,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-names.html">kaos-names</a></td>
     <td class="ver" data-h="Version">v0.1.0a1</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25644413870" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25644413870" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25648042049" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -476,34 +513,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25646340330" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25646340330" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25647975394" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -511,34 +548,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
     <td class="ver" data-h="Version">v0.2.0a4</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25646341491" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25646341491" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25648356024" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -546,34 +583,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-office.html">kaos-office</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370060" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370060" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370014" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -581,34 +618,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-pdf.html">kaos-pdf</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25644485853" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25644485853" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25648330986" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -616,34 +653,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-source.html">kaos-source</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176446" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176446" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176431" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -651,34 +688,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-tabular.html">kaos-tabular</a></td>
     <td class="ver" data-h="Version">v0.1.0a1</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25644537334" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25644537334" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25648327420" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -686,34 +723,34 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-web.html">kaos-web</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-      <span class="pill g" aria-label="Build: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25646339160" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Tests">
-      <span class="pill g" aria-label="Tests: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25646339160" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Security">
-      <span class="pill g" aria-label="Security: Pass">
-       <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-      </span>
+       <a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25648005087" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
+        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+       </a>
      </td>
      <td data-h="Signing">
-      <span class="pill n" aria-label="Signing: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Signing: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="License">
-      <span class="pill n" aria-label="License: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="License: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
      <td data-h="Deps">
-      <span class="pill n" aria-label="Deps: No signal">
-       <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
-      </span>
+       <span class="pill n" aria-label="Deps: No signal">
+        <span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span>
+       </span>
      </td>
     <td class="age" data-h="Last release"></td>
    </tr>
@@ -723,7 +760,7 @@ nav.subnav a{color:var(--muted)}
 </main>
 
 <footer>
- Generated 2026-05-11 14:58 UTC
+ Generated 2026-05-11 15:08 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="assets/snapshot.json">snapshot.json</a>
