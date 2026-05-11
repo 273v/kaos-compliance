@@ -7,17 +7,10 @@
 <meta name="description" content="Machine-readable endpoints for the kaos-compliance dashboard — snapshot, schema, signature, history, diffs, per-package bundles.">
 <base href="{{ base_href | default('/kaos-compliance/') }}">
 <title>API endpoints — KAOS Compliance</title>
+<link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/dashboard.css">
 <style>
-:root{
- --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
- --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
- --focus:#2563eb;
- --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
- --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
-@media (prefers-color-scheme: dark){
- :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;--focus:#60a5fa;}
-}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
 a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}

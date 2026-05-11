@@ -1,0 +1,262 @@
+/* ============================================================================
+   kaos-compliance dashboard — shared stylesheet
+   ----------------------------------------------------------------------------
+   Design tokens, fonts, and common utility classes shared across every
+   rendered page. Page-specific styles stay inline in each template's
+   <style> block; this file is the canonical home for everything reused.
+   ----------------------------------------------------------------------------
+   Token system ported from 273V's kelvin.legal site
+   (src/components/CustomStyles.astro + src/styles/starwind.css). Light mode
+   matches the kelvin.legal "OSS-dev-tool" palette: white background, teal
+   primary, deep-navy text. Dark mode matches kelvin.legal's dark theme.
+   Fonts: Adobe Source superfamily (Source Sans 3 + Source Serif 4), self-
+   hosted under assets/fonts/ rather than pulled from a third-party CDN, so
+   visiting the dashboard does not leak IP addresses to a font host.
+   ============================================================================ */
+
+/* ------------------------------------------------------------------ Fonts */
+
+@font-face {
+  font-family: "Source Sans 3 Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url("fonts/source-sans-3-latin-wght-normal.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "Source Sans 3 Variable";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url("fonts/source-sans-3-latin-wght-italic.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "Source Serif 4 Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url("fonts/source-serif-4-latin-wght-normal.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "Source Serif 4 Variable";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url("fonts/source-serif-4-latin-wght-italic.woff2") format("woff2-variations");
+}
+
+/* ----------------------------------------------------- Design tokens — light */
+
+:root {
+  /* Brand palette */
+  --aw-color-primary: #005073;
+  --aw-color-secondary: #107dac;
+  --aw-color-accent: #189ad3;
+  --aw-color-deep: #001a2e;
+  --aw-color-copper: #b08050;
+  --aw-color-copper-light: #d4a87c;
+
+  /* Text */
+  --aw-color-text-page: #002043;
+  --aw-color-text-muted: #4a5568;
+
+  /* Backgrounds */
+  --aw-color-bg-page: #ffffff;
+  --aw-color-bg-section-light: #f8fafc;
+  --aw-color-bg-section-warm: #f1f5f9;
+
+  /* Cool neutrals */
+  --aw-color-warm-50: #f8fafc;
+  --aw-color-warm-100: #f1f5f9;
+  --aw-color-warm-200: #e2e8f0;
+
+  /* Dark-mode tokens (referenced by the media query below) */
+  --aw-color-dark-bg: #0c1a2a;
+  --aw-color-dark-surface: #132238;
+  --aw-color-dark-border: #1e3450;
+
+  /* Fonts */
+  --aw-font-sans: "Source Sans 3 Variable", ui-sans-serif, system-ui, sans-serif;
+  --aw-font-serif: "Source Serif 4 Variable", Georgia, "Times New Roman", serif;
+  --aw-font-heading: "Source Serif 4 Variable", Georgia, "Times New Roman", serif;
+  --aw-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ---- Dashboard-internal aliases ----
+     The inline templates were written before this stylesheet existed; they
+     reference --page-bg / --card-bg / --text / --muted / etc. Those names
+     are kept as aliases so the templates don't all need rewrites. */
+  --page-bg: var(--aw-color-bg-page);
+  --card-bg: var(--aw-color-bg-section-light);
+  --section-bg: var(--aw-color-bg-section-warm);
+  --border: var(--aw-color-warm-200);
+  --text: var(--aw-color-text-page);
+  --muted: var(--aw-color-text-muted);
+  --primary: var(--aw-color-primary);
+  --primary-accent: var(--aw-color-secondary);
+  --accent: var(--aw-color-accent);
+  --focus: var(--aw-color-accent);
+
+  /* Pill state colors — light-mode tints derived from the brand palette
+     plus the standard semantic Tailwind anchors used on kelvin.legal. */
+  --g-bg: #e6f7ec;  --g-fg: #166534;  /* green-700 on green-100 */
+  --y-bg: #fef9c3;  --y-fg: #854d0e;  /* amber-800 on amber-100 */
+  --r-bg: #fee2e2;  --r-fg: #991b1b;  /* red-800 on red-100 */
+  --n-bg: #f1f5f9;  --n-fg: #475569;  /* slate-600 on slate-100 */
+
+  /* Spacing scale */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px;
+  --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px;
+
+  /* Radius (matches kelvin.legal --radius: 0.5rem) */
+  --radius: 0.5rem;
+
+  /* Legacy aliases kept for templates that haven't migrated yet */
+  --mono: var(--aw-font-mono);
+  --sans: var(--aw-font-sans);
+}
+
+/* ----------------------------------------------------- Design tokens — dark */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: var(--aw-color-dark-bg);
+    --card-bg: var(--aw-color-dark-surface);
+    --section-bg: var(--aw-color-dark-surface);
+    --border: var(--aw-color-dark-border);
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --primary: var(--aw-color-accent);
+    --primary-accent: var(--aw-color-secondary);
+    --focus: var(--aw-color-accent);
+
+    --g-bg: #052e16;  --g-fg: #4ade80;
+    --y-bg: #422006;  --y-fg: #facc15;
+    --r-bg: #450a0a;  --r-fg: #f87171;
+    --n-bg: #1e3450;  --n-fg: #94a3b8;
+  }
+}
+
+/* ------------------------------------------------------------------- Resets */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: var(--aw-font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--aw-font-heading);
+  color: var(--primary);
+  text-wrap: balance;
+  font-feature-settings: "kern" 1, "liga" 1;
+  letter-spacing: -0.01em;
+}
+h1 { font-weight: 600; }
+h2, h3 { font-weight: 600; }
+
+p { text-wrap: pretty; }
+
+a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a:hover { color: var(--primary-accent); }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+code, pre, kbd, samp {
+  font-family: var(--aw-font-mono);
+  font-size: 0.875em;
+}
+
+/* ------------------------------------------------------- Common utilities */
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--s-7) var(--s-5);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Section divider — straight crib from kelvin.legal's global.css */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--aw-color-primary) 20%,
+    var(--aw-color-secondary) 50%,
+    var(--aw-color-primary) 80%,
+    transparent
+  );
+  opacity: 0.2;
+  margin: var(--s-6) 0;
+}
+
+/* Eyebrow label — matches kelvin.legal's eyebrow utility */
+.eyebrow {
+  font-family: var(--aw-font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--aw-color-secondary);
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-4);
+}
+
+/* Pill — 4-state semantic chip */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.pill.green  { background: var(--g-bg); color: var(--g-fg); }
+.pill.yellow { background: var(--y-bg); color: var(--y-fg); }
+.pill.red    { background: var(--r-bg); color: var(--r-fg); }
+.pill.gray   { background: var(--n-bg); color: var(--n-fg); }
+
+/* Print */
+@media print {
+  body { background: #fff; color: #000; }
+  a { color: #000; text-decoration: underline; }
+  .no-print { display: none !important; }
+}
