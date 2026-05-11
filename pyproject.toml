@@ -64,6 +64,9 @@ dev = [
   "pytest-cov>=6.0.0",
   "ruff>=0.15.12",
   "ty>=0.0.34,<0.1",
+  # Used by tests/test_schema.py to validate the published JSON Schema
+  # against the live snapshot. Dev-only — never pulled at runtime.
+  "jsonschema>=4.23.0",
 ]
 
 [tool.hatch.build.targets.wheel]

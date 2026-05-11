@@ -14,7 +14,12 @@
    no internal-only artifacts.
 2. **JSON is the source of truth.** The dashboard's HTML is one render
    of `data/snapshots/latest.json`. The same JSON is published for
-   compliance ingest at `https://273v.github.io/kaos-compliance/api/v1/snapshot.json`.
+   compliance ingest at `https://273v.github.io/kaos-compliance/api/v1/snapshot.json`,
+   alongside a machine-readable [JSON Schema](https://273v.github.io/kaos-compliance/api/v1/snapshot.schema.json)
+   and a keyless sigstore signature
+   (see [`EVIDENCE.md`](EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with)
+   for the verification recipe and [`DATA-MODEL.md`](DATA-MODEL.md) for
+   the per-field spec).
 3. **Every claim links to evidence.** Each card on the dashboard
    carries a `Verify` link that opens the underlying source (a GitHub
    workflow run, a PyPI metadata page, a Rekor log entry, or a file in
@@ -102,6 +107,19 @@ reproduce the underlying lookup without any privileged access:
 
 If a `Verify` link doesn't reproduce, the dashboard claim is wrong and
 should be reported.
+
+## Snapshot integrity and shape
+
+Every published snapshot is accompanied by two integrity artifacts:
+
+| Artifact | Path | Purpose |
+|---|---|---|
+| JSON Schema | `api/v1/snapshot.schema.json` | Programmatic validation of the JSON shape. Draft 2020-12; derived from the dataclasses in `collector/snapshot.py`. |
+| Sigstore signature | `api/v1/snapshot.sig` | DSSE bundle minted via keyless OIDC signing by the kaos-compliance sweep workflow. Ties the bytes to a specific workflow run on this repository. |
+
+The full verification recipe (cosign command + expected identity) is
+in [`EVIDENCE.md`](EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with).
+The data model is in [`DATA-MODEL.md`](DATA-MODEL.md).
 
 ## Limits and honest gaps
 

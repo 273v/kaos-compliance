@@ -143,6 +143,7 @@ footer a{color:var(--muted)}
    <li><a href="#sec-4">Anti-patterns we explicitly avoid</a></li>
    <li><a href="#sec-5">Verifying a claim independently</a></li>
    <li><a href="#sec-6">Limits and honest gaps</a></li>
+   <li><a href="#sec-7">Snapshot integrity + schema</a></li>
   {% endif %}
   </ol>
  </aside>
@@ -246,6 +247,46 @@ footer a{color:var(--muted)}
     </ul>
     <p>These gaps are intentionally surfaced so a buyer knows what they still need to ask for in a vendor questionnaire.</p>
    </section>
+
+   <section class="block" id="sec-7">
+    <h2>Snapshot integrity + schema</h2>
+    <p>The HTML pages above are one rendering of a JSON document
+    published at <code>api/v1/snapshot.json</code>. Two artifacts
+    accompany that JSON so a third party can verify both its
+    <em>shape</em> and its <em>provenance</em>:</p>
+    <ul>
+     <li>
+      <strong>JSON Schema</strong> (Draft 2020-12) at
+      {% if integrity is defined and integrity.schema_url %}
+       <a href="{{ integrity.schema_url }}"><code>api/v1/snapshot.schema.json</code></a>.
+      {% else %}
+       <code>api/v1/snapshot.schema.json</code>.
+      {% endif %}
+      Programmatic consumers should validate the snapshot against the
+      schema before trusting any field; the schema is derived
+      deterministically from the dataclasses in
+      <code>collector/snapshot.py</code> so any drift is caught at
+      render time.
+     </li>
+     <li>
+      <strong>Keyless sigstore signature</strong> at
+      {% if integrity is defined and integrity.signature_url %}
+       <a href="{{ integrity.signature_url }}"><code>api/v1/snapshot.sig</code></a>
+      {% else %}
+       <code>api/v1/snapshot.sig</code>
+      {% endif %}
+      &mdash; a DSSE bundle minted by the
+      <code>sweep.yml</code> workflow via GitHub OIDC. Verification
+      requires cosign and asserts the bundle was issued by THIS
+      workflow on THIS repository before the JSON is trusted. The
+      full verification recipe lives in
+      <a href="{{ integrity.verify_recipe_url if integrity is defined else 'https://github.com/273v/kaos-compliance/blob/main/docs/EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with' }}">docs/EVIDENCE.md</a>.
+     </li>
+    </ul>
+    <p>The data model itself &mdash; field-by-field meaning and units &mdash;
+    is documented in
+    <a href="https://github.com/273v/kaos-compliance/blob/main/docs/DATA-MODEL.md"><code>docs/DATA-MODEL.md</code></a>.</p>
+   </section>
   {% endif %}
 
   <p class="versionline">
@@ -266,6 +307,12 @@ footer a{color:var(--muted)}
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ {% if integrity is defined and integrity.schema_url %}
+  | Schema: <a href="{{ integrity.schema_url }}">snapshot.schema.json</a>
+ {% endif %}
+ {% if integrity is defined and integrity.signature_present and integrity.signature_url %}
+  | Signature: <a href="{{ integrity.signature_url }}">snapshot.sig</a>
+ {% endif %}
 </footer>
 </div>
 </body>
