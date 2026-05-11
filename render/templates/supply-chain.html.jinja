@@ -206,10 +206,104 @@ footer a{color:var(--muted)}
 <section aria-labelledby="rollup-h">
  <h2 id="rollup-h">Org rollup</h2>
  <div class="strip">
-  <div class="stat"><span class="n">{{ n_att }}/{{ npkgs if npkgs > 0 else '—' }}</span><span class="lab">PEP 740 attested</span></div>
+  <div class="stat"><span class="n">{{ n_att }}/{{ npkgs if npkgs > 0 else '—' }}</span><span class="lab"><a href="#att-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">PEP 740 attested</a></span></div>
   <div class="stat"><span class="n">{{ n_sbom }}/{{ npkgs if npkgs > 0 else '—' }}</span><span class="lab">SBOM published</span></div>
-  <div class="stat"><span class="n">{{ n_graph }}/{{ npkgs if npkgs > 0 else '—' }}</span><span class="lab">SBOM has dep graph</span></div>
-  <div class="stat"><span class="n">{{ sup.org_license_breakdown | default([]) | length }}</span><span class="lab">Distinct licenses</span></div>
+  <div class="stat"><span class="n">{{ n_graph }}/{{ npkgs if npkgs > 0 else '—' }}</span><span class="lab"><a href="#cisa-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">SBOM has dep graph</a></span></div>
+  <div class="stat"><span class="n">{{ sup.slsa_l2_count | default(0) }}/{{ npkgs if npkgs > 0 else '—' }}</span><span class="lab"><a href="#slsa-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">SLSA Build L2 (effective)</a></span></div>
+ </div>
+ <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
+  No composite score. Each tile is a per-signal ratio; see
+  <a href="methodology.html#pill-semantics">methodology &mdash; pill
+  semantics</a> for the green / amber / red rules. The dep-graph and
+  Build-level claims are derived per-package below
+  (<a href="#cisa-h">CISA minimums</a>,
+  <a href="#slsa-h">SLSA per package</a>).
+ </p>
+</section>
+
+{# R9 / F19: per-package SLSA Build Level claim. Derived from the
+   PEP 740 attestation state + Trusted-Publisher identity. We
+   deliberately stop at L2 — L3 needs hardened-build-platform
+   isolation guarantees this dashboard can't verify from public
+   sources. Methodology Limits & honest gaps documents the boundary. #}
+<section aria-labelledby="slsa-h">
+ <h2 id="slsa-h">SLSA Build Level (derived per package)</h2>
+ <div class="card" style="padding:0;overflow-x:auto">
+  <p style="padding:var(--s-3) var(--s-4) 0;margin:0;color:var(--muted);font-size:0.8125rem">
+   Derived from <code>modules[].supply_chain.attestations</code>. A
+   package reaches <strong>Build L2 (effective)</strong> when every
+   artifact in the latest release carries a verified PEP 740
+   attestation AND the publisher identity names a hosted CI/CD
+   platform (GitHub Actions / GitLab CI). L3 (hardened platform with
+   isolation guarantees) is not separately claimed; see
+   <a href="methodology.html#sec-6">methodology &mdash; Limits and
+   honest gaps</a>.
+  </p>
+  <table class="grid" aria-describedby="slsa-h" style="margin-top:var(--s-3)">
+   <thead>
+    <tr>
+     <th scope="col">Package</th>
+     <th scope="col">Build level</th>
+     <th scope="col">Publisher</th>
+     <th scope="col">Note</th>
+    </tr>
+   </thead>
+   <tbody>
+    {% for r in sup.packages | default([]) %}
+    {% set s = r.slsa_build or {"state":"gray","label":"—","note":"(no signal)"} %}
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/{{ r.name }}.html">{{ r.name }}</a></td>
+     <td data-h="Build level">{{ pill(s.state, s.label) }} <span class="mono" style="margin-left:var(--s-2)">{{ s.label }}</span></td>
+     <td class="mono" data-h="Publisher">{{ r.publisher_kind or '—' }}</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">{{ s.note }}</td>
+    </tr>
+    {% endfor %}
+   </tbody>
+  </table>
+ </div>
+</section>
+
+{# R10: CISA SBOM Minimum Elements gap analysis. Surfacing the seven
+   elements per package lets a buyer see exactly which element is
+   missing — instead of a single "SBOM yellow" pill that hides which
+   of the seven minimums fails. #}
+<section aria-labelledby="cisa-h">
+ <h2 id="cisa-h">CISA SBOM Minimum Elements (per package)</h2>
+ <div class="card" style="padding:0;overflow-x:auto">
+  <p style="padding:var(--s-3) var(--s-4) 0;margin:0;color:var(--muted);font-size:0.8125rem">
+   The CISA-defined SBOM Minimum Elements (Author, Supplier, Component
+   name, Component version, Unique identifier, Dependency
+   relationships, Timestamp). Each element is evaluated against the
+   per-package CycloneDX output. Today every package fails
+   <strong>Dependency relationships</strong> because the SBOM emitter
+   doesn&rsquo;t yet build the <code>dependencies[]</code> edge graph;
+   tracked as <code>F9</code> in
+   <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>.
+  </p>
+  <table class="grid" aria-describedby="cisa-h" style="margin-top:var(--s-3)">
+   <thead>
+    <tr>
+     <th scope="col">Package</th>
+     <th scope="col">Author</th>
+     <th scope="col">Supplier</th>
+     <th scope="col">Name</th>
+     <th scope="col">Version</th>
+     <th scope="col">PURL</th>
+     <th scope="col">Relationships</th>
+     <th scope="col">Timestamp</th>
+    </tr>
+   </thead>
+   <tbody>
+    {% for r in sup.packages | default([]) %}
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/{{ r.name }}.html">{{ r.name }}</a></td>
+     {% for e in r.cisa_elements | default([]) %}
+      <td data-h="{{ e.element }}" title="{{ e.note }}">{{ pill(e.state, e.element) }}</td>
+     {% endfor %}
+    </tr>
+    {% endfor %}
+   </tbody>
+  </table>
  </div>
 </section>
 

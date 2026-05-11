@@ -250,7 +250,7 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
  <div class="strip" style="margin-top:var(--s-3)">
   <div class="stat">
    <span class="n">{% if org.loc_total is number %}{{ '{:,}'.format(org.loc_total) }}{% else %}{{ org.loc_total | default('—') }}{% endif %}</span>
-   <span class="lab">Lines of code (hand-written)</span>
+   <span class="lab">Source lines of code</span>
   </div>
   <div class="stat">
    <span class="n">{% if org.files_total is number %}{{ '{:,}'.format(org.files_total) }}{% else %}{{ org.files_total | default('—') }}{% endif %}</span>
@@ -267,7 +267,10 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
  </div>
  {# R15: provenance footnote for the LoC headline. Without this the
     number reads as a vanity stat; with it a reviewer knows what
-    counter, what exclusions, and where the spec lives. #}
+    counter, what exclusions, and where the spec lives. The
+    AI-assisted-authorship disclosure is non-negotiable: a "lines of
+    code" headline without it would imply human typing, which is
+    untrue for this codebase. #}
  <p style="margin:var(--s-2) 0 0;color:var(--muted);font-size:0.75rem">
   Counter: <code>collector/code_metrics.py</code> (non-blank, non-comment
   lines; Python via <code>tokenize</code>, Rust via a comment-stripping
@@ -275,9 +278,13 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
   <code>dist</code>, <code>build</code>, <code>__pycache__</code>,
   <code>_site</code>, and lockfiles (<code>uv.lock</code>,
   <code>Cargo.lock</code>). Tests are paths whose ancestor names match
-  <code>tests</code> / <code>test</code> / <code>benches</code>. Full
-  spec in <a href="methodology.html#sig-loc">methodology &mdash; lines
-  of code</a>.
+  <code>tests</code> / <code>test</code> / <code>benches</code>.
+  <strong>Authorship:</strong> this codebase is AI-assisted &mdash;
+  the lines counted here were generated with Claude (Anthropic) and
+  human-reviewed before commit. We count what's in <code>git</code>;
+  we do not claim humans typed every character. Full spec in
+  <a href="methodology.html#sig-loc">methodology &mdash; lines of
+  code</a>.
  </p>
 </section>
 

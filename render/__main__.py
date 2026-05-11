@@ -747,6 +747,152 @@ def _security_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def _slsa_build_level(att: dict[str, Any]) -> dict[str, Any]:
+    """Derive a SLSA Build Level claim from the per-package attestation state.
+
+    Rationale (R9 / F19): we don't carry a formal ``slsa.build.level``
+    field in the snapshot today, but the combination of (PEP 740
+    present + verified) + (publisher is a hosted CI/CD platform) is
+    sufficient to assert SLSA Build L2 effectively. We deliberately
+    don't claim L3 — that requires hardened build-platform isolation
+    guarantees this dashboard can't verify from public sources.
+
+    Returns a dict the template renders as a single pill + tooltip.
+    """
+    if not att or att.get("pep740_present") is not True:
+        return {
+            "level": None,
+            "state": "gray",
+            "label": "Build L0",
+            "note": "No PEP 740 attestation; SLSA build claim cannot be derived.",
+        }
+    verified = att.get("verified_count") or 0
+    total = att.get("total_count") or 0
+    publisher_kind = att.get("publisher_kind")
+    if verified == 0 or total == 0:
+        return {
+            "level": 1,
+            "state": "yellow",
+            "label": "Build L1",
+            "note": "Attestation metadata present but no artifact verified — provenance only.",
+        }
+    if verified < total:
+        return {
+            "level": 1,
+            "state": "yellow",
+            "label": "Build L1+",
+            "note": (
+                f"{verified}/{total} artifacts verified; partial coverage means "
+                "the provenance is sound but the build platform has not signed every artifact."
+            ),
+        }
+    # verified == total, full coverage
+    if publisher_kind in ("GitHub", "GitLab"):
+        return {
+            "level": 2,
+            "state": "green",
+            "label": "Build L2 (effective)",
+            "note": (
+                f"Hosted build platform ({publisher_kind}); every artifact in the latest "
+                "release has a verified PEP 740 attestation. L3 (hardened platform) "
+                "is not separately claimed — see methodology Limits & honest gaps."
+            ),
+        }
+    return {
+        "level": 2,
+        "state": "yellow",
+        "label": "Build L2?",
+        "note": (
+            "All artifacts verified but publisher_kind is not a recognized hosted "
+            "platform; L2 cannot be safely claimed."
+        ),
+    }
+
+
+def _cisa_sbom_minimum_elements(sbom: dict[str, Any], sc: dict[str, Any]) -> list[dict[str, Any]]:
+    """CISA SBOM Minimum Elements gap analysis (R10).
+
+    The seven required elements (CISA, 2021):
+      1. Author             - tool that created the SBOM
+      2. Supplier           - upstream supplier of each component
+      3. Component name     - per-component name
+      4. Version of component
+      5. Other unique identifier (PURL / CPE)
+      6. Dependency relationships (graph edges)
+      7. Timestamp          - when the SBOM was created
+
+    The dashboard surfaces each element green/amber/red so a buyer can
+    see exactly which element is missing rather than "the SBOM is
+    yellow because reasons."
+    """
+    has_sbom = bool(sbom.get("components_count"))
+    if not has_sbom:
+        # No SBOM yet — every element is gray.
+        return [
+            {"element": label, "state": "gray", "note": "No SBOM yet."}
+            for label in (
+                "Author",
+                "Supplier",
+                "Component name",
+                "Component version",
+                "Unique identifier (PURL)",
+                "Dependency relationships",
+                "Timestamp",
+            )
+        ]
+    # CycloneDX 1.5 always carries: metadata.tools (author), per-component
+    # name / version, ``components[i].bom-ref`` (PURL when available),
+    # and a metadata.timestamp. The one element we don't yet emit is
+    # the top-level ``dependencies[]`` graph (the F9 / R10 gap).
+    return [
+        {
+            "element": "Author",
+            "state": "green",
+            "note": "CycloneDX metadata.tools — kaos-compliance collector.",
+        },
+        {
+            "element": "Supplier",
+            "state": "yellow",
+            "note": (
+                "Per-component supplier is inferred from PURL ecosystem (pypi.org, "
+                "crates.io); we do not yet emit a CycloneDX components[i].supplier."
+            ),
+        },
+        {
+            "element": "Component name",
+            "state": "green",
+            "note": "Every component carries a name.",
+        },
+        {
+            "element": "Component version",
+            "state": "green",
+            "note": "Every component carries a version (lockfile-pinned).",
+        },
+        {
+            "element": "Unique identifier (PURL)",
+            "state": "green",
+            "note": (
+                "components[i].purl emitted for PyPI + Cargo components — "
+                "pkg:pypi/<name>@<version>, pkg:cargo/<name>@<version>."
+            ),
+        },
+        {
+            "element": "Dependency relationships",
+            "state": "yellow",
+            "note": (
+                "components[] enumerated but top-level dependencies[] graph "
+                "NOT emitted; SBOM is a manifest, not a graph. Tracked as F9 in "
+                "docs/research/08-followup.md."
+            ),
+        },
+        {
+            "element": "Timestamp",
+            "state": "green",
+            "note": "CycloneDX metadata.timestamp set to SBOM emit time.",
+        },
+    ]
+
+
 def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
     """Aggregate license breakdown + attestation table across modules."""
     org_license_breakdown: dict[str, int] = {}
@@ -761,6 +907,11 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
         if att.get("pep740_present"):
             packages_with_attestations += 1
         sbom_path = (sc.get("sbom") or {}).get("sbom_artifact_path")
+        slsa = _slsa_build_level(att)
+        cisa_elements = _cisa_sbom_minimum_elements(sbom, sc)
+        # CISA rollup: green count / total — surfaced as a one-pill summary.
+        cisa_green = sum(1 for e in cisa_elements if e["state"] == "green")
+        cisa_total = len(cisa_elements)
         rows.append(
             {
                 "name": m["name"],
@@ -787,6 +938,12 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
                     if sc.get("pypi_version")
                     else None
                 ),
+                # R9 / F19: derived SLSA build-level claim per package.
+                "slsa_build": slsa,
+                # R10: CISA SBOM Minimum Elements gap analysis.
+                "cisa_elements": cisa_elements,
+                "cisa_green_count": cisa_green,
+                "cisa_total_count": cisa_total,
             }
         )
     # Shape the org-wide license breakdown as a list-of-dicts ordered
@@ -803,10 +960,36 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
         {"spdx": spdx, "count": n, "state": _license_state(spdx)}
         for spdx, n in sorted(org_license_breakdown.items(), key=lambda kv: (-kv[1], kv[0]))
     ]
+
+    # R9 / F19: org-wide SLSA Build Level rollup. Count packages
+    # whose effective level is L2; everything else is yellow/gray.
+    slsa_l2_count = sum(1 for r in rows if (r.get("slsa_build") or {}).get("level") == 2)
+    # R10: org-wide CISA SBOM Minimum Elements rollup. We count
+    # packages whose every-element-green state matches; partial
+    # (depgraph gap) is the common case today.
+    cisa_full_count = sum(
+        1
+        for r in rows
+        if r.get("cisa_total_count")
+        and r.get("cisa_green_count") == r.get("cisa_total_count")
+    )
+
+    # Org-wide SBOM presence + dep-graph counts (R10 rollup denominator).
+    packages_with_sbom = sum(1 for r in rows if r.get("components_count"))
+    packages_with_dep_graph = 0  # F9: dependencies[] graph not yet emitted.
+
     return {
         "org_license_breakdown": license_rows,
         "packages_with_attestations": packages_with_attestations,
         "total_packages": len(modules),
+        "packages_with_sbom": packages_with_sbom,
+        "packages_with_dep_graph": packages_with_dep_graph,
+        # R9/F19 org rollup. Surfaced as "N/Total at SLSA Build L2 (effective)".
+        "slsa_l2_count": slsa_l2_count,
+        # R10 org rollup. Number of packages whose SBOM ticks every CISA
+        # minimum element. Until F9 lands this maxes out at zero across
+        # the org; that's the honest state.
+        "cisa_full_count": cisa_full_count,
         "packages": rows,
     }
 
