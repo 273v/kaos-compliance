@@ -123,6 +123,45 @@ footer a{color:var(--muted)}
  </div>
 </header>
 
+{# P7: Changes since the last sweep. Surfaces every per-signal delta
+   between today and the previous sweep recorded in history.json.
+   When there's no prior sweep we render a one-line "no prior sweep
+   yet" placeholder; we do NOT fabricate a baseline. #}
+{% set hist_diff = (signal_history.diff if signal_history is defined else {}) %}
+{% set pkg_diff_items = (hist_diff.get('packages', {}) if hist_diff else {}).get(pkg.name) %}
+<section aria-labelledby="changes-h">
+ <h2 id="changes-h">Changes since last sweep</h2>
+ <div class="card">
+ {% if not (signal_history is defined and signal_history.available) %}
+  <p style="color:var(--muted);margin:0">[ no prior sweep yet ]</p>
+ {% elif hist_diff and not hist_diff.get('from') %}
+  <p style="color:var(--muted);margin:0">[ no prior sweep yet ]</p>
+ {% elif pkg_diff_items %}
+  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
+   {{ hist_diff['from'] }} &rarr; {{ hist_diff['to'] }}
+  </p>
+  <ul style="margin:0;padding-left:var(--s-5)">
+   {% for d in pkg_diff_items %}
+    {% set gly = {"better":"▲","worse":"▼","same":"=","unknown":"?"}.get(d.delta, "?") %}
+    {% set cls = {"better":"g","worse":"r","same":"n","unknown":"n"}.get(d.delta, "n") %}
+    <li>
+     <span class="pill {{ cls }}" aria-label="{{ d.label }}: {{ d.delta }}">
+      <span class="gly" aria-hidden="true">{{ gly }}</span>
+      <span class="wd" aria-hidden="true">{{ d.delta }}</span>
+     </span>
+     <strong>{{ d.label }}</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      {{ d['from'] }} &rarr; {{ d['to'] }}
+     </span>
+    </li>
+   {% endfor %}
+  </ul>
+ {% else %}
+  <p style="color:var(--muted);margin:0">No signal changes detected since {{ hist_diff['from'] | default('the previous sweep') }}.</p>
+ {% endif %}
+ </div>
+</section>
+
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
@@ -280,12 +319,24 @@ footer a{color:var(--muted)}
 </section>
 
 <section class="evidence" aria-labelledby="ev-h">
- <h2 id="ev-h">Evidence</h2>
+ <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-3);flex-wrap:wrap">
+  <h2 id="ev-h" style="margin:0">Evidence</h2>
+  {# P7: per-package downloadable JSON bundle. Curl-friendly self-
+     contained blob with the snapshot slice + SBOM links + PEP 740
+     pointer. #}
+  <a href="api/v1/package/{{ pkg.name }}.json"
+     style="font-size:0.875rem;font-family:var(--mono);text-decoration:none;border:1px solid var(--border);padding:var(--s-1) var(--s-3);border-radius:3px"
+     title="curl -O the JSON evidence bundle for {{ pkg.name }}"
+     download>
+   Download JSON
+  </a>
+ </div>
  <div class="card">
   <ul>
    {% for e in pkg.evidence | default([]) %}
    {% if e.url %}<li><a href="{{ e.url }}">{{ e.label }}</a></li>{% endif %}
    {% endfor %}
+   <li><a href="api/v1/package/{{ pkg.name }}.json"><code>api/v1/package/{{ pkg.name }}.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
@@ -310,6 +361,7 @@ footer a{color:var(--muted)}
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ | <a href="api/v1/index.html">All endpoints</a>
 </footer>
 </body>
 </html>
