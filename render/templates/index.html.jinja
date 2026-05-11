@@ -265,6 +265,20 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
    <span class="lab">Rust src LoC</span>
   </div>
  </div>
+ {# R15: provenance footnote for the LoC headline. Without this the
+    number reads as a vanity stat; with it a reviewer knows what
+    counter, what exclusions, and where the spec lives. #}
+ <p style="margin:var(--s-2) 0 0;color:var(--muted);font-size:0.75rem">
+  Counter: <code>collector/code_metrics.py</code> (non-blank, non-comment
+  lines; Python via <code>tokenize</code>, Rust via a comment-stripping
+  pass). Excludes <code>.venv</code>, <code>target</code>,
+  <code>dist</code>, <code>build</code>, <code>__pycache__</code>,
+  <code>_site</code>, and lockfiles (<code>uv.lock</code>,
+  <code>Cargo.lock</code>). Tests are paths whose ancestor names match
+  <code>tests</code> / <code>test</code> / <code>benches</code>. Full
+  spec in <a href="methodology.html#sig-loc">methodology &mdash; lines
+  of code</a>.
+ </p>
 </section>
 
 <section aria-labelledby="grid-h">

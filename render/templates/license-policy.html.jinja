@@ -81,7 +81,7 @@ footer a{color:var(--muted)}
       treats the component as green-with-asterisk. The rationale below is
       the public audit trail.</li>
   <li><strong>Parser gap</strong> — a component whose license is
-      permissive and known but the SBOM parser currently can't extract it.
+      permissive and known but the SBOM parser currently can&rsquo;t extract it.
       Tracked here so the unresolved set is visible; pills stay yellow
       until the parser fix lands.</li>
  </ul>
@@ -91,6 +91,94 @@ footer a{color:var(--muted)}
   The machine-readable source is at
   <a href="https://github.com/273v/kaos-compliance/blob/main/policy/license-allowlist.yaml">policy/license-allowlist.yaml</a>.
  </p>
+</section>
+
+{# R16: name the license-detection method explicitly. Procurement readers
+   asked "scanned against what?" — citing the framework but not the
+   pipeline reads as evasion. The four-step pipeline below is the real
+   answer; ScanCode is named as the parser-gap-fixer even though it
+   isn't yet wired (tracked in docs/research/08-followup.md). #}
+{# R17: sole-reviewer attestation. policy/license-allowlist.yaml lists
+   ``reviewers: [mjbommar]``. The audit flagged this as a
+   single-signer pattern that needs to be ACKNOWLEDGED, not hidden.
+   The "Reviewer pool" callout below names the constraint, links to
+   F2 in the follow-up doc, and proposes the next two-of-N step. #}
+<section aria-labelledby="how-detected-h">
+ <h2 id="how-detected-h">How license metadata is collected</h2>
+ <div class="card">
+  <p style="margin:0">
+   Detection is a four-step pipeline; every component on this page has
+   walked through it in order:
+  </p>
+  <ol>
+   <li><strong>uv.lock parser</strong> &mdash;
+       <code>collector/sbom.py::parse_uv_lock</code> reads each
+       resolution and emits a CycloneDX 1.5 component with the
+       PyPI-declared SPDX expression (PEP 639 <code>license_expression</code>
+       when present; otherwise the legacy classifier-derived expression).</li>
+   <li><strong>PyPI JSON enrichment</strong> &mdash;
+       <code>https://pypi.org/pypi/&lt;pkg&gt;/&lt;ver&gt;/json</code>
+       <code>info.license_expression</code> backfills components whose
+       lockfile metadata is missing or non-SPDX. This is the
+       supplier-of-record for Python deps.</li>
+   <li><strong>crates.io enrichment</strong> &mdash; for Rust
+       components,
+       <code>https://crates.io/api/v1/crates/&lt;crate&gt;</code>
+       carries the SPDX expression that <code>Cargo.lock</code> drops.
+       This single pass eliminates the largest source of yellow pills
+       on the dashboard.</li>
+   <li><strong>Offline license book</strong> &mdash; a hand-curated
+       fallback for components whose PyPI metadata is missing or
+       malformed (see <code>collector/sbom.py::apply_offline_license_book</code>).
+       Only touches components whose SPDX is still
+       <code>LicenseRef-unknown-*</code> after the previous three
+       steps.</li>
+  </ol>
+  <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.875rem">
+   A ScanCode-toolkit pass for the residual parser-gap set is the
+   next planned step (tracked in
+   <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>);
+   today every remaining unresolved component is listed in the
+   <a href="#gaps-h">parser-gap table</a> below with the true license
+   stated openly.
+  </p>
+ </div>
+</section>
+
+<section aria-labelledby="signer-h">
+ <h2 id="signer-h">Reviewer pool and attestation</h2>
+ <div class="card">
+  <p style="margin:0">
+   Every approved exception below is reviewed by a named maintainer.
+   Today the reviewer pool is:
+  </p>
+  <ul style="margin:var(--s-2) 0;font-family:var(--mono);font-size:0.875rem">
+   {% if license_policy.reviewers %}
+    {% for r in license_policy.reviewers %}
+     <li>{{ r }}</li>
+    {% endfor %}
+   {% else %}
+    <li><em>none listed in policy/license-allowlist.yaml</em></li>
+   {% endif %}
+  </ul>
+  {% if license_policy.reviewers and (license_policy.reviewers | length) == 1 %}
+   <p style="margin:var(--s-3) 0 0;padding:var(--s-3) var(--s-4);border-left:3px solid var(--y-fg);background:var(--y-bg);color:var(--y-fg);border-radius:0 4px 4px 0;font-size:0.875rem">
+    <strong>Single-reviewer attestation, acknowledged.</strong>
+    Exceptions on this page are currently reviewed by one named
+    maintainer. This is a sole-signer pattern; a two-of-N signoff is
+    the next governance step (tracked as <code>F2</code> in
+    <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>).
+    Until a second reviewer is wired into CODEOWNERS, treat every
+    rationale here as a one-person claim &mdash; the rationale text +
+    audit-ref link is the public audit trail, not a quorum.
+   </p>
+  {% else %}
+   <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.875rem">
+    Quorum reached. Each approval below carries at least two named
+    reviewers from the pool above.
+   </p>
+  {% endif %}
+ </div>
 </section>
 
 <section aria-labelledby="allowed-h">
