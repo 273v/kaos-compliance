@@ -241,6 +241,32 @@ footer a{color:var(--muted)}
  </div>
 </section>
 
+<section aria-labelledby="cm-h">
+ <h2 id="cm-h">Code surface area</h2>
+ <div class="card">
+  <dl class="kv">
+   <dt>Python source (LoC)</dt>
+   <dd>2,552 across 10 files</dd>
+   <dt>Python tests (LoC)</dt>
+   <dd>2,736 across 20 files</dd>
+   <dt>Rust source (LoC)</dt>
+   <dd>—</dd>
+   <dt>Rust tests (LoC)</dt>
+   <dd>—</dd>
+   <dt>Total (hand-written)</dt>
+   <dd>5,288 LoC</dd>
+  </dl>
+  <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
+   Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
+   <code>target</code>, <code>dist</code>, <code>build</code>,
+   <code>__pycache__</code>, <code>_site</code>, and lockfiles
+   (<code>uv.lock</code>, <code>Cargo.lock</code>). Tests are paths whose
+   ancestors contain <code>tests</code>, <code>test</code>, or
+   <code>benches</code>.
+  </p>
+ </div>
+</section>
+
 <section class="evidence" aria-labelledby="ev-h">
  <h2 id="ev-h">Evidence</h2>
  <div class="card">
@@ -270,7 +296,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-05-11 15:39 UTC
+ Generated 2026-05-11 16:01 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="assets/snapshot.json">snapshot.json</a>
