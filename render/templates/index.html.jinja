@@ -57,10 +57,13 @@ h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:
 .rollup-head .score{font-family:var(--mono);font-weight:700;font-size:1.25rem}
 .bar{height:10px;background:var(--n-bg);border-radius:2px;overflow:hidden;border:1px solid var(--border)}
 .bar>span{display:block;height:100%;background:var(--g-fg)}
-.rollup-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4);margin-top:var(--s-4)}
+.rollup-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s-4);margin-top:var(--s-4)}
 .rollup-grid .cell{font-size:0.875rem}
 .rollup-grid .cell .n{display:block;font-family:var(--mono);font-size:1.5rem;font-weight:700;line-height:1.1}
+.rollup-grid .cell .sub{display:block;font-family:var(--mono);font-size:0.8125rem;font-weight:600;color:var(--muted);line-height:1.3;margin-top:2px}
 .rollup-grid .cell .lab{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+.rollup-grid .cell .lab a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)}
+.rollup-grid .cell .lab a:hover{color:var(--text);border-bottom-color:var(--text)}
 .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4);margin-top:var(--s-5)}
 .strip .stat{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-3) var(--s-4)}
 .strip .stat .n{font-family:var(--mono);font-size:1.75rem;font-weight:700;line-height:1.1;display:block}
@@ -91,7 +94,8 @@ nav.subnav a{color:var(--muted)}
 @media (max-width:720px){
  .wrap{padding:var(--s-5) var(--s-4)}
  .page-head h1{font-size:1.5rem}
- .rollup-grid,.strip{grid-template-columns:1fr 1fr}
+ .rollup-grid{grid-template-columns:1fr 1fr}
+ .strip{grid-template-columns:1fr 1fr}
  table.grid thead{display:none}
  table.grid,table.grid tbody,table.grid tr,table.grid td{display:block;width:100%}
  table.grid tr{border:1px solid var(--border);border-radius:6px;margin-bottom:var(--s-3);padding:var(--s-3)}
@@ -121,6 +125,7 @@ nav.subnav a{color:var(--muted)}
    <a href="governance.html">Governance</a>
    <a href="diary.html">Diary</a>
    <a href="methodology.html">Methodology</a>
+   <a href="methodology.html#pill-semantics">Pill semantics</a>
   </nav>
   {# Integrity claim (R4): tie each render to a sigstore signature on
      api/v1/snapshot.json. Pill renders green only when the workflow
@@ -154,24 +159,65 @@ nav.subnav a{color:var(--muted)}
 
 <main id="main">
 <section aria-labelledby="rollup-h">
- <h2 id="rollup-h">Org rollup</h2>
+ <h2 id="rollup-h">Org-level signal summary</h2>
  <div class="card rollup">
-  <div class="rollup-head">
-   <div class="label">Composite trust</div>
-   <div class="score" aria-label="Composite score">
-    {{ org.composite_green | default(14) }} / {{ org.composite_total | default(16) }} packages green
+  {#
+    R1: no "Composite trust" hero, no rolled-up N/N integer. The
+    methodology forbids composite scores; this section now presents
+    the four primary sub-totals directly. Each tile links to its row
+    on methodology.html#pill-semantics so a reviewer can see how the
+    pill state is decided.
+
+    R2 + R3: the "Signed releases" tile previously rolled PEP 740
+    attestation state and trusted-publisher state into one binary
+    green pill, which the methodology calls out as an anti-pattern.
+    The Releases tile now shows BOTH sub-ratios stacked: the verified
+    PEP 740 attestation count on top, and the Trusted Publisher count
+    underneath.
+
+    R24: branch-protection state used to be hidden from the rollup
+    even though it was universal-off across the org. The fifth tile
+    surfaces the per-repo count so a buyer can see the state without
+    drilling into governance.html.
+  #}
+  <div class="rollup-grid">
+   <div class="cell">
+    <span class="n">{{ org.build_pass | default(15) }}/{{ org.composite_total | default(16) }}</span>
+    <span class="lab"><a href="methodology.html#sig-build">Build passing</a></span>
+   </div>
+   <div class="cell">
+    <span class="n">{{ org.tests_pass | default(14) }}/{{ org.composite_total | default(16) }}</span>
+    <span class="lab"><a href="methodology.html#sig-tests">Tests passing</a></span>
+   </div>
+   <div class="cell">
+    <span class="n">{{ org.attestations_count | default(0) }}/{{ org.composite_total | default(16) }}</span>
+    <span class="sub">TP: {{ org.trusted_publisher_count | default(0) }}/{{ org.composite_total | default(16) }}</span>
+    <span class="lab"><a href="methodology.html#sig-releases">Releases: attested / TP</a></span>
+   </div>
+   <div class="cell">
+    <span class="n">{{ org.license_clean | default(16) }}/{{ org.composite_total | default(16) }}</span>
+    <span class="lab"><a href="methodology.html#sig-license">License clean</a></span>
+   </div>
+   <div class="cell">
+    {% if org.branch_protection_total and org.branch_protection_total > 0 %}
+     <span class="n">{{ org.branch_protection_count | default(0) }}/{{ org.branch_protection_total }}</span>
+    {% else %}
+     <span class="n">—</span>
+    {% endif %}
+    <span class="lab"><a href="methodology.html#sig-branch-prot">Branch protection</a></span>
    </div>
   </div>
-  {% set pct = ((org.composite_green | default(14)) * 100 // (org.composite_total | default(16))) %}
-  <div class="bar" role="img" aria-label="{{ pct }} percent of packages meeting bar">
-   <span style="width:{{ pct }}%"></span>
-  </div>
-  <div class="rollup-grid">
-   <div class="cell"><span class="n">{{ org.build_pass | default(15) }}/{{ org.composite_total | default(16) }}</span><span class="lab">Build passing</span></div>
-   <div class="cell"><span class="n">{{ org.tests_pass | default(14) }}/{{ org.composite_total | default(16) }}</span><span class="lab">Tests passing</span></div>
-   <div class="cell"><span class="n">{{ org.signed_releases | default(11) }}/{{ org.composite_total | default(16) }}</span><span class="lab">Signed releases</span></div>
-   <div class="cell"><span class="n">{{ org.license_clean | default(16) }}/{{ org.composite_total | default(16) }}</span><span class="lab">License clean</span></div>
-  </div>
+  <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
+   No composite score. Each tile is a per-signal ratio; the
+   <a href="methodology.html#pill-semantics">pill semantics table</a>
+   names the exact green / amber / red / gray rule for every signal on
+   this page. Releases: <em>attested</em> = PEP&nbsp;740 attestation
+   present and every artifact in the latest release verified;
+   <em>TP</em> = a PyPI Trusted Publisher is wired to the latest
+   release (proxied from the attestation publisher metadata until a
+   dedicated <code>publisher_state</code> field lands in the
+   snapshot).
+  </p>
  </div>
 </section>
 
@@ -220,6 +266,7 @@ nav.subnav a{color:var(--muted)}
     <th scope="col">Signing</th>
     <th scope="col">License</th>
     <th scope="col">Deps</th>
+    <th scope="col">Branch prot.</th>
     <th scope="col">Last release</th>
    </tr>
   </thead>
@@ -248,7 +295,21 @@ nav.subnav a{color:var(--muted)}
       {% endif %}
      </td>
     {% endfor %}
-    <td class="age" data-h="Last release">{{ p.last_release_display }}</td>
+    {# R24: per-package branch-protection cell. green=On, yellow="Off (alpha)", gray="?". #}
+    {% set bp = p.branch_protection_enabled %}
+    {% if bp is sameas true %}
+     {% set bp_st = ["g","✓","On"] %}
+    {% elif bp is sameas false %}
+     {% set bp_st = ["y","⚠","Off (alpha)"] %}
+    {% else %}
+     {% set bp_st = ["n","—","?"] %}
+    {% endif %}
+    <td data-h="Branch prot.">
+     <span class="pill {{ bp_st[0] }}" aria-label="Branch protection: {{ bp_st[2] }}">
+      <span class="gly" aria-hidden="true">{{ bp_st[1] }}</span><span class="wd">{{ bp_st[2] }}</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">{{ p.last_release_display | default(p.last_release) }}</td>
    </tr>
    {% endfor %}
   </tbody>

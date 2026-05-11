@@ -116,7 +116,7 @@ footer a{color:var(--muted)}
 <header class="identity">
  <h1>{{ pkg.name | default('kaos-core') }} {{ pkg.version | default('1.4.2') }}</h1>
  <div class="triple">
-  <span>License: {{ pkg.license | default('Apache-2.0') }}</span>
+  <span>License: {{ pkg.license_expression | default('Apache-2.0') }}</span>
   <span>Runtime: {{ pkg.python | default('Python 3.10+') }}</span>
   <span>Released: {{ pkg.released_at | default('2026-05-08') }}</span>
   <span><a href="{{ pkg.repo_url | default('https://github.com/273v/kaos-core') }}">Repository</a></span>
@@ -182,10 +182,33 @@ footer a{color:var(--muted)}
  <h2 id="sec-h">Security</h2>
  <div class="card">
   <dl class="kv">
-   <dt>Open advisories</dt><dd>{{ pkg.security.open | default(0) }}</dd>
-   <dt>Fixed in 90d</dt><dd>{{ pkg.security.fixed_90d | default(1) }}</dd>
-   <dt>Dependabot alerts</dt><dd>{{ pkg.security.dependabot | default(0) }}</dd>
+   <dt>Open advisories</dt><dd>{{ pkg.security_detail.open | length if pkg.security_detail and pkg.security_detail.open is iterable else 0 }}</dd>
+   <dt>Fixed in 90d</dt><dd>{{ pkg.security_detail.fixed_90d | length if pkg.security_detail and pkg.security_detail.fixed_90d is iterable else 0 }}</dd>
+   <dt>Dependabot alerts</dt><dd>{{ pkg.security_detail.dependabot if pkg.security_detail else '—' }}</dd>
+   {# R7: per-package suppressions count, threaded in by the renderer. #}
+   <dt>Suppressions (total)</dt>
+   <dd>
+    {% if pkg_suppressions is none or (pkg_suppressions and pkg_suppressions.total is none) %}
+     <span style="color:var(--muted)">not inspected (sibling clone absent)</span>
+    {% else %}
+     {{ pkg_suppressions.total }}
+     <span style="color:var(--muted);font-family:var(--mono);font-size:0.75rem">
+      (noqa {{ pkg_suppressions.noqa }} &middot;
+       nosec {{ pkg_suppressions.nosec }} &middot;
+       ty {{ pkg_suppressions.ty_ignore }} &middot;
+       type {{ pkg_suppressions.type_ignore }} &middot;
+       rust-allow {{ pkg_suppressions.rust_allow }} &middot;
+       cargo-deny {{ pkg_suppressions.cargo_deny_ignore }} &middot;
+       bandit {{ pkg_suppressions.bandit_skips }})
+     </span>
+    {% endif %}
+   </dd>
   </dl>
+  <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
+   Suppressions are markers that silence a linter, type-checker, or
+   security scanner. See <a href="security.html#sup-h">security.html</a>
+   for the full ledger across the org.
+  </p>
  </div>
 </section>
 <section aria-labelledby="sup-h">

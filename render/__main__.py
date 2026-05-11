@@ -44,6 +44,23 @@ try:
 except Exception:
     _snapshot_schema = None  # type: ignore[assignment]
 
+# Suppressions collector — render-time augmentation. Imported lazily so
+# the renderer still works on a snapshot collected on a host that doesn't
+# have the sibling clones present (e.g. GHA runner with a fetched
+# snapshot only). When the import fails or the sibling root is missing
+# we surface ``None`` counts and a "not inspected" note, never a silent
+# zero.
+try:
+    from collector import suppressions as _suppressions  # type: ignore[import-not-found]
+except Exception:  # noqa: BLE001
+    _suppressions = None  # type: ignore[assignment]
+
+# Default on-disk root that hosts the public sibling clones. Kept in
+# sync with ``collector.snapshot._SIBLING_ROOT``. The render-time
+# augmentation only reads files; it never writes back into the sibling
+# trees.
+_SIBLING_ROOT = Path("/home/mjbommar/projects/273v")
+
 HERE = Path(__file__).resolve().parent
 TEMPLATES_DIR = HERE / "templates"
 
@@ -306,6 +323,7 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
     # a parallel key (`security_detail`). The package template's
     # remaining `pkg.security.<field>` references fall through to
     # Jinja's `default(...)` filter on a string, which is harmless.
+    gov_section = module.get("governance") or {}
     row = {
         "name": module["name"],
         "version": identity.get("latest_tag") or "—",
@@ -318,6 +336,16 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
         "signing": _pill_signing(module),
         "license": _pill_license(module, policy=policy),
         "deps": _pill_deps(module, policy=policy),
+        # R24: surface branch-protection state on the row so the index
+        # table can render a per-repo column. ``None`` means we don't
+        # know yet (gray); ``False`` means we asked and it's off (amber
+        # "Off (alpha)"); ``True`` is the green "On" state.
+        "branch_protection_enabled": gov_section.get("branch_protection_enabled"),
+        # SPDX license expression for the package's own latest wheel
+        # (NOT the SBOM aggregate). Surfaced separately from the
+        # `license` pill so the package detail header can show
+        # "License: Apache-2.0" instead of "License: green".
+        "license_expression": (module.get("supply_chain") or {}).get("license_expression"),
         "pill_links": pill_links,
         "last_release": last_commit[:10] if last_commit else "—",
         "release_age_days": _release_age_days(module),
@@ -352,6 +380,85 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
     }
     row["code_metrics"] = code_metrics_view
 
+    # R13: per-package scorecard backfill. The detail template loops
+    # over (build, tests, security, signing, license, sbom,
+    # branch_protection, docs) and renders ``scorecard[key].state`` +
+    # ``.note``. Previously we passed ``scorecard = {}``, which made
+    # every check render gray and the composite read "0/0 green" — a
+    # demonstrable contradiction with the org rollup. We now mirror the
+    # row-level pill state into the scorecard slot and attach a short,
+    # source-grounded note. Branch-protection and docs come from the
+    # governance section.
+    sbom_meta = (module.get("supply_chain") or {}).get("sbom") or {}
+    sbom_components = sbom_meta.get("components_count")
+    if sbom_components:
+        sbom_state = "green"
+        sbom_note = f"SBOM published — {sbom_components} components"
+    else:
+        sbom_state = "gray"
+        sbom_note = "SBOM not yet published"
+    att_meta = (module.get("supply_chain") or {}).get("attestations") or {}
+    if att_meta.get("pep740_present"):
+        signing_note = (
+            f"PEP 740 attestation verified for "
+            f"{att_meta.get('verified_count')}/{att_meta.get('total_count')} artifacts"
+        )
+    elif att_meta.get("total_count"):
+        signing_note = "PEP 740 attestation absent for the latest release"
+    else:
+        signing_note = "No PyPI release on file yet"
+    bp_state_raw = gov_section.get("branch_protection_enabled")
+    bp_state = (
+        "green" if bp_state_raw is True else "yellow" if bp_state_raw is False else "gray"
+    )
+    bp_note = {
+        True: "Required reviews + status checks enforced on main",
+        False: "Branch protection off — acceptable for alpha; flip before GA",
+    }.get(bp_state_raw, "Branch-protection state not yet collected")
+    docs_state = (
+        "green"
+        if gov_section.get("security_md_present") and gov_section.get("codeowners_path")
+        else "yellow"
+        if gov_section.get("security_md_present") or gov_section.get("codeowners_path")
+        else "gray"
+    )
+    docs_note_parts = []
+    if gov_section.get("security_md_present"):
+        docs_note_parts.append("SECURITY.md")
+    if gov_section.get("codeowners_path"):
+        docs_note_parts.append("CODEOWNERS")
+    docs_note = (
+        " + ".join(docs_note_parts) + " present"
+        if docs_note_parts
+        else "SECURITY.md / CODEOWNERS not detected"
+    )
+    license_expr = (module.get("supply_chain") or {}).get("license_expression")
+    scorecard = {
+        "build": {
+            "state": row["build"],
+            "note": f"Latest CI conclusion: {ci_section.get('workflow_conclusion') or 'unknown'}",
+        },
+        "tests": {
+            "state": row["tests"],
+            "note": f"Latest CI conclusion: {ci_section.get('workflow_conclusion') or 'unknown'}",
+        },
+        "security": {
+            "state": row["security"],
+            "note": f"Latest Security workflow conclusion: {sec_section.get('workflow_conclusion') or 'unknown'}",
+        },
+        "signing": {"state": row["signing"], "note": signing_note},
+        "license": {
+            "state": row["license"],
+            "note": (
+                f"Wheel license: {license_expr}"
+                if license_expr
+                else "License expression not extracted from wheel"
+            ),
+        },
+        "sbom": {"state": sbom_state, "note": sbom_note},
+        "branch_protection": {"state": bp_state, "note": bp_note},
+        "docs": {"state": docs_state, "note": docs_note},
+    }
     row.update(
         {
             # ci_matrix shape expected by the template:
@@ -373,12 +480,13 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
                 "sbom_links": [],
             },
             "governance": {
-                "commits_90d": "—",
+                "commits_90d": gov_section.get("commits_90d") or "—",
                 "commits_sparkline": [],
-                "maintainers": "—",
-                "releases_90d": "—",
+                "maintainers": gov_section.get("unique_committers_90d") or "—",
+                "releases_90d": gov_section.get("releases_90d") or "—",
+                "branch_protection_enabled": gov_section.get("branch_protection_enabled"),
             },
-            "scorecard": {},
+            "scorecard": scorecard,
             "evidence": [
                 {"label": "Repository", "url": f"https://github.com/273v/{module['name']}"},
                 {"label": "PyPI project", "url": f"https://pypi.org/project/{module['name']}/"},
@@ -409,7 +517,54 @@ def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[s
     license_clean = sum(
         1 for m in modules if _pill_license(m, policy=policy) == "green"
     )
-    signed_releases = sum(1 for m in modules if _pill_signing(m) == "green")  # gray for now → 0
+    # R2 + R3: the legacy ``signed_releases`` count rolled "verified
+    # attestation present" and "trusted publisher present" into one
+    # green pill. Methodology forbids that pattern (anti-pattern #2).
+    # We now expose both signals separately:
+    #
+    #   attestations_count  — PEP 740 attestation present AND every
+    #                         artifact in the latest release verified
+    #                         (verified_count == total_count > 0).
+    #   trusted_publisher_count — PyPI Trusted Publisher metadata is
+    #                         attached to the latest release (we proxy
+    #                         this from ``attestations.publisher_kind``
+    #                         since the snapshot doesn't yet carry a
+    #                         dedicated ``publisher_state`` field; this
+    #                         is a known gap, documented inline so we
+    #                         don't fake-green it).
+    #
+    # ``signed_releases`` is kept for backward compatibility with any
+    # downstream JSON consumer but the index no longer renders a
+    # single rolled-up "Signed releases" pill.
+    signed_releases = sum(1 for m in modules if _pill_signing(m) == "green")
+    attestations_count = sum(
+        1
+        for m in modules
+        if ((m.get("supply_chain") or {}).get("attestations") or {}).get("pep740_present")
+        and (
+            ((m.get("supply_chain") or {}).get("attestations") or {}).get("verified_count")
+            == ((m.get("supply_chain") or {}).get("attestations") or {}).get("total_count")
+        )
+        and ((m.get("supply_chain") or {}).get("attestations") or {}).get("total_count")
+    )
+    trusted_publisher_count = sum(
+        1
+        for m in modules
+        if ((m.get("supply_chain") or {}).get("attestations") or {}).get("publisher_kind")
+    )
+    # Branch-protection rollup (R24): hiding "universal-off" makes the
+    # green rollup misleading, so we expose the count alongside the
+    # other rollup tiles. ``None`` denominator means we don't know yet
+    # for any repo; that case renders as ``—`` not ``0/0`` so it can't
+    # be misread as a clean state.
+    bp_total = sum(
+        1
+        for m in modules
+        if (m.get("governance") or {}).get("branch_protection_enabled") is not None
+    )
+    bp_count = sum(
+        1 for m in modules if (m.get("governance") or {}).get("branch_protection_enabled")
+    )
     composite_green = sum(
         1
         for m in modules
@@ -489,6 +644,10 @@ def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[s
         "build_pass": build_pass,
         "tests_pass": tests_pass,
         "signed_releases": signed_releases,
+        "attestations_count": attestations_count,
+        "trusted_publisher_count": trusted_publisher_count,
+        "branch_protection_count": bp_count,
+        "branch_protection_total": bp_total,
         "license_clean": license_clean,
         # Headline strip:
         "repos_total": total,
@@ -764,6 +923,43 @@ def _governance_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def _suppressions_view(modules: list[dict[str, Any]]) -> dict[str, Any]:
+    """Render-time augmentation: per-repo suppressions ledger (R7).
+
+    The snapshot collector doesn't carry suppressions yet (and we're
+    told not to widen its schema for this fix), so the renderer walks
+    the on-disk sibling clones directly. On a build host without the
+    sibling clones (e.g. a fresh GHA runner) every per-repo count is
+    ``None`` and the org-total is ``None`` — the template surfaces a
+    "sibling clones not present" note instead of fake-zeroing.
+    """
+    repo_names = [m["name"] for m in modules]
+    if _suppressions is None:
+        return {
+            "available": False,
+            "reason": "collector.suppressions import failed",
+            "per_repo": {name: None for name in repo_names},
+            "org_total": None,
+            "repos_inspected": 0,
+            "repos_total": len(repo_names),
+        }
+    if not _SIBLING_ROOT.is_dir():
+        return {
+            "available": False,
+            "reason": f"sibling clone root {_SIBLING_ROOT} not present on this host",
+            "per_repo": {name: None for name in repo_names},
+            "org_total": None,
+            "repos_inspected": 0,
+            "repos_total": len(repo_names),
+        }
+    agg = _suppressions.collect_for_org(repo_names, sibling_root=_SIBLING_ROOT)
+    return {
+        "available": True,
+        "reason": None,
+        **agg,
+    }
+
+
 def adapt(
     snapshot: dict[str, Any],
     *,
@@ -802,6 +998,9 @@ def adapt(
         # back to a "no signature, no schema" stub so the template can
         # always read .integrity.* without a default() filter.
         "integrity": integrity or _integrity_view(signature_present=False, schema_present=False),
+        # Suppressions ledger (R7) — render-time augmentation walking
+        # sibling clones, since the snapshot doesn't carry these yet.
+        "suppressions": _suppressions_view(modules),
     }
 
 
@@ -991,6 +1190,13 @@ def render(
         # The package template expects the same view dict; pass only that
         # package's row + the underlying raw section data plus the org
         # context for the methodology callout.
+        # R7: thread the per-repo suppressions count into the package
+        # template. The shape is ``None`` when the sibling clone wasn't
+        # inspected, or the dict produced by
+        # ``collector.suppressions.collect()``.
+        pkg_suppressions = (view.get("suppressions") or {}).get("per_repo", {}).get(
+            pkg["name"]
+        )
         ctx = {
             "generated_at": view["generated_at"],
             "generated_at_display": view["generated_at_display"],
@@ -999,6 +1205,8 @@ def render(
             "pkg": pkg,
             "raw": pkg["_raw"],
             "heartbeat": view["heartbeat"],
+            "pkg_suppressions": pkg_suppressions,
+            "suppressions_available": (view.get("suppressions") or {}).get("available"),
         }
         out = output_dir / "package" / f"{pkg['name']}.html"
         out.write_text(package_tpl.render(**ctx), encoding="utf-8")
