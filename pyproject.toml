@@ -1,0 +1,94 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kaos-compliance"
+version = "0.0.1"
+description = "Continuous compliance and supply-chain dashboard for the KAOS open-source ecosystem"
+readme = "README.md"
+requires-python = ">=3.13"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [
+  { name = "273 Ventures LLC", email = "it@273ventures.com" },
+]
+maintainers = [
+  { name = "Michael Bommarito", email = "mike@273ventures.com" },
+]
+keywords = [
+  "compliance",
+  "supply-chain",
+  "sbom",
+  "kaos",
+  "ossf-scorecard",
+  "slsa",
+  "ssdf",
+  "openssf",
+]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Information Technology",
+  "Intended Audience :: System Administrators",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+  "Topic :: Software Development :: Quality Assurance",
+  "Typing :: Typed",
+]
+# Intentionally minimal. The collector is stdlib-only for the gh and
+# PyPI paths (mirrors the retry-aware design in
+# kaos-modules/scripts). Jinja is the only runtime dep — required by
+# the renderer.
+dependencies = [
+  "jinja2>=3.1.5",
+]
+
+[project.optional-dependencies]
+# The LLM-diary path uses the org's own multi-provider client. Optional
+# so the collector + renderer can run anywhere without API keys.
+llm = [
+  "kaos-llm-client>=0.1.0a3,<0.2",
+]
+
+[project.urls]
+Homepage = "https://273v.github.io/kaos-compliance/"
+Documentation = "https://273v.github.io/kaos-compliance/methodology.html"
+Repository = "https://github.com/273v/kaos-compliance"
+Issues = "https://github.com/273v/kaos-compliance/issues"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3.5",
+  "pytest-cov>=6.0.0",
+  "ruff>=0.15.12",
+  "ty>=0.0.34,<0.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["collector", "render"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/collector",
+  "/render",
+  "/docs",
+  "/tests",
+  "/LICENSE",
+  "/NOTICE",
+  "/CHANGELOG.md",
+  "/README.md",
+  "/pyproject.toml",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF", "C4", "PTH"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]

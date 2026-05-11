@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Compliance evidence for {{ pkg.name | default('kaos-core') }} — build, security, supply chain, governance.">
+<base href="{{ base_href | default('/kaos-compliance/') }}">
+<title>{{ pkg.name | default('kaos-core') }} — KAOS Compliance</title>
+{#
+  Expected data shape (snapshot.json -> packages[name]) — keep in sync.
+  {
+    "name":"kaos-core","version":"1.4.2","license":"Apache-2.0",
+    "python":"3.10+","released_at":"2026-05-08","repo_url":"https://github.com/273v/kaos-core",
+    "scorecard":{
+      "build":{"state":"green","note":"main green for 14 days"},
+      "tests":{"state":"green","note":"87% line, 81% branch"},
+      "security":{"state":"green","note":"0 open, 1 fixed in 90d"},
+      "signing":{"state":"green","note":"sigstore + GPG since 1.3.0"},
+      "license":{"state":"green","note":"no copyleft transitive"},
+      "sbom":{"state":"yellow","note":"SPDX present, CycloneDX missing"},
+      "branch_protection":{"state":"green","note":"required reviews + signed"},
+      "docs":{"state":"green","note":"SECURITY.md + CODEOWNERS"}
+    },
+    "ci_matrix":[{"os":"ubuntu","python":"3.10","checks":{"pytest":"green","ruff":"green","ty":"green","bandit":"green","pip_audit":"green"}}],
+    "security":{"open":0,"fixed_90d":1,"dependabot":0},
+    "supply_chain":{"direct":14,"transitive":87,"sbom_links":[["SPDX","sbom.spdx.json"]]},
+    "governance":{"maintainers":3,"commits_90d":42,"commits_sparkline":[0,2,5,3,8,6,4,7,3,4],"releases_90d":6},
+    "evidence":[["Repository","https://github.com/273v/kaos-core"],["Releases","https://github.com/273v/kaos-core/releases"]]
+  }
+#}
+<style>
+:root{
+ --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
+ --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
+ --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
+ --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;
+ --focus:#2563eb;
+ --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+ :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;
+  --g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;
+  --r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:var(--s-7) var(--s-5)}
+.crumbs{font-size:0.8125rem;color:var(--muted);margin-bottom:var(--s-3)}
+.identity{border-bottom:1px solid var(--border);padding-bottom:var(--s-4);margin-bottom:var(--s-5)}
+.identity h1{margin:0;font-size:2rem;line-height:1.1;font-family:var(--mono)}
+.identity .triple{margin-top:var(--s-2);color:var(--muted);font-size:0.875rem;display:flex;gap:var(--s-4);flex-wrap:wrap}
+.identity .triple span{font-family:var(--mono)}
+h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:600}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-4)}
+.score-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--s-3);margin-bottom:var(--s-3)}
+.score-head .composite{font-family:var(--mono);font-weight:700;font-size:1.125rem}
+.scorecard{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-4)}
+.check{display:flex;gap:var(--s-3);padding:var(--s-3);border:1px solid var(--border);border-radius:6px;background:var(--card-bg);align-items:flex-start}
+.check .pill{flex-shrink:0}
+.check .body .lab{font-weight:600;font-size:0.9375rem}
+.check .body .note{color:var(--muted);font-size:0.8125rem;margin-top:var(--s-1)}
+.pill{display:inline-flex;align-items:center;gap:var(--s-2);padding:2px 8px;border-radius:3px;font-size:0.75rem;font-weight:600;line-height:1.4;border:1px solid transparent}
+.pill .gly{font-family:var(--mono);font-weight:700}
+.pill .wd{font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
+.pill.g{background:var(--g-bg);color:var(--g-fg);border-color:var(--g-fg)}
+.pill.y{background:var(--y-bg);color:var(--y-fg);border-color:var(--y-fg)}
+.pill.r{background:var(--r-bg);color:var(--r-fg);border-color:var(--r-fg)}
+.pill.n{background:var(--n-bg);color:var(--n-fg);border-color:var(--n-fg)}
+table.matrix{width:100%;border-collapse:collapse;font-size:0.875rem}
+table.matrix th,table.matrix td{padding:var(--s-2) var(--s-3);text-align:left;border-bottom:1px solid var(--border);vertical-align:middle}
+table.matrix th{font-weight:600;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+table.matrix td.env{font-family:var(--mono)}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:var(--s-2) var(--s-4);font-size:0.875rem}
+.kv dt{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding-top:var(--s-1)}
+.kv dd{margin:0;font-family:var(--mono)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-5)}
+.evidence ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-2)}
+.evidence li a{font-family:var(--mono);font-size:0.875rem}
+.callout{border-left:3px solid var(--n-fg);background:var(--n-bg);padding:var(--s-3) var(--s-4);font-size:0.875rem;color:var(--text);border-radius:0 4px 4px 0}
+.callout strong{display:block;margin-bottom:var(--s-1)}
+.spark{vertical-align:middle;margin-left:var(--s-2)}
+footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
+footer a{color:var(--muted)}
+@media (max-width:720px){
+ .wrap{padding:var(--s-5) var(--s-4)}
+ .identity h1{font-size:1.5rem}
+ .scorecard,.row2,.evidence ul{grid-template-columns:1fr}
+ table.matrix thead{display:none}
+ table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100%}
+ table.matrix tr{border:1px solid var(--border);border-radius:6px;margin-bottom:var(--s-3);padding:var(--s-3)}
+ table.matrix td{border:0;padding:var(--s-1) 0;display:flex;justify-content:space-between;gap:var(--s-3)}
+ table.matrix td::before{content:attr(data-h);color:var(--muted);font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
+}
+@media print{
+ :root{--page-bg:#fff;--card-bg:#fff;--text:#000;--muted:#444;--border:#999}
+ a{color:#000;text-decoration:none}
+ .wrap{padding:0;max-width:none}
+ .pill{background:#fff!important;color:#000!important;border:1px solid #000}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+{% set states = {"green":["g","✓","Pass"],"yellow":["y","⚠","Warn"],"red":["r","✗","Fail"],"gray":["n","—","No signal"]} %}
+{% macro pill(state, col) -%}
+{% set st = states[state] %}
+<span class="pill {{ st[0] }}" aria-label="{{ col }}: {{ st[2] }}"><span class="gly" aria-hidden="true">{{ st[1] }}</span><span class="wd">{{ st[2] }}</span></span>
+{%- endmacro %}
+<div class="wrap">
+<nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; {{ pkg.name | default('kaos-core') }}</nav>
+
+<header class="identity">
+ <h1>{{ pkg.name | default('kaos-core') }} {{ pkg.version | default('1.4.2') }}</h1>
+ <div class="triple">
+  <span>License: {{ pkg.license | default('Apache-2.0') }}</span>
+  <span>Runtime: {{ pkg.python | default('Python 3.10+') }}</span>
+  <span>Released: {{ pkg.released_at | default('2026-05-08') }}</span>
+  <span><a href="{{ pkg.repo_url | default('https://github.com/273v/kaos-core') }}">Repository</a></span>
+ </div>
+</header>
+
+<section aria-labelledby="sc-h">
+ <div class="score-head">
+  <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
+  {% set sc = pkg.scorecard | default({}) %}
+  {% set greens = sc.values() | selectattr('state','equalto','green') | list | length %}
+  <div class="composite">Composite: {{ greens }}/{{ sc | length | default(8) }} green</div>
+ </div>
+ <div class="scorecard">
+  {% for key, label in [
+    ("build","Build passing"),("tests","Tests + coverage"),
+    ("security","No critical CVEs"),("signing","Signed release artifacts"),
+    ("license","License clean"),("sbom","SBOM published"),
+    ("branch_protection","Branch protection"),("docs","SECURITY.md + CODEOWNERS")
+  ] %}
+   {% set c = sc.get(key, {"state":"gray","note":"Signal not yet collected"}) %}
+   <div class="check">
+    {{ pill(c.state, label) }}
+    <div class="body"><div class="lab">{{ label }}</div><div class="note">{{ c.note }}</div></div>
+   </div>
+  {% endfor %}
+ </div>
+</section>
+
+<section aria-labelledby="ci-h">
+ <h2 id="ci-h">CI matrix</h2>
+ <div class="card" style="padding:0;overflow-x:auto">
+ <table class="matrix">
+  <thead>
+   <tr>
+    <th scope="col">Environment</th>
+    <th scope="col">pytest</th><th scope="col">ruff</th>
+    <th scope="col">ty</th><th scope="col">bandit</th>
+    <th scope="col">pip-audit</th>
+   </tr>
+  </thead>
+  <tbody>
+   {% for row in pkg.ci_matrix | default([
+     {"os":"ubuntu","python":"3.10","checks":{"pytest":"green","ruff":"green","ty":"green","bandit":"green","pip_audit":"green"}},
+     {"os":"ubuntu","python":"3.11","checks":{"pytest":"green","ruff":"green","ty":"green","bandit":"green","pip_audit":"green"}},
+     {"os":"macos","python":"3.12","checks":{"pytest":"green","ruff":"green","ty":"green","bandit":"green","pip_audit":"green"}},
+     {"os":"windows","python":"3.12","checks":{"pytest":"green","ruff":"green","ty":"green","bandit":"yellow","pip_audit":"green"}}
+   ]) %}
+   <tr>
+    <td class="env" data-h="Environment">{{ row.os }} / py{{ row.python }}</td>
+    {% for c in ["pytest","ruff","ty","bandit","pip_audit"] %}
+     <td data-h="{{ c }}">{{ pill(row.checks[c], c) }}</td>
+    {% endfor %}
+   </tr>
+   {% endfor %}
+  </tbody>
+ </table>
+ </div>
+</section>
+
+<div class="row2">
+<section aria-labelledby="sec-h">
+ <h2 id="sec-h">Security</h2>
+ <div class="card">
+  <dl class="kv">
+   <dt>Open advisories</dt><dd>{{ pkg.security.open | default(0) }}</dd>
+   <dt>Fixed in 90d</dt><dd>{{ pkg.security.fixed_90d | default(1) }}</dd>
+   <dt>Dependabot alerts</dt><dd>{{ pkg.security.dependabot | default(0) }}</dd>
+  </dl>
+ </div>
+</section>
+<section aria-labelledby="sup-h">
+ <h2 id="sup-h">Supply chain</h2>
+ <div class="card">
+  <dl class="kv">
+   <dt>Direct deps</dt><dd>{{ pkg.supply_chain.direct | default(14) }}</dd>
+   <dt>Transitive deps</dt><dd>{{ pkg.supply_chain.transitive | default(87) }}</dd>
+   <dt>SBOM</dt><dd>
+    {% for label, href in pkg.supply_chain.sbom_links | default([("SPDX","sbom.spdx.json")]) %}
+     <a href="{{ href }}">{{ label }}</a>{% if not loop.last %} &middot; {% endif %}
+    {% endfor %}
+   </dd>
+  </dl>
+ </div>
+</section>
+</div>
+
+<section aria-labelledby="gov-h">
+ <h2 id="gov-h">Governance + velocity</h2>
+ <div class="card">
+  <dl class="kv">
+   <dt>Maintainers</dt><dd>{{ pkg.governance.maintainers | default(3) }}</dd>
+   <dt>Commits 90d</dt>
+   <dd>
+    {{ pkg.governance.commits_90d | default(42) }}
+    {% set spark = pkg.governance.commits_sparkline | default([0,2,5,3,8,6,4,7,3,4]) %}
+    {% if spark and spark | length > 1 %}
+     {% set mx = spark | max %}
+     {% set n = spark | length %}
+     <svg class="spark" width="80" height="20" viewBox="0 0 80 20" role="img" aria-label="Commits per week sparkline">
+      <polyline fill="none" stroke="currentColor" stroke-width="1.5"
+       points="{% for v in spark %}{{ loop.index0 * (80 / (n - 1)) }},{{ 20 - (v / (mx if mx > 0 else 1)) * 18 - 1 }} {% endfor %}"/>
+     </svg>
+    {% endif %}
+   </dd>
+   <dt>Releases 90d</dt><dd>{{ pkg.governance.releases_90d | default(6) }}</dd>
+  </dl>
+ </div>
+</section>
+
+<section class="evidence" aria-labelledby="ev-h">
+ <h2 id="ev-h">Evidence</h2>
+ <div class="card">
+  <ul>
+   {% for label, href in pkg.evidence | default([
+     ("Repository","https://github.com/273v/kaos-core"),
+     ("Releases","https://github.com/273v/kaos-core/releases"),
+     ("GitHub Actions","https://github.com/273v/kaos-core/actions"),
+     ("SBOM (SPDX)","sbom.spdx.json"),
+     ("Raw snapshot","assets/snapshot.json"),
+     ("OSV advisories","https://osv.dev/list?q=kaos-core")
+   ]) %}
+   <li><a href="{{ href }}">{{ label }}</a></li>
+   {% endfor %}
+  </ul>
+ </div>
+</section>
+
+<section aria-labelledby="m-h">
+ <h2 id="m-h">Methodology</h2>
+ <div class="callout">
+  <strong>How these eight checks are scored</strong>
+  Each check is collected by an automated workflow against public sources only
+  (GitHub API, OSV, Sigstore transparency log, package registry metadata).
+  No self-attestation is accepted. A check is <em>green</em> when the
+  underlying signal is present and meets a documented threshold,
+  <em>yellow</em> when partial, <em>red</em> when failing, and
+  <em>gray</em> when the collector has not yet implemented the probe.
+  See <a href="methodology.html">methodology.html</a> for thresholds and source URLs.
+ </div>
+</section>
+</div>
+
+<footer>
+ Generated {{ generated_at_display | default('2026-05-11 14:02 UTC') }}
+ | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
+ | Methodology: <a href="methodology.html">methodology.html</a>
+ | Data: <a href="assets/snapshot.json">snapshot.json</a>
+</footer>
+</body>
+</html>
