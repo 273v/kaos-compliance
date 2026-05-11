@@ -293,12 +293,24 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
     sbom_link = (
         # gh-pages serves /api/v1/sbom/<filename> when the file is
         # copied at deploy time; fall back to a relative path local to
-        # the rendered _site for local preview.
+        # the rendered _site for local preview. This is the FAST,
+        # always-available mirror — the dashboard republishes the SBOM
+        # so the page works even if upstream GitHub is unreachable.
         f"api/v1/sbom/{Path(sbom_artifact_path).name}"
         if sbom_artifact_path
         else None
     )
     pypi_version = sc.get("pypi_version")
+    # F8 follow-up: the upstream-authoritative SBOM URL is the
+    # GitHub Release asset — uploaded by the release workflow's OIDC
+    # identity, so it's signed by the same trust chain as the wheel.
+    # We surface both: the mirror (fast) and the upstream (canonical).
+    sbom_release_url = (
+        f"https://github.com/273v/{module['name']}/releases/download/"
+        f"v{pypi_version}/{module['name']}-{pypi_version}.cdx.json"
+        if pypi_version and sbom_artifact_path
+        else None
+    )
     pypi_link = (
         f"https://pypi.org/project/{module['name']}/{pypi_version}/"
         if pypi_version
@@ -477,7 +489,23 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
             "supply_chain": {
                 "direct": "—",
                 "transitive": "—",
-                "sbom_links": [],
+                # Two-link pattern: mirror (fast, always available on
+                # gh-pages) + upstream GitHub Release (authoritative,
+                # signed by the release workflow's OIDC identity).
+                # Falls back to a single mirror link if no released
+                # version exists. F8 follow-up.
+                "sbom_links": [
+                    link
+                    for link in (
+                        (("CycloneDX (mirror)", sbom_link) if sbom_link else None),
+                        (
+                            ("CycloneDX (GitHub Release)", sbom_release_url)
+                            if sbom_release_url
+                            else None
+                        ),
+                    )
+                    if link is not None
+                ],
             },
             "governance": {
                 "commits_90d": gov_section.get("commits_90d") or "—",
@@ -934,6 +962,42 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
                 "sbom_url": (
                     f"api/v1/sbom/{Path(sbom_path).name}" if sbom_path else None
                 ),
+                # F8 follow-up: upstream-authoritative SBOM URL on the
+                # GitHub Release (uploaded by release.yml's OIDC
+                # identity). Falls back to None when version is unknown
+                # — the supply-chain template surfaces the mirror only
+                # in that case.
+                "sbom_release_url": (
+                    f"https://github.com/273v/{m['name']}/releases/download/"
+                    f"v{sc.get('pypi_version')}/{m['name']}-"
+                    f"{sc.get('pypi_version')}.cdx.json"
+                    if sc.get("pypi_version") and sbom_path
+                    else None
+                ),
+                # Two-link list-of-tuples form the supply-chain template
+                # iterates. Order: mirror first (fast), GitHub Release
+                # second (authoritative). One or both may be present.
+                "sbom_links": [
+                    link
+                    for link in (
+                        (
+                            ("CycloneDX (mirror)", f"api/v1/sbom/{Path(sbom_path).name}")
+                            if sbom_path
+                            else None
+                        ),
+                        (
+                            (
+                                "CycloneDX (GitHub Release)",
+                                f"https://github.com/273v/{m['name']}/releases/download/"
+                                f"v{sc.get('pypi_version')}/{m['name']}-"
+                                f"{sc.get('pypi_version')}.cdx.json",
+                            )
+                            if sc.get("pypi_version") and sbom_path
+                            else None
+                        ),
+                    )
+                    if link is not None
+                ],
                 "pypi_url": (
                     f"https://pypi.org/project/{m['name']}/{sc.get('pypi_version')}/"
                     if sc.get("pypi_version")
