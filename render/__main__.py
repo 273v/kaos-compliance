@@ -1846,6 +1846,20 @@ def render(
     history_dir = api_dir / "history"
     history_index_path = api_dir / "history.json"
 
+    # Copy the shared stylesheet + self-hosted font files into the
+    # deployed site. The dashboard intentionally self-hosts Source Sans
+    # 3 + Source Serif 4 (Adobe Source superfamily, SIL OFL) rather than
+    # pulling them from a third-party CDN so visitors do not leak IP
+    # addresses to a font host. The kelvin.legal design tokens live in
+    # assets/dashboard.css; each rendered HTML page links to it.
+    repo_root = HERE.parent
+    assets_src = repo_root / "assets"
+    if assets_src.is_dir():
+        assets_dst = output_dir / "assets"
+        if assets_dst.is_dir():
+            shutil.rmtree(assets_dst)
+        shutil.copytree(assets_src, assets_dst)
+
     # P7: append today's per-day file + rebuild the rolling index BEFORE
     # adapting the view-model, so sparklines + baseline-diff see today's
     # data. ``history_append=False`` is the test escape hatch for callers
