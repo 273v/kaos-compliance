@@ -24,7 +24,7 @@
     },
     "ci_matrix":[{"os":"ubuntu","python":"3.10","checks":{"pytest":"green","ruff":"green","ty":"green","bandit":"green","pip_audit":"green"}}],
     "security":{"open":0,"fixed_90d":1,"dependabot":0},
-    "supply_chain":{"direct":14,"transitive":87,"sbom_links":[["SPDX","sbom.spdx.json"]]},
+    "supply_chain":{"direct":14,"transitive":87,"sbom_links":[["SPDX","api/v1/sbom/"]]},
     "governance":{"maintainers":3,"commits_90d":42,"commits_sparkline":[0,2,5,3,8,6,4,7,3,4],"releases_90d":6},
     "evidence":[["Repository","https://github.com/273v/kaos-core"],["Releases","https://github.com/273v/kaos-core/releases"]]
   }
@@ -195,7 +195,7 @@ footer a{color:var(--muted)}
    <dt>Direct deps</dt><dd>{{ pkg.supply_chain.direct | default(14) }}</dd>
    <dt>Transitive deps</dt><dd>{{ pkg.supply_chain.transitive | default(87) }}</dd>
    <dt>SBOM</dt><dd>
-    {% for label, href in pkg.supply_chain.sbom_links | default([("SPDX","sbom.spdx.json")]) %}
+    {% for label, href in pkg.supply_chain.sbom_links | default([("SPDX","api/v1/sbom/")]) %}
      <a href="{{ href }}">{{ label }}</a>{% if not loop.last %} &middot; {% endif %}
     {% endfor %}
    </dd>
@@ -257,15 +257,8 @@ footer a{color:var(--muted)}
  <h2 id="ev-h">Evidence</h2>
  <div class="card">
   <ul>
-   {% for label, href in pkg.evidence | default([
-     ("Repository","https://github.com/273v/kaos-core"),
-     ("Releases","https://github.com/273v/kaos-core/releases"),
-     ("GitHub Actions","https://github.com/273v/kaos-core/actions"),
-     ("SBOM (SPDX)","sbom.spdx.json"),
-     ("Raw snapshot","assets/snapshot.json"),
-     ("OSV advisories","https://osv.dev/list?q=kaos-core")
-   ]) %}
-   <li><a href="{{ href }}">{{ label }}</a></li>
+   {% for e in pkg.evidence | default([]) %}
+   {% if e.url %}<li><a href="{{ e.url }}">{{ e.label }}</a></li>{% endif %}
    {% endfor %}
   </ul>
  </div>
@@ -290,7 +283,7 @@ footer a{color:var(--muted)}
  Generated {{ generated_at_display | default('2026-05-11 14:02 UTC') }}
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
- | Data: <a href="assets/snapshot.json">snapshot.json</a>
+ | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
 </footer>
 </body>
 </html>
