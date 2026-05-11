@@ -298,6 +298,84 @@ footer a{color:var(--muted)}
  </div>
 </section>
 
+<section aria-labelledby="sup-h">
+ <h2 id="sup-h">Suppressions ledger</h2>
+ <div class="card">
+  {% set sup = suppressions | default({"available": False, "per_repo": {}, "org_total": none}) %}
+  {% if not sup.available %}
+   <p class="honest" style="margin-top:0">
+    <strong>Suppressions ledger not inspected on this host.</strong>
+    {{ sup.reason | default("Sibling clones of the kaos-* repos are not present.") }}
+    The ledger is computed at render time by walking the on-disk clones;
+    on a build host without those clones (e.g. a fresh GHA runner) we
+    leave the count empty rather than zero-fill it.
+   </p>
+  {% else %}
+   <p class="honest" style="margin-top:0">
+    {% if sup.org_total == 0 %}
+     <strong>Zero suppressions</strong> across {{ sup.repos_inspected }}/{{ sup.repos_total }} inspected repos.
+     This is a real count, not a missing signal &mdash;
+     <code># nosec</code>, <code># noqa</code>, <code># ty: ignore</code>,
+     <code># type: ignore</code>, <code>#[allow(...)]</code>,
+     cargo-deny <code>ignore = [&hellip;]</code>, and bandit
+     <code>skips:</code> entries were all counted.
+    {% else %}
+     <strong>{{ sup.org_total }} suppressions</strong>
+     across {{ sup.repos_inspected }}/{{ sup.repos_total }} inspected repos.
+     Suppressions are legitimate engineering tools, but the count is a
+     credibility signal: a green security pill is more credible when
+     paired with a public suppressions tally.
+    {% endif %}
+    Counted markers: <code># nosec</code> (bandit),
+    <code># noqa</code> (ruff/flake8), <code># ty: ignore</code> (ty),
+    <code># type: ignore</code> (mypy/pyright), <code>#[allow(&hellip;)]</code> (Rust),
+    cargo-deny / Cargo <code>ignore = [&hellip;]</code> list entries,
+    <code>.bandit</code> <code>skips:</code> entries.
+    Excludes <code>.venv</code>, <code>target</code>, <code>dist</code>,
+    <code>build</code>, <code>__pycache__</code>, <code>_site</code>,
+    <code>node_modules</code>, lockfiles.
+   </p>
+   <div style="margin-top:var(--s-3);overflow-x:auto">
+    <table class="grid">
+     <thead>
+      <tr>
+       <th scope="col">Package</th>
+       <th scope="col" style="text-align:right">Total</th>
+       <th scope="col" style="text-align:right"># noqa</th>
+       <th scope="col" style="text-align:right"># nosec</th>
+       <th scope="col" style="text-align:right"># ty: ignore</th>
+       <th scope="col" style="text-align:right"># type: ignore</th>
+       <th scope="col" style="text-align:right">#[allow]</th>
+       <th scope="col" style="text-align:right">cargo-deny</th>
+       <th scope="col" style="text-align:right">.bandit skips</th>
+      </tr>
+     </thead>
+     <tbody>
+      {% for p in packages | default([]) %}
+       {% set r = sup.per_repo.get(p.name) %}
+       <tr>
+        <td class="pkg" data-h="Package"><a href="package/{{ p.name }}.html">{{ p.name }}</a></td>
+        {% if r is none or r.total is none %}
+         <td colspan="8" data-h="Suppressions" style="color:var(--muted)">not inspected (sibling clone absent)</td>
+        {% else %}
+         <td class="age" data-h="Total" style="text-align:right">{{ r.total }}</td>
+         <td class="age" data-h="# noqa" style="text-align:right">{{ r.noqa }}</td>
+         <td class="age" data-h="# nosec" style="text-align:right">{{ r.nosec }}</td>
+         <td class="age" data-h="# ty: ignore" style="text-align:right">{{ r.ty_ignore }}</td>
+         <td class="age" data-h="# type: ignore" style="text-align:right">{{ r.type_ignore }}</td>
+         <td class="age" data-h="#[allow]" style="text-align:right">{{ r.rust_allow }}</td>
+         <td class="age" data-h="cargo-deny" style="text-align:right">{{ r.cargo_deny_ignore }}</td>
+         <td class="age" data-h=".bandit skips" style="text-align:right">{{ r.bandit_skips }}</td>
+        {% endif %}
+       </tr>
+      {% endfor %}
+     </tbody>
+    </table>
+   </div>
+  {% endif %}
+ </div>
+</section>
+
 <section aria-labelledby="m-h">
  <h2 id="m-h">How this is collected</h2>
  <div class="callout">
@@ -309,8 +387,13 @@ footer a{color:var(--muted)}
   self-attestation. Tools that aren&rsquo;t configured for a given
   ecosystem (e.g. <code>cargo-audit</code> on a pure-Python package)
   render as <em>No signal</em> rather than green.
-  See <a href="methodology.html">methodology.html</a> for the full
-  signal-to-source mapping.
+  The suppressions ledger is computed at render time by
+  <code>collector.suppressions.collect_for_org</code>, which walks the
+  on-disk sibling clones of every public <code>273v/kaos-*</code> repo;
+  the same module exposes a per-repo <code>collect()</code> for ad-hoc
+  reproduction.
+  See <a href="methodology.html#pill-semantics">methodology.html#pill-semantics</a>
+  for the full signal-to-source mapping.
  </div>
 </section>
 </main>
