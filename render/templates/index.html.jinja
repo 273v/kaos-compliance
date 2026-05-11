@@ -29,6 +29,16 @@
 <link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/dashboard.css">
 <style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:var(--s-7) var(--s-5)}
+.page-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--s-3);border-bottom:1px solid var(--border);padding-bottom:var(--s-4);margin-bottom:var(--s-6)}
+.page-head h1{margin:0;font-size:2rem;line-height:1.1}
+.page-head p{margin:var(--s-1) 0 0;color:var(--muted);font-size:0.875rem}
+.page-head .meta{font-family:var(--mono);font-size:0.75rem;color:var(--muted)}
+h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:600}
 .card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-4)}
 .rollup{padding:var(--s-5)}
 .rollup-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--s-3);margin-bottom:var(--s-3)}
@@ -64,6 +74,13 @@ a.pill:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .pill.y{background:var(--y-bg);color:var(--y-fg);border-color:var(--y-fg)}
 .pill.r{background:var(--r-bg);color:var(--r-fg);border-color:var(--r-fg)}
 .pill.n{background:var(--n-bg);color:var(--n-fg);border-color:var(--n-fg)}
+footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
+footer a{color:var(--muted)}
+nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
+nav.subnav a{color:var(--muted)}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
 /* P7: sparkline cell styling. Stack the pill atop a tiny SVG so the
    grid row's vertical rhythm doesn't break. SVG inherits currentColor
    from the parent pill colour, so the trend line picks up the pill's
@@ -90,6 +107,8 @@ a.pill:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
  table.grid td{border:0;padding:var(--s-1) 0;display:flex;justify-content:space-between;gap:var(--s-3)}
  table.grid td::before{content:attr(data-h);color:var(--muted);font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
 }
+@media print{
+ :root{--page-bg:#fff;--card-bg:#fff;--text:#000;--muted:#444;--border:#999}
  a{color:#000;text-decoration:none}
  .wrap{padding:0;max-width:none}
  .card,.strip .stat{box-shadow:none}
