@@ -61,7 +61,8 @@ from pathlib import Path
 from typing import Any
 
 from collector import __version__ as COLLECTOR_VERSION
-from collector._retry import gh_run
+from collector import governance, supply_chain
+from collector._retry import gh_run, url_get_json
 
 ORG = "273v"
 SCHEMA_VERSION = "1.0"
@@ -133,6 +134,14 @@ class ModuleSnapshot:
     security: SecuritySection
     open_prs: OpenPRsSection
     freshness: FreshnessSection
+    # The supply-chain and governance sections are returned as raw
+    # dicts by their dedicated collector modules; we keep them dicts
+    # (rather than refactoring those modules to share dataclasses)
+    # because the dashboard schema is the only place that needs the
+    # exact shape, and adding adapter dataclasses adds friction
+    # without buying anything.
+    supply_chain: dict[str, Any] = field(default_factory=dict)
+    governance: dict[str, Any] = field(default_factory=dict)
     errors: list[str] = field(default_factory=list)
 
 
@@ -377,8 +386,18 @@ def _open_prs(repo: str) -> OpenPRsSection:
 # ---------------------------------------------------------------------------
 
 
+_SIBLING_ROOT = Path("/home/mjbommar/projects/273v")
+
+
 def collect_module(repo: str) -> ModuleSnapshot:
-    """Gather every signal for one repo into a single snapshot row."""
+    """Gather every signal for one repo into a single snapshot row.
+
+    Each section is gathered in its own try/except so a failure in one
+    section (e.g., PyPI rate-limit on the supply-chain path) leaves
+    every other section's data intact. The errors list carries
+    per-section failure messages so the dashboard's render can downgrade
+    just the affected card instead of zeroing out the whole row.
+    """
     errors: list[str] = []
 
     try:
@@ -402,9 +421,38 @@ def collect_module(repo: str) -> ModuleSnapshot:
         prs = OpenPRsSection(count=None, titles=[])
         errors.append(f"open_prs: {exc}")
 
+    # Supply-chain depth (collector/supply_chain.py): PyPI metadata,
+    # PEP 740 attestations, license breakdown, SBOM emission. Sibling
+    # clone is read from the local filesystem so we can parse uv.lock
+    # / Cargo.lock without re-cloning every sweep.
+    sibling_dir = _SIBLING_ROOT / repo
+    try:
+        sc = supply_chain.collect(
+            repo,
+            sibling_dir if sibling_dir.is_dir() else None,
+            gh_run=gh_run,
+            url_get_json=url_get_json,
+        )
+    except Exception as exc:  # noqa: BLE001
+        sc = {"errors": [f"supply_chain: {exc}"]}
+        errors.append(f"supply_chain: {exc}")
+
+    # Governance + velocity (collector/governance.py): DCO sign-off
+    # rate, conventional-commits rate, branch protection, release
+    # cadence, time-to-PyPI.
+    try:
+        gov = governance.collect(
+            repo,
+            gh_run=gh_run,
+            url_get_json=url_get_json,
+        )
+    except Exception as exc:  # noqa: BLE001
+        gov = {"errors": [f"governance: {exc}"]}
+        errors.append(f"governance: {exc}")
+
     fresh = FreshnessSection(
         days_since_last_commit=_days_since(ident.last_commit_at),
-        days_since_last_release=None,  # filled by P2 once PyPI metadata is in
+        days_since_last_release=_days_since(sc.get("pypi_release_iso")),
         days_since_last_security_scan=_days_since(sec.run_completed_at),
     )
 
@@ -415,6 +463,8 @@ def collect_module(repo: str) -> ModuleSnapshot:
         security=sec,
         open_prs=prs,
         freshness=fresh,
+        supply_chain=sc,
+        governance=gov,
         errors=errors,
     )
 

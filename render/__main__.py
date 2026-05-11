@@ -70,19 +70,61 @@ def _pill_security(conclusion: str | None) -> str:
     return _pill_ci(conclusion)
 
 
-def _pill_signing(_module: dict[str, Any]) -> str:
-    # Filled by P2 (PyPI attestation extraction). Until then, gray.
-    return "gray"
+def _pill_signing(module: dict[str, Any]) -> str:
+    """Sigstore + PEP 740 attestation state for the latest PyPI release.
+
+    Green: every artifact in the latest release carries a valid
+    attestation bundle (verified_count == total_count > 0).
+    Yellow: partial attestation coverage.
+    Red: a release exists but no artifact carries an attestation.
+    Gray: no PyPI release on file (alpha-only repos haven't published).
+    """
+    att = (module.get("supply_chain") or {}).get("attestations") or {}
+    total = att.get("total_count")
+    verified = att.get("verified_count")
+    if not total:
+        return "gray"
+    if verified == total:
+        return "green"
+    if verified and verified > 0:
+        return "yellow"
+    return "red"
 
 
-def _pill_license(_module: dict[str, Any]) -> str:
-    # Filled by P2 (CycloneDX license aggregation). Until then, gray.
-    return "gray"
+def _pill_license(module: dict[str, Any]) -> str:
+    """SBOM license-breakdown summary.
+
+    Green: every transitive license resolves to an SPDX expression AND
+        none are strong-copyleft (GPL/AGPL).
+    Yellow: weak-copyleft (MPL/LGPL) is in play OR there are unknown
+        licenses with no strong-copyleft (legal can bless once).
+    Red: any strong-copyleft is present.
+    Gray: no SBOM yet.
+    """
+    sbom = (module.get("supply_chain") or {}).get("sbom") or {}
+    if not sbom.get("components_count"):
+        return "gray"
+    if sbom.get("strong_copyleft"):
+        return "red"
+    if sbom.get("weak_copyleft") or sbom.get("unknown_license"):
+        return "yellow"
+    return "green"
 
 
-def _pill_deps(_module: dict[str, Any]) -> str:
-    # Filled by P2 (transitive dep allowlist check). Until then, gray.
-    return "gray"
+def _pill_deps(module: dict[str, Any]) -> str:
+    """Transitive-dep footprint health.
+
+    Mirrors license today. A future iteration will diverge — pinning
+    policy, OSV cross-ref, yanked-version detection live here.
+    """
+    sbom = (module.get("supply_chain") or {}).get("sbom") or {}
+    if not sbom.get("components_count"):
+        return "gray"
+    if sbom.get("strong_copyleft"):
+        return "red"
+    if sbom.get("unknown_license"):
+        return "yellow"
+    return "green"
 
 
 def _pill_tests(module: dict[str, Any]) -> str:
@@ -158,21 +200,38 @@ def _module_view(module: dict[str, Any]) -> dict[str, Any]:
 
     # Per-pill links: every pill in the grid links to the underlying
     # evidence so a reviewer can verify the claim without grepping the
-    # repo. CI / tests / security all link to their workflow run on
-    # GitHub (free, stable, public). Signing / license / deps link to
-    # the SBOM artifact in /api/v1/ once P2 lands; gray pills get None
-    # and render as a plain span (not an anchor).
+    # repo. CI / tests / security link to their workflow run on
+    # GitHub. Signing links to the PyPI release page (which exposes
+    # the PEP 740 provenance URL per artifact). License + deps link to
+    # the package's CycloneDX SBOM artifact published alongside the
+    # snapshot.json.
     ci_run_url = ci_section.get("workflow_run_url") or None
     sec_run_url = sec_section.get("workflow_run_url") or None
+    sc = module.get("supply_chain") or {}
+    sbom_artifact_path = (sc.get("sbom") or {}).get("sbom_artifact_path")
+    sbom_link = (
+        # gh-pages serves /api/v1/sbom/<filename> when the file is
+        # copied at deploy time; fall back to a relative path local to
+        # the rendered _site for local preview.
+        f"api/v1/sbom/{Path(sbom_artifact_path).name}"
+        if sbom_artifact_path
+        else None
+    )
+    pypi_version = sc.get("pypi_version")
+    pypi_link = (
+        f"https://pypi.org/project/{module['name']}/{pypi_version}/"
+        if pypi_version
+        else f"https://pypi.org/project/{module['name']}/"
+        if pypi_version is not None
+        else None
+    )
     pill_links = {
         "build": ci_run_url,
         "tests": ci_run_url,
         "security": sec_run_url,
-        # P2 will fill these with PEP 740 attestation URL +
-        # data/sbom/<pkg>-<version>.cdx.json paths respectively.
-        "signing": None,
-        "license": None,
-        "deps": None,
+        "signing": pypi_link,
+        "license": sbom_link,
+        "deps": sbom_link,
     }
 
     # Index-grid row uses string pills. Detail-page sections are dicts.
@@ -286,10 +345,12 @@ def _org_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
                 tests_total += 1
                 platform_set.add((match.group("os"), match.group("python")))
 
+    # commits_total: sum across modules of commits_90d from the
+    # governance collector. None when no module has the signal yet.
     commits_values = [
         m.get("governance", {}).get("commits_90d")
         for m in modules
-        if isinstance(m.get("governance", {}).get("commits_90d"), int)
+        if isinstance((m.get("governance") or {}).get("commits_90d"), int)
     ]
     commits_total: int | None = sum(commits_values) if commits_values else None
 
