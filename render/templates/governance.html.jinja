@@ -23,7 +23,6 @@
 @media (prefers-color-scheme: dark){:root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;--g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;--r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);line-height:1.5;font-size:16px}
-body{padding:var(--s-5);max-width:1240px;margin:0 auto}
 a{color:var(--focus)}
 header{padding-bottom:var(--s-5);border-bottom:1px solid var(--border);margin-bottom:var(--s-5)}
 header h1{font-size:1.5rem;margin:0 0 var(--s-2)}
@@ -59,7 +58,8 @@ footer a{color:var(--muted)}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header>
+<div class="wrap">
+<header class="page-head">
  <h1>Governance &amp; velocity</h1>
  <nav class="subnav">
   <a href="index.html">Org rollup</a>
@@ -136,5 +136,6 @@ footer a{color:var(--muted)}
 
 </main>
 <footer>Generated {{ generated_at_display | default('—') }} · Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a> · <a href="methodology.html">Methodology</a> · <a href="api/v1/index.html">All endpoints</a></footer>
+</div>
 </body>
 </html>
