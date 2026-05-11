@@ -7,21 +7,10 @@
 <meta name="description" content="Daily LLM-generated diary for the 273 Ventures KAOS open-source ecosystem. Compliance-flavored rolling summary of the last 24 hours of git activity.">
 <base href="/kaos-compliance/">
 <title>Daily diary — KAOS Compliance</title>
+<link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/dashboard.css">
 <style>
-:root{
- --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
- --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
- --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
- --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;
- --focus:#2563eb;
- --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
- --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
-@media (prefers-color-scheme: dark){
- :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;
-  --g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;
-  --r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}
-}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
 a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
@@ -33,6 +22,7 @@ a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:
 .page-head .meta{font-family:var(--mono);font-size:0.75rem;color:var(--muted)}
 nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
 nav.subnav a{color:var(--muted)}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:600}
 h3{font-size:1.125rem;line-height:1.25;margin:var(--s-5) 0 var(--s-2);font-weight:600}
 .card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-5)}
@@ -61,6 +51,10 @@ footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--b
 footer a{color:var(--muted)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
+/* R21: dedicated visually-hidden utility for strict-CSP-compatible
+   off-screen headings (no inline ``style``). Mirrors the .sr-only
+   pattern on the index template. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media (max-width:720px){
  .wrap{padding:var(--s-5) var(--s-4)}
  .page-head h1{font-size:1.5rem}
@@ -85,23 +79,31 @@ footer a{color:var(--muted)}
   <p>LLM-generated rolling summary of the last 24h of git activity across the KAOS open-source ecosystem. Auditor view; see <a href="methodology.html">methodology</a> for limits.</p>
   <nav class="subnav" aria-label="Sections">
    <a href="index.html">Org rollup</a>
+   <a href="methodology.html" class="methodology">Methodology</a>
    <a href="security.html">Security</a>
    <a href="supply-chain.html">Supply chain</a>
    <a href="governance.html">Governance</a>
-   <a href="methodology.html">Methodology</a>
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-11 16:01 UTC
+  Generated 2026-05-11 18:34 UTC
  </div>
 </header>
 
 <main id="main">
 
 
+<div class="banner" role="status">
+ <strong>Diary cold start.</strong>
+ The diary collector runs on the 24h Full sweep (see
+ <a href="methodology.html#cadence">methodology &mdash; cadence</a>) and
+ publishes one entry per UTC day. This page populates after the first
+ successful sweep; until then the headline counts and per-package detail
+ pages remain the evidence path.
+</div>
 
 <section aria-labelledby="strip-h">
- <h2 id="strip-h" class="sr-only" style="position:absolute;left:-9999px">Headline counts</h2>
+ <h2 id="strip-h" class="sr-only">Headline counts</h2>
  <div class="strip">
   <div class="stat"><span class="n">—</span><span class="lab">Diary date (UTC)</span></div>
   <div class="stat"><span class="n">—</span><span class="lab">Repos observed</span></div>
@@ -177,10 +179,11 @@ footer a{color:var(--muted)}
 </main>
 
 <footer>
- Generated 2026-05-11 16:01 UTC
+ Generated 2026-05-11 18:34 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ | <a href="api/v1/index.html">All endpoints</a>
 </footer>
 </div>
 </body>

@@ -7,15 +7,10 @@
 <meta name="description" content="Public license-policy exceptions for the 273 Ventures KAOS ecosystem. Every transitive dependency with a non-permissive license that the dashboard treats as policy-approved is listed here, with a verifiable rationale.">
 <base href="/kaos-compliance/">
 <title>License policy — KAOS Compliance</title>
+<link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/dashboard.css">
 <style>
-:root{
- --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
- --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
- --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
- --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;--focus:#2563eb;
- --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
- --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
 @media (prefers-color-scheme: dark){:root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;--g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;--r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);line-height:1.55;font-size:16px}
@@ -27,6 +22,7 @@ header .meta{color:var(--muted);font-size:0.875rem;font-family:var(--mono)}
 nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
 nav.subnav a{color:var(--muted)}
 nav.subnav a[aria-current=page]{color:var(--text);font-weight:600}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
 h2{font-size:1.125rem;margin:var(--s-6) 0 var(--s-3)}
@@ -52,16 +48,16 @@ footer a{color:var(--muted)}
  <h1>License policy</h1>
  <nav class="subnav">
   <a href="index.html">Org rollup</a>
+  <a href="methodology.html" class="methodology">Methodology</a>
   <a href="security.html">Security</a>
   <a href="supply-chain.html">Supply chain</a>
   <a href="governance.html">Governance</a>
   <a href="diary.html">Diary</a>
-  <a href="methodology.html">Methodology</a>
   <a href="license-policy.html" aria-current="page">License policy</a>
  </nav>
  <div class="meta">
-  Generated 2026-05-11 16:01 UTC
- · Policy v1.0 · Last reviewed 2026-05-11 · Reviewers: mjbommar </div>
+  Generated 2026-05-11 18:34 UTC
+ · Policy v0 </div>
 </header>
 
 <main id="main">
@@ -77,7 +73,7 @@ footer a{color:var(--muted)}
       treats the component as green-with-asterisk. The rationale below is
       the public audit trail.</li>
   <li><strong>Parser gap</strong> — a component whose license is
-      permissive and known but the SBOM parser currently can't extract it.
+      permissive and known but the SBOM parser currently can&rsquo;t extract it.
       Tracked here so the unresolved set is visible; pills stay yellow
       until the parser fix lands.</li>
  </ul>
@@ -89,506 +85,78 @@ footer a{color:var(--muted)}
  </p>
 </section>
 
-<section aria-labelledby="allowed-h">
- <h2 id="allowed-h">Approved exceptions (5)</h2>
- <div class="card entry" id="certifi">
-  <h3>certifi, webpki-roots <span class="chip gold">MPL-2.0</span></h3>
-  <dl class="kv">
-   <dt>SPDX</dt><dd>MPL-2.0</dd>
-   <dt>Components</dt><dd><span class="chip">certifi</span><span class="chip">webpki-roots</span></dd>
-   <dt>Live repos</dt><dd><a href="package/kaos-content.html"><span class="chip">kaos-content</span></a><a href="package/kaos-core.html"><span class="chip">kaos-core</span></a><a href="package/kaos-llm-client.html"><span class="chip">kaos-llm-client</span></a><a href="package/kaos-llm-core.html"><span class="chip">kaos-llm-core</span></a><a href="package/kaos-mcp.html"><span class="chip">kaos-mcp</span></a><a href="package/kaos-ml-core.html"><span class="chip">kaos-ml-core</span></a><a href="package/kaos-nlp-core.html"><span class="chip">kaos-nlp-core</span></a><a href="package/kaos-nlp-transformers.html"><span class="chip">kaos-nlp-transformers</span></a><a href="package/kaos-office.html"><span class="chip">kaos-office</span></a><a href="package/kaos-source.html"><span class="chip">kaos-source</span></a><a href="package/kaos-tabular.html"><span class="chip">kaos-tabular</span></a><a href="package/kaos-web.html"><span class="chip">kaos-web</span></a></dd>
-   <dt>Audit ref</dt><dd><a href="https://github.com/273v/kaos-compliance/blob/main/docs/LICENSE-AUDIT.md#a1">docs/LICENSE-AUDIT.md §A.1</a></dd>
-   <dt>Reviewed</dt><dd>2026-05-11</dd>
-  </dl>
-  <blockquote>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</blockquote>
- </div>
- <div class="card entry" id="tqdm">
-  <h3>tqdm <span class="chip gold">MPL-2.0 AND MIT</span></h3>
-  <dl class="kv">
-   <dt>SPDX</dt><dd>MPL-2.0 AND MIT</dd>
-   <dt>Components</dt><dd><span class="chip">tqdm</span></dd>
-   <dt>Live repos</dt><dd><a href="package/kaos-content.html"><span class="chip">kaos-content</span></a><a href="package/kaos-ml-core.html"><span class="chip">kaos-ml-core</span></a><a href="package/kaos-nlp-transformers.html"><span class="chip">kaos-nlp-transformers</span></a></dd>
-   <dt>Audit ref</dt><dd><a href="https://github.com/273v/kaos-compliance/blob/main/docs/LICENSE-AUDIT.md#a2">docs/LICENSE-AUDIT.md §A.2</a></dd>
-   <dt>Reviewed</dt><dd>2026-05-11</dd>
-  </dl>
-  <blockquote>tqdm is dual-licensed. The MPL-2.0 component is file-scoped to a single source file (the sub-interval feature) which we do not modify. The MIT track covers the entire public API. Used by ~5B downloads across the Python ecosystem with this posture.</blockquote>
- </div>
- <div class="card entry" id="r-efi">
-  <h3>r-efi <span class="chip gold">MPL-2.0</span></h3>
-  <dl class="kv">
-   <dt>SPDX</dt><dd>MPL-2.0</dd>
-   <dt>Components</dt><dd><span class="chip">r-efi</span></dd>
-   <dt>Live repos</dt><dd><a href="package/kaos-graph.html"><span class="chip">kaos-graph</span></a><a href="package/kaos-nlp-core.html"><span class="chip">kaos-nlp-core</span></a><a href="package/kaos-nlp-transformers.html"><span class="chip">kaos-nlp-transformers</span></a></dd>
-   <dt>Audit ref</dt><dd><a href="https://github.com/273v/kaos-compliance/blob/main/docs/LICENSE-AUDIT.md#a3">docs/LICENSE-AUDIT.md §A.3</a></dd>
-   <dt>Reviewed</dt><dd>2026-05-11</dd>
-  </dl>
-  <blockquote>r-efi is a UEFI bindings crate pulled transitively by getrandom only on UEFI targets. Our wheel matrix builds for linux, macOS, and Windows — never UEFI — so r-efi is in the resolver graph but never compiled into shipped binaries. No practical MPL-2.0 obligations attach. A stricter alternative is a cargo-deny exclude rule; tracked as future hygiene work.</blockquote>
- </div>
- <div class="card entry" id="hypothesis">
-  <h3>hypothesis <span class="chip gold">MPL-2.0</span></h3>
-  <dl class="kv">
-   <dt>SPDX</dt><dd>MPL-2.0</dd>
-   <dt>Components</dt><dd><span class="chip">hypothesis</span></dd>
-   <dt>Live repos</dt><dd><a href="package/kaos-content.html"><span class="chip">kaos-content</span></a></dd>
-   <dt>Audit ref</dt><dd><a href="https://github.com/273v/kaos-compliance/blob/main/docs/LICENSE-AUDIT.md#a4">docs/LICENSE-AUDIT.md §A.4</a></dd>
-   <dt>Reviewed</dt><dd>2026-05-11</dd>
-  </dl>
-  <blockquote>hypothesis is a dev/test-only dependency declared in [dependency-groups].dev, never in [project].dependencies. A consumer who pip-installs kaos-content does not receive hypothesis. MPL-2.0 obligations cannot reach a shipped wheel.</blockquote>
- </div>
- <div class="card entry" id="option-ext">
-  <h3>option-ext <span class="chip gold">MPL-2.0</span></h3>
-  <dl class="kv">
-   <dt>SPDX</dt><dd>MPL-2.0</dd>
-   <dt>Components</dt><dd><span class="chip">option-ext</span></dd>
-   <dt>Live repos</dt><dd><a href="package/kaos-nlp-transformers.html"><span class="chip">kaos-nlp-transformers</span></a></dd>
-   <dt>Audit ref</dt><dd><a href="https://github.com/273v/kaos-compliance/blob/main/docs/LICENSE-AUDIT.md#a5">docs/LICENSE-AUDIT.md §A.5</a></dd>
-   <dt>Reviewed</dt><dd>2026-05-11</dd>
-  </dl>
-  <blockquote>option-ext is an 87-line Rust crate adding Option extension methods, pulled transitively via dirs → dirs-sys → option-ext. We ship it unmodified inside the kaos-nlp-transformers Rust binary; MPL-2.0 file-scoped obligations don't propagate. Future work: remove the dirs dependency entirely to drop this branch.</blockquote>
+<section aria-labelledby="how-detected-h">
+ <h2 id="how-detected-h">How license metadata is collected</h2>
+ <div class="card">
+  <p style="margin:0">
+   Detection is a four-step pipeline; every component on this page has
+   walked through it in order:
+  </p>
+  <ol>
+   <li><strong>uv.lock parser</strong> &mdash;
+       <code>collector/sbom.py::parse_uv_lock</code> reads each
+       resolution and emits a CycloneDX 1.5 component with the
+       PyPI-declared SPDX expression (PEP 639 <code>license_expression</code>
+       when present; otherwise the legacy classifier-derived expression).</li>
+   <li><strong>PyPI JSON enrichment</strong> &mdash;
+       <code>https://pypi.org/pypi/&lt;pkg&gt;/&lt;ver&gt;/json</code>
+       <code>info.license_expression</code> backfills components whose
+       lockfile metadata is missing or non-SPDX. This is the
+       supplier-of-record for Python deps.</li>
+   <li><strong>crates.io enrichment</strong> &mdash; for Rust
+       components,
+       <code>https://crates.io/api/v1/crates/&lt;crate&gt;</code>
+       carries the SPDX expression that <code>Cargo.lock</code> drops.
+       This single pass eliminates the largest source of yellow pills
+       on the dashboard.</li>
+   <li><strong>Offline license book</strong> &mdash; a hand-curated
+       fallback for components whose PyPI metadata is missing or
+       malformed (see <code>collector/sbom.py::apply_offline_license_book</code>).
+       Only touches components whose SPDX is still
+       <code>LicenseRef-unknown-*</code> after the previous three
+       steps.</li>
+  </ol>
+  <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.875rem">
+   A ScanCode-toolkit pass for the residual parser-gap set is the
+   next planned step (tracked in
+   <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>);
+   today every remaining unresolved component is listed in the
+   <a href="#gaps-h">parser-gap table</a> below with the true license
+   stated openly.
+  </p>
  </div>
 </section>
 
+<section aria-labelledby="signer-h">
+ <h2 id="signer-h">Reviewer pool and attestation</h2>
+ <div class="card">
+  <p style="margin:0">
+   Every approved exception below is reviewed by a named maintainer.
+   Today the reviewer pool is:
+  </p>
+  <ul style="margin:var(--s-2) 0;font-family:var(--mono);font-size:0.875rem">
+    <li><em>none listed in policy/license-allowlist.yaml</em></li>
+  </ul>
+   <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.875rem">
+    Quorum reached. Each approval below carries at least two named
+    reviewers from the pool above.
+   </p>
+ </div>
+</section>
+
+<section aria-labelledby="allowed-h">
+ <h2 id="allowed-h">Approved exceptions (0)</h2>
+ <div class="card"><p style="color:var(--muted);margin:0">No approved exceptions on file. The dashboard's License pill semantics are at their unfiltered defaults.</p></div>
+</section>
+
 <section aria-labelledby="gaps-h">
- <h2 id="gaps-h">Parser gaps (70)</h2>
+ <h2 id="gaps-h">Parser gaps (0)</h2>
  <p style="color:var(--muted);font-size:0.875rem">
   These components have known permissive licenses but the SBOM parser
   currently can't extract them. They render as yellow on the dashboard
   until the listed fix strategy ships.
  </p>
- <div class="card">
-  <table style="width:100%;border-collapse:collapse;font-size:0.875rem">
-   <thead>
-    <tr>
-     <th style="text-align:left;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border)">Component</th>
-     <th style="text-align:left;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border)">True license</th>
-     <th style="text-align:left;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border)">Affected</th>
-     <th style="text-align:left;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border)">Fix strategy</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>icu_collections</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>icu_locale_core</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>icu_properties</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>icu_properties_data</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>icu_provider</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>litemap</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>potential_utf</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>tinystr</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>writeable</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>yoke</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>yoke-derive</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>zerofrom</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>zerofrom-derive</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>zerotrie</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>zerovec</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>zerovec-derive</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>target-lexicon</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-graph</span><span class="chip">kaos-ml-core</span><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wasip2</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-graph</span><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wasip3</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wasm-encoder</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wasm-metadata</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wasmparser</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wit-bindgen</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-graph</span><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wit-bindgen-core</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wit-bindgen-rust</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wit-bindgen-rust-macro</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wit-component</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wit-parser</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add LLVM-exception to SPDX exceptions set</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>unicode-ident</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">(MIT OR Apache-2.0) AND Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-graph</span><span class="chip">kaos-ml-core</span><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 + parenthesized-group support to compound parser</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>scipy</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">BSD-3-Clause</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-content</span><span class="chip">kaos-ml-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Widen text-mine window from 600 to 2048 chars</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>playwright</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-source</span><span class="chip">kaos-web</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Offline license book fallback; upstream PR to populate info.license_expression</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>polars</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-content</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Widen text-mine window</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>imagehash</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">BSD-2-Clause</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-content</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Widen text-mine window</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>regex</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-citations</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Investigate — both license_expression and license should be populated upstream</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>azure-core</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-llm-client</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Offline license book fallback</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>azure-identity</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-llm-client</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Offline license book fallback</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>fnv</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>winapi</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>winapi-i686-pc-windows-gnu</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>winapi-x86_64-pc-windows-gnu</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>walkdir</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unlicense OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>same-file</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unlicense OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>linux-raw-sys</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry; LLVM-exception support already landed</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>rustix</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry; LLVM-exception support already landed</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>version_check</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>page_size</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>id-arena</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>blake3</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">CC0-1.0 OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>fst</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unlicense OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>quick-error</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>rusty-fork</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>siphasher</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>utf8-ranges</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unlicense OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wait-timeout</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>zstd-sys</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>base64</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>icu_normalizer</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list (already landed in collector/sbom.py)</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>icu_normalizer_data</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Unicode-3.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Add Unicode-3.0 to SPDX canonical list (already landed in collector/sbom.py)</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>ident_case</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>matrixmultiply</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>minimal-lexical</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>rawpointer</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>rayon-cond</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>serde_urlencoded</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>socks</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>unicode-normalization-alignments</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MIT OR Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>wasi</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">crates.io enrichment retry; LLVM-exception support already landed</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>webpki-roots</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">MPL-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-nlp-transformers</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">Mozilla CA roots, same posture as certifi — should land in allowed_expressions</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>protobuf</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">Apache-2.0</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-ml-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">PyPI license metadata gap; offline license book fallback</td>
-    </tr>
-    <tr>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>py-rust-stemmers</code></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">BSD-3-Clause</td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem"><span class="chip">kaos-ml-core</span></td>
-     <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">PyPI license metadata gap</td>
-    </tr>
-   </tbody>
-  </table>
- </div>
+ <div class="card"><p style="color:var(--muted);margin:0">No outstanding parser gaps.</p></div>
 </section>
 
 <section aria-labelledby="how-h">
@@ -620,7 +188,7 @@ footer a{color:var(--muted)}
 
 </main>
 <footer>
- Generated 2026-05-11 16:01 UTC · Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a> · <a href="methodology.html">Methodology</a>
+ Generated 2026-05-11 18:34 UTC · Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a> · <a href="methodology.html">Methodology</a> · <a href="api/v1/index.html">All endpoints</a>
 </footer>
 </body>
 </html>

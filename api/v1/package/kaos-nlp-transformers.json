@@ -1,0 +1,274 @@
+{
+  "schema_version": "1.0",
+  "bundle_kind": "kaos-compliance.package",
+  "package": "kaos-nlp-transformers",
+  "version": "0.2.0a4",
+  "snapshot_slice": {
+    "name": "kaos-nlp-transformers",
+    "identity": {
+      "pypi_version": "0.2.0a4",
+      "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.2.0a4/",
+      "main_head_sha": "df2001ef26cd17f59c863c6b0323bbb40bcca042",
+      "latest_tag": "v0.2.0a4",
+      "latest_tag_sha": "d8fe4e7914808bbb483902ea8830a088edc38398",
+      "tag_at_head": false,
+      "commits_past_tag": null,
+      "repo_visibility": "public",
+      "last_commit_at": "2026-05-11T17:43:13Z"
+    },
+    "ci": {
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25686966198,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966198",
+      "head_sha": "df2001ef26cd17f59c863c6b0323bbb40bcca042",
+      "run_completed_at": "2026-05-11T18:28:30Z",
+      "matrix": [
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:53:13Z",
+          "completed_at": "2026-05-11T17:55:41Z",
+          "duration_seconds": 148
+        },
+        {
+          "name": "Rust tests",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:50:19Z",
+          "completed_at": "2026-05-11T17:51:47Z",
+          "duration_seconds": 88
+        },
+        {
+          "name": "Pre-commit hooks",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:13:07Z",
+          "completed_at": "2026-05-11T18:15:37Z",
+          "duration_seconds": 150
+        },
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:09:26Z",
+          "completed_at": "2026-05-11T18:11:41Z",
+          "duration_seconds": 135
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:53:52Z",
+          "completed_at": "2026-05-11T17:56:16Z",
+          "duration_seconds": 144
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:43:20Z",
+          "completed_at": "2026-05-11T17:45:51Z",
+          "duration_seconds": 151
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:03:34Z",
+          "completed_at": "2026-05-11T18:05:52Z",
+          "duration_seconds": 138
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:08:31Z",
+          "completed_at": "2026-05-11T18:10:57Z",
+          "duration_seconds": 146
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-05-11T17:53:47Z",
+          "completed_at": "2026-05-11T17:54:20Z",
+          "duration_seconds": 33
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:43:21Z",
+          "completed_at": "2026-05-11T17:52:08Z",
+          "duration_seconds": 527
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:26:46Z",
+          "completed_at": "2026-05-11T18:28:29Z",
+          "duration_seconds": 103
+        }
+      ]
+    },
+    "security": {
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25686966153,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966153",
+      "jobs": [
+        {
+          "name": "cargo-deny (licenses + bans + advisories)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:53Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:30Z"
+        },
+        {
+          "name": "pip-audit (Python dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:45:33Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:34Z"
+        },
+        {
+          "name": "cargo-audit (Rust CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:46:28Z"
+        },
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:34Z"
+        }
+      ],
+      "run_completed_at": "2026-05-11T17:46:29Z"
+    },
+    "open_prs": {
+      "count": 2,
+      "titles": [
+        "#12 chore(deps): Bump the actions-all group across 1 directory with 3 updates",
+        "#11 chore(deps): Bump tokenizers from 0.22.2 to 0.23.1"
+      ]
+    },
+    "freshness": {
+      "days_since_last_commit": 0,
+      "days_since_last_release": 0,
+      "days_since_last_security_scan": 0
+    },
+    "supply_chain": {
+      "pypi_version": "0.2.0a4",
+      "pypi_release_iso": "2026-05-11T02:11:22.315129Z",
+      "wheel_platforms": [
+        "macos-arm64",
+        "linux-aarch64-manylinux_2_28",
+        "linux-x86_64-manylinux_2_28",
+        "win-amd64",
+        "win-arm64"
+      ],
+      "wheel_sha256s": {
+        "kaos_nlp_transformers-0.2.0a4-cp313-abi3-macosx_11_0_arm64.whl": "3e7103e5407d175a9dc1ad5d7871b468e7bd33f31f96d7df13ed2baba41b3a4e",
+        "kaos_nlp_transformers-0.2.0a4-cp313-abi3-manylinux_2_28_aarch64.whl": "c82b0b55c43477de06085775167a1aee6a781ccb2c326714c90b466c7ed787d3",
+        "kaos_nlp_transformers-0.2.0a4-cp313-abi3-manylinux_2_28_x86_64.whl": "fa0e6b0a8026ab3095b0c2f3e0f1fc4c20819f9af6f033257137764d9e5a1200",
+        "kaos_nlp_transformers-0.2.0a4-cp313-abi3-win_amd64.whl": "3cf5d5dd6921f1cfdc6d5e69afda8acad653364d4f9e80573705871b1890c037",
+        "kaos_nlp_transformers-0.2.0a4-cp313-abi3-win_arm64.whl": "c185807a984fe217d313f49c01aaca1309c5487e66b2234efca0a8a97672c26a",
+        "kaos_nlp_transformers-0.2.0a4.tar.gz": "04156de8dbc19b0effa2150647200a8e8a6e176468b297c6434971dbc74b20e2"
+      },
+      "is_abi3": true,
+      "has_musllinux_wheel": false,
+      "license_expression": "Apache-2.0",
+      "license_files_in_wheel": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "attestations": {
+        "pep740_present": true,
+        "publisher_kind": "GitHub",
+        "publisher_source_repo": "273v/kaos-nlp-transformers",
+        "publisher_workflow_ref": "release.yml@pypi",
+        "rekor_log_index": 1501641986,
+        "verified_count": 6,
+        "total_count": 6
+      },
+      "sbom": {
+        "components_count": null,
+        "license_breakdown": {},
+        "weak_copyleft": [],
+        "strong_copyleft": [],
+        "unknown_license": [],
+        "sbom_artifact_path": null
+      },
+      "errors": []
+    },
+    "governance": {
+      "dco_signoff_rate_90d": 0.455,
+      "conventional_commits_rate_90d": 0.782,
+      "verified_commit_ratio_90d": 0.182,
+      "commits_90d": 55,
+      "unique_committers_90d": 1,
+      "branch_protection_enabled": null,
+      "branch_protection_summary": null,
+      "codeowners_path": ".github/CODEOWNERS",
+      "security_md_present": true,
+      "security_md_disclosure_window_days": 90,
+      "notice_present": true,
+      "license_files_in_sdist": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "releases_90d": 6,
+      "median_pr_age_days": 0.058,
+      "open_pr_count": 2,
+      "open_issue_count": 0,
+      "time_to_pypi_seconds_median": 350,
+      "errors": [
+        "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-nlp-transformers/branches/main/protection']' returned non-zero exit status 1."
+      ]
+    },
+    "code_metrics": {
+      "python": {
+        "src_loc": null,
+        "tests_loc": null,
+        "src_files": null,
+        "tests_files": null
+      },
+      "rust": {
+        "src_loc": null,
+        "tests_loc": null,
+        "src_files": null,
+        "tests_files": null
+      },
+      "errors": [
+        "no repo_dir passed"
+      ]
+    },
+    "errors": []
+  },
+  "sbom": {
+    "mirror_path": null,
+    "github_release_url": null
+  },
+  "attestation": {
+    "present": true,
+    "publisher_kind": "GitHub",
+    "publisher_source_repo": "273v/kaos-nlp-transformers",
+    "publisher_workflow_ref": "release.yml@pypi",
+    "rekor_log_index": 1501641986,
+    "verified_count": 6,
+    "total_count": 6,
+    "pypi_simple_index_url": "https://pypi.org/simple/kaos-nlp-transformers/"
+  }
+}

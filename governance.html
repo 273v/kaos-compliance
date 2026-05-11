@@ -7,15 +7,10 @@
 <meta name="description" content="Org-wide governance + velocity rollup for the 273 Ventures KAOS open-source ecosystem.">
 <base href="/kaos-compliance/">
 <title>Governance — KAOS Compliance</title>
+<link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/dashboard.css">
 <style>
-:root{
- --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
- --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
- --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
- --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;--focus:#2563eb;
- --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
- --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
 @media (prefers-color-scheme: dark){:root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;--g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;--r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);line-height:1.5;font-size:16px}
@@ -27,6 +22,7 @@ header .meta{color:var(--muted);font-size:0.875rem;font-family:var(--mono)}
 nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
 nav.subnav a{color:var(--muted)}
 nav.subnav a[aria-current=page]{color:var(--text);font-weight:600}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
 h2{font-size:1.125rem;margin:var(--s-6) 0 var(--s-3)}
@@ -58,22 +54,22 @@ footer a{color:var(--muted)}
  <h1>Governance &amp; velocity</h1>
  <nav class="subnav">
   <a href="index.html">Org rollup</a>
+  <a href="methodology.html" class="methodology">Methodology</a>
   <a href="security.html">Security</a>
   <a href="supply-chain.html">Supply chain</a>
   <a href="governance.html" aria-current="page">Governance</a>
   <a href="diary.html">Diary</a>
-  <a href="methodology.html">Methodology</a>
  </nav>
- <div class="meta">Generated 2026-05-11 16:01 UTC · No composite score. Surface signals; never invent them.</div>
+ <div class="meta">Generated 2026-05-11 18:34 UTC · No composite score. Surface signals; never invent them.</div>
 </header>
 
 <main id="main">
 
 <section>
  <div class="strip">
-  <div class="stat"><span class="n">54%</span><span class="lab">Org DCO sign-off (90d avg)</span></div>
-  <div class="stat"><span class="n">74%</span><span class="lab">Conventional commits (90d avg)</span></div>
-  <div class="stat"><span class="n">546</span><span class="lab">Commits last 90d</span></div>
+  <div class="stat"><span class="n">57%</span><span class="lab">Org DCO sign-off (90d avg)</span></div>
+  <div class="stat"><span class="n">76%</span><span class="lab">Conventional commits (90d avg)</span></div>
+  <div class="stat"><span class="n">578</span><span class="lab">Commits last 90d</span></div>
   <div class="stat"><span class="n">49</span><span class="lab">Releases last 90d</span></div>
  </div>
 </section>
@@ -84,7 +80,7 @@ footer a{color:var(--muted)}
   <table>
    <thead><tr><th>Signal</th><th>Coverage</th><th>Notes</th></tr></thead>
    <tbody>
-    <tr><td>Branch protection on <code>main</code></td><td class="num">0 / 16</td><td>Required reviews + status checks. False on a private alpha is acceptable; it should flip before GA.</td></tr>
+    <tr><td>Branch protection on <code>main</code></td><td class="num">0 / 0</td><td>Required reviews + status checks. False on a private alpha is acceptable; it should flip before GA.</td></tr>
     <tr><td><code>CODEOWNERS</code> present</td><td class="num">16 / 16</td><td>Path-scoped reviewer routing; pairs with branch protection's required-reviewers rule.</td></tr>
     <tr><td><code>SECURITY.md</code> present</td><td class="num">16 / 16</td><td>NIST SSDF RV.1.3 + CRA Annex I Part II §5.</td></tr>
     <tr><td><code>NOTICE</code> shipped</td><td class="num">16 / 16</td><td>Apache-2.0 §4 attribution.</td></tr>
@@ -102,162 +98,162 @@ footer a{color:var(--muted)}
    <tbody>
     <tr>
      <td><a href="package/kaos-citations.html">kaos-citations</a></td>
-     <td class="num">67%</td>
-     <td class="num">78%</td>
-     <td class="num">33%</td>
-     <td class="num">9</td>
+     <td class="num">73%</td>
+     <td class="num">82%</td>
+     <td class="num">46%</td>
+     <td class="num">11</td>
      <td class="num">2</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">53 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-content.html">kaos-content</a></td>
-     <td class="num">88%</td>
-     <td class="num">76%</td>
-     <td class="num">28%</td>
-     <td class="num">25</td>
+     <td class="num">89%</td>
+     <td class="num">78%</td>
+     <td class="num">33%</td>
+     <td class="num">27</td>
      <td class="num">6</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">137 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-core.html">kaos-core</a></td>
-     <td class="num">70%</td>
-     <td class="num">84%</td>
-     <td class="num">11%</td>
-     <td class="num">37</td>
+     <td class="num">72%</td>
+     <td class="num">85%</td>
+     <td class="num">15%</td>
+     <td class="num">39</td>
      <td class="num">5</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">55 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-graph.html">kaos-graph</a></td>
-     <td class="num">58%</td>
-     <td class="num">74%</td>
-     <td class="num">21%</td>
-     <td class="num">19</td>
+     <td class="num">62%</td>
+     <td class="num">76%</td>
+     <td class="num">29%</td>
+     <td class="num">21</td>
      <td class="num">3</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">400 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
-     <td class="num">62%</td>
-     <td class="num">62%</td>
-     <td class="num">31%</td>
-     <td class="num">13</td>
+     <td class="num">67%</td>
+     <td class="num">67%</td>
+     <td class="num">40%</td>
+     <td class="num">15</td>
      <td class="num">3</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">66 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-llm-core.html">kaos-llm-core</a></td>
-     <td class="num">69%</td>
-     <td class="num">75%</td>
-     <td class="num">44%</td>
-     <td class="num">16</td>
+     <td class="num">72%</td>
+     <td class="num">78%</td>
+     <td class="num">50%</td>
+     <td class="num">18</td>
      <td class="num">5</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">205 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-mcp.html">kaos-mcp</a></td>
-     <td class="num">73%</td>
-     <td class="num">73%</td>
-     <td class="num">27%</td>
-     <td class="num">11</td>
+     <td class="num">77%</td>
+     <td class="num">77%</td>
+     <td class="num">38%</td>
+     <td class="num">13</td>
      <td class="num">3</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">59 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
-     <td class="num">27%</td>
-     <td class="num">76%</td>
-     <td class="num">8%</td>
-     <td class="num">37</td>
+     <td class="num">31%</td>
+     <td class="num">77%</td>
+     <td class="num">13%</td>
+     <td class="num">39</td>
      <td class="num">2</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">229 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-names.html">kaos-names</a></td>
-     <td class="num">83%</td>
-     <td class="num">83%</td>
-     <td class="num">17%</td>
-     <td class="num">6</td>
+     <td class="num">88%</td>
+     <td class="num">88%</td>
+     <td class="num">38%</td>
+     <td class="num">8</td>
      <td class="num">1</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">55 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
-     <td class="num">79%</td>
-     <td class="num">79%</td>
-     <td class="num">14%</td>
-     <td class="num">14</td>
+     <td class="num">81%</td>
+     <td class="num">81%</td>
+     <td class="num">25%</td>
+     <td class="num">16</td>
      <td class="num">3</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">1322 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
-     <td class="num">43%</td>
-     <td class="num">77%</td>
-     <td class="num">15%</td>
-     <td class="num">53</td>
+     <td class="num">46%</td>
+     <td class="num">78%</td>
+     <td class="num">18%</td>
+     <td class="num">55</td>
      <td class="num">6</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">350 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-office.html">kaos-office</a></td>
-     <td class="num">9%</td>
-     <td class="num">71%</td>
-     <td class="num">5%</td>
-     <td class="num">80</td>
+     <td class="num">11%</td>
+     <td class="num">72%</td>
+     <td class="num">7%</td>
+     <td class="num">82</td>
      <td class="num">2</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">98 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-pdf.html">kaos-pdf</a></td>
-     <td class="num">46%</td>
-     <td class="num">82%</td>
-     <td class="num">18%</td>
-     <td class="num">11</td>
+     <td class="num">54%</td>
+     <td class="num">85%</td>
+     <td class="num">31%</td>
+     <td class="num">13</td>
      <td class="num">2</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">114 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-source.html">kaos-source</a></td>
-     <td class="num">14%</td>
-     <td class="num">65%</td>
-     <td class="num">7%</td>
-     <td class="num">69</td>
+     <td class="num">17%</td>
+     <td class="num">66%</td>
+     <td class="num">10%</td>
+     <td class="num">71</td>
      <td class="num">3</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">758 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-tabular.html">kaos-tabular</a></td>
-     <td class="num">67%</td>
-     <td class="num">89%</td>
-     <td class="num">33%</td>
-     <td class="num">9</td>
+     <td class="num">73%</td>
+     <td class="num">91%</td>
+     <td class="num">46%</td>
+     <td class="num">11</td>
      <td class="num">1</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">69 s</td>
     </tr>
     <tr>
      <td><a href="package/kaos-web.html">kaos-web</a></td>
-     <td class="num">5%</td>
-     <td class="num">39%</td>
-     <td class="num">3%</td>
-     <td class="num">137</td>
+     <td class="num">6%</td>
+     <td class="num">40%</td>
+     <td class="num">4%</td>
+     <td class="num">139</td>
      <td class="num">2</td>
-     <td><span class="pill y"><span class="gly">⚠</span><span class="wd">Off</span></span></td>
+     <td><span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
      <td class="num">162 s</td>
     </tr>
    </tbody>
@@ -278,6 +274,6 @@ footer a{color:var(--muted)}
 </section>
 
 </main>
-<footer>Generated 2026-05-11 16:01 UTC · Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a> · <a href="methodology.html">Methodology</a></footer>
+<footer>Generated 2026-05-11 18:34 UTC · Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a> · <a href="methodology.html">Methodology</a> · <a href="api/v1/index.html">All endpoints</a></footer>
 </body>
 </html>

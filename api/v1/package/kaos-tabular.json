@@ -1,0 +1,245 @@
+{
+  "schema_version": "1.0",
+  "bundle_kind": "kaos-compliance.package",
+  "package": "kaos-tabular",
+  "version": "0.1.0a1",
+  "snapshot_slice": {
+    "name": "kaos-tabular",
+    "identity": {
+      "pypi_version": "0.1.0a1",
+      "pypi_url": "https://pypi.org/project/kaos-tabular/0.1.0a1/",
+      "main_head_sha": "5c4003075a28b0a84cd18bbd426f689486dc58f4",
+      "latest_tag": "v0.1.0a1",
+      "latest_tag_sha": "a19a832b17907eb7b5d95bad879ebba6c1692fbe",
+      "tag_at_head": false,
+      "commits_past_tag": null,
+      "repo_visibility": "public",
+      "last_commit_at": "2026-05-11T17:43:12Z"
+    },
+    "ci": {
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25686970301,
+      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/25686970301",
+      "head_sha": "5c4003075a28b0a84cd18bbd426f689486dc58f4",
+      "run_completed_at": "2026-05-11T18:23:22Z",
+      "matrix": [
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:13:49Z",
+          "completed_at": "2026-05-11T18:14:07Z",
+          "duration_seconds": 18
+        },
+        {
+          "name": "Pre-commit hooks",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:00:44Z",
+          "completed_at": "2026-05-11T18:00:59Z",
+          "duration_seconds": 15
+        },
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:11:47Z",
+          "completed_at": "2026-05-11T18:11:59Z",
+          "duration_seconds": 12
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:15:59Z",
+          "completed_at": "2026-05-11T18:16:17Z",
+          "duration_seconds": 18
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:44:38Z",
+          "completed_at": "2026-05-11T17:45:13Z",
+          "duration_seconds": 35
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:16:23Z",
+          "completed_at": "2026-05-11T18:16:45Z",
+          "duration_seconds": 22
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:13:26Z",
+          "completed_at": "2026-05-11T18:13:45Z",
+          "duration_seconds": 19
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:16:10Z",
+          "completed_at": "2026-05-11T18:16:29Z",
+          "duration_seconds": 19
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:43:44Z",
+          "completed_at": "2026-05-11T17:44:30Z",
+          "duration_seconds": 46
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:23:05Z",
+          "completed_at": "2026-05-11T18:23:21Z",
+          "duration_seconds": 16
+        }
+      ]
+    },
+    "security": {
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25686970277,
+      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/25686970277",
+      "jobs": [
+        {
+          "name": "pip-audit (dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:44:20Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:44:06Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:44:08Z"
+        },
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:44:00Z"
+        }
+      ],
+      "run_completed_at": "2026-05-11T17:44:21Z"
+    },
+    "open_prs": {
+      "count": 1,
+      "titles": [
+        "#5 chore(deps): bump the actions-all group across 1 directory with 3 updates"
+      ]
+    },
+    "freshness": {
+      "days_since_last_commit": 0,
+      "days_since_last_release": 3,
+      "days_since_last_security_scan": 0
+    },
+    "supply_chain": {
+      "pypi_version": "0.1.0a1",
+      "pypi_release_iso": "2026-05-08T14:59:46.480862Z",
+      "wheel_platforms": [
+        "any"
+      ],
+      "wheel_sha256s": {
+        "kaos_tabular-0.1.0a1-py3-none-any.whl": "e27b6dc15305e93e3d94e8884afdce735a320a0af5090aaa7ec549c136f6c09a",
+        "kaos_tabular-0.1.0a1.tar.gz": "967043d1a308e9aa5e86a94e3859bf46b860c90a8814eaf1990d3026c239bf2f"
+      },
+      "is_abi3": false,
+      "has_musllinux_wheel": false,
+      "license_expression": "Apache-2.0",
+      "license_files_in_wheel": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "attestations": {
+        "pep740_present": true,
+        "publisher_kind": "GitHub",
+        "publisher_source_repo": "273v/kaos-tabular",
+        "publisher_workflow_ref": "release.yml@pypi",
+        "rekor_log_index": 1474384713,
+        "verified_count": 2,
+        "total_count": 2
+      },
+      "sbom": {
+        "components_count": null,
+        "license_breakdown": {},
+        "weak_copyleft": [],
+        "strong_copyleft": [],
+        "unknown_license": [],
+        "sbom_artifact_path": null
+      },
+      "errors": []
+    },
+    "governance": {
+      "dco_signoff_rate_90d": 0.727,
+      "conventional_commits_rate_90d": 0.909,
+      "verified_commit_ratio_90d": 0.455,
+      "commits_90d": 11,
+      "unique_committers_90d": 1,
+      "branch_protection_enabled": null,
+      "branch_protection_summary": null,
+      "codeowners_path": ".github/CODEOWNERS",
+      "security_md_present": true,
+      "security_md_disclosure_window_days": 90,
+      "notice_present": true,
+      "license_files_in_sdist": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "releases_90d": 1,
+      "median_pr_age_days": 0.059,
+      "open_pr_count": 1,
+      "open_issue_count": 0,
+      "time_to_pypi_seconds_median": 69,
+      "errors": [
+        "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-tabular/branches/main/protection']' returned non-zero exit status 1."
+      ]
+    },
+    "code_metrics": {
+      "python": {
+        "src_loc": null,
+        "tests_loc": null,
+        "src_files": null,
+        "tests_files": null
+      },
+      "rust": {
+        "src_loc": null,
+        "tests_loc": null,
+        "src_files": null,
+        "tests_files": null
+      },
+      "errors": [
+        "no repo_dir passed"
+      ]
+    },
+    "errors": []
+  },
+  "sbom": {
+    "mirror_path": null,
+    "github_release_url": null
+  },
+  "attestation": {
+    "present": true,
+    "publisher_kind": "GitHub",
+    "publisher_source_repo": "273v/kaos-tabular",
+    "publisher_workflow_ref": "release.yml@pypi",
+    "rekor_log_index": 1474384713,
+    "verified_count": 2,
+    "total_count": 2,
+    "pypi_simple_index_url": "https://pypi.org/simple/kaos-tabular/"
+  }
+}

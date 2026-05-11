@@ -1,0 +1,245 @@
+{
+  "schema_version": "1.0",
+  "bundle_kind": "kaos-compliance.package",
+  "package": "kaos-llm-core",
+  "version": "0.1.0a5",
+  "snapshot_slice": {
+    "name": "kaos-llm-core",
+    "identity": {
+      "pypi_version": "0.1.0a5",
+      "pypi_url": "https://pypi.org/project/kaos-llm-core/0.1.0a5/",
+      "main_head_sha": "23c1d71ad9add2ede6fae764c1b8fe8fa2d71c47",
+      "latest_tag": "v0.1.0a5",
+      "latest_tag_sha": "2c199a7f3ad93d21ee003adc1f94e0426f0bca6a",
+      "tag_at_head": false,
+      "commits_past_tag": null,
+      "repo_visibility": "public",
+      "last_commit_at": "2026-05-11T17:43:12Z"
+    },
+    "ci": {
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25686966228,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25686966228",
+      "head_sha": "23c1d71ad9add2ede6fae764c1b8fe8fa2d71c47",
+      "run_completed_at": "2026-05-11T18:27:55Z",
+      "matrix": [
+        {
+          "name": "Pre-commit hooks",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:05:46Z",
+          "completed_at": "2026-05-11T18:06:10Z",
+          "duration_seconds": 24
+        },
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:04:41Z",
+          "completed_at": "2026-05-11T18:05:10Z",
+          "duration_seconds": 29
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-05-11T17:52:39Z",
+          "completed_at": "2026-05-11T17:53:24Z",
+          "duration_seconds": 45
+        },
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:07:41Z",
+          "completed_at": "2026-05-11T18:07:53Z",
+          "duration_seconds": 12
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:43:46Z",
+          "completed_at": "2026-05-11T17:44:10Z",
+          "duration_seconds": 24
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:08:11Z",
+          "completed_at": "2026-05-11T18:08:40Z",
+          "duration_seconds": 29
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:13:16Z",
+          "completed_at": "2026-05-11T18:13:46Z",
+          "duration_seconds": 30
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:10:52Z",
+          "completed_at": "2026-05-11T18:11:20Z",
+          "duration_seconds": 28
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:43:21Z",
+          "completed_at": "2026-05-11T17:44:28Z",
+          "duration_seconds": 67
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:27:35Z",
+          "completed_at": "2026-05-11T18:27:54Z",
+          "duration_seconds": 19
+        }
+      ]
+    },
+    "security": {
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25686966294,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25686966294",
+      "jobs": [
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:26Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:30Z"
+        },
+        {
+          "name": "pip-audit (dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:44Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:30Z"
+        }
+      ],
+      "run_completed_at": "2026-05-11T17:43:45Z"
+    },
+    "open_prs": {
+      "count": 1,
+      "titles": [
+        "#9 chore(deps): Bump the actions-all group across 1 directory with 3 updates"
+      ]
+    },
+    "freshness": {
+      "days_since_last_commit": 0,
+      "days_since_last_release": 0,
+      "days_since_last_security_scan": 0
+    },
+    "supply_chain": {
+      "pypi_version": "0.1.0a5",
+      "pypi_release_iso": "2026-05-11T07:54:08.661211Z",
+      "wheel_platforms": [
+        "any"
+      ],
+      "wheel_sha256s": {
+        "kaos_llm_core-0.1.0a5-py3-none-any.whl": "31376b2ed5796724b57ed8b4876ef229751c9dc8547bdf53864c4ab8568468a4",
+        "kaos_llm_core-0.1.0a5.tar.gz": "a611e52cf8194a54d3aa0d1bd55a4d3085b2b94acaf85068b7fcc41a74abacea"
+      },
+      "is_abi3": false,
+      "has_musllinux_wheel": false,
+      "license_expression": "Apache-2.0",
+      "license_files_in_wheel": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "attestations": {
+        "pep740_present": true,
+        "publisher_kind": "GitHub",
+        "publisher_source_repo": "273v/kaos-llm-core",
+        "publisher_workflow_ref": "release.yml@pypi",
+        "rekor_log_index": 1504052840,
+        "verified_count": 2,
+        "total_count": 2
+      },
+      "sbom": {
+        "components_count": null,
+        "license_breakdown": {},
+        "weak_copyleft": [],
+        "strong_copyleft": [],
+        "unknown_license": [],
+        "sbom_artifact_path": null
+      },
+      "errors": []
+    },
+    "governance": {
+      "dco_signoff_rate_90d": 0.722,
+      "conventional_commits_rate_90d": 0.778,
+      "verified_commit_ratio_90d": 0.5,
+      "commits_90d": 18,
+      "unique_committers_90d": 1,
+      "branch_protection_enabled": null,
+      "branch_protection_summary": null,
+      "codeowners_path": ".github/CODEOWNERS",
+      "security_md_present": true,
+      "security_md_disclosure_window_days": 90,
+      "notice_present": true,
+      "license_files_in_sdist": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "releases_90d": 5,
+      "median_pr_age_days": 0.058,
+      "open_pr_count": 1,
+      "open_issue_count": 0,
+      "time_to_pypi_seconds_median": 205,
+      "errors": [
+        "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-llm-core/branches/main/protection']' returned non-zero exit status 1."
+      ]
+    },
+    "code_metrics": {
+      "python": {
+        "src_loc": null,
+        "tests_loc": null,
+        "src_files": null,
+        "tests_files": null
+      },
+      "rust": {
+        "src_loc": null,
+        "tests_loc": null,
+        "src_files": null,
+        "tests_files": null
+      },
+      "errors": [
+        "no repo_dir passed"
+      ]
+    },
+    "errors": []
+  },
+  "sbom": {
+    "mirror_path": null,
+    "github_release_url": null
+  },
+  "attestation": {
+    "present": true,
+    "publisher_kind": "GitHub",
+    "publisher_source_repo": "273v/kaos-llm-core",
+    "publisher_workflow_ref": "release.yml@pypi",
+    "rekor_log_index": 1504052840,
+    "verified_count": 2,
+    "total_count": 2,
+    "pypi_simple_index_url": "https://pypi.org/simple/kaos-llm-core/"
+  }
+}

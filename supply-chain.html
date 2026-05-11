@@ -7,21 +7,10 @@
 <meta name="description" content="Org-wide supply chain rollup for KAOS — SBOMs, license breakdown, PEP 740 attestations, wheel platform matrix.">
 <base href="/kaos-compliance/">
 <title>Supply chain — KAOS Compliance</title>
+<link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/dashboard.css">
 <style>
-:root{
- --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
- --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
- --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
- --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;
- --focus:#2563eb;
- --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
- --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
-@media (prefers-color-scheme: dark){
- :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;
-  --g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;
-  --r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}
-}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
 a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
@@ -34,6 +23,7 @@ a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:
 nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
 nav.subnav a{color:var(--muted)}
 nav.subnav a[aria-current="page"]{color:var(--text);font-weight:600}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
 h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:600}
@@ -123,15 +113,15 @@ footer a{color:var(--muted)}
   <p>SBOMs, license aggregation, PEP&nbsp;740 attestations, and the wheel platform matrix per package.</p>
   <nav class="subnav" aria-label="Sections">
    <a href="index.html">Org rollup</a>
+   <a href="methodology.html" class="methodology">Methodology</a>
    <a href="security.html">Security</a>
    <a href="supply-chain.html" aria-current="page">Supply chain</a>
    <a href="governance.html">Governance</a>
    <a href="diary.html">Diary</a>
-   <a href="methodology.html">Methodology</a>
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-11 16:01 UTC
+  Generated 2026-05-11 18:34 UTC
  </div>
 </header>
 
@@ -140,10 +130,334 @@ footer a{color:var(--muted)}
 <section aria-labelledby="rollup-h">
  <h2 id="rollup-h">Org rollup</h2>
  <div class="strip">
-  <div class="stat"><span class="n">16/16</span><span class="lab">PEP 740 attested</span></div>
+  <div class="stat"><span class="n">16/16</span><span class="lab"><a href="#att-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">PEP 740 attested</a></span></div>
   <div class="stat"><span class="n">0/16</span><span class="lab">SBOM published</span></div>
-  <div class="stat"><span class="n">0/16</span><span class="lab">SBOM has dep graph</span></div>
-  <div class="stat"><span class="n">46</span><span class="lab">Distinct licenses</span></div>
+  <div class="stat"><span class="n">0/16</span><span class="lab"><a href="#cisa-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">SBOM has dep graph</a></span></div>
+  <div class="stat"><span class="n">16/16</span><span class="lab"><a href="#slsa-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">SLSA Build L2 (effective)</a></span></div>
+ </div>
+ <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
+  No composite score. Each tile is a per-signal ratio; see
+  <a href="methodology.html#pill-semantics">methodology &mdash; pill
+  semantics</a> for the green / amber / red rules. The dep-graph and
+  Build-level claims are derived per-package below
+  (<a href="#cisa-h">CISA minimums</a>,
+  <a href="#slsa-h">SLSA per package</a>).
+ </p>
+</section>
+
+<section aria-labelledby="slsa-h">
+ <h2 id="slsa-h">SLSA Build Level (derived per package)</h2>
+ <div class="card" style="padding:0;overflow-x:auto">
+  <p style="padding:var(--s-3) var(--s-4) 0;margin:0;color:var(--muted);font-size:0.8125rem">
+   Derived from <code>modules[].supply_chain.attestations</code>. A
+   package reaches <strong>Build L2 (effective)</strong> when every
+   artifact in the latest release carries a verified PEP 740
+   attestation AND the publisher identity names a hosted CI/CD
+   platform (GitHub Actions / GitLab CI). L3 (hardened platform with
+   isolation guarantees) is not separately claimed; see
+   <a href="methodology.html#sec-6">methodology &mdash; Limits and
+   honest gaps</a>.
+  </p>
+  <table class="grid" aria-describedby="slsa-h" style="margin-top:var(--s-3)">
+   <thead>
+    <tr>
+     <th scope="col">Package</th>
+     <th scope="col">Build level</th>
+     <th scope="col">Publisher</th>
+     <th scope="col">Note</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-citations.html">kaos-citations</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-core.html">kaos-core</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-graph.html">kaos-graph</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-llm-core.html">kaos-llm-core</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-mcp.html">kaos-mcp</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-names.html">kaos-names</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-office.html">kaos-office</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-pdf.html">kaos-pdf</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-source.html">kaos-source</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-tabular.html">kaos-tabular</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-web.html">kaos-web</a></td>
+     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
+     <td class="mono" data-h="Publisher">GitHub</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+    </tr>
+   </tbody>
+  </table>
+ </div>
+</section>
+
+<section aria-labelledby="cisa-h">
+ <h2 id="cisa-h">CISA SBOM Minimum Elements (per package)</h2>
+ <div class="card" style="padding:0;overflow-x:auto">
+  <p style="padding:var(--s-3) var(--s-4) 0;margin:0;color:var(--muted);font-size:0.8125rem">
+   The CISA-defined SBOM Minimum Elements (Author, Supplier, Component
+   name, Component version, Unique identifier, Dependency
+   relationships, Timestamp). Each element is evaluated against the
+   per-package CycloneDX output. Today every package fails
+   <strong>Dependency relationships</strong> because the SBOM emitter
+   doesn&rsquo;t yet build the <code>dependencies[]</code> edge graph;
+   tracked as <code>F9</code> in
+   <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>.
+  </p>
+  <table class="grid" aria-describedby="cisa-h" style="margin-top:var(--s-3)">
+   <thead>
+    <tr>
+     <th scope="col">Package</th>
+     <th scope="col">Author</th>
+     <th scope="col">Supplier</th>
+     <th scope="col">Name</th>
+     <th scope="col">Version</th>
+     <th scope="col">PURL</th>
+     <th scope="col">Relationships</th>
+     <th scope="col">Timestamp</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-citations.html">kaos-citations</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-core.html">kaos-core</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-graph.html">kaos-graph</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-llm-core.html">kaos-llm-core</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-mcp.html">kaos-mcp</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-names.html">kaos-names</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-office.html">kaos-office</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-pdf.html">kaos-pdf</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-source.html">kaos-source</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-tabular.html">kaos-tabular</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+    <tr>
+     <td class="pkg" data-h="Package"><a href="package/kaos-web.html">kaos-web</a></td>
+      <td data-h="Author" title="No SBOM yet."><span class="pill n" aria-label="Author: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Supplier" title="No SBOM yet."><span class="pill n" aria-label="Supplier: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component name" title="No SBOM yet."><span class="pill n" aria-label="Component name: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Component version" title="No SBOM yet."><span class="pill n" aria-label="Component version: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Unique identifier (PURL)" title="No SBOM yet."><span class="pill n" aria-label="Unique identifier (PURL): No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Dependency relationships" title="No SBOM yet."><span class="pill n" aria-label="Dependency relationships: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+      <td data-h="Timestamp" title="No SBOM yet."><span class="pill n" aria-label="Timestamp: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+    </tr>
+   </tbody>
+  </table>
  </div>
 </section>
 
@@ -151,374 +465,6 @@ footer a{color:var(--muted)}
  <h2 id="lic-h">License breakdown (org-wide)</h2>
  <div class="card">
   <div class="lic-list">
-    <div class="lic g">
-     <span class="spdx">MIT</span>
-     <span class="bar" role="img" aria-label="MIT: 424 of 1272 components">
-      <span style="width:33%"></span>
-     </span>
-     <span class="ct">424</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">MIT OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="MIT OR Apache-2.0: 291 of 1272 components">
-      <span style="width:22%"></span>
-     </span>
-     <span class="ct">291</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="MIT OR Apache-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">BSD-3-Clause</span>
-     <span class="bar" role="img" aria-label="BSD-3-Clause: 135 of 1272 components">
-      <span style="width:10%"></span>
-     </span>
-     <span class="ct">135</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="BSD-3-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Apache-2.0</span>
-     <span class="bar" role="img" aria-label="Apache-2.0: 115 of 1272 components">
-      <span style="width:9%"></span>
-     </span>
-     <span class="ct">115</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-6b039a6a</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-6b039a6a: 34 of 1272 components">
-      <span style="width:2%"></span>
-     </span>
-     <span class="ct">34</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-6b039a6a: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT: 31 of 1272 components">
-      <span style="width:2%"></span>
-     </span>
-     <span class="ct">31</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 OR MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-0756f9a8</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-0756f9a8: 30 of 1272 components">
-      <span style="width:2%"></span>
-     </span>
-     <span class="ct">30</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-0756f9a8: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">BSD-2-Clause</span>
-     <span class="bar" role="img" aria-label="BSD-2-Clause: 27 of 1272 components">
-      <span style="width:2%"></span>
-     </span>
-     <span class="ct">27</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="BSD-2-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-8e693019</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-8e693019: 25 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">25</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-8e693019: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Apache-2.0 OR BSD-2-Clause</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-2-Clause: 16 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">16</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 OR BSD-2-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">PSF-2.0</span>
-     <span class="bar" role="img" aria-label="PSF-2.0: 15 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">15</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="PSF-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">MPL-2.0</span>
-     <span class="bar" role="img" aria-label="MPL-2.0: 14 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">14</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="MPL-2.0: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Apache-2.0 OR BSD-3-Clause</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-3-Clause: 11 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">11</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 OR BSD-3-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">ISC</span>
-     <span class="bar" role="img" aria-label="ISC: 11 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">11</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="ISC: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Python-2.0</span>
-     <span class="bar" role="img" aria-label="Python-2.0: 8 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">8</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Python-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Unlicense OR MIT</span>
-     <span class="bar" role="img" aria-label="Unlicense OR MIT: 8 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">8</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Unlicense OR MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">BSD-2-Clause OR Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="BSD-2-Clause OR Apache-2.0 OR MIT: 6 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">6</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="BSD-2-Clause OR Apache-2.0 OR MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-6df2d7c7</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-6df2d7c7: 6 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">6</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-6df2d7c7: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">MIT-CMU</span>
-     <span class="bar" role="img" aria-label="MIT-CMU: 6 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">6</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="MIT-CMU: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0</span>
-     <span class="bar" role="img" aria-label="BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: 5 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">5</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-da39a3ee</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-da39a3ee: 5 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">5</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-da39a3ee: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic r">
-     <span class="spdx">MIT OR Apache-2.0 OR LGPL-2.1-or-later</span>
-     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR LGPL-2.1-or-later: 5 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">5</span>
-     <span class="pill-wrap"><span class="pill r" aria-label="MIT OR Apache-2.0 OR LGPL-2.1-or-later: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-96ab7523</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-96ab7523: 4 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">4</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-96ab7523: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-c5779053</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-c5779053: 4 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">4</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-c5779053: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Zlib</span>
-     <span class="bar" role="img" aria-label="Zlib: 4 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">4</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Zlib: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">MPL-2.0 AND MIT</span>
-     <span class="bar" role="img" aria-label="MPL-2.0 AND MIT: 3 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">3</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="MPL-2.0 AND MIT: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">0BSD OR MIT OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="0BSD OR MIT OR Apache-2.0: 2 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="0BSD OR MIT OR Apache-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Apache-2.0 OR BSL-1.0</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR BSL-1.0: 2 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 OR BSL-1.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Apache-2.0 OR ISC OR MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR ISC OR MIT: 2 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 OR ISC OR MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Apache-2.0 OR MIT OR Zlib</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT OR Zlib: 2 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 OR MIT OR Zlib: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-80dc4d0a</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-80dc4d0a: 2 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-80dc4d0a: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-8d64fec4</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-8d64fec4: 2 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-8d64fec4: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">MIT AND PSF-2.0</span>
-     <span class="bar" role="img" aria-label="MIT AND PSF-2.0: 2 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="MIT AND PSF-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">MIT OR Apache-2.0 OR Zlib</span>
-     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR Zlib: 2 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="MIT OR Apache-2.0 OR Zlib: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">MIT OR Zlib OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="MIT OR Zlib OR Apache-2.0: 2 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="MIT OR Zlib OR Apache-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Apache-2.0 AND ISC</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 AND ISC: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 AND ISC: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">CC0-1.0 OR MIT-0 OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="CC0-1.0 OR MIT-0 OR Apache-2.0: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="CC0-1.0 OR MIT-0 OR Apache-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-2035d39c</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-2035d39c: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-2035d39c: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-39784ec0</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-39784ec0: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-39784ec0: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-909ae7a5</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-909ae7a5: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-909ae7a5: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-a224975f</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-a224975f: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-a224975f: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-bd83585a</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-bd83585a: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-bd83585a: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-c7972268</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-c7972268: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-c7972268: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic y">
-     <span class="spdx">LicenseRef-unknown-d55631fb</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-d55631fb: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill y" aria-label="LicenseRef-unknown-d55631fb: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd">Warn</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">MIT AND BSD-3-Clause</span>
-     <span class="bar" role="img" aria-label="MIT AND BSD-3-Clause: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="MIT AND BSD-3-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">Zlib OR Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="Zlib OR Apache-2.0 OR MIT: 1 of 1272 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">1</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Zlib OR Apache-2.0 OR MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span></span>
-    </div>
   </div>
   <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.8125rem">
    Aggregated across all direct and transitive components in published
@@ -546,7 +492,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-citations.html">kaos-citations</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -557,7 +503,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -568,7 +514,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-core.html">kaos-core</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -579,7 +525,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-graph.html">kaos-graph</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -590,7 +536,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -601,7 +547,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-llm-core.html">kaos-llm-core</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -612,7 +558,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-mcp.html">kaos-mcp</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -623,7 +569,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -634,7 +580,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-names.html">kaos-names</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -645,7 +591,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -656,7 +602,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -667,7 +613,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-office.html">kaos-office</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -678,7 +624,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-pdf.html">kaos-pdf</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -689,7 +635,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-source.html">kaos-source</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -700,7 +646,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-tabular.html">kaos-tabular</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -711,7 +657,7 @@ footer a{color:var(--muted)}
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-web.html">kaos-web</a></td>
     <td data-h="Publisher">
-<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>    </td>
+<span class="pill r" aria-label="Missing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>    </td>
     <td class="mono" data-h="Source repo">—</td>
     <td class="mono" data-h="Workflow ref">—</td>
     <td class="mono" data-h="Rekor">
@@ -733,7 +679,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-citations <span class="pmeta">0.1.0a2</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -757,7 +703,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-content <span class="pmeta">0.1.0a6</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -781,7 +727,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-core <span class="pmeta">0.1.0a5</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -805,7 +751,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-graph <span class="pmeta">0.1.0a3</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -829,7 +775,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-llm-client <span class="pmeta">0.1.0a3</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -853,7 +799,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-llm-core <span class="pmeta">0.1.0a5</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -877,7 +823,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-mcp <span class="pmeta">0.1.0a3</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -901,7 +847,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-ml-core <span class="pmeta">0.1.0a2</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -925,7 +871,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-names <span class="pmeta">0.1.0a1</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -949,7 +895,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-nlp-core <span class="pmeta">0.1.0a3</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -973,7 +919,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-nlp-transformers <span class="pmeta">0.2.0a4</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -997,7 +943,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-office <span class="pmeta">0.1.0a2</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -1021,7 +967,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-pdf <span class="pmeta">0.1.0a2</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -1045,7 +991,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-source <span class="pmeta">0.1.0a3</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -1069,7 +1015,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-tabular <span class="pmeta">0.1.0a1</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -1093,7 +1039,7 @@ footer a{color:var(--muted)}
   <summary>
    <span class="pname">kaos-web <span class="pmeta">0.1.0a2</span></span>
    <span class="pmeta">
-<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd">Fail</span></span>   </span>
+<span class="pill n" aria-label="No SBOM: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
   </summary>
   <div class="inner">
    <dl class="kv">
@@ -1134,10 +1080,11 @@ footer a{color:var(--muted)}
 </main>
 
 <footer>
- Generated 2026-05-11 16:01 UTC
+ Generated 2026-05-11 18:34 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ | <a href="api/v1/index.html">All endpoints</a>
 </footer>
 </div>
 </body>

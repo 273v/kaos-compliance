@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Machine-readable endpoints for the kaos-compliance dashboard — snapshot, schema, signature, history, diffs, per-package bundles.">
+<base href="/kaos-compliance/">
+<title>API endpoints — KAOS Compliance</title>
+<link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/dashboard.css">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:var(--s-7) var(--s-5)}
+.page-head{border-bottom:1px solid var(--border);padding-bottom:var(--s-4);margin-bottom:var(--s-6)}
+.page-head h1{margin:0;font-size:2rem}
+.page-head p{color:var(--muted);margin:var(--s-2) 0 0}
+nav.crumbs{font-size:0.875rem;color:var(--muted);margin-bottom:var(--s-3)}
+nav.crumbs a{color:var(--muted)}
+h2{font-size:1.25rem;margin:var(--s-6) 0 var(--s-3)}
+table{width:100%;border-collapse:collapse;font-size:0.875rem;margin-bottom:var(--s-5)}
+th,td{padding:var(--s-2) var(--s-3);text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+td.path code,td.media code{font-family:var(--mono);font-size:0.8125rem;background:var(--card-bg);border:1px solid var(--border);padding:1px 4px;border-radius:3px}
+td.curl pre{font-family:var(--mono);font-size:0.75rem;background:var(--card-bg);border:1px solid var(--border);padding:var(--s-2);margin:0;overflow-x:auto;white-space:pre;border-radius:3px}
+.callout{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-3) var(--s-4);margin:var(--s-4) 0;font-size:0.875rem}
+.unavailable{color:var(--muted);font-style:italic}
+footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; API endpoints</nav>
+<header class="page-head">
+ <h1>Machine-readable endpoints</h1>
+ <p>Every claim on the dashboard is backed by a static JSON artifact. This page is the catalog. All endpoints are CORS-open static files served from GitHub Pages.</p>
+</header>
+
+<div class="callout">
+ <strong>Verification chain.</strong> Validate <code>snapshot.json</code> against <code>snapshot.schema.json</code>, then verify <code>snapshot.sig</code> with <code>cosign verify-blob --bundle snapshot.sig snapshot.json</code> against the workflow identity in <code>snapshot.sig.meta.json</code>. If either step fails, do <em>not</em> trust the rendered HTML — see <a href="https://github.com/273v/kaos-compliance/blob/main/docs/EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with">EVIDENCE.md</a>.
+</div>
+
+<h2>Core endpoints</h2>
+<table>
+ <thead><tr><th>Path</th><th>Media type</th><th>Description</th><th>curl</th></tr></thead>
+ <tbody>
+  <tr>
+   <td class="path"><code>api/v1/snapshot.json</code></td>
+   <td class="media"><code>application/json</code></td>
+   <td>Authoritative org-wide snapshot — every per-package signal the dashboard reads from.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/snapshot.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/snapshot.schema.json</code></td>
+   <td class="media"><code>application/schema+json</code></td>
+   <td>JSON Schema (Draft 2020-12) that snapshot.json conforms to. Validate before trusting any field.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/snapshot.schema.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/snapshot.sig</code></td>
+   <td class="media"><code>application/vnd.dev.sigstore.bundle+json</code></td>
+   <td>Sigstore-cosign-keyless DSSE bundle for snapshot.json. Verify with cosign verify-blob --bundle.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/snapshot.sig</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/snapshot.sig.meta.json</code></td>
+   <td class="media"><code>application/json</code></td>
+   <td>Signature verification parameters (expected identity, issuer, workflow ref). Pinned to the bundle.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/snapshot.sig.meta.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>heartbeat.json</code></td>
+   <td class="media"><code>application/json</code></td>
+   <td>Heartbeat block — generated_at + last_*_sweep_at timestamps for watchdogs.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/heartbeat.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/history.json</code></td>
+   <td class="media"><code>application/json</code></td>
+   <td>Rolling 90-day per-package signal history. Source of every sparkline on the dashboard.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/history.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/history/&lt;YYYY-MM-DD&gt;.json</code></td>
+   <td class="media"><code>application/json</code></td>
+   <td>Per-day snapshot summary written by each sweep. One file per UTC day.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/history/2026-05-11.json</pre></td>
+  </tr>
+ </tbody>
+</table>
+
+<h2>Diff endpoints</h2>
+<p class="unavailable">No diff endpoints yet — history needs at least two days of data.</p>
+
+<h2>Per-package bundles</h2>
+<p style="font-size:0.875rem;color:var(--muted)">Each bundle contains the per-package slice of <code>snapshot.json</code>, the SBOM mirror + upstream Release URL, and the PEP 740 attestation pointer.</p>
+<table>
+ <thead><tr><th>Path</th><th>Description</th><th>curl</th></tr></thead>
+ <tbody>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-citations.json</code></td>
+   <td>Self-contained evidence bundle for kaos-citations: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-citations.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-content.json</code></td>
+   <td>Self-contained evidence bundle for kaos-content: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-content.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-core.json</code></td>
+   <td>Self-contained evidence bundle for kaos-core: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-core.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-graph.json</code></td>
+   <td>Self-contained evidence bundle for kaos-graph: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-graph.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-llm-client.json</code></td>
+   <td>Self-contained evidence bundle for kaos-llm-client: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-llm-client.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-llm-core.json</code></td>
+   <td>Self-contained evidence bundle for kaos-llm-core: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-llm-core.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-mcp.json</code></td>
+   <td>Self-contained evidence bundle for kaos-mcp: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-mcp.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-ml-core.json</code></td>
+   <td>Self-contained evidence bundle for kaos-ml-core: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-ml-core.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-names.json</code></td>
+   <td>Self-contained evidence bundle for kaos-names: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-names.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-nlp-core.json</code></td>
+   <td>Self-contained evidence bundle for kaos-nlp-core: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-nlp-core.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-nlp-transformers.json</code></td>
+   <td>Self-contained evidence bundle for kaos-nlp-transformers: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-nlp-transformers.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-office.json</code></td>
+   <td>Self-contained evidence bundle for kaos-office: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-office.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-pdf.json</code></td>
+   <td>Self-contained evidence bundle for kaos-pdf: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-pdf.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-source.json</code></td>
+   <td>Self-contained evidence bundle for kaos-source: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-source.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-tabular.json</code></td>
+   <td>Self-contained evidence bundle for kaos-tabular: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-tabular.json</pre></td>
+  </tr>
+  <tr>
+   <td class="path"><code>api/v1/package/kaos-web.json</code></td>
+   <td>Self-contained evidence bundle for kaos-web: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-web.json</pre></td>
+  </tr>
+ </tbody>
+</table>
+
+<footer>
+ Generated 2026-05-11 18:34 UTC
+ | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
+ | <a href="index.html">Org rollup</a>
+ | <a href="methodology.html">Methodology</a>
+</footer>
+</div>
+</body>
+</html>

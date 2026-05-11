@@ -7,21 +7,10 @@
 <meta name="description" content="Methodology — how the KAOS compliance dashboard collects, scores, and surfaces every claim it makes.">
 <base href="/kaos-compliance/">
 <title>Methodology — KAOS Compliance</title>
+<link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/dashboard.css">
 <style>
-:root{
- --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
- --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
- --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
- --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;
- --focus:#2563eb;
- --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
- --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
-@media (prefers-color-scheme: dark){
- :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;
-  --g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;
-  --r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}
-}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
 a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
@@ -95,7 +84,7 @@ footer a{color:var(--muted)}
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-11 16:01 UTC
+  Generated 2026-05-11 18:34 UTC
  </div>
 </header>
 
@@ -108,8 +97,12 @@ footer a{color:var(--muted)}
    <li><a href="#sec-2">Cadence</a></li>
    <li><a href="#sec-3">Frameworks anchored</a></li>
    <li><a href="#sec-4">Anti-patterns we explicitly avoid</a></li>
+   <li><a href="#pill-semantics">Pill semantics</a></li>
    <li><a href="#sec-5">Verifying a claim independently</a></li>
    <li><a href="#sec-6">Limits and honest gaps</a></li>
+   <li><a href="#sec-7">Snapshot integrity + schema</a></li>
+   <li><a href="#sec-8">Methodology versioning</a></li>
+   <li><a href="#sec-trends">Trend lines + baselines</a></li>
   </ol>
  </aside>
 
@@ -152,6 +145,52 @@ footer a{color:var(--muted)}
      <li><a href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act">Cyber Resilience Act</a> (Annex I Part II conformity signals; full enforcement guidance not expected until 2027).</li>
     </ul>
     <p>See <code>docs/research/01-compliance-signal-inventory.md</code> for the per-framework signal-to-source mapping table.</p>
+
+    <h3 id="ssdf-matrix">NIST SSDF practice-ID matrix</h3>
+    <p>The dashboard surfaces signals against the publicly-evidenceable subset of NIST SP 800-218. Practices whose evidence is internal-only (e.g. <code>PO.5.1</code> &ldquo;Implement and maintain secure development environments&rdquo;) are deliberately omitted &mdash; the public-source-only contract can&rsquo;t reach them.</p>
+    <table>
+     <thead><tr><th>SSDF</th><th>Asks for</th><th>Dashboard signal</th><th>Snapshot path</th></tr></thead>
+     <tbody>
+      <tr><td><code>PO.1.1</code></td><td>Define security requirements</td><td>Methodology + threat model</td><td><code>docs/METHODOLOGY.md</code></td></tr>
+      <tr><td><code>PO.3.2</code></td><td>Verify software releases</td><td>PEP 740 attestation + Rekor</td><td><code>modules[].supply_chain.attestations.*</code></td></tr>
+      <tr><td><code>PS.1.1</code></td><td>Least-privilege source storage</td><td>Branch protection on <code>main</code></td><td><code>modules[].governance.branch_protection_enabled</code></td></tr>
+      <tr><td><code>PS.2.1</code></td><td>Verify release integrity</td><td>Sigstore signature on snapshot + per-package attestations</td><td><code>api/v1/snapshot.sig</code>, <code>modules[].supply_chain.attestations.*</code></td></tr>
+      <tr><td><code>PS.3.1</code></td><td>Archive and protect each release</td><td>PyPI immutability + Rekor transparency log</td><td><code>modules[].supply_chain.attestations.rekor_log_index</code></td></tr>
+      <tr><td><code>PS.3.2</code></td><td>Provide SBOM per release</td><td>CycloneDX 1.5 per package</td><td><code>modules[].supply_chain.sbom.sbom_artifact_path</code></td></tr>
+      <tr><td><code>PW.4.1</code></td><td>Acquire well-secured software</td><td>OSV cross-check; CVE feed</td><td><code>modules[].security.workflow_conclusion</code></td></tr>
+      <tr><td><code>PW.7.1</code></td><td>Code review</td><td>Per-package CI matrix</td><td><code>modules[].ci.workflow_conclusion</code>, <code>.matrix</code></td></tr>
+      <tr><td><code>RV.1.3</code></td><td>Vulnerability-disclosure policy</td><td><code>SECURITY.md</code> present</td><td><code>modules[].governance.security_md_present</code></td></tr>
+      <tr><td><code>RV.2.1</code></td><td>Analyze vulnerabilities to root cause</td><td>Suppressions ledger</td><td><a href="security.html#sup-h"><code>security.html#sup-h</code></a></td></tr>
+     </tbody>
+    </table>
+
+    <h3 id="cra-matrix">CRA Annex II / Article 13 traceability</h3>
+    <p>The EU Cyber Resilience Act, as drafted, requires manufacturers to maintain technical documentation (Annex II) covering specific conformity signals (Article 13). The mapping below names which signals satisfy which clause; clauses without a verifiable public signal are surfaced as honest gaps rather than silently claimed. CRA full enforcement guidance is not expected until 2027 &mdash; this matrix will be revised against the final implementing acts when published.</p>
+    <table>
+     <thead><tr><th>CRA reference</th><th>Requirement (compressed)</th><th>Dashboard signal</th></tr></thead>
+     <tbody>
+      <tr><td>Annex II &sect;1</td><td>Product description with cybersecurity properties</td><td>Per-package detail pages</td></tr>
+      <tr><td>Annex II &sect;2</td><td>Risk assessment</td><td>Methodology page; SBOM + advisory feed</td></tr>
+      <tr><td>Annex II &sect;3</td><td>SBOM</td><td>CycloneDX 1.5 published per package</td></tr>
+      <tr><td>Annex II &sect;4</td><td>Vulnerability-handling process</td><td><code>SECURITY.md</code> + disclosure window</td></tr>
+      <tr><td>Annex II &sect;5</td><td>Information on compliance processes</td><td>This document + <code>docs/RUNBOOK.md</code></td></tr>
+      <tr><td>Annex II &sect;6</td><td>Technical specifications used for development</td><td><code>docs/research/01-compliance-signal-inventory.md</code></td></tr>
+      <tr><td>Article 13(2)</td><td>Risk assessment must be documented</td><td>Methodology + diary</td></tr>
+      <tr><td>Article 13(15)</td><td>Updates available for the lifetime of the product</td><td>Release cadence per package (<a href="governance.html">governance.html</a>)</td></tr>
+      <tr><td>Annex I Part II &sect;1</td><td>Vulnerability handling &mdash; publicly available info</td><td>OSV cross-check; advisory rollup on <a href="security.html">security.html</a></td></tr>
+      <tr><td>Annex I Part II &sect;3</td><td>Apply effective regular tests / reviews</td><td>CI matrix + Security workflow conclusions</td></tr>
+      <tr><td>Annex I Part II &sect;5</td><td>Establish disclosure policy</td><td><code>SECURITY.md</code> present + disclosure-window field</td></tr>
+      <tr><td>Annex I Part II &sect;7</td><td>Security updates without delay</td><td>Tag &rarr; PyPI publish latency</td></tr>
+     </tbody>
+    </table>
+
+    <h3 id="cve-feeds">CVE / advisory feed sources</h3>
+    <p>The Security page&rsquo;s &ldquo;0 open advisories&rdquo; claim is only meaningful when the feed sources are named. The dashboard cross-references:</p>
+    <ul>
+     <li><strong>OSV.dev</strong> &mdash; <code>https://api.osv.dev/v1/query</code>, keyed by PURL (<code>pkg:pypi/&lt;name&gt;@&lt;version&gt;</code>, <code>pkg:cargo/&lt;crate&gt;@&lt;version&gt;</code>). Cursor: live query at sweep time; no snapshotting.</li>
+     <li><strong>GitHub Security Advisories</strong> &mdash; <code>gh api /advisories</code> filtered by affected ecosystem and package name. Cursor: live; deduplicated against OSV using the GHSA ID.</li>
+    </ul>
+    <p>Both feeds are queried during the 4-hour Security cron. A package clears the &ldquo;0 advisories&rdquo; bar only when both feeds return empty for its declared version. The OSV PURL form is canonical; if a package publishes under a non-PyPI distribution name the lookup may miss &mdash; a known gap, tracked in <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>.</p>
    </section>
 
    <section class="block" id="sec-4">
@@ -165,6 +204,114 @@ footer a{color:var(--muted)}
      <li><strong>Maintainer-identity signals</strong> (country, employer, real name). Encourages discrimination, generates false positives on pseudonymous-but-trusted maintainers, adds zero supply-chain integrity.</li>
      <li><strong>GitHub stars.</strong> A popularity metric, not a trust metric.</li>
     </ol>
+
+    <h3 id="ratio-vs-identity">Where the maintainer-identity line is drawn</h3>
+    <p>The dashboard collects per-commit <em>aggregates</em> &mdash; DCO sign-off rate, verified-commit ratio, conventional-commits rate, unique-committer count &mdash; without collecting per-commit <em>identities</em>. The distinction is deliberate:</p>
+    <ul>
+     <li><strong>Ratios over 90 days</strong> measure repository discipline. They answer &ldquo;was the policy followed&rdquo; without naming who followed or didn&rsquo;t. These are surfaced on <a href="governance.html">governance.html</a>.</li>
+     <li><strong>Per-commit identity</strong> would attach a name (or pseudonym) to an approve/sign-off action. The dashboard collects only the count of unique committers, not the committer identities themselves.</li>
+     <li><strong>Cardinality</strong> is the operational signal we care about for bus factor: a <code>unique_committers_90d == 1</code> is a procurement-relevant fact whether the one committer is anonymous or named.</li>
+    </ul>
+    <p>In particular, <code>verified_commit_ratio_90d</code> is a ratio of GitHub&rsquo;s <code>verification.verified</code> boolean over commits-in-window &mdash; not an identity claim. It is rendered <strong>always</strong> paired with the branch-protection state, because without required-signed-commits enforcement (a branch-protection API field, not an identity check) the ratio is decorative.</p>
+   </section>
+
+   <section class="block" id="pill-semantics">
+    <h2>Pill semantics</h2>
+    <p>Every pill on the dashboard is one of four states. The state is decided from the JSON snapshot using the rules below &mdash; there is no fall-through to a default colour. Gray means &ldquo;no signal yet,&rdquo; never &ldquo;assumed green.&rdquo; Each row anchors the per-pill link on the index and per-package pages.</p>
+    <table>
+     <thead>
+      <tr><th>Signal</th><th>Snapshot path</th><th>Green</th><th>Amber</th><th>Red</th><th>Gray</th></tr>
+     </thead>
+     <tbody>
+      <tr id="sig-build">
+       <td><strong>Build</strong></td>
+       <td><code>modules[].ci.workflow_conclusion</code></td>
+       <td><code>success</code></td>
+       <td><code>cancelled</code></td>
+       <td><code>failure</code>, <code>timed_out</code>, <code>action_required</code></td>
+       <td>absent / unknown</td>
+      </tr>
+      <tr id="sig-tests">
+       <td><strong>Tests</strong></td>
+       <td><code>modules[].ci.workflow_conclusion</code></td>
+       <td><code>success</code></td>
+       <td><code>cancelled</code></td>
+       <td><code>failure</code>, <code>timed_out</code>, <code>action_required</code></td>
+       <td>absent / unknown</td>
+      </tr>
+      <tr id="sig-security">
+       <td><strong>Security</strong></td>
+       <td><code>modules[].security.workflow_conclusion</code></td>
+       <td><code>success</code></td>
+       <td><code>cancelled</code></td>
+       <td><code>failure</code>, <code>timed_out</code>, <code>action_required</code></td>
+       <td>absent / unknown</td>
+      </tr>
+      <tr id="sig-signing">
+       <td><strong>Signing</strong></td>
+       <td><code>modules[].supply_chain.attestations.{verified_count,total_count}</code></td>
+       <td><code>verified_count == total_count &gt; 0</code></td>
+       <td><code>0 &lt; verified_count &lt; total_count</code></td>
+       <td><code>total_count &gt; 0</code> and <code>verified_count == 0</code></td>
+       <td><code>total_count</code> absent (no PyPI release yet)</td>
+      </tr>
+      <tr id="sig-releases">
+       <td><strong>Releases tile</strong> (index)</td>
+       <td><code>modules[].supply_chain.attestations.pep740_present</code>, <code>.publisher_kind</code></td>
+       <td colspan="4">Tile shows two ratios, not a pill. Top row: count of modules with <code>pep740_present == true</code> AND <code>verified_count == total_count &gt; 0</code>. Bottom row: count of modules with non-null <code>publisher_kind</code> (Trusted Publisher proxy until the snapshot exposes a dedicated <code>publisher_state</code> field).</td>
+      </tr>
+      <tr id="sig-license">
+       <td><strong>License</strong></td>
+       <td><code>modules[].supply_chain.sbom.{strong_copyleft,weak_copyleft,unknown_license,components_count}</code> + <code>policy/license-allowlist.yml</code></td>
+       <td><code>components_count &gt; 0</code>, no strong copyleft, every weak / unknown component covered by an allowlist entry or a documented parser gap</td>
+       <td>at least one weak-copyleft or unknown-license component is NOT covered by policy</td>
+       <td>any strong-copyleft component is present, OR an allowlist entry overlaps a hard-blocked license class</td>
+       <td><code>components_count</code> absent (no SBOM yet)</td>
+      </tr>
+      <tr id="sig-deps">
+       <td><strong>Deps</strong></td>
+       <td><code>modules[].supply_chain.sbom.{strong_copyleft,unknown_license}</code> + policy</td>
+       <td>SBOM present, no strong copyleft, no unknown licenses uncovered by a parser-gap entry</td>
+       <td>uncovered unknown licenses remain</td>
+       <td>any strong-copyleft component</td>
+       <td>no SBOM yet</td>
+      </tr>
+      <tr id="sig-branch-prot">
+       <td><strong>Branch prot.</strong> (index column + rollup tile)</td>
+       <td><code>modules[].governance.branch_protection_enabled</code></td>
+       <td><code>true</code> (required reviews + status checks active on <code>main</code>)</td>
+       <td><code>false</code> &mdash; acceptable on a pre-alpha repo, surfaced as &ldquo;Off (alpha)&rdquo; rather than hidden</td>
+       <td>(not used today; promote to red once a repo is post-GA and still off)</td>
+       <td><code>null</code> (call returned without the protection block, typically permissions)</td>
+      </tr>
+      <tr id="sig-repos-total">
+       <td><strong>Repositories</strong> (headline)</td>
+       <td><code>len(modules)</code></td>
+       <td colspan="4">Cardinality, not a ratio. Always rendered as a count; never coloured.</td>
+      </tr>
+      <tr id="sig-commits-total">
+       <td><strong>Commits</strong> (headline)</td>
+       <td><code>sum(modules[].governance.commits_90d)</code> over the 90-day window</td>
+       <td colspan="4">Cardinality. Rendered as <code>&mdash;</code> when no module has the signal yet; never zero-filled.</td>
+      </tr>
+      <tr id="sig-tests-total">
+       <td><strong>Tests</strong> (headline)</td>
+       <td><code>sum over modules of count(ci.matrix[] where name ~ "Test (&lt;os&gt; / Python &lt;ver&gt;)")</code></td>
+       <td colspan="4">Cardinality: number of <code>(os, python)</code> test legs across the org. Bounded above by Supported platforms &times; repos.</td>
+      </tr>
+      <tr id="sig-platforms-total">
+       <td><strong>Supported platforms</strong> (headline)</td>
+       <td><code>card(union of (os, python) cells across every modules[].ci.matrix)</code></td>
+       <td colspan="4">Cardinality of the union; deduplicated across packages.</td>
+      </tr>
+      <tr id="sig-loc">
+       <td><strong>Lines of code</strong> (headline)</td>
+       <td><code>sum(modules[].code_metrics.{python,rust}.{src_loc,tests_loc})</code></td>
+       <td colspan="4">Cardinality. Counts non-blank, non-comment lines (Python + Rust). Excludes <code>.venv</code>, <code>target</code>, <code>dist</code>, <code>build</code>, <code>__pycache__</code>, <code>_site</code>, lockfiles. Reported separately for Python source, Python tests, Rust source, Rust tests.</td>
+      </tr>
+     </tbody>
+    </table>
+    <p style="margin-top:var(--s-3);color:var(--muted);font-size:0.875rem">A pill state is a property of the snapshot &mdash; it is not an opinion of the renderer. To dispute a pill state, dispute the underlying field in <code>api/v1/snapshot.json</code>.</p>
    </section>
 
    <section class="block" id="sec-5">
@@ -196,12 +343,81 @@ footer a{color:var(--muted)}
      <li><strong>Per-commit author identity beyond GitHub&rsquo;s <code>verification.verified</code> state.</strong> GitHub&rsquo;s GPG-key claim is what we report; deeper identity proofing (e.g., DCO sign-off matching a known steward) is not done.</li>
      <li><strong>Source-of-truth for transitive licenses.</strong> We rely on the published license metadata of each dep. If a published license is wrong, our aggregation is wrong. We do not legally audit license claims.</li>
      <li><strong>Operational security of the maintainer machines.</strong> A dashboard can prove the artifact came from a specific workflow; it cannot prove the workflow&rsquo;s secrets weren&rsquo;t exfiltrated upstream. That&rsquo;s outside the scope of any public dashboard.</li>
+     <li><strong>OpenSSF Scorecard per-check results.</strong> The dashboard names Scorecard as an anchor framework but does not yet ingest the per-check results &mdash; the Scorecard workflow is not installed on <code>kaos-compliance</code> itself. Tracked as <code>F18</code> in <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>. A buyer can run <code>scorecard --repo=273v/kaos-compliance --format=json</code> locally to fill the gap today.</li>
+     <li><strong>SLSA Build Level not formally attested.</strong> Each package&rsquo;s PEP 740 attestation + PyPI Trusted Publisher state puts it effectively at SLSA Build L2. The supply-chain page surfaces an implied-level pill per package; we do not emit a formal <code>slsa.build.level</code> claim until the SBOM dep-graph (<code>F9</code>) and the Scorecard ingest (<code>F18</code>) land.</li>
+     <li><strong>CISA SBOM Minimum Elements: relationships gap.</strong> The seven required elements (author, supplier, name, version, unique ID, relationships, timestamp) are visible per package on <a href="supply-chain.html">supply-chain.html</a>; <em>relationships</em> is flagged yellow across the org because the SBOM emitter doesn&rsquo;t yet build the dependency edge graph.</li>
     </ul>
     <p>These gaps are intentionally surfaced so a buyer knows what they still need to ask for in a vendor questionnaire.</p>
    </section>
 
+   <section class="block" id="sec-7">
+    <h2>Snapshot integrity + schema</h2>
+    <p>The HTML pages above are one rendering of a JSON document
+    published at <code>api/v1/snapshot.json</code>. Two artifacts
+    accompany that JSON so a third party can verify both its
+    <em>shape</em> and its <em>provenance</em>:</p>
+    <ul>
+     <li>
+      <strong>JSON Schema</strong> (Draft 2020-12) at
+       <a href="api/v1/snapshot.schema.json"><code>api/v1/snapshot.schema.json</code></a>.
+      Programmatic consumers should validate the snapshot against the
+      schema before trusting any field; the schema is derived
+      deterministically from the dataclasses in
+      <code>collector/snapshot.py</code> so any drift is caught at
+      render time.
+     </li>
+     <li>
+      <strong>Keyless sigstore signature</strong> at
+       <a href="api/v1/snapshot.sig"><code>api/v1/snapshot.sig</code></a>
+      &mdash; a DSSE bundle minted by the
+      <code>sweep.yml</code> workflow via GitHub OIDC. Verification
+      requires cosign and asserts the bundle was issued by THIS
+      workflow on THIS repository before the JSON is trusted. The
+      full verification recipe lives in
+      <a href="https://github.com/273v/kaos-compliance/blob/main/docs/EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with">docs/EVIDENCE.md</a>.
+     </li>
+    </ul>
+    <p>The data model itself &mdash; field-by-field meaning and units &mdash;
+    is documented in
+    <a href="https://github.com/273v/kaos-compliance/blob/main/docs/DATA-MODEL.md"><code>docs/DATA-MODEL.md</code></a>.</p>
+   </section>
+
+   <section class="block" id="sec-8">
+    <h2>Methodology versioning</h2>
+    <p>This document follows semver. The bump rules are tight on purpose: the property that makes the dashboard credible &mdash; that an external reviewer can pin a snapshot to a methodology version and reproduce the assessment &mdash; fails the first time the green threshold for a signal is silently &ldquo;clarified&rdquo; without bumping the version.</p>
+    <table>
+     <thead><tr><th>Change</th><th>Bump</th></tr></thead>
+     <tbody>
+      <tr><td>Add a new signal that previously didn&rsquo;t exist (new column, new pill)</td><td>minor</td></tr>
+      <tr><td>Add a new framework anchor (e.g. ingest Scorecard results)</td><td>minor</td></tr>
+      <tr><td>Remove a signal</td><td><strong>major</strong></td></tr>
+      <tr><td>Change the green / amber / red threshold for an existing signal</td><td><strong>major</strong></td></tr>
+      <tr><td>Change the snapshot-path source for an existing signal</td><td><strong>major</strong></td></tr>
+      <tr><td>Change a default-fallback (e.g. &ldquo;gray means&rdquo; wording)</td><td><strong>major</strong></td></tr>
+      <tr><td>Rewrite an existing section without changing meaning</td><td>patch</td></tr>
+      <tr><td>Add an honest-gap entry under &ldquo;Limits and honest gaps&rdquo;</td><td>patch</td></tr>
+      <tr><td>Add or expand the per-framework mapping tables</td><td>patch</td></tr>
+      <tr><td>Typos, link fixes, formatting</td><td>patch</td></tr>
+     </tbody>
+    </table>
+    <p>A bump requires an entry in <a href="https://github.com/273v/kaos-compliance/blob/main/CHANGELOG.md">CHANGELOG.md</a> with the version, the change, the affected signals, and the rationale. The published snapshot at <code>api/v1/snapshot.json</code> carries <code>schema_version</code> separately &mdash; that field bumps independently when the JSON shape changes; the methodology version below governs the <em>meaning</em> of the signals, not the wire format.</p>
+   </section>
+
+  <section class="block" id="sec-trends">
+   <h2>Trend lines + baselines</h2>
+   <p>Each row of the package grid carries up to four sparklines &mdash; one for build, tests, security, and PEP 740 attestation. Sparklines render as inline SVG (no JavaScript, no client-side state). What you&rsquo;re seeing is the rolling 90-day history of the underlying signal, sampled once per UTC day:</p>
+   <ul>
+    <li><strong>Resolution.</strong> Daily. Each x-axis position is one UTC day; multiple sweeps on the same day collapse to the last write.</li>
+    <li><strong>Encoding.</strong> Booleans (build pass / tests pass / security pass / attestation present) are projected to the top of the band when true and the bottom when false. The right-most marker is a solid dot so the eye lands on the current state. Days where the signal is missing render as a small open dot &mdash; visible gap, not silent.</li>
+    <li><strong>First-deploy behavior.</strong> The first time this dashboard ever ran, it had exactly one day of history. The sparkline collapses to a single dot and the cell carries an <code>accumulating history</code> label so the absence of a line is not mistaken for a flat signal. We never extrapolate, smooth, or backfill historical data.</li>
+    <li><strong>Baseline.</strong> The pill hover-title carries a delta arrow comparing the current state to the <em>previous sweep</em> (the most recent UTC day with data before today). &uarr; for an improvement, &darr; for a regression, &equiv; for no change. We do not implement industry or peer-package baselines; those rolls are a separate compliance question and have their own follow-up entry.</li>
+    <li><strong>Source.</strong> The whole rolling history is published at <a href="api/v1/history.json"><code>api/v1/history.json</code></a> and the per-day raw files live under <code>api/v1/history/YYYY-MM-DD.json</code>. The format is documented at <a href="api/v1/index.html"><code>api/v1/</code></a>.</li>
+   </ul>
+   <p>Per-package detail pages render a separate &ldquo;Changes since last sweep&rdquo; section above the evidence list. That section uses the same previous-sweep baseline and lists every signal that flipped, with a timestamp pair. Packages with no prior sweep show <em>no prior sweep yet</em>.</p>
+  </section>
+
   <p class="versionline">
-   Methodology version 1.0
+   Methodology version 1.1
    &mdash; last updated 2026-05-11.
     Source: <a href="https://github.com/273v/kaos-compliance/blob/main/docs/METHODOLOGY.md">docs/METHODOLOGY.md</a>.
   </p>
@@ -210,10 +426,13 @@ footer a{color:var(--muted)}
 </main>
 
 <footer>
- Generated 2026-05-11 16:01 UTC
+ Generated 2026-05-11 18:34 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ | <a href="api/v1/index.html">All endpoints</a>
+  | Schema: <a href="api/v1/snapshot.schema.json">snapshot.schema.json</a>
+  | Signature: <a href="api/v1/snapshot.sig">snapshot.sig</a>
 </footer>
 </div>
 </body>

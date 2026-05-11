@@ -7,21 +7,10 @@
 <meta name="description" content="Compliance dashboard for 273 Ventures open-source KAOS packages. Build, security, license, and governance evidence regenerated daily.">
 <base href="/kaos-compliance/">
 <title>KAOS Compliance Dashboard — 273 Ventures</title>
+<link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/dashboard.css">
 <style>
-:root{
- --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
- --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
- --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
- --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;
- --focus:#2563eb;
- --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
- --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
-@media (prefers-color-scheme: dark){
- :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;
-  --g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;
-  --r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}
-}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
 a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
@@ -39,10 +28,13 @@ h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:
 .rollup-head .score{font-family:var(--mono);font-weight:700;font-size:1.25rem}
 .bar{height:10px;background:var(--n-bg);border-radius:2px;overflow:hidden;border:1px solid var(--border)}
 .bar>span{display:block;height:100%;background:var(--g-fg)}
-.rollup-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4);margin-top:var(--s-4)}
+.rollup-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s-4);margin-top:var(--s-4)}
 .rollup-grid .cell{font-size:0.875rem}
 .rollup-grid .cell .n{display:block;font-family:var(--mono);font-size:1.5rem;font-weight:700;line-height:1.1}
+.rollup-grid .cell .sub{display:block;font-family:var(--mono);font-size:0.8125rem;font-weight:600;color:var(--muted);line-height:1.3;margin-top:2px}
 .rollup-grid .cell .lab{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+.rollup-grid .cell .lab a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)}
+.rollup-grid .cell .lab a:hover{color:var(--text);border-bottom-color:var(--text)}
 .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4);margin-top:var(--s-5)}
 .strip .stat{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-3) var(--s-4)}
 .strip .stat .n{font-family:var(--mono);font-size:1.75rem;font-weight:700;line-height:1.1;display:block}
@@ -68,12 +60,29 @@ footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--b
 footer a{color:var(--muted)}
 nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
 nav.subnav a{color:var(--muted)}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
+/* P7: sparkline cell styling. Stack the pill atop a tiny SVG so the
+   grid row's vertical rhythm doesn't break. SVG inherits currentColor
+   from the parent pill colour, so the trend line picks up the pill's
+   green/red/etc. without further plumbing. */
+.cell-trend{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.cell-trend .spark{display:block;color:var(--muted);margin-top:1px}
+.cell-trend .spark-note{font-family:var(--mono);font-size:0.625rem;color:var(--muted);line-height:1}
+/* R21: dedicated visually-hidden class so strict CSP (style-src 'self')
+   doesn't break on inline ``style="position:absolute;left:-9999px"``.
+   The previous pattern blocked any deployment that pinned style-src to
+   'self' without 'unsafe-inline'; section-h2 elements now use this. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media (max-width:720px){
  .wrap{padding:var(--s-5) var(--s-4)}
  .page-head h1{font-size:1.5rem}
- .rollup-grid,.strip{grid-template-columns:1fr 1fr}
+ .rollup-grid{grid-template-columns:1fr 1fr}
+ .strip{grid-template-columns:1fr 1fr}
+ /* R22: at <480px the four-up Code-surface strip overflows. Drop to
+    2x2 so the 274,030-class numbers don't push the layout. */
+ .strip .stat .n{font-size:1.5rem}
  table.grid thead{display:none}
  table.grid,table.grid tbody,table.grid tr,table.grid td{display:block;width:100%}
  table.grid tr{border:1px solid var(--border);border-radius:6px;margin-bottom:var(--s-3);padding:var(--s-3)}
@@ -98,70 +107,114 @@ nav.subnav a{color:var(--muted)}
   <h1>KAOS Compliance Dashboard</h1>
   <p>273 Ventures open-source packages — auditor view</p>
   <nav class="subnav" aria-label="Sections">
+   <a href="methodology.html" class="methodology">Methodology</a>
    <a href="security.html">Security</a>
    <a href="supply-chain.html">Supply chain</a>
    <a href="governance.html">Governance</a>
    <a href="diary.html">Diary</a>
-   <a href="methodology.html">Methodology</a>
+   <a href="methodology.html#pill-semantics">Pill semantics</a>
   </nav>
+   <p class="integrity-claim" style="margin-top:var(--s-3);font-size:0.8125rem">
+    <span class="pill g" aria-label="Snapshot signature: snapshot signed">
+     <span class="gly" aria-hidden="true">✓</span>
+     <span class="wd" aria-hidden="true">snapshot signed</span>
+    </span>
+     &middot; <a href="api/v1/snapshot.sig">snapshot.sig</a>
+    &middot; <a href="https://github.com/273v/kaos-compliance/blob/main/docs/EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with">verify recipe</a>
+     &middot; <a href="api/v1/snapshot.schema.json">JSON Schema</a>
+   </p>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-11 16:01 UTC
+  Generated 2026-05-11 18:34 UTC
  </div>
 </header>
 
 <main id="main">
 <section aria-labelledby="rollup-h">
- <h2 id="rollup-h">Org rollup</h2>
+ <h2 id="rollup-h">Org-level signal summary</h2>
  <div class="card rollup">
-  <div class="rollup-head">
-   <div class="label">Composite trust</div>
-   <div class="score" aria-label="Composite score">
-    16 / 16 packages green
+  <div class="rollup-grid">
+   <div class="cell">
+    <span class="n">9/16</span>
+    <span class="lab"><a href="methodology.html#sig-build">Build passing</a></span>
+   </div>
+   <div class="cell">
+    <span class="n">9/16</span>
+    <span class="lab"><a href="methodology.html#sig-tests">Tests passing</a></span>
+   </div>
+   <div class="cell">
+    <span class="n">16/16</span>
+    <span class="sub">TP: 16/16</span>
+    <span class="lab"><a href="methodology.html#sig-releases">Releases: attested / TP</a></span>
+   </div>
+   <div class="cell">
+    <span class="n">0/16</span>
+    <span class="lab"><a href="methodology.html#sig-license">License clean</a></span>
+   </div>
+   <div class="cell">
+     <span class="n">—</span>
+    <span class="lab"><a href="methodology.html#sig-branch-prot">Branch protection</a></span>
    </div>
   </div>
-  <div class="bar" role="img" aria-label="100 percent of packages meeting bar">
-   <span style="width:100%"></span>
-  </div>
-  <div class="rollup-grid">
-   <div class="cell"><span class="n">16/16</span><span class="lab">Build passing</span></div>
-   <div class="cell"><span class="n">16/16</span><span class="lab">Tests passing</span></div>
-   <div class="cell"><span class="n">16/16</span><span class="lab">Signed releases</span></div>
-   <div class="cell"><span class="n">16/16</span><span class="lab">License clean</span></div>
-  </div>
+  <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
+   No composite score. Each tile is a per-signal ratio; the
+   <a href="methodology.html#pill-semantics">pill semantics table</a>
+   names the exact green / amber / red / gray rule for every signal on
+   this page. Releases: <em>attested</em> = PEP&nbsp;740 attestation
+   present and every artifact in the latest release verified;
+   <em>TP</em> = a PyPI Trusted Publisher is wired to the latest
+   release (proxied from the attestation publisher metadata until a
+   dedicated <code>publisher_state</code> field lands in the
+   snapshot).
+  </p>
  </div>
 </section>
 
 <section aria-labelledby="strip-h">
- <h2 id="strip-h" class="sr-only" style="position:absolute;left:-9999px">Headline metrics</h2>
+ <h2 id="strip-h" class="sr-only">Headline metrics</h2>
  <div class="strip">
   <div class="stat"><span class="n">16</span><span class="lab">Repositories</span></div>
-  <div class="stat"><span class="n">546</span><span class="lab">Commits</span></div>
+  <div class="stat"><span class="n">578</span><span class="lab">Commits</span></div>
   <div class="stat"><span class="n">95</span><span class="lab">Tests</span></div>
   <div class="stat"><span class="n">6</span><span class="lab">Supported platforms</span></div>
  </div>
 </section>
 
 <section aria-labelledby="code-strip-h">
- <h2 id="code-strip-h" class="sr-only" style="position:absolute;left:-9999px">Code surface area</h2>
+ <h2 id="code-strip-h" class="sr-only">Code surface area</h2>
  <div class="strip" style="margin-top:var(--s-3)">
   <div class="stat">
-   <span class="n">274,030</span>
-   <span class="lab">Lines of code (hand-written)</span>
+   <span class="n">—</span>
+   <span class="lab">Source lines of code</span>
   </div>
   <div class="stat">
-   <span class="n">1,586</span>
+   <span class="n">—</span>
    <span class="lab">Source + test files</span>
   </div>
   <div class="stat">
-   <span class="n">116,385</span>
+   <span class="n">—</span>
    <span class="lab">Python src LoC</span>
   </div>
   <div class="stat">
-   <span class="n">30,211</span>
+   <span class="n">—</span>
    <span class="lab">Rust src LoC</span>
   </div>
  </div>
+ <p style="margin:var(--s-2) 0 0;color:var(--muted);font-size:0.75rem">
+  Counter: <code>collector/code_metrics.py</code> (non-blank, non-comment
+  lines; Python via <code>tokenize</code>, Rust via a comment-stripping
+  pass). Excludes <code>.venv</code>, <code>target</code>,
+  <code>dist</code>, <code>build</code>, <code>__pycache__</code>,
+  <code>_site</code>, and lockfiles (<code>uv.lock</code>,
+  <code>Cargo.lock</code>). Tests are paths whose ancestor names match
+  <code>tests</code> / <code>test</code> / <code>benches</code>.
+  <strong>Authorship:</strong> this codebase is AI-assisted &mdash;
+  the lines counted here were generated with Claude (Anthropic) and
+  human-reviewed before commit. We count what's in <code>git</code>;
+  we do not claim humans typed every character. Full spec in
+  <a href="methodology.html#sig-loc">methodology &mdash; lines of
+  code</a>.
+ </p>
 </section>
 
 <section aria-labelledby="grid-h">
@@ -177,6 +230,7 @@ nav.subnav a{color:var(--muted)}
     <th scope="col">Signing</th>
     <th scope="col">License</th>
     <th scope="col">Deps</th>
+    <th scope="col">Branch prot.</th>
     <th scope="col">Last release</th>
    </tr>
   </thead>
@@ -185,561 +239,1057 @@ nav.subnav a{color:var(--muted)}
     <td class="pkg" data-h="Package"><a href="package/kaos-citations.html">kaos-citations</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25646801624" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-citations/actions/runs/25686965812" target="_blank" rel="noopener"
+          aria-label="Build: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-citations Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25646801624" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-citations/actions/runs/25686965812" target="_blank" rel="noopener"
+          aria-label="Tests: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-citations Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25648262692" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25686965884" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-citations Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-citations/0.1.0a2/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-citations/0.1.0a2/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-citations Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-citations-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-citations-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
     <td class="ver" data-h="Version">v0.1.0a6</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171717" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25686966214" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171717" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25686966214" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171763" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25686966254" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-content/0.1.0a6/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-content/0.1.0a6/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-content-0.1.0a6.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-content-0.1.0a6.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-core.html">kaos-core</a></td>
     <td class="ver" data-h="Version">v0.1.0a5</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25644038516" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-core/actions/runs/25686969023" target="_blank" rel="noopener"
+          aria-label="Build: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-core Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25644038516" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-core/actions/runs/25686969023" target="_blank" rel="noopener"
+          aria-label="Tests: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-core Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25647957874" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25686969570" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-core Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-core/0.1.0a5/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-core/0.1.0a5/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-core Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-core-0.1.0a5.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-core-0.1.0a5.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-graph.html">kaos-graph</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25646339797" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-graph/actions/runs/25686971995" target="_blank" rel="noopener"
+          aria-label="Build: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-graph Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25646339797" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-graph/actions/runs/25686971995" target="_blank" rel="noopener"
+          aria-label="Tests: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-graph Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25648074483" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971923" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-graph Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-graph/0.1.0a3/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-graph/0.1.0a3/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-graph Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-graph-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-graph-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25646337388" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972479" target="_blank" rel="noopener"
+          aria-label="Build: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-client Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25646337388" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972479" target="_blank" rel="noopener"
+          aria-label="Tests: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-client Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25648294706" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972459" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-client Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-llm-client/0.1.0a3/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-llm-client/0.1.0a3/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-client Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-llm-client-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-llm-client-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-llm-core.html">kaos-llm-core</a></td>
     <td class="ver" data-h="Version">v0.1.0a5</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394992" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25686966228" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-core Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394992" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25686966228" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-core Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394997" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25686966294" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-core Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-llm-core/0.1.0a5/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-llm-core/0.1.0a5/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-core Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-llm-core-0.1.0a5.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-llm-core-0.1.0a5.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-mcp.html">kaos-mcp</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25646338549" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-mcp/actions/runs/25686966710" target="_blank" rel="noopener"
+          aria-label="Build: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-mcp Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25646338549" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-mcp/actions/runs/25686966710" target="_blank" rel="noopener"
+          aria-label="Tests: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-mcp Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25648027763" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25686966730" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-mcp Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-mcp/0.1.0a3/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-mcp/0.1.0a3/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-mcp Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-mcp-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-mcp-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25646801028" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686968875" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ml-core Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25646801028" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686968875" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ml-core Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25648548801" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686969141" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ml-core Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-ml-core/0.1.0a2/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-ml-core/0.1.0a2/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ml-core Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-ml-core-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-ml-core-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-names.html">kaos-names</a></td>
     <td class="ver" data-h="Version">v0.1.0a1</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25644413870" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25686968948" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-names Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25644413870" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25686968948" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-names Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25648042049" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25686968944" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-names Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-names/0.1.0a1/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-names/0.1.0a1/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-names Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-names-0.1.0a1.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-names-0.1.0a1.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25646340330" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686968884" target="_blank" rel="noopener"
+          aria-label="Build: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-core Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25646340330" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686968884" target="_blank" rel="noopener"
+          aria-label="Tests: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-core Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25647975394" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686969142" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-core Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-nlp-core/0.1.0a3/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-nlp-core/0.1.0a3/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-core Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-nlp-core-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-nlp-core-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
     <td class="ver" data-h="Version">v0.2.0a4</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25646341491" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966198" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-transformers Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25646341491" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966198" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-transformers Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25648356024" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966153" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-transformers Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-nlp-transformers/0.2.0a4/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-nlp-transformers/0.2.0a4/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-nlp-transformers Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-nlp-transformers-0.2.0a4.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-nlp-transformers-0.2.0a4.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-office.html">kaos-office</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370060" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25686966752" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-office Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370060" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25686966752" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-office Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370014" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25686966733" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-office Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-office/0.1.0a2/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-office/0.1.0a2/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-office Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-office-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-office-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-pdf.html">kaos-pdf</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25644485853" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-pdf/actions/runs/25686967672" target="_blank" rel="noopener"
+          aria-label="Build: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-pdf Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25644485853" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill n" href="https://github.com/273v/kaos-pdf/actions/runs/25686967672" target="_blank" rel="noopener"
+          aria-label="Tests: No signal — open evidence"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-pdf Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25648330986" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25686967628" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-pdf Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-pdf/0.1.0a2/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-pdf/0.1.0a2/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-pdf Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-pdf-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-pdf-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-source.html">kaos-source</a></td>
     <td class="ver" data-h="Version">v0.1.0a3</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176446" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25686967550" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-source Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176446" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25686967550" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-source Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176431" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25686967533" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-source Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-source/0.1.0a3/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-source/0.1.0a3/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-source Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-source-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-source-0.1.0a3.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-tabular.html">kaos-tabular</a></td>
     <td class="ver" data-h="Version">v0.1.0a1</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25644537334" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25686970301" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-tabular Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25644537334" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25686970301" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-tabular Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25648327420" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25686970277" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-tabular Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-tabular/0.1.0a1/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-tabular/0.1.0a1/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-tabular Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-tabular-0.1.0a1.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-tabular-0.1.0a1.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-web.html">kaos-web</a></td>
     <td class="ver" data-h="Version">v0.1.0a2</td>
      <td data-h="Build">
-       <a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25646339160" target="_blank" rel="noopener" aria-label="Build: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25686966196" target="_blank" rel="noopener"
+          aria-label="Build: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-web Build: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Tests">
-       <a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25646339160" target="_blank" rel="noopener" aria-label="Tests: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25686966196" target="_blank" rel="noopener"
+          aria-label="Tests: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-web Tests: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Security">
-       <a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25648005087" target="_blank" rel="noopener" aria-label="Security: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25686966215" target="_blank" rel="noopener"
+          aria-label="Security: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-web Security: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="Signing">
-       <a class="pill g" href="https://pypi.org/project/kaos-web/0.1.0a2/" target="_blank" rel="noopener" aria-label="Signing: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
+      <div class="cell-trend">
+       <a class="pill g" href="https://pypi.org/project/kaos-web/0.1.0a2/" target="_blank" rel="noopener"
+          aria-label="Signing: Pass — open evidence"
+>
+        <span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span>
        </a>
+       <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-web Attestation: 1 day of history"><circle cx="40.0" cy="8.0" r="2" fill="currentColor"></circle></svg>
+<span class="spark-note">accumulating history</span>      </div>
      </td>
      <td data-h="License">
-       <a class="pill g" href="api/v1/sbom/kaos-web-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="License: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="License: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
      <td data-h="Deps">
-       <a class="pill g" href="api/v1/sbom/kaos-web-0.1.0a2.cdx.json" target="_blank" rel="noopener" aria-label="Deps: Pass — open evidence">
-        <span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span>
-       </a>
+      <div class="cell-trend">
+       <span class="pill n" aria-label="Deps: No signal"
+>
+        <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span>
+       </span>
+      </div>
      </td>
-    <td class="age" data-h="Last release"></td>
+    <td data-h="Branch prot.">
+     <span class="pill n" aria-label="Branch protection: ?">
+      <span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">?</span>
+     </span>
+    </td>
+    <td class="age" data-h="Last release">2026-05-11</td>
    </tr>
   </tbody>
  </table>
@@ -747,10 +1297,14 @@ nav.subnav a{color:var(--muted)}
 </main>
 
 <footer>
- Generated 2026-05-11 16:01 UTC
+ Generated 2026-05-11 18:34 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ | <a href="api/v1/index.html">All endpoints</a>
+  | Schema: <a href="api/v1/snapshot.schema.json">snapshot.schema.json</a>
+  | Signature: <a href="api/v1/snapshot.sig">snapshot.sig</a>
+  (<a href="https://github.com/273v/kaos-compliance/blob/main/docs/EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with">verify recipe</a>)
 </footer>
 </div>
 </body>

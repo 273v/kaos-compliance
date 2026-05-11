@@ -1,0 +1,251 @@
+{
+  "schema_version": "1.0",
+  "bundle_kind": "kaos-compliance.package",
+  "package": "kaos-pdf",
+  "version": "0.1.0a2",
+  "snapshot_slice": {
+    "name": "kaos-pdf",
+    "identity": {
+      "pypi_version": "0.1.0a2",
+      "pypi_url": "https://pypi.org/project/kaos-pdf/0.1.0a2/",
+      "main_head_sha": "8a759196c57e3dd8a7a883896e8e64fa914ce1ea",
+      "latest_tag": "v0.1.0a2",
+      "latest_tag_sha": "1e7001e08fecb87f3b099cd9595e8e67ec1cc2db",
+      "tag_at_head": false,
+      "commits_past_tag": null,
+      "repo_visibility": "public",
+      "last_commit_at": "2026-05-11T17:43:12Z"
+    },
+    "ci": {
+      "workflow_conclusion": "",
+      "workflow_run_id": 25686967672,
+      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/25686967672",
+      "head_sha": "8a759196c57e3dd8a7a883896e8e64fa914ce1ea",
+      "run_completed_at": "2026-05-11T18:32:27Z",
+      "matrix": [
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:59:22Z",
+          "completed_at": "2026-05-11T17:59:31Z",
+          "duration_seconds": 9
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:44:43Z",
+          "completed_at": "2026-05-11T17:46:19Z",
+          "duration_seconds": 96
+        },
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:05:26Z",
+          "completed_at": "2026-05-11T18:06:44Z",
+          "duration_seconds": 78
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:10:30Z",
+          "completed_at": "2026-05-11T18:12:20Z",
+          "duration_seconds": 110
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:10:56Z",
+          "completed_at": "2026-05-11T18:12:18Z",
+          "duration_seconds": 82
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T17:43:31Z",
+          "completed_at": "2026-05-11T17:45:59Z",
+          "duration_seconds": 148
+        },
+        {
+          "name": "Pre-commit hooks",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:24:21Z",
+          "completed_at": "2026-05-11T18:24:48Z",
+          "duration_seconds": 27
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:18:11Z",
+          "completed_at": "2026-05-11T18:19:48Z",
+          "duration_seconds": 97
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:21:52Z",
+          "completed_at": "2026-05-11T18:23:12Z",
+          "duration_seconds": 80
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-11T18:32:26Z",
+          "completed_at": "2026-05-11T18:32:46Z",
+          "duration_seconds": 20
+        }
+      ]
+    },
+    "security": {
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25686967628,
+      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/25686967628",
+      "jobs": [
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:40Z"
+        },
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:42Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:46Z"
+        },
+        {
+          "name": "pip-audit (dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:56Z"
+        },
+        {
+          "name": "integration tests",
+          "conclusion": "skipped",
+          "status": "completed",
+          "completed_at": "2026-05-11T17:43:19Z"
+        }
+      ],
+      "run_completed_at": "2026-05-11T17:43:56Z"
+    },
+    "open_prs": {
+      "count": 1,
+      "titles": [
+        "#5 chore(deps): bump the actions-all group across 1 directory with 3 updates"
+      ]
+    },
+    "freshness": {
+      "days_since_last_commit": 0,
+      "days_since_last_release": 3,
+      "days_since_last_security_scan": 0
+    },
+    "supply_chain": {
+      "pypi_version": "0.1.0a2",
+      "pypi_release_iso": "2026-05-08T12:43:10.191513Z",
+      "wheel_platforms": [
+        "any"
+      ],
+      "wheel_sha256s": {
+        "kaos_pdf-0.1.0a2-py3-none-any.whl": "e880e1886291331acf68f4b562e7a42c7eae93d06f320735d4baabc8cccb68d6",
+        "kaos_pdf-0.1.0a2.tar.gz": "5f7ef5da746d93358e7438495de400609f1b82165c64e7383b417d1ee4d9e801"
+      },
+      "is_abi3": false,
+      "has_musllinux_wheel": false,
+      "license_expression": "Apache-2.0",
+      "license_files_in_wheel": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "attestations": {
+        "pep740_present": true,
+        "publisher_kind": "GitHub",
+        "publisher_source_repo": "273v/kaos-pdf",
+        "publisher_workflow_ref": "release.yml@pypi",
+        "rekor_log_index": 1473394023,
+        "verified_count": 2,
+        "total_count": 2
+      },
+      "sbom": {
+        "components_count": null,
+        "license_breakdown": {},
+        "weak_copyleft": [],
+        "strong_copyleft": [],
+        "unknown_license": [],
+        "sbom_artifact_path": null
+      },
+      "errors": []
+    },
+    "governance": {
+      "dco_signoff_rate_90d": 0.538,
+      "conventional_commits_rate_90d": 0.846,
+      "verified_commit_ratio_90d": 0.308,
+      "commits_90d": 13,
+      "unique_committers_90d": 1,
+      "branch_protection_enabled": null,
+      "branch_protection_summary": null,
+      "codeowners_path": ".github/CODEOWNERS",
+      "security_md_present": true,
+      "security_md_disclosure_window_days": 90,
+      "notice_present": true,
+      "license_files_in_sdist": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "releases_90d": 2,
+      "median_pr_age_days": 0.058,
+      "open_pr_count": 1,
+      "open_issue_count": 0,
+      "time_to_pypi_seconds_median": 114,
+      "errors": [
+        "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-pdf/branches/main/protection']' returned non-zero exit status 1."
+      ]
+    },
+    "code_metrics": {
+      "python": {
+        "src_loc": null,
+        "tests_loc": null,
+        "src_files": null,
+        "tests_files": null
+      },
+      "rust": {
+        "src_loc": null,
+        "tests_loc": null,
+        "src_files": null,
+        "tests_files": null
+      },
+      "errors": [
+        "no repo_dir passed"
+      ]
+    },
+    "errors": []
+  },
+  "sbom": {
+    "mirror_path": null,
+    "github_release_url": null
+  },
+  "attestation": {
+    "present": true,
+    "publisher_kind": "GitHub",
+    "publisher_source_repo": "273v/kaos-pdf",
+    "publisher_workflow_ref": "release.yml@pypi",
+    "rekor_log_index": 1473394023,
+    "verified_count": 2,
+    "total_count": 2,
+    "pypi_simple_index_url": "https://pypi.org/simple/kaos-pdf/"
+  }
+}

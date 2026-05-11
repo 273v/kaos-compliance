@@ -7,21 +7,10 @@
 <meta name="description" content="Org-wide security rollup for 273 Ventures KAOS packages — advisories, scanner conclusions, and per-repo Security workflow status.">
 <base href="/kaos-compliance/">
 <title>Security — KAOS Compliance</title>
+<link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/dashboard.css">
 <style>
-:root{
- --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;
- --page-bg:#fff;--card-bg:#fafbfc;--border:#e5e7eb;--text:#111827;--muted:#6b7280;
- --g-bg:#e6f4ea;--g-fg:#1e7e34;--y-bg:#fff8e1;--y-fg:#8a6d00;
- --r-bg:#fdecea;--r-fg:#b42318;--n-bg:#f3f4f6;--n-fg:#4b5563;
- --focus:#2563eb;
- --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
- --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
-@media (prefers-color-scheme: dark){
- :root{--page-bg:#0b0f14;--card-bg:#11161d;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;
-  --g-bg:#14271b;--g-fg:#4ade80;--y-bg:#2a2410;--y-fg:#facc15;
-  --r-bg:#2a1414;--r-fg:#f87171;--n-bg:#1f2937;--n-fg:#9ca3af;--focus:#60a5fa;}
-}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--page-bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
 a{color:var(--focus);text-decoration:underline;text-underline-offset:2px}
@@ -34,6 +23,7 @@ a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:
 nav.subnav{margin-top:var(--s-3);display:flex;gap:var(--s-4);flex-wrap:wrap;font-size:0.875rem}
 nav.subnav a{color:var(--muted)}
 nav.subnav a[aria-current="page"]{color:var(--text);font-weight:600}
+nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dotted var(--text)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{position:static;display:inline-block;padding:var(--s-2);background:var(--y-bg);color:var(--y-fg)}
 h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:600}
@@ -108,15 +98,15 @@ footer a{color:var(--muted)}
   <p>Org-wide advisories, scanner conclusions, and per-repo Security workflow status.</p>
   <nav class="subnav" aria-label="Sections">
    <a href="index.html">Org rollup</a>
+   <a href="methodology.html" class="methodology">Methodology</a>
    <a href="security.html" aria-current="page">Security</a>
    <a href="supply-chain.html">Supply chain</a>
    <a href="governance.html">Governance</a>
    <a href="diary.html">Diary</a>
-   <a href="methodology.html">Methodology</a>
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-11 16:01 UTC
+  Generated 2026-05-11 18:34 UTC
  </div>
 </header>
 
@@ -162,32 +152,32 @@ footer a{color:var(--muted)}
     <div class="tool">
      <span class="name">gitleaks</span>
      <span class="frac">16/16</span>
-     <span class="pill g" aria-label="gitleaks: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span>
+     <span class="pill g" aria-label="gitleaks: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
     </div>
     <div class="tool">
      <span class="name">bandit</span>
      <span class="frac">16/16</span>
-     <span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span>
+     <span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
     </div>
     <div class="tool">
      <span class="name">vulture</span>
      <span class="frac">16/16</span>
-     <span class="pill g" aria-label="vulture: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span>
+     <span class="pill g" aria-label="vulture: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
     </div>
     <div class="tool">
      <span class="name">pip-audit</span>
      <span class="frac">16/16</span>
-     <span class="pill g" aria-label="pip-audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span>
+     <span class="pill g" aria-label="pip-audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
     </div>
     <div class="tool">
      <span class="name">cargo-audit</span>
      <span class="frac">4/4</span>
-     <span class="pill g" aria-label="cargo-audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span>
+     <span class="pill g" aria-label="cargo-audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
     </div>
     <div class="tool">
      <span class="name">cargo-deny</span>
      <span class="frac">4/4</span>
-     <span class="pill g" aria-label="cargo-deny: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></span>
+     <span class="pill g" aria-label="cargo-deny: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
     </div>
   </div>
  </div>
@@ -214,198 +204,211 @@ footer a{color:var(--muted)}
   <tbody>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-citations.html">kaos-citations</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25648262692" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25648262692" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25648262692" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25648262692" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25648262692" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25686965884" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25686965884" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25686965884" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25686965884" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-citations/actions/runs/25686965884" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171763" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171763" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171763" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171763" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25671171763" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25686966254" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25686966254" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25686966254" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25686966254" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-content/actions/runs/25686966254" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-core.html">kaos-core</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25647957874" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25647957874" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25647957874" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25647957874" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25647957874" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25686969570" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25686969570" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25686969570" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25686969570" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-core/actions/runs/25686969570" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-graph.html">kaos-graph</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25648074483" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25648074483" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25648074483" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25648074483" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25648074483" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25648074483" target="_blank" rel="noopener" aria-label="cargo-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-deny"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25648074483" target="_blank" rel="noopener" aria-label="cargo-deny: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971923" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971923" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971923" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971923" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971923" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971923" target="_blank" rel="noopener" aria-label="cargo-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-deny"><a class="pill g" href="https://github.com/273v/kaos-graph/actions/runs/25686971923" target="_blank" rel="noopener" aria-label="cargo-deny: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25648294706" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25648294706" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25648294706" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25648294706" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25648294706" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972459" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972459" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972459" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972459" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-llm-client/actions/runs/25686972459" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-llm-core.html">kaos-llm-core</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394997" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394997" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394997" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394997" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25657394997" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25686966294" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25686966294" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25686966294" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25686966294" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-llm-core/actions/runs/25686966294" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-mcp.html">kaos-mcp</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25648027763" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25648027763" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25648027763" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25648027763" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25648027763" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25686966730" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25686966730" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25686966730" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25686966730" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-mcp/actions/runs/25686966730" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25648548801" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25648548801" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25648548801" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25648548801" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25648548801" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25648548801" target="_blank" rel="noopener" aria-label="cargo-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-deny"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25648548801" target="_blank" rel="noopener" aria-label="cargo-deny: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686969141" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686969141" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686969141" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686969141" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686969141" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686969141" target="_blank" rel="noopener" aria-label="cargo-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-deny"><a class="pill g" href="https://github.com/273v/kaos-ml-core/actions/runs/25686969141" target="_blank" rel="noopener" aria-label="cargo-deny: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-names.html">kaos-names</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25648042049" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25648042049" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25648042049" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25648042049" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25648042049" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25686968944" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25686968944" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25686968944" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25686968944" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-names/actions/runs/25686968944" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25647975394" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25647975394" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25647975394" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25647975394" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25647975394" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25647975394" target="_blank" rel="noopener" aria-label="cargo-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-deny"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25647975394" target="_blank" rel="noopener" aria-label="cargo-deny: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686969142" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686969142" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686969142" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686969142" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686969142" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686969142" target="_blank" rel="noopener" aria-label="cargo-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-deny"><a class="pill g" href="https://github.com/273v/kaos-nlp-core/actions/runs/25686969142" target="_blank" rel="noopener" aria-label="cargo-deny: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25648356024" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25648356024" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25648356024" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25648356024" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25648356024" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25648356024" target="_blank" rel="noopener" aria-label="cargo-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-deny"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25648356024" target="_blank" rel="noopener" aria-label="cargo-deny: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966153" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966153" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966153" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966153" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966153" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966153" target="_blank" rel="noopener" aria-label="cargo-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-deny"><a class="pill g" href="https://github.com/273v/kaos-nlp-transformers/actions/runs/25686966153" target="_blank" rel="noopener" aria-label="cargo-deny: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-office.html">kaos-office</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370014" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370014" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370014" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370014" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25657370014" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25686966733" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25686966733" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25686966733" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25686966733" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-office/actions/runs/25686966733" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-pdf.html">kaos-pdf</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25648330986" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25648330986" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25648330986" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25648330986" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25648330986" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25686967628" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25686967628" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25686967628" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25686967628" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-pdf/actions/runs/25686967628" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-source.html">kaos-source</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176431" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176431" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176431" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176431" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25657176431" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25686967533" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25686967533" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25686967533" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25686967533" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-source/actions/runs/25686967533" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-tabular.html">kaos-tabular</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25648327420" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25648327420" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25648327420" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25648327420" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25648327420" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25686970277" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25686970277" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25686970277" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25686970277" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-tabular/actions/runs/25686970277" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
    <tr>
     <td class="pkg" data-h="Package"><a href="package/kaos-web.html">kaos-web</a></td>
-    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25648005087" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25648005087" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25648005087" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25648005087" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25648005087" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd">Pass</span></a></td>
-     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
-     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd">No signal</span></span></td>
+    <td data-h="Workflow"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25686966215" target="_blank" rel="noopener" aria-label="Workflow: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="gitleaks"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25686966215" target="_blank" rel="noopener" aria-label="gitleaks: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="bandit"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25686966215" target="_blank" rel="noopener" aria-label="bandit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="vulture"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25686966215" target="_blank" rel="noopener" aria-label="vulture: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="pip-audit"><a class="pill g" href="https://github.com/273v/kaos-web/actions/runs/25686966215" target="_blank" rel="noopener" aria-label="pip-audit: Pass — open evidence"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></a></td>
+     <td data-h="cargo-audit"><span class="pill n" aria-label="cargo-audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="cargo-deny"><span class="pill n" aria-label="cargo-deny: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
     <td data-h="Advisories">0</td>
     <td class="age" data-h="Last run">—</td>
    </tr>
   </tbody>
  </table>
+ </div>
+</section>
+
+<section aria-labelledby="sup-h">
+ <h2 id="sup-h">Suppressions ledger</h2>
+ <div class="card">
+   <p class="honest" style="margin-top:0">
+    <strong>Suppressions ledger not inspected on this host.</strong>
+    sibling clone root /home/mjbommar/projects/273v not present on this host
+    The ledger is computed at render time by walking the on-disk clones;
+    on a build host without those clones (e.g. a fresh GHA runner) we
+    leave the count empty rather than zero-fill it.
+   </p>
  </div>
 </section>
 
@@ -420,17 +423,23 @@ footer a{color:var(--muted)}
   self-attestation. Tools that aren&rsquo;t configured for a given
   ecosystem (e.g. <code>cargo-audit</code> on a pure-Python package)
   render as <em>No signal</em> rather than green.
-  See <a href="methodology.html">methodology.html</a> for the full
-  signal-to-source mapping.
+  The suppressions ledger is computed at render time by
+  <code>collector.suppressions.collect_for_org</code>, which walks the
+  on-disk sibling clones of every public <code>273v/kaos-*</code> repo;
+  the same module exposes a per-repo <code>collect()</code> for ad-hoc
+  reproduction.
+  See <a href="methodology.html#pill-semantics">methodology.html#pill-semantics</a>
+  for the full signal-to-source mapping.
  </div>
 </section>
 </main>
 
 <footer>
- Generated 2026-05-11 16:01 UTC
+ Generated 2026-05-11 18:34 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ | <a href="api/v1/index.html">All endpoints</a>
 </footer>
 </div>
 </body>
