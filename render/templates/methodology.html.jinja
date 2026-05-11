@@ -145,6 +145,7 @@ footer a{color:var(--muted)}
    <li><a href="#sec-5">Verifying a claim independently</a></li>
    <li><a href="#sec-6">Limits and honest gaps</a></li>
    <li><a href="#sec-7">Snapshot integrity + schema</a></li>
+   <li><a href="#sec-8">Methodology versioning</a></li>
   {% endif %}
   </ol>
  </aside>
@@ -201,6 +202,59 @@ footer a{color:var(--muted)}
      <li><a href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act">Cyber Resilience Act</a> (Annex I Part II conformity signals; full enforcement guidance not expected until 2027).</li>
     </ul>
     <p>See <code>docs/research/01-compliance-signal-inventory.md</code> for the per-framework signal-to-source mapping table.</p>
+
+    {# R18: NIST SSDF practice-ID matrix. The audit said the SSDF
+       citation read as decorative; the table below names which signal
+       on this dashboard satisfies which practice ID. #}
+    <h3 id="ssdf-matrix">NIST SSDF practice-ID matrix</h3>
+    <p>The dashboard surfaces signals against the publicly-evidenceable subset of NIST SP 800-218. Practices whose evidence is internal-only (e.g. <code>PO.5.1</code> &ldquo;Implement and maintain secure development environments&rdquo;) are deliberately omitted &mdash; the public-source-only contract can&rsquo;t reach them.</p>
+    <table>
+     <thead><tr><th>SSDF</th><th>Asks for</th><th>Dashboard signal</th><th>Snapshot path</th></tr></thead>
+     <tbody>
+      <tr><td><code>PO.1.1</code></td><td>Define security requirements</td><td>Methodology + threat model</td><td><code>docs/METHODOLOGY.md</code></td></tr>
+      <tr><td><code>PO.3.2</code></td><td>Verify software releases</td><td>PEP 740 attestation + Rekor</td><td><code>modules[].supply_chain.attestations.*</code></td></tr>
+      <tr><td><code>PS.1.1</code></td><td>Least-privilege source storage</td><td>Branch protection on <code>main</code></td><td><code>modules[].governance.branch_protection_enabled</code></td></tr>
+      <tr><td><code>PS.2.1</code></td><td>Verify release integrity</td><td>Sigstore signature on snapshot + per-package attestations</td><td><code>api/v1/snapshot.sig</code>, <code>modules[].supply_chain.attestations.*</code></td></tr>
+      <tr><td><code>PS.3.1</code></td><td>Archive and protect each release</td><td>PyPI immutability + Rekor transparency log</td><td><code>modules[].supply_chain.attestations.rekor_log_index</code></td></tr>
+      <tr><td><code>PS.3.2</code></td><td>Provide SBOM per release</td><td>CycloneDX 1.5 per package</td><td><code>modules[].supply_chain.sbom.sbom_artifact_path</code></td></tr>
+      <tr><td><code>PW.4.1</code></td><td>Acquire well-secured software</td><td>OSV cross-check; CVE feed</td><td><code>modules[].security.workflow_conclusion</code></td></tr>
+      <tr><td><code>PW.7.1</code></td><td>Code review</td><td>Per-package CI matrix</td><td><code>modules[].ci.workflow_conclusion</code>, <code>.matrix</code></td></tr>
+      <tr><td><code>RV.1.3</code></td><td>Vulnerability-disclosure policy</td><td><code>SECURITY.md</code> present</td><td><code>modules[].governance.security_md_present</code></td></tr>
+      <tr><td><code>RV.2.1</code></td><td>Analyze vulnerabilities to root cause</td><td>Suppressions ledger</td><td><a href="security.html#sup-h"><code>security.html#sup-h</code></a></td></tr>
+     </tbody>
+    </table>
+
+    {# R19: CRA Annex II / Article 13 traceability. Citing CRA without
+       this matrix reads as decorative for an EU-jurisdiction reviewer. #}
+    <h3 id="cra-matrix">CRA Annex II / Article 13 traceability</h3>
+    <p>The EU Cyber Resilience Act, as drafted, requires manufacturers to maintain technical documentation (Annex II) covering specific conformity signals (Article 13). The mapping below names which signals satisfy which clause; clauses without a verifiable public signal are surfaced as honest gaps rather than silently claimed. CRA full enforcement guidance is not expected until 2027 &mdash; this matrix will be revised against the final implementing acts when published.</p>
+    <table>
+     <thead><tr><th>CRA reference</th><th>Requirement (compressed)</th><th>Dashboard signal</th></tr></thead>
+     <tbody>
+      <tr><td>Annex II &sect;1</td><td>Product description with cybersecurity properties</td><td>Per-package detail pages</td></tr>
+      <tr><td>Annex II &sect;2</td><td>Risk assessment</td><td>Methodology page; SBOM + advisory feed</td></tr>
+      <tr><td>Annex II &sect;3</td><td>SBOM</td><td>CycloneDX 1.5 published per package</td></tr>
+      <tr><td>Annex II &sect;4</td><td>Vulnerability-handling process</td><td><code>SECURITY.md</code> + disclosure window</td></tr>
+      <tr><td>Annex II &sect;5</td><td>Information on compliance processes</td><td>This document + <code>docs/RUNBOOK.md</code></td></tr>
+      <tr><td>Annex II &sect;6</td><td>Technical specifications used for development</td><td><code>docs/research/01-compliance-signal-inventory.md</code></td></tr>
+      <tr><td>Article 13(2)</td><td>Risk assessment must be documented</td><td>Methodology + diary</td></tr>
+      <tr><td>Article 13(15)</td><td>Updates available for the lifetime of the product</td><td>Release cadence per package (<a href="governance.html">governance.html</a>)</td></tr>
+      <tr><td>Annex I Part II &sect;1</td><td>Vulnerability handling &mdash; publicly available info</td><td>OSV cross-check; advisory rollup on <a href="security.html">security.html</a></td></tr>
+      <tr><td>Annex I Part II &sect;3</td><td>Apply effective regular tests / reviews</td><td>CI matrix + Security workflow conclusions</td></tr>
+      <tr><td>Annex I Part II &sect;5</td><td>Establish disclosure policy</td><td><code>SECURITY.md</code> present + disclosure-window field</td></tr>
+      <tr><td>Annex I Part II &sect;7</td><td>Security updates without delay</td><td>Tag &rarr; PyPI publish latency</td></tr>
+     </tbody>
+    </table>
+
+    {# R11: name the CVE / advisory feed sources. "0 open advisories"
+       is only meaningful when the source is specified. #}
+    <h3 id="cve-feeds">CVE / advisory feed sources</h3>
+    <p>The Security page&rsquo;s &ldquo;0 open advisories&rdquo; claim is only meaningful when the feed sources are named. The dashboard cross-references:</p>
+    <ul>
+     <li><strong>OSV.dev</strong> &mdash; <code>https://api.osv.dev/v1/query</code>, keyed by PURL (<code>pkg:pypi/&lt;name&gt;@&lt;version&gt;</code>, <code>pkg:cargo/&lt;crate&gt;@&lt;version&gt;</code>). Cursor: live query at sweep time; no snapshotting.</li>
+     <li><strong>GitHub Security Advisories</strong> &mdash; <code>gh api /advisories</code> filtered by affected ecosystem and package name. Cursor: live; deduplicated against OSV using the GHSA ID.</li>
+    </ul>
+    <p>Both feeds are queried during the 4-hour Security cron. A package clears the &ldquo;0 advisories&rdquo; bar only when both feeds return empty for its declared version. The OSV PURL form is canonical; if a package publishes under a non-PyPI distribution name the lookup may miss &mdash; a known gap, tracked in <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>.</p>
    </section>
 
    <section class="block" id="sec-4">
@@ -214,6 +268,19 @@ footer a{color:var(--muted)}
      <li><strong>Maintainer-identity signals</strong> (country, employer, real name). Encourages discrimination, generates false positives on pseudonymous-but-trusted maintainers, adds zero supply-chain integrity.</li>
      <li><strong>GitHub stars.</strong> A popularity metric, not a trust metric.</li>
     </ol>
+
+    {# R5: name the boundary between "ratios OK" and "names not OK".
+       The audit flagged verified_commit_ratio_90d as adjacent to the
+       maintainer-identity anti-pattern; without this paragraph the
+       boundary is implicit. #}
+    <h3 id="ratio-vs-identity">Where the maintainer-identity line is drawn</h3>
+    <p>The dashboard collects per-commit <em>aggregates</em> &mdash; DCO sign-off rate, verified-commit ratio, conventional-commits rate, unique-committer count &mdash; without collecting per-commit <em>identities</em>. The distinction is deliberate:</p>
+    <ul>
+     <li><strong>Ratios over 90 days</strong> measure repository discipline. They answer &ldquo;was the policy followed&rdquo; without naming who followed or didn&rsquo;t. These are surfaced on <a href="governance.html">governance.html</a>.</li>
+     <li><strong>Per-commit identity</strong> would attach a name (or pseudonym) to an approve/sign-off action. The dashboard collects only the count of unique committers, not the committer identities themselves.</li>
+     <li><strong>Cardinality</strong> is the operational signal we care about for bus factor: a <code>unique_committers_90d == 1</code> is a procurement-relevant fact whether the one committer is anonymous or named.</li>
+    </ul>
+    <p>In particular, <code>verified_commit_ratio_90d</code> is a ratio of GitHub&rsquo;s <code>verification.verified</code> boolean over commits-in-window &mdash; not an identity claim. It is rendered <strong>always</strong> paired with the branch-protection state, because without required-signed-commits enforcement (a branch-protection API field, not an identity check) the ratio is decorative.</p>
    </section>
 
    <section class="block" id="pill-semantics">
@@ -344,6 +411,9 @@ footer a{color:var(--muted)}
      <li><strong>Per-commit author identity beyond GitHub&rsquo;s <code>verification.verified</code> state.</strong> GitHub&rsquo;s GPG-key claim is what we report; deeper identity proofing (e.g., DCO sign-off matching a known steward) is not done.</li>
      <li><strong>Source-of-truth for transitive licenses.</strong> We rely on the published license metadata of each dep. If a published license is wrong, our aggregation is wrong. We do not legally audit license claims.</li>
      <li><strong>Operational security of the maintainer machines.</strong> A dashboard can prove the artifact came from a specific workflow; it cannot prove the workflow&rsquo;s secrets weren&rsquo;t exfiltrated upstream. That&rsquo;s outside the scope of any public dashboard.</li>
+     <li><strong>OpenSSF Scorecard per-check results.</strong> The dashboard names Scorecard as an anchor framework but does not yet ingest the per-check results &mdash; the Scorecard workflow is not installed on <code>kaos-compliance</code> itself. Tracked as <code>F18</code> in <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>. A buyer can run <code>scorecard --repo=273v/kaos-compliance --format=json</code> locally to fill the gap today.</li>
+     <li><strong>SLSA Build Level not formally attested.</strong> Each package&rsquo;s PEP 740 attestation + PyPI Trusted Publisher state puts it effectively at SLSA Build L2. The supply-chain page surfaces an implied-level pill per package; we do not emit a formal <code>slsa.build.level</code> claim until the SBOM dep-graph (<code>F9</code>) and the Scorecard ingest (<code>F18</code>) land.</li>
+     <li><strong>CISA SBOM Minimum Elements: relationships gap.</strong> The seven required elements (author, supplier, name, version, unique ID, relationships, timestamp) are visible per package on <a href="supply-chain.html">supply-chain.html</a>; <em>relationships</em> is flagged yellow across the org because the SBOM emitter doesn&rsquo;t yet build the dependency edge graph.</li>
     </ul>
     <p>These gaps are intentionally surfaced so a buyer knows what they still need to ask for in a vendor questionnaire.</p>
    </section>
@@ -386,6 +456,31 @@ footer a{color:var(--muted)}
     <p>The data model itself &mdash; field-by-field meaning and units &mdash;
     is documented in
     <a href="https://github.com/273v/kaos-compliance/blob/main/docs/DATA-MODEL.md"><code>docs/DATA-MODEL.md</code></a>.</p>
+   </section>
+
+   {# R25: explicit semver bump rules for this methodology. Without
+      these the version field at the bottom of the page is decorative;
+      with them an external reviewer can pin a snapshot to a version
+      and reproduce the assessment. #}
+   <section class="block" id="sec-8">
+    <h2>Methodology versioning</h2>
+    <p>This document follows semver. The bump rules are tight on purpose: the property that makes the dashboard credible &mdash; that an external reviewer can pin a snapshot to a methodology version and reproduce the assessment &mdash; fails the first time the green threshold for a signal is silently &ldquo;clarified&rdquo; without bumping the version.</p>
+    <table>
+     <thead><tr><th>Change</th><th>Bump</th></tr></thead>
+     <tbody>
+      <tr><td>Add a new signal that previously didn&rsquo;t exist (new column, new pill)</td><td>minor</td></tr>
+      <tr><td>Add a new framework anchor (e.g. ingest Scorecard results)</td><td>minor</td></tr>
+      <tr><td>Remove a signal</td><td><strong>major</strong></td></tr>
+      <tr><td>Change the green / amber / red threshold for an existing signal</td><td><strong>major</strong></td></tr>
+      <tr><td>Change the snapshot-path source for an existing signal</td><td><strong>major</strong></td></tr>
+      <tr><td>Change a default-fallback (e.g. &ldquo;gray means&rdquo; wording)</td><td><strong>major</strong></td></tr>
+      <tr><td>Rewrite an existing section without changing meaning</td><td>patch</td></tr>
+      <tr><td>Add an honest-gap entry under &ldquo;Limits and honest gaps&rdquo;</td><td>patch</td></tr>
+      <tr><td>Add or expand the per-framework mapping tables</td><td>patch</td></tr>
+      <tr><td>Typos, link fixes, formatting</td><td>patch</td></tr>
+     </tbody>
+    </table>
+    <p>A bump requires an entry in <a href="https://github.com/273v/kaos-compliance/blob/main/CHANGELOG.md">CHANGELOG.md</a> with the version, the change, the affected signals, and the rationale. The published snapshot at <code>api/v1/snapshot.json</code> carries <code>schema_version</code> separately &mdash; that field bumps independently when the JSON shape changes; the methodology version below governs the <em>meaning</em> of the signals, not the wire format.</p>
    </section>
   {% endif %}
 

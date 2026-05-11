@@ -981,6 +981,11 @@ def adapt(
     # the per-package detail page's allowlist footnote).
     policy = _policy_loader.load() if _policy_loader is not None else None
 
+    # Methodology version + last-update date come from the package
+    # constant so a CI rule can grep the bump easily; the policy is in
+    # docs/METHODOLOGY.md §Methodology versioning.
+    from render import METHODOLOGY_UPDATED, METHODOLOGY_VERSION
+
     return {
         "generated_at": iso,
         # The templates' visible header uses this human-readable form.
@@ -1001,6 +1006,10 @@ def adapt(
         # Suppressions ledger (R7) — render-time augmentation walking
         # sibling clones, since the snapshot doesn't carry these yet.
         "suppressions": _suppressions_view(modules),
+        # Methodology versioning (R25) — the templates read these to
+        # render the version line + the source link.
+        "methodology_version": METHODOLOGY_VERSION,
+        "methodology_updated": METHODOLOGY_UPDATED,
     }
 
 
