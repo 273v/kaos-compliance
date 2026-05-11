@@ -35,8 +35,14 @@ import jinja2
 # policy file is missing or PyYAML isn't available.
 try:
     from collector import policy as _policy_loader  # type: ignore[import-not-found]
-except Exception:  # noqa: BLE001
+except Exception:
     _policy_loader = None  # type: ignore[assignment]
+
+# Schema generator is stdlib-only; import is unconditional.
+try:
+    from collector import schema as _snapshot_schema
+except Exception:
+    _snapshot_schema = None  # type: ignore[assignment]
 
 HERE = Path(__file__).resolve().parent
 TEMPLATES_DIR = HERE / "templates"
@@ -233,7 +239,7 @@ def _ci_matrix_view(jobs: list[dict[str, Any]]) -> list[dict[str, Any]]:
         # per-tool conclusions inside that job, so every column mirrors
         # the test-job conclusion. P3 will split these out by parsing
         # per-step conclusions where the job's step names are stable.
-        grouped[key] = {col: pill for col in ("pytest", "ruff", "ty", "bandit", "pip_audit")}
+        grouped[key] = dict.fromkeys(("pytest", "ruff", "ty", "bandit", "pip_audit"), pill)
     return [
         {"os": os_name, "python": py, "checks": checks}
         for (os_name, py), checks in sorted(grouped.items())
@@ -758,8 +764,19 @@ def _governance_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def adapt(snapshot: dict[str, Any]) -> dict[str, Any]:
-    """Snapshot JSON → template view-model."""
+def adapt(
+    snapshot: dict[str, Any],
+    *,
+    integrity: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Snapshot JSON → template view-model.
+
+    Args:
+        snapshot: Parsed snapshot.json.
+        integrity: Integrity view-model produced by
+            :func:`_integrity_view`. When ``None`` (e.g. legacy callers),
+            the templates fall back to the gray/unknown signature pill.
+    """
     modules = snapshot.get("modules") or []
     iso = snapshot.get("generated_at")
 
@@ -781,6 +798,50 @@ def adapt(snapshot: dict[str, Any]) -> dict[str, Any]:
         "supply_chain_summary": _supply_chain_summary(modules),
         "governance_summary": _governance_summary(modules),
         "license_policy": _license_policy_view(policy, modules),
+        # Integrity: snapshot signing + JSON Schema availability. Falls
+        # back to a "no signature, no schema" stub so the template can
+        # always read .integrity.* without a default() filter.
+        "integrity": integrity or _integrity_view(signature_present=False, schema_present=False),
+    }
+
+
+def _integrity_view(
+    *,
+    signature_present: bool,
+    schema_present: bool,
+    bundle_path: str = "api/v1/snapshot.sig",
+    schema_path: str = "api/v1/snapshot.schema.json",
+    snapshot_path: str = "api/v1/snapshot.json",
+    signature_meta: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Build the integrity view-model the templates read.
+
+    Pill semantics (matches the project's 4-state rule):
+      green : signature bundle present + metadata parseable.
+      gray  : no bundle (e.g. local render, or cosign skipped on the
+              runner). Distinct from "we tried and it failed" which the
+              workflow turns into a red pill via the renderer when a
+              future run emits a sentinel.
+
+    The schema is binary (present / not yet); we expose it through the
+    same view-model so the templates can link to it from the footer +
+    methodology page without re-deriving the path.
+    """
+    return {
+        "signature_present": signature_present,
+        "signature_state": "green" if signature_present else "gray",
+        "signature_url": bundle_path if signature_present else None,
+        "signature_meta_url": (
+            bundle_path.replace(".sig", ".sig.meta.json") if signature_present else None
+        ),
+        "signature_meta": signature_meta or {},
+        "snapshot_url": snapshot_path,
+        "schema_present": schema_present,
+        "schema_url": schema_path if schema_present else None,
+        "verify_recipe_url": (
+            "https://github.com/273v/kaos-compliance/blob/main/docs/"
+            "EVIDENCE.md#verifying-the-dashboard-hasnt-been-tampered-with"
+        ),
     }
 
 
@@ -869,16 +930,53 @@ def render(
     *,
     output_dir: Path,
     base_href: str = "/kaos-compliance/",
+    signature_source: Path | None = None,
 ) -> list[Path]:
-    """Render the dashboard to ``output_dir``. Returns the list of files written."""
+    """Render the dashboard to ``output_dir``. Returns the list of files written.
+
+    Args:
+        snapshot: Parsed snapshot.json.
+        output_dir: Directory to render into; created if missing.
+        base_href: HTML ``<base href>``.
+        signature_source: Optional directory holding pre-computed
+            ``snapshot.sig`` (DSSE bundle) + ``snapshot.sig.meta.json``.
+            When set and the bundle exists, it's copied alongside the
+            published ``snapshot.json`` and the signature pill in the
+            page header turns green. Defaults to ``output_dir/api/v1/``
+            so the signing workflow can write directly into the layout.
+    """
     written: list[Path] = []
 
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "package").mkdir(exist_ok=True)
-    (output_dir / "api" / "v1").mkdir(parents=True, exist_ok=True)
+    api_dir = output_dir / "api" / "v1"
+    api_dir.mkdir(parents=True, exist_ok=True)
+
+    # Discover signature bundle. Looks in the canonical published path
+    # by default — that lets the sweep workflow drop the bundle into
+    # _site/api/v1/ before render() and have it picked up automatically.
+    sig_dir = (signature_source or api_dir).resolve()
+    sig_path = sig_dir / "snapshot.sig"
+    sig_meta_path = sig_dir / "snapshot.sig.meta.json"
+    signature_present = sig_path.is_file()
+    signature_meta: dict[str, Any] = {}
+    if signature_present and sig_meta_path.is_file():
+        try:
+            signature_meta = json.loads(sig_meta_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            print(
+                f"render: WARNING: signature meta {sig_meta_path} unreadable: {exc}",
+                file=sys.stderr,
+            )
+
+    integrity = _integrity_view(
+        signature_present=signature_present,
+        schema_present=_snapshot_schema is not None,
+        signature_meta=signature_meta,
+    )
 
     env = _make_env()
-    view = adapt(snapshot)
+    view = adapt(snapshot, integrity=integrity)
     view["base_href"] = base_href
 
     # index.html
@@ -926,9 +1024,27 @@ def render(
 
     # JSON-as-source-of-truth: republish the snapshot + heartbeat as
     # static endpoints under api/v1/.
-    snap_out = output_dir / "api" / "v1" / "snapshot.json"
+    snap_out = api_dir / "snapshot.json"
     snap_out.write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
     written.append(snap_out)
+
+    # JSON Schema (Draft 2020-12) — derived from the dataclasses in
+    # collector.snapshot so consumers can validate the JSON
+    # programmatically rather than parsing prose. See R23 in
+    # docs/EVIDENCE.md for the contract. The schema is emitted EVERY
+    # render so a snapshot.json + snapshot.schema.json pair always
+    # describe the same shape.
+    if _snapshot_schema is not None:
+        schema_out = api_dir / "snapshot.schema.json"
+        schema_obj = _snapshot_schema.build_snapshot_schema()
+        schema_out.write_text(json.dumps(schema_obj, indent=2) + "\n", encoding="utf-8")
+        written.append(schema_out)
+    else:
+        print(
+            "render: WARNING: collector.schema not importable; "
+            "publishing snapshot without a JSON Schema",
+            file=sys.stderr,
+        )
 
     hb_out = output_dir / "heartbeat.json"
     hb_out.write_text(

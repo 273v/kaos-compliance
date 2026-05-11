@@ -122,6 +122,30 @@ nav.subnav a{color:var(--muted)}
    <a href="diary.html">Diary</a>
    <a href="methodology.html">Methodology</a>
   </nav>
+  {# Integrity claim (R4): tie each render to a sigstore signature on
+     api/v1/snapshot.json. Pill renders green only when the workflow
+     attached a cosign bundle; local renders show gray with the same
+     verify-recipe link so curious readers can still see how it would
+     be checked. The link goes to docs/EVIDENCE.md on the canonical
+     repo (the deployed site doesn't carry docs/, so we link upstream). #}
+  {% if integrity is defined %}
+   {% set _state = integrity.signature_state | default('gray') %}
+   {% set _cls = {'green': 'g', 'yellow': 'y', 'red': 'r', 'gray': 'n'}[_state] %}
+   {% set _label = 'snapshot signed' if integrity.signature_present else 'snapshot unsigned (local render)' %}
+   <p class="integrity-claim" style="margin-top:var(--s-3);font-size:0.8125rem">
+    <span class="pill {{ _cls }}" aria-label="Snapshot signature status">
+     <span class="gly" aria-hidden="true">{% if integrity.signature_present %}✓{% else %}—{% endif %}</span>
+     <span class="wd">{{ _label }}</span>
+    </span>
+    {% if integrity.signature_present and integrity.signature_url %}
+     &middot; <a href="{{ integrity.signature_url }}">snapshot.sig</a>
+    {% endif %}
+    &middot; <a href="{{ integrity.verify_recipe_url }}">verify recipe</a>
+    {% if integrity.schema_url %}
+     &middot; <a href="{{ integrity.schema_url }}">JSON Schema</a>
+    {% endif %}
+   </p>
+  {% endif %}
  </div>
  <div class="meta" aria-label="Last generated">
   Generated {{ generated_at_display | default('2026-05-11 14:02 UTC') }}
@@ -237,6 +261,15 @@ nav.subnav a{color:var(--muted)}
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
+ {% if integrity is defined and integrity.schema_url %}
+  | Schema: <a href="{{ integrity.schema_url }}">snapshot.schema.json</a>
+ {% endif %}
+ {% if integrity is defined and integrity.signature_present and integrity.signature_url %}
+  | Signature: <a href="{{ integrity.signature_url }}">snapshot.sig</a>
+  (<a href="{{ integrity.verify_recipe_url }}">verify recipe</a>)
+ {% else %}
+  | <a href="{{ integrity.verify_recipe_url if integrity is defined else 'https://github.com/273v/kaos-compliance/blob/main/docs/EVIDENCE.md' }}">how to verify</a>
+ {% endif %}
 </footer>
 </div>
 </body>

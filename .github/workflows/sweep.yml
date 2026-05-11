@@ -109,6 +109,38 @@ jobs:
             --output _site \
             --clean
 
+      # ── R4 + R23: integrity layer ──
+      #
+      # Sign _site/api/v1/snapshot.json with a keyless sigstore
+      # signature (cosign + GitHub OIDC), and re-render once so the
+      # signature pill on the index header flips from gray to green
+      # using the freshly-attached bundle. The render step is cheap
+      # (~1s for 16 modules) and idempotent, so the cost of the
+      # second pass is acceptable.
+      #
+      # The JSON Schema (R23) is emitted by the first render pass
+      # above — see collector/schema.py + render/__main__.py.
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign snapshot (keyless, GitHub OIDC)
+        env:
+          GITHUB_WORKFLOW_REF: ${{ github.workflow_ref }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF: ${{ github.ref }}
+        run: |
+          bash scripts/_ci/sign-snapshot.sh \
+            _site/api/v1/snapshot.json \
+            _site/api/v1/snapshot.sig
+
+      - name: Re-render with signature attached
+        run: |
+          uv run python -m render \
+            --snapshot data/snapshots/latest.json \
+            --output _site
+
       - name: Tag heartbeat with schedule + git sha
         env:
           SCHEDULE_LABEL: "1h"
@@ -179,6 +211,38 @@ jobs:
             --snapshot data/snapshots/latest.json \
             --output _site \
             --clean
+
+      # ── R4 + R23: integrity layer ──
+      #
+      # Sign _site/api/v1/snapshot.json with a keyless sigstore
+      # signature (cosign + GitHub OIDC), and re-render once so the
+      # signature pill on the index header flips from gray to green
+      # using the freshly-attached bundle. The render step is cheap
+      # (~1s for 16 modules) and idempotent, so the cost of the
+      # second pass is acceptable.
+      #
+      # The JSON Schema (R23) is emitted by the first render pass
+      # above — see collector/schema.py + render/__main__.py.
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign snapshot (keyless, GitHub OIDC)
+        env:
+          GITHUB_WORKFLOW_REF: ${{ github.workflow_ref }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF: ${{ github.ref }}
+        run: |
+          bash scripts/_ci/sign-snapshot.sh \
+            _site/api/v1/snapshot.json \
+            _site/api/v1/snapshot.sig
+
+      - name: Re-render with signature attached
+        run: |
+          uv run python -m render \
+            --snapshot data/snapshots/latest.json \
+            --output _site
 
       - name: Tag heartbeat with schedule + git sha
         env:
@@ -275,6 +339,38 @@ jobs:
             --snapshot data/snapshots/latest.json \
             --output _site \
             --clean
+
+      # ── R4 + R23: integrity layer ──
+      #
+      # Sign _site/api/v1/snapshot.json with a keyless sigstore
+      # signature (cosign + GitHub OIDC), and re-render once so the
+      # signature pill on the index header flips from gray to green
+      # using the freshly-attached bundle. The render step is cheap
+      # (~1s for 16 modules) and idempotent, so the cost of the
+      # second pass is acceptable.
+      #
+      # The JSON Schema (R23) is emitted by the first render pass
+      # above — see collector/schema.py + render/__main__.py.
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign snapshot (keyless, GitHub OIDC)
+        env:
+          GITHUB_WORKFLOW_REF: ${{ github.workflow_ref }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF: ${{ github.ref }}
+        run: |
+          bash scripts/_ci/sign-snapshot.sh \
+            _site/api/v1/snapshot.json \
+            _site/api/v1/snapshot.sig
+
+      - name: Re-render with signature attached
+        run: |
+          uv run python -m render \
+            --snapshot data/snapshots/latest.json \
+            --output _site
 
       - name: Tag heartbeat with schedule + git sha
         env:
