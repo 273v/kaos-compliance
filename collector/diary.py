@@ -49,7 +49,7 @@ import re
 import subprocess
 from typing import Any
 
-__all__ = ["collect", "DEFAULT_MODEL"]
+__all__ = ["DEFAULT_MODEL", "collect"]
 
 DEFAULT_MODEL = "claude-sonnet-4-6"
 
@@ -108,10 +108,7 @@ before or after the JSON, no Markdown code fences.
 
 def _iso_z(dt: datetime.datetime) -> str:
     """Format ``dt`` as an RFC 3339 UTC timestamp with trailing ``Z``."""
-    if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=datetime.UTC)
-    else:
-        dt = dt.astimezone(datetime.UTC)
+    dt = dt.replace(tzinfo=datetime.UTC) if dt.tzinfo is None else dt.astimezone(datetime.UTC)
     return dt.replace(microsecond=0, tzinfo=None).isoformat() + "Z"
 
 
@@ -137,7 +134,7 @@ def _run_git(args: list[str], *, cwd: pathlib.Path, timeout: float = 30.0) -> st
     index) must not tank the whole diary.
     """
     try:
-        cp = subprocess.run(  # noqa: S603 — args are constructed locally
+        cp = subprocess.run(
             ["git", *args],
             cwd=str(cwd),
             capture_output=True,
@@ -286,7 +283,7 @@ def _build_user_prompt(per_repo: dict[str, dict[str, Any]]) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _load_llm_client():  # noqa: ANN202 — opaque adapter object
+def _load_llm_client():
     """Detect which LLM SDK is importable. Returns one of:
 
     * ``("kaos", module)`` — kaos_llm_client is available.
@@ -646,9 +643,7 @@ def collect(
     flavor, mod = _load_llm_client()
     if flavor is None:
         result["skipped"] = True
-        result["skipped_reason"] = (
-            "kaos-llm-client and anthropic SDK both unavailable"
-        )
+        result["skipped_reason"] = "kaos-llm-client and anthropic SDK both unavailable"
         return result
 
     # API-key resolution. Argument wins; then the org-prefixed env var;
@@ -711,7 +706,7 @@ def collect(
                 system=_SYSTEM_PROMPT,
                 user=user_prompt,
             )
-    except Exception as exc:  # noqa: BLE001 — provider failures must not raise
+    except Exception as exc:
         errors.append(f"llm_call: {type(exc).__name__}: {exc}")
         narrative = "(diary unavailable: model call failed)"
         artifact_path = _write_markdown_artifact(

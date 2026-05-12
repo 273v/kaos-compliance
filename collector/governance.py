@@ -64,9 +64,10 @@ import datetime
 import json
 import re
 import statistics
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
-__all__ = ["collect", "ORG"]
+__all__ = ["ORG", "collect"]
 
 ORG = "273v"
 
@@ -75,9 +76,9 @@ ORG = "273v"
 # secondary rate limits. Every counted loop has a ceiling.
 # ---------------------------------------------------------------------------
 
-_COMMITS_HARD_CAP = 1000              # 10 pages of per_page=100 max
-_RELEASES_HARD_CAP = 200              # ~2 years of releases at one per week
-_OPEN_PRS_HARD_CAP = 500              # if a repo has >500 open PRs, governance is the least of its problems
+_COMMITS_HARD_CAP = 1000  # 10 pages of per_page=100 max
+_RELEASES_HARD_CAP = 200  # ~2 years of releases at one per week
+_OPEN_PRS_HARD_CAP = 500  # if a repo has >500 open PRs, governance is the least of its problems
 _OPEN_ISSUES_HARD_CAP = 1000
 
 # ---------------------------------------------------------------------------
@@ -90,7 +91,19 @@ _DCO_RE = re.compile(r"^signed-off-by:\s", re.IGNORECASE | re.MULTILINE)
 
 # Conventional Commits 1.0.0: <type>(<scope>)?!?: <description>. The 11
 # canonical types per the spec FAQ; everything else is non-conventional.
-_CC_TYPES = ("build", "chore", "ci", "docs", "feat", "fix", "perf", "refactor", "revert", "style", "test")
+_CC_TYPES = (
+    "build",
+    "chore",
+    "ci",
+    "docs",
+    "feat",
+    "fix",
+    "perf",
+    "refactor",
+    "revert",
+    "style",
+    "test",
+)
 _CC_RE = re.compile(
     r"^(?:" + "|".join(_CC_TYPES) + r")(?:\([^)]+\))?!?: ",
 )
@@ -121,10 +134,7 @@ _DISCLOSURE_MAX = 365
 
 def _iso_z(dt: datetime.datetime) -> str:
     """RFC 3339 UTC timestamp with trailing Z (matches gh's accepted format)."""
-    if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=datetime.UTC)
-    else:
-        dt = dt.astimezone(datetime.UTC)
+    dt = dt.replace(tzinfo=datetime.UTC) if dt.tzinfo is None else dt.astimezone(datetime.UTC)
     return dt.replace(microsecond=0, tzinfo=None).isoformat() + "Z"
 
 
@@ -188,11 +198,7 @@ def _is_terminal_404(exc: BaseException) -> bool:
         return True
     stderr = getattr(exc, "stderr", "") or ""
     stderr = stderr.lower() if isinstance(stderr, str) else ""
-    return (
-        "404" in stderr
-        or "not found" in stderr
-        or "branch not protected" in stderr
-    )
+    return "404" in stderr or "not found" in stderr or "branch not protected" in stderr
 
 
 # ---------------------------------------------------------------------------
@@ -247,7 +253,7 @@ def _commits_section(
     }
     try:
         commits = _fetch_commits_90d(repo, gh_run=gh_run, now=now)
-    except Exception as exc:  # noqa: BLE001 — retry-exhaustion → None, log to errors
+    except Exception as exc:
         errors.append(f"commits: {exc}")
         return out
 
@@ -312,7 +318,7 @@ def _branch_protection(
     """
     try:
         cp = gh_run(["api", f"repos/{ORG}/{repo}/branches/main/protection"])
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         if _is_terminal_404(exc):
             return False, {}
         errors.append(f"branch_protection: {exc}")
@@ -355,7 +361,7 @@ def _codeowners_path(
         try:
             gh_run(["api", f"repos/{ORG}/{repo}/contents/{candidate}"])
             return candidate
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             if _is_terminal_404(exc):
                 continue
             errors.append(f"codeowners[{candidate}]: {exc}")
@@ -392,7 +398,7 @@ def _security_md(
     """
     try:
         cp = gh_run(["api", f"repos/{ORG}/{repo}/contents/SECURITY.md"])
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         if _is_terminal_404(exc):
             return False, None
         errors.append(f"security_md: {exc}")
@@ -436,7 +442,7 @@ def _notice_present(
     try:
         gh_run(["api", f"repos/{ORG}/{repo}/contents/NOTICE"])
         return True
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         if _is_terminal_404(exc):
             return False
         errors.append(f"notice: {exc}")
@@ -461,7 +467,7 @@ def _license_files_in_sdist(
     """
     try:
         data = url_get_json(f"https://pypi.org/pypi/{pkg}/json")
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         if _is_terminal_404(exc):
             return []
         errors.append(f"license_files: {exc}")
@@ -491,7 +497,7 @@ def _releases_90d(
     """
     try:
         cp = gh_run(["api", f"repos/{ORG}/{repo}/releases?per_page=100"])
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         if _is_terminal_404(exc):
             return 0, []
         errors.append(f"releases: {exc}")
@@ -540,7 +546,7 @@ def _open_pr_signals(
                 "--paginate",
             ]
         )
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         if _is_terminal_404(exc):
             return 0, None
         errors.append(f"open_prs: {exc}")
@@ -586,7 +592,7 @@ def _open_issue_count(
                 "--paginate",
             ]
         )
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         if _is_terminal_404(exc):
             return 0
         errors.append(f"open_issues: {exc}")
@@ -624,7 +630,7 @@ def _tag_pushed_at(
     """
     try:
         ref_cp = gh_run(["api", f"repos/{ORG}/{repo}/git/ref/tags/{tag}"])
-    except Exception:  # noqa: BLE001
+    except Exception:
         return None
     try:
         ref = json.loads(ref_cp.stdout)
@@ -640,7 +646,7 @@ def _tag_pushed_at(
         try:
             tag_cp = gh_run(["api", f"repos/{ORG}/{repo}/git/tags/{obj_sha}"])
             tag_obj = json.loads(tag_cp.stdout)
-        except Exception:  # noqa: BLE001
+        except Exception:
             return None
         return _parse_iso((tag_obj.get("tagger") or {}).get("date"))
 
@@ -648,7 +654,7 @@ def _tag_pushed_at(
         try:
             commit_cp = gh_run(["api", f"repos/{ORG}/{repo}/git/commits/{obj_sha}"])
             commit_obj = json.loads(commit_cp.stdout)
-        except Exception:  # noqa: BLE001
+        except Exception:
             return None
         return _parse_iso((commit_obj.get("committer") or {}).get("date"))
 
@@ -669,7 +675,7 @@ def _pypi_upload_time(
     """
     try:
         data = url_get_json(f"https://pypi.org/pypi/{pkg}/{version}/json")
-    except Exception:  # noqa: BLE001
+    except Exception:
         return None
     urls = data.get("urls") or []
     times: list[datetime.datetime] = []
@@ -713,7 +719,7 @@ def _time_to_pypi_seconds_median(
         try:
             tag_pushed = _tag_pushed_at(repo, tag, gh_run=gh_run)
             pypi_uploaded = _pypi_upload_time(pkg, version, url_get_json=url_get_json)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             # Catch defensively: helper does its own try/except but caller
             # guarantees nothing about a custom injected callable.
             errors.append(f"time_to_pypi[{tag}]: {exc}")
@@ -802,66 +808,58 @@ def collect(
     # The helpers themselves catch retry-exhaustion → None and append to
     # ``errors``; the wrapping try here is the belt to that suspenders.
     try:
-        result.update(
-            _commits_section(repo, gh_run=gh_run, now=now, errors=errors)
-        )
-    except Exception as exc:  # noqa: BLE001
+        result.update(_commits_section(repo, gh_run=gh_run, now=now, errors=errors))
+    except Exception as exc:
         errors.append(f"commits_section: {exc}")
 
     try:
         enabled, summary = _branch_protection(repo, gh_run=gh_run, errors=errors)
         result["branch_protection_enabled"] = enabled
         result["branch_protection_summary"] = summary
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         errors.append(f"branch_protection_section: {exc}")
 
     try:
         result["codeowners_path"] = _codeowners_path(repo, gh_run=gh_run, errors=errors)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         errors.append(f"codeowners_section: {exc}")
 
     try:
         present, window = _security_md(repo, gh_run=gh_run, errors=errors)
         result["security_md_present"] = present
         result["security_md_disclosure_window_days"] = window
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         errors.append(f"security_md_section: {exc}")
 
     try:
         result["notice_present"] = _notice_present(repo, gh_run=gh_run, errors=errors)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         errors.append(f"notice_section: {exc}")
 
     try:
         result["license_files_in_sdist"] = _license_files_in_sdist(
             repo, url_get_json=url_get_json, errors=errors
         )
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         errors.append(f"license_files_section: {exc}")
 
     releases_in_window: list[dict[str, Any]] = []
     try:
-        rel_count, releases_in_window = _releases_90d(
-            repo, gh_run=gh_run, now=now, errors=errors
-        )
+        rel_count, releases_in_window = _releases_90d(repo, gh_run=gh_run, now=now, errors=errors)
         result["releases_90d"] = rel_count
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         errors.append(f"releases_section: {exc}")
 
     try:
-        open_count, median_age = _open_pr_signals(
-            repo, gh_run=gh_run, now=now, errors=errors
-        )
+        open_count, median_age = _open_pr_signals(repo, gh_run=gh_run, now=now, errors=errors)
         result["open_pr_count"] = open_count
         result["median_pr_age_days"] = median_age
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         errors.append(f"open_prs_section: {exc}")
 
     try:
-        result["open_issue_count"] = _open_issue_count(
-            repo, gh_run=gh_run, errors=errors
-        )
-    except Exception as exc:  # noqa: BLE001
+        result["open_issue_count"] = _open_issue_count(repo, gh_run=gh_run, errors=errors)
+    except Exception as exc:
         errors.append(f"open_issues_section: {exc}")
 
     try:
@@ -872,7 +870,7 @@ def collect(
             url_get_json=url_get_json,
             errors=errors,
         )
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         errors.append(f"time_to_pypi_section: {exc}")
         result["time_to_pypi_seconds_median"] = None
 

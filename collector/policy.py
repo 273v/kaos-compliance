@@ -28,10 +28,13 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+yaml: Any | None
 try:
-    import yaml  # type: ignore[import-not-found]
+    import yaml as _yaml  # ty: ignore[unresolved-import]
+
+    yaml = _yaml
 except ImportError:  # pragma: no cover - PyYAML is a soft dep
-    yaml = None  # type: ignore[assignment]
+    yaml = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -116,11 +119,7 @@ def load(policy_path: Path | None = None) -> Policy:
 
     if policy_path is None:
         # Default: repo-root/policy/license-allowlist.yaml.
-        policy_path = (
-            Path(__file__).resolve().parent.parent
-            / "policy"
-            / "license-allowlist.yaml"
-        )
+        policy_path = Path(__file__).resolve().parent.parent / "policy" / "license-allowlist.yaml"
     if not policy_path.is_file():
         return _EMPTY_POLICY
 

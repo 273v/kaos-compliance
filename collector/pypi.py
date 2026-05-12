@@ -84,7 +84,6 @@ Drift between docs and live behavior
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Optional
 
 
 # ---------------------------------------------------------------------------
@@ -120,27 +119,27 @@ class PyPIArtifact:
     # JSON:   urls[i].digests.sha256 / .md5 / .blake2b_256
     # SIMPLE: files[i].hashes.sha256   (md5/blake2b NOT in simple index)
     sha256: str
-    blake2b: Optional[str] = None
-    md5: Optional[str] = None
+    blake2b: str | None = None
+    md5: str | None = None
 
     # PEP 425 compatibility tags parsed from the wheel filename.
     # For sdists these are all None. Source of truth is the FILENAME, not
     # any JSON field -- PyPI does not break the tag out separately.
     # JSON:   parse(urls[i].filename)
     # SIMPLE: parse(files[i].filename)
-    python_tag: Optional[str] = None      # e.g. "cp313", "py3"
-    abi_tag: Optional[str] = None         # e.g. "abi3", "cp313", "none"
-    platform_tag: Optional[str] = None    # e.g. "manylinux_2_17_x86_64"
+    python_tag: str | None = None  # e.g. "cp313", "py3"
+    abi_tag: str | None = None  # e.g. "abi3", "cp313", "none"
+    platform_tag: str | None = None  # e.g. "manylinux_2_17_x86_64"
 
     # Per-file requires-python (overrides project-level if present).
     # JSON:   urls[i].requires_python
     # SIMPLE: files[i].requires-python
-    requires_python: Optional[str] = None
+    requires_python: str | None = None
 
     # ISO 8601 UTC upload timestamp.
     # JSON:   urls[i].upload_time_iso_8601    (e.g. "2026-05-11T01:52:51.166205Z")
     # SIMPLE: files[i].upload-time            (PEP 700, same value)
-    upload_time_iso8601: Optional[str] = None
+    upload_time_iso8601: str | None = None
 
     # PEP 740 attestation presence. Authoritative source is the simple
     # index: a non-null ``provenance`` URL means a bundle is published.
@@ -158,20 +157,20 @@ class PyPIArtifact:
 
     # The provenance bundle URL itself, for the dashboard to deep-link.
     # SIMPLE: files[i].provenance
-    attestation_data_url: Optional[str] = None
+    attestation_data_url: str | None = None
 
     # Yank status. A yanked file is still downloadable but resolvers skip
     # it; ``yanked_reason`` is human prose set by the uploader.
     # JSON:   urls[i].yanked / urls[i].yanked_reason
     # SIMPLE: files[i].yanked  (bool OR string -- string means yanked+reason)
     yanked: bool = False
-    yanked_reason: Optional[str] = None
+    yanked_reason: str | None = None
 
     # "bdist_wheel" or "sdist". Wheels can be inspected for abi3/musllinux;
     # sdists cannot.
     # JSON:   urls[i].packagetype
     # SIMPLE: derive from filename (".whl" vs ".tar.gz")
-    packagetype: Optional[str] = None
+    packagetype: str | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -189,12 +188,12 @@ class PyPIRelease:
     project_url: str
 
     # JSON: info.summary
-    summary: Optional[str] = None
+    summary: str | None = None
 
     # PEP 639 SPDX expression, e.g. "Apache-2.0 OR MIT".
     # JSON: info.license_expression  (preferred)
     # JSON: info.license             (legacy freeform; fallback only)
-    license_expression: Optional[str] = None
+    license_expression: str | None = None
 
     # PEP 639 license filenames embedded in the dist, e.g. ["LICENSE"].
     # JSON: info.license_files
@@ -204,7 +203,7 @@ class PyPIRelease:
     classifiers: tuple[str, ...] = ()
 
     # JSON: info.requires_python  (e.g. ">=3.10")
-    requires_python: Optional[str] = None
+    requires_python: str | None = None
 
     # PEP 508 dependency specifiers as PyPI returns them. The collector
     # is expected to parse these with ``packaging.requirements.Requirement``;
@@ -243,13 +242,13 @@ class PyPIRelease:
     # We store the dict rather than collapse to a string -- the dashboard
     # renders kind+repo+workflow separately.
     # SOURCE: /integrity/<pkg>/<ver>/<file>/provenance -> attestation_bundles[0].publisher
-    uploader_trusted_publisher: Optional[dict] = field(default=None)
+    uploader_trusted_publisher: dict | None = field(default=None)
 
 
 # ---------------------------------------------------------------------------
 # Fetch contract (signature only; the collector implements this).
 # ---------------------------------------------------------------------------
-def fetch_release(pkg: str, version: Optional[str] = None) -> PyPIRelease:
+def fetch_release(pkg: str, version: str | None = None) -> PyPIRelease:
     """Return a fully-populated ``PyPIRelease`` for ``pkg`` at ``version``.
 
     Call path (the implementation MUST follow this order):

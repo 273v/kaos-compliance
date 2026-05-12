@@ -20,7 +20,6 @@ import pytest
 
 from collector import diary
 
-
 # ---------------------------------------------------------------------------
 # Fixtures: fake LLM modules
 # ---------------------------------------------------------------------------
@@ -57,7 +56,7 @@ def _install_fake_kaos_llm_client(monkeypatch, response_text: str, usage=None):
             return _Response()
 
     fake = types.ModuleType("kaos_llm_client")
-    fake.LLMClient = _LLMClient  # type: ignore[attr-defined]
+    fake.LLMClient = _LLMClient  # ty: ignore[unresolved-attribute]
     monkeypatch.setitem(sys.modules, "kaos_llm_client", fake)
     return captured
 
@@ -94,7 +93,7 @@ def _install_fake_anthropic(monkeypatch, response_text: str, usage=None):
             self.messages = _Messages()
 
     fake = types.ModuleType("anthropic")
-    fake.Anthropic = _Anthropic  # type: ignore[attr-defined]
+    fake.Anthropic = _Anthropic  # ty: ignore[unresolved-attribute]
     monkeypatch.setitem(sys.modules, "anthropic", fake)
     return captured
 
@@ -315,8 +314,8 @@ def test_cutoff_window_filters_old_commits(tmp_path, monkeypatch):
     _make_repo_with_timed_commits(
         repo,
         [
-            ("feat: from a week ago",  "2026-05-04T12:00:00+00:00"),  # outside
-            ("fix: from yesterday",     "2026-05-10T20:00:00+00:00"),  # inside
+            ("feat: from a week ago", "2026-05-04T12:00:00+00:00"),  # outside
+            ("fix: from yesterday", "2026-05-10T20:00:00+00:00"),  # inside
             ("docs: from this morning", "2026-05-11T08:00:00+00:00"),  # inside
         ],
     )

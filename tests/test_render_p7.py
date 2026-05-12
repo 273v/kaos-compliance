@@ -174,9 +174,7 @@ def test_history_view_empty_when_no_index() -> None:
 
 
 def test_history_view_marks_one_day_as_accumulating(tmp_path: Path) -> None:
-    history.write_daily_summary(
-        _snapshot("2026-05-11", [_bare_module("kaos-core")]), tmp_path
-    )
+    history.write_daily_summary(_snapshot("2026-05-11", [_bare_module("kaos-core")]), tmp_path)
     idx = history.rebuild_index(tmp_path)
     v = render_main._history_view(idx)
     assert v["available"] is True
@@ -219,7 +217,7 @@ def test_render_first_deploy_shows_accumulating_label(tmp_path: Path) -> None:
     index = (tmp_path / "index.html").read_text(encoding="utf-8")
     assert "accumulating history" in index
     # Sparkline SVG MUST be present.
-    assert "<svg class=\"spark\"" in index
+    assert '<svg class="spark"' in index
 
 
 def test_render_first_deploy_package_no_prior_sweep(tmp_path: Path) -> None:
@@ -334,27 +332,18 @@ def test_download_bundle_emitted_per_package(tmp_path: Path) -> None:
 def test_download_bundle_includes_sbom_and_attestation(tmp_path: Path) -> None:
     snap = _snapshot("2026-05-11", [_module_stub("kaos-core")])
     render_main.render(snap, output_dir=tmp_path)
-    body = json.loads(
-        (tmp_path / "api" / "v1" / "package" / "kaos-core.json").read_text()
-    )
+    body = json.loads((tmp_path / "api" / "v1" / "package" / "kaos-core.json").read_text())
     assert body["sbom"]["mirror_path"] == "api/v1/sbom/kaos-core-1.0.0.cdx.json"
-    assert body["sbom"]["github_release_url"].endswith(
-        "v1.0.0/kaos-core-1.0.0.cdx.json"
-    )
+    assert body["sbom"]["github_release_url"].endswith("v1.0.0/kaos-core-1.0.0.cdx.json")
     assert body["attestation"]["present"] is True
     assert body["attestation"]["publisher_kind"] == "GitHub"
-    assert (
-        body["attestation"]["pypi_simple_index_url"]
-        == "https://pypi.org/simple/kaos-core/"
-    )
+    assert body["attestation"]["pypi_simple_index_url"] == "https://pypi.org/simple/kaos-core/"
 
 
 def test_package_page_has_download_button(tmp_path: Path) -> None:
     snap = _snapshot("2026-05-11", [_module_stub("kaos-core")])
     render_main.render(snap, output_dir=tmp_path)
-    pkg_html = (
-        tmp_path / "package" / "kaos-core.html"
-    ).read_text(encoding="utf-8")
+    pkg_html = (tmp_path / "package" / "kaos-core.html").read_text(encoding="utf-8")
     assert "Download JSON" in pkg_html
     assert "api/v1/package/kaos-core.json" in pkg_html
 

@@ -33,22 +33,31 @@ import jinja2
 
 # Policy module is imported lazily so the renderer still works when the
 # policy file is missing or PyYAML isn't available.
+_policy_loader: Any | None
 try:
-    from collector import policy as _policy_loader  # type: ignore[import-not-found]
+    from collector import policy as _loaded_policy  # type: ignore[import-not-found]
 except Exception:
-    _policy_loader = None  # type: ignore[assignment]
+    _policy_loader = None
+else:
+    _policy_loader = _loaded_policy
 
 # Schema generator is stdlib-only; import is unconditional.
+_snapshot_schema: Any | None
 try:
-    from collector import schema as _snapshot_schema
+    from collector import schema as _loaded_snapshot_schema
 except Exception:
-    _snapshot_schema = None  # type: ignore[assignment]
+    _snapshot_schema = None
+else:
+    _snapshot_schema = _loaded_snapshot_schema
 
 # 90-day rolling history (P7). Stdlib-only; the import is unconditional.
+_history: Any | None
 try:
-    from collector import history as _history
+    from collector import history as _loaded_history
 except Exception:
-    _history = None  # type: ignore[assignment]
+    _history = None
+else:
+    _history = _loaded_history
 
 # Suppressions collector — render-time augmentation. Imported lazily so
 # the renderer still works on a snapshot collected on a host that doesn't
@@ -56,10 +65,13 @@ except Exception:
 # snapshot only). When the import fails or the sibling root is missing
 # we surface ``None`` counts and a "not inspected" note, never a silent
 # zero.
+_suppressions: Any | None
 try:
-    from collector import suppressions as _suppressions  # type: ignore[import-not-found]
+    from collector import suppressions as _loaded_suppressions  # type: ignore[import-not-found]
 except Exception:
-    _suppressions = None  # type: ignore[assignment]
+    _suppressions = None
+else:
+    _suppressions = _loaded_suppressions
 
 # Default on-disk root that hosts the public sibling clones. Kept in
 # sync with ``collector.snapshot._SIBLING_ROOT``. The render-time
@@ -164,9 +176,7 @@ def _pill_license(module: dict[str, Any], policy: Any = None) -> str:
     unresolved_weak = [
         c for c in weak if not _component_allowed(c, policy, _guess_spdx_for_weak(c))
     ]
-    unresolved_unknown = [
-        c for c in unknown if policy.parser_gap_for(c) is None
-    ]
+    unresolved_unknown = [c for c in unknown if policy.parser_gap_for(c) is None]
     return "yellow" if (unresolved_weak or unresolved_unknown) else "green"
 
 
@@ -302,9 +312,7 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
         # the rendered _site for local preview. This is the FAST,
         # always-available mirror — the dashboard republishes the SBOM
         # so the page works even if upstream GitHub is unreachable.
-        f"api/v1/sbom/{Path(sbom_artifact_path).name}"
-        if sbom_artifact_path
-        else None
+        f"api/v1/sbom/{Path(sbom_artifact_path).name}" if sbom_artifact_path else None
     )
     pypi_version = sc.get("pypi_version")
     # F8 follow-up: the upstream-authoritative SBOM URL is the
@@ -426,13 +434,13 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
     else:
         signing_note = "No PyPI release on file yet"
     bp_state_raw = gov_section.get("branch_protection_enabled")
-    bp_state = (
-        "green" if bp_state_raw is True else "yellow" if bp_state_raw is False else "gray"
-    )
-    bp_note = {
-        True: "Required reviews + status checks enforced on main",
-        False: "Branch protection off — acceptable for alpha; flip before GA",
-    }.get(bp_state_raw, "Branch-protection state not yet collected")
+    bp_state = "green" if bp_state_raw is True else "yellow" if bp_state_raw is False else "gray"
+    if bp_state_raw is True:
+        bp_note = "Required reviews + status checks enforced on main"
+    elif bp_state_raw is False:
+        bp_note = "Branch protection off - acceptable for alpha; flip before GA"
+    else:
+        bp_note = "Branch-protection state not yet collected"
     docs_state = (
         "green"
         if gov_section.get("security_md_present") and gov_section.get("codeowners_path")
@@ -462,7 +470,10 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
         },
         "security": {
             "state": row["security"],
-            "note": f"Latest Security workflow conclusion: {sec_section.get('workflow_conclusion') or 'unknown'}",
+            "note": (
+                "Latest Security workflow conclusion: "
+                f"{sec_section.get('workflow_conclusion') or 'unknown'}"
+            ),
         },
         "signing": {"state": row["signing"], "note": signing_note},
         "license": {
@@ -548,9 +559,7 @@ def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[s
     total = len(modules)
     build_pass = sum(1 for m in modules if _pill_build(m) == "green")
     tests_pass = sum(1 for m in modules if _pill_tests(m) == "green")
-    license_clean = sum(
-        1 for m in modules if _pill_license(m, policy=policy) == "green"
-    )
+    license_clean = sum(1 for m in modules if _pill_license(m, policy=policy) == "green")
     # R2 + R3: the legacy ``signed_releases`` count rolled "verified
     # attestation present" and "trusted publisher present" into one
     # green pill. Methodology forbids that pattern (anti-pattern #2).
@@ -668,9 +677,11 @@ def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[s
             rs_test_files += rs.get("tests_files") or 0
             rs_test_known = True
 
-    loc_total = (py_src + py_test + rs_src + rs_test) if (
-        py_src_known or py_test_known or rs_src_known or rs_test_known
-    ) else None
+    loc_total = (
+        (py_src + py_test + rs_src + rs_test)
+        if (py_src_known or py_test_known or rs_src_known or rs_test_known)
+        else None
+    )
     files_total = (py_src_files + py_test_files + rs_src_files + rs_test_files) or None
 
     return {
@@ -965,9 +976,7 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
                 "weak_copyleft": sbom.get("weak_copyleft") or [],
                 "strong_copyleft": sbom.get("strong_copyleft") or [],
                 "unknown_license_count": len(sbom.get("unknown_license") or []),
-                "sbom_url": (
-                    f"api/v1/sbom/{Path(sbom_path).name}" if sbom_path else None
-                ),
+                "sbom_url": (f"api/v1/sbom/{Path(sbom_path).name}" if sbom_path else None),
                 # F8 follow-up: upstream-authoritative SBOM URL on the
                 # GitHub Release (uploaded by release.yml's OIDC
                 # identity). Falls back to None when version is unknown
@@ -1017,6 +1026,7 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
                 "cisa_total_count": cisa_total,
             }
         )
+
     # Shape the org-wide license breakdown as a list-of-dicts ordered
     # by count desc; classify each row's state.
     def _license_state(spdx: str) -> str:
@@ -1041,8 +1051,7 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
     cisa_full_count = sum(
         1
         for r in rows
-        if r.get("cisa_total_count")
-        and r.get("cisa_green_count") == r.get("cisa_total_count")
+        if r.get("cisa_total_count") and r.get("cisa_green_count") == r.get("cisa_total_count")
     )
 
     # Org-wide SBOM presence + dep-graph counts (R10 rollup denominator).
@@ -1152,9 +1161,7 @@ def _governance_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
             sorted(
                 m["governance"]["time_to_pypi_seconds_median"]
                 for m in modules
-                if isinstance(
-                    (m.get("governance") or {}).get("time_to_pypi_seconds_median"), int
-                )
+                if isinstance((m.get("governance") or {}).get("time_to_pypi_seconds_median"), int)
             )[
                 len(
                     [
@@ -1418,15 +1425,12 @@ def _sparkline_svg(
     # lands on the current state.
     last_dot = ""
     for i in range(n - 1, -1, -1):
-        if numeric[i] is not None:
+        v = numeric[i]
+        if v is not None:
             cx = 2 + i * dx
-            v = numeric[i]
             norm = (v - vmin) / span if span > 0 else 0.5
             cy = (height - 2) - norm * (height - 4)
-            last_dot = (
-                f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="1.5" '
-                f'fill="currentColor"></circle>'
-            )
+            last_dot = f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="1.5" fill="currentColor"></circle>'
             break
 
     return (
@@ -1585,9 +1589,7 @@ def _download_bundle(module_view: dict[str, Any], raw_module: dict[str, Any]) ->
         "version": pypi_version,
         "snapshot_slice": raw_module,
         "sbom": {
-            "mirror_path": (
-                f"api/v1/sbom/{sbom_basename}" if sbom_basename else None
-            ),
+            "mirror_path": (f"api/v1/sbom/{sbom_basename}" if sbom_basename else None),
             "github_release_url": (
                 f"https://github.com/273v/{raw_module.get('name')}/releases/download/"
                 f"v{pypi_version}/{raw_module.get('name')}-{pypi_version}.cdx.json"
@@ -1603,9 +1605,7 @@ def _download_bundle(module_view: dict[str, Any], raw_module: dict[str, Any]) ->
             "rekor_log_index": att.get("rekor_log_index"),
             "verified_count": att.get("verified_count"),
             "total_count": att.get("total_count"),
-            "pypi_simple_index_url": (
-                f"https://pypi.org/simple/{raw_module.get('name')}/"
-            ),
+            "pypi_simple_index_url": (f"https://pypi.org/simple/{raw_module.get('name')}/"),
         },
     }
 
@@ -1667,8 +1667,7 @@ def _api_endpoints_view(
             "path": "heartbeat.json",
             "media_type": "application/json",
             "description": (
-                "Heartbeat block — generated_at + last_*_sweep_at timestamps "
-                "for watchdogs."
+                "Heartbeat block — generated_at + last_*_sweep_at timestamps for watchdogs."
             ),
             "curl": f"curl -O {base}heartbeat.json",
         },
@@ -1686,8 +1685,7 @@ def _api_endpoints_view(
             "path": "api/v1/history/&lt;YYYY-MM-DD&gt;.json",
             "media_type": "application/json",
             "description": (
-                "Per-day snapshot summary written by each sweep. "
-                "One file per UTC day."
+                "Per-day snapshot summary written by each sweep. One file per UTC day."
             ),
             "curl": f"curl -O {base}api/v1/history/2026-05-11.json",
             "available": history_present,
@@ -1704,9 +1702,7 @@ def _api_endpoints_view(
                         f"Per-package signal diff from {d_from} to {d_to}. "
                         "Computed at render time from history.json."
                     ),
-                    "curl": (
-                        f"curl -O {base}api/v1/diff/{d_from}/{d_to}.json"
-                    ),
+                    "curl": (f"curl -O {base}api/v1/diff/{d_from}/{d_to}.json"),
                 }
             )
     package_endpoints = []
@@ -1765,11 +1761,7 @@ def _license_policy_view(policy: Any, modules: list[dict[str, Any]]) -> dict[str
             "review_date": entry.review_date,
             "audit_ref": entry.audit_ref,
             "live_repos": sorted(
-                {
-                    r
-                    for c in entry.components
-                    for r in component_to_repos.get(c, set())
-                }
+                {r for c in entry.components for r in component_to_repos.get(c, set())}
             ),
         }
         for entry in getattr(policy, "allowed_expressions", ())
@@ -1929,9 +1921,7 @@ def render(
         # template. The shape is ``None`` when the sibling clone wasn't
         # inspected, or the dict produced by
         # ``collector.suppressions.collect()``.
-        pkg_suppressions = (view.get("suppressions") or {}).get("per_repo", {}).get(
-            pkg["name"]
-        )
+        pkg_suppressions = (view.get("suppressions") or {}).get("per_repo", {}).get(pkg["name"])
         ctx = {
             "generated_at": view["generated_at"],
             "generated_at_display": view["generated_at_display"],
@@ -1995,9 +1985,7 @@ def render(
         )
 
     hb_out = output_dir / "heartbeat.json"
-    hb_out.write_text(
-        json.dumps(_heartbeat_block(snapshot), indent=2) + "\n", encoding="utf-8"
-    )
+    hb_out.write_text(json.dumps(_heartbeat_block(snapshot), indent=2) + "\n", encoding="utf-8")
     written.append(hb_out)
 
     # ── P7: machine-readable endpoint polish ──
@@ -2031,9 +2019,7 @@ def render(
     ):
         d_from = _history.previous_sweep_date(history_index)
         d_to = history_index.get("last_date")
-        diff_obj = _history.diff_packages(
-            history_index, from_date=d_from, to_date=d_to
-        )
+        diff_obj = _history.diff_packages(history_index, from_date=d_from, to_date=d_to)
         diff_dir_pair = diff_dir / str(d_from)
         diff_dir_pair.mkdir(parents=True, exist_ok=True)
         diff_path = diff_dir_pair / f"{d_to}.json"
@@ -2056,9 +2042,7 @@ def render(
             package_names=package_names,
         )
         api_index_out = api_dir / "index.html"
-        api_index_out.write_text(
-            api_index_tpl.render(**api_index_view), encoding="utf-8"
-        )
+        api_index_out.write_text(api_index_tpl.render(**api_index_view), encoding="utf-8")
         written.append(api_index_out)
 
     return written

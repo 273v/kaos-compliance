@@ -176,7 +176,7 @@ def collect(repo_dir: Path | None) -> dict[str, Any]:
             elif p.suffix == ".rs":
                 rs["tests_files" if is_test else "src_files"] += 1
                 rs["tests_loc" if is_test else "src_loc"] += _count_sloc(p, "rs")
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             errors.append(f"{p}: {type(exc).__name__}: {exc}")
 
     return {"python": py, "rust": rs, "errors": errors}
