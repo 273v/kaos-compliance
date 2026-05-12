@@ -33,19 +33,20 @@ import re
 import tomllib
 import urllib.parse
 import uuid
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Callable, Iterable, Literal, Protocol
+from typing import Any, Literal, Protocol
 
 __all__ = [
     "Component",
     "Hash",
     "HttpFetcher",
-    "normalize_license",
-    "license_class",
-    "parse_uv_lock",
-    "parse_cargo_lock",
     "enrich_from_pypi",
+    "license_class",
+    "normalize_license",
+    "parse_cargo_lock",
+    "parse_uv_lock",
     "to_cyclonedx_1_5",
 ]
 
@@ -689,7 +690,7 @@ def enrich_from_pypi(
 def enrich_from_crates_io(
     components: list[Component],
     *,
-    gh_run: _UrlFetcher,
+    gh_run: HttpFetcher,
 ) -> list[Component]:
     """Populate ``license_spdx`` + ``supplier`` for Rust components.
 
@@ -812,7 +813,7 @@ def to_cyclonedx_1_5(
     Returns:
         A JSON-serializable dict ready for :func:`json.dump`.
     """
-    ts = timestamp or _dt.datetime.now(tz=_dt.timezone.utc)
+    ts = timestamp or _dt.datetime.now(tz=_dt.UTC)
     sn = serial_number or f"urn:uuid:{uuid.uuid4()}"
 
     # Separate the root from transitive deps. uv.lock includes the package
@@ -899,9 +900,7 @@ def _build_dependency_graph(
     root_comp = by_name.get(root_name)
     root_deps: list[str]
     if root_comp and root_comp.dependencies:
-        root_deps = [
-            by_name[d].purl for d in root_comp.dependencies if d in by_name
-        ]
+        root_deps = [by_name[d].purl for d in root_comp.dependencies if d in by_name]
     else:
         root_deps = [c.purl for c in components if not c.is_root]
 
@@ -1002,7 +1001,10 @@ OFFLINE_LICENSE_BOOK: dict[str, tuple[str, str]] = {
     "ruff": ("MIT", "Astral Software Inc."),
     "secretstorage": ("BSD-3-Clause", "Dmitry Shachnev"),
     "ty": ("MIT", "Astral Software Inc."),
-    "typing-extensions": ("PSF-2.0", "Guido van Rossum, Jukka Lehtosalo, Lukasz Langa, Michael Lee"),
+    "typing-extensions": (
+        "PSF-2.0",
+        "Guido van Rossum, Jukka Lehtosalo, Lukasz Langa, Michael Lee",
+    ),
     "typing-inspection": ("MIT", "Pydantic Services Inc."),
 }
 
@@ -1033,7 +1035,8 @@ if __name__ == "__main__":  # pragma: no cover - manual driver
 
     if len(sys.argv) < 4:
         print(
-            "usage: python lockfile_parser.py <uv.lock> <package-name> <package-version> [cargo.lock]",
+            "usage: python lockfile_parser.py <uv.lock> "
+            "<package-name> <package-version> [cargo.lock]",
             file=sys.stderr,
         )
         sys.exit(2)

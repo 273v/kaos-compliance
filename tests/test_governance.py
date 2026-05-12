@@ -11,14 +11,13 @@ from __future__ import annotations
 import base64
 import datetime
 import json
-import re
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any, Callable
+from typing import Any
 
 import pytest
 
 from collector import governance
-
 
 # ---------------------------------------------------------------------------
 # Test doubles
@@ -284,6 +283,7 @@ def test_branch_protection_present_summarises_three_fields():
 
 def test_branch_protection_retry_exhaustion_yields_none_and_error():
     """A non-404 failure must yield None + None and record an error."""
+
     def _boom(_args):
         raise RuntimeError("github exploded")
 
@@ -313,8 +313,7 @@ def test_branch_protection_retry_exhaustion_yields_none_and_error():
         # The "3 business days" acknowledgement is below the floor and ignored;
         # the "90 days" disclosure target dominates.
         (
-            "Acknowledgement within 3 business days. "
-            "Target window is 90 days to disclosure.",
+            "Acknowledgement within 3 business days. Target window is 90 days to disclosure.",
             90,
         ),
         ("No mention of any window here.", None),
@@ -370,9 +369,7 @@ def test_codeowners_prefers_github_dir_then_root():
         "/contents/CODEOWNERS": {"path": "CODEOWNERS"},
     }
     assert (
-        governance._codeowners_path(
-            "kaos-test", gh_run=_fake_gh(routes), errors=[]
-        )
+        governance._codeowners_path("kaos-test", gh_run=_fake_gh(routes), errors=[])
         == ".github/CODEOWNERS"
     )
 
@@ -382,20 +379,12 @@ def test_codeowners_falls_back_to_root_when_github_missing():
     # exactly the canonical "no file there" answer.
     routes = {"/contents/CODEOWNERS": {"path": "CODEOWNERS"}}
     assert (
-        governance._codeowners_path(
-            "kaos-test", gh_run=_fake_gh(routes), errors=[]
-        )
-        == "CODEOWNERS"
+        governance._codeowners_path("kaos-test", gh_run=_fake_gh(routes), errors=[]) == "CODEOWNERS"
     )
 
 
 def test_codeowners_missing_returns_none():
-    assert (
-        governance._codeowners_path(
-            "kaos-test", gh_run=_fake_gh({}), errors=[]
-        )
-        is None
-    )
+    assert governance._codeowners_path("kaos-test", gh_run=_fake_gh({}), errors=[]) is None
 
 
 # ---------------------------------------------------------------------------
@@ -440,9 +429,9 @@ def test_median_pr_age_days_three_prs():
 def test_releases_90d_filters_to_window():
     now = datetime.datetime(2026, 5, 11, tzinfo=datetime.UTC)
     releases = [
-        {"tag_name": "v0.2.0", "published_at": "2026-05-01T00:00:00Z"},   # in
-        {"tag_name": "v0.1.0", "published_at": "2026-04-01T00:00:00Z"},   # in
-        {"tag_name": "v0.0.1", "published_at": "2025-01-01T00:00:00Z"},   # out
+        {"tag_name": "v0.2.0", "published_at": "2026-05-01T00:00:00Z"},  # in
+        {"tag_name": "v0.1.0", "published_at": "2026-04-01T00:00:00Z"},  # in
+        {"tag_name": "v0.0.1", "published_at": "2025-01-01T00:00:00Z"},  # out
     ]
     count, in_window = governance._releases_90d(
         "kaos-test",
@@ -496,9 +485,7 @@ def test_time_to_pypi_failure_sets_field_none_and_records_error_other_fields_pop
     # ...but the PyPI side always raises (NotFound for the package JSON).
     url_get = _fake_url_get({})  # default raises _NotFound
 
-    result = governance.collect(
-        "kaos-broken", gh_run=gh, url_get_json=url_get, now=now
-    )
+    result = governance.collect("kaos-broken", gh_run=gh, url_get_json=url_get, now=now)
 
     # The headline assertion:
     assert result["time_to_pypi_seconds_median"] is None
@@ -540,9 +527,7 @@ def test_time_to_pypi_median_seconds_round_trip():
             "/git/ref/tags/v0.1.0": {
                 "object": {"sha": "sha01", "type": "commit"},
             },
-            "/git/commits/sha01": {
-                "committer": {"date": "2026-04-01T00:00:00Z"}
-            },
+            "/git/commits/sha01": {"committer": {"date": "2026-04-01T00:00:00Z"}},
         }
     )
     url_get = _fake_url_get(
@@ -560,9 +545,7 @@ def test_time_to_pypi_median_seconds_round_trip():
         }
     )
     errors: list[str] = []
-    _, in_window = governance._releases_90d(
-        "kaos-test", gh_run=gh, now=now, errors=errors
-    )
+    _, in_window = governance._releases_90d("kaos-test", gh_run=gh, now=now, errors=errors)
     median = governance._time_to_pypi_seconds_median(
         "kaos-test",
         in_window,

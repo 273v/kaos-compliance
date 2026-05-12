@@ -14,7 +14,6 @@ from __future__ import annotations
 
 from render.__main__ import _cisa_sbom_minimum_elements, _slsa_build_level
 
-
 # ---------------------------------------------------------------------------
 # SLSA Build Level (R9 / F19)
 # ---------------------------------------------------------------------------
@@ -135,18 +134,14 @@ def test_cisa_with_sbom_flags_relationships_yellow():
     a fully-populated SBOM, this element MUST stay yellow until the
     dependencies[] graph emitter lands. The gap is load-bearing for
     the methodology page's honest-gap section."""
-    elements = _cisa_sbom_minimum_elements(
-        {"components_count": 42}, {"pypi_version": "1.0"}
-    )
+    elements = _cisa_sbom_minimum_elements({"components_count": 42}, {"pypi_version": "1.0"})
     relationships = next(e for e in elements if e["element"] == "Dependency relationships")
     assert relationships["state"] == "yellow"
     assert "F9" in relationships["note"]
 
 
 def test_cisa_with_sbom_marks_author_and_name_green():
-    elements = _cisa_sbom_minimum_elements(
-        {"components_count": 42}, {"pypi_version": "1.0"}
-    )
+    elements = _cisa_sbom_minimum_elements({"components_count": 42}, {"pypi_version": "1.0"})
     author = next(e for e in elements if e["element"] == "Author")
     name = next(e for e in elements if e["element"] == "Component name")
     timestamp = next(e for e in elements if e["element"] == "Timestamp")

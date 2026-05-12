@@ -253,9 +253,7 @@ def _fill_pypi_metadata(
         result["license_expression"] = info.get("license_expression") or None
         license_files = info.get("license_files")
         if isinstance(license_files, list):
-            result["license_files_in_wheel"] = [
-                str(x) for x in license_files if isinstance(x, str)
-            ]
+            result["license_files_in_wheel"] = [str(x) for x in license_files if isinstance(x, str)]
 
         urls = payload.get("urls") or []
         platforms: list[str] = []
@@ -444,15 +442,14 @@ def _files_for_version(simple: dict[str, Any], version: str) -> list[dict[str, A
     name = str(simple.get("name") or "")
     name_us = name.replace("-", "_")
     prefixes = {f"{name_us}-{version}", f"{name}-{version}"}
+
     def _belongs(fn: str) -> bool:
         return any(fn.startswith(p + "-") or fn.startswith(p + ".") for p in prefixes)
 
     return [
         f
         for f in files
-        if isinstance(f, dict)
-        and isinstance(f.get("filename"), str)
-        and _belongs(f["filename"])
+        if isinstance(f, dict) and isinstance(f.get("filename"), str) and _belongs(f["filename"])
     ]
 
 
@@ -494,9 +491,7 @@ def _fill_attestations(
         files = _files_for_version(simple, version)
         result["attestations"]["total_count"] = len(files)
 
-        provenance_files = [
-            f for f in files if isinstance(f.get("provenance"), str)
-        ]
+        provenance_files = [f for f in files if isinstance(f.get("provenance"), str)]
         if not provenance_files:
             result["attestations"]["pep740_present"] = False
             return

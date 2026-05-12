@@ -16,6 +16,7 @@ documented honest-gaps:
 from __future__ import annotations
 
 import urllib.error
+from email.message import Message
 from pathlib import Path
 from typing import Any
 
@@ -52,7 +53,7 @@ def _make_url_get_json(responses: dict[str, Any]):
             raise val
         return val
 
-    _fn.seen = seen  # type: ignore[attr-defined]
+    _fn.seen = seen  # ty: ignore[unresolved-attribute]
     return _fn
 
 
@@ -101,8 +102,7 @@ def test_wheel_platform_detection_abi3_manylinux_musllinux(tmp_path: Path) -> No
     simple_json = {
         "name": "fakepkg",
         "files": [
-            {"filename": e["filename"], "url": "x", "provenance": None}
-            for e in pypi_json["urls"]
+            {"filename": e["filename"], "url": "x", "provenance": None} for e in pypi_json["urls"]
         ],
     }
 
@@ -176,9 +176,7 @@ def test_attestation_extraction_kaos_graph_shape(tmp_path: Path) -> None:
             },
         ],
     }
-    provenance_url = (
-        f"https://pypi.org/integrity/{pkg}/{version}/{wheel}/provenance"
-    )
+    provenance_url = f"https://pypi.org/integrity/{pkg}/{version}/{wheel}/provenance"
     simple_json = {
         "name": pkg,
         "files": [
@@ -191,9 +189,7 @@ def test_attestation_extraction_kaos_graph_shape(tmp_path: Path) -> None:
             {
                 "filename": sdist,
                 "url": "https://files.pythonhosted.org/y",
-                "provenance": (
-                    f"https://pypi.org/integrity/{pkg}/{version}/{sdist}/provenance"
-                ),
+                "provenance": (f"https://pypi.org/integrity/{pkg}/{version}/{sdist}/provenance"),
                 "hashes": {"sha256": "2" * 64},
             },
         ],
@@ -282,7 +278,7 @@ def test_pypi_404_degrades_gracefully(tmp_path: Path) -> None:
         url=f"{supply_chain.PYPI_JSON_BASE}/{pkg}/json",
         code=404,
         msg="Not Found",
-        hdrs=None,  # type: ignore[arg-type]
+        hdrs=Message(),
         fp=None,
     )
 
@@ -293,7 +289,7 @@ def test_pypi_404_degrades_gracefully(tmp_path: Path) -> None:
                 url=f"{supply_chain.PYPI_SIMPLE_BASE}/{pkg}/",
                 code=404,
                 msg="Not Found",
-                hdrs=None,  # type: ignore[arg-type]
+                hdrs=Message(),
                 fp=None,
             ),
         }
@@ -404,9 +400,7 @@ def test_wheel_filename_parser_skips_non_wheels() -> None:
     """Non-wheel filenames must produce no platform label."""
     assert supply_chain._platform_label_from_wheel("foo-1.0.tar.gz") is None
     assert (
-        supply_chain._platform_label_from_wheel(
-            "fakepkg-1.0-cp313-abi3-manylinux_2_28_x86_64.whl"
-        )
+        supply_chain._platform_label_from_wheel("fakepkg-1.0-cp313-abi3-manylinux_2_28_x86_64.whl")
         == "linux-x86_64-manylinux_2_28"
     )
 

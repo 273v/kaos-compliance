@@ -262,7 +262,7 @@ def collect(repo_dir: Path | None) -> dict[str, Any]:
             else ["no repo_dir passed"],
         }
 
-    counts = {
+    counts: dict[str, Any] = {
         "noqa": 0,
         "nosec": 0,
         "ty_ignore": 0,
@@ -297,18 +297,18 @@ def collect(repo_dir: Path | None) -> dict[str, Any]:
         if p.name in ("deny.toml", "Cargo.toml") or p.suffix == ".toml":
             try:
                 counts["cargo_deny_ignore"] += _count_toml_ignore_entries(text)
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 errors.append(f"{p}: {type(exc).__name__}: {exc}")
             continue
         if p.name == ".bandit" or p.name.endswith("/.bandit"):
             try:
                 counts["bandit_skips"] += _count_bandit_skips(text)
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 errors.append(f"{p}: {type(exc).__name__}: {exc}")
             continue
 
-    counts["total"] = sum(counts.values())  # type: ignore[assignment]
-    counts["errors"] = errors  # type: ignore[assignment]
+    counts["total"] = sum(value for value in counts.values() if isinstance(value, int))
+    counts["errors"] = errors
     return counts
 
 
@@ -337,8 +337,6 @@ def collect_for_org(
     return {
         "per_repo": per_repo,
         "org_total": org_total if org_known else None,
-        "repos_inspected": sum(
-            1 for r in per_repo.values() if isinstance(r.get("total"), int)
-        ),
+        "repos_inspected": sum(1 for r in per_repo.values() if isinstance(r.get("total"), int)),
         "repos_total": len(repo_names),
     }

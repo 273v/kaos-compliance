@@ -184,10 +184,7 @@ def discover_public_kaos_repos() -> list[str]:
 def _now_iso() -> str:
     """RFC 3339 UTC timestamp with trailing Z (drops the +00:00 offset)."""
     return (
-        datetime.datetime.now(tz=datetime.UTC)
-        .replace(microsecond=0, tzinfo=None)
-        .isoformat()
-        + "Z"
+        datetime.datetime.now(tz=datetime.UTC).replace(microsecond=0, tzinfo=None).isoformat() + "Z"
     )
 
 
@@ -226,7 +223,7 @@ def _latest_run(repo: str, workflow: str) -> dict[str, Any] | None:
                 "databaseId,headSha,status,conclusion,createdAt,updatedAt,url",
             ]
         ).stdout
-    except Exception:  # noqa: BLE001 — retry exhaustion is intentional fall-through
+    except Exception:
         return None
     runs = json.loads(raw or "[]")
     return runs[0] if runs else None
@@ -245,14 +242,14 @@ def _identity(repo: str) -> IdentitySection:
         branch = json.loads(branch_raw)
         main_sha = branch.get("commit", {}).get("sha")
         last_commit_at = branch.get("commit", {}).get("commit", {}).get("author", {}).get("date")
-    except Exception:  # noqa: BLE001
+    except Exception:
         pass
 
     try:
         repo_raw = gh_run(["api", f"repos/{ORG}/{repo}"]).stdout
         repo_meta = json.loads(repo_raw)
         visibility = "private" if repo_meta.get("private") else "public"
-    except Exception:  # noqa: BLE001
+    except Exception:
         pass
 
     latest_tag: str | None = None
@@ -266,7 +263,7 @@ def _identity(repo: str) -> IdentitySection:
         if v_tags:
             latest_tag = v_tags[0]["name"]
             latest_tag_sha = v_tags[0]["commit"]["sha"]
-    except Exception:  # noqa: BLE001
+    except Exception:
         pass
 
     tag_at_head: bool | None = (
@@ -311,7 +308,7 @@ def _ci_section(repo: str) -> CISection:
                     ),
                 }
             )
-    except Exception:  # noqa: BLE001
+    except Exception:
         pass
 
     return CISection(
@@ -344,7 +341,7 @@ def _security_section(repo: str) -> SecuritySection:
                     "completed_at": j.get("completed_at"),
                 }
             )
-    except Exception:  # noqa: BLE001
+    except Exception:
         pass
 
     return SecuritySection(
@@ -378,7 +375,7 @@ def _open_prs(repo: str) -> OpenPRsSection:
                 "number,title",
             ]
         ).stdout
-    except Exception:  # noqa: BLE001
+    except Exception:
         return OpenPRsSection(count=None, titles=[])
     try:
         items = json.loads(raw or "[]")
@@ -409,22 +406,22 @@ def collect_module(repo: str) -> ModuleSnapshot:
 
     try:
         ident = _identity(repo)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         ident = IdentitySection()
         errors.append(f"identity: {exc}")
     try:
         ci = _ci_section(repo)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         ci = CISection()
         errors.append(f"ci: {exc}")
     try:
         sec = _security_section(repo)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         sec = SecuritySection()
         errors.append(f"security: {exc}")
     try:
         prs = _open_prs(repo)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         prs = OpenPRsSection(count=None, titles=[])
         errors.append(f"open_prs: {exc}")
 
@@ -440,7 +437,7 @@ def collect_module(repo: str) -> ModuleSnapshot:
             gh_run=gh_run,
             url_get_json=url_get_json,
         )
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         sc = {"errors": [f"supply_chain: {exc}"]}
         errors.append(f"supply_chain: {exc}")
 
@@ -453,7 +450,7 @@ def collect_module(repo: str) -> ModuleSnapshot:
             gh_run=gh_run,
             url_get_json=url_get_json,
         )
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         gov = {"errors": [f"governance: {exc}"]}
         errors.append(f"governance: {exc}")
 
@@ -462,7 +459,7 @@ def collect_module(repo: str) -> ModuleSnapshot:
     # read; cheap relative to the API-bound sections above.
     try:
         cm = code_metrics.collect(sibling_dir if sibling_dir.is_dir() else None)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         cm = {"errors": [f"code_metrics: {exc}"]}
         errors.append(f"code_metrics: {exc}")
 
@@ -475,14 +472,11 @@ def collect_module(repo: str) -> ModuleSnapshot:
     # from the process audit). Computing commits_past_tag from the
     # governance section's commits_90d would require a tag-cursor we
     # don't yet collect; leaving that for a follow-up.
-    if isinstance(sc, dict) and sc.get("pypi_version") and ident.pypi_version is None:
+    pypi_version = sc.get("pypi_version") if isinstance(sc, dict) else None
+    if isinstance(pypi_version, str) and pypi_version and ident.pypi_version is None:
         ident = IdentitySection(
-            pypi_version=sc.get("pypi_version"),
-            pypi_url=(
-                f"https://pypi.org/project/{repo}/{sc.get('pypi_version')}/"
-                if sc.get("pypi_version")
-                else None
-            ),
+            pypi_version=pypi_version,
+            pypi_url=f"https://pypi.org/project/{repo}/{pypi_version}/",
             main_head_sha=ident.main_head_sha,
             latest_tag=ident.latest_tag,
             latest_tag_sha=ident.latest_tag_sha,
@@ -492,9 +486,12 @@ def collect_module(repo: str) -> ModuleSnapshot:
             last_commit_at=ident.last_commit_at,
         )
 
+    pypi_release_iso = sc.get("pypi_release_iso") if isinstance(sc, dict) else None
     fresh = FreshnessSection(
         days_since_last_commit=_days_since(ident.last_commit_at),
-        days_since_last_release=_days_since(sc.get("pypi_release_iso")),
+        days_since_last_release=_days_since(
+            pypi_release_iso if isinstance(pypi_release_iso, str) else None
+        ),
         days_since_last_security_scan=_days_since(sec.run_completed_at),
     )
 

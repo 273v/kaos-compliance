@@ -77,9 +77,7 @@ def test_daily_summary_extracts_expected_fields() -> None:
 
 def test_daily_summary_attestation_partial_is_not_present() -> None:
     """Attestation present iff verified == total and total > 0."""
-    snap = _snapshot(
-        "2026-05-11", [_module("kaos-core", verified=1, total=2)]
-    )
+    snap = _snapshot("2026-05-11", [_module("kaos-core", verified=1, total=2)])
     summary = history.daily_summary_from_snapshot(snap)
     assert summary["modules"][0]["attestation_present"] is False
 
@@ -158,9 +156,7 @@ def test_rebuild_index_aligns_per_signal_arrays(tmp_path: Path) -> None:
 
 def test_rebuild_index_pads_late_arrivals_with_none(tmp_path: Path) -> None:
     """A package that only appears on day 2 gets ``None`` for day 1."""
-    history.write_daily_summary(
-        _snapshot("2026-05-10", [_module("kaos-core")]), tmp_path
-    )
+    history.write_daily_summary(_snapshot("2026-05-10", [_module("kaos-core")]), tmp_path)
     history.write_daily_summary(
         _snapshot("2026-05-11", [_module("kaos-core"), _module("kaos-cli")]),
         tmp_path,
@@ -180,17 +176,13 @@ def test_rebuild_index_trims_to_window(tmp_path: Path) -> None:
             "2026-01-05",
         )
     ):
-        history.write_daily_summary(
-            _snapshot(day, [_module("kaos-core", commits=i)]), tmp_path
-        )
+        history.write_daily_summary(_snapshot(day, [_module("kaos-core", commits=i)]), tmp_path)
     idx = history.rebuild_index(tmp_path, days=3)
     assert idx["dates"] == ["2026-01-03", "2026-01-04", "2026-01-05"]
 
 
 def test_write_index_emits_a_file(tmp_path: Path) -> None:
-    history.write_daily_summary(
-        _snapshot("2026-05-11", [_module("kaos-core")]), tmp_path
-    )
+    history.write_daily_summary(_snapshot("2026-05-11", [_module("kaos-core")]), tmp_path)
     idx_path = tmp_path.parent / "history.json"
     history.write_index(tmp_path, index_path=idx_path)
     assert idx_path.is_file()

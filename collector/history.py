@@ -83,9 +83,7 @@ def _module_summary(module: dict[str, Any]) -> dict[str, Any]:
     # the renderer uses for the green-signing pill.
     total = att.get("total_count") or 0
     verified = att.get("verified_count") or 0
-    attestation_present = bool(
-        att.get("pep740_present") and total > 0 and verified == total
-    )
+    attestation_present = bool(att.get("pep740_present") and total > 0 and verified == total)
 
     return {
         "name": module.get("name"),
@@ -117,9 +115,7 @@ def daily_summary_from_snapshot(snapshot: dict[str, Any]) -> dict[str, Any]:
     """
     generated_at = snapshot.get("generated_at")
     date = (generated_at[:10] if isinstance(generated_at, str) else None) or _today_utc()
-    modules = [
-        _module_summary(m) for m in (snapshot.get("modules") or []) if m.get("name")
-    ]
+    modules = [_module_summary(m) for m in (snapshot.get("modules") or []) if m.get("name")]
     return {
         "schema_version": HISTORY_SCHEMA_VERSION,
         "date": date,
@@ -220,8 +216,7 @@ def rebuild_index(history_dir: Path, *, days: int = HISTORY_DAYS) -> dict[str, A
 
     for name in sorted(names):
         packages[name] = {
-            sig: [None] * len(rows)
-            for sig in (*TRACKED_BOOL_SIGNALS, *TRACKED_INT_SIGNALS)
+            sig: [None] * len(rows) for sig in (*TRACKED_BOOL_SIGNALS, *TRACKED_INT_SIGNALS)
         }
 
     # Second pass: project each day's modules into the per-package arrays.
