@@ -7,5 +7,5 @@ __version__ = "0.0.1"
 # this into the methodology.html template so the version on the page
 # is pinned to the methodology file the docs site shipped with this
 # render.
-METHODOLOGY_VERSION = "1.1"
-METHODOLOGY_UPDATED = "2026-05-11"
+METHODOLOGY_VERSION = "1.1.1"
+METHODOLOGY_UPDATED = "2026-05-12"

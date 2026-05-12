@@ -14,9 +14,9 @@ to **Stale heartbeat** below.
                   │   GitHub Actions cron workflows      │
                   │  (in 273v/kaos-compliance)           │
                   │                                       │
-                  │  sweep-light.yml   (hourly)          │
-                  │  sweep-security.yml (4h)             │
-                  │  sweep-full.yml    (24h)             │
+                  │  sweep.yml - profile=light    (1h)   │
+                  │  sweep.yml - profile=security (4h)   │
+                  │  sweep.yml - profile=full     (24h)  │
                   └────────────────┬─────────────────────┘
                                    │ writes
                                    ▼
@@ -45,15 +45,15 @@ to **Stale heartbeat** below.
 
 ### Symptom: dashboard footer says "STALE — last full sweep > 26h ago"
 
-1. Check the most recent run of `sweep-full.yml`:
+1. Check the most recent run of `sweep.yml`:
    ```bash
-   gh run list --workflow=sweep-full.yml --limit=5 --repo 273v/kaos-compliance
+   gh run list --workflow=Sweep --limit=5 --repo 273v/kaos-compliance
    ```
 2. If the run **failed**: open it, find the failing job, scroll to the
    step that broke. Common failures:
    - `gh api … 403 rate-limit exceeded` — see "Rate limit hit" below.
    - `pypi.org timed out` — usually transient; re-run with
-     `gh workflow run sweep-full.yml --repo 273v/kaos-compliance`.
+     `gh workflow run sweep.yml -f profile=full --repo 273v/kaos-compliance`.
    - `LLM API key missing` — diary section only; rest of sweep should
      still publish. If everything else also fails, the runner doesn't
      have secrets; check `Settings → Secrets`.
@@ -109,7 +109,7 @@ contents remain — site stays up but stale.
    ```
 2. The traceback names the template + line. Fix in
    `render/templates/<file>.j2`.
-3. Push a fix, then trigger `sweep-full.yml` manually.
+3. Push a fix, then trigger `sweep.yml` with `profile=full` manually.
 
 ### Symptom: license policy classifies a known-good component as a violation
 
@@ -140,9 +140,9 @@ rendered HTML.
 ### Manually trigger a sweep
 
 ```bash
-gh workflow run sweep-full.yml --repo 273v/kaos-compliance
-gh workflow run sweep-light.yml --repo 273v/kaos-compliance
-gh workflow run sweep-security.yml --repo 273v/kaos-compliance
+gh workflow run sweep.yml -f profile=full --repo 273v/kaos-compliance
+gh workflow run sweep.yml -f profile=light --repo 273v/kaos-compliance
+gh workflow run sweep.yml -f profile=security --repo 273v/kaos-compliance
 ```
 
 ### Re-deploy from latest snapshot without re-collecting
@@ -150,8 +150,53 @@ gh workflow run sweep-security.yml --repo 273v/kaos-compliance
 If gh-pages broke but the snapshot is fine:
 
 ```bash
-gh workflow run deploy-only.yml --repo 273v/kaos-compliance
+gh workflow run sweep.yml -f profile=light --repo 273v/kaos-compliance
 ```
+
+There is no deploy-only workflow at the moment. Re-running the light
+profile is the lowest-cost rebuild+deploy path.
+
+### Audit public-PR hardening settings
+
+Several hardening controls are important but not public dashboard
+signals because GitHub exposes them through admin-only APIs. Audit them
+after repo creation, after changing branch protection, and during the
+quarterly maintenance pass:
+
+```bash
+repos=$(jq -r '.modules[].name' data/snapshots/latest.json; echo kaos-compliance | sort -u)
+
+for repo in $repos; do
+  echo "== $repo =="
+  gh api "repos/273v/$repo/actions/permissions" \
+    --jq '{allowed_actions, sha_pinning_required}'
+  gh api "repos/273v/$repo/actions/permissions/workflow" \
+    --jq '{default_workflow_permissions, can_approve_pull_request_reviews}'
+  gh api "repos/273v/$repo/actions/permissions/fork-pr-contributor-approval" \
+    --jq .
+  gh api "repos/273v/$repo/branches/main/protection" \
+    --jq '{required_status_checks, required_pull_request_reviews, enforce_admins, required_linear_history}'
+  gh api "repos/273v/$repo" \
+    --jq '.security_and_analysis | {secret_scanning, secret_scanning_push_protection}'
+done
+```
+
+Expected baseline: selected Actions, full-SHA pinning required,
+read-only default workflow token, Actions token cannot approve PRs,
+fork approval for all external contributors, CODEOWNER review and
+last-push approval on `main`, admin enforcement on, linear history on,
+secret scanning enabled, and push protection enabled.
+
+For `kaos-compliance`, also confirm `.github/workflows/ci.yml` keeps
+the external-fork guard on every job:
+
+```yaml
+if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+```
+
+GitHub does not allow disabling forks on an org-owned public repository,
+so this workflow guard and the contribution policy are the enforcement
+layer for "do not execute external fork PR code" in this repo.
 
 ### Roll back gh-pages to N runs ago
 
@@ -187,6 +232,8 @@ For security-sensitive reports, see `SECURITY.md`.
 
 - **Quarterly**: walk through `docs/LICENSE-AUDIT.md`, re-confirm each
   exception is still warranted.
+- **Quarterly**: run the public-PR hardening audit above across every
+  public repo in the dashboard plus `kaos-compliance`.
 - **Quarterly**: rotate the GitHub Actions secrets used by the
   collector (LLM keys, any non-default PATs).
 - **Quarterly**: run `scripts/verify-links.sh` to catch dead anchors
@@ -196,4 +243,4 @@ For security-sensitive reports, see `SECURITY.md`.
 
 ---
 
-*Last updated: 2026-05-11.*
+*Last updated: 2026-05-12.*
