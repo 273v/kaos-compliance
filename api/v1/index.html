@@ -94,7 +94,17 @@ footer a{color:var(--muted)}
 </table>
 
 <h2>Diff endpoints</h2>
-<p class="unavailable">No diff endpoints yet — history needs at least two days of data.</p>
+<p style="font-size:0.875rem;color:var(--muted)">Per-package signal diff between two sweeps, computed at render time from <code>history.json</code>. Compute additional pairs locally by downloading <code>history.json</code> and slicing the per-package arrays.</p>
+<table>
+ <thead><tr><th>Path</th><th>Description</th><th>curl</th></tr></thead>
+ <tbody>
+  <tr>
+   <td class="path"><code>api/v1/diff/2026-05-11/2026-05-12.json</code></td>
+   <td>Per-package signal diff from 2026-05-11 to 2026-05-12. Computed at render time from history.json.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/diff/2026-05-11/2026-05-12.json</pre></td>
+  </tr>
+ </tbody>
+</table>
 
 <h2>Per-package bundles</h2>
 <p style="font-size:0.875rem;color:var(--muted)">Each bundle contains the per-package slice of <code>snapshot.json</code>, the SBOM mirror + upstream Release URL, and the PEP 740 attestation pointer.</p>
@@ -185,7 +195,7 @@ footer a{color:var(--muted)}
 </table>
 
 <footer>
- Generated 2026-05-11 23:32 UTC
+ Generated 2026-05-12 00:36 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | <a href="index.html">Org rollup</a>
  | <a href="methodology.html">Methodology</a>
