@@ -1,40 +1,43 @@
 # Cron-driven snapshot + render + deploy for kaos-compliance.
 #
-# Three schedules, each in its own job with an independent concurrency
-# group so they queue (not cancel) when fire-times collide.
+# Profiles
+# --------
+# - hourly   (light)    refresh CI / Security / identity / open_prs
+# - 4-hourly (security) full sweep, supply_chain re-checked for attestation
+#                       freshness, governance skipped
+# - daily    (full)     full sweep + LLM diary when the optional key exists
 #
-#   - hourly   (light)    — refresh CI / Security / identity / open_prs
-#   - 4-hourly (security) — full sweep, supply_chain re-checked for
-#                           attestation freshness, governance skipped
-#   - daily    (full)     — full sweep + LLM diary (when key present)
+# Trust lanes
+# -----------
+# The workflow is intentionally split by privilege:
+# - collect-render: read-only token, no OIDC, dependencies allowed
+# - sign-snapshot: read-only token + OIDC, no dependency install
+# - final-render: read-only token, no OIDC, dependencies allowed
+# - deploy: contents:write only, no checkout and no dependency install
 #
 # Cost / failure budget
 # ---------------------
-# Every job is bounded by timeout-minutes: 30. The deploy step is gated
-# on `if: success()` so a failed collect/render never publishes a
-# half-built _site. The snapshot artifact is uploaded with
-# `if: always()` so forensics survive a failed run. No automatic
-# retries — re-run-from-failed-step is a maintainer decision.
+# Every operational job is bounded by timeout-minutes. A failed
+# collect/render/final-render never deploys a half-built _site. The
+# snapshot artifact is uploaded with if: always() so forensics survive
+# a failed run. No automatic retries; re-run-from-failed-step is a
+# maintainer decision.
 #
 # Light vs. full: collector CLI surface
 # -------------------------------------
-# The snapshot CLI today accepts only `--module`, `--output`, and
-# `--pretty`. There is no `--no-supply-chain` / `--no-governance`
-# switch and adding one would require modifying `collector/snapshot.py`,
-# which this change set is not authorised to do. The three schedules
-# therefore run the same collector binary. The differentiator is the
-# `heartbeat.json` schedule label (written post-render) which the
-# dashboard's freshness widget already reads, and the LLM-diary step
-# which only the 24h job carries. When the collector grows a
-# light-profile switch, only the `Collect` step here needs to change.
+# The snapshot CLI today accepts only --module, --output, and --pretty.
+# There is no --no-supply-chain / --no-governance switch. The three
+# schedules therefore run the same collector binary. The differentiator
+# is the heartbeat.json schedule label and the LLM-diary step which
+# only the 24h profile carries. When the collector grows a light-profile
+# switch, only the Collect snapshot step needs to change.
 #
 # Secrets
 # -------
-# Only `secrets.GITHUB_TOKEN` (the default repo-scoped token) is used
-# for the deploy. `secrets.ANTHROPIC_API_KEY` is optional; when unset,
-# the daily diary step is skipped at the workflow level rather than
-# relying on collector-side `skipped=True` semantics (which do not
-# exist yet — see the comment block above).
+# secrets.GITHUB_TOKEN is used for read-only collection/history restore
+# and for the final gh-pages publish. secrets.ANTHROPIC_API_KEY is
+# optional; when unset, the daily diary step skips before making any API
+# call.
 
 name: Sweep
 
@@ -59,24 +62,114 @@ on:
           - full
 
 permissions:
-  contents: write     # required to push gh-pages
-  pages: read
-  id-token: write     # reserved for future sigstore / Rekor calls
+  contents: read
+
+concurrency:
+  group: >-
+    sweep-${{ github.event_name == 'workflow_dispatch' && github.event.inputs.profile || github.event.schedule == '0 * * * *' && 'light' || github.event.schedule == '0 */4 * * *' && 'security' || github.event.schedule == '0 0 * * *' && 'full' || github.run_id }}
+  cancel-in-progress: false
 
 jobs:
-  # ────────────── hourly light sweep ──────────────
-  light:
-    name: Sweep (light, 1h)
-    if: >-
-      github.event.schedule == '0 * * * *' ||
-      (github.event_name == 'workflow_dispatch' && inputs.profile == 'light')
+  profile:
+    name: Resolve sweep profile
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      profile: ${{ steps.resolve.outputs.profile }}
+      schedule_label: ${{ steps.resolve.outputs.schedule_label }}
+      retention_days: ${{ steps.resolve.outputs.retention_days }}
+      include_diary: ${{ steps.resolve.outputs.include_diary }}
+    steps:
+      - name: Resolve profile settings
+        id: resolve
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule || '' }}
+          INPUT_PROFILE: ${{ github.event.inputs.profile || 'full' }}
+        run: |
+          set -euo pipefail
+
+          if [ "${EVENT_NAME}" = "schedule" ]; then
+            case "${EVENT_SCHEDULE}" in
+              "0 * * * *")
+                profile="light"
+                schedule_label="1h"
+                retention_days="14"
+                include_diary="false"
+                ;;
+              "0 */4 * * *")
+                profile="security"
+                schedule_label="4h"
+                retention_days="30"
+                include_diary="false"
+                ;;
+              "0 0 * * *")
+                profile="full"
+                schedule_label="24h"
+                retention_days="90"
+                include_diary="true"
+                ;;
+              *)
+                echo "Unknown schedule: ${EVENT_SCHEDULE}" >&2
+                exit 1
+                ;;
+            esac
+          else
+            case "${INPUT_PROFILE}" in
+              light)
+                profile="light"
+                schedule_label="1h"
+                retention_days="14"
+                include_diary="false"
+                ;;
+              security)
+                profile="security"
+                schedule_label="4h"
+                retention_days="30"
+                include_diary="false"
+                ;;
+              full)
+                profile="full"
+                schedule_label="24h"
+                retention_days="90"
+                include_diary="true"
+                ;;
+              *)
+                echo "Unknown profile: ${INPUT_PROFILE}" >&2
+                exit 1
+                ;;
+            esac
+          fi
+
+          {
+            echo "profile=${profile}"
+            echo "schedule_label=${schedule_label}"
+            echo "retention_days=${retention_days}"
+            echo "include_diary=${include_diary}"
+          } >> "${GITHUB_OUTPUT}"
+
+          {
+            echo "### Sweep profile"
+            echo ""
+            echo "- profile: ${profile}"
+            echo "- schedule label: ${schedule_label}"
+            echo "- retention days: ${retention_days}"
+            echo "- diary: ${include_diary}"
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+  collect-render:
+    name: Collect and render unsigned
+    needs: profile
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    concurrency:
-      group: sweep-light
-      cancel-in-progress: false
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: read
     env:
-      SWEEP_PROFILE: light
+      SWEEP_PROFILE: ${{ needs.profile.outputs.profile }}
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -93,272 +186,12 @@ jobs:
         run: uv python install 3.13
 
       - name: Install dependencies
-        run: uv sync --group dev --python 3.13
-
-      - name: Collect snapshot
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          INCLUDE_DIARY: ${{ needs.profile.outputs.include_diary }}
         run: |
-          mkdir -p data/snapshots
-          uv run python -m collector.snapshot \
-            --output data/snapshots/latest.json \
-            --pretty
-
-      # P7: preserve the rolling 90-day history across the keep_files:false
-      # deploy. We fetch the existing gh-pages tree (best-effort — the
-      # very first deploy has nothing to fetch and the step is a no-op),
-      # then copy api/v1/history/ + api/v1/history.json into _site/ so
-      # the renderer's history-append step appends to the existing files
-      # rather than starting from a one-day window every sweep.
-      - name: Restore history from gh-pages
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          rm -rf _site
-          mkdir -p _site/api/v1/history
-          tmp_pages=$(mktemp -d)
-          git clone --depth=1 --branch gh-pages \
-            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
-            "${tmp_pages}" 2>/dev/null || true
-          if [ -d "${tmp_pages}/api/v1/history" ]; then
-            cp -a "${tmp_pages}/api/v1/history/." _site/api/v1/history/ || true
-          fi
-          if [ -f "${tmp_pages}/api/v1/history.json" ]; then
-            cp "${tmp_pages}/api/v1/history.json" _site/api/v1/history.json || true
-          fi
-          rm -rf "${tmp_pages}"
-          echo "Restored history files:"
-          ls -la _site/api/v1/history/ 2>/dev/null || echo "(none yet)"
-
-      - name: Render dashboard
-        run: |
-          uv run python -m render \
-            --snapshot data/snapshots/latest.json \
-            --output _site
-
-      # ── R4 + R23: integrity layer ──
-      #
-      # Sign _site/api/v1/snapshot.json with a keyless sigstore
-      # signature (cosign + GitHub OIDC), and re-render once so the
-      # signature pill on the index header flips from gray to green
-      # using the freshly-attached bundle. The render step is cheap
-      # (~1s for 16 modules) and idempotent, so the cost of the
-      # second pass is acceptable.
-      #
-      # The JSON Schema (R23) is emitted by the first render pass
-      # above — see collector/schema.py + render/__main__.py.
-      - name: Install cosign
-        uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac # v3
-
-      - name: Sign snapshot (keyless, GitHub OIDC)
-        env:
-          GITHUB_WORKFLOW_REF: ${{ github.workflow_ref }}
-          GITHUB_RUN_ID: ${{ github.run_id }}
-          GITHUB_SHA: ${{ github.sha }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_REF: ${{ github.ref }}
-        run: |
-          bash scripts/_ci/sign-snapshot.sh \
-            _site/api/v1/snapshot.json \
-            _site/api/v1/snapshot.sig
-
-      - name: Re-render with signature attached
-        run: |
-          uv run python -m render \
-            --snapshot data/snapshots/latest.json \
-            --output _site
-
-      - name: Tag heartbeat with schedule + git sha
-        env:
-          SCHEDULE_LABEL: "1h"
-          GIT_SHA: ${{ github.sha }}
-        run: bash scripts/_ci/tag-heartbeat.sh _site/heartbeat.json
-
-      - name: Upload snapshot artifact (forensics)
-        if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: snapshot-light-${{ github.run_id }}
-          path: data/snapshots/latest.json
-          retention-days: 14
-
-      - name: Deploy to gh-pages
-        if: success()
-        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
-          publish_branch: gh-pages
-          keep_files: false
-          commit_message: "sweep(light): ${{ github.sha }}"
-          user_name: "kaos-compliance-bot"
-          user_email: "kaos-compliance-bot@users.noreply.github.com"
-
-  # ────────────── 4-hourly security refresh ──────────────
-  security:
-    name: Sweep (security, 4h)
-    if: >-
-      github.event.schedule == '0 */4 * * *' ||
-      (github.event_name == 'workflow_dispatch' && inputs.profile == 'security')
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    concurrency:
-      group: sweep-security
-      cancel-in-progress: false
-    env:
-      SWEEP_PROFILE: security
-    steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-        with:
-          persist-credentials: false
-
-      - name: Set up uv
-        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
-        with:
-          enable-cache: true
-          cache-dependency-glob: uv.lock
-
-      - name: Install Python 3.13
-        run: uv python install 3.13
-
-      - name: Install dependencies
-        run: uv sync --group dev --python 3.13
-
-      - name: Collect snapshot
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          mkdir -p data/snapshots
-          uv run python -m collector.snapshot \
-            --output data/snapshots/latest.json \
-            --pretty
-
-      # P7: preserve the rolling 90-day history across the keep_files:false
-      # deploy. We fetch the existing gh-pages tree (best-effort — the
-      # very first deploy has nothing to fetch and the step is a no-op),
-      # then copy api/v1/history/ + api/v1/history.json into _site/ so
-      # the renderer's history-append step appends to the existing files
-      # rather than starting from a one-day window every sweep.
-      - name: Restore history from gh-pages
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          rm -rf _site
-          mkdir -p _site/api/v1/history
-          tmp_pages=$(mktemp -d)
-          git clone --depth=1 --branch gh-pages \
-            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
-            "${tmp_pages}" 2>/dev/null || true
-          if [ -d "${tmp_pages}/api/v1/history" ]; then
-            cp -a "${tmp_pages}/api/v1/history/." _site/api/v1/history/ || true
-          fi
-          if [ -f "${tmp_pages}/api/v1/history.json" ]; then
-            cp "${tmp_pages}/api/v1/history.json" _site/api/v1/history.json || true
-          fi
-          rm -rf "${tmp_pages}"
-          echo "Restored history files:"
-          ls -la _site/api/v1/history/ 2>/dev/null || echo "(none yet)"
-
-      - name: Render dashboard
-        run: |
-          uv run python -m render \
-            --snapshot data/snapshots/latest.json \
-            --output _site
-
-      # ── R4 + R23: integrity layer ──
-      #
-      # Sign _site/api/v1/snapshot.json with a keyless sigstore
-      # signature (cosign + GitHub OIDC), and re-render once so the
-      # signature pill on the index header flips from gray to green
-      # using the freshly-attached bundle. The render step is cheap
-      # (~1s for 16 modules) and idempotent, so the cost of the
-      # second pass is acceptable.
-      #
-      # The JSON Schema (R23) is emitted by the first render pass
-      # above — see collector/schema.py + render/__main__.py.
-      - name: Install cosign
-        uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac # v3
-
-      - name: Sign snapshot (keyless, GitHub OIDC)
-        env:
-          GITHUB_WORKFLOW_REF: ${{ github.workflow_ref }}
-          GITHUB_RUN_ID: ${{ github.run_id }}
-          GITHUB_SHA: ${{ github.sha }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_REF: ${{ github.ref }}
-        run: |
-          bash scripts/_ci/sign-snapshot.sh \
-            _site/api/v1/snapshot.json \
-            _site/api/v1/snapshot.sig
-
-      - name: Re-render with signature attached
-        run: |
-          uv run python -m render \
-            --snapshot data/snapshots/latest.json \
-            --output _site
-
-      - name: Tag heartbeat with schedule + git sha
-        env:
-          SCHEDULE_LABEL: "4h"
-          GIT_SHA: ${{ github.sha }}
-        run: bash scripts/_ci/tag-heartbeat.sh _site/heartbeat.json
-
-      - name: Upload snapshot artifact (forensics)
-        if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: snapshot-security-${{ github.run_id }}
-          path: data/snapshots/latest.json
-          retention-days: 30
-
-      - name: Deploy to gh-pages
-        if: success()
-        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
-          publish_branch: gh-pages
-          keep_files: false
-          commit_message: "sweep(security): ${{ github.sha }}"
-          user_name: "kaos-compliance-bot"
-          user_email: "kaos-compliance-bot@users.noreply.github.com"
-
-  # ────────────── daily full sweep ──────────────
-  full:
-    name: Sweep (full, 24h)
-    if: >-
-      github.event.schedule == '0 0 * * *' ||
-      (github.event_name == 'workflow_dispatch' && inputs.profile == 'full')
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    concurrency:
-      group: sweep-full
-      cancel-in-progress: false
-    env:
-      SWEEP_PROFILE: full
-    steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-        with:
-          persist-credentials: false
-
-      - name: Set up uv
-        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
-        with:
-          enable-cache: true
-          cache-dependency-glob: uv.lock
-
-      - name: Install Python 3.13
-        run: uv python install 3.13
-
-      - name: Install dependencies (with optional llm extra when API key present)
-        env:
-          HAS_ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
-        run: |
-          if [ "${HAS_ANTHROPIC_KEY}" = "true" ]; then
+          set -euo pipefail
+          if [ "${INCLUDE_DIARY}" = "true" ] && [ -n "${ANTHROPIC_API_KEY}" ]; then
             uv sync --group dev --extra llm --python 3.13
           else
             uv sync --group dev --python 3.13
@@ -374,35 +207,28 @@ jobs:
             --pretty
 
       - name: Generate LLM diary
-        # Only runs when the optional API key is configured. The diary
-        # collector is invoked as a best-effort module: a failure here
-        # MUST NOT block the deploy of the rest of the snapshot, hence
-        # `continue-on-error: true`. The renderer reads whatever JSON
-        # exists under data/diary/ and degrades gracefully when empty.
-        #
-        # Note: the `secrets` context is NOT available in step-level
-        # `if:` expressions, so we surface the key as an env var first
-        # and gate on the env var. (Direct `secrets.*` in `if:`
-        # crashes the workflow with a YAML parse error at dispatch
-        # time — that's what broke every sweep after PR #7.)
+        if: needs.profile.outputs.include_diary == 'true'
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        if: env.ANTHROPIC_API_KEY != ''
-        continue-on-error: true
         run: |
+          set -euo pipefail
+          if [ -z "${ANTHROPIC_API_KEY}" ]; then
+            echo "ANTHROPIC_API_KEY not configured; skipping diary."
+            exit 0
+          fi
+
           mkdir -p data/diary
           if uv run python -c "import importlib; importlib.import_module('collector.diary')" 2>/dev/null; then
             uv run python -m collector.diary --output "data/diary/$(date -u +%Y-%m-%d).json"
           else
-            echo "collector.diary not yet wired — skipping (see docs/METHODOLOGY.md §Cadence)."
+            echo "collector.diary not yet wired; skipping."
           fi
 
       # P7: preserve the rolling 90-day history across the keep_files:false
-      # deploy. We fetch the existing gh-pages tree (best-effort — the
-      # very first deploy has nothing to fetch and the step is a no-op),
-      # then copy api/v1/history/ + api/v1/history.json into _site/ so
-      # the renderer's history-append step appends to the existing files
-      # rather than starting from a one-day window every sweep.
+      # deploy. We fetch the existing gh-pages tree best-effort, then copy
+      # api/v1/history/ + api/v1/history.json into _site/ so the renderer's
+      # history-append step appends to the existing files.
       - name: Restore history from gh-pages
         continue-on-error: true
         env:
@@ -424,24 +250,62 @@ jobs:
           echo "Restored history files:"
           ls -la _site/api/v1/history/ 2>/dev/null || echo "(none yet)"
 
-      - name: Render dashboard
+      - name: Render unsigned dashboard
         run: |
           uv run python -m render \
             --snapshot data/snapshots/latest.json \
             --output _site
 
-      # ── R4 + R23: integrity layer ──
-      #
-      # Sign _site/api/v1/snapshot.json with a keyless sigstore
-      # signature (cosign + GitHub OIDC), and re-render once so the
-      # signature pill on the index header flips from gray to green
-      # using the freshly-attached bundle. The render step is cheap
-      # (~1s for 16 modules) and idempotent, so the cost of the
-      # second pass is acceptable.
-      #
-      # The JSON Schema (R23) is emitted by the first render pass
-      # above — see collector/schema.py + render/__main__.py.
+      - name: Upload unsigned site artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: site-unsigned-${{ github.run_id }}
+          path: _site
+          if-no-files-found: error
+          retention-days: 2
+
+      - name: Prepare forensic artifact paths
+        if: always()
+        run: mkdir -p data/snapshots data/diary
+
+      - name: Upload snapshot artifact (forensics)
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: snapshot-${{ needs.profile.outputs.profile }}-${{ github.run_id }}
+          path: |
+            data/snapshots/latest.json
+            data/diary/
+          if-no-files-found: warn
+          retention-days: ${{ needs.profile.outputs.retention_days }}
+
+  sign-snapshot:
+    name: Sign snapshot
+    needs:
+      - profile
+      - collect-render
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout signing script
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+          sparse-checkout: scripts/_ci/sign-snapshot.sh
+          sparse-checkout-cone-mode: false
+
+      - name: Download unsigned site artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: site-unsigned-${{ github.run_id }}
+          path: _site
+
       - name: Install cosign
+        continue-on-error: true
         uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac # v3
 
       - name: Sign snapshot (keyless, GitHub OIDC)
@@ -452,40 +316,118 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF: ${{ github.ref }}
         run: |
+          mkdir -p _signature
+          echo "Signature artifact for ${GITHUB_REPOSITORY} run ${GITHUB_RUN_ID}" > _signature/README.txt
           bash scripts/_ci/sign-snapshot.sh \
             _site/api/v1/snapshot.json \
-            _site/api/v1/snapshot.sig
+            _signature/snapshot.sig
+
+      - name: Upload signature artifact
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: snapshot-signature-${{ github.run_id }}
+          path: _signature
+          if-no-files-found: error
+          retention-days: 2
+
+  final-render:
+    name: Final render
+    needs:
+      - profile
+      - collect-render
+      - sign-snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install Python 3.13
+        run: uv python install 3.13
+
+      - name: Install dependencies
+        run: uv sync --group dev --python 3.13
+
+      - name: Download unsigned site artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: site-unsigned-${{ github.run_id }}
+          path: _site
+
+      - name: Download signature artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: snapshot-signature-${{ github.run_id }}
+          path: _signature
+
+      - name: Attach signature bundle
+        run: |
+          mkdir -p _site/api/v1
+          if [ -f _signature/snapshot.sig ]; then
+            cp _signature/snapshot.sig _site/api/v1/snapshot.sig
+          else
+            echo "No snapshot.sig produced; publishing unsigned status."
+          fi
+          if [ -f _signature/snapshot.sig.meta.json ]; then
+            cp _signature/snapshot.sig.meta.json _site/api/v1/snapshot.sig.meta.json
+          fi
 
       - name: Re-render with signature attached
         run: |
           uv run python -m render \
-            --snapshot data/snapshots/latest.json \
+            --snapshot _site/api/v1/snapshot.json \
             --output _site
 
-      - name: Tag heartbeat with schedule + git sha
+      - name: Tag heartbeat with schedule and git sha
         env:
-          SCHEDULE_LABEL: "24h"
+          SCHEDULE_LABEL: ${{ needs.profile.outputs.schedule_label }}
           GIT_SHA: ${{ github.sha }}
         run: bash scripts/_ci/tag-heartbeat.sh _site/heartbeat.json
 
-      - name: Upload snapshot artifact (forensics)
-        if: always()
+      - name: Upload final site artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: snapshot-full-${{ github.run_id }}
-          path: |
-            data/snapshots/latest.json
-            data/diary/
-          retention-days: 90
+          name: site-final-${{ github.run_id }}
+          path: _site
+          if-no-files-found: error
+          retention-days: 2
+
+  deploy:
+    name: Deploy to gh-pages
+    needs:
+      - profile
+      - final-render
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - name: Download final site artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: site-final-${{ github.run_id }}
+          path: _site
 
       - name: Deploy to gh-pages
-        if: success()
         uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
           publish_branch: gh-pages
           keep_files: false
-          commit_message: "sweep(full): ${{ github.sha }}"
+          commit_message: "sweep(${{ needs.profile.outputs.profile }}): ${{ github.sha }}"
           user_name: "kaos-compliance-bot"
           user_email: "kaos-compliance-bot@users.noreply.github.com"
