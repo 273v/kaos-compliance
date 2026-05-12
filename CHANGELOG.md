@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Methodology
+
+- Public PR and CI/CD hardening policy detail in the methodology,
+  including the evidence boundary between public workflow-file checks
+  and admin-only repository settings.
+- Runbook audit commands for repo settings that the dashboard should
+  not render as public green claims until GitHub exposes a
+  third-party-reproducible evidence path.
+- `kaos-compliance`-specific policy and CI guards so external fork PR
+  code is not an accepted or executed contribution path for the
+  dashboard publisher.
+
 ### Added
 
 - **Live public dashboard** at

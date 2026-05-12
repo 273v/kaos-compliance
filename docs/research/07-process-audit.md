@@ -5,6 +5,32 @@
 > not on the dashboard's presentation of it. Pulls no punches; finds
 > what a procurement reviewer who clicks `Verify` will raise.
 
+## 2026-05-12 remediation note
+
+This document is preserved as the May 11 audit record. Several findings
+changed during the May 12 public-PR hardening pass:
+
+- **F1 remediated operationally.** `main` branch protection is now
+  enabled across the public KAOS repos and `kaos-compliance`, with
+  required status checks, CODEOWNER review, stale-review dismissal,
+  last-push approval, linear history, admin enforcement, and no
+  force-pushes.
+- **F18 partially remediated.** Scorecard workflows are installed and
+  SHA-pinned, but `kaos-compliance` still does not ingest per-check
+  Scorecard output into the dashboard. That ingestion remains tracked
+  as `R8` in `docs/research/08-followup.md`.
+- **F20 remediated operationally.** Dependabot configuration is now
+  present for the public repos; stale pre-hardening tag-based Actions
+  PRs were closed so SHA-aware Dependabot PRs can replace them.
+- **F10 corrected.** `kaos-x64-16core` is a GitHub-hosted larger runner,
+  not an org-owned persistent self-hosted runner. The remaining runner
+  policy is cost/egress/cache risk for public PRs, not persistence risk
+  on 273V hardware.
+
+The dashboard should not silently rewrite the historical audit table.
+Current state should be verified through the live dashboard and the
+admin-only audit commands in `docs/RUNBOOK.md`.
+
 ## What's already impressive
 
 - **PEP 740 attestations live on 16/16 packages** with verified Rekor

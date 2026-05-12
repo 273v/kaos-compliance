@@ -45,6 +45,55 @@ Cron is driven primarily by GitHub Actions on this repo. A local cron
 job on the developer machine acts as a backup and runs the LLM diary
 when the GHA secrets don't have the model-provider API key wired.
 
+## Public PR and CI/CD Hardening Policy
+
+The KAOS package repos are public, so the dashboard treats outside PRs
+as an explicit trust boundary rather than a convenience feature. The
+policy baseline for public `273v/kaos-*` repos and this compliance repo
+is:
+
+- untrusted PR code runs only from `pull_request`, never
+  `pull_request_target` with contributor code checked out;
+- the default `GITHUB_TOKEN` is read-only;
+- workflows declare explicit `permissions:`;
+- PR build/test jobs have no secrets, no `id-token: write`, no package
+  publish authority, and no `contents: write`;
+- all checkout steps use `persist-credentials: false`;
+- external Actions references are pinned to full commit SHAs;
+- fork PR workflow runs require approval for all external
+  contributors;
+- `main` requires status checks, CODEOWNER review, stale-review
+  dismissal, approval of the most recent push, linear history, and no
+  force-pushes;
+- `v*` release tags are protected against deletion and force-update;
+- secret scanning and push protection are enabled.
+
+For `kaos-compliance` specifically, external fork PR code is not an
+accepted contribution path and is not executed in CI. GitHub does not
+allow disabling forks for an org-owned public repository, so the repo
+uses policy plus workflow guards: public issues and private security
+reports remain open, while CI jobs run only for `main` and PR branches
+whose head repository is `273v/kaos-compliance`.
+
+This policy is documented in full in
+`kaos-modules/docs/oss/40-ci-cd/public-pr-security.md`. The compliance
+dashboard does not currently render these repository settings as a
+green public claim, because several of them are visible only through
+GitHub admin APIs. The dashboard may surface workflow-file checks that
+are publicly reproducible, such as pinned `uses:` references and
+explicit workflow permissions. Admin-only settings are audited with the
+runbook commands in `docs/RUNBOOK.md` until GitHub exposes a
+publicly-reproducible evidence path.
+
+The `kaos-compliance` sweep workflow is a trusted `main`/schedule
+workflow, not an untrusted PR workflow. It still has a tracked
+trust-lane follow-up: split collection/rendering, keyless signing, final
+render, and Pages deploy into separate jobs so dependency installation
+never shares a job token with `contents: write` or `id-token: write`.
+Until that lands, the snapshot signature proves which workflow produced
+the JSON, but it does not prove that the workflow followed the
+least-privilege job split described above.
+
 ## Frameworks anchored
 
 This dashboard maps signals to:
@@ -76,7 +125,7 @@ can't reach them.
 |---|---|---|---|
 | `PO.1.1` | Define security requirements | Methodology + threat model | `docs/METHODOLOGY.md`, `docs/research/01-*.md` |
 | `PO.3.2` | Provide a mechanism for verifying software releases | PEP 740 attestation + Rekor index | `modules[].supply_chain.attestations.*` |
-| `PO.5.2` | Implement and maintain secure environments | Self-hosted runner labels | (gap — F10; see below) |
+| `PO.5.2` | Implement and maintain secure environments | Public PR hardening policy; GitHub-hosted runner policy | Policy documented above; workflow-file checks are public, admin settings are runbook-audited |
 | `PS.1.1` | Store all forms of code based on the principle of least privilege | Branch protection on `main` | `modules[].governance.branch_protection_enabled` |
 | `PS.2.1` | Provide a mechanism for verifying software-release integrity | Sigstore signature on snapshot + per-package attestations | `api/v1/snapshot.sig`, `modules[].supply_chain.attestations.*` |
 | `PS.3.1` | Archive and protect each software release | PyPI release immutability + Rekor transparency log | `modules[].supply_chain.attestations.rekor_log_index` |
@@ -206,6 +255,14 @@ reproduce the underlying lookup without any privileged access:
 If a `Verify` link doesn't reproduce, the dashboard claim is wrong and
 should be reported.
 
+Repository-level Actions settings such as fork-approval policy, default
+workflow-token permissions, SHA-pinning enforcement, and secret scanning
+are intentionally absent from this verification table today. They are
+important controls, but their GitHub API evidence requires maintainer
+or admin authority. We audit them operationally and avoid rendering a
+public green check until the evidence can be reproduced by a third
+party.
+
 ## Snapshot integrity and shape
 
 Every published snapshot is accompanied by two integrity artifacts:
@@ -238,9 +295,9 @@ Things this dashboard does **not** prove:
   the scope of any public dashboard.
 - **OpenSSF Scorecard per-check results (R8).** The dashboard names
   Scorecard as an anchor framework but does NOT yet ingest the per-check
-  results — the Scorecard workflow is not installed on
-  `kaos-compliance` itself today. This is a self-inflicted gap,
-  tracked as `F18` in
+  results. Scorecard workflows are installed and pinned, but the
+  dashboard has not yet turned their SARIF/JSON output into a
+  per-check table. This is a self-inflicted gap, tracked as `R8` in
   [`docs/research/08-followup.md`](research/08-followup.md). A buyer
   who wants the per-check breakdown today can run
   `scorecard --repo=273v/kaos-compliance --format=json` locally; the

@@ -24,6 +24,7 @@ jobs:
   # ────────────── lint ──────────────
   lint:
     name: Lint
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -59,6 +60,7 @@ jobs:
   # once one lands.
   pre-commit:
     name: Pre-commit hooks
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -99,6 +101,7 @@ jobs:
   # ────────────── test ──────────────
   test:
     name: Test (Linux / Python ${{ matrix.python-version }})
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -133,6 +136,7 @@ jobs:
   # contract enforced so a future PyPI release is one decision away.
   build:
     name: Build distribution
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 15
     needs: [lint, test]

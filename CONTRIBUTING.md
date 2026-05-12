@@ -2,8 +2,16 @@
 
 The `kaos-compliance` dashboard publishes verifiable, evidence-backed
 claims about the public KAOS open-source ecosystem. Contributions are
-welcome — particularly ones that tighten the link between the claim
-surfaced on the dashboard and the public evidence underneath.
+welcome as issues, evidence reports, and design review — particularly
+ones that tighten the link between the claim surfaced on the dashboard
+and the public evidence underneath.
+
+`kaos-compliance` is different from the package repos: it signs and
+publishes the public compliance dashboard. For that reason, external
+fork PR code is not accepted or executed in CI for this repository.
+Please open an issue with the proposed change, evidence link, or patch
+description instead. A maintainer may apply the change on a trusted
+branch after review.
 
 ## Ground rules
 
@@ -64,7 +72,8 @@ maintainer-identity signals, will be closed without merge.
 
 ### Code contributions
 
-1. Fork + branch.
+1. Coordinate in an issue first. Maintainers apply accepted changes on
+   trusted branches.
 2. Run the local quality gate before pushing:
 
    ```bash
