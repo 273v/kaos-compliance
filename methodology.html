@@ -84,7 +84,7 @@ footer a{color:var(--muted)}
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-12 22:38 UTC
+  Generated 2026-05-12 22:50 UTC
  </div>
 </header>
 
@@ -95,6 +95,7 @@ footer a{color:var(--muted)}
   <ol>
    <li><a href="#sec-1">Principles</a></li>
    <li><a href="#sec-2">Cadence</a></li>
+   <li><a href="#public-pr-hardening">Public PR hardening</a></li>
    <li><a href="#sec-3">Frameworks anchored</a></li>
    <li><a href="#sec-4">Anti-patterns we explicitly avoid</a></li>
    <li><a href="#pill-semantics">Pill semantics</a></li>
@@ -133,6 +134,26 @@ footer a{color:var(--muted)}
     <p>Cron is driven primarily by GitHub Actions on this repo. A local cron job on the developer machine acts as a backup and runs the LLM diary when the GHA secrets don&rsquo;t have the model-provider API key wired.</p>
    </section>
 
+   <section class="block" id="public-pr-hardening">
+    <h2>Public PR and CI/CD hardening policy</h2>
+    <p>The KAOS package repos are public, so the dashboard treats outside PRs as an explicit trust boundary rather than a convenience feature. The policy baseline for public <code>273v/kaos-*</code> repos and this compliance repo is:</p>
+    <ul>
+     <li>untrusted PR code runs only from <code>pull_request</code>, never <code>pull_request_target</code> with contributor code checked out;</li>
+     <li>the default <code>GITHUB_TOKEN</code> is read-only;</li>
+     <li>workflows declare explicit <code>permissions:</code>;</li>
+     <li>PR build/test jobs have no secrets, no <code>id-token: write</code>, no package-publish authority, and no <code>contents: write</code>;</li>
+     <li>checkout uses <code>persist-credentials: false</code>;</li>
+     <li>external Actions references are pinned to full commit SHAs;</li>
+     <li>fork PR workflow runs require approval for all external contributors;</li>
+     <li><code>main</code> requires status checks, CODEOWNER review, stale-review dismissal, approval of the most recent push, linear history, and no force-pushes;</li>
+     <li><code>v*</code> release tags are protected against deletion and force-update;</li>
+     <li>secret scanning and push protection are enabled.</li>
+    </ul>
+    <p>For <code>kaos-compliance</code> specifically, external fork PR code is not an accepted contribution path and is not executed in CI. GitHub does not allow disabling forks for an org-owned public repository, so the repo uses policy plus workflow guards: public issues and private security reports remain open, while CI jobs run only for <code>main</code> and PR branches whose head repository is <code>273v/kaos-compliance</code>.</p>
+    <p>This policy is documented in full in <code>kaos-modules/docs/oss/40-ci-cd/public-pr-security.md</code>. The compliance dashboard does not currently render these repository settings as a green public claim, because several are visible only through GitHub admin APIs. The dashboard may surface workflow-file checks that are publicly reproducible, such as pinned <code>uses:</code> references and explicit workflow permissions. Admin-only settings are audited with the runbook commands in <code>docs/RUNBOOK.md</code> until GitHub exposes a public evidence path.</p>
+    <p>The <code>kaos-compliance</code> sweep workflow is a trusted <code>main</code>/schedule workflow, not an untrusted PR workflow. It still has a tracked trust-lane follow-up: split collection/rendering, keyless signing, final render, and Pages deploy into separate jobs so dependency installation never shares a job token with <code>contents: write</code> or <code>id-token: write</code>. Until that lands, the snapshot signature proves which workflow produced the JSON, but it does not prove that the workflow followed the least-privilege job split described here.</p>
+   </section>
+
    <section class="block" id="sec-3">
     <h2>Frameworks anchored</h2>
     <p>This dashboard maps signals to:</p>
@@ -153,6 +174,7 @@ footer a{color:var(--muted)}
      <tbody>
       <tr><td><code>PO.1.1</code></td><td>Define security requirements</td><td>Methodology + threat model</td><td><code>docs/METHODOLOGY.md</code></td></tr>
       <tr><td><code>PO.3.2</code></td><td>Verify software releases</td><td>PEP 740 attestation + Rekor</td><td><code>modules[].supply_chain.attestations.*</code></td></tr>
+      <tr><td><code>PO.5.2</code></td><td>Secure environments</td><td>Public PR hardening policy; GitHub-hosted runner policy</td><td>Policy documented above; workflow-file checks are public, admin settings are runbook-audited</td></tr>
       <tr><td><code>PS.1.1</code></td><td>Least-privilege source storage</td><td>Branch protection on <code>main</code></td><td><code>modules[].governance.branch_protection_enabled</code></td></tr>
       <tr><td><code>PS.2.1</code></td><td>Verify release integrity</td><td>Sigstore signature on snapshot + per-package attestations</td><td><code>api/v1/snapshot.sig</code>, <code>modules[].supply_chain.attestations.*</code></td></tr>
       <tr><td><code>PS.3.1</code></td><td>Archive and protect each release</td><td>PyPI immutability + Rekor transparency log</td><td><code>modules[].supply_chain.attestations.rekor_log_index</code></td></tr>
@@ -333,6 +355,7 @@ footer a{color:var(--muted)}
      </tbody>
     </table>
     <p>If a <em>Verify</em> link doesn&rsquo;t reproduce, the dashboard claim is wrong and should be reported.</p>
+    <p>Repository-level Actions settings such as fork-approval policy, default workflow-token permissions, SHA-pinning enforcement, and secret scanning are intentionally absent from this table today. They are important controls, but their GitHub API evidence requires maintainer or admin authority. We audit them operationally and avoid rendering a public green check until the evidence can be reproduced by a third party.</p>
    </section>
 
    <section class="block" id="sec-6">
@@ -343,7 +366,7 @@ footer a{color:var(--muted)}
      <li><strong>Per-commit author identity beyond GitHub&rsquo;s <code>verification.verified</code> state.</strong> GitHub&rsquo;s GPG-key claim is what we report; deeper identity proofing (e.g., DCO sign-off matching a known steward) is not done.</li>
      <li><strong>Source-of-truth for transitive licenses.</strong> We rely on the published license metadata of each dep. If a published license is wrong, our aggregation is wrong. We do not legally audit license claims.</li>
      <li><strong>Operational security of the maintainer machines.</strong> A dashboard can prove the artifact came from a specific workflow; it cannot prove the workflow&rsquo;s secrets weren&rsquo;t exfiltrated upstream. That&rsquo;s outside the scope of any public dashboard.</li>
-     <li><strong>OpenSSF Scorecard per-check results.</strong> The dashboard names Scorecard as an anchor framework but does not yet ingest the per-check results &mdash; the Scorecard workflow is not installed on <code>kaos-compliance</code> itself. Tracked as <code>F18</code> in <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>. A buyer can run <code>scorecard --repo=273v/kaos-compliance --format=json</code> locally to fill the gap today.</li>
+     <li><strong>OpenSSF Scorecard per-check results.</strong> The Scorecard workflows are installed, but the dashboard does not yet ingest the per-check SARIF/JSON output. Tracked as <code>R8</code> in <a href="https://github.com/273v/kaos-compliance/blob/main/docs/research/08-followup.md">docs/research/08-followup.md</a>. A buyer can run <code>scorecard --repo=273v/kaos-compliance --format=json</code> locally to fill the gap today.</li>
      <li><strong>SLSA Build Level not formally attested.</strong> Each package&rsquo;s PEP 740 attestation + PyPI Trusted Publisher state puts it effectively at SLSA Build L2. The supply-chain page surfaces an implied-level pill per package; we do not emit a formal <code>slsa.build.level</code> claim until the SBOM dep-graph (<code>F9</code>) and the Scorecard ingest (<code>F18</code>) land.</li>
      <li><strong>CISA SBOM Minimum Elements: relationships gap.</strong> The seven required elements (author, supplier, name, version, unique ID, relationships, timestamp) are visible per package on <a href="supply-chain.html">supply-chain.html</a>; <em>relationships</em> is flagged yellow across the org because the SBOM emitter doesn&rsquo;t yet build the dependency edge graph.</li>
     </ul>
@@ -417,8 +440,8 @@ footer a{color:var(--muted)}
   </section>
 
   <p class="versionline">
-   Methodology version 1.1
-   &mdash; last updated 2026-05-11.
+   Methodology version 1.1.1
+   &mdash; last updated 2026-05-12.
     Source: <a href="https://github.com/273v/kaos-compliance/blob/main/docs/METHODOLOGY.md">docs/METHODOLOGY.md</a>.
   </p>
  </article>
@@ -426,7 +449,7 @@ footer a{color:var(--muted)}
 </main>
 
 <footer>
- Generated 2026-05-12 22:38 UTC
+ Generated 2026-05-12 22:50 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
