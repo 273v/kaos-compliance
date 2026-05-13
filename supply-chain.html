@@ -71,6 +71,10 @@ details.pkg-detail>div.inner{padding:0 var(--s-4) var(--s-4);border-top:1px soli
 .chip.g{color:var(--g-fg);border-color:var(--g-fg)}
 .chip.y{color:var(--y-fg);border-color:var(--y-fg)}
 .chip.r{color:var(--r-fg);border-color:var(--r-fg)}
+.finding-note{max-width:520px;color:var(--muted);font-size:0.8125rem}
+.finding-note details{margin:0}
+.finding-note summary{cursor:pointer;color:var(--text);font-weight:600}
+.finding-note p{margin:var(--s-2) 0 0}
 .kv{display:grid;grid-template-columns:max-content 1fr;gap:var(--s-1) var(--s-4);font-size:0.875rem;margin-top:var(--s-3)}
 .kv dt{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding-top:var(--s-1)}
 .kv dd{margin:0;font-family:var(--mono);word-break:break-all}
@@ -121,7 +125,7 @@ footer a{color:var(--muted)}
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-13 13:58 UTC
+  Generated 2026-05-13 14:16 UTC
  </div>
 </header>
 
@@ -456,6 +460,819 @@ footer a{color:var(--muted)}
       <td data-h="Dependency relationships" title="components[] enumerated but top-level dependencies[] graph NOT emitted; SBOM is a manifest, not a graph. Tracked as F9 in docs/research/08-followup.md."><span class="pill y" aria-label="Dependency relationships: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
       <td data-h="Timestamp" title="CycloneDX metadata.timestamp set to SBOM emit time."><span class="pill g" aria-label="Timestamp: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
     </tr>
+   </tbody>
+  </table>
+ </div>
+</section>
+
+<section aria-labelledby="license-findings-h">
+ <h2 id="license-findings-h">License and dependency findings</h2>
+ <div class="card" style="padding:0;overflow-x:auto">
+  <p style="padding:var(--s-3) var(--s-4) 0;margin:0;color:var(--muted);font-size:0.8125rem">
+   This is the explanation behind the License and Deps pills. Approved
+   exceptions point at <a href="license-policy.html">license-policy.html</a>;
+   parser gaps name the true license and the parser fix that is tracked.
+   Raw CycloneDX JSON remains available, but it is no longer the only
+   evidence link for a warning.
+  </p>
+  <table class="grid" aria-describedby="license-findings-h" style="margin-top:var(--s-3)">
+   <thead>
+    <tr>
+     <th scope="col">Package</th>
+     <th scope="col">Status</th>
+     <th scope="col">Component</th>
+     <th scope="col">License</th>
+     <th scope="col">Decision</th>
+     <th scope="col">Explanation</th>
+    </tr>
+   </thead>
+   <tbody>
+      <tr id="license-findings-kaos-citations">
+       <td class="pkg" data-h="Package"><a href="package/kaos-citations.html">kaos-citations</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">regex</td>
+       <td class="mono" data-h="License">Apache-2.0 OR MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#regex">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Investigate — both license_expression and license should be populated upstream
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-content">
+       <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">hypothesis</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#hypothesis">Allowed by policy</a><br><span class="mono">audit A.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>hypothesis is a dev/test-only dependency declared in [dependency-groups].dev, never in [project].dependencies. A consumer who pip-installs kaos-content does not receive hypothesis. MPL-2.0 obligations cannot reach a shipped wheel.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">imagehash</td>
+       <td class="mono" data-h="License">BSD-2-Clause</td>
+       <td data-h="Decision">
+<a href="license-policy.html#imagehash">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Widen text-mine window
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">polars</td>
+       <td class="mono" data-h="License">MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#polars">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Widen text-mine window
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">scipy</td>
+       <td class="mono" data-h="License">BSD-3-Clause</td>
+       <td data-h="Decision">
+<a href="license-policy.html#scipy">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Widen text-mine window from 600 to 2048 chars
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-content.html">kaos-content</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">tqdm</td>
+       <td class="mono" data-h="License">MPL-2.0 AND MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#tqdm">Allowed by policy</a><br><span class="mono">audit A.2</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>tqdm is dual-licensed. The MPL-2.0 component is file-scoped to a single source file (the sub-interval feature) which we do not modify. The MIT track covers the entire public API. Used by ~5B downloads across the Python ecosystem with this posture.</p>
+         </details>
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-core">
+       <td class="pkg" data-h="Package"><a href="package/kaos-core.html">kaos-core</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-graph">
+       <td class="pkg" data-h="Package"><a href="package/kaos-graph.html">kaos-graph</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">r-efi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#r-efi">Allowed by policy</a><br><span class="mono">audit A.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>r-efi is a UEFI bindings crate pulled transitively by getrandom only on UEFI targets. Our wheel matrix builds for linux, macOS, and Windows — never UEFI — so r-efi is in the resolver graph but never compiled into shipped binaries. No practical MPL-2.0 obligations attach. A stricter alternative is a cargo-deny exclude rule; tracked as future hygiene work.</p>
+         </details>
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-llm-client">
+       <td class="pkg" data-h="Package"><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">azure-core</td>
+       <td class="mono" data-h="License">MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#azure-core">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Offline license book fallback
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">azure-identity</td>
+       <td class="mono" data-h="License">MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#azure-identity">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Offline license book fallback
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-llm-client.html">kaos-llm-client</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-llm-core">
+       <td class="pkg" data-h="Package"><a href="package/kaos-llm-core.html">kaos-llm-core</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-mcp">
+       <td class="pkg" data-h="Package"><a href="package/kaos-mcp.html">kaos-mcp</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-ml-core">
+       <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">protobuf</td>
+       <td class="mono" data-h="License">Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#protobuf">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         PyPI license metadata gap; offline license book fallback
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">py-rust-stemmers</td>
+       <td class="mono" data-h="License">BSD-3-Clause</td>
+       <td data-h="Decision">
+<a href="license-policy.html#py-rust-stemmers">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         PyPI license metadata gap
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">scipy</td>
+       <td class="mono" data-h="License">BSD-3-Clause</td>
+       <td data-h="Decision">
+<a href="license-policy.html#scipy">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Widen text-mine window from 600 to 2048 chars
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">tqdm</td>
+       <td class="mono" data-h="License">MPL-2.0 AND MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#tqdm">Allowed by policy</a><br><span class="mono">audit A.2</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>tqdm is dual-licensed. The MPL-2.0 component is file-scoped to a single source file (the sub-interval feature) which we do not modify. The MIT track covers the entire public API. Used by ~5B downloads across the Python ecosystem with this posture.</p>
+         </details>
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-nlp-core">
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">fnv</td>
+       <td class="mono" data-h="License">Apache-2.0 OR MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#fnv">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">fst</td>
+       <td class="mono" data-h="License">Unlicense OR MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#fst">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">id-arena</td>
+       <td class="mono" data-h="License">MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#id-arena">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">page_size</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#page_size">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">quick-error</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#quick-error">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">r-efi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#r-efi">Allowed by policy</a><br><span class="mono">audit A.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>r-efi is a UEFI bindings crate pulled transitively by getrandom only on UEFI targets. Our wheel matrix builds for linux, macOS, and Windows — never UEFI — so r-efi is in the resolver graph but never compiled into shipped binaries. No practical MPL-2.0 obligations attach. A stricter alternative is a cargo-deny exclude rule; tracked as future hygiene work.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">rusty-fork</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#rusty-fork">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">same-file</td>
+       <td class="mono" data-h="License">Unlicense OR MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#same-file">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">siphasher</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#siphasher">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">utf8-ranges</td>
+       <td class="mono" data-h="License">Unlicense OR MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#utf8-ranges">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">version_check</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#version_check">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">wait-timeout</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#wait-timeout">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">walkdir</td>
+       <td class="mono" data-h="License">Unlicense OR MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#walkdir">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">winapi</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#winapi">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">winapi-i686-pc-windows-gnu</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#winapi-i686-pc-windows-gnu">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">winapi-x86_64-pc-windows-gnu</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#winapi-x86_64-pc-windows-gnu">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">zstd-sys</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#zstd-sys">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-nlp-transformers">
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">base64</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#base64">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">fnv</td>
+       <td class="mono" data-h="License">Apache-2.0 OR MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#fnv">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">id-arena</td>
+       <td class="mono" data-h="License">MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#id-arena">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">ident_case</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#ident_case">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">matrixmultiply</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#matrixmultiply">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">minimal-lexical</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#minimal-lexical">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">option-ext</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#option-ext">Allowed by policy</a><br><span class="mono">audit A.5</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>option-ext is an 87-line Rust crate adding Option extension methods, pulled transitively via dirs → dirs-sys → option-ext. We ship it unmodified inside the kaos-nlp-transformers Rust binary; MPL-2.0 file-scoped obligations don't propagate. Future work: remove the dirs dependency entirely to drop this branch.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">page_size</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#page_size">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">r-efi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#r-efi">Allowed by policy</a><br><span class="mono">audit A.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>r-efi is a UEFI bindings crate pulled transitively by getrandom only on UEFI targets. Our wheel matrix builds for linux, macOS, and Windows — never UEFI — so r-efi is in the resolver graph but never compiled into shipped binaries. No practical MPL-2.0 obligations attach. A stricter alternative is a cargo-deny exclude rule; tracked as future hygiene work.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">rawpointer</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#rawpointer">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">rayon-cond</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#rayon-cond">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">same-file</td>
+       <td class="mono" data-h="License">Unlicense OR MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#same-file">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">serde_urlencoded</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#serde_urlencoded">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">socks</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#socks">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">tqdm</td>
+       <td class="mono" data-h="License">MPL-2.0 AND MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#tqdm">Allowed by policy</a><br><span class="mono">audit A.2</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>tqdm is dual-licensed. The MPL-2.0 component is file-scoped to a single source file (the sub-interval feature) which we do not modify. The MIT track covers the entire public API. Used by ~5B downloads across the Python ecosystem with this posture.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">unicode-normalization-alignments</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#unicode-normalization-alignments">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">version_check</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#version_check">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">walkdir</td>
+       <td class="mono" data-h="License">Unlicense OR MIT</td>
+       <td data-h="Decision">
+<a href="license-policy.html#walkdir">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">webpki-roots</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#webpki-roots">Known license; parser fix tracked</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Mozilla CA roots, same posture as certifi — should land in allowed_expressions
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">winapi</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#winapi">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">winapi-i686-pc-windows-gnu</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#winapi-i686-pc-windows-gnu">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">winapi-x86_64-pc-windows-gnu</td>
+       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#winapi-x86_64-pc-windows-gnu">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         crates.io enrichment retry
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-office">
+       <td class="pkg" data-h="Package"><a href="package/kaos-office.html">kaos-office</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-source">
+       <td class="pkg" data-h="Package"><a href="package/kaos-source.html">kaos-source</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-source.html">kaos-source</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">playwright</td>
+       <td class="mono" data-h="License">Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#playwright">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Offline license book fallback; upstream PR to populate info.license_expression
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-tabular">
+       <td class="pkg" data-h="Package"><a href="package/kaos-tabular.html">kaos-tabular</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr id="license-findings-kaos-web">
+       <td class="pkg" data-h="Package"><a href="package/kaos-web.html">kaos-web</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-web.html">kaos-web</a></td>
+       <td data-h="Status"><span class="pill y" aria-label="Parser gap: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span></td>
+       <td class="mono" data-h="Component">playwright</td>
+       <td class="mono" data-h="License">Apache-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#playwright">Known license; parser fix tracked</a><br><span class="mono">audit B.4</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         Offline license book fallback; upstream PR to populate info.license_expression
+       </td>
+      </tr>
    </tbody>
   </table>
  </div>
@@ -1058,7 +1875,14 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 11</span>
+       <span class="chip g">Apache-2.0 &times; 5</span>
+       <span class="chip g">BSD-3-Clause &times; 5</span>
+       <span class="chip g">BSD-2-Clause &times; 4</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip y">LicenseRef-unknown-df4fa55c &times; 1</span>
+       <span class="chip g">PSF-2.0 &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1083,7 +1907,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 24</span>
+       <span class="chip g">Apache-2.0 &times; 9</span>
+       <span class="chip g">BSD-3-Clause &times; 8</span>
+       <span class="chip y">MPL-2.0 &times; 2</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">BSD-2-Clause &times; 1</span>
+       <span class="chip g">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0 &times; 1</span>
+       <span class="chip g">ISC &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1108,7 +1940,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 21</span>
+       <span class="chip g">BSD-3-Clause &times; 9</span>
+       <span class="chip g">Apache-2.0 &times; 2</span>
+       <span class="chip g">BSD-2-Clause &times; 2</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
+       <span class="chip y">MPL-2.0 &times; 1</span>
+       <span class="chip g">PSF-2.0 &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1133,7 +1973,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT OR Apache-2.0 &times; 37</span>
+       <span class="chip g">MIT &times; 15</span>
+       <span class="chip g">BSD-3-Clause &times; 6</span>
+       <span class="chip g">Apache-2.0 &times; 4</span>
+       <span class="chip g">Apache-2.0 OR MIT &times; 3</span>
+       <span class="chip g">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT &times; 2</span>
+       <span class="chip g">BSD-2-Clause OR Apache-2.0 OR MIT &times; 2</span>
+       <span class="chip g">(MIT OR Apache-2.0) AND Unicode-3.0 &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1158,7 +2006,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 22</span>
+       <span class="chip g">BSD-3-Clause &times; 8</span>
+       <span class="chip g">Apache-2.0 &times; 4</span>
+       <span class="chip y">LicenseRef-unknown-e3b0c442 &times; 2</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
+       <span class="chip g">BSD-2-Clause &times; 1</span>
+       <span class="chip y">MPL-2.0 &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1183,7 +2039,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 18</span>
+       <span class="chip g">Apache-2.0 &times; 8</span>
+       <span class="chip g">BSD-3-Clause &times; 6</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">BSD-2-Clause &times; 1</span>
+       <span class="chip g">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0 &times; 1</span>
+       <span class="chip g">MIT-CMU &times; 1</span>
+       <span class="chip y">MPL-2.0 &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1208,7 +2072,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 29</span>
+       <span class="chip g">BSD-3-Clause &times; 10</span>
+       <span class="chip g">Apache-2.0 &times; 5</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
+       <span class="chip g">BSD-2-Clause &times; 1</span>
+       <span class="chip g">ISC &times; 1</span>
+       <span class="chip y">MPL-2.0 &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1233,7 +2105,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 41</span>
+       <span class="chip g">Apache-2.0 &times; 17</span>
+       <span class="chip g">BSD-3-Clause &times; 15</span>
+       <span class="chip g">MIT OR Apache-2.0 &times; 12</span>
+       <span class="chip g">BSD-2-Clause &times; 2</span>
+       <span class="chip g">(MIT OR Apache-2.0) AND Unicode-3.0 &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1258,7 +2138,12 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 6</span>
+       <span class="chip g">Apache-2.0 &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">BSD-2-Clause &times; 1</span>
+       <span class="chip g">BSD-3-Clause &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1283,7 +2168,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT OR Apache-2.0 &times; 89</span>
+       <span class="chip g">MIT &times; 28</span>
+       <span class="chip g">Unicode-3.0 &times; 16</span>
+       <span class="chip g">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT &times; 13</span>
+       <span class="chip g">Apache-2.0 OR MIT &times; 11</span>
+       <span class="chip y">LicenseRef-unknown-ec5c82d8 &times; 11</span>
+       <span class="chip g">Apache-2.0 &times; 8</span>
+       <span class="chip g">BSD-3-Clause &times; 8</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1308,7 +2201,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT OR Apache-2.0 &times; 154</span>
+       <span class="chip g">MIT &times; 77</span>
+       <span class="chip g">Apache-2.0 &times; 21</span>
+       <span class="chip g">Unicode-3.0 &times; 18</span>
+       <span class="chip g">Apache-2.0 OR MIT &times; 16</span>
+       <span class="chip g">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT &times; 15</span>
+       <span class="chip g">BSD-3-Clause &times; 15</span>
+       <span class="chip y">LicenseRef-unknown-ec5c82d8 &times; 14</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1333,7 +2234,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 33</span>
+       <span class="chip g">BSD-3-Clause &times; 11</span>
+       <span class="chip g">Apache-2.0 &times; 7</span>
+       <span class="chip g">BSD-2-Clause &times; 2</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
+       <span class="chip g">ISC &times; 1</span>
+       <span class="chip g">MIT-CMU &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1358,7 +2267,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 19</span>
+       <span class="chip g">Apache-2.0 &times; 6</span>
+       <span class="chip g">BSD-3-Clause &times; 5</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
+       <span class="chip g">BSD-2-Clause &times; 1</span>
+       <span class="chip g">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0 &times; 1</span>
+       <span class="chip g">MIT-CMU &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1383,7 +2300,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 15</span>
+       <span class="chip g">BSD-3-Clause &times; 7</span>
+       <span class="chip g">Apache-2.0 &times; 5</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">BSD-2-Clause &times; 1</span>
+       <span class="chip y">LicenseRef-unknown-e3b0c442 &times; 1</span>
+       <span class="chip g">MIT AND PSF-2.0 &times; 1</span>
+       <span class="chip g">MIT-CMU &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1408,7 +2333,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 30</span>
+       <span class="chip g">BSD-3-Clause &times; 10</span>
+       <span class="chip g">Apache-2.0 &times; 6</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
+       <span class="chip g">BSD-2-Clause &times; 1</span>
+       <span class="chip g">ISC &times; 1</span>
+       <span class="chip y">MPL-2.0 &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1433,7 +2366,15 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-—     </span>
+       <span class="chip g">MIT &times; 35</span>
+       <span class="chip g">BSD-3-Clause &times; 11</span>
+       <span class="chip g">Apache-2.0 &times; 7</span>
+       <span class="chip g">BSD-2-Clause &times; 2</span>
+       <span class="chip g">ISC &times; 2</span>
+       <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
+       <span class="chip y">LicenseRef-unknown-e3b0c442 &times; 1</span>
+     </span>
     </dd>
     <dt>Wheel matrix</dt>
     <dd>
@@ -1464,7 +2405,7 @@ footer a{color:var(--muted)}
 </main>
 
 <footer>
- Generated 2026-05-13 13:58 UTC
+ Generated 2026-05-13 14:16 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
