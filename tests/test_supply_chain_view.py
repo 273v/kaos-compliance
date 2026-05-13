@@ -198,8 +198,8 @@ def test_license_findings_explain_approved_exception_and_parser_gap():
     assert certifi["policy_url"] == "license-policy.html#certifi"
 
     regex = next(r for r in rows if r["component"] == "regex")
-    assert regex["state"] == "yellow"
-    assert regex["kind"] == "Parser gap"
+    assert regex["state"] == "green"
+    assert regex["kind"] == "Documented parser gap"
     assert regex["license"] == "Apache-2.0 OR MIT"
     assert regex["policy_url"] == "license-policy.html#regex"
 
@@ -212,3 +212,6 @@ def test_supply_chain_summary_threads_license_findings():
     pkg = summary["packages"][0]
     assert pkg["license_findings"] == summary["license_findings"]
     assert pkg["license_top"][0]["spdx"] == "LicenseRef-unknown-abc"
+    assert pkg["license_top"][0]["state"] == "green"
+    assert summary["org_license_breakdown"][0]["spdx"] == "LicenseRef-unknown-abc"
+    assert summary["org_license_breakdown"][0]["state"] == "green"
