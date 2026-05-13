@@ -8,160 +8,158 @@
     "identity": {
       "pypi_version": "0.1.0a3",
       "pypi_url": "https://pypi.org/project/kaos-graph/0.1.0a3/",
-      "main_head_sha": "b30f53da2a8d50e92d5519630dcb683a843ea7ff",
+      "main_head_sha": "f791def7899ae2f5800a983d7e1d0a1993b0e406",
       "latest_tag": "v0.1.0a3",
       "latest_tag_sha": "5c8375abc4e478572a1018e772ed3bd253e44e52",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-12T12:15:09Z"
+      "last_commit_at": "2026-05-12T23:39:24Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25733754022,
-      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/25733754022",
-      "head_sha": "b30f53da2a8d50e92d5519630dcb683a843ea7ff",
-      "run_completed_at": "2026-05-12T12:30:03Z",
+      "workflow_run_id": 25768687098,
+      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/25768687098",
+      "head_sha": "f791def7899ae2f5800a983d7e1d0a1993b0e406",
+      "run_completed_at": "2026-05-13T00:00:20Z",
       "matrix": [
         {
-          "name": "Lint",
+          "name": "Rust tests (no PyO3)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-12T12:21:12Z",
-          "completed_at": "2026-05-12T12:22:32Z",
-          "duration_seconds": 80
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-12T12:15:17Z",
-          "completed_at": "2026-05-12T12:21:28Z",
-          "duration_seconds": 371
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-12T12:20:56Z",
-          "completed_at": "2026-05-12T12:22:48Z",
-          "duration_seconds": 112
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-12T12:22:28Z",
-          "completed_at": "2026-05-12T12:24:07Z",
-          "duration_seconds": 99
+          "started_at": "2026-05-12T23:41:20Z",
+          "completed_at": "2026-05-12T23:41:44Z",
+          "duration_seconds": 24
         },
         {
           "name": "Pre-commit hooks",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-12T12:21:55Z",
-          "completed_at": "2026-05-12T12:23:06Z",
-          "duration_seconds": 71
+          "started_at": "2026-05-12T23:49:24Z",
+          "completed_at": "2026-05-12T23:50:27Z",
+          "duration_seconds": 63
         },
         {
-          "name": "Rust tests (no PyO3)",
+          "name": "Test against minimum dependencies",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-12T12:25:20Z",
-          "completed_at": "2026-05-12T12:25:42Z",
-          "duration_seconds": 22
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-12T12:22:41Z",
-          "completed_at": "2026-05-12T12:24:23Z",
-          "duration_seconds": 102
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-12T12:25:22Z",
-          "completed_at": "2026-05-12T12:26:59Z",
+          "started_at": "2026-05-12T23:53:09Z",
+          "completed_at": "2026-05-12T23:54:46Z",
           "duration_seconds": 97
         },
         {
-          "name": "Test (linux-x64 / Python 3.14t)",
+          "name": "Lint",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-12T12:25:50Z",
-          "completed_at": "2026-05-12T12:27:26Z",
-          "duration_seconds": 96
+          "started_at": "2026-05-12T23:54:15Z",
+          "completed_at": "2026-05-12T23:55:19Z",
+          "duration_seconds": 64
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-12T23:39:30Z",
+          "completed_at": "2026-05-12T23:43:01Z",
+          "duration_seconds": 211
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-12T23:55:29Z",
+          "completed_at": "2026-05-12T23:57:04Z",
+          "duration_seconds": 95
         },
         {
           "name": "Test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-12T12:15:31Z",
-          "completed_at": "2026-05-12T12:17:05Z",
-          "duration_seconds": 94
+          "started_at": "2026-05-12T23:39:46Z",
+          "completed_at": "2026-05-12T23:41:50Z",
+          "duration_seconds": 124
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-12T23:56:26Z",
+          "completed_at": "2026-05-12T23:58:04Z",
+          "duration_seconds": 98
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-12T23:56:53Z",
+          "completed_at": "2026-05-12T23:58:32Z",
+          "duration_seconds": 99
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-12T23:56:29Z",
+          "completed_at": "2026-05-12T23:58:02Z",
+          "duration_seconds": 93
         },
         {
           "name": "Build distribution + smoke test",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-12T12:28:42Z",
-          "completed_at": "2026-05-12T12:30:02Z",
-          "duration_seconds": 80
+          "started_at": "2026-05-12T23:59:21Z",
+          "completed_at": "2026-05-13T00:00:19Z",
+          "duration_seconds": 58
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25733754055,
-      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/25733754055",
+      "workflow_run_id": 25768687061,
+      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/25768687061",
       "jobs": [
+        {
+          "name": "cargo-deny (licenses + bans + advisories)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-12T23:40:02Z"
+        },
         {
           "name": "pip-audit (dependency CVEs)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-12T12:17:03Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-12T12:15:25Z"
-        },
-        {
-          "name": "gitleaks (secret scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-12T12:15:25Z"
+          "completed_at": "2026-05-12T23:40:48Z"
         },
         {
           "name": "cargo-audit (Rust CVEs)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-12T12:18:15Z"
-        },
-        {
-          "name": "cargo-deny (licenses + bans + advisories)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-12T12:18:51Z"
+          "completed_at": "2026-05-12T23:42:29Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-12T12:15:32Z"
+          "completed_at": "2026-05-12T23:39:39Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-12T23:39:38Z"
+        },
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-12T23:39:43Z"
         }
       ],
-      "run_completed_at": "2026-05-12T12:18:52Z"
+      "run_completed_at": "2026-05-12T23:42:30Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#9 build(deps): bump the actions-all group across 1 directory with 4 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -213,11 +211,11 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.636,
-      "conventional_commits_rate_90d": 0.773,
-      "verified_commit_ratio_90d": 0.318,
-      "commits_90d": 22,
-      "unique_committers_90d": 1,
+      "dco_signoff_rate_90d": 0.652,
+      "conventional_commits_rate_90d": 0.783,
+      "verified_commit_ratio_90d": 0.348,
+      "commits_90d": 23,
+      "unique_committers_90d": 2,
       "branch_protection_enabled": null,
       "branch_protection_summary": null,
       "codeowners_path": ".github/CODEOWNERS",
@@ -229,8 +227,8 @@
         "NOTICE"
       ],
       "releases_90d": 3,
-      "median_pr_age_days": 0.468,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 400,
       "errors": [

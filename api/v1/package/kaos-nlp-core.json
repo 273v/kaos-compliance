@@ -8,165 +8,163 @@
     "identity": {
       "pypi_version": "0.1.0a3",
       "pypi_url": "https://pypi.org/project/kaos-nlp-core/0.1.0a3/",
-      "main_head_sha": "17b93b01af5326cee271e2312996cb99739ac5c0",
+      "main_head_sha": "5c53052f08fb1546979abf22fecefb22d9fc4f56",
       "latest_tag": "v0.1.0a3",
       "latest_tag_sha": "7229f889cd6fa35013738f041e23e92aaaf42425",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-11T17:43:12Z"
+      "last_commit_at": "2026-05-13T00:06:20Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25686968884,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25686968884",
-      "head_sha": "17b93b01af5326cee271e2312996cb99739ac5c0",
-      "run_completed_at": "2026-05-11T18:48:22Z",
+      "workflow_run_id": 25769669117,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25769669117",
+      "head_sha": "5c53052f08fb1546979abf22fecefb22d9fc4f56",
+      "run_completed_at": "2026-05-13T00:21:18Z",
       "matrix": [
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T00:14:28Z",
+          "completed_at": "2026-05-13T00:18:24Z",
+          "duration_seconds": 236
+        },
         {
           "name": "Pre-commit hooks",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-11T18:27:13Z",
-          "completed_at": "2026-05-11T18:29:50Z",
-          "duration_seconds": 157
+          "started_at": "2026-05-13T00:08:37Z",
+          "completed_at": "2026-05-13T00:11:19Z",
+          "duration_seconds": 162
         },
         {
           "name": "Rust tests (no PyO3)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-11T18:40:25Z",
-          "completed_at": "2026-05-11T18:42:20Z",
-          "duration_seconds": 115
-        },
-        {
-          "name": "Lint",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-11T18:41:33Z",
-          "completed_at": "2026-05-11T18:45:38Z",
-          "duration_seconds": 245
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": "failure",
-          "status": "completed",
-          "started_at": "2026-05-11T18:43:40Z",
-          "completed_at": "2026-05-11T18:44:12Z",
-          "duration_seconds": 32
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-11T18:04:47Z",
-          "completed_at": "2026-05-11T18:14:33Z",
-          "duration_seconds": 586
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-11T18:04:42Z",
-          "completed_at": "2026-05-11T18:10:51Z",
-          "duration_seconds": 369
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-11T18:38:10Z",
-          "completed_at": "2026-05-11T18:44:20Z",
-          "duration_seconds": 370
+          "started_at": "2026-05-13T00:13:52Z",
+          "completed_at": "2026-05-13T00:15:50Z",
+          "duration_seconds": 118
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-11T18:39:02Z",
-          "completed_at": "2026-05-11T18:44:50Z",
-          "duration_seconds": 348
+          "started_at": "2026-05-13T00:10:22Z",
+          "completed_at": "2026-05-13T00:16:25Z",
+          "duration_seconds": 363
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T00:11:21Z",
+          "completed_at": "2026-05-13T00:12:04Z",
+          "duration_seconds": 43
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T00:06:26Z",
+          "completed_at": "2026-05-13T00:11:41Z",
+          "duration_seconds": 315
         },
         {
           "name": "Test against minimum dependencies",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-11T18:28:47Z",
-          "completed_at": "2026-05-11T18:34:32Z",
-          "duration_seconds": 345
+          "started_at": "2026-05-13T00:13:06Z",
+          "completed_at": "2026-05-13T00:19:08Z",
+          "duration_seconds": 362
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T00:06:25Z",
+          "completed_at": "2026-05-13T00:14:55Z",
+          "duration_seconds": 510
         },
         {
           "name": "Test (linux-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-11T18:36:41Z",
-          "completed_at": "2026-05-11T18:42:38Z",
-          "duration_seconds": 357
+          "started_at": "2026-05-13T00:12:09Z",
+          "completed_at": "2026-05-13T00:18:23Z",
+          "duration_seconds": 374
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T00:12:13Z",
+          "completed_at": "2026-05-13T00:18:05Z",
+          "duration_seconds": 352
         },
         {
           "name": "Build distribution + smoke test",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-11T18:45:41Z",
-          "completed_at": "2026-05-11T18:48:21Z",
-          "duration_seconds": 160
+          "started_at": "2026-05-13T00:18:41Z",
+          "completed_at": "2026-05-13T00:21:18Z",
+          "duration_seconds": 157
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25686969142,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25686969142",
+      "workflow_run_id": 25769669110,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25769669110",
       "jobs": [
         {
-          "name": "gitleaks (secret scan)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-11T17:43:47Z"
+          "completed_at": "2026-05-13T00:06:38Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-11T17:43:54Z"
-        },
-        {
-          "name": "cargo-audit (Rust CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-11T17:46:42Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-11T17:44:01Z"
-        },
-        {
-          "name": "pip-audit (dependency CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-11T17:47:02Z"
+          "completed_at": "2026-05-13T00:06:40Z"
         },
         {
           "name": "cargo-deny (licenses + bans + advisories)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-11T17:44:37Z"
+          "completed_at": "2026-05-13T00:07:12Z"
+        },
+        {
+          "name": "cargo-audit (Rust CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-13T00:09:27Z"
+        },
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-13T00:06:40Z"
+        },
+        {
+          "name": "pip-audit (dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-13T00:09:31Z"
         }
       ],
-      "run_completed_at": "2026-05-11T17:47:03Z"
+      "run_completed_at": "2026-05-13T00:09:32Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#9 ci: harden public PR workflows"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 1,
+      "days_since_last_commit": 0,
       "days_since_last_release": 1,
-      "days_since_last_security_scan": 1
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.0a3",
@@ -213,10 +211,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.812,
-      "conventional_commits_rate_90d": 0.812,
-      "verified_commit_ratio_90d": 0.25,
-      "commits_90d": 16,
+      "dco_signoff_rate_90d": 0.824,
+      "conventional_commits_rate_90d": 0.824,
+      "verified_commit_ratio_90d": 0.294,
+      "commits_90d": 17,
       "unique_committers_90d": 1,
       "branch_protection_enabled": null,
       "branch_protection_summary": null,
@@ -229,8 +227,8 @@
         "NOTICE"
       ],
       "releases_90d": 3,
-      "median_pr_age_days": 0.84,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 1322,
       "errors": [
