@@ -112,6 +112,11 @@ footer a{color:var(--muted)}
  <thead><tr><th>Path</th><th>Description</th><th>curl</th></tr></thead>
  <tbody>
   <tr>
+   <td class="path"><code>api/v1/package/kaos-agents.json</code></td>
+   <td>Self-contained evidence bundle for kaos-agents: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
+   <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-agents.json</pre></td>
+  </tr>
+  <tr>
    <td class="path"><code>api/v1/package/kaos-citations.json</code></td>
    <td>Self-contained evidence bundle for kaos-citations: the package's slice of snapshot.json + SBOM links + PEP 740 attestation pointer.</td>
    <td class="curl"><pre>curl -O https://273v.github.io/kaos-compliance/api/v1/package/kaos-citations.json</pre></td>
@@ -195,7 +200,7 @@ footer a{color:var(--muted)}
 </table>
 
 <footer>
- Generated 2026-05-13 21:43 UTC
+ Generated 2026-05-13 21:53 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | <a href="index.html">Org rollup</a>
  | <a href="methodology.html">Methodology</a>

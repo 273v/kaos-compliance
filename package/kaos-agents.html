@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index,follow">
-<meta name="description" content="Compliance evidence for kaos-nlp-core — build, security, supply chain, governance.">
+<meta name="description" content="Compliance evidence for kaos-agents — build, security, supply chain, governance.">
 <base href="/kaos-compliance/">
-<title>kaos-nlp-core — KAOS Compliance</title>
+<title>kaos-agents — KAOS Compliance</title>
 <link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/dashboard.css">
@@ -73,52 +73,38 @@ footer a{color:var(--muted)}
 </head>
 <body>
 <div class="wrap">
-<nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; kaos-nlp-core</nav>
+<nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; kaos-agents</nav>
 
 <header class="identity">
- <h1>kaos-nlp-core v0.1.0a3</h1>
+ <h1>kaos-agents v0.1.0a1</h1>
  <div class="triple">
   <span>License: Apache-2.0</span>
   <span>Runtime: Python 3.13+</span>
   <span>Released: 2026-05-13</span>
-  <span><a href="https://github.com/273v/kaos-nlp-core">Repository</a></span>
+  <span><a href="https://github.com/273v/kaos-agents">Repository</a></span>
  </div>
 </header>
 
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
-   2026-05-12 &rarr; 2026-05-13
-  </p>
-  <ul style="margin:0;padding-left:var(--s-5)">
-    <li>
-     <span class="pill g" aria-label="Commits (90d): better">
-      <span class="gly" aria-hidden="true">▲</span>
-      <span class="wd" aria-hidden="true">better</span>
-     </span>
-     <strong>Commits (90d)</strong>:
-     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      16 &rarr; 18
-     </span>
-    </li>
-  </ul>
+  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-05-12.</p>
  </div>
 </section>
 
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 8/8 green</div>
+  <div class="composite">Composite: 5/8 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
-    <span class="pill g" aria-label="Build passing: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: success</div></div>
+    <span class="pill n" aria-label="Build passing: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: unknown</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="Tests + coverage: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Tests + coverage</div><div class="note">Latest CI conclusion: success</div></div>
+    <span class="pill n" aria-label="Tests + coverage: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Tests + coverage</div><div class="note">Latest CI conclusion: unknown</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="No critical CVEs: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -126,15 +112,15 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill g" aria-label="Signed release artifacts: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Signed release artifacts</div><div class="note">PEP 740 attestation verified for 6/6 artifacts</div></div>
+    <div class="body"><div class="lab">Signed release artifacts</div><div class="note">PEP 740 attestation verified for 2/2 artifacts</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="License clean: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
+    <span class="pill y" aria-label="License clean: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
     <div class="body"><div class="lab">License clean</div><div class="note">Wheel license: Apache-2.0</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="SBOM published: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">SBOM published</div><div class="note">SBOM published — 211 components</div></div>
+    <div class="body"><div class="lab">SBOM published</div><div class="note">SBOM published — 139 components</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Branch protection: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -160,54 +146,6 @@ footer a{color:var(--muted)}
    </tr>
   </thead>
   <tbody>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.14</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.14t</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.15</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">macos-arm64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">windows-x64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
   </tbody>
  </table>
  </div>
@@ -240,7 +178,7 @@ footer a{color:var(--muted)}
    <dt>Direct deps</dt><dd>—</dd>
    <dt>Transitive deps</dt><dd>—</dd>
    <dt>SBOM</dt><dd>
-     <a href="api/v1/sbom/kaos-nlp-core-0.1.0a3.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-nlp-core/releases/download/v0.1.0a3/kaos-nlp-core-0.1.0a3.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
+     <a href="api/v1/sbom/kaos-agents-0.1.0a1.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-agents/releases/download/v0.1.0a1/kaos-agents-0.1.0a1.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
   </dl>
  </div>
 </section>
@@ -253,9 +191,9 @@ footer a{color:var(--muted)}
    <dt>Maintainers</dt><dd>1</dd>
    <dt>Commits 90d</dt>
    <dd>
-    18
+    3
    </dd>
-   <dt>Releases 90d</dt><dd>3</dd>
+   <dt>Releases 90d</dt><dd>1</dd>
   </dl>
  </div>
 </section>
@@ -265,15 +203,15 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Python source (LoC)</dt>
-   <dd>9,433 across 56 files</dd>
+   <dd>27,037 across 220 files</dd>
    <dt>Python tests (LoC)</dt>
-   <dd>12,908 across 73 files</dd>
+   <dd>40,363 across 265 files</dd>
    <dt>Rust source (LoC)</dt>
-   <dd>22,236 across 65 files</dd>
+   <dd>—</dd>
    <dt>Rust tests (LoC)</dt>
-   <dd>1,488 across 10 files</dd>
+   <dd>—</dd>
    <dt>Source lines of code</dt>
-   <dd>46,065 LoC</dd>
+   <dd>67,400 LoC</dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
    Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
@@ -292,16 +230,16 @@ footer a{color:var(--muted)}
 <section class="evidence" aria-labelledby="ev-h">
  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-3);flex-wrap:wrap">
   <h2 id="ev-h" style="margin:0">Evidence</h2>
-  <a href="api/v1/package/kaos-nlp-core.json"
+  <a href="api/v1/package/kaos-agents.json"
      style="font-size:0.875rem;font-family:var(--mono);text-decoration:none;border:1px solid var(--border);padding:var(--s-1) var(--s-3);border-radius:3px"
-     title="curl -O the JSON evidence bundle for kaos-nlp-core"
+     title="curl -O the JSON evidence bundle for kaos-agents"
      download>
    Download JSON
   </a>
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-nlp-core">Repository</a></li><li><a href="https://pypi.org/project/kaos-nlp-core/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-nlp-core/actions/runs/25771437503">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-nlp-core/actions/runs/25771437512">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-nlp-core.json"><code>api/v1/package/kaos-nlp-core.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-agents">Repository</a></li><li><a href="https://pypi.org/project/kaos-agents/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-agents/actions/runs/25828115652">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-agents/actions/runs/25828115653">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-agents.json"><code>api/v1/package/kaos-agents.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
