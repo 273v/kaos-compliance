@@ -8,139 +8,138 @@
     "identity": {
       "pypi_version": "0.1.0a7",
       "pypi_url": "https://pypi.org/project/kaos-llm-core/0.1.0a7/",
-      "main_head_sha": "d5b76d997b80779cd29834ce2300bf4c7ec42bf7",
+      "main_head_sha": "205110c61178e61bd40ae357267ac3d692c4903d",
       "latest_tag": "v0.1.0a7",
       "latest_tag_sha": "f244f3271aaf17a63179178b343f81e413d83dcf",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-13T01:30:48Z"
+      "last_commit_at": "2026-05-13T22:43:13Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25772574119,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25772574119",
-      "head_sha": "d5b76d997b80779cd29834ce2300bf4c7ec42bf7",
-      "run_completed_at": "2026-05-13T02:37:07Z",
+      "workflow_run_id": 25830686699,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25830686699",
+      "head_sha": "205110c61178e61bd40ae357267ac3d692c4903d",
+      "run_completed_at": "2026-05-13T22:50:15Z",
       "matrix": [
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T22:47:59Z",
+          "completed_at": "2026-05-13T22:48:19Z",
+          "duration_seconds": 20
+        },
         {
           "name": "Pre-commit hooks",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-13T01:49:46Z",
-          "completed_at": "2026-05-13T01:50:03Z",
-          "duration_seconds": 17
+          "started_at": "2026-05-13T22:48:00Z",
+          "completed_at": "2026-05-13T22:48:21Z",
+          "duration_seconds": 21
         },
         {
           "name": "Lint",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-13T02:04:42Z",
-          "completed_at": "2026-05-13T02:04:51Z",
+          "started_at": "2026-05-13T22:48:00Z",
+          "completed_at": "2026-05-13T22:48:09Z",
           "duration_seconds": 9
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-13T02:06:26Z",
-          "completed_at": "2026-05-13T02:06:47Z",
-          "duration_seconds": 21
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-13T02:04:46Z",
-          "completed_at": "2026-05-13T02:05:17Z",
-          "duration_seconds": 31
         },
         {
           "name": "Test (linux-x64 / Python 3.14)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-13T02:01:37Z",
-          "completed_at": "2026-05-13T02:02:05Z",
-          "duration_seconds": 28
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-13T01:30:53Z",
-          "completed_at": "2026-05-13T01:31:20Z",
-          "duration_seconds": 27
+          "started_at": "2026-05-13T22:47:22Z",
+          "completed_at": "2026-05-13T22:47:52Z",
+          "duration_seconds": 30
         },
         {
           "name": "Test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-13T01:30:54Z",
-          "completed_at": "2026-05-13T01:31:59Z",
-          "duration_seconds": 65
+          "started_at": "2026-05-13T22:43:18Z",
+          "completed_at": "2026-05-13T22:44:35Z",
+          "duration_seconds": 77
         },
         {
-          "name": "Test (linux-x64 / Python 3.15)",
+          "name": "Test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-13T01:58:18Z",
-          "completed_at": "2026-05-13T01:58:54Z",
-          "duration_seconds": 36
+          "started_at": "2026-05-13T22:43:19Z",
+          "completed_at": "2026-05-13T22:44:01Z",
+          "duration_seconds": 42
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T22:48:06Z",
+          "completed_at": "2026-05-13T22:48:36Z",
+          "duration_seconds": 30
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-13T02:09:53Z",
-          "completed_at": "2026-05-13T02:12:38Z",
-          "duration_seconds": 165
+          "started_at": "2026-05-13T22:48:24Z",
+          "completed_at": "2026-05-13T22:48:50Z",
+          "duration_seconds": 26
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T22:48:27Z",
+          "completed_at": "2026-05-13T22:48:55Z",
+          "duration_seconds": 28
         },
         {
           "name": "Build distribution + smoke test",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-13T02:36:48Z",
-          "completed_at": "2026-05-13T02:37:07Z",
-          "duration_seconds": 19
+          "started_at": "2026-05-13T22:50:02Z",
+          "completed_at": "2026-05-13T22:50:14Z",
+          "duration_seconds": 12
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25772574116,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25772574116",
+      "workflow_run_id": 25830686673,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25830686673",
       "jobs": [
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-13T01:31:13Z"
-        },
         {
           "name": "gitleaks (secret scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-13T01:31:10Z"
+          "completed_at": "2026-05-13T22:43:35Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-13T01:31:02Z"
+          "completed_at": "2026-05-13T22:43:36Z"
         },
         {
           "name": "pip-audit (dependency CVEs)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-13T01:31:09Z"
+          "completed_at": "2026-05-13T22:43:34Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-13T22:43:31Z"
         }
       ],
-      "run_completed_at": "2026-05-13T01:31:13Z"
+      "run_completed_at": "2026-05-13T22:43:36Z"
     },
     "open_prs": {
-      "count": 7,
+      "count": 6,
       "titles": [
-        "#19 docs: backfill fixture provenance READMEs (audit-03 D9)",
         "#18 chore(deps): bump kaos-content from 0.1.0a1 to 0.1.0a6",
         "#17 chore(deps): bump kaos-llm-client from 0.1.0a2 to 0.1.0a3",
         "#16 chore(deps): bump kaos-nlp-core from 0.1.0a2 to 0.1.0a3",
@@ -203,10 +202,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.636,
-      "conventional_commits_rate_90d": 0.727,
-      "verified_commit_ratio_90d": 0.5,
-      "commits_90d": 22,
+      "dco_signoff_rate_90d": 0.609,
+      "conventional_commits_rate_90d": 0.739,
+      "verified_commit_ratio_90d": 0.522,
+      "commits_90d": 23,
       "unique_committers_90d": 1,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -280,8 +279,8 @@
         "NOTICE"
       ],
       "releases_90d": 7,
-      "median_pr_age_days": 0.878,
-      "open_pr_count": 7,
+      "median_pr_age_days": 0.917,
+      "open_pr_count": 6,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 142,
       "errors": []

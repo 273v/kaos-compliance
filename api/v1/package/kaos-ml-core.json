@@ -17,11 +17,11 @@
       "last_commit_at": "2026-05-13T22:34:44Z"
     },
     "ci": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 25830358078,
       "workflow_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/25830358078",
       "head_sha": "3d32b7aca69b2e49c08c25d03c00a04176d5c4bb",
-      "run_completed_at": "2026-05-13T22:37:20Z",
+      "run_completed_at": "2026-05-13T22:38:00Z",
       "matrix": [
         {
           "name": "Pre-commit hooks",
@@ -105,16 +105,16 @@
         },
         {
           "name": "Build distribution + smoke test",
-          "conclusion": null,
-          "status": "in_progress",
+          "conclusion": "success",
+          "status": "completed",
           "started_at": "2026-05-13T22:37:19Z",
-          "completed_at": null,
-          "duration_seconds": 12
+          "completed_at": "2026-05-13T22:38:00Z",
+          "duration_seconds": 41
         }
       ]
     },
     "security": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 25830358054,
       "workflow_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/25830358054",
       "jobs": [
@@ -138,9 +138,9 @@
         },
         {
           "name": "cargo-audit (Rust CVEs)",
-          "conclusion": null,
-          "status": "in_progress",
-          "completed_at": null
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-13T22:37:48Z"
         },
         {
           "name": "vulture (dead-code scan)",
@@ -155,7 +155,7 @@
           "completed_at": "2026-05-13T22:34:58Z"
         }
       ],
-      "run_completed_at": "2026-05-13T22:34:56Z"
+      "run_completed_at": "2026-05-13T22:37:49Z"
     },
     "open_prs": {
       "count": 6,
@@ -338,7 +338,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 0.904,
+      "median_pr_age_days": 0.943,
       "open_pr_count": 6,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 229,

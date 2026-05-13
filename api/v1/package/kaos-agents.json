@@ -17,12 +17,101 @@
       "last_commit_at": "2026-05-13T22:24:41Z"
     },
     "ci": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 25829946482,
       "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/25829946482",
       "head_sha": "5058999098a274c4bb99e1f41e057f6f0755b49e",
-      "run_completed_at": "2026-05-13T22:24:45Z",
-      "matrix": []
+      "run_completed_at": "2026-05-13T23:03:43Z",
+      "matrix": [
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T23:02:02Z",
+          "completed_at": "2026-05-13T23:02:19Z",
+          "duration_seconds": 17
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T23:00:53Z",
+          "completed_at": "2026-05-13T23:01:41Z",
+          "duration_seconds": 48
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T23:00:52Z",
+          "completed_at": "2026-05-13T23:01:51Z",
+          "duration_seconds": 59
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T23:00:52Z",
+          "completed_at": "2026-05-13T23:01:49Z",
+          "duration_seconds": 57
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-05-13T23:01:57Z",
+          "completed_at": "2026-05-13T23:02:40Z",
+          "duration_seconds": 43
+        },
+        {
+          "name": "Pre-commit hooks",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T23:02:02Z",
+          "completed_at": "2026-05-13T23:02:32Z",
+          "duration_seconds": 30
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T23:01:53Z",
+          "completed_at": "2026-05-13T23:03:21Z",
+          "duration_seconds": 88
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-05-13T23:00:52Z",
+          "completed_at": "2026-05-13T23:02:07Z",
+          "duration_seconds": 75
+        },
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T23:01:47Z",
+          "completed_at": "2026-05-13T23:02:39Z",
+          "duration_seconds": 52
+        },
+        {
+          "name": "Live integration tests",
+          "conclusion": "skipped",
+          "status": "completed",
+          "started_at": "2026-05-13T23:00:50Z",
+          "completed_at": "2026-05-13T23:00:50Z",
+          "duration_seconds": 0
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T23:03:24Z",
+          "completed_at": "2026-05-13T23:03:42Z",
+          "duration_seconds": 18
+        }
+      ]
     },
     "security": {
       "workflow_conclusion": "success",
@@ -192,7 +281,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 0.005,
+      "median_pr_age_days": 0.044,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 108,
