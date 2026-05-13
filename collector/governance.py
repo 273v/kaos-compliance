@@ -341,12 +341,16 @@ def _branch_protection_public_flag(
     public_protection = branch.get("protection")
     if not isinstance(public_protection, dict):
         public_protection = {}
-    return True, {
-        "source": "branches_api",
-        "required_status_checks": public_protection.get("required_status_checks"),
-        "required_pull_request_reviews": None,
-        "required_signatures": None,
-    }, None
+    return (
+        True,
+        {
+            "source": "branches_api",
+            "required_status_checks": public_protection.get("required_status_checks"),
+            "required_pull_request_reviews": None,
+            "required_signatures": None,
+        },
+        None,
+    )
 
 
 def _branch_protection(

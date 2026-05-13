@@ -753,7 +753,7 @@ def _copy_sbom_artifacts(
     for module in snapshot.get("modules") or []:
         if not isinstance(module, dict):
             continue
-        sbom = ((module.get("supply_chain") or {}).get("sbom") or {})
+        sbom = (module.get("supply_chain") or {}).get("sbom") or {}
         rel = sbom.get("sbom_artifact_path")
         if not isinstance(rel, str) or not rel:
             continue

@@ -345,16 +345,12 @@ def test_render_copies_referenced_sbom_artifact(tmp_path: Path) -> None:
     mod["identity"]["latest_tag"] = "v0.1.0a2"
     mod["identity"]["pypi_version"] = "0.1.0a2"
     mod["supply_chain"]["pypi_version"] = "0.1.0a2"
-    mod["supply_chain"]["sbom"]["sbom_artifact_path"] = (
-        "data/sbom/kaos-citations-0.1.0a2.cdx.json"
-    )
+    mod["supply_chain"]["sbom"]["sbom_artifact_path"] = "data/sbom/kaos-citations-0.1.0a2.cdx.json"
 
     snap = _snapshot("2026-05-11", [mod])
     render_main.render(snap, output_dir=tmp_path)
 
-    assert (
-        tmp_path / "api" / "v1" / "sbom" / "kaos-citations-0.1.0a2.cdx.json"
-    ).is_file()
+    assert (tmp_path / "api" / "v1" / "sbom" / "kaos-citations-0.1.0a2.cdx.json").is_file()
 
 
 def test_package_page_has_download_button(tmp_path: Path) -> None:
