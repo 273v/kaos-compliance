@@ -281,6 +281,34 @@ def test_branch_protection_present_summarises_three_fields():
     assert "enforce_admins" not in summary  # we drop noisy fields
 
 
+def test_branch_protection_public_flag_fallback_when_detail_forbidden():
+    """Default GITHUB_TOKEN can read branches/main but not admin details."""
+
+    def _forbidden(_args):
+        raise RuntimeError("Resource not accessible by integration")
+
+    errors: list[str] = []
+    enabled, summary = governance._branch_protection(
+        "kaos-test",
+        gh_run=_fake_gh(
+            {
+                "/branches/main/protection": _forbidden,
+                "/branches/main": {
+                    "protected": True,
+                    "protection": {"required_status_checks": {"contexts": ["ci"]}},
+                },
+            }
+        ),
+        errors=errors,
+    )
+    assert enabled is True
+    assert summary is not None
+    assert summary["source"] == "branches_api"
+    assert summary["required_status_checks"] == {"contexts": ["ci"]}
+    assert summary["required_pull_request_reviews"] is None
+    assert errors == []
+
+
 def test_branch_protection_retry_exhaustion_yields_none_and_error():
     """A non-404 failure must yield None + None and record an error."""
 

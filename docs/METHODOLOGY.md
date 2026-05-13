@@ -249,7 +249,7 @@ reproduce the underlying lookup without any privileged access:
 | Security scan | Same as above for the Security workflow |
 | Open advisories | `https://api.osv.dev/v1/query` with the package PURL |
 | SBOM | `data/sbom/<pkg>-<version>.cdx.json` in this repo |
-| Branch protection | `gh api repos/273v/<pkg>/branches/main/protection` |
+| Branch protection | `gh api repos/273v/<pkg>/branches/main --jq .protected` (public enabled flag); maintainers can inspect rule detail with `gh api repos/273v/<pkg>/branches/main/protection` |
 | Disclosure policy | `https://github.com/273v/<pkg>/blob/main/SECURITY.md` |
 
 If a `Verify` link doesn't reproduce, the dashboard claim is wrong and
