@@ -180,7 +180,8 @@ footer a{color:var(--muted)}
  <h2 id="allowed-h">Approved exceptions ({{ license_policy.allowed | length }})</h2>
  {% if license_policy.allowed %}
  {% for entry in license_policy.allowed %}
- <div class="card entry" id="{{ entry.components[0] if entry.components else entry.spdx | replace(' ', '-') }}">
+ <div class="card entry" id="allowed-{{ entry.components[0] if entry.components else entry.spdx | replace(' ', '-') }}">
+  {% for c in entry.components %}<span id="{{ c }}"></span>{% endfor %}
   <h3>{{ entry.components | join(', ') }}{% if entry.spdx %} <span class="chip gold">{{ entry.spdx }}</span>{% endif %}</h3>
   <dl class="kv">
    <dt>SPDX</dt><dd>{{ entry.spdx }}</dd>
@@ -217,7 +218,7 @@ footer a{color:var(--muted)}
    </thead>
    <tbody>
     {% for g in license_policy.parser_gaps %}
-    <tr>
+    <tr id="{{ g.component }}">
      <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem"><code>{{ g.component }}</code></td>
      <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.8125rem">{{ g.true_license }}</td>
      <td style="padding:var(--s-2) var(--s-3);border-bottom:1px solid var(--border);font-size:0.8125rem">{% for r in g.live_repos or g.affected_repos %}<span class="chip">{{ r }}</span>{% endfor %}</td>

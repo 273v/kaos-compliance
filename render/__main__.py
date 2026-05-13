@@ -317,6 +317,11 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
         # so the page works even if upstream GitHub is unreachable.
         f"api/v1/sbom/{Path(sbom_artifact_path).name}" if sbom_artifact_path else None
     )
+    findings_link = (
+        f"supply-chain.html#license-findings-{module['name']}"
+        if _license_finding_rows(module, policy=policy)
+        else "supply-chain.html#license-findings-h"
+    )
     pypi_version = sc.get("pypi_version")
     # F8 follow-up: the upstream-authoritative SBOM URL is the
     # GitHub Release asset — uploaded by the release workflow's OIDC
@@ -340,8 +345,8 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
         "tests": ci_run_url,
         "security": sec_run_url,
         "signing": pypi_link,
-        "license": sbom_link,
-        "deps": sbom_link,
+        "license": findings_link,
+        "deps": findings_link,
     }
 
     # Index-grid row uses string pills. Detail-page sections are dicts.
@@ -996,7 +1001,122 @@ def _cisa_sbom_minimum_elements(sbom: dict[str, Any], sc: dict[str, Any]) -> lis
     ]
 
 
-def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
+def _policy_url(component: str) -> str:
+    return f"license-policy.html#{component}"
+
+
+def _license_finding_rows(module: dict[str, Any], policy: Any = None) -> list[dict[str, Any]]:
+    """Explain every license/dependency caveat for one package.
+
+    The index grid is intentionally compact. This function builds the
+    human-readable audit table behind those pills: approved exceptions,
+    parser gaps, unresolved unknowns, and hard-blocking strong copyleft.
+    """
+    sbom = (module.get("supply_chain") or {}).get("sbom") or {}
+    rows: list[dict[str, Any]] = []
+
+    for component in sbom.get("strong_copyleft") or []:
+        rows.append(
+            {
+                "package": module["name"],
+                "component": component,
+                "state": "red",
+                "kind": "Blocked license",
+                "license": "strong copyleft",
+                "decision": "Not allowed",
+                "explanation": (
+                    "Strong-copyleft component present in the resolved dependency graph."
+                ),
+                "audit_ref": None,
+                "policy_url": None,
+            }
+        )
+
+    for component in sbom.get("weak_copyleft") or []:
+        entry = None
+        if policy is not None and _component_allowed(
+            component, policy, _guess_spdx_for_weak(component)
+        ):
+            entry = next(
+                (
+                    e
+                    for e in getattr(policy, "allowed_expressions", ())
+                    if component in e.components
+                ),
+                None,
+            )
+        if entry is not None:
+            rows.append(
+                {
+                    "package": module["name"],
+                    "component": component,
+                    "state": "green",
+                    "kind": "Approved exception",
+                    "license": entry.spdx,
+                    "decision": "Allowed by policy",
+                    "explanation": entry.rationale,
+                    "audit_ref": entry.audit_ref,
+                    "policy_url": _policy_url(component),
+                }
+            )
+        else:
+            rows.append(
+                {
+                    "package": module["name"],
+                    "component": component,
+                    "state": "yellow",
+                    "kind": "Weak copyleft",
+                    "license": _guess_spdx_for_weak(component),
+                    "decision": "Needs review",
+                    "explanation": "Weak-copyleft dependency has no matching policy exception.",
+                    "audit_ref": None,
+                    "policy_url": "license-policy.html",
+                }
+            )
+
+    for component in sbom.get("unknown_license") or []:
+        gap = policy.parser_gap_for(component) if policy is not None else None
+        if gap is not None:
+            rows.append(
+                {
+                    "package": module["name"],
+                    "component": component,
+                    "state": "yellow",
+                    "kind": "Parser gap",
+                    "license": gap.true_license,
+                    "decision": "Known license; parser fix tracked",
+                    "explanation": gap.fix_strategy,
+                    "audit_ref": gap.audit_ref,
+                    "policy_url": _policy_url(component),
+                }
+            )
+        else:
+            rows.append(
+                {
+                    "package": module["name"],
+                    "component": component,
+                    "state": "yellow",
+                    "kind": "Unknown license",
+                    "license": "unknown",
+                    "decision": "Needs triage",
+                    "explanation": "No parser-gap or allowlist entry exists for this component.",
+                    "audit_ref": None,
+                    "policy_url": "license-policy.html",
+                }
+            )
+    return sorted(rows, key=lambda r: (r["state"] != "red", r["package"], r["component"]))
+
+
+def _license_breakdown_state(spdx: str) -> str:
+    s = spdx.lower()
+    if any(t in s for t in ("agpl", "gpl-2", "gpl-3", "gpl-")):
+        return "red"
+    if any(t in s for t in ("mpl", "lgpl", "unknown")):
+        return "yellow"
+    return "green"
+
+
+def _supply_chain_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[str, Any]:
     """Aggregate license breakdown + attestation table across modules."""
     org_license_breakdown: dict[str, int] = {}
     packages_with_attestations = 0
@@ -1012,9 +1132,17 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
         sbom_path = (sc.get("sbom") or {}).get("sbom_artifact_path")
         slsa = _slsa_build_level(att)
         cisa_elements = _cisa_sbom_minimum_elements(sbom, sc)
+        license_findings = _license_finding_rows(m, policy=policy)
         # CISA rollup: green count / total — surfaced as a one-pill summary.
         cisa_green = sum(1 for e in cisa_elements if e["state"] == "green")
         cisa_total = len(cisa_elements)
+        license_top = [
+            {"spdx": spdx, "count": n, "state": _license_breakdown_state(spdx)}
+            for spdx, n in sorted(
+                (sbom.get("license_breakdown") or {}).items(),
+                key=lambda kv: (-kv[1], kv[0]),
+            )[:8]
+        ]
         rows.append(
             {
                 "name": m["name"],
@@ -1033,6 +1161,8 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
                 "weak_copyleft": sbom.get("weak_copyleft") or [],
                 "strong_copyleft": sbom.get("strong_copyleft") or [],
                 "unknown_license_count": len(sbom.get("unknown_license") or []),
+                "license_findings": license_findings,
+                "license_top": license_top,
                 "sbom_url": (f"api/v1/sbom/{Path(sbom_path).name}" if sbom_path else None),
                 # F8 follow-up: upstream-authoritative SBOM URL on the
                 # GitHub Release (uploaded by release.yml's OIDC
@@ -1086,18 +1216,11 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
 
     # Shape the org-wide license breakdown as a list-of-dicts ordered
     # by count desc; classify each row's state.
-    def _license_state(spdx: str) -> str:
-        s = spdx.lower()
-        if any(t in s for t in ("agpl", "gpl-2", "gpl-3", "gpl-")):
-            return "red"
-        if any(t in s for t in ("mpl", "lgpl", "unknown")):
-            return "yellow"
-        return "green"
-
     license_rows = [
-        {"spdx": spdx, "count": n, "state": _license_state(spdx)}
+        {"spdx": spdx, "count": n, "state": _license_breakdown_state(spdx)}
         for spdx, n in sorted(org_license_breakdown.items(), key=lambda kv: (-kv[1], kv[0]))
     ]
+    license_findings = [finding for row in rows for finding in (row.get("license_findings") or [])]
 
     # R9 / F19: org-wide SLSA Build Level rollup. Count packages
     # whose effective level is L2; everything else is yellow/gray.
@@ -1121,6 +1244,7 @@ def _supply_chain_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
         "total_packages": len(modules),
         "packages_with_sbom": packages_with_sbom,
         "packages_with_dep_graph": packages_with_dep_graph,
+        "license_findings": license_findings,
         # R9/F19 org rollup. Surfaced as "N/Total at SLSA Build L2 (effective)".
         "slsa_l2_count": slsa_l2_count,
         # R10 org rollup. Number of packages whose SBOM ticks every CISA
@@ -1315,7 +1439,7 @@ def adapt(
         # Page-specific summaries — the index template ignores these;
         # the per-section pages consume them.
         "security_summary": _security_summary(modules),
-        "supply_chain_summary": _supply_chain_summary(modules),
+        "supply_chain_summary": _supply_chain_summary(modules, policy=policy),
         "governance_summary": _governance_summary(modules),
         "license_policy": _license_policy_view(policy, modules),
         # Integrity: snapshot signing + JSON Schema availability. Falls

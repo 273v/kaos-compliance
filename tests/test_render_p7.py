@@ -286,6 +286,16 @@ def test_api_index_page_is_emitted(tmp_path: Path) -> None:
     assert "curl " in body
 
 
+def test_index_license_and_deps_link_to_explained_findings(tmp_path: Path) -> None:
+    snap = _snapshot("2026-05-11", [_module_stub("kaos-core")])
+    render_main.render(snap, output_dir=tmp_path)
+    index = (tmp_path / "index.html").read_text(encoding="utf-8")
+    supply = (tmp_path / "supply-chain.html").read_text(encoding="utf-8")
+
+    assert "supply-chain.html#license-findings-h" in index
+    assert "License and dependency findings" in supply
+
+
 def test_footer_links_api_index_from_every_page(tmp_path: Path) -> None:
     snap = _snapshot("2026-05-11", [_module_stub("kaos-core")])
     render_main.render(snap, output_dir=tmp_path)
