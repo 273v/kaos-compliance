@@ -29,15 +29,15 @@
           "status": "queued",
           "started_at": "2026-05-13T00:53:54Z",
           "completed_at": null,
-          "duration_seconds": 54
+          "duration_seconds": 827
         },
         {
           "name": "Pre-commit hooks",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-13T00:53:54Z",
-          "completed_at": null,
-          "duration_seconds": 54
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T01:03:56Z",
+          "completed_at": "2026-05-13T01:04:13Z",
+          "duration_seconds": 17
         },
         {
           "name": "Lint",
@@ -45,7 +45,7 @@
           "status": "queued",
           "started_at": "2026-05-13T00:53:54Z",
           "completed_at": null,
-          "duration_seconds": 54
+          "duration_seconds": 827
         },
         {
           "name": "Test (macos-arm64 / Python 3.13)",
@@ -57,11 +57,11 @@
         },
         {
           "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "in_progress",
+          "conclusion": "success",
+          "status": "completed",
           "started_at": "2026-05-13T00:53:57Z",
-          "completed_at": null,
-          "duration_seconds": 51
+          "completed_at": "2026-05-13T00:54:53Z",
+          "duration_seconds": 56
         },
         {
           "name": "Test (linux-x64 / Python 3.14)",
@@ -69,7 +69,7 @@
           "status": "queued",
           "started_at": "2026-05-13T00:53:54Z",
           "completed_at": null,
-          "duration_seconds": 54
+          "duration_seconds": 827
         },
         {
           "name": "Test (linux-x64 / Python 3.13)",
@@ -77,7 +77,7 @@
           "status": "queued",
           "started_at": "2026-05-13T00:53:54Z",
           "completed_at": null,
-          "duration_seconds": 54
+          "duration_seconds": 827
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
@@ -85,7 +85,7 @@
           "status": "queued",
           "started_at": "2026-05-13T00:53:54Z",
           "completed_at": null,
-          "duration_seconds": 54
+          "duration_seconds": 827
         },
         {
           "name": "Test (linux-x64 / Python 3.15)",
@@ -93,7 +93,7 @@
           "status": "queued",
           "started_at": "2026-05-13T00:53:54Z",
           "completed_at": null,
-          "duration_seconds": 54
+          "duration_seconds": 827
         }
       ]
     },
@@ -130,8 +130,12 @@
       "run_completed_at": "2026-05-13T00:54:19Z"
     },
     "open_prs": {
-      "count": 0,
-      "titles": []
+      "count": 3,
+      "titles": [
+        "#12 chore(deps): bump kaos-core from 0.1.0a1 to 0.1.0a6",
+        "#11 chore(deps): bump the deps-minor group with 2 updates",
+        "#10 chore(deps): bump the actions-all group with 4 updates"
+      ]
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -191,8 +195,8 @@
         "NOTICE"
       ],
       "releases_90d": 3,
-      "median_pr_age_days": -0.0,
-      "open_pr_count": 1,
+      "median_pr_age_days": 0.009,
+      "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 66,
       "errors": [
