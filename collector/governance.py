@@ -40,7 +40,8 @@ GitHub REST endpoints used (verbatim --- each is documented next to its
 caller):
 
   * ``GET repos/{org}/{repo}/commits?since=...&until=...&per_page=100`` (+--paginate)
-  * ``GET repos/{org}/{repo}/branches/main/protection``
+  * ``GET repos/{org}/{repo}/branches/main`` (public protected flag)
+  * ``GET repos/{org}/{repo}/branches/main/protection`` (admin detail when available)
   * ``GET repos/{org}/{repo}/contents/.github/CODEOWNERS`` / ``contents/CODEOWNERS``
   * ``GET repos/{org}/{repo}/contents/SECURITY.md``
   * ``GET repos/{org}/{repo}/contents/NOTICE``
@@ -304,24 +305,83 @@ def _commits_section(
 # ---------------------------------------------------------------------------
 
 
+def _branch_protection_public_flag(
+    repo: str,
+    *,
+    gh_run: Callable,
+) -> tuple[bool | None, dict[str, Any] | None, str | None]:
+    """Read the public branch metadata ``protected`` flag.
+
+    GitHub's full branch-protection endpoint requires repository
+    Administration read permission for fine-grained tokens. The default
+    Actions ``GITHUB_TOKEN`` cannot request that permission, but the
+    ordinary branch endpoint is available with contents read and carries
+    the public ``protected`` boolean. Use it as the dashboard's honest
+    "is protection enabled?" fallback, while leaving admin-only details
+    as ``None`` when the detailed endpoint is unavailable.
+    """
+    try:
+        cp = gh_run(["api", f"repos/{ORG}/{repo}/branches/main"])
+    except Exception as exc:
+        if _is_terminal_404(exc):
+            return None, None, None
+        return None, None, f"branch_protection_public: {exc}"
+
+    try:
+        branch = json.loads(cp.stdout)
+    except json.JSONDecodeError as exc:
+        return None, None, f"branch_protection_public: malformed JSON: {exc}"
+
+    protected = branch.get("protected")
+    if not isinstance(protected, bool):
+        return None, None, "branch_protection_public: missing protected boolean"
+    if not protected:
+        return False, {}, None
+
+    public_protection = branch.get("protection")
+    if not isinstance(public_protection, dict):
+        public_protection = {}
+    return True, {
+        "source": "branches_api",
+        "required_status_checks": public_protection.get("required_status_checks"),
+        "required_pull_request_reviews": None,
+        "required_signatures": None,
+    }, None
+
+
 def _branch_protection(
     repo: str,
     *,
     gh_run: Callable,
     errors: list[str],
 ) -> tuple[bool | None, dict[str, Any] | None]:
-    """``GET repos/{ORG}/{repo}/branches/main/protection``.
+    """Branch-protection state for ``main``.
 
-    404 ("Branch not protected") is the explicit *unprotected* answer:
-    ``(False, {})``. Any other failure leaves both fields ``None`` and
-    appends to ``errors``.
+    The public ``branches/main`` endpoint supplies the enabled/disabled
+    boolean. The admin-detail ``branches/main/protection`` endpoint is
+    used when the token can read it. If that detailed endpoint is blocked
+    by the default Actions token, the enabled flag still stays true and
+    the summary is marked as public-branch metadata.
+
+    If both endpoints fail, both fields are ``None`` and ``errors`` gets
+    a diagnostic.
     """
+    public_enabled, public_summary, public_error = _branch_protection_public_flag(
+        repo, gh_run=gh_run
+    )
+    if public_enabled is False:
+        return False, {}
+
     try:
         cp = gh_run(["api", f"repos/{ORG}/{repo}/branches/main/protection"])
     except Exception as exc:
+        if public_enabled is True:
+            return True, public_summary
         if _is_terminal_404(exc):
             return False, {}
         errors.append(f"branch_protection: {exc}")
+        if public_error:
+            errors.append(public_error)
         return None, None
 
     try:

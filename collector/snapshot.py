@@ -55,6 +55,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import os
 import sys
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -390,7 +391,9 @@ def _open_prs(repo: str) -> OpenPRsSection:
 # ---------------------------------------------------------------------------
 
 
-_SIBLING_ROOT = Path("/home/mjbommar/projects/273v")
+_SIBLING_ROOT = Path(
+    os.environ.get("KAOS_SIBLING_ROOT", "/home/mjbommar/projects/273v")
+).expanduser()
 
 
 def collect_module(repo: str) -> ModuleSnapshot:

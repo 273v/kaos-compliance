@@ -24,6 +24,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -77,7 +78,9 @@ else:
 # sync with ``collector.snapshot._SIBLING_ROOT``. The render-time
 # augmentation only reads files; it never writes back into the sibling
 # trees.
-_SIBLING_ROOT = Path("/home/mjbommar/projects/273v")
+_SIBLING_ROOT = Path(
+    os.environ.get("KAOS_SIBLING_ROOT", "/home/mjbommar/projects/273v")
+).expanduser()
 
 HERE = Path(__file__).resolve().parent
 TEMPLATES_DIR = HERE / "templates"
@@ -434,9 +437,16 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
     else:
         signing_note = "No PyPI release on file yet"
     bp_state_raw = gov_section.get("branch_protection_enabled")
+    bp_summary = gov_section.get("branch_protection_summary") or {}
     bp_state = "green" if bp_state_raw is True else "yellow" if bp_state_raw is False else "gray"
     if bp_state_raw is True:
-        bp_note = "Required reviews + status checks enforced on main"
+        if bp_summary.get("source") == "branches_api":
+            bp_note = (
+                "GitHub reports main as protected; admin-only rule details "
+                "were not available to the sweep token"
+            )
+        else:
+            bp_note = "Branch-protection details collected for main"
     elif bp_state_raw is False:
         bp_note = "Branch protection off - acceptable for alpha; flip before GA"
     else:
@@ -721,6 +731,53 @@ def _heartbeat_block(snapshot: dict[str, Any]) -> dict[str, Any]:
         "generated_at": snapshot.get("generated_at"),
         **(snapshot.get("heartbeat") or {}),
     }
+
+
+def _copy_sbom_artifacts(
+    snapshot: dict[str, Any],
+    *,
+    repo_root: Path,
+    api_dir: Path,
+) -> list[Path]:
+    """Mirror referenced SBOM artifacts under ``api/v1/sbom/``.
+
+    The collector writes SBOMs into ``data/sbom/`` and records that
+    relative path in the snapshot. The public pages link to the stable
+    API mirror, so rendering must copy each referenced artifact into the
+    deployed tree. Final-render jobs may not have ``data/sbom`` present
+    locally; in that case we preserve any artifact already downloaded in
+    the unsigned site artifact.
+    """
+    written: list[Path] = []
+    sbom_api_dir = api_dir / "sbom"
+    for module in snapshot.get("modules") or []:
+        if not isinstance(module, dict):
+            continue
+        sbom = ((module.get("supply_chain") or {}).get("sbom") or {})
+        rel = sbom.get("sbom_artifact_path")
+        if not isinstance(rel, str) or not rel:
+            continue
+        basename = Path(rel).name
+        if not basename:
+            continue
+        src = repo_root / rel
+        dst = sbom_api_dir / basename
+        if dst.is_file():
+            # Final-render starts from the unsigned site artifact, whose
+            # SBOM mirror came from the collection job's sibling clones.
+            # Preserve that copy over any stale committed data/sbom file
+            # in the fresh checkout.
+            written.append(dst)
+        elif src.is_file():
+            sbom_api_dir.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+            written.append(dst)
+        else:
+            print(
+                f"render: WARNING: referenced SBOM artifact not found: {rel}",
+                file=sys.stderr,
+            )
+    return written
 
 
 def _generated_at_display(iso_ts: str | None) -> str:
@@ -1987,6 +2044,8 @@ def render(
     hb_out = output_dir / "heartbeat.json"
     hb_out.write_text(json.dumps(_heartbeat_block(snapshot), indent=2) + "\n", encoding="utf-8")
     written.append(hb_out)
+
+    written.extend(_copy_sbom_artifacts(snapshot, repo_root=repo_root, api_dir=api_dir))
 
     # ── P7: machine-readable endpoint polish ──
     #

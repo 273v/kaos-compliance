@@ -197,6 +197,27 @@ jobs:
             uv sync --group dev --python 3.13
           fi
 
+      - name: Clone sibling KAOS repos for SBOM collection
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          KAOS_SIBLING_ROOT: ${{ runner.temp }}/kaos-siblings
+        run: |
+          set -euo pipefail
+          rm -rf "${KAOS_SIBLING_ROOT}"
+          mkdir -p "${KAOS_SIBLING_ROOT}"
+
+          gh repo list 273v \
+            --limit 100 \
+            --visibility public \
+            --json name \
+            --jq '.[] | .name | select(startswith("kaos-") and . != "kaos-compliance")' |
+          while IFS= read -r repo; do
+            git clone --depth=1 "https://github.com/273v/${repo}.git" \
+              "${KAOS_SIBLING_ROOT}/${repo}"
+          done
+
+          echo "KAOS_SIBLING_ROOT=${KAOS_SIBLING_ROOT}" >> "${GITHUB_ENV}"
+
       - name: Collect snapshot
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
