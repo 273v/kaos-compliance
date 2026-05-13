@@ -17,9 +17,8 @@ match renders an asterisk on the pill that links to
 ``/license-policy.html#<component>``, where the public rationale is
 visible. This is the transparency guarantee.
 
-Stdlib + PyYAML only. PyYAML ships with the kaos-llm-client transitive
-graph; if it's not importable, the policy is treated as empty (pills
-stay at their unfiltered state).
+Stdlib + PyYAML only. If PyYAML is not importable, the policy is treated
+as empty and pills stay at their unfiltered state.
 """
 
 from __future__ import annotations

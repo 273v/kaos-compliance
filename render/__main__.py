@@ -1081,8 +1081,8 @@ def _license_finding_rows(module: dict[str, Any], policy: Any = None) -> list[di
                 {
                     "package": module["name"],
                     "component": component,
-                    "state": "yellow",
-                    "kind": "Parser gap",
+                    "state": "green",
+                    "kind": "Documented parser gap",
                     "license": gap.true_license,
                     "decision": "Known license; parser fix tracked",
                     "explanation": gap.fix_strategy,
@@ -1107,18 +1107,41 @@ def _license_finding_rows(module: dict[str, Any], policy: Any = None) -> list[di
     return sorted(rows, key=lambda r: (r["state"] != "red", r["package"], r["component"]))
 
 
-def _license_breakdown_state(spdx: str) -> str:
+def _license_breakdown_state(
+    spdx: str,
+    *,
+    sbom: dict[str, Any] | None = None,
+    policy: Any = None,
+) -> str:
     s = spdx.lower()
     if any(t in s for t in ("agpl", "gpl-2", "gpl-3", "gpl-")):
         return "red"
-    if any(t in s for t in ("mpl", "lgpl", "unknown")):
+    is_weak = any(t in s for t in ("mpl", "lgpl"))
+    is_unknown = "unknown" in s
+    if is_weak and sbom is not None and policy is not None:
+        weak = sbom.get("weak_copyleft") or []
+        if weak and all(_component_allowed(c, policy, _guess_spdx_for_weak(c)) for c in weak):
+            return "green"
+    if is_unknown and sbom is not None and policy is not None:
+        unknown = sbom.get("unknown_license") or []
+        if unknown and all(policy.parser_gap_for(c) is not None for c in unknown):
+            return "green"
+    if is_weak or is_unknown:
         return "yellow"
     return "green"
+
+
+def _worst_license_state(current: str | None, candidate: str) -> str:
+    rank = {"green": 0, "gray": 0, "yellow": 1, "red": 2}
+    if current is None or rank[candidate] > rank[current]:
+        return candidate
+    return current
 
 
 def _supply_chain_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[str, Any]:
     """Aggregate license breakdown + attestation table across modules."""
     org_license_breakdown: dict[str, int] = {}
+    org_license_states: dict[str, str] = {}
     packages_with_attestations = 0
     rows: list[dict[str, Any]] = []
     for m in modules:
@@ -1126,6 +1149,10 @@ def _supply_chain_summary(modules: list[dict[str, Any]], *, policy: Any = None) 
         sbom = sc.get("sbom") or {}
         for spdx, n in (sbom.get("license_breakdown") or {}).items():
             org_license_breakdown[spdx] = org_license_breakdown.get(spdx, 0) + n
+            org_license_states[spdx] = _worst_license_state(
+                org_license_states.get(spdx),
+                _license_breakdown_state(spdx, sbom=sbom, policy=policy),
+            )
         att = sc.get("attestations") or {}
         if att.get("pep740_present"):
             packages_with_attestations += 1
@@ -1137,7 +1164,11 @@ def _supply_chain_summary(modules: list[dict[str, Any]], *, policy: Any = None) 
         cisa_green = sum(1 for e in cisa_elements if e["state"] == "green")
         cisa_total = len(cisa_elements)
         license_top = [
-            {"spdx": spdx, "count": n, "state": _license_breakdown_state(spdx)}
+            {
+                "spdx": spdx,
+                "count": n,
+                "state": _license_breakdown_state(spdx, sbom=sbom, policy=policy),
+            }
             for spdx, n in sorted(
                 (sbom.get("license_breakdown") or {}).items(),
                 key=lambda kv: (-kv[1], kv[0]),
@@ -1217,7 +1248,7 @@ def _supply_chain_summary(modules: list[dict[str, Any]], *, policy: Any = None) 
     # Shape the org-wide license breakdown as a list-of-dicts ordered
     # by count desc; classify each row's state.
     license_rows = [
-        {"spdx": spdx, "count": n, "state": _license_breakdown_state(spdx)}
+        {"spdx": spdx, "count": n, "state": org_license_states.get(spdx, "gray")}
         for spdx, n in sorted(org_license_breakdown.items(), key=lambda kv: (-kv[1], kv[0]))
     ]
     license_findings = [finding for row in rows for finding in (row.get("license_findings") or [])]

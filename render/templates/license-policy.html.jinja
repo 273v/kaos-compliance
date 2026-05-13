@@ -77,8 +77,8 @@ footer a{color:var(--muted)}
       the public audit trail.</li>
   <li><strong>Parser gap</strong> — a component whose license is
       permissive and known but the SBOM parser currently can&rsquo;t extract it.
-      Tracked here so the unresolved set is visible; pills stay yellow
-      until the parser fix lands.</li>
+      Tracked here so the coverage decision is visible; packages stay green
+      when every unknown component has a documented parser-gap entry.</li>
  </ul>
  <p>
   The full triage that produced these entries lives at
@@ -202,8 +202,8 @@ footer a{color:var(--muted)}
  <h2 id="gaps-h">Parser gaps ({{ license_policy.parser_gaps | length }})</h2>
  <p style="color:var(--muted);font-size:0.875rem">
   These components have known permissive licenses but the SBOM parser
-  currently can't extract them. They render as yellow on the dashboard
-  until the listed fix strategy ships.
+  currently can't extract them. They are documented policy coverage, so
+  packages remain green while the listed parser fix strategy is tracked.
  </p>
  {% if license_policy.parser_gaps %}
  <div class="card">
