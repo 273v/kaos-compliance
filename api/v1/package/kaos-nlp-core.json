@@ -204,12 +204,58 @@
         "total_count": 6
       },
       "sbom": {
-        "components_count": null,
-        "license_breakdown": {},
-        "weak_copyleft": [],
+        "components_count": 211,
+        "license_breakdown": {
+          "MIT": 28,
+          "MPL-2.0": 1,
+          "BSD-3-Clause": 8,
+          "Apache-2.0": 8,
+          "Apache-2.0 OR BSD-3-Clause": 1,
+          "MIT OR Apache-2.0": 89,
+          "Apache-2.0 OR BSD-2-Clause": 1,
+          "BSD-2-Clause": 3,
+          "PSF-2.0": 1,
+          "0BSD OR MIT OR Apache-2.0": 1,
+          "Unlicense OR MIT": 3,
+          "Apache-2.0 OR MIT": 11,
+          "CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception": 1,
+          "CC0-1.0 OR MIT-0 OR Apache-2.0": 1,
+          "LicenseRef-unknown-7dcb5226": 1,
+          "Zlib": 2,
+          "LicenseRef-unknown-30d4520d": 4,
+          "Unicode-3.0": 16,
+          "LicenseRef-unknown-ec5c82d8": 11,
+          "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT": 13,
+          "MIT OR Zlib OR Apache-2.0": 1,
+          "MIT OR Apache-2.0 OR LGPL-2.1-or-later": 2,
+          "Apache-2.0 WITH LLVM-exception": 1,
+          "(MIT OR Apache-2.0) AND Unicode-3.0": 1,
+          "BSD-2-Clause OR Apache-2.0 OR MIT": 2
+        },
+        "weak_copyleft": [
+          "certifi",
+          "r-efi"
+        ],
         "strong_copyleft": [],
-        "unknown_license": [],
-        "sbom_artifact_path": null
+        "unknown_license": [
+          "fnv",
+          "fst",
+          "id-arena",
+          "page_size",
+          "quick-error",
+          "rusty-fork",
+          "same-file",
+          "siphasher",
+          "utf8-ranges",
+          "version_check",
+          "wait-timeout",
+          "walkdir",
+          "winapi",
+          "winapi-i686-pc-windows-gnu",
+          "winapi-x86_64-pc-windows-gnu",
+          "zstd-sys"
+        ],
+        "sbom_artifact_path": "data/sbom/kaos-nlp-core-0.1.0a3.cdx.json"
       },
       "errors": []
     },
@@ -219,8 +265,84 @@
       "verified_commit_ratio_90d": 0.333,
       "commits_90d": 18,
       "unique_committers_90d": 1,
-      "branch_protection_enabled": null,
-      "branch_protection_summary": null,
+      "branch_protection_enabled": true,
+      "branch_protection_summary": {
+        "source": "branches_api",
+        "required_status_checks": {
+          "enforcement_level": "everyone",
+          "contexts": [
+            "Lint",
+            "Pre-commit hooks",
+            "Test (linux-x64 / Python 3.13)",
+            "Test (linux-x64 / Python 3.14)",
+            "Test against minimum dependencies",
+            "Build distribution + smoke test",
+            "gitleaks (secret scan)",
+            "pip-audit (dependency CVEs)",
+            "bandit (static security)",
+            "vulture (dead-code scan)",
+            "Rust tests (no PyO3)",
+            "cargo-audit (Rust CVEs)",
+            "cargo-deny (licenses + bans + advisories)"
+          ],
+          "checks": [
+            {
+              "context": "Lint",
+              "app_id": 15368
+            },
+            {
+              "context": "Pre-commit hooks",
+              "app_id": 15368
+            },
+            {
+              "context": "Test (linux-x64 / Python 3.13)",
+              "app_id": 15368
+            },
+            {
+              "context": "Test (linux-x64 / Python 3.14)",
+              "app_id": 15368
+            },
+            {
+              "context": "Test against minimum dependencies",
+              "app_id": 15368
+            },
+            {
+              "context": "Build distribution + smoke test",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (secret scan)",
+              "app_id": 15368
+            },
+            {
+              "context": "pip-audit (dependency CVEs)",
+              "app_id": 15368
+            },
+            {
+              "context": "bandit (static security)",
+              "app_id": 15368
+            },
+            {
+              "context": "vulture (dead-code scan)",
+              "app_id": 15368
+            },
+            {
+              "context": "Rust tests (no PyO3)",
+              "app_id": 15368
+            },
+            {
+              "context": "cargo-audit (Rust CVEs)",
+              "app_id": 15368
+            },
+            {
+              "context": "cargo-deny (licenses + bans + advisories)",
+              "app_id": 15368
+            }
+          ]
+        },
+        "required_pull_request_reviews": null,
+        "required_signatures": null
+      },
       "codeowners_path": ".github/CODEOWNERS",
       "security_md_present": true,
       "security_md_disclosure_window_days": 90,
@@ -230,36 +352,32 @@
         "NOTICE"
       ],
       "releases_90d": 3,
-      "median_pr_age_days": 0.454,
+      "median_pr_age_days": 0.482,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 1322,
-      "errors": [
-        "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-nlp-core/branches/main/protection']' returned non-zero exit status 1."
-      ]
+      "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": null,
-        "tests_loc": null,
-        "src_files": null,
-        "tests_files": null
+        "src_loc": 9433,
+        "tests_loc": 12908,
+        "src_files": 56,
+        "tests_files": 73
       },
       "rust": {
-        "src_loc": null,
-        "tests_loc": null,
-        "src_files": null,
-        "tests_files": null
+        "src_loc": 22236,
+        "tests_loc": 1488,
+        "src_files": 65,
+        "tests_files": 10
       },
-      "errors": [
-        "no repo_dir passed"
-      ]
+      "errors": []
     },
     "errors": []
   },
   "sbom": {
-    "mirror_path": null,
-    "github_release_url": null
+    "mirror_path": "api/v1/sbom/kaos-nlp-core-0.1.0a3.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-nlp-core/releases/download/v0.1.0a3/kaos-nlp-core-0.1.0a3.cdx.json"
   },
   "attestation": {
     "present": true,

@@ -207,12 +207,73 @@
         "total_count": 6
       },
       "sbom": {
-        "components_count": null,
-        "license_breakdown": {},
-        "weak_copyleft": [],
+        "components_count": 372,
+        "license_breakdown": {
+          "MIT": 77,
+          "MPL-2.0": 2,
+          "BSD-3-Clause": 15,
+          "Apache-2.0": 21,
+          "Apache-2.0 OR BSD-3-Clause": 1,
+          "MIT OR Apache-2.0": 154,
+          "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+          "Apache-2.0 OR BSD-2-Clause": 1,
+          "BSD-2-Clause": 3,
+          "Python-2.0": 1,
+          "ISC": 4,
+          "MPL-2.0 AND MIT": 1,
+          "PSF-2.0": 1,
+          "0BSD OR MIT OR Apache-2.0": 1,
+          "Unlicense OR MIT": 4,
+          "Apache-2.0 OR MIT": 16,
+          "LicenseRef-unknown-ec5c82d8": 14,
+          "LicenseRef-unknown-7dcb5226": 1,
+          "Zlib": 1,
+          "Apache-2.0 OR ISC OR MIT": 2,
+          "Unicode-3.0": 18,
+          "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT": 15,
+          "MIT OR Apache-2.0 OR Zlib": 2,
+          "Apache-2.0 OR MIT OR Zlib": 2,
+          "MIT OR Zlib OR Apache-2.0": 1,
+          "MIT OR Apache-2.0 OR LGPL-2.1-or-later": 2,
+          "LicenseRef-unknown-a7af1b0a": 1,
+          "Apache-2.0 AND ISC": 1,
+          "Apache-2.0 OR BSL-1.0": 1,
+          "LicenseRef-unknown-30d4520d": 2,
+          "Apache-2.0 WITH LLVM-exception": 1,
+          "Zlib OR Apache-2.0 OR MIT": 1,
+          "(MIT OR Apache-2.0) AND Unicode-3.0": 1,
+          "LicenseRef-unknown-cb277f17": 1,
+          "BSD-2-Clause OR Apache-2.0 OR MIT": 2
+        },
+        "weak_copyleft": [
+          "certifi",
+          "option-ext",
+          "r-efi",
+          "tqdm"
+        ],
         "strong_copyleft": [],
-        "unknown_license": [],
-        "sbom_artifact_path": null
+        "unknown_license": [
+          "base64",
+          "fnv",
+          "id-arena",
+          "ident_case",
+          "matrixmultiply",
+          "minimal-lexical",
+          "page_size",
+          "rawpointer",
+          "rayon-cond",
+          "same-file",
+          "serde_urlencoded",
+          "socks",
+          "unicode-normalization-alignments",
+          "version_check",
+          "walkdir",
+          "webpki-roots",
+          "winapi",
+          "winapi-i686-pc-windows-gnu",
+          "winapi-x86_64-pc-windows-gnu"
+        ],
+        "sbom_artifact_path": "data/sbom/kaos-nlp-transformers-0.2.0a4.cdx.json"
       },
       "errors": []
     },
@@ -222,8 +283,84 @@
       "verified_commit_ratio_90d": 0.224,
       "commits_90d": 58,
       "unique_committers_90d": 2,
-      "branch_protection_enabled": null,
-      "branch_protection_summary": null,
+      "branch_protection_enabled": true,
+      "branch_protection_summary": {
+        "source": "branches_api",
+        "required_status_checks": {
+          "enforcement_level": "everyone",
+          "contexts": [
+            "Lint",
+            "Pre-commit hooks",
+            "Rust tests",
+            "Test (linux-x64 / Python 3.13)",
+            "Test (linux-x64 / Python 3.14)",
+            "Test against minimum dependencies",
+            "Build distribution + smoke test",
+            "gitleaks (secret scan)",
+            "pip-audit (Python dependency CVEs)",
+            "cargo-audit (Rust CVEs)",
+            "cargo-deny (licenses + bans + advisories)",
+            "bandit (static security)",
+            "vulture (dead-code scan)"
+          ],
+          "checks": [
+            {
+              "context": "Lint",
+              "app_id": 15368
+            },
+            {
+              "context": "Pre-commit hooks",
+              "app_id": 15368
+            },
+            {
+              "context": "Rust tests",
+              "app_id": 15368
+            },
+            {
+              "context": "Test (linux-x64 / Python 3.13)",
+              "app_id": 15368
+            },
+            {
+              "context": "Test (linux-x64 / Python 3.14)",
+              "app_id": 15368
+            },
+            {
+              "context": "Test against minimum dependencies",
+              "app_id": 15368
+            },
+            {
+              "context": "Build distribution + smoke test",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (secret scan)",
+              "app_id": 15368
+            },
+            {
+              "context": "pip-audit (Python dependency CVEs)",
+              "app_id": 15368
+            },
+            {
+              "context": "cargo-audit (Rust CVEs)",
+              "app_id": 15368
+            },
+            {
+              "context": "cargo-deny (licenses + bans + advisories)",
+              "app_id": 15368
+            },
+            {
+              "context": "bandit (static security)",
+              "app_id": 15368
+            },
+            {
+              "context": "vulture (dead-code scan)",
+              "app_id": 15368
+            }
+          ]
+        },
+        "required_pull_request_reviews": null,
+        "required_signatures": null
+      },
       "codeowners_path": ".github/CODEOWNERS",
       "security_md_present": true,
       "security_md_disclosure_window_days": 90,
@@ -233,36 +370,32 @@
         "NOTICE"
       ],
       "releases_90d": 6,
-      "median_pr_age_days": 0.45,
+      "median_pr_age_days": 0.478,
       "open_pr_count": 5,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 350,
-      "errors": [
-        "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-nlp-transformers/branches/main/protection']' returned non-zero exit status 1."
-      ]
+      "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": null,
-        "tests_loc": null,
-        "src_files": null,
-        "tests_files": null
+        "src_loc": 2329,
+        "tests_loc": 1850,
+        "src_files": 13,
+        "tests_files": 19
       },
       "rust": {
-        "src_loc": null,
-        "tests_loc": null,
-        "src_files": null,
-        "tests_files": null
+        "src_loc": 1467,
+        "tests_loc": 6,
+        "src_files": 17,
+        "tests_files": 1
       },
-      "errors": [
-        "no repo_dir passed"
-      ]
+      "errors": []
     },
     "errors": []
   },
   "sbom": {
-    "mirror_path": null,
-    "github_release_url": null
+    "mirror_path": "api/v1/sbom/kaos-nlp-transformers-0.2.0a4.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-nlp-transformers/releases/download/v0.2.0a4/kaos-nlp-transformers-0.2.0a4.cdx.json"
   },
   "attestation": {
     "present": true,

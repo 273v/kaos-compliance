@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-05-13T11:55:29Z",
+  "generated_at": "2026-05-13T12:36:13Z",
   "generator": {
     "name": "kaos-compliance",
     "version": "0.0.1"
   },
   "heartbeat": {
-    "last_full_sweep_at": "2026-05-13T11:55:29Z",
-    "last_light_sweep_at": "2026-05-13T11:55:29Z",
-    "last_security_sweep_at": "2026-05-13T11:55:29Z",
+    "last_full_sweep_at": "2026-05-13T12:36:13Z",
+    "last_light_sweep_at": "2026-05-13T12:36:13Z",
+    "last_security_sweep_at": "2026-05-13T12:36:13Z",
     "stale_threshold_hours": 26
   },
   "modules": [
@@ -185,12 +185,22 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
+          "components_count": 28,
+          "license_breakdown": {
+            "MIT": 11,
+            "BSD-3-Clause": 5,
+            "BSD-2-Clause": 4,
+            "Apache-2.0": 5,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-df4fa55c": 1,
+            "PSF-2.0": 1
+          },
           "weak_copyleft": [],
           "strong_copyleft": [],
-          "unknown_license": [],
-          "sbom_artifact_path": null
+          "unknown_license": [
+            "regex"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-citations-0.1.0a2.cdx.json"
         },
         "errors": []
       },
@@ -200,8 +210,69 @@
         "verified_commit_ratio_90d": 0.571,
         "commits_90d": 14,
         "unique_committers_90d": 2,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -211,30 +282,26 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.416,
+        "median_pr_age_days": 0.443,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 53,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-citations/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 7788,
+          "tests_loc": 2472,
+          "src_files": 30,
+          "tests_files": 21
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -405,12 +472,36 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 54,
+          "license_breakdown": {
+            "MIT": 24,
+            "MPL-2.0": 2,
+            "BSD-3-Clause": 8,
+            "Apache-2.0": 9,
+            "LicenseRef-unknown-257a8106": 1,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "MIT-CMU": 1,
+            "LicenseRef-unknown-ede0a372": 1,
+            "BSD-2-Clause": 1,
+            "MIT AND BSD-3-Clause": 1,
+            "LicenseRef-unknown-b4f01cf0": 1,
+            "ISC": 1,
+            "MPL-2.0 AND MIT": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi",
+            "hypothesis",
+            "tqdm"
+          ],
           "strong_copyleft": [],
-          "unknown_license": [],
-          "sbom_artifact_path": null
+          "unknown_license": [
+            "imagehash",
+            "polars",
+            "scipy"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-content-0.1.0a6.cdx.json"
         },
         "errors": []
       },
@@ -420,8 +511,69 @@
         "verified_commit_ratio_90d": 0.4,
         "commits_90d": 30,
         "unique_committers_90d": 1,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -431,30 +583,26 @@
           "NOTICE"
         ],
         "releases_90d": 6,
-        "median_pr_age_days": 0.452,
+        "median_pr_age_days": 0.48,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 137,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-content/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 14293,
+          "tests_loc": 22067,
+          "src_files": 80,
+          "tests_files": 91
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -630,12 +778,24 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 39,
+          "license_breakdown": {
+            "MIT": 21,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 9,
+            "Apache-2.0": 2,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 2,
+            "Python-2.0": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": null
+          "sbom_artifact_path": "data/sbom/kaos-core-0.1.0a6.cdx.json"
         },
         "errors": []
       },
@@ -645,8 +805,69 @@
         "verified_commit_ratio_90d": 0.209,
         "commits_90d": 43,
         "unique_committers_90d": 2,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -656,30 +877,26 @@
           "NOTICE"
         ],
         "releases_90d": 6,
-        "median_pr_age_days": 0.455,
+        "median_pr_age_days": 0.483,
         "open_pr_count": 1,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 85,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-core/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 6968,
+          "tests_loc": 5318,
+          "src_files": 90,
+          "tests_files": 45
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -883,12 +1100,33 @@
           "total_count": 6
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 80,
+          "license_breakdown": {
+            "MIT": 15,
+            "BSD-3-Clause": 6,
+            "Apache-2.0": 4,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Python-2.0": 1,
+            "MIT OR Apache-2.0": 37,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1,
+            "Apache-2.0 OR MIT": 3,
+            "Zlib": 1,
+            "Unlicense OR MIT": 1,
+            "MIT OR Apache-2.0 OR LGPL-2.1-or-later": 1,
+            "Apache-2.0 OR BSL-1.0": 1,
+            "Apache-2.0 WITH LLVM-exception": 1,
+            "(MIT OR Apache-2.0) AND Unicode-3.0": 1,
+            "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT": 2,
+            "BSD-2-Clause OR Apache-2.0 OR MIT": 2
+          },
+          "weak_copyleft": [
+            "r-efi"
+          ],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": null
+          "sbom_artifact_path": "data/sbom/kaos-graph-0.1.0a3.cdx.json"
         },
         "errors": []
       },
@@ -898,8 +1136,84 @@
         "verified_commit_ratio_90d": 0.375,
         "commits_90d": 24,
         "unique_committers_90d": 2,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)",
+              "Rust tests (no PyO3)",
+              "cargo-audit (Rust CVEs)",
+              "cargo-deny (licenses + bans + advisories)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "Rust tests (no PyO3)",
+                "app_id": 15368
+              },
+              {
+                "context": "cargo-audit (Rust CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "cargo-deny (licenses + bans + advisories)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -909,30 +1223,26 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.455,
+        "median_pr_age_days": 0.483,
         "open_pr_count": 1,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 400,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-graph/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 3647,
+          "tests_loc": 4530,
+          "src_files": 32,
+          "tests_files": 20
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 6463,
+          "tests_loc": 0,
+          "src_files": 20,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -1110,12 +1420,27 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 41,
+          "license_breakdown": {
+            "MIT": 22,
+            "LicenseRef-unknown-e3b0c442": 2,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 8,
+            "Apache-2.0": 4,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
           "strong_copyleft": [],
-          "unknown_license": [],
-          "sbom_artifact_path": null
+          "unknown_license": [
+            "azure-core",
+            "azure-identity"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-llm-client-0.1.0a3.cdx.json"
         },
         "errors": []
       },
@@ -1125,8 +1450,69 @@
         "verified_commit_ratio_90d": 0.471,
         "commits_90d": 17,
         "unique_committers_90d": 1,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -1136,30 +1522,26 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.456,
+        "median_pr_age_days": 0.484,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 66,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-llm-client/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 7369,
+          "tests_loc": 12261,
+          "src_files": 46,
+          "tests_files": 55
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -1340,12 +1722,24 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 38,
+          "license_breakdown": {
+            "MIT": 18,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 6,
+            "Apache-2.0": 8,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "MIT-CMU": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": null
+          "sbom_artifact_path": "data/sbom/kaos-llm-core-0.1.0a7.cdx.json"
         },
         "errors": []
       },
@@ -1355,8 +1749,69 @@
         "verified_commit_ratio_90d": 0.5,
         "commits_90d": 22,
         "unique_committers_90d": 1,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -1366,30 +1821,26 @@
           "NOTICE"
         ],
         "releases_90d": 7,
-        "median_pr_age_days": 0.43,
+        "median_pr_age_days": 0.458,
         "open_pr_count": 6,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 142,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-llm-core/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 23927,
+          "tests_loc": 27292,
+          "src_files": 188,
+          "tests_files": 146
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -1573,12 +2024,25 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 51,
+          "license_breakdown": {
+            "MIT": 29,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 10,
+            "Apache-2.0": 5,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1,
+            "Python-2.0": 1,
+            "ISC": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": null
+          "sbom_artifact_path": "data/sbom/kaos-mcp-0.1.0a3.cdx.json"
         },
         "errors": []
       },
@@ -1588,8 +2052,69 @@
         "verified_commit_ratio_90d": 0.556,
         "commits_90d": 18,
         "unique_committers_90d": 1,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -1599,30 +2124,26 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.417,
+        "median_pr_age_days": 0.445,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 59,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-mcp/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 2668,
+          "tests_loc": 1802,
+          "src_files": 24,
+          "tests_files": 13
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -1831,12 +2352,40 @@
           "total_count": 6
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 102,
+          "license_breakdown": {
+            "MIT": 41,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 15,
+            "Apache-2.0": 17,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "MIT OR Apache-2.0": 12,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "MIT-CMU": 1,
+            "LicenseRef-unknown-15934bcf": 1,
+            "LicenseRef-unknown-e3b0c442": 1,
+            "BSD-2-Clause": 2,
+            "Python-2.0": 1,
+            "LicenseRef-unknown-b4f01cf0": 1,
+            "ISC": 1,
+            "MPL-2.0 AND MIT": 1,
+            "PSF-2.0": 1,
+            "Apache-2.0 OR MIT": 1,
+            "Apache-2.0 WITH LLVM-exception": 1,
+            "(MIT OR Apache-2.0) AND Unicode-3.0": 1
+          },
+          "weak_copyleft": [
+            "certifi",
+            "tqdm"
+          ],
           "strong_copyleft": [],
-          "unknown_license": [],
-          "sbom_artifact_path": null
+          "unknown_license": [
+            "protobuf",
+            "py-rust-stemmers",
+            "scipy"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-ml-core-0.1.0a2.cdx.json"
         },
         "errors": []
       },
@@ -1846,8 +2395,84 @@
         "verified_commit_ratio_90d": 0.171,
         "commits_90d": 41,
         "unique_committers_90d": 1,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)",
+              "Rust tests (no PyO3)",
+              "cargo-audit (Rust CVEs)",
+              "cargo-deny (licenses + bans + advisories)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "Rust tests (no PyO3)",
+                "app_id": 15368
+              },
+              {
+                "context": "cargo-audit (Rust CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "cargo-deny (licenses + bans + advisories)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -1857,30 +2482,26 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.456,
+        "median_pr_age_days": 0.484,
         "open_pr_count": 6,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 229,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-ml-core/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 2964,
+          "tests_loc": 2778,
+          "src_files": 19,
+          "tests_files": 28
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 45,
+          "tests_loc": 0,
+          "src_files": 5,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -2046,12 +2667,18 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
+          "components_count": 10,
+          "license_breakdown": {
+            "BSD-3-Clause": 1,
+            "Apache-2.0": 1,
+            "MIT": 6,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1
+          },
           "weak_copyleft": [],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": null
+          "sbom_artifact_path": "data/sbom/kaos-names-0.1.0a1.cdx.json"
         },
         "errors": []
       },
@@ -2061,8 +2688,64 @@
         "verified_commit_ratio_90d": 0.5,
         "commits_90d": 10,
         "unique_committers_90d": 2,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution and smoke test",
+              "gitleaks",
+              "pip-audit",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution and smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -2076,26 +2759,22 @@
         "open_pr_count": 0,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 55,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-names/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 638,
+          "tests_loc": 265,
+          "src_files": 5,
+          "tests_files": 4
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -2300,12 +2979,58 @@
           "total_count": 6
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 211,
+          "license_breakdown": {
+            "MIT": 28,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 8,
+            "Apache-2.0": 8,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "MIT OR Apache-2.0": 89,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 3,
+            "PSF-2.0": 1,
+            "0BSD OR MIT OR Apache-2.0": 1,
+            "Unlicense OR MIT": 3,
+            "Apache-2.0 OR MIT": 11,
+            "CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception": 1,
+            "CC0-1.0 OR MIT-0 OR Apache-2.0": 1,
+            "LicenseRef-unknown-7dcb5226": 1,
+            "Zlib": 2,
+            "LicenseRef-unknown-30d4520d": 4,
+            "Unicode-3.0": 16,
+            "LicenseRef-unknown-ec5c82d8": 11,
+            "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT": 13,
+            "MIT OR Zlib OR Apache-2.0": 1,
+            "MIT OR Apache-2.0 OR LGPL-2.1-or-later": 2,
+            "Apache-2.0 WITH LLVM-exception": 1,
+            "(MIT OR Apache-2.0) AND Unicode-3.0": 1,
+            "BSD-2-Clause OR Apache-2.0 OR MIT": 2
+          },
+          "weak_copyleft": [
+            "certifi",
+            "r-efi"
+          ],
           "strong_copyleft": [],
-          "unknown_license": [],
-          "sbom_artifact_path": null
+          "unknown_license": [
+            "fnv",
+            "fst",
+            "id-arena",
+            "page_size",
+            "quick-error",
+            "rusty-fork",
+            "same-file",
+            "siphasher",
+            "utf8-ranges",
+            "version_check",
+            "wait-timeout",
+            "walkdir",
+            "winapi",
+            "winapi-i686-pc-windows-gnu",
+            "winapi-x86_64-pc-windows-gnu",
+            "zstd-sys"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-nlp-core-0.1.0a3.cdx.json"
         },
         "errors": []
       },
@@ -2315,8 +3040,84 @@
         "verified_commit_ratio_90d": 0.333,
         "commits_90d": 18,
         "unique_committers_90d": 1,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)",
+              "Rust tests (no PyO3)",
+              "cargo-audit (Rust CVEs)",
+              "cargo-deny (licenses + bans + advisories)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "Rust tests (no PyO3)",
+                "app_id": 15368
+              },
+              {
+                "context": "cargo-audit (Rust CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "cargo-deny (licenses + bans + advisories)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -2326,30 +3127,26 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.454,
+        "median_pr_age_days": 0.482,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 1322,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-nlp-core/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 9433,
+          "tests_loc": 12908,
+          "src_files": 56,
+          "tests_files": 73
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 22236,
+          "tests_loc": 1488,
+          "src_files": 65,
+          "tests_files": 10
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -2557,12 +3354,73 @@
           "total_count": 6
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 372,
+          "license_breakdown": {
+            "MIT": 77,
+            "MPL-2.0": 2,
+            "BSD-3-Clause": 15,
+            "Apache-2.0": 21,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "MIT OR Apache-2.0": 154,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 3,
+            "Python-2.0": 1,
+            "ISC": 4,
+            "MPL-2.0 AND MIT": 1,
+            "PSF-2.0": 1,
+            "0BSD OR MIT OR Apache-2.0": 1,
+            "Unlicense OR MIT": 4,
+            "Apache-2.0 OR MIT": 16,
+            "LicenseRef-unknown-ec5c82d8": 14,
+            "LicenseRef-unknown-7dcb5226": 1,
+            "Zlib": 1,
+            "Apache-2.0 OR ISC OR MIT": 2,
+            "Unicode-3.0": 18,
+            "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT": 15,
+            "MIT OR Apache-2.0 OR Zlib": 2,
+            "Apache-2.0 OR MIT OR Zlib": 2,
+            "MIT OR Zlib OR Apache-2.0": 1,
+            "MIT OR Apache-2.0 OR LGPL-2.1-or-later": 2,
+            "LicenseRef-unknown-a7af1b0a": 1,
+            "Apache-2.0 AND ISC": 1,
+            "Apache-2.0 OR BSL-1.0": 1,
+            "LicenseRef-unknown-30d4520d": 2,
+            "Apache-2.0 WITH LLVM-exception": 1,
+            "Zlib OR Apache-2.0 OR MIT": 1,
+            "(MIT OR Apache-2.0) AND Unicode-3.0": 1,
+            "LicenseRef-unknown-cb277f17": 1,
+            "BSD-2-Clause OR Apache-2.0 OR MIT": 2
+          },
+          "weak_copyleft": [
+            "certifi",
+            "option-ext",
+            "r-efi",
+            "tqdm"
+          ],
           "strong_copyleft": [],
-          "unknown_license": [],
-          "sbom_artifact_path": null
+          "unknown_license": [
+            "base64",
+            "fnv",
+            "id-arena",
+            "ident_case",
+            "matrixmultiply",
+            "minimal-lexical",
+            "page_size",
+            "rawpointer",
+            "rayon-cond",
+            "same-file",
+            "serde_urlencoded",
+            "socks",
+            "unicode-normalization-alignments",
+            "version_check",
+            "walkdir",
+            "webpki-roots",
+            "winapi",
+            "winapi-i686-pc-windows-gnu",
+            "winapi-x86_64-pc-windows-gnu"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-nlp-transformers-0.2.0a4.cdx.json"
         },
         "errors": []
       },
@@ -2572,8 +3430,84 @@
         "verified_commit_ratio_90d": 0.224,
         "commits_90d": 58,
         "unique_committers_90d": 2,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Rust tests",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (Python dependency CVEs)",
+              "cargo-audit (Rust CVEs)",
+              "cargo-deny (licenses + bans + advisories)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Rust tests",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (Python dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "cargo-audit (Rust CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "cargo-deny (licenses + bans + advisories)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -2583,30 +3517,26 @@
           "NOTICE"
         ],
         "releases_90d": 6,
-        "median_pr_age_days": 0.45,
+        "median_pr_age_days": 0.478,
         "open_pr_count": 5,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 350,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-nlp-transformers/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 2329,
+          "tests_loc": 1850,
+          "src_files": 13,
+          "tests_files": 19
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 1467,
+          "tests_loc": 6,
+          "src_files": 17,
+          "tests_files": 1
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -2789,12 +3719,26 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 60,
+          "license_breakdown": {
+            "MIT": 33,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 11,
+            "Apache-2.0": 7,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "MIT-CMU": 1,
+            "BSD-2-Clause": 2,
+            "Python-2.0": 1,
+            "ISC": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": null
+          "sbom_artifact_path": "data/sbom/kaos-office-0.1.0a2.cdx.json"
         },
         "errors": []
       },
@@ -2804,8 +3748,69 @@
         "verified_commit_ratio_90d": 0.106,
         "commits_90d": 85,
         "unique_committers_90d": 2,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -2815,30 +3820,26 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.438,
+        "median_pr_age_days": 0.466,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 98,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-office/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 7158,
+          "tests_loc": 9093,
+          "src_files": 33,
+          "tests_files": 43
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -3021,12 +4022,22 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
+          "components_count": 36,
+          "license_breakdown": {
+            "MIT": 19,
+            "BSD-3-Clause": 5,
+            "Apache-2.0": 6,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "MIT-CMU": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1
+          },
           "weak_copyleft": [],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": null
+          "sbom_artifact_path": "data/sbom/kaos-pdf-0.1.0a2.cdx.json"
         },
         "errors": []
       },
@@ -3036,8 +4047,69 @@
         "verified_commit_ratio_90d": 0.438,
         "commits_90d": 16,
         "unique_committers_90d": 2,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -3047,30 +4119,26 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.428,
+        "median_pr_age_days": 0.457,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 114,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-pdf/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 3218,
+          "tests_loc": 2262,
+          "src_files": 16,
+          "tests_files": 14
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -3253,12 +4321,27 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 34,
+          "license_breakdown": {
+            "MIT": 15,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 7,
+            "Apache-2.0": 5,
+            "MIT AND PSF-2.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "MIT-CMU": 1,
+            "LicenseRef-unknown-e3b0c442": 1,
+            "BSD-2-Clause": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
           "strong_copyleft": [],
-          "unknown_license": [],
-          "sbom_artifact_path": null
+          "unknown_license": [
+            "playwright"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-source-0.1.0a3.cdx.json"
         },
         "errors": []
       },
@@ -3268,8 +4351,69 @@
         "verified_commit_ratio_90d": 0.135,
         "commits_90d": 74,
         "unique_committers_90d": 2,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -3279,30 +4423,26 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.454,
+        "median_pr_age_days": 0.482,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 758,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-source/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 9341,
+          "tests_loc": 5569,
+          "src_files": 92,
+          "tests_files": 28
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -3481,12 +4621,25 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 53,
+          "license_breakdown": {
+            "MIT": 30,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 10,
+            "Apache-2.0": 6,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "BSD-2-Clause": 1,
+            "Python-2.0": 1,
+            "ISC": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": null
+          "sbom_artifact_path": "data/sbom/kaos-tabular-0.1.0a1.cdx.json"
         },
         "errors": []
       },
@@ -3496,8 +4649,69 @@
         "verified_commit_ratio_90d": 0.538,
         "commits_90d": 13,
         "unique_committers_90d": 1,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -3507,30 +4721,26 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 0.453,
+        "median_pr_age_days": 0.482,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 69,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-tabular/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 2552,
+          "tests_loc": 2736,
+          "src_files": 10,
+          "tests_files": 20
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     },
@@ -3710,12 +4920,29 @@
           "total_count": 2
         },
         "sbom": {
-          "components_count": null,
-          "license_breakdown": {},
-          "weak_copyleft": [],
+          "components_count": 64,
+          "license_breakdown": {
+            "MIT": 35,
+            "MPL-2.0": 1,
+            "BSD-3-Clause": 11,
+            "Apache-2.0": 7,
+            "Apache-2.0 OR BSD-3-Clause": 1,
+            "ISC": 2,
+            "MIT AND PSF-2.0": 1,
+            "Apache-2.0 OR BSD-2-Clause": 1,
+            "LicenseRef-unknown-e3b0c442": 1,
+            "BSD-2-Clause": 2,
+            "Python-2.0": 1,
+            "PSF-2.0": 1
+          },
+          "weak_copyleft": [
+            "certifi"
+          ],
           "strong_copyleft": [],
-          "unknown_license": [],
-          "sbom_artifact_path": null
+          "unknown_license": [
+            "playwright"
+          ],
+          "sbom_artifact_path": "data/sbom/kaos-web-0.1.0a2.cdx.json"
         },
         "errors": []
       },
@@ -3725,8 +4952,69 @@
         "verified_commit_ratio_90d": 0.057,
         "commits_90d": 141,
         "unique_committers_90d": 1,
-        "branch_protection_enabled": null,
-        "branch_protection_summary": null,
+        "branch_protection_enabled": true,
+        "branch_protection_summary": {
+          "source": "branches_api",
+          "required_status_checks": {
+            "enforcement_level": "everyone",
+            "contexts": [
+              "Lint",
+              "Pre-commit hooks",
+              "Test (linux-x64 / Python 3.13)",
+              "Test (linux-x64 / Python 3.14)",
+              "Test against minimum dependencies",
+              "Build distribution + smoke test",
+              "gitleaks (secret scan)",
+              "pip-audit (dependency CVEs)",
+              "bandit (static security)",
+              "vulture (dead-code scan)"
+            ],
+            "checks": [
+              {
+                "context": "Lint",
+                "app_id": 15368
+              },
+              {
+                "context": "Pre-commit hooks",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.13)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test (linux-x64 / Python 3.14)",
+                "app_id": 15368
+              },
+              {
+                "context": "Test against minimum dependencies",
+                "app_id": 15368
+              },
+              {
+                "context": "Build distribution + smoke test",
+                "app_id": 15368
+              },
+              {
+                "context": "gitleaks (secret scan)",
+                "app_id": 15368
+              },
+              {
+                "context": "pip-audit (dependency CVEs)",
+                "app_id": 15368
+              },
+              {
+                "context": "bandit (static security)",
+                "app_id": 15368
+              },
+              {
+                "context": "vulture (dead-code scan)",
+                "app_id": 15368
+              }
+            ]
+          },
+          "required_pull_request_reviews": null,
+          "required_signatures": null
+        },
         "codeowners_path": ".github/CODEOWNERS",
         "security_md_present": true,
         "security_md_disclosure_window_days": 90,
@@ -3736,30 +5024,26 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.434,
+        "median_pr_age_days": 0.462,
         "open_pr_count": 5,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 162,
-        "errors": [
-          "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-web/branches/main/protection']' returned non-zero exit status 1."
-        ]
+        "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 12387,
+          "tests_loc": 13285,
+          "src_files": 61,
+          "tests_files": 58
         },
         "rust": {
-          "src_loc": null,
-          "tests_loc": null,
-          "src_files": null,
-          "tests_files": null
+          "src_loc": 0,
+          "tests_loc": 0,
+          "src_files": 0,
+          "tests_files": 0
         },
-        "errors": [
-          "no repo_dir passed"
-        ]
+        "errors": []
       },
       "errors": []
     }

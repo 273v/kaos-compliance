@@ -208,12 +208,40 @@
         "total_count": 6
       },
       "sbom": {
-        "components_count": null,
-        "license_breakdown": {},
-        "weak_copyleft": [],
+        "components_count": 102,
+        "license_breakdown": {
+          "MIT": 41,
+          "MPL-2.0": 1,
+          "BSD-3-Clause": 15,
+          "Apache-2.0": 17,
+          "Apache-2.0 OR BSD-3-Clause": 1,
+          "MIT OR Apache-2.0": 12,
+          "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
+          "Apache-2.0 OR BSD-2-Clause": 1,
+          "MIT-CMU": 1,
+          "LicenseRef-unknown-15934bcf": 1,
+          "LicenseRef-unknown-e3b0c442": 1,
+          "BSD-2-Clause": 2,
+          "Python-2.0": 1,
+          "LicenseRef-unknown-b4f01cf0": 1,
+          "ISC": 1,
+          "MPL-2.0 AND MIT": 1,
+          "PSF-2.0": 1,
+          "Apache-2.0 OR MIT": 1,
+          "Apache-2.0 WITH LLVM-exception": 1,
+          "(MIT OR Apache-2.0) AND Unicode-3.0": 1
+        },
+        "weak_copyleft": [
+          "certifi",
+          "tqdm"
+        ],
         "strong_copyleft": [],
-        "unknown_license": [],
-        "sbom_artifact_path": null
+        "unknown_license": [
+          "protobuf",
+          "py-rust-stemmers",
+          "scipy"
+        ],
+        "sbom_artifact_path": "data/sbom/kaos-ml-core-0.1.0a2.cdx.json"
       },
       "errors": []
     },
@@ -223,8 +251,84 @@
       "verified_commit_ratio_90d": 0.171,
       "commits_90d": 41,
       "unique_committers_90d": 1,
-      "branch_protection_enabled": null,
-      "branch_protection_summary": null,
+      "branch_protection_enabled": true,
+      "branch_protection_summary": {
+        "source": "branches_api",
+        "required_status_checks": {
+          "enforcement_level": "everyone",
+          "contexts": [
+            "Lint",
+            "Pre-commit hooks",
+            "Test (linux-x64 / Python 3.13)",
+            "Test (linux-x64 / Python 3.14)",
+            "Test against minimum dependencies",
+            "Build distribution + smoke test",
+            "gitleaks (secret scan)",
+            "pip-audit (dependency CVEs)",
+            "bandit (static security)",
+            "vulture (dead-code scan)",
+            "Rust tests (no PyO3)",
+            "cargo-audit (Rust CVEs)",
+            "cargo-deny (licenses + bans + advisories)"
+          ],
+          "checks": [
+            {
+              "context": "Lint",
+              "app_id": 15368
+            },
+            {
+              "context": "Pre-commit hooks",
+              "app_id": 15368
+            },
+            {
+              "context": "Test (linux-x64 / Python 3.13)",
+              "app_id": 15368
+            },
+            {
+              "context": "Test (linux-x64 / Python 3.14)",
+              "app_id": 15368
+            },
+            {
+              "context": "Test against minimum dependencies",
+              "app_id": 15368
+            },
+            {
+              "context": "Build distribution + smoke test",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (secret scan)",
+              "app_id": 15368
+            },
+            {
+              "context": "pip-audit (dependency CVEs)",
+              "app_id": 15368
+            },
+            {
+              "context": "bandit (static security)",
+              "app_id": 15368
+            },
+            {
+              "context": "vulture (dead-code scan)",
+              "app_id": 15368
+            },
+            {
+              "context": "Rust tests (no PyO3)",
+              "app_id": 15368
+            },
+            {
+              "context": "cargo-audit (Rust CVEs)",
+              "app_id": 15368
+            },
+            {
+              "context": "cargo-deny (licenses + bans + advisories)",
+              "app_id": 15368
+            }
+          ]
+        },
+        "required_pull_request_reviews": null,
+        "required_signatures": null
+      },
       "codeowners_path": ".github/CODEOWNERS",
       "security_md_present": true,
       "security_md_disclosure_window_days": 90,
@@ -234,36 +338,32 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 0.456,
+      "median_pr_age_days": 0.484,
       "open_pr_count": 6,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 229,
-      "errors": [
-        "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-ml-core/branches/main/protection']' returned non-zero exit status 1."
-      ]
+      "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": null,
-        "tests_loc": null,
-        "src_files": null,
-        "tests_files": null
+        "src_loc": 2964,
+        "tests_loc": 2778,
+        "src_files": 19,
+        "tests_files": 28
       },
       "rust": {
-        "src_loc": null,
-        "tests_loc": null,
-        "src_files": null,
-        "tests_files": null
+        "src_loc": 45,
+        "tests_loc": 0,
+        "src_files": 5,
+        "tests_files": 0
       },
-      "errors": [
-        "no repo_dir passed"
-      ]
+      "errors": []
     },
     "errors": []
   },
   "sbom": {
-    "mirror_path": null,
-    "github_release_url": null
+    "mirror_path": "api/v1/sbom/kaos-ml-core-0.1.0a2.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-ml-core/releases/download/v0.1.0a2/kaos-ml-core-0.1.0a2.cdx.json"
   },
   "attestation": {
     "present": true,
