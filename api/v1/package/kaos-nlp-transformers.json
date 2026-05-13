@@ -17,59 +17,59 @@
       "last_commit_at": "2026-05-13T01:03:37Z"
     },
     "ci": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 25771637246,
       "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/25771637246",
       "head_sha": "3a5b6c7ef4efaf48a03ac1354d3a56ecdf14ed59",
-      "run_completed_at": "2026-05-13T01:03:40Z",
+      "run_completed_at": "2026-05-13T02:12:14Z",
       "matrix": [
         {
           "name": "Rust tests",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-13T01:03:41Z",
-          "completed_at": null,
-          "duration_seconds": 372
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T01:25:06Z",
+          "completed_at": "2026-05-13T01:26:34Z",
+          "duration_seconds": 88
         },
         {
           "name": "Lint",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-13T01:03:41Z",
-          "completed_at": null,
-          "duration_seconds": 372
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T01:15:54Z",
+          "completed_at": "2026-05-13T01:18:22Z",
+          "duration_seconds": 148
         },
         {
           "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "in_progress",
+          "conclusion": "success",
+          "status": "completed",
           "started_at": "2026-05-13T01:03:43Z",
-          "completed_at": null,
+          "completed_at": "2026-05-13T01:09:53Z",
           "duration_seconds": 370
         },
         {
           "name": "Pre-commit hooks",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-13T01:03:41Z",
-          "completed_at": null,
-          "duration_seconds": 372
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T01:30:48Z",
+          "completed_at": "2026-05-13T01:33:11Z",
+          "duration_seconds": 143
         },
         {
           "name": "Test against minimum dependencies",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-13T01:03:41Z",
-          "completed_at": null,
-          "duration_seconds": 372
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T01:47:36Z",
+          "completed_at": "2026-05-13T01:49:54Z",
+          "duration_seconds": 138
         },
         {
           "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-13T01:03:41Z",
-          "completed_at": null,
-          "duration_seconds": 372
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T01:36:18Z",
+          "completed_at": "2026-05-13T01:38:41Z",
+          "duration_seconds": 143
         },
         {
           "name": "Test (macos-arm64 / Python 3.13)",
@@ -81,27 +81,35 @@
         },
         {
           "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-13T01:03:41Z",
-          "completed_at": null,
-          "duration_seconds": 372
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T01:51:50Z",
+          "completed_at": "2026-05-13T01:52:30Z",
+          "duration_seconds": 40
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-13T01:03:41Z",
-          "completed_at": null,
-          "duration_seconds": 372
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T01:34:11Z",
+          "completed_at": "2026-05-13T01:37:47Z",
+          "duration_seconds": 216
         },
         {
           "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-13T01:03:41Z",
-          "completed_at": null,
-          "duration_seconds": 372
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T01:39:39Z",
+          "completed_at": "2026-05-13T01:42:03Z",
+          "duration_seconds": 144
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-13T02:10:32Z",
+          "completed_at": "2026-05-13T02:12:13Z",
+          "duration_seconds": 101
         }
       ]
     },
@@ -161,7 +169,7 @@
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 1,
+      "days_since_last_release": 2,
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
@@ -225,7 +233,7 @@
         "NOTICE"
       ],
       "releases_90d": 6,
-      "median_pr_age_days": 0.003,
+      "median_pr_age_days": 0.095,
       "open_pr_count": 5,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 350,
