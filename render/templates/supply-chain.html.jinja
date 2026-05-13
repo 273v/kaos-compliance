@@ -126,6 +126,10 @@ details.pkg-detail>div.inner{padding:0 var(--s-4) var(--s-4);border-top:1px soli
 .chip.g{color:var(--g-fg);border-color:var(--g-fg)}
 .chip.y{color:var(--y-fg);border-color:var(--y-fg)}
 .chip.r{color:var(--r-fg);border-color:var(--r-fg)}
+.finding-note{max-width:520px;color:var(--muted);font-size:0.8125rem}
+.finding-note details{margin:0}
+.finding-note summary{cursor:pointer;color:var(--text);font-weight:600}
+.finding-note p{margin:var(--s-2) 0 0}
 .kv{display:grid;grid-template-columns:max-content 1fr;gap:var(--s-1) var(--s-4);font-size:0.875rem;margin-top:var(--s-3)}
 .kv dt{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;padding-top:var(--s-1)}
 .kv dd{margin:0;font-family:var(--mono);word-break:break-all}
@@ -291,6 +295,67 @@ footer a{color:var(--muted)}
      {% endfor %}
     </tr>
     {% endfor %}
+   </tbody>
+  </table>
+ </div>
+</section>
+
+<section aria-labelledby="license-findings-h">
+ <h2 id="license-findings-h">License and dependency findings</h2>
+ <div class="card" style="padding:0;overflow-x:auto">
+  <p style="padding:var(--s-3) var(--s-4) 0;margin:0;color:var(--muted);font-size:0.8125rem">
+   This is the explanation behind the License and Deps pills. Approved
+   exceptions point at <a href="license-policy.html">license-policy.html</a>;
+   parser gaps name the true license and the parser fix that is tracked.
+   Raw CycloneDX JSON remains available, but it is no longer the only
+   evidence link for a warning.
+  </p>
+  <table class="grid" aria-describedby="license-findings-h" style="margin-top:var(--s-3)">
+   <thead>
+    <tr>
+     <th scope="col">Package</th>
+     <th scope="col">Status</th>
+     <th scope="col">Component</th>
+     <th scope="col">License</th>
+     <th scope="col">Decision</th>
+     <th scope="col">Explanation</th>
+    </tr>
+   </thead>
+   <tbody>
+    {% set findings = sup.license_findings | default([]) %}
+    {% if findings %}
+     {% set ns = namespace(prev='') %}
+     {% for f in findings %}
+      {% set row_id = 'license-findings-' ~ f.package if f.package != ns.prev else '' %}
+      <tr{% if row_id %} id="{{ row_id }}"{% endif %}>
+       <td class="pkg" data-h="Package"><a href="package/{{ f.package }}.html">{{ f.package }}</a></td>
+       <td data-h="Status">{{ pill(f.state, f.kind) }}</td>
+       <td class="mono" data-h="Component">{{ f.component }}</td>
+       <td class="mono" data-h="License">{{ f.license }}</td>
+       <td data-h="Decision">
+        {% if f.policy_url %}<a href="{{ f.policy_url }}">{{ f.decision }}</a>{% else %}{{ f.decision }}{% endif %}
+        {% if f.audit_ref %}<br><span class="mono">audit {{ f.audit_ref }}</span>{% endif %}
+       </td>
+       <td data-h="Explanation" class="finding-note">
+        {% if f.explanation and (f.explanation | length) > 180 %}
+         <details>
+          <summary>Show rationale</summary>
+          <p>{{ f.explanation }}</p>
+         </details>
+        {% else %}
+         {{ f.explanation or '—' }}
+        {% endif %}
+       </td>
+      </tr>
+      {% set ns.prev = f.package %}
+     {% endfor %}
+    {% else %}
+     <tr>
+      <td colspan="6" style="padding:var(--s-4);color:var(--muted)">
+       No license or dependency exceptions in the current snapshot.
+      </td>
+     </tr>
+    {% endif %}
    </tbody>
   </table>
  </div>

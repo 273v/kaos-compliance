@@ -12,7 +12,13 @@ cannot verify from public sources. The test enforces the cap.
 
 from __future__ import annotations
 
-from render.__main__ import _cisa_sbom_minimum_elements, _slsa_build_level
+from collector import policy
+from render.__main__ import (
+    _cisa_sbom_minimum_elements,
+    _license_finding_rows,
+    _slsa_build_level,
+    _supply_chain_summary,
+)
 
 # ---------------------------------------------------------------------------
 # SLSA Build Level (R9 / F19)
@@ -156,3 +162,53 @@ def test_cisa_elements_count_is_exactly_seven():
     count breaks this test."""
     elements = _cisa_sbom_minimum_elements({"components_count": 1}, {})
     assert len(elements) == 7
+
+
+# ---------------------------------------------------------------------------
+# License/dependency findings
+# ---------------------------------------------------------------------------
+
+
+def _module_with_license_findings() -> dict[str, object]:
+    return {
+        "name": "kaos-example",
+        "supply_chain": {
+            "pypi_version": "1.0.0",
+            "attestations": {},
+            "sbom": {
+                "components_count": 3,
+                "license_breakdown": {"MPL-2.0": 1, "LicenseRef-unknown-abc": 1},
+                "weak_copyleft": ["certifi"],
+                "strong_copyleft": [],
+                "unknown_license": ["regex"],
+                "sbom_artifact_path": "data/sbom/kaos-example-1.0.0.cdx.json",
+            },
+        },
+    }
+
+
+def test_license_findings_explain_approved_exception_and_parser_gap():
+    p = policy.load()
+    rows = _license_finding_rows(_module_with_license_findings(), policy=p)
+
+    certifi = next(r for r in rows if r["component"] == "certifi")
+    assert certifi["state"] == "green"
+    assert certifi["decision"] == "Allowed by policy"
+    assert certifi["audit_ref"] == "A.1"
+    assert certifi["policy_url"] == "license-policy.html#certifi"
+
+    regex = next(r for r in rows if r["component"] == "regex")
+    assert regex["state"] == "yellow"
+    assert regex["kind"] == "Parser gap"
+    assert regex["license"] == "Apache-2.0 OR MIT"
+    assert regex["policy_url"] == "license-policy.html#regex"
+
+
+def test_supply_chain_summary_threads_license_findings():
+    p = policy.load()
+    summary = _supply_chain_summary([_module_with_license_findings()], policy=p)
+
+    assert len(summary["license_findings"]) == 2
+    pkg = summary["packages"][0]
+    assert pkg["license_findings"] == summary["license_findings"]
+    assert pkg["license_top"][0]["spdx"] == "LicenseRef-unknown-abc"

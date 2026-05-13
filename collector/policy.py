@@ -30,7 +30,7 @@ from typing import Any
 
 yaml: Any | None
 try:
-    import yaml as _yaml  # ty: ignore[unresolved-import]
+    import yaml as _yaml
 
     yaml = _yaml
 except ImportError:  # pragma: no cover - PyYAML is a soft dep
