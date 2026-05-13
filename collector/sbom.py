@@ -449,7 +449,7 @@ def _text_mine_license(head: str) -> str | None:
 
 def _unknown_ref(raw: str) -> str:
     """Return a stable ``LicenseRef-unknown-<8hex>`` token for unmappable input."""
-    h = hashlib.sha1(raw.encode("utf-8", errors="replace")).hexdigest()[:8]
+    h = hashlib.sha256(raw.encode("utf-8", errors="replace")).hexdigest()[:8]
     return f"LicenseRef-unknown-{h}"
 
 

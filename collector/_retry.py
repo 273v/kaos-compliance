@@ -26,6 +26,7 @@ import shutil
 import subprocess
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from typing import Any
 
@@ -112,12 +113,14 @@ def url_get_json(
     other HTTPError / URLError / TimeoutError / OSError is retried with
     exponential backoff. The final exception is re-raised on exhaustion.
     """
+    if urllib.parse.urlsplit(url).scheme != "https":
+        raise ValueError(f"refusing to fetch non-HTTPS URL: {url}")
     attempts = max_attempts or _MAX_ATTEMPTS
     req = urllib.request.Request(url, headers=headers or {})
     last_exc: BaseException | None = None
     for attempt in range(1, attempts + 1):
         try:
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:  # nosec B310
                 return json.load(resp)
         except urllib.error.HTTPError as exc:
             if exc.code == 404:
