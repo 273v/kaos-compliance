@@ -310,7 +310,7 @@ def normalize_license(raw: str | None) -> str:
 
     The function is conservative: it returns SPDX expressions from
     SPDX License List 3.24 when it can, and a ``LicenseRef-unknown-*``
-    expression keyed on the SHA1 of the input otherwise. Returning
+    expression keyed on the SHA-256 of the input otherwise. Returning
     ``LicenseRef-*`` (rather than the literal ``"unknown"``) keeps the
     CycloneDX output round-trippable through SPDX export.
 
@@ -649,9 +649,9 @@ def enrich_from_pypi(
     Resolution order for the SPDX license:
 
     1. ``info.license_expression`` (PEP 639, populated for newer releases).
-    2. ``info.license`` (legacy free-text field).
-    3. The first ``"License :: ..."`` Trove classifier under
-       ``info.classifiers``.
+    2. ``info.license`` when the legacy free-text field normalizes cleanly.
+    3. All ``"License :: ..."`` Trove classifiers under ``info.classifiers``
+       when the legacy field is absent or ambiguous.
 
     Resolution order for ``supplier`` matches the README fallback chain:
     ``info.author`` -> ``info.maintainer`` -> homepage hostname ->
@@ -676,11 +676,7 @@ def enrich_from_pypi(
             c.supplier = c.supplier or "Unknown / community"
             continue
         info = payload.get("info", {}) or {}
-        raw_license = (
-            info.get("license_expression")
-            or info.get("license")
-            or _first_trove_license(info.get("classifiers") or [])
-        )
+        raw_license = _pypi_license_hint(info)
         c.license_hint_from_metadata = raw_license
         c.license_spdx = normalize_license(raw_license)
         c.supplier = _pick_supplier(info)
@@ -743,13 +739,59 @@ def enrich_from_crates_io(
     return components
 
 
+def _pypi_license_hint(info: dict[str, Any]) -> str | None:
+    """Pick the best license hint from PyPI JSON metadata.
+
+    Some projects still publish ambiguous legacy text like ``"Dual License"``
+    while carrying useful Trove classifiers. Treat the legacy field as
+    authoritative only when it normalizes to a real SPDX expression; otherwise
+    fall back to the classifier-derived expression.
+    """
+    expression = info.get("license_expression")
+    if isinstance(expression, str) and expression.strip():
+        return expression.strip()
+
+    raw_license = info.get("license")
+    classifier_expression = _trove_license_expression(info.get("classifiers") or [])
+    if isinstance(raw_license, str) and raw_license.strip():
+        normalized = normalize_license(raw_license)
+        if not normalized.startswith("LicenseRef-unknown"):
+            return raw_license.strip()
+        return classifier_expression or raw_license.strip()
+
+    return classifier_expression
+
+
+def _trove_license_expression(classifiers: Iterable[str]) -> str | None:
+    """Return a normalized expression from PyPI Trove license classifiers."""
+    preferred = _normalized_trove_licenses(classifiers, require_osi=True)
+    licenses = preferred or _normalized_trove_licenses(classifiers, require_osi=False)
+    if not licenses:
+        return None
+    if len(licenses) == 1:
+        return licenses[0]
+    return " OR ".join(licenses)
+
+
+def _normalized_trove_licenses(classifiers: Iterable[str], *, require_osi: bool) -> list[str]:
+    out: list[str] = []
+    for cls in classifiers:
+        if not isinstance(cls, str) or not cls.startswith("License ::"):
+            continue
+        if require_osi and "OSI Approved" not in cls:
+            continue
+        normalized = normalize_license(cls)
+        if normalized.startswith("LicenseRef-unknown") or normalized in out:
+            continue
+        out.append(normalized)
+    return out
+
+
 def _first_trove_license(classifiers: Iterable[str]) -> str | None:
-    for cls in classifiers:
-        if cls.startswith("License ::") and "OSI Approved" in cls:
-            return cls
-    for cls in classifiers:
-        if cls.startswith("License ::"):
-            return cls
+    """Backward-compatible wrapper for callers that need one classifier."""
+    expression = _trove_license_expression(classifiers)
+    if expression:
+        return expression.split(" OR ", 1)[0]
     return None
 
 
