@@ -101,13 +101,13 @@
     "kaos-office": {
       "build_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "tests_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "security_pass": {
         "from": true,
@@ -126,7 +126,7 @@
       },
       "commits_90d": {
         "from": 86,
-        "to": 88,
+        "to": 89,
         "delta": "better"
       }
     },
@@ -158,7 +158,7 @@
       },
       "commits_90d": {
         "from": 17,
-        "to": 18,
+        "to": 19,
         "delta": "better"
       }
     },
@@ -191,6 +191,38 @@
       "commits_90d": {
         "from": 14,
         "to": 15,
+        "delta": "better"
+      }
+    },
+    "kaos-web": {
+      "build_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 142,
+        "to": 143,
         "delta": "better"
       }
     }
