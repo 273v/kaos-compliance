@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-05-14T00:35:06Z",
+  "generated_at": "2026-05-14T00:41:58Z",
   "generator": {
     "name": "kaos-compliance",
     "version": "0.0.1"
   },
   "heartbeat": {
-    "last_full_sweep_at": "2026-05-14T00:35:06Z",
-    "last_light_sweep_at": "2026-05-14T00:35:06Z",
-    "last_security_sweep_at": "2026-05-14T00:35:06Z",
+    "last_full_sweep_at": "2026-05-14T00:41:58Z",
+    "last_light_sweep_at": "2026-05-14T00:41:58Z",
+    "last_security_sweep_at": "2026-05-14T00:41:58Z",
     "stale_threshold_hours": 26
   },
   "modules": [
@@ -286,7 +286,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 0.084,
+        "median_pr_age_days": 0.089,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 108,
@@ -579,7 +579,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.943,
+        "median_pr_age_days": 0.948,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 53,
@@ -876,7 +876,7 @@
           "NOTICE"
         ],
         "releases_90d": 6,
-        "median_pr_age_days": 0.979,
+        "median_pr_age_days": 0.984,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 137,
@@ -1170,7 +1170,7 @@
           "NOTICE"
         ],
         "releases_90d": 6,
-        "median_pr_age_days": 0.982,
+        "median_pr_age_days": 0.987,
         "open_pr_count": 1,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 85,
@@ -1516,7 +1516,7 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.982,
+        "median_pr_age_days": 0.988,
         "open_pr_count": 1,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 400,
@@ -1815,7 +1815,7 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.983,
+        "median_pr_age_days": 0.988,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 66,
@@ -2114,7 +2114,7 @@
           "NOTICE"
         ],
         "releases_90d": 7,
-        "median_pr_age_days": 0.957,
+        "median_pr_age_days": 0.962,
         "open_pr_count": 6,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 142,
@@ -2417,7 +2417,7 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.944,
+        "median_pr_age_days": 0.949,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 59,
@@ -2773,7 +2773,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.983,
+        "median_pr_age_days": 0.988,
         "open_pr_count": 6,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 229,
@@ -3418,7 +3418,7 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.981,
+        "median_pr_age_days": 0.986,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 1322,
@@ -3808,7 +3808,7 @@
           "NOTICE"
         ],
         "releases_90d": 6,
-        "median_pr_age_days": 0.977,
+        "median_pr_age_days": 0.982,
         "open_pr_count": 5,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 350,
@@ -3845,83 +3845,91 @@
         "last_commit_at": "2026-05-14T00:32:39Z"
       },
       "ci": {
-        "workflow_conclusion": "",
+        "workflow_conclusion": "success",
         "workflow_run_id": 25834492285,
         "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/25834492285",
         "head_sha": "4a46b5cea1223e395b626178cba77f53d0a660af",
-        "run_completed_at": "2026-05-14T00:32:42Z",
+        "run_completed_at": "2026-05-14T00:37:20Z",
         "matrix": [
           {
             "name": "Pre-commit hooks",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:43Z",
-            "completed_at": null,
-            "duration_seconds": 45
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:33:52Z",
+            "completed_at": "2026-05-14T00:34:12Z",
+            "duration_seconds": 20
           },
           {
             "name": "Lint",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:43Z",
-            "completed_at": null,
-            "duration_seconds": 45
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:34:29Z",
+            "completed_at": "2026-05-14T00:34:38Z",
+            "duration_seconds": 9
           },
           {
             "name": "Test against minimum dependencies",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:43Z",
-            "completed_at": null,
-            "duration_seconds": 45
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:35:40Z",
+            "completed_at": "2026-05-14T00:36:38Z",
+            "duration_seconds": 58
           },
           {
             "name": "Test (linux-x64 / Python 3.14t)",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:43Z",
-            "completed_at": null,
-            "duration_seconds": 45
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:35:24Z",
+            "completed_at": "2026-05-14T00:36:27Z",
+            "duration_seconds": 63
           },
           {
             "name": "Test (linux-x64 / Python 3.13)",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:43Z",
-            "completed_at": null,
-            "duration_seconds": 45
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:35:33Z",
+            "completed_at": "2026-05-14T00:37:00Z",
+            "duration_seconds": 87
           },
           {
             "name": "Test (linux-x64 / Python 3.15)",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:43Z",
-            "completed_at": null,
-            "duration_seconds": 45
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:35:02Z",
+            "completed_at": "2026-05-14T00:36:38Z",
+            "duration_seconds": 96
           },
           {
             "name": "Test (macos-arm64 / Python 3.13)",
-            "conclusion": null,
-            "status": "in_progress",
+            "conclusion": "success",
+            "status": "completed",
             "started_at": "2026-05-14T00:32:44Z",
-            "completed_at": null,
-            "duration_seconds": 44
+            "completed_at": "2026-05-14T00:34:00Z",
+            "duration_seconds": 76
           },
           {
             "name": "Test (windows-x64 / Python 3.13)",
-            "conclusion": null,
-            "status": "in_progress",
+            "conclusion": "success",
+            "status": "completed",
             "started_at": "2026-05-14T00:32:45Z",
-            "completed_at": null,
-            "duration_seconds": 43
+            "completed_at": "2026-05-14T00:35:10Z",
+            "duration_seconds": 145
           },
           {
             "name": "Test (linux-x64 / Python 3.14)",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:43Z",
-            "completed_at": null,
-            "duration_seconds": 45
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:35:53Z",
+            "completed_at": "2026-05-14T00:36:54Z",
+            "duration_seconds": 61
+          },
+          {
+            "name": "Build distribution + smoke test",
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:37:03Z",
+            "completed_at": "2026-05-14T00:37:19Z",
+            "duration_seconds": 16
           }
         ]
       },
@@ -4103,7 +4111,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.966,
+        "median_pr_age_days": 0.97,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 98,
@@ -4402,7 +4410,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.956,
+        "median_pr_age_days": 0.961,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 114,
@@ -4706,7 +4714,7 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 0.982,
+        "median_pr_age_days": 0.986,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 758,
@@ -4743,11 +4751,11 @@
         "last_commit_at": "2026-05-14T00:32:28Z"
       },
       "ci": {
-        "workflow_conclusion": "",
+        "workflow_conclusion": "success",
         "workflow_run_id": 25834485987,
         "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/25834485987",
         "head_sha": "c5cc083e12170859681166647ab41ca4644821c3",
-        "run_completed_at": "2026-05-14T00:32:30Z",
+        "run_completed_at": "2026-05-14T00:36:21Z",
         "matrix": [
           {
             "name": "Pre-commit hooks",
@@ -4775,19 +4783,19 @@
           },
           {
             "name": "Test (linux-x64 / Python 3.14)",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:31Z",
-            "completed_at": null,
-            "duration_seconds": 117
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:34:48Z",
+            "completed_at": "2026-05-14T00:35:05Z",
+            "duration_seconds": 17
           },
           {
             "name": "Test (linux-x64 / Python 3.15)",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:31Z",
-            "completed_at": null,
-            "duration_seconds": 117
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:34:52Z",
+            "completed_at": "2026-05-14T00:35:09Z",
+            "duration_seconds": 17
           },
           {
             "name": "Test (macos-arm64 / Python 3.13)",
@@ -4807,27 +4815,27 @@
           },
           {
             "name": "Test (linux-x64 / Python 3.14t)",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:31Z",
-            "completed_at": null,
-            "duration_seconds": 117
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:35:11Z",
+            "completed_at": "2026-05-14T00:35:32Z",
+            "duration_seconds": 21
           },
           {
             "name": "Test (linux-x64 / Python 3.13)",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:32:31Z",
-            "completed_at": null,
-            "duration_seconds": 117
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:35:14Z",
+            "completed_at": "2026-05-14T00:35:32Z",
+            "duration_seconds": 18
           },
           {
             "name": "Build distribution + smoke test",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-14T00:34:19Z",
-            "completed_at": null,
-            "duration_seconds": 9
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-14T00:36:09Z",
+            "completed_at": "2026-05-14T00:36:20Z",
+            "duration_seconds": 11
           }
         ]
       },
@@ -5004,7 +5012,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 0.981,
+        "median_pr_age_days": 0.986,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 69,
@@ -5307,7 +5315,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.961,
+        "median_pr_age_days": 0.966,
         "open_pr_count": 5,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 162,

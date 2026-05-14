@@ -17,83 +17,91 @@
       "last_commit_at": "2026-05-14T00:32:39Z"
     },
     "ci": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 25834492285,
       "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/25834492285",
       "head_sha": "4a46b5cea1223e395b626178cba77f53d0a660af",
-      "run_completed_at": "2026-05-14T00:32:42Z",
+      "run_completed_at": "2026-05-14T00:37:20Z",
       "matrix": [
         {
           "name": "Pre-commit hooks",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-14T00:32:43Z",
-          "completed_at": null,
-          "duration_seconds": 45
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T00:33:52Z",
+          "completed_at": "2026-05-14T00:34:12Z",
+          "duration_seconds": 20
         },
         {
           "name": "Lint",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-14T00:32:43Z",
-          "completed_at": null,
-          "duration_seconds": 45
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T00:34:29Z",
+          "completed_at": "2026-05-14T00:34:38Z",
+          "duration_seconds": 9
         },
         {
           "name": "Test against minimum dependencies",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-14T00:32:43Z",
-          "completed_at": null,
-          "duration_seconds": 45
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T00:35:40Z",
+          "completed_at": "2026-05-14T00:36:38Z",
+          "duration_seconds": 58
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-14T00:32:43Z",
-          "completed_at": null,
-          "duration_seconds": 45
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T00:35:24Z",
+          "completed_at": "2026-05-14T00:36:27Z",
+          "duration_seconds": 63
         },
         {
           "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-14T00:32:43Z",
-          "completed_at": null,
-          "duration_seconds": 45
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T00:35:33Z",
+          "completed_at": "2026-05-14T00:37:00Z",
+          "duration_seconds": 87
         },
         {
           "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-14T00:32:43Z",
-          "completed_at": null,
-          "duration_seconds": 45
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T00:35:02Z",
+          "completed_at": "2026-05-14T00:36:38Z",
+          "duration_seconds": 96
         },
         {
           "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": null,
-          "status": "in_progress",
+          "conclusion": "success",
+          "status": "completed",
           "started_at": "2026-05-14T00:32:44Z",
-          "completed_at": null,
-          "duration_seconds": 44
+          "completed_at": "2026-05-14T00:34:00Z",
+          "duration_seconds": 76
         },
         {
           "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "in_progress",
+          "conclusion": "success",
+          "status": "completed",
           "started_at": "2026-05-14T00:32:45Z",
-          "completed_at": null,
-          "duration_seconds": 43
+          "completed_at": "2026-05-14T00:35:10Z",
+          "duration_seconds": 145
         },
         {
           "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-14T00:32:43Z",
-          "completed_at": null,
-          "duration_seconds": 45
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T00:35:53Z",
+          "completed_at": "2026-05-14T00:36:54Z",
+          "duration_seconds": 61
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T00:37:03Z",
+          "completed_at": "2026-05-14T00:37:19Z",
+          "duration_seconds": 16
         }
       ]
     },
@@ -275,7 +283,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 0.966,
+      "median_pr_age_days": 0.97,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 98,
