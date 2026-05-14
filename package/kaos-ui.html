@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index,follow">
-<meta name="description" content="Compliance evidence for kaos-llm-core — build, security, supply chain, governance.">
+<meta name="description" content="Compliance evidence for kaos-ui — build, security, supply chain, governance.">
 <base href="/kaos-compliance/">
-<title>kaos-llm-core — KAOS Compliance</title>
+<title>kaos-ui — KAOS Compliance</title>
 <link rel="preload" href="assets/fonts/source-sans-3-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/dashboard.css">
@@ -73,43 +73,29 @@ footer a{color:var(--muted)}
 </head>
 <body>
 <div class="wrap">
-<nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; kaos-llm-core</nav>
+<nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; kaos-ui</nav>
 
 <header class="identity">
- <h1>kaos-llm-core v0.1.0a7</h1>
+ <h1>kaos-ui v0.1.0a1</h1>
  <div class="triple">
   <span>License: Apache-2.0</span>
   <span>Runtime: Python 3.13+</span>
   <span>Released: 2026-05-14</span>
-  <span><a href="https://github.com/273v/kaos-llm-core">Repository</a></span>
+  <span><a href="https://github.com/273v/kaos-ui">Repository</a></span>
  </div>
 </header>
 
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
-   2026-05-13 &rarr; 2026-05-14
-  </p>
-  <ul style="margin:0;padding-left:var(--s-5)">
-    <li>
-     <span class="pill g" aria-label="Commits (90d): better">
-      <span class="gly" aria-hidden="true">▲</span>
-      <span class="wd" aria-hidden="true">better</span>
-     </span>
-     <strong>Commits (90d)</strong>:
-     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      23 &rarr; 26
-     </span>
-    </li>
-  </ul>
+  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-05-13.</p>
  </div>
 </section>
 
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 8/8 green</div>
+  <div class="composite">Composite: 7/8 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
@@ -134,11 +120,11 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill g" aria-label="SBOM published: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">SBOM published</div><div class="note">SBOM published — 38 components</div></div>
+    <div class="body"><div class="lab">SBOM published</div><div class="note">SBOM published — 20 components</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="Branch protection: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Branch protection</div><div class="note">GitHub reports main as protected; admin-only rule details were not available to the sweep token</div></div>
+    <span class="pill y" aria-label="Branch protection: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
+    <div class="body"><div class="lab">Branch protection</div><div class="note">Branch protection off - acceptable for alpha; flip before GA</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="SECURITY.md + CODEOWNERS: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -240,7 +226,7 @@ footer a{color:var(--muted)}
    <dt>Direct deps</dt><dd>—</dd>
    <dt>Transitive deps</dt><dd>—</dd>
    <dt>SBOM</dt><dd>
-     <a href="api/v1/sbom/kaos-llm-core-0.1.0a7.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-llm-core/releases/download/v0.1.0a7/kaos-llm-core-0.1.0a7.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
+     <a href="api/v1/sbom/kaos-ui-0.1.0a1.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-ui/releases/download/v0.1.0a1/kaos-ui-0.1.0a1.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
   </dl>
  </div>
 </section>
@@ -253,9 +239,9 @@ footer a{color:var(--muted)}
    <dt>Maintainers</dt><dd>1</dd>
    <dt>Commits 90d</dt>
    <dd>
-    26
+    2
    </dd>
-   <dt>Releases 90d</dt><dd>7</dd>
+   <dt>Releases 90d</dt><dd>1</dd>
   </dl>
  </div>
 </section>
@@ -265,15 +251,15 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Python source (LoC)</dt>
-   <dd>24,102 across 189 files</dd>
+   <dd>2,394 across 31 files</dd>
    <dt>Python tests (LoC)</dt>
-   <dd>27,409 across 146 files</dd>
+   <dd>1,738 across 29 files</dd>
    <dt>Rust source (LoC)</dt>
    <dd>—</dd>
    <dt>Rust tests (LoC)</dt>
    <dd>—</dd>
    <dt>Source lines of code</dt>
-   <dd>51,511 LoC</dd>
+   <dd>4,132 LoC</dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
    Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
@@ -292,16 +278,16 @@ footer a{color:var(--muted)}
 <section class="evidence" aria-labelledby="ev-h">
  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-3);flex-wrap:wrap">
   <h2 id="ev-h" style="margin:0">Evidence</h2>
-  <a href="api/v1/package/kaos-llm-core.json"
+  <a href="api/v1/package/kaos-ui.json"
      style="font-size:0.875rem;font-family:var(--mono);text-decoration:none;border:1px solid var(--border);padding:var(--s-1) var(--s-3);border-radius:3px"
-     title="curl -O the JSON evidence bundle for kaos-llm-core"
+     title="curl -O the JSON evidence bundle for kaos-ui"
      download>
    Download JSON
   </a>
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-llm-core">Repository</a></li><li><a href="https://pypi.org/project/kaos-llm-core/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/25835807351">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/25835807347">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-llm-core.json"><code>api/v1/package/kaos-llm-core.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-ui">Repository</a></li><li><a href="https://pypi.org/project/kaos-ui/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-ui/actions/runs/25875612240">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-ui/actions/runs/25875612257">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-ui.json"><code>api/v1/package/kaos-ui.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>

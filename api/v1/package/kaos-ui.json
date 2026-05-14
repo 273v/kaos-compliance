@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0",
+  "bundle_kind": "kaos-compliance.package",
+  "package": "kaos-ui",
+  "version": "0.1.0a1",
+  "snapshot_slice": {
+    "name": "kaos-ui",
+    "identity": {
+      "pypi_version": "0.1.0a1",
+      "pypi_url": "https://pypi.org/project/kaos-ui/0.1.0a1/",
+      "main_head_sha": "8d3f4f7d21e80fa00fbabffb30dbc490f36407ca",
+      "latest_tag": "v0.1.0a1",
+      "latest_tag_sha": "990a17f9a13f076618a927ee7d8181c949434903",
+      "tag_at_head": false,
+      "commits_past_tag": null,
+      "repo_visibility": "public",
+      "last_commit_at": "2026-05-14T17:41:59Z"
+    },
+    "ci": {
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25875612240,
+      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/25875612240",
+      "head_sha": "8d3f4f7d21e80fa00fbabffb30dbc490f36407ca",
+      "run_completed_at": "2026-05-14T17:43:14Z",
+      "matrix": [
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:05Z",
+          "completed_at": "2026-05-14T17:42:23Z",
+          "duration_seconds": 18
+        },
+        {
+          "name": "Per-template smoke",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:05Z",
+          "completed_at": "2026-05-14T17:42:39Z",
+          "duration_seconds": 34
+        },
+        {
+          "name": "Pre-commit hooks",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:05Z",
+          "completed_at": "2026-05-14T17:42:39Z",
+          "duration_seconds": 34
+        },
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:05Z",
+          "completed_at": "2026-05-14T17:42:17Z",
+          "duration_seconds": 12
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:05Z",
+          "completed_at": "2026-05-14T17:42:24Z",
+          "duration_seconds": 19
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:05Z",
+          "completed_at": "2026-05-14T17:42:24Z",
+          "duration_seconds": 19
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:13Z",
+          "completed_at": "2026-05-14T17:42:37Z",
+          "duration_seconds": 24
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:05Z",
+          "completed_at": "2026-05-14T17:42:25Z",
+          "duration_seconds": 20
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:05Z",
+          "completed_at": "2026-05-14T17:42:49Z",
+          "duration_seconds": 44
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:05Z",
+          "completed_at": "2026-05-14T17:42:27Z",
+          "duration_seconds": 22
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-14T17:42:58Z",
+          "completed_at": "2026-05-14T17:43:13Z",
+          "duration_seconds": 15
+        }
+      ]
+    },
+    "security": {
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25875612257,
+      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/25875612257",
+      "jobs": [
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-14T17:42:12Z"
+        },
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-14T17:42:11Z"
+        },
+        {
+          "name": "pip-audit (dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-14T17:42:30Z"
+        }
+      ],
+      "run_completed_at": "2026-05-14T17:42:30Z"
+    },
+    "open_prs": {
+      "count": 0,
+      "titles": []
+    },
+    "freshness": {
+      "days_since_last_commit": 0,
+      "days_since_last_release": 0,
+      "days_since_last_security_scan": 0
+    },
+    "supply_chain": {
+      "pypi_version": "0.1.0a1",
+      "pypi_release_iso": "2026-05-14T16:42:47.436934Z",
+      "wheel_platforms": [
+        "any"
+      ],
+      "wheel_sha256s": {
+        "kaos_ui-0.1.0a1-py3-none-any.whl": "f9fd2a1df42931a2cef25366bb43d8c9842d64a0571c66eef03f38ce1ecb37cb",
+        "kaos_ui-0.1.0a1.tar.gz": "027ffdbb2fe70d0546740b7a33aa84a3f78cb563f1d306d068b55f8d55a2a735"
+      },
+      "is_abi3": false,
+      "has_musllinux_wheel": false,
+      "license_expression": "Apache-2.0",
+      "license_files_in_wheel": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "attestations": {
+        "pep740_present": true,
+        "publisher_kind": "GitHub",
+        "publisher_source_repo": "273v/kaos-ui",
+        "publisher_workflow_ref": "release.yml@pypi",
+        "rekor_log_index": 1538534058,
+        "verified_count": 2,
+        "total_count": 2
+      },
+      "sbom": {
+        "components_count": 20,
+        "license_breakdown": {
+          "MIT": 11,
+          "BSD-3-Clause": 3,
+          "Apache-2.0": 3,
+          "Apache-2.0 OR BSD-2-Clause": 1,
+          "BSD-2-Clause": 1,
+          "PSF-2.0": 1
+        },
+        "weak_copyleft": [],
+        "strong_copyleft": [],
+        "unknown_license": [],
+        "sbom_artifact_path": "data/sbom/kaos-ui-0.1.0a1.cdx.json"
+      },
+      "errors": []
+    },
+    "governance": {
+      "dco_signoff_rate_90d": 0.0,
+      "conventional_commits_rate_90d": 0.5,
+      "verified_commit_ratio_90d": 0.0,
+      "commits_90d": 2,
+      "unique_committers_90d": 1,
+      "branch_protection_enabled": false,
+      "branch_protection_summary": {},
+      "codeowners_path": ".github/CODEOWNERS",
+      "security_md_present": true,
+      "security_md_disclosure_window_days": 90,
+      "notice_present": true,
+      "license_files_in_sdist": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "releases_90d": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
+      "open_issue_count": 0,
+      "time_to_pypi_seconds_median": 66,
+      "errors": []
+    },
+    "code_metrics": {
+      "python": {
+        "src_loc": 2394,
+        "tests_loc": 1738,
+        "src_files": 31,
+        "tests_files": 29
+      },
+      "rust": {
+        "src_loc": 0,
+        "tests_loc": 0,
+        "src_files": 0,
+        "tests_files": 0
+      },
+      "errors": []
+    },
+    "errors": []
+  },
+  "sbom": {
+    "mirror_path": "api/v1/sbom/kaos-ui-0.1.0a1.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-ui/releases/download/v0.1.0a1/kaos-ui-0.1.0a1.cdx.json"
+  },
+  "attestation": {
+    "present": true,
+    "publisher_kind": "GitHub",
+    "publisher_source_repo": "273v/kaos-ui",
+    "publisher_workflow_ref": "release.yml@pypi",
+    "rekor_log_index": 1538534058,
+    "verified_count": 2,
+    "total_count": 2,
+    "pypi_simple_index_url": "https://pypi.org/simple/kaos-ui/"
+  }
+}
