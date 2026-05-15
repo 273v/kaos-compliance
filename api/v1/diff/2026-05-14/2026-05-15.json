@@ -5,13 +5,13 @@
     "kaos-agents": {
       "build_pass": {
         "from": true,
-        "to": false,
-        "delta": "worse"
+        "to": true,
+        "delta": "same"
       },
       "tests_pass": {
         "from": true,
-        "to": false,
-        "delta": "worse"
+        "to": true,
+        "delta": "same"
       },
       "security_pass": {
         "from": true,
@@ -133,13 +133,13 @@
     "kaos-llm-core": {
       "build_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "tests_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "security_pass": {
         "from": true,
@@ -158,7 +158,7 @@
       },
       "commits_90d": {
         "from": 26,
-        "to": 30,
+        "to": 38,
         "delta": "better"
       }
     },
@@ -190,7 +190,7 @@
       },
       "commits_90d": {
         "from": 18,
-        "to": 23,
+        "to": 25,
         "delta": "better"
       }
     },
@@ -372,8 +372,8 @@
       },
       "attestation_present": {
         "from": true,
-        "to": false,
-        "delta": "worse"
+        "to": true,
+        "delta": "same"
       },
       "branch_protection_enabled": {
         "from": false,

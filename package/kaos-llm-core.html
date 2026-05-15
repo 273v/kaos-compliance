@@ -76,7 +76,7 @@ footer a{color:var(--muted)}
 <nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; kaos-llm-core</nav>
 
 <header class="identity">
- <h1>kaos-llm-core v0.1.0a9</h1>
+ <h1>kaos-llm-core v0.1.0a10</h1>
  <div class="triple">
   <span>License: Apache-2.0</span>
   <span>Runtime: Python 3.13+</span>
@@ -93,13 +93,33 @@ footer a{color:var(--muted)}
   </p>
   <ul style="margin:0;padding-left:var(--s-5)">
     <li>
+     <span class="pill r" aria-label="Build: worse">
+      <span class="gly" aria-hidden="true">▼</span>
+      <span class="wd" aria-hidden="true">worse</span>
+     </span>
+     <strong>Build</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      True &rarr; False
+     </span>
+    </li>
+    <li>
+     <span class="pill r" aria-label="Tests: worse">
+      <span class="gly" aria-hidden="true">▼</span>
+      <span class="wd" aria-hidden="true">worse</span>
+     </span>
+     <strong>Tests</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      True &rarr; False
+     </span>
+    </li>
+    <li>
      <span class="pill g" aria-label="Commits (90d): better">
       <span class="gly" aria-hidden="true">▲</span>
       <span class="wd" aria-hidden="true">better</span>
      </span>
      <strong>Commits (90d)</strong>:
      <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      26 &rarr; 30
+      26 &rarr; 38
      </span>
     </li>
   </ul>
@@ -109,16 +129,16 @@ footer a{color:var(--muted)}
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 8/8 green</div>
+  <div class="composite">Composite: 6/8 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
-    <span class="pill g" aria-label="Build passing: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: success</div></div>
+    <span class="pill n" aria-label="Build passing: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: unknown</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="Tests + coverage: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Tests + coverage</div><div class="note">Latest CI conclusion: success</div></div>
+    <span class="pill n" aria-label="Tests + coverage: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Tests + coverage</div><div class="note">Latest CI conclusion: unknown</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="No critical CVEs: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -170,11 +190,11 @@ footer a{color:var(--muted)}
    </tr>
    <tr>
     <td class="env" data-h="Environment">linux-x64 / py3.14</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pytest"><span class="pill n" aria-label="pytest: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="ruff"><span class="pill n" aria-label="ruff: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="ty"><span class="pill n" aria-label="ty: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="bandit"><span class="pill n" aria-label="bandit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="pip_audit"><span class="pill n" aria-label="pip_audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
    </tr>
    <tr>
     <td class="env" data-h="Environment">linux-x64 / py3.14t</td>
@@ -240,7 +260,7 @@ footer a{color:var(--muted)}
    <dt>Direct deps</dt><dd>—</dd>
    <dt>Transitive deps</dt><dd>—</dd>
    <dt>SBOM</dt><dd>
-     <a href="api/v1/sbom/kaos-llm-core-0.1.0a9.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-llm-core/releases/download/v0.1.0a9/kaos-llm-core-0.1.0a9.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
+     <a href="api/v1/sbom/kaos-llm-core-0.1.0a10.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-llm-core/releases/download/v0.1.0a10/kaos-llm-core-0.1.0a10.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
   </dl>
  </div>
 </section>
@@ -250,12 +270,12 @@ footer a{color:var(--muted)}
  <h2 id="gov-h">Governance + velocity</h2>
  <div class="card">
   <dl class="kv">
-   <dt>Maintainers</dt><dd>1</dd>
+   <dt>Maintainers</dt><dd>2</dd>
    <dt>Commits 90d</dt>
    <dd>
-    30
+    38
    </dd>
-   <dt>Releases 90d</dt><dd>9</dd>
+   <dt>Releases 90d</dt><dd>10</dd>
   </dl>
  </div>
 </section>
@@ -265,15 +285,15 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Python source (LoC)</dt>
-   <dd>25,691 across 204 files</dd>
+   <dd>27,740 across 214 files</dd>
    <dt>Python tests (LoC)</dt>
-   <dd>29,872 across 161 files</dd>
+   <dd>31,655 across 174 files</dd>
    <dt>Rust source (LoC)</dt>
    <dd>—</dd>
    <dt>Rust tests (LoC)</dt>
    <dd>—</dd>
    <dt>Source lines of code</dt>
-   <dd>55,563 LoC</dd>
+   <dd>59,395 LoC</dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
    Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
@@ -301,7 +321,7 @@ footer a{color:var(--muted)}
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-llm-core">Repository</a></li><li><a href="https://pypi.org/project/kaos-llm-core/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/25922878915">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/25922878972">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-llm-core.json"><code>api/v1/package/kaos-llm-core.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-llm-core">Repository</a></li><li><a href="https://pypi.org/project/kaos-llm-core/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/25932142221">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/25932142351">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-llm-core.json"><code>api/v1/package/kaos-llm-core.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
@@ -322,7 +342,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-05-15 16:50 UTC
+ Generated 2026-05-15 17:43 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
