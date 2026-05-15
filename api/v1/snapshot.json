@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-05-15T11:04:33Z",
+  "generated_at": "2026-05-15T11:50:16Z",
   "generator": {
     "name": "kaos-compliance",
     "version": "0.0.1"
   },
   "heartbeat": {
-    "last_full_sweep_at": "2026-05-15T11:04:33Z",
-    "last_light_sweep_at": "2026-05-15T11:04:33Z",
-    "last_security_sweep_at": "2026-05-15T11:04:33Z",
+    "last_full_sweep_at": "2026-05-15T11:50:16Z",
+    "last_light_sweep_at": "2026-05-15T11:50:16Z",
+    "last_security_sweep_at": "2026-05-15T11:50:16Z",
     "stale_threshold_hours": 26
   },
   "modules": [
@@ -287,7 +287,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 1.518,
+        "median_pr_age_days": 1.552,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 479,
@@ -580,7 +580,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.378,
+        "median_pr_age_days": 2.412,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 53,
@@ -877,7 +877,7 @@
           "NOTICE"
         ],
         "releases_90d": 7,
-        "median_pr_age_days": 2.415,
+        "median_pr_age_days": 2.448,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 164,
@@ -1171,7 +1171,7 @@
           "NOTICE"
         ],
         "releases_90d": 7,
-        "median_pr_age_days": 0.314,
+        "median_pr_age_days": 0.348,
         "open_pr_count": 1,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 114,
@@ -1517,7 +1517,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 2.418,
+        "median_pr_age_days": 2.451,
         "open_pr_count": 1,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 448,
@@ -1816,7 +1816,7 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 2.419,
+        "median_pr_age_days": 2.452,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 66,
@@ -1842,163 +1842,161 @@
     {
       "name": "kaos-llm-core",
       "identity": {
-        "pypi_version": "0.1.0a7",
-        "pypi_url": "https://pypi.org/project/kaos-llm-core/0.1.0a7/",
-        "main_head_sha": "cb974f7533ef3b863c2c4373efaf68658b6bcc61",
-        "latest_tag": "v0.1.0a7",
-        "latest_tag_sha": "f244f3271aaf17a63179178b343f81e413d83dcf",
-        "tag_at_head": false,
+        "pypi_version": "0.1.0a8",
+        "pypi_url": "https://pypi.org/project/kaos-llm-core/0.1.0a8/",
+        "main_head_sha": "b8511c32fe13c07a95a02e065b463a13e100e5fe",
+        "latest_tag": "v0.1.0a8",
+        "latest_tag_sha": "b8511c32fe13c07a95a02e065b463a13e100e5fe",
+        "tag_at_head": true,
         "commits_past_tag": null,
         "repo_visibility": "public",
-        "last_commit_at": "2026-05-14T01:14:45Z"
+        "last_commit_at": "2026-05-15T10:57:01Z"
       },
       "ci": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 25835807351,
-        "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25835807351",
-        "head_sha": "cb974f7533ef3b863c2c4373efaf68658b6bcc61",
-        "run_completed_at": "2026-05-14T01:17:29Z",
+        "workflow_run_id": 25914618119,
+        "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25914618119",
+        "head_sha": "b8511c32fe13c07a95a02e065b463a13e100e5fe",
+        "run_completed_at": "2026-05-15T11:12:18Z",
         "matrix": [
-          {
-            "name": "Pre-commit hooks",
-            "conclusion": "success",
-            "status": "completed",
-            "started_at": "2026-05-14T01:15:50Z",
-            "completed_at": "2026-05-14T01:16:13Z",
-            "duration_seconds": 23
-          },
           {
             "name": "Test against minimum dependencies",
             "conclusion": "success",
             "status": "completed",
-            "started_at": "2026-05-14T01:16:03Z",
-            "completed_at": "2026-05-14T01:16:27Z",
-            "duration_seconds": 24
+            "started_at": "2026-05-15T11:07:58Z",
+            "completed_at": "2026-05-15T11:08:20Z",
+            "duration_seconds": 22
           },
           {
-            "name": "Lint",
+            "name": "Test (macos-arm64 / Python 3.13)",
             "conclusion": "success",
             "status": "completed",
-            "started_at": "2026-05-14T01:16:04Z",
-            "completed_at": "2026-05-14T01:16:13Z",
-            "duration_seconds": 9
+            "started_at": "2026-05-15T11:07:58Z",
+            "completed_at": "2026-05-15T11:08:27Z",
+            "duration_seconds": 29
           },
           {
             "name": "Test (linux-x64 / Python 3.13)",
             "conclusion": "success",
             "status": "completed",
-            "started_at": "2026-05-14T01:16:06Z",
-            "completed_at": "2026-05-14T01:16:42Z",
-            "duration_seconds": 36
+            "started_at": "2026-05-15T11:07:59Z",
+            "completed_at": "2026-05-15T11:08:36Z",
+            "duration_seconds": 37
+          },
+          {
+            "name": "Pre-commit hooks",
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-15T11:07:58Z",
+            "completed_at": "2026-05-15T11:08:17Z",
+            "duration_seconds": 19
+          },
+          {
+            "name": "Test (linux-x64 / Python 3.15)",
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-15T11:08:15Z",
+            "completed_at": "2026-05-15T11:09:11Z",
+            "duration_seconds": 56
+          },
+          {
+            "name": "Lint",
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-15T11:08:16Z",
+            "completed_at": "2026-05-15T11:08:25Z",
+            "duration_seconds": 9
           },
           {
             "name": "Test (linux-x64 / Python 3.14t)",
             "conclusion": "success",
             "status": "completed",
-            "started_at": "2026-05-14T01:16:31Z",
-            "completed_at": "2026-05-14T01:16:59Z",
+            "started_at": "2026-05-15T11:08:16Z",
+            "completed_at": "2026-05-15T11:11:15Z",
+            "duration_seconds": 179
+          },
+          {
+            "name": "Test (linux-x64 / Python 3.14)",
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-15T11:08:27Z",
+            "completed_at": "2026-05-15T11:08:55Z",
             "duration_seconds": 28
           },
           {
             "name": "Test (windows-x64 / Python 3.13)",
             "conclusion": "success",
             "status": "completed",
-            "started_at": "2026-05-14T01:14:51Z",
-            "completed_at": "2026-05-14T01:17:03Z",
-            "duration_seconds": 132
-          },
-          {
-            "name": "Test (linux-x64 / Python 3.15)",
-            "conclusion": "success",
-            "status": "completed",
-            "started_at": "2026-05-14T01:16:07Z",
-            "completed_at": "2026-05-14T01:17:02Z",
-            "duration_seconds": 55
-          },
-          {
-            "name": "Test (macos-arm64 / Python 3.13)",
-            "conclusion": "success",
-            "status": "completed",
-            "started_at": "2026-05-14T01:14:50Z",
-            "completed_at": "2026-05-14T01:15:20Z",
-            "duration_seconds": 30
-          },
-          {
-            "name": "Test (linux-x64 / Python 3.14)",
-            "conclusion": "success",
-            "status": "completed",
-            "started_at": "2026-05-14T01:16:33Z",
-            "completed_at": "2026-05-14T01:17:06Z",
-            "duration_seconds": 33
+            "started_at": "2026-05-15T11:07:58Z",
+            "completed_at": "2026-05-15T11:09:05Z",
+            "duration_seconds": 67
           },
           {
             "name": "Build distribution + smoke test",
             "conclusion": "success",
             "status": "completed",
-            "started_at": "2026-05-14T01:17:09Z",
-            "completed_at": "2026-05-14T01:17:28Z",
-            "duration_seconds": 19
+            "started_at": "2026-05-15T11:12:03Z",
+            "completed_at": "2026-05-15T11:12:16Z",
+            "duration_seconds": 13
           }
         ]
       },
       "security": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 25835807347,
-        "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25835807347",
+        "workflow_run_id": 25914618176,
+        "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/25914618176",
         "jobs": [
           {
             "name": "vulture (dead-code scan)",
             "conclusion": "success",
             "status": "completed",
-            "completed_at": "2026-05-14T01:15:08Z"
-          },
-          {
-            "name": "gitleaks (secret scan)",
-            "conclusion": "success",
-            "status": "completed",
-            "completed_at": "2026-05-14T01:15:06Z"
-          },
-          {
-            "name": "bandit (static security)",
-            "conclusion": "success",
-            "status": "completed",
-            "completed_at": "2026-05-14T01:15:08Z"
+            "completed_at": "2026-05-15T11:08:09Z"
           },
           {
             "name": "pip-audit (dependency CVEs)",
             "conclusion": "success",
             "status": "completed",
-            "completed_at": "2026-05-14T01:15:12Z"
+            "completed_at": "2026-05-15T11:08:18Z"
+          },
+          {
+            "name": "bandit (static security)",
+            "conclusion": "success",
+            "status": "completed",
+            "completed_at": "2026-05-15T11:08:07Z"
+          },
+          {
+            "name": "gitleaks (secret scan)",
+            "conclusion": "success",
+            "status": "completed",
+            "completed_at": "2026-05-15T11:08:07Z"
           }
         ],
-        "run_completed_at": "2026-05-14T01:15:14Z"
+        "run_completed_at": "2026-05-15T11:08:19Z"
       },
       "open_prs": {
-        "count": 7,
+        "count": 5,
         "titles": [
-          "#23 feat(programs): summarization + classification taxonomy (v0.1.0a8)",
-          "#18 chore(deps): bump kaos-content from 0.1.0a1 to 0.1.0a6",
+          "#24 chore(deps): bump the deps-minor group across 1 directory with 3 updates",
+          "#18 chore(deps): bump kaos-content from 0.1.0a1 to 0.1.0a7",
           "#17 chore(deps): bump kaos-llm-client from 0.1.0a2 to 0.1.0a3",
-          "#16 chore(deps): bump kaos-nlp-core from 0.1.0a2 to 0.1.0a3",
-          "#15 chore(deps): bump kaos-core from 0.1.0a3 to 0.1.0a6",
-          "#14 chore(deps): bump the deps-minor group with 2 updates",
+          "#15 chore(deps): bump kaos-core from 0.1.0a3 to 0.1.0a7",
           "#13 chore(deps): bump the actions-all group with 4 updates"
         ]
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 3,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 0,
+        "days_since_last_release": 0,
+        "days_since_last_security_scan": 0
       },
       "supply_chain": {
-        "pypi_version": "0.1.0a7",
-        "pypi_release_iso": "2026-05-11T21:32:14.143156Z",
+        "pypi_version": "0.1.0a8",
+        "pypi_release_iso": "2026-05-15T11:09:34.262917Z",
         "wheel_platforms": [
           "any"
         ],
         "wheel_sha256s": {
-          "kaos_llm_core-0.1.0a7-py3-none-any.whl": "236b18b61566208399a0613fb87bf8bd1e7f816ea9ee69fcbdc593ad677272e3",
-          "kaos_llm_core-0.1.0a7.tar.gz": "2f7f389167e232e8baffd8ad0137c39b35fa33a5e0f808b8000219360c17393b"
+          "kaos_llm_core-0.1.0a8-py3-none-any.whl": "b5b409c117cd2337234143e9aec9b087b574477ed9d5116a2dc3a527f43357df",
+          "kaos_llm_core-0.1.0a8.tar.gz": "257b37b5668156265abc469008dbf8d7d20dd9f82b464ffedf58c117e77ca999"
         },
         "is_abi3": false,
         "has_musllinux_wheel": false,
@@ -2012,7 +2010,7 @@
           "publisher_kind": "GitHub",
           "publisher_source_repo": "273v/kaos-llm-core",
           "publisher_workflow_ref": "release.yml@pypi",
-          "rekor_log_index": 1511791188,
+          "rekor_log_index": 1547180556,
           "verified_count": 2,
           "total_count": 2
         },
@@ -2034,15 +2032,15 @@
           ],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": "data/sbom/kaos-llm-core-0.1.0a7.cdx.json"
+          "sbom_artifact_path": "data/sbom/kaos-llm-core-0.1.0a8.cdx.json"
         },
         "errors": []
       },
       "governance": {
-        "dco_signoff_rate_90d": 0.577,
-        "conventional_commits_rate_90d": 0.769,
-        "verified_commit_ratio_90d": 0.577,
-        "commits_90d": 26,
+        "dco_signoff_rate_90d": 0.593,
+        "conventional_commits_rate_90d": 0.778,
+        "verified_commit_ratio_90d": 0.556,
+        "commits_90d": 27,
         "unique_committers_90d": 1,
         "branch_protection_enabled": true,
         "branch_protection_summary": {
@@ -2115,19 +2113,19 @@
           "LICENSE",
           "NOTICE"
         ],
-        "releases_90d": 7,
-        "median_pr_age_days": 2.393,
-        "open_pr_count": 7,
+        "releases_90d": 8,
+        "median_pr_age_days": 2.426,
+        "open_pr_count": 5,
         "open_issue_count": 0,
-        "time_to_pypi_seconds_median": 142,
+        "time_to_pypi_seconds_median": 137,
         "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": 24102,
-          "tests_loc": 27409,
-          "src_files": 189,
-          "tests_files": 146
+          "src_loc": 25677,
+          "tests_loc": 29295,
+          "src_files": 204,
+          "tests_files": 156
         },
         "rust": {
           "src_loc": 0,
@@ -2419,7 +2417,7 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 2.38,
+        "median_pr_age_days": 2.413,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 59,
@@ -2775,7 +2773,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.419,
+        "median_pr_age_days": 2.452,
         "open_pr_count": 6,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 229,
@@ -3050,7 +3048,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 0.706,
+        "median_pr_age_days": 0.739,
         "open_pr_count": 1,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 55,
@@ -3425,7 +3423,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 2.417,
+        "median_pr_age_days": 2.45,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 1223,
@@ -3451,8 +3449,8 @@
     {
       "name": "kaos-nlp-transformers",
       "identity": {
-        "pypi_version": "0.2.0a4",
-        "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.2.0a4/",
+        "pypi_version": "0.2.0a5",
+        "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.2.0a5/",
         "main_head_sha": "4f8e808f60749e4dd1326412821ced21754a589a",
         "latest_tag": "v0.2.0a5",
         "latest_tag_sha": "4f8e808f60749e4dd1326412821ced21754a589a",
@@ -3462,11 +3460,11 @@
         "last_commit_at": "2026-05-15T10:44:54Z"
       },
       "ci": {
-        "workflow_conclusion": "",
+        "workflow_conclusion": "success",
         "workflow_run_id": 25914075144,
         "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/25914075144",
         "head_sha": "4f8e808f60749e4dd1326412821ced21754a589a",
-        "run_completed_at": "2026-05-15T10:58:02Z",
+        "run_completed_at": "2026-05-15T11:03:22Z",
         "matrix": [
           {
             "name": "Test against minimum dependencies",
@@ -3550,11 +3548,11 @@
           },
           {
             "name": "Build distribution + smoke test",
-            "conclusion": null,
-            "status": "queued",
-            "started_at": "2026-05-15T10:58:02Z",
-            "completed_at": null,
-            "duration_seconds": 182
+            "conclusion": "success",
+            "status": "completed",
+            "started_at": "2026-05-15T11:01:42Z",
+            "completed_at": "2026-05-15T11:03:21Z",
+            "duration_seconds": 99
           }
         ]
       },
@@ -3613,12 +3611,12 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": 4,
+        "days_since_last_release": 0,
         "days_since_last_security_scan": 0
       },
       "supply_chain": {
-        "pypi_version": "0.2.0a4",
-        "pypi_release_iso": "2026-05-11T02:11:22.315129Z",
+        "pypi_version": "0.2.0a5",
+        "pypi_release_iso": "2026-05-15T11:06:04.277438Z",
         "wheel_platforms": [
           "macos-arm64",
           "linux-aarch64-manylinux_2_28",
@@ -3627,12 +3625,12 @@
           "win-arm64"
         ],
         "wheel_sha256s": {
-          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-macosx_11_0_arm64.whl": "3e7103e5407d175a9dc1ad5d7871b468e7bd33f31f96d7df13ed2baba41b3a4e",
-          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-manylinux_2_28_aarch64.whl": "c82b0b55c43477de06085775167a1aee6a781ccb2c326714c90b466c7ed787d3",
-          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-manylinux_2_28_x86_64.whl": "fa0e6b0a8026ab3095b0c2f3e0f1fc4c20819f9af6f033257137764d9e5a1200",
-          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-win_amd64.whl": "3cf5d5dd6921f1cfdc6d5e69afda8acad653364d4f9e80573705871b1890c037",
-          "kaos_nlp_transformers-0.2.0a4-cp313-abi3-win_arm64.whl": "c185807a984fe217d313f49c01aaca1309c5487e66b2234efca0a8a97672c26a",
-          "kaos_nlp_transformers-0.2.0a4.tar.gz": "04156de8dbc19b0effa2150647200a8e8a6e176468b297c6434971dbc74b20e2"
+          "kaos_nlp_transformers-0.2.0a5-cp313-abi3-macosx_11_0_arm64.whl": "79e6036132e217af1a027862ec58a072d5174ecf88e770c195bd6f382a36c86b",
+          "kaos_nlp_transformers-0.2.0a5-cp313-abi3-manylinux_2_28_aarch64.whl": "2f095776763a8540064578f59c1f4885d0f3bbff75d49119a539a9ae8f7f87e9",
+          "kaos_nlp_transformers-0.2.0a5-cp313-abi3-manylinux_2_28_x86_64.whl": "abf5eae9ae413bd8aeb21d0d5823a90e827915e5bae2250c0006f98464a3b0d0",
+          "kaos_nlp_transformers-0.2.0a5-cp313-abi3-win_amd64.whl": "ba1e70f811638a723ecbe90efba7c7b5942046820bd00f225291659e0f74606f",
+          "kaos_nlp_transformers-0.2.0a5-cp313-abi3-win_arm64.whl": "633bbf96c634ede1a6db773b08bc7a256eb71e1ad682f853a371a9dd271c214a",
+          "kaos_nlp_transformers-0.2.0a5.tar.gz": "213cd2e8123774514e92bfaff67945b11595cdbec6ecf77f47ddade6286afca5"
         },
         "is_abi3": true,
         "has_musllinux_wheel": false,
@@ -3646,7 +3644,7 @@
           "publisher_kind": "GitHub",
           "publisher_source_repo": "273v/kaos-nlp-transformers",
           "publisher_workflow_ref": "release.yml@pypi",
-          "rekor_log_index": 1501641986,
+          "rekor_log_index": 1547163973,
           "verified_count": 6,
           "total_count": 6
         },
@@ -3717,7 +3715,7 @@
             "winapi-i686-pc-windows-gnu",
             "winapi-x86_64-pc-windows-gnu"
           ],
-          "sbom_artifact_path": "data/sbom/kaos-nlp-transformers-0.2.0a4.cdx.json"
+          "sbom_artifact_path": "data/sbom/kaos-nlp-transformers-0.2.0a5.cdx.json"
         },
         "errors": []
       },
@@ -3813,11 +3811,11 @@
           "LICENSE",
           "NOTICE"
         ],
-        "releases_90d": 6,
-        "median_pr_age_days": 2.414,
+        "releases_90d": 7,
+        "median_pr_age_days": 2.446,
         "open_pr_count": 4,
         "open_issue_count": 0,
-        "time_to_pypi_seconds_median": 350,
+        "time_to_pypi_seconds_median": 524,
         "errors": []
       },
       "code_metrics": {
@@ -4117,7 +4115,7 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 2.402,
+        "median_pr_age_days": 2.434,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 101,
@@ -4416,7 +4414,7 @@
           "NOTICE"
         ],
         "releases_90d": 3,
-        "median_pr_age_days": 2.392,
+        "median_pr_age_days": 2.425,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 115,
@@ -4720,7 +4718,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 2.418,
+        "median_pr_age_days": 2.45,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 633,
@@ -5018,7 +5016,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.418,
+        "median_pr_age_days": 2.45,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 155,
@@ -5549,7 +5547,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.398,
+        "median_pr_age_days": 2.43,
         "open_pr_count": 5,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 162,
