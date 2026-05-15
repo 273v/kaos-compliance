@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c9b20695-772d-456e-a2da-3062218ebbc5",
+  "serialNumber": "urn:uuid:bec7551f-6440-40d5-b96a-1cf010007781",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-15T15:55:26Z",
+    "timestamp": "2026-05-15T16:44:29Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -3226,6 +3226,43 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:cargo/byteorder@1.5.0",
+      "name": "byteorder",
+      "version": "1.5.0",
+      "purl": "pkg:cargo/byteorder@1.5.0",
+      "supplier": {
+        "name": "Andrew Gallant"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "Unlicense OR MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/byteorder/1.5.0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:cargo/cast@0.3.0",
       "name": "cast",
       "version": "0.3.0",
@@ -3286,6 +3323,45 @@
         {
           "type": "website",
           "url": "https://crates.io/crates/cc/1.2.57"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/cfb@0.7.3",
+      "name": "cfb",
+      "version": "0.7.3",
+      "purl": "pkg:cargo/cfb@0.7.3",
+      "supplier": {
+        "name": "Matthew D. Steele"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d38f2da7a0a2c4ccf0065be06397cc26a81f4e528be095826eee9d4adbb8c60f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/cfb/0.7.3"
         }
       ],
       "properties": [
@@ -4952,6 +5028,45 @@
         {
           "type": "website",
           "url": "https://crates.io/crates/indexmap/2.13.0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/infer@0.19.0",
+      "name": "infer",
+      "version": "0.19.0",
+      "purl": "pkg:cargo/infer@0.19.0",
+      "supplier": {
+        "name": "Bojan"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a588916bfdfd92e71cacef98a63d9b1f0d74d6599980d11894290e7ddefffcf7"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/infer/0.19.0"
         }
       ],
       "properties": [
@@ -8033,6 +8148,43 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:cargo/uuid@1.23.1",
+      "name": "uuid",
+      "version": "1.23.1",
+      "purl": "pkg:cargo/uuid@1.23.1",
+      "supplier": {
+        "name": "Ashley Mannix"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ddd74a9687298c6858e9b88ec8935ec45d22e8fd5e6394fa1bd4e99a87789c76"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "Apache-2.0 OR MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/uuid/1.23.1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:cargo/version_check@0.9.5",
       "name": "version_check",
       "version": "0.9.5",
@@ -9489,6 +9641,7 @@
         "pkg:cargo/flate2@1.1.9",
         "pkg:cargo/fst@0.4.7",
         "pkg:cargo/icu_properties@2.2.0",
+        "pkg:cargo/infer@0.19.0",
         "pkg:cargo/lru@0.18.0",
         "pkg:cargo/numpy@0.28.0",
         "pkg:cargo/once_cell@1.21.4",
@@ -9784,6 +9937,10 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:cargo/byteorder@1.5.0",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:cargo/cast@0.3.0",
       "dependsOn": []
     },
@@ -9794,6 +9951,14 @@
         "pkg:cargo/jobserver@0.1.34",
         "pkg:cargo/libc@0.2.183",
         "pkg:cargo/shlex@1.3.0"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/cfb@0.7.3",
+      "dependsOn": [
+        "pkg:cargo/byteorder@1.5.0",
+        "pkg:cargo/fnv@1.0.7",
+        "pkg:cargo/uuid@1.23.1"
       ]
     },
     {
@@ -10090,6 +10255,12 @@
         "pkg:cargo/hashbrown@0.17.0",
         "pkg:cargo/serde@1.0.228",
         "pkg:cargo/serde_core@1.0.228"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/infer@0.19.0",
+      "dependsOn": [
+        "pkg:cargo/cfb@0.7.3"
       ]
     },
     {
@@ -10612,6 +10783,13 @@
     {
       "ref": "pkg:cargo/utf8_iter@1.0.4",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:cargo/uuid@1.23.1",
+      "dependsOn": [
+        "pkg:cargo/js-sys@0.3.91",
+        "pkg:cargo/wasm-bindgen@0.2.114"
+      ]
     },
     {
       "ref": "pkg:cargo/version_check@0.9.5",

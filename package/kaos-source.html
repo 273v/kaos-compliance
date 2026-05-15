@@ -76,7 +76,7 @@ footer a{color:var(--muted)}
 <nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; kaos-source</nav>
 
 <header class="identity">
- <h1>kaos-source v0.1.0a5</h1>
+ <h1>kaos-source v0.1.0a6</h1>
  <div class="triple">
   <span>License: Apache-2.0</span>
   <span>Runtime: Python 3.13+</span>
@@ -93,13 +93,23 @@ footer a{color:var(--muted)}
   </p>
   <ul style="margin:0;padding-left:var(--s-5)">
     <li>
+     <span class="pill r" aria-label="Attestation: worse">
+      <span class="gly" aria-hidden="true">▼</span>
+      <span class="wd" aria-hidden="true">worse</span>
+     </span>
+     <strong>Attestation</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      True &rarr; False
+     </span>
+    </li>
+    <li>
      <span class="pill g" aria-label="Commits (90d): better">
       <span class="gly" aria-hidden="true">▲</span>
       <span class="wd" aria-hidden="true">better</span>
      </span>
      <strong>Commits (90d)</strong>:
      <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      75 &rarr; 78
+      75 &rarr; 79
      </span>
     </li>
   </ul>
@@ -109,7 +119,7 @@ footer a{color:var(--muted)}
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 8/8 green</div>
+  <div class="composite">Composite: 7/8 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
@@ -125,8 +135,8 @@ footer a{color:var(--muted)}
     <div class="body"><div class="lab">No critical CVEs</div><div class="note">Latest Security workflow conclusion: success</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="Signed release artifacts: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Signed release artifacts</div><div class="note">PEP 740 attestation verified for 2/2 artifacts</div></div>
+    <span class="pill n" aria-label="Signed release artifacts: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Signed release artifacts</div><div class="note">No PyPI release on file yet</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="License clean: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -240,7 +250,7 @@ footer a{color:var(--muted)}
    <dt>Direct deps</dt><dd>—</dd>
    <dt>Transitive deps</dt><dd>—</dd>
    <dt>SBOM</dt><dd>
-     <a href="api/v1/sbom/kaos-source-0.1.0a5.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-source/releases/download/v0.1.0a5/kaos-source-0.1.0a5.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
+     <a href="api/v1/sbom/kaos-source-0.1.0a6.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-source/releases/download/v0.1.0a6/kaos-source-0.1.0a6.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
   </dl>
  </div>
 </section>
@@ -253,9 +263,9 @@ footer a{color:var(--muted)}
    <dt>Maintainers</dt><dd>2</dd>
    <dt>Commits 90d</dt>
    <dd>
-    78
+    79
    </dd>
-   <dt>Releases 90d</dt><dd>5</dd>
+   <dt>Releases 90d</dt><dd>6</dd>
   </dl>
  </div>
 </section>
@@ -265,15 +275,15 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Python source (LoC)</dt>
-   <dd>9,356 across 92 files</dd>
+   <dd>9,369 across 92 files</dd>
    <dt>Python tests (LoC)</dt>
-   <dd>5,622 across 28 files</dd>
+   <dd>5,660 across 28 files</dd>
    <dt>Rust source (LoC)</dt>
    <dd>—</dd>
    <dt>Rust tests (LoC)</dt>
    <dd>—</dd>
    <dt>Source lines of code</dt>
-   <dd>14,978 LoC</dd>
+   <dd>15,029 LoC</dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
    Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
@@ -301,7 +311,7 @@ footer a{color:var(--muted)}
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-source">Repository</a></li><li><a href="https://pypi.org/project/kaos-source/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-source/actions/runs/25918880091">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-source/actions/runs/25918880087">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-source.json"><code>api/v1/package/kaos-source.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-source">Repository</a></li><li><a href="https://pypi.org/project/kaos-source/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-source/actions/runs/25929489242">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-source/actions/runs/25929489202">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-source.json"><code>api/v1/package/kaos-source.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
@@ -322,7 +332,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-05-15 15:59 UTC
+ Generated 2026-05-15 16:47 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
