@@ -2,132 +2,140 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-tabular",
-  "version": "0.1.0a1",
+  "version": "0.1.0a2",
   "snapshot_slice": {
     "name": "kaos-tabular",
     "identity": {
-      "pypi_version": "0.1.0a1",
-      "pypi_url": "https://pypi.org/project/kaos-tabular/0.1.0a1/",
-      "main_head_sha": "1bdb20b19925061451f5b9c310de2d7d0bc82a69",
-      "latest_tag": "v0.1.0a1",
-      "latest_tag_sha": "a19a832b17907eb7b5d95bad879ebba6c1692fbe",
-      "tag_at_head": false,
+      "pypi_version": "0.1.0a2",
+      "pypi_url": "https://pypi.org/project/kaos-tabular/0.1.0a2/",
+      "main_head_sha": "2389db9d009da22c0cf87e52800f77cae8a7860d",
+      "latest_tag": "v0.1.0a2",
+      "latest_tag_sha": "2389db9d009da22c0cf87e52800f77cae8a7860d",
+      "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-15T03:22:37Z"
+      "last_commit_at": "2026-05-15T03:44:22Z"
     },
     "ci": {
-      "workflow_conclusion": "",
-      "workflow_run_id": 25898440282,
-      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/25898440282",
-      "head_sha": "1bdb20b19925061451f5b9c310de2d7d0bc82a69",
-      "run_completed_at": "2026-05-15T03:22:40Z",
+      "workflow_conclusion": "success",
+      "workflow_run_id": 25899038327,
+      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/25899038327",
+      "head_sha": "2389db9d009da22c0cf87e52800f77cae8a7860d",
+      "run_completed_at": "2026-05-15T03:52:41Z",
       "matrix": [
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T03:45:14Z",
+          "completed_at": "2026-05-15T03:45:26Z",
+          "duration_seconds": 12
+        },
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T03:47:36Z",
+          "completed_at": "2026-05-15T03:47:56Z",
+          "duration_seconds": 20
+        },
         {
           "name": "Pre-commit hooks",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-15T03:25:39Z",
-          "completed_at": "2026-05-15T03:25:56Z",
+          "started_at": "2026-05-15T03:47:54Z",
+          "completed_at": "2026-05-15T03:48:15Z",
+          "duration_seconds": 21
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T03:47:35Z",
+          "completed_at": "2026-05-15T03:47:52Z",
           "duration_seconds": 17
-        },
-        {
-          "name": "Lint",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T03:22:41Z",
-          "completed_at": null,
-          "duration_seconds": 214
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T03:22:41Z",
-          "completed_at": null,
-          "duration_seconds": 214
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T03:22:41Z",
-          "completed_at": null,
-          "duration_seconds": 214
         },
         {
           "name": "Test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-15T03:23:03Z",
-          "completed_at": "2026-05-15T03:23:28Z",
-          "duration_seconds": 25
+          "started_at": "2026-05-15T03:44:28Z",
+          "completed_at": "2026-05-15T03:44:52Z",
+          "duration_seconds": 24
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T03:52:19Z",
+          "completed_at": "2026-05-15T03:52:37Z",
+          "duration_seconds": 18
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T03:22:41Z",
-          "completed_at": null,
-          "duration_seconds": 214
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T03:52:19Z",
+          "completed_at": "2026-05-15T03:52:40Z",
+          "duration_seconds": 21
         },
         {
           "name": "Test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-15T03:22:42Z",
-          "completed_at": "2026-05-15T03:23:22Z",
-          "duration_seconds": 40
+          "started_at": "2026-05-15T03:44:28Z",
+          "completed_at": "2026-05-15T03:45:14Z",
+          "duration_seconds": 46
         },
         {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T03:22:41Z",
-          "completed_at": null,
-          "duration_seconds": 214
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T03:47:55Z",
+          "completed_at": "2026-05-15T03:48:19Z",
+          "duration_seconds": 24
         },
         {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T03:22:41Z",
-          "completed_at": null,
-          "duration_seconds": 214
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T03:52:27Z",
+          "completed_at": "2026-05-15T03:52:41Z",
+          "duration_seconds": 14
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25898440276,
-      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/25898440276",
+      "workflow_run_id": 25899038336,
+      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/25899038336",
       "jobs": [
         {
-          "name": "vulture (dead-code scan)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-15T03:22:50Z"
+          "completed_at": "2026-05-15T03:44:36Z"
         },
         {
           "name": "gitleaks (secret scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-15T03:22:49Z"
+          "completed_at": "2026-05-15T03:44:38Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-15T03:44:39Z"
         },
         {
           "name": "pip-audit (dependency CVEs)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-15T03:22:59Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-15T03:22:51Z"
+          "completed_at": "2026-05-15T03:44:43Z"
         }
       ],
-      "run_completed_at": "2026-05-15T03:23:00Z"
+      "run_completed_at": "2026-05-15T03:44:44Z"
     },
     "open_prs": {
       "count": 4,
@@ -140,18 +148,18 @@
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 6,
+      "days_since_last_release": 0,
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.0a1",
-      "pypi_release_iso": "2026-05-08T14:59:46.480862Z",
+      "pypi_version": "0.1.0a2",
+      "pypi_release_iso": "2026-05-15T03:48:24.227209Z",
       "wheel_platforms": [
         "any"
       ],
       "wheel_sha256s": {
-        "kaos_tabular-0.1.0a1-py3-none-any.whl": "e27b6dc15305e93e3d94e8884afdce735a320a0af5090aaa7ec549c136f6c09a",
-        "kaos_tabular-0.1.0a1.tar.gz": "967043d1a308e9aa5e86a94e3859bf46b860c90a8814eaf1990d3026c239bf2f"
+        "kaos_tabular-0.1.0a2-py3-none-any.whl": "969445a6c552d2d55c65d93692699a077a2379024f22a00b07c52dd1884aacd1",
+        "kaos_tabular-0.1.0a2.tar.gz": "a6f33db3aa5c4a7088d3464838d798b8a32e034c23fae2a4486a398a29b5e711"
       },
       "is_abi3": false,
       "has_musllinux_wheel": false,
@@ -165,7 +173,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-tabular",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1474384713,
+        "rekor_log_index": 1545409793,
         "verified_count": 2,
         "total_count": 2
       },
@@ -188,15 +196,15 @@
         ],
         "strong_copyleft": [],
         "unknown_license": [],
-        "sbom_artifact_path": "data/sbom/kaos-tabular-0.1.0a1.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-tabular-0.1.0a2.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.625,
-      "conventional_commits_rate_90d": 0.938,
-      "verified_commit_ratio_90d": 0.625,
-      "commits_90d": 16,
+      "dco_signoff_rate_90d": 0.647,
+      "conventional_commits_rate_90d": 0.941,
+      "verified_commit_ratio_90d": 0.647,
+      "commits_90d": 17,
       "unique_committers_90d": 1,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -269,16 +277,16 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 1,
-      "median_pr_age_days": 2.1,
+      "releases_90d": 2,
+      "median_pr_age_days": 2.186,
       "open_pr_count": 4,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 69,
+      "time_to_pypi_seconds_median": 155,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 2552,
+        "src_loc": 2596,
         "tests_loc": 2736,
         "src_files": 10,
         "tests_files": 20
@@ -294,15 +302,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-tabular-0.1.0a1.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-tabular/releases/download/v0.1.0a1/kaos-tabular-0.1.0a1.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-tabular-0.1.0a2.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-tabular/releases/download/v0.1.0a2/kaos-tabular-0.1.0a2.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-tabular",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1474384713,
+    "rekor_log_index": 1545409793,
     "verified_count": 2,
     "total_count": 2,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-tabular/"

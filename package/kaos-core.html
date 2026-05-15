@@ -76,7 +76,7 @@ footer a{color:var(--muted)}
 <nav class="crumbs"><a href="index.html">Org rollup</a> &rsaquo; kaos-core</nav>
 
 <header class="identity">
- <h1>kaos-core v0.1.0a6</h1>
+ <h1>kaos-core v0.1.0a7</h1>
  <div class="triple">
   <span>License: Apache-2.0</span>
   <span>Runtime: Python 3.13+</span>
@@ -93,43 +93,13 @@ footer a{color:var(--muted)}
   </p>
   <ul style="margin:0;padding-left:var(--s-5)">
     <li>
-     <span class="pill r" aria-label="Build: worse">
-      <span class="gly" aria-hidden="true">▼</span>
-      <span class="wd" aria-hidden="true">worse</span>
-     </span>
-     <strong>Build</strong>:
-     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      True &rarr; False
-     </span>
-    </li>
-    <li>
-     <span class="pill r" aria-label="Tests: worse">
-      <span class="gly" aria-hidden="true">▼</span>
-      <span class="wd" aria-hidden="true">worse</span>
-     </span>
-     <strong>Tests</strong>:
-     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      True &rarr; False
-     </span>
-    </li>
-    <li>
-     <span class="pill r" aria-label="Security: worse">
-      <span class="gly" aria-hidden="true">▼</span>
-      <span class="wd" aria-hidden="true">worse</span>
-     </span>
-     <strong>Security</strong>:
-     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      True &rarr; False
-     </span>
-    </li>
-    <li>
      <span class="pill g" aria-label="Commits (90d): better">
       <span class="gly" aria-hidden="true">▲</span>
       <span class="wd" aria-hidden="true">better</span>
      </span>
      <strong>Commits (90d)</strong>:
      <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      43 &rarr; 44
+      43 &rarr; 45
      </span>
     </li>
   </ul>
@@ -139,20 +109,20 @@ footer a{color:var(--muted)}
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 5/8 green</div>
+  <div class="composite">Composite: 8/8 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
-    <span class="pill n" aria-label="Build passing: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
-    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: unknown</div></div>
+    <span class="pill g" aria-label="Build passing: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
+    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: success</div></div>
    </div>
    <div class="check">
-    <span class="pill n" aria-label="Tests + coverage: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
-    <div class="body"><div class="lab">Tests + coverage</div><div class="note">Latest CI conclusion: unknown</div></div>
+    <span class="pill g" aria-label="Tests + coverage: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
+    <div class="body"><div class="lab">Tests + coverage</div><div class="note">Latest CI conclusion: success</div></div>
    </div>
    <div class="check">
-    <span class="pill n" aria-label="No critical CVEs: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
-    <div class="body"><div class="lab">No critical CVEs</div><div class="note">Latest Security workflow conclusion: unknown</div></div>
+    <span class="pill g" aria-label="No critical CVEs: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
+    <div class="body"><div class="lab">No critical CVEs</div><div class="note">Latest Security workflow conclusion: success</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Signed release artifacts: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -164,7 +134,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill g" aria-label="SBOM published: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">SBOM published</div><div class="note">SBOM published — 39 components</div></div>
+    <div class="body"><div class="lab">SBOM published</div><div class="note">SBOM published — 44 components</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Branch protection: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -192,51 +162,51 @@ footer a{color:var(--muted)}
   <tbody>
    <tr>
     <td class="env" data-h="Environment">linux-x64 / py3.13</td>
-     <td data-h="pytest"><span class="pill n" aria-label="pytest: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ruff"><span class="pill n" aria-label="ruff: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ty"><span class="pill n" aria-label="ty: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="bandit"><span class="pill n" aria-label="bandit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="pip_audit"><span class="pill n" aria-label="pip_audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
    </tr>
    <tr>
     <td class="env" data-h="Environment">linux-x64 / py3.14</td>
-     <td data-h="pytest"><span class="pill n" aria-label="pytest: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ruff"><span class="pill n" aria-label="ruff: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ty"><span class="pill n" aria-label="ty: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="bandit"><span class="pill n" aria-label="bandit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="pip_audit"><span class="pill n" aria-label="pip_audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
    </tr>
    <tr>
     <td class="env" data-h="Environment">linux-x64 / py3.14t</td>
-     <td data-h="pytest"><span class="pill n" aria-label="pytest: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ruff"><span class="pill n" aria-label="ruff: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ty"><span class="pill n" aria-label="ty: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="bandit"><span class="pill n" aria-label="bandit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="pip_audit"><span class="pill n" aria-label="pip_audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
    </tr>
    <tr>
     <td class="env" data-h="Environment">linux-x64 / py3.15</td>
-     <td data-h="pytest"><span class="pill n" aria-label="pytest: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ruff"><span class="pill n" aria-label="ruff: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ty"><span class="pill n" aria-label="ty: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="bandit"><span class="pill n" aria-label="bandit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="pip_audit"><span class="pill n" aria-label="pip_audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
    </tr>
    <tr>
     <td class="env" data-h="Environment">macos-arm64 / py3.13</td>
-     <td data-h="pytest"><span class="pill n" aria-label="pytest: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ruff"><span class="pill n" aria-label="ruff: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ty"><span class="pill n" aria-label="ty: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="bandit"><span class="pill n" aria-label="bandit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="pip_audit"><span class="pill n" aria-label="pip_audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
    </tr>
    <tr>
     <td class="env" data-h="Environment">windows-x64 / py3.13</td>
-     <td data-h="pytest"><span class="pill n" aria-label="pytest: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ruff"><span class="pill n" aria-label="ruff: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="ty"><span class="pill n" aria-label="ty: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="bandit"><span class="pill n" aria-label="bandit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
-     <td data-h="pip_audit"><span class="pill n" aria-label="pip_audit: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span></td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
    </tr>
   </tbody>
  </table>
@@ -270,7 +240,7 @@ footer a{color:var(--muted)}
    <dt>Direct deps</dt><dd>—</dd>
    <dt>Transitive deps</dt><dd>—</dd>
    <dt>SBOM</dt><dd>
-     <a href="api/v1/sbom/kaos-core-0.1.0a6.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-core/releases/download/v0.1.0a6/kaos-core-0.1.0a6.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
+     <a href="api/v1/sbom/kaos-core-0.1.0a7.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-core/releases/download/v0.1.0a7/kaos-core-0.1.0a7.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
   </dl>
  </div>
 </section>
@@ -283,9 +253,9 @@ footer a{color:var(--muted)}
    <dt>Maintainers</dt><dd>2</dd>
    <dt>Commits 90d</dt>
    <dd>
-    44
+    45
    </dd>
-   <dt>Releases 90d</dt><dd>6</dd>
+   <dt>Releases 90d</dt><dd>7</dd>
   </dl>
  </div>
 </section>
@@ -295,15 +265,15 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Python source (LoC)</dt>
-   <dd>6,968 across 90 files</dd>
+   <dd>6,970 across 90 files</dd>
    <dt>Python tests (LoC)</dt>
-   <dd>5,318 across 45 files</dd>
+   <dd>5,410 across 46 files</dd>
    <dt>Rust source (LoC)</dt>
    <dd>—</dd>
    <dt>Rust tests (LoC)</dt>
    <dd>—</dd>
    <dt>Source lines of code</dt>
-   <dd>12,286 LoC</dd>
+   <dd>12,380 LoC</dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
    Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
@@ -331,7 +301,7 @@ footer a{color:var(--muted)}
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-core">Repository</a></li><li><a href="https://pypi.org/project/kaos-core/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-core/actions/runs/25898401239">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-core/actions/runs/25898401268">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-core.json"><code>api/v1/package/kaos-core.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-core">Repository</a></li><li><a href="https://pypi.org/project/kaos-core/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-core/actions/runs/25898983032">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-core/actions/runs/25898983014">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-core.json"><code>api/v1/package/kaos-core.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
@@ -352,7 +322,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-05-15 03:27 UTC
+ Generated 2026-05-15 05:29 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
