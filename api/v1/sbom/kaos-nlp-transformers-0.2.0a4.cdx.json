@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2285367c-77e0-441d-9790-e6cf3dab21be",
+  "serialNumber": "urn:uuid:2a898628-13cb-4c7b-8a2e-e5494e151777",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-15T09:22:43Z",
+    "timestamp": "2026-05-15T11:01:41Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -2046,45 +2046,37 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.0a2",
+      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.0a5",
       "name": "kaos-nlp-core",
-      "version": "0.1.0a2",
-      "purl": "pkg:pypi/kaos-nlp-core@0.1.0a2",
+      "version": "0.1.0a5",
+      "purl": "pkg:pypi/kaos-nlp-core@0.1.0a5",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "90a4afee1432786301a79c1046e5783a6e94bc8c1e6023d3455f9f706a3bd1e8"
+          "content": "2ba9c0286ac33174c15a4e2d99110218cf79b3669aebb9d6b91fa36978465745"
         },
         {
           "alg": "SHA-256",
-          "content": "dcb8d13c92f2cd5c4c520d284d86dae8c77d65b8d6986c67a40a6f3654b011f5"
+          "content": "ef8eff5e00c7f41af5c140fd2fbe4cb20d488d730eaca43e7653bd4f1efec598"
         },
         {
           "alg": "SHA-256",
-          "content": "24b53cdaa8ffde33b5b462a2449f2d9ae0f139618acac0af9322c6e8083b85b1"
+          "content": "c009bb247ca7c999380e1cccd8c69e44506112179a874812385262f219f613b4"
         },
         {
           "alg": "SHA-256",
-          "content": "c7599a7e24da67aba7dbbc0face38937f480b6375552d7ca92623cad097c3856"
+          "content": "a8e16e6a8613a2a44be9e8a1f7db5a64b8c96d19cadfc98f232c00d7d9cde82b"
         },
         {
           "alg": "SHA-256",
-          "content": "46ab2830feb74c49c7715131cb961c7eee4cbdf61487184ed1f89c72e570c78f"
+          "content": "65ec89d12189daa13298d82a8fba90989d14e854687ba73f7c7819d9a142cc69"
         },
         {
           "alg": "SHA-256",
-          "content": "7a0aebd7e77a47d9e24ad806fb10bf81474bf290f769f2054d6b1a9fcd7ec241"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "09c10a20f9aaff5bf87903501ac065a989c55a92e6f7fa8be6e67c5da8746244"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "bb625a1487f5c7673b422a7b1e67a772ce1b0168d83071c5aa1fb000736d0dc6"
+          "content": "7ce2d4d745347a6765c2f6f262e61f0c2fad9d710c0673db5989834428690d2c"
         }
       ],
       "licenses": [
@@ -2097,11 +2089,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/76/b0/7417ac53b9c0fb3312bb091acea653f13dd6101b99ba7cf31e39a8dbec86/kaos_nlp_core-0.1.0a2.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/40/35/5c903579d7756c41287a8e96910a3b161f1a79be516a67eed8eb36c79d38/kaos_nlp_core-0.1.0a5.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-nlp-core/0.1.0a2/"
+          "url": "https://pypi.org/project/kaos-nlp-core/0.1.0a5/"
         }
       ],
       "properties": [
@@ -16408,8 +16400,10 @@
       ]
     },
     {
-      "ref": "pkg:pypi/kaos-nlp-core@0.1.0a2",
-      "dependsOn": []
+      "ref": "pkg:pypi/kaos-nlp-core@0.1.0a5",
+      "dependsOn": [
+        "pkg:cargo/numpy@0.28.0"
+      ]
     },
     {
       "ref": "pkg:pypi/markdown-it-py@4.2.0",

@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:0806491b-34cf-4876-b6c8-305e400c8f80",
+  "serialNumber": "urn:uuid:5b08e9da-8834-4258-995c-3feb72f43608",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-15T09:21:49Z",
+    "timestamp": "2026-05-15T11:00:41Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.0a3",
+      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.0a5",
       "name": "kaos-nlp-core",
-      "version": "0.1.0a3",
-      "purl": "pkg:pypi/kaos-nlp-core@0.1.0a3"
+      "version": "0.1.0a5",
+      "purl": "pkg:pypi/kaos-nlp-core@0.1.0a5"
     }
   },
   "components": [
@@ -5622,45 +5622,6 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:cargo/numkong@7.6.0",
-      "name": "numkong",
-      "version": "7.6.0",
-      "purl": "pkg:cargo/numkong@7.6.0",
-      "supplier": {
-        "name": "Ash Vardanian"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "a75e386ad4a252e96357fd400ed9b5c7afea048447f2fb0906652b47cf2aaa87"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "Apache-2.0"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "registry+https://github.com/rust-lang/crates.io-index"
-        },
-        {
-          "type": "website",
-          "url": "https://crates.io/crates/numkong/7.6.0"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
       "bom-ref": "pkg:cargo/numpy@0.28.0",
       "name": "numpy",
       "version": "0.28.0",
@@ -9517,7 +9478,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-nlp-core@0.1.0a3",
+      "ref": "pkg:pypi/kaos-nlp-core@0.1.0a5",
       "dependsOn": [
         "pkg:cargo/ahash@0.8.12",
         "pkg:cargo/aho-corasick@1.1.4",
@@ -9529,7 +9490,6 @@
         "pkg:cargo/fst@0.4.7",
         "pkg:cargo/icu_properties@2.2.0",
         "pkg:cargo/lru@0.18.0",
-        "pkg:cargo/numkong@7.6.0",
         "pkg:cargo/numpy@0.28.0",
         "pkg:cargo/once_cell@1.21.4",
         "pkg:cargo/postcard@1.1.3",
@@ -10232,12 +10192,6 @@
       "ref": "pkg:cargo/num-traits@0.2.19",
       "dependsOn": [
         "pkg:cargo/autocfg@1.5.0"
-      ]
-    },
-    {
-      "ref": "pkg:cargo/numkong@7.6.0",
-      "dependsOn": [
-        "pkg:cargo/cc@1.2.57"
       ]
     },
     {

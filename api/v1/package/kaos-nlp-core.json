@@ -2,160 +2,160 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-nlp-core",
-  "version": "0.1.0a3",
+  "version": "0.1.0a5",
   "snapshot_slice": {
     "name": "kaos-nlp-core",
     "identity": {
-      "pypi_version": "0.1.0a3",
-      "pypi_url": "https://pypi.org/project/kaos-nlp-core/0.1.0a3/",
-      "main_head_sha": "2e1c9dab731685b4b81bd90c09b3103b8bc85ae8",
-      "latest_tag": "v0.1.0a4",
-      "latest_tag_sha": "2e1c9dab731685b4b81bd90c09b3103b8bc85ae8",
+      "pypi_version": "0.1.0a5",
+      "pypi_url": "https://pypi.org/project/kaos-nlp-core/0.1.0a5/",
+      "main_head_sha": "eef27cab7d3ddd25392278cf1c27ea820c0bc486",
+      "latest_tag": "v0.1.0a5",
+      "latest_tag_sha": "eef27cab7d3ddd25392278cf1c27ea820c0bc486",
       "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-15T03:46:03Z"
+      "last_commit_at": "2026-05-15T10:05:30Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25899812415,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25899812415",
-      "head_sha": "2e1c9dab731685b4b81bd90c09b3103b8bc85ae8",
-      "run_completed_at": "2026-05-15T04:24:25Z",
+      "workflow_run_id": 25912641298,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25912641298",
+      "head_sha": "eef27cab7d3ddd25392278cf1c27ea820c0bc486",
+      "run_completed_at": "2026-05-15T10:28:36Z",
       "matrix": [
         {
-          "name": "Lint",
+          "name": "Test against minimum dependencies",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-15T04:14:01Z",
-          "completed_at": "2026-05-15T04:18:40Z",
-          "duration_seconds": 279
+          "started_at": "2026-05-15T10:19:19Z",
+          "completed_at": "2026-05-15T10:25:57Z",
+          "duration_seconds": 398
         },
         {
           "name": "Rust tests (no PyO3)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-15T04:14:02Z",
-          "completed_at": "2026-05-15T04:16:29Z",
-          "duration_seconds": 147
+          "started_at": "2026-05-15T10:19:17Z",
+          "completed_at": "2026-05-15T10:21:16Z",
+          "duration_seconds": 119
+        },
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T10:17:52Z",
+          "completed_at": "2026-05-15T10:21:55Z",
+          "duration_seconds": 243
         },
         {
           "name": "Pre-commit hooks",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-15T04:13:53Z",
-          "completed_at": "2026-05-15T04:16:48Z",
-          "duration_seconds": 175
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-15T04:12:43Z",
-          "completed_at": "2026-05-15T04:19:20Z",
-          "duration_seconds": 397
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-15T04:14:02Z",
-          "completed_at": "2026-05-15T04:20:48Z",
-          "duration_seconds": 406
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-15T04:13:47Z",
-          "completed_at": "2026-05-15T04:14:44Z",
-          "duration_seconds": 57
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-15T04:12:43Z",
-          "completed_at": "2026-05-15T04:19:38Z",
-          "duration_seconds": 415
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-15T04:12:45Z",
-          "completed_at": "2026-05-15T04:21:24Z",
-          "duration_seconds": 519
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-15T04:14:02Z",
-          "completed_at": "2026-05-15T04:21:07Z",
-          "duration_seconds": 425
+          "started_at": "2026-05-15T10:19:18Z",
+          "completed_at": "2026-05-15T10:22:04Z",
+          "duration_seconds": 166
         },
         {
           "name": "Test (linux-x64 / Python 3.14)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-15T04:14:02Z",
-          "completed_at": "2026-05-15T04:20:36Z",
-          "duration_seconds": 394
+          "started_at": "2026-05-15T10:17:52Z",
+          "completed_at": "2026-05-15T10:24:30Z",
+          "duration_seconds": 398
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T10:17:52Z",
+          "completed_at": "2026-05-15T10:24:25Z",
+          "duration_seconds": 393
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T10:17:52Z",
+          "completed_at": "2026-05-15T10:23:24Z",
+          "duration_seconds": 332
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T10:19:08Z",
+          "completed_at": "2026-05-15T10:25:48Z",
+          "duration_seconds": 400
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T10:17:52Z",
+          "completed_at": "2026-05-15T10:18:30Z",
+          "duration_seconds": 38
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T10:18:20Z",
+          "completed_at": "2026-05-15T10:24:56Z",
+          "duration_seconds": 396
         },
         {
           "name": "Build distribution + smoke test",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-05-15T04:21:27Z",
-          "completed_at": "2026-05-15T04:24:24Z",
-          "duration_seconds": 177
+          "started_at": "2026-05-15T10:25:51Z",
+          "completed_at": "2026-05-15T10:28:35Z",
+          "duration_seconds": 164
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25899812408,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25899812408",
+      "workflow_run_id": 25912641267,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25912641267",
       "jobs": [
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-15T04:12:56Z"
-        },
         {
           "name": "pip-audit (dependency CVEs)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-15T04:16:27Z"
+          "completed_at": "2026-05-15T10:21:07Z"
         },
         {
           "name": "gitleaks (secret scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-15T04:12:52Z"
+          "completed_at": "2026-05-15T10:18:00Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-15T10:18:07Z"
         },
         {
           "name": "cargo-deny (licenses + bans + advisories)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-15T04:13:15Z"
+          "completed_at": "2026-05-15T10:18:28Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-15T04:12:57Z"
+          "completed_at": "2026-05-15T10:18:02Z"
         },
         {
           "name": "cargo-audit (Rust CVEs)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-15T04:15:30Z"
+          "completed_at": "2026-05-15T10:21:01Z"
         }
       ],
-      "run_completed_at": "2026-05-15T04:16:28Z"
+      "run_completed_at": "2026-05-15T10:21:08Z"
     },
     "open_prs": {
       "count": 2,
@@ -166,12 +166,12 @@
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 4,
+      "days_since_last_release": 0,
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.0a3",
-      "pypi_release_iso": "2026-05-11T01:48:49.726918Z",
+      "pypi_version": "0.1.0a5",
+      "pypi_release_iso": "2026-05-15T10:37:01.939313Z",
       "wheel_platforms": [
         "macos-arm64",
         "linux-aarch64-manylinux_2_28",
@@ -180,12 +180,12 @@
         "win-arm64"
       ],
       "wheel_sha256s": {
-        "kaos_nlp_core-0.1.0a3-cp313-abi3-macosx_11_0_arm64.whl": "2b156f3845c652425f3e3cf420d6bb23d9de276fca3e50560b6e5df54159d3ca",
-        "kaos_nlp_core-0.1.0a3-cp313-abi3-manylinux_2_28_aarch64.whl": "96d734430f6120c54de3480facd32c897dc247e376236a9ead9d00360099fe24",
-        "kaos_nlp_core-0.1.0a3-cp313-abi3-manylinux_2_28_x86_64.whl": "79d4d5ab014ade25941e64c4318e6ad5b7449ff0a31e530a0614e4de3c801d72",
-        "kaos_nlp_core-0.1.0a3-cp313-abi3-win_amd64.whl": "eeb2769580ccd15737b6ff339ba1f7a6fe7411b19db17990d7779f22be34cdd4",
-        "kaos_nlp_core-0.1.0a3-cp313-abi3-win_arm64.whl": "fe92a7d373347c673601d1508efb0f779d7ef73eeed8755aed3aaa1d60b2ae59",
-        "kaos_nlp_core-0.1.0a3.tar.gz": "f04751a156a11dd193407457c36caafb5551e957e8819a4e74183f65488c62af"
+        "kaos_nlp_core-0.1.0a5-cp313-abi3-macosx_11_0_arm64.whl": "ef8eff5e00c7f41af5c140fd2fbe4cb20d488d730eaca43e7653bd4f1efec598",
+        "kaos_nlp_core-0.1.0a5-cp313-abi3-manylinux_2_28_aarch64.whl": "c009bb247ca7c999380e1cccd8c69e44506112179a874812385262f219f613b4",
+        "kaos_nlp_core-0.1.0a5-cp313-abi3-manylinux_2_28_x86_64.whl": "a8e16e6a8613a2a44be9e8a1f7db5a64b8c96d19cadfc98f232c00d7d9cde82b",
+        "kaos_nlp_core-0.1.0a5-cp313-abi3-win_amd64.whl": "65ec89d12189daa13298d82a8fba90989d14e854687ba73f7c7819d9a142cc69",
+        "kaos_nlp_core-0.1.0a5-cp313-abi3-win_arm64.whl": "7ce2d4d745347a6765c2f6f262e61f0c2fad9d710c0673db5989834428690d2c",
+        "kaos_nlp_core-0.1.0a5.tar.gz": "2ba9c0286ac33174c15a4e2d99110218cf79b3669aebb9d6b91fa36978465745"
       },
       "is_abi3": true,
       "has_musllinux_wheel": false,
@@ -199,17 +199,17 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-nlp-core",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1501394728,
+        "rekor_log_index": 1547087511,
         "verified_count": 6,
         "total_count": 6
       },
       "sbom": {
-        "components_count": 221,
+        "components_count": 220,
         "license_breakdown": {
           "MIT": 28,
           "MPL-2.0": 1,
           "BSD-3-Clause": 8,
-          "Apache-2.0": 9,
+          "Apache-2.0": 8,
           "Apache-2.0 OR BSD-3-Clause": 1,
           "MIT OR Apache-2.0": 92,
           "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
@@ -258,15 +258,15 @@
           "winapi-x86_64-pc-windows-gnu",
           "zstd-sys"
         ],
-        "sbom_artifact_path": "data/sbom/kaos-nlp-core-0.1.0a3.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-nlp-core-0.1.0a5.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.789,
-      "conventional_commits_rate_90d": 0.842,
-      "verified_commit_ratio_90d": 0.316,
-      "commits_90d": 19,
+      "dco_signoff_rate_90d": 0.8,
+      "conventional_commits_rate_90d": 0.85,
+      "verified_commit_ratio_90d": 0.3,
+      "commits_90d": 20,
       "unique_committers_90d": 1,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -354,11 +354,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 3,
-      "median_pr_age_days": 2.349,
+      "releases_90d": 4,
+      "median_pr_age_days": 2.417,
       "open_pr_count": 2,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 1322,
+      "time_to_pypi_seconds_median": 1223,
       "errors": []
     },
     "code_metrics": {
@@ -369,9 +369,9 @@
         "tests_files": 86
       },
       "rust": {
-        "src_loc": 24074,
+        "src_loc": 24182,
         "tests_loc": 1488,
-        "src_files": 77,
+        "src_files": 78,
         "tests_files": 10
       },
       "errors": []
@@ -379,15 +379,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-nlp-core-0.1.0a3.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-nlp-core/releases/download/v0.1.0a3/kaos-nlp-core-0.1.0a3.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-nlp-core-0.1.0a5.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-nlp-core/releases/download/v0.1.0a5/kaos-nlp-core-0.1.0a5.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-nlp-core",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1501394728,
+    "rekor_log_index": 1547087511,
     "verified_count": 6,
     "total_count": 6,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-nlp-core/"
