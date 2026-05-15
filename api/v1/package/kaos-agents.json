@@ -37,7 +37,7 @@
           "status": "queued",
           "started_at": "2026-05-15T16:38:33Z",
           "completed_at": null,
-          "duration_seconds": 128
+          "duration_seconds": 332
         },
         {
           "name": "Pre-commit hooks",
@@ -45,15 +45,15 @@
           "status": "queued",
           "started_at": "2026-05-15T16:38:33Z",
           "completed_at": null,
-          "duration_seconds": 128
+          "duration_seconds": 332
         },
         {
           "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T16:38:33Z",
-          "completed_at": null,
-          "duration_seconds": 128
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-05-15T16:41:17Z",
+          "completed_at": "2026-05-15T16:41:44Z",
+          "duration_seconds": 27
         },
         {
           "name": "Test (windows-x64 / Python 3.13)",
@@ -65,27 +65,27 @@
         },
         {
           "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T16:38:33Z",
-          "completed_at": null,
-          "duration_seconds": 128
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T16:40:42Z",
+          "completed_at": "2026-05-15T16:41:55Z",
+          "duration_seconds": 73
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T16:38:33Z",
-          "completed_at": null,
-          "duration_seconds": 128
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T16:42:26Z",
+          "completed_at": "2026-05-15T16:43:26Z",
+          "duration_seconds": 60
         },
         {
           "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-15T16:38:33Z",
-          "completed_at": null,
-          "duration_seconds": 128
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-15T16:41:48Z",
+          "completed_at": "2026-05-15T16:42:46Z",
+          "duration_seconds": 58
         },
         {
           "name": "Test (macos-arm64 / Python 3.13)",
@@ -102,6 +102,14 @@
           "started_at": "2026-05-15T16:38:33Z",
           "completed_at": "2026-05-15T16:38:33Z",
           "duration_seconds": 0
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-05-15T16:43:26Z",
+          "completed_at": null,
+          "duration_seconds": 39
         }
       ]
     },
@@ -270,7 +278,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 1.758,
+      "median_pr_age_days": 1.76,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 479,

@@ -93,6 +93,16 @@ footer a{color:var(--muted)}
   </p>
   <ul style="margin:0;padding-left:var(--s-5)">
     <li>
+     <span class="pill r" aria-label="Attestation: worse">
+      <span class="gly" aria-hidden="true">▼</span>
+      <span class="wd" aria-hidden="true">worse</span>
+     </span>
+     <strong>Attestation</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      True &rarr; False
+     </span>
+    </li>
+    <li>
      <span class="pill g" aria-label="Commits (90d): better">
       <span class="gly" aria-hidden="true">▲</span>
       <span class="wd" aria-hidden="true">better</span>
@@ -109,7 +119,7 @@ footer a{color:var(--muted)}
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 5/8 green</div>
+  <div class="composite">Composite: 4/8 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
@@ -125,8 +135,8 @@ footer a{color:var(--muted)}
     <div class="body"><div class="lab">No critical CVEs</div><div class="note">Latest Security workflow conclusion: success</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="Signed release artifacts: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Signed release artifacts</div><div class="note">PEP 740 attestation verified for 2/2 artifacts</div></div>
+    <span class="pill n" aria-label="Signed release artifacts: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Signed release artifacts</div><div class="note">No PyPI release on file yet</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="License clean: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -240,7 +250,7 @@ footer a{color:var(--muted)}
    <dt>Direct deps</dt><dd>—</dd>
    <dt>Transitive deps</dt><dd>—</dd>
    <dt>SBOM</dt><dd>
-     <a href="api/v1/sbom/kaos-ui-0.1.0a1.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-ui/releases/download/v0.1.0a1/kaos-ui-0.1.0a1.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
+     <a href="api/v1/sbom/kaos-ui-0.1.0a2.cdx.json">CycloneDX (mirror)</a> &middot;      <a href="https://github.com/273v/kaos-ui/releases/download/v0.1.0a2/kaos-ui-0.1.0a2.cdx.json">CycloneDX (GitHub Release)</a>   </dd>
   </dl>
  </div>
 </section>
@@ -322,7 +332,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-05-15 16:47 UTC
+ Generated 2026-05-15 16:50 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
