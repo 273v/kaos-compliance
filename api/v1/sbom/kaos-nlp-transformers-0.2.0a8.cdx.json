@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8b753783-dd61-4902-bee2-91c906df24b2",
+  "serialNumber": "urn:uuid:55870ce5-da28-4e10-a30a-cdaec8f9cc08",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-16T14:39:17Z",
+    "timestamp": "2026-05-16T15:33:32Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-nlp-transformers@0.2.0a6",
+      "bom-ref": "pkg:pypi/kaos-nlp-transformers@0.2.0a8",
       "name": "kaos-nlp-transformers",
-      "version": "0.2.0a6",
-      "purl": "pkg:pypi/kaos-nlp-transformers@0.2.0a6"
+      "version": "0.2.0a8",
+      "purl": "pkg:pypi/kaos-nlp-transformers@0.2.0a8"
     }
   },
   "components": [
@@ -16220,7 +16220,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-nlp-transformers@0.2.0a6",
+      "ref": "pkg:pypi/kaos-nlp-transformers@0.2.0a8",
       "dependsOn": [
         "pkg:cargo/criterion@0.8.2",
         "pkg:cargo/hf-hub@0.5.0",
@@ -16230,6 +16230,7 @@
         "pkg:cargo/ort@2.0.0-rc.12",
         "pkg:cargo/pyo3@0.28.3",
         "pkg:cargo/rayon@1.12.0",
+        "pkg:cargo/regex@1.12.3",
         "pkg:cargo/serde@1.0.228",
         "pkg:cargo/serde_json@1.0.149",
         "pkg:cargo/tempfile@3.27.0",
