@@ -1,5 +1,70 @@
 {
   "from": "2026-05-16",
   "to": "2026-05-17",
-  "packages": {}
+  "packages": {
+    "kaos-agents": {
+      "build_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 15,
+        "to": 21,
+        "delta": "better"
+      }
+    },
+    "kaos-ui": {
+      "build_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "tests_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 51,
+        "to": 52,
+        "delta": "better"
+      }
+    }
+  }
 }
