@@ -8,148 +8,65 @@
     "identity": {
       "pypi_version": "0.1.0a6",
       "pypi_url": "https://pypi.org/project/kaos-office/0.1.0a6/",
-      "main_head_sha": "5b77c6e19aa4845331766a6984acf15441324315",
+      "main_head_sha": "0dabd423c005cb8c9b5128c0fdc64c0b66fe6d27",
       "latest_tag": "v0.1.0a6",
       "latest_tag_sha": "5b77c6e19aa4845331766a6984acf15441324315",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-18T02:58:24Z"
+      "last_commit_at": "2026-05-18T17:10:35Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 26011104184,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26011104184",
-      "head_sha": "5b77c6e19aa4845331766a6984acf15441324315",
-      "run_completed_at": "2026-05-18T03:08:48Z",
-      "matrix": [
-        {
-          "name": "Pre-commit hooks",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T02:59:16Z",
-          "completed_at": "2026-05-18T02:59:39Z",
-          "duration_seconds": 23
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T02:59:35Z",
-          "completed_at": "2026-05-18T03:00:35Z",
-          "duration_seconds": 60
-        },
-        {
-          "name": "Lint",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T02:59:14Z",
-          "completed_at": "2026-05-18T02:59:22Z",
-          "duration_seconds": 8
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T02:59:35Z",
-          "completed_at": "2026-05-18T03:00:36Z",
-          "duration_seconds": 61
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T02:59:36Z",
-          "completed_at": "2026-05-18T03:01:10Z",
-          "duration_seconds": 94
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T03:01:37Z",
-          "completed_at": "2026-05-18T03:05:32Z",
-          "duration_seconds": 235
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T02:58:29Z",
-          "completed_at": "2026-05-18T03:00:51Z",
-          "duration_seconds": 142
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T02:58:29Z",
-          "completed_at": "2026-05-18T02:59:32Z",
-          "duration_seconds": 63
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T03:04:40Z",
-          "completed_at": "2026-05-18T03:07:56Z",
-          "duration_seconds": 196
-        },
-        {
-          "name": "Build distribution + smoke test",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T03:08:35Z",
-          "completed_at": "2026-05-18T03:08:48Z",
-          "duration_seconds": 13
-        }
-      ]
+      "workflow_conclusion": "",
+      "workflow_run_id": 26048543860,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26048543860",
+      "head_sha": "0dabd423c005cb8c9b5128c0fdc64c0b66fe6d27",
+      "run_completed_at": "2026-05-18T17:10:51Z",
+      "matrix": []
     },
     "security": {
-      "workflow_conclusion": "failure",
-      "workflow_run_id": 26011428215,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26011428215",
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26048541093,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26048541093",
       "jobs": [
         {
           "name": "pip-audit (dependency CVEs)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-18T03:10:58Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:10:51Z"
-        },
-        {
-          "name": "integration tests",
-          "conclusion": "failure",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:11:09Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:10:53Z"
+          "completed_at": "2026-05-18T17:11:09Z"
         },
         {
           "name": "gitleaks (secret scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-18T03:10:49Z"
+          "completed_at": "2026-05-18T17:10:59Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:11:01Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:11:01Z"
+        },
+        {
+          "name": "integration tests",
+          "conclusion": "skipped",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:10:50Z"
         }
       ],
-      "run_completed_at": "2026-05-18T03:11:10Z"
+      "run_completed_at": "2026-05-18T17:11:10Z"
     },
     "open_prs": {
-      "count": 4,
+      "count": 2,
       "titles": [
-        "#27 feat(office): 0.1.0a7 \u2014 surface path on search-docx + search-pptx hits",
-        "#26 build(deps): Bump kaos-mcp from 0.1.0a3 to 0.1.0a4",
-        "#25 build(deps-dev): Bump kaos-nlp-core from 0.1.0a2 to 0.1.0a8",
-        "#24 build(deps-dev): Bump the deps-minor group with 2 updates"
+        "#28 feat(docx): rendered numbering labels on Paragraph/Heading/ListItem",
+        "#27 feat(office): 0.1.0a7 \u2014 surface path on search-docx + search-pptx hits"
       ]
     },
     "freshness": {
@@ -208,10 +125,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.179,
-      "conventional_commits_rate_90d": 0.758,
-      "verified_commit_ratio_90d": 0.2,
-      "commits_90d": 95,
+      "dco_signoff_rate_90d": 0.204,
+      "conventional_commits_rate_90d": 0.765,
+      "verified_commit_ratio_90d": 0.224,
+      "commits_90d": 98,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -285,8 +202,8 @@
         "NOTICE"
       ],
       "releases_90d": 6,
-      "median_pr_age_days": 0.155,
-      "open_pr_count": 4,
+      "median_pr_age_days": 0.088,
+      "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 198,
       "errors": []
