@@ -39,6 +39,9 @@ h2{font-size:1.125rem;margin:var(--s-6) 0 var(--s-3)}
 .stat{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-4)}
 .stat .n{display:block;font-size:1.5rem;font-weight:700;font-family:var(--mono)}
 .stat .lab{display:block;color:var(--muted);font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em;margin-top:var(--s-1)}
+.stat .mini-viz{display:block;margin:var(--s-2) 0 0;color:var(--primary)}
+.activity-svg{display:block;max-width:100%;overflow:visible;color:var(--primary)}
+.activity-meter{margin-left:auto}
 .pill{display:inline-flex;align-items:center;gap:var(--s-2);padding:2px 8px;border-radius:3px;font-size:0.75rem;font-weight:600;line-height:1.4;border:1px solid transparent}
 .pill .gly{font-family:var(--mono);font-weight:700}
 .pill .wd{font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.04em}
@@ -78,8 +81,16 @@ footer a{color:var(--muted)}
  <div class="strip">
   <div class="stat"><span class="n">{% if governance_summary.org_dco_rate is not none %}{{ '%.0f' | format(governance_summary.org_dco_rate * 100) }}%{% else %}—{% endif %}</span><span class="lab">Org DCO sign-off (90d avg)</span></div>
   <div class="stat"><span class="n">{% if governance_summary.org_cc_rate is not none %}{{ '%.0f' | format(governance_summary.org_cc_rate * 100) }}%{% else %}—{% endif %}</span><span class="lab">Conventional commits (90d avg)</span></div>
-  <div class="stat"><span class="n">{{ governance_summary.commits_90d | default('—') }}</span><span class="lab">Commits last 90d</span></div>
-  <div class="stat"><span class="n">{{ governance_summary.releases_90d | default('—') }}</span><span class="lab">Releases last 90d</span></div>
+  <div class="stat">
+   <span class="n">{{ governance_summary.commits_90d | default('—') }}</span>
+   {% if governance_summary.commits_sparkline_svg %}<span class="mini-viz">{{ governance_summary.commits_sparkline_svg | safe }}</span>{% endif %}
+   <span class="lab">Commits last 90d</span>
+  </div>
+  <div class="stat">
+   <span class="n">{{ governance_summary.releases_90d | default('—') }}</span>
+   {% if governance_summary.releases_sparkline_svg %}<span class="mini-viz">{{ governance_summary.releases_sparkline_svg | safe }}</span>{% endif %}
+   <span class="lab">Releases last 90d</span>
+  </div>
  </div>
 </section>
 
@@ -111,8 +122,8 @@ footer a{color:var(--muted)}
      <td class="num">{% if row.dco_rate is not none %}{{ '%.0f' | format(row.dco_rate * 100) }}%{% else %}—{% endif %}</td>
      <td class="num">{% if row.cc_rate is not none %}{{ '%.0f' | format(row.cc_rate * 100) }}%{% else %}—{% endif %}</td>
      <td class="num">{% if row.verified_rate is not none %}{{ '%.0f' | format(row.verified_rate * 100) }}%{% else %}—{% endif %}</td>
-     <td class="num">{{ row.commits_90d | default('—') }}</td>
-     <td class="num">{{ row.releases_90d | default('—') }}</td>
+     <td class="num">{{ row.commits_90d | default('—') }}{% if row.commits_bar_svg %}{{ row.commits_bar_svg | safe }}{% endif %}</td>
+     <td class="num">{{ row.releases_90d | default('—') }}{% if row.releases_bar_svg %}{{ row.releases_bar_svg | safe }}{% endif %}</td>
      <td>{% if row.branch_protection is none %}<span class="pill n" aria-label="Branch protection: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>{% elif row.branch_protection %}<span class="pill g" aria-label="Branch protection: On"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">On</span></span>{% else %}<span class="pill y" aria-label="Branch protection: Off"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Off</span></span>{% endif %}</td>
      <td class="num">{% if row.time_to_pypi_seconds_median %}{{ row.time_to_pypi_seconds_median }} s{% else %}—{% endif %}</td>
     </tr>

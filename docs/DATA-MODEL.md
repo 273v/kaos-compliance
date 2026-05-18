@@ -130,6 +130,23 @@ Emitted by `collector/code_metrics.py`. Shape:
 }
 ```
 
+## Rolling History Endpoints
+
+`api/v1/history/YYYY-MM-DD.json` is a compact per-day projection of
+`snapshot.json`. It exists only to drive trend SVGs and previous-sweep
+diffs; `snapshot.json` remains the source of truth for evidence URLs and
+nested detail.
+
+Each per-module history row carries booleans for build/tests/security/
+attestation/branch-protection state plus integer activity counters:
+`commits_90d`, `releases_90d`, `loc_total`, `src_loc`, `tests_loc`, and
+`files_total`. Missing or uncollected counters are `null`.
+
+`api/v1/history.json` is the rolling 90-day index. Arrays under
+`packages.<name>.<signal>` are aligned to the top-level `dates` array.
+Older per-day files that lack newer additive counters are padded with
+`null`, so consumers must tolerate gaps.
+
 ## Versioning
 
 `schema_version` is the snapshot-level version. We bump it for

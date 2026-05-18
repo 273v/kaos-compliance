@@ -4,7 +4,7 @@ The dashboard's primary surface is one snapshot — the latest. P7 adds
 a lightweight historical store so the dashboard can show trend lines
 (sparklines) for the handful of binary per-package signals that
 matter at a glance: build, tests, security, attestation, branch
-protection, and commits_90d.
+protection, commits_90d, releases_90d, and code-surface counters.
 
 Storage layout
 --------------
@@ -34,8 +34,9 @@ Key design properties
   collector schema changes, ``daily_summary_from_snapshot`` is the
   only place to update.
 
-The schema is intentionally minimal — wider per-day captures
-(LoC, license breakdown, dep counts) wait for P8.
+The schema is intentionally minimal — it keeps activity counters that
+drive static SVGs and leaves heavier captures (license breakdown, dep
+counts) in snapshot.json.
 """
 
 from __future__ import annotations
@@ -46,12 +47,11 @@ from pathlib import Path
 from typing import Any
 
 HISTORY_DAYS = 90
-HISTORY_SCHEMA_VERSION = "1.0"
+HISTORY_SCHEMA_VERSION = "1.1"
 
 # Signals we track in history. Booleans capture "did the signal flip
 # green on this day" — that's the trend line a buyer asks for. The
-# count column (``commits_90d``) is the only non-binary signal kept
-# in the rolling index; richer counters wait for P8.
+# count columns are activity signals kept for SVG trends.
 TRACKED_BOOL_SIGNALS = (
     "build_pass",
     "tests_pass",
@@ -59,12 +59,52 @@ TRACKED_BOOL_SIGNALS = (
     "attestation_present",
     "branch_protection_enabled",
 )
-TRACKED_INT_SIGNALS = ("commits_90d",)
+TRACKED_INT_SIGNALS = (
+    "commits_90d",
+    "releases_90d",
+    "loc_total",
+    "src_loc",
+    "tests_loc",
+    "files_total",
+)
 
 
 def _today_utc() -> str:
     """UTC date stamp ``YYYY-MM-DD``."""
     return datetime.datetime.now(tz=datetime.UTC).date().isoformat()
+
+
+def _code_metric_totals(module: dict[str, Any]) -> dict[str, int | None]:
+    """Collapse collector.code_metrics output into history-safe ints."""
+    cm = module.get("code_metrics") or {}
+    py = cm.get("python") or {}
+    rs = cm.get("rust") or {}
+
+    def _get(section: dict[str, Any], key: str) -> int | None:
+        value = section.get(key)
+        return value if isinstance(value, int) and not isinstance(value, bool) else None
+
+    py_src = _get(py, "src_loc")
+    py_tests = _get(py, "tests_loc")
+    rs_src = _get(rs, "src_loc")
+    rs_tests = _get(rs, "tests_loc")
+    py_src_files = _get(py, "src_files")
+    py_tests_files = _get(py, "tests_files")
+    rs_src_files = _get(rs, "src_files")
+    rs_tests_files = _get(rs, "tests_files")
+
+    def _sum_known(values: tuple[int | None, ...]) -> int | None:
+        known = [v for v in values if v is not None]
+        return sum(known) if known else None
+
+    src_loc = _sum_known((py_src, rs_src))
+    tests_loc = _sum_known((py_tests, rs_tests))
+    return {
+        "src_loc": src_loc,
+        "tests_loc": tests_loc,
+        "loc_total": _sum_known((src_loc, tests_loc)),
+        "files_total": _sum_known((py_src_files, py_tests_files, rs_src_files, rs_tests_files)),
+    }
 
 
 def _module_summary(module: dict[str, Any]) -> dict[str, Any]:
@@ -78,6 +118,7 @@ def _module_summary(module: dict[str, Any]) -> dict[str, Any]:
     sec = module.get("security") or {}
     att = (module.get("supply_chain") or {}).get("attestations") or {}
     gov = module.get("governance") or {}
+    code = _code_metric_totals(module)
 
     # "attestation present and every artifact verified" — same rule
     # the renderer uses for the green-signing pill.
@@ -93,6 +134,8 @@ def _module_summary(module: dict[str, Any]) -> dict[str, Any]:
         "attestation_present": attestation_present,
         "branch_protection_enabled": gov.get("branch_protection_enabled"),
         "commits_90d": gov.get("commits_90d"),
+        "releases_90d": gov.get("releases_90d"),
+        **code,
     }
 
 
@@ -346,9 +389,10 @@ def _classify_delta(signal: str, old: Any, new: Any) -> str:
         if old == new:
             return "same"
         return "better" if (bool(new) and not bool(old)) else "worse"
-    # Int signal — commits_90d. More commits ≠ "better" universally,
-    # but for a buyer "the project is more active" is the trend they
-    # want flagged. Equal stays same; otherwise direction.
+    # Int activity signals. More commits / releases / LoC is not
+    # universally "better", but for a buyer it answers whether the
+    # surface is becoming more active/larger. Equal stays same;
+    # otherwise direction.
     if isinstance(old, (int, float)) and isinstance(new, (int, float)):
         if new == old:
             return "same"

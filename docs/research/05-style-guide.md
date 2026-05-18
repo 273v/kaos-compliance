@@ -73,6 +73,9 @@ beside it in body text. Never a bare colored dot.
 - Tables: zebra rows at 2% darken in light, 4% lighten in dark. No vertical rules.
 - Metric strip: 4 to 6 large numerals (1.75rem, weight 700) with caption below. No gradient, no animation.
 - Sparklines: 80x20px inline SVG, 1.5px stroke, current-color, no axes, no tooltip.
+- Activity bars: inline SVG only, paired with the numeric value they visualize.
+  Use them for cardinality distributions such as commits, releases, and code
+  surface area; never use them as a substitute for pill state.
 - Footer: 0.75rem muted, single line where viewport allows, wraps gracefully.
 
 ## What we deliberately do NOT use

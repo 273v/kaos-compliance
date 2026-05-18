@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import html
 import json
 import os
 import shutil
@@ -388,29 +389,35 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
     # Per-detail-page enrichments — only used when this row is the
     # `pkg` context object on the package template.
     # Code-surface signals for the per-package detail page.
-    cm = module.get("code_metrics") or {}
-    py = cm.get("python") or {}
-    rs = cm.get("rust") or {}
+    totals = _code_metric_totals(module)
     code_metrics_view = {
-        "py_src_loc": py.get("src_loc"),
-        "py_tests_loc": py.get("tests_loc"),
-        "py_src_files": py.get("src_files"),
-        "py_tests_files": py.get("tests_files"),
-        "rs_src_loc": rs.get("src_loc"),
-        "rs_tests_loc": rs.get("tests_loc"),
-        "rs_src_files": rs.get("src_files"),
-        "rs_tests_files": rs.get("tests_files"),
-        "total_loc": sum(
-            v
-            for v in (
-                py.get("src_loc"),
-                py.get("tests_loc"),
-                rs.get("src_loc"),
-                rs.get("tests_loc"),
-            )
-            if isinstance(v, int)
-        )
-        or None,
+        "py_src_loc": totals["py_src_loc"],
+        "py_tests_loc": totals["py_tests_loc"],
+        "py_src_files": totals["py_src_files"],
+        "py_tests_files": totals["py_tests_files"],
+        "rs_src_loc": totals["rs_src_loc"],
+        "rs_tests_loc": totals["rs_tests_loc"],
+        "rs_src_files": totals["rs_src_files"],
+        "rs_tests_files": totals["rs_tests_files"],
+        "src_loc": totals["src_loc"],
+        "tests_loc": totals["tests_loc"],
+        "total_loc": totals["total_loc"],
+        "files_total": totals["files_total"],
+        "composition_svg": _stacked_bar_svg(
+            [
+                ("Python source", totals["py_src_loc"], "var(--primary)"),
+                ("Python tests", totals["py_tests_loc"], "var(--accent)"),
+                ("Rust source", totals["rs_src_loc"], "var(--aw-color-copper)"),
+                ("Rust tests", totals["rs_tests_loc"], "var(--muted)"),
+            ],
+            title=(
+                f"{module['name']} code surface: "
+                f"Python source {totals['py_src_loc'] or 0}, "
+                f"Python tests {totals['py_tests_loc'] or 0}, "
+                f"Rust source {totals['rs_src_loc'] or 0}, "
+                f"Rust tests {totals['rs_tests_loc'] or 0} lines"
+            ),
+        ),
     }
     row["code_metrics"] = code_metrics_view
 
@@ -563,7 +570,12 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
     return row
 
 
-def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[str, Any]:
+def _org_summary(
+    modules: list[dict[str, Any]],
+    *,
+    policy: Any = None,
+    history_index: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Build the org rollup card from the per-module signals.
 
     Honest counts: only counts modules whose signals we have. Pills in
@@ -698,6 +710,8 @@ def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[s
         else None
     )
     files_total = (py_src_files + py_test_files + rs_src_files + rs_test_files) or None
+    commits_series = _history_sum_series(history_index, "commits_90d")
+    loc_series = _history_sum_series(history_index, "loc_total")
 
     return {
         "composite_green": composite_green,
@@ -715,6 +729,16 @@ def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[s
         "commits_total": _dash(commits_total),
         "tests_total": _dash(tests_total or None),
         "platforms_total": _dash(len(platform_set) or None),
+        "commits_sparkline_svg": (
+            _sparkline_svg(
+                commits_series,
+                width=112,
+                height=20,
+                title="Org commits last 90 days",
+            )
+            if commits_series
+            else ""
+        ),
         # Code-surface aggregates (rendered on the index secondary
         # strip + the supply-chain / governance pages).
         "loc_total": _dash(loc_total),
@@ -727,6 +751,30 @@ def _org_summary(modules: list[dict[str, Any]], *, policy: Any = None) -> dict[s
         "py_tests_files": py_test_files,
         "rs_src_files": rs_src_files,
         "rs_tests_files": rs_test_files,
+        "loc_sparkline_svg": (
+            _sparkline_svg(
+                loc_series,
+                width=112,
+                height=20,
+                title="Org lines of code",
+            )
+            if loc_series
+            else ""
+        ),
+        "code_composition_svg": _stacked_bar_svg(
+            [
+                ("Python source", py_src if py_src_known else None, "var(--primary)"),
+                ("Python tests", py_test if py_test_known else None, "var(--accent)"),
+                ("Rust source", rs_src if rs_src_known else None, "var(--aw-color-copper)"),
+                ("Rust tests", rs_test if rs_test_known else None, "var(--muted)"),
+            ],
+            width=132,
+            height=20,
+            title=(
+                f"Org code surface: Python source {py_src}, Python tests {py_test}, "
+                f"Rust source {rs_src}, Rust tests {rs_test} lines"
+            ),
+        ),
     }
 
 
@@ -794,6 +842,131 @@ def _generated_at_display(iso_ts: str | None) -> str:
     except ValueError:
         return iso_ts
     return dt.strftime("%Y-%m-%d %H:%M UTC")
+
+
+def _known_int(value: Any) -> int | None:
+    """Return an int metric value, excluding bool-as-int."""
+    return value if isinstance(value, int) and not isinstance(value, bool) else None
+
+
+def _sum_known(values: tuple[int | None, ...]) -> int | None:
+    known = [v for v in values if v is not None]
+    return sum(known) if known else None
+
+
+def _code_metric_totals(module: dict[str, Any]) -> dict[str, int | None]:
+    """Shared code-surface totals for renderer cards and SVGs."""
+    cm = module.get("code_metrics") or {}
+    py = cm.get("python") or {}
+    rs = cm.get("rust") or {}
+    py_src = _known_int(py.get("src_loc"))
+    py_tests = _known_int(py.get("tests_loc"))
+    rs_src = _known_int(rs.get("src_loc"))
+    rs_tests = _known_int(rs.get("tests_loc"))
+    py_src_files = _known_int(py.get("src_files"))
+    py_tests_files = _known_int(py.get("tests_files"))
+    rs_src_files = _known_int(rs.get("src_files"))
+    rs_tests_files = _known_int(rs.get("tests_files"))
+    src_loc = _sum_known((py_src, rs_src))
+    tests_loc = _sum_known((py_tests, rs_tests))
+    return {
+        "py_src_loc": py_src,
+        "py_tests_loc": py_tests,
+        "py_src_files": py_src_files,
+        "py_tests_files": py_tests_files,
+        "rs_src_loc": rs_src,
+        "rs_tests_loc": rs_tests,
+        "rs_src_files": rs_src_files,
+        "rs_tests_files": rs_tests_files,
+        "src_loc": src_loc,
+        "tests_loc": tests_loc,
+        "total_loc": _sum_known((src_loc, tests_loc)),
+        "files_total": _sum_known((py_src_files, py_tests_files, rs_src_files, rs_tests_files)),
+    }
+
+
+def _stacked_bar_svg(
+    segments: list[tuple[str, int | None, str]],
+    *,
+    width: int = 112,
+    height: int = 18,
+    title: str = "",
+) -> str:
+    """Render a compact SVG stacked bar for current activity composition."""
+    clean = [(label, value, color) for label, value, color in segments if value and value > 0]
+    if not clean:
+        return ""
+    total = sum(value for _, value, _ in clean)
+    safe_title = html.escape(title or "activity composition", quote=True)
+    parts = [
+        f'<svg class="activity-svg activity-stack" width="{width}" height="{height}" '
+        f'viewBox="0 0 {width} {height}" role="img" aria-label="{safe_title}">'
+    ]
+    y = 4
+    bar_h = max(6, height - 8)
+    parts.append(
+        f'<rect x="0.5" y="{y + 0.5}" width="{width - 1}" height="{bar_h - 1}" '
+        f'rx="2" fill="none" stroke="var(--border)"></rect>'
+    )
+    x = 1.0
+    inner_w = width - 2
+    for i, (_label, value, color) in enumerate(clean):
+        seg_w = 1 + inner_w - x if i == len(clean) - 1 else inner_w * (value / total)
+        if seg_w <= 0:
+            continue
+        parts.append(
+            f'<rect x="{x:.1f}" y="{y + 1}" width="{seg_w:.1f}" '
+            f'height="{bar_h - 2}" fill="{color}"></rect>'
+        )
+        x += seg_w
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def _meter_svg(
+    value: Any,
+    max_value: int | None,
+    *,
+    width: int = 72,
+    height: int = 12,
+    title: str = "",
+) -> str:
+    """Render a single-value proportional SVG bar."""
+    v = _known_int(value)
+    if v is None or not max_value or max_value <= 0:
+        return ""
+    safe_title = html.escape(title or "activity bar", quote=True)
+    fill_w = max(1.0, (width - 2) * min(v / max_value, 1.0)) if v > 0 else 0.0
+    return (
+        f'<svg class="activity-svg activity-meter" width="{width}" height="{height}" '
+        f'viewBox="0 0 {width} {height}" role="img" aria-label="{safe_title}">'
+        f'<rect x="0.5" y="2.5" width="{width - 1}" height="{height - 5}" '
+        f'rx="2" fill="none" stroke="var(--border)"></rect>'
+        f'<rect x="1" y="3" width="{fill_w:.1f}" height="{height - 6}" '
+        f'rx="1.5" fill="var(--primary)"></rect>'
+        f"</svg>"
+    )
+
+
+def _history_sum_series(index_obj: dict[str, Any] | None, signal: str) -> list[int | None]:
+    """Sum one numeric history signal across packages for each date."""
+    if not index_obj or not index_obj.get("dates"):
+        return []
+    n = len(index_obj.get("dates") or [])
+    series: list[int | None] = []
+    for i in range(n):
+        total = 0
+        seen = False
+        for sigs in (index_obj.get("packages") or {}).values():
+            arr = sigs.get(signal) or []
+            if i >= len(arr):
+                continue
+            value = arr[i]
+            if isinstance(value, (int, float)) and not isinstance(value, bool):
+                total += int(value)
+                seen = True
+        series.append(total if seen else None)
+    return series
 
 
 def _security_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
@@ -1286,7 +1459,11 @@ def _supply_chain_summary(modules: list[dict[str, Any]], *, policy: Any = None) 
     }
 
 
-def _governance_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
+def _governance_summary(
+    modules: list[dict[str, Any]],
+    *,
+    history_index: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Aggregate DCO / CC / verified rates + cadence across modules."""
 
     def _avg(values: list[float]) -> float | None:
@@ -1355,12 +1532,48 @@ def _governance_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
                 "time_to_pypi_seconds_median": gov.get("time_to_pypi_seconds_median"),
             }
         )
+    max_commits = max(commits) if commits else None
+    max_releases = max(releases) if releases else None
+    for row in rows:
+        row["commits_bar_svg"] = _meter_svg(
+            row.get("commits_90d"),
+            max_commits,
+            title=f"{row['name']} commit activity relative to the most active package",
+        )
+        row["releases_bar_svg"] = _meter_svg(
+            row.get("releases_90d"),
+            max_releases,
+            title=f"{row['name']} release activity relative to the most active package",
+        )
+
+    commits_series = _history_sum_series(history_index, "commits_90d")
+    releases_series = _history_sum_series(history_index, "releases_90d")
     return {
         "org_dco_rate": _avg(dcos),
         "org_cc_rate": _avg(ccs),
         "org_verified_rate": _avg(verifieds),
         "commits_90d": sum(commits) if commits else None,
         "releases_90d": sum(releases) if releases else None,
+        "commits_sparkline_svg": (
+            _sparkline_svg(
+                commits_series,
+                width=112,
+                height=20,
+                title="Org commits last 90 days",
+            )
+            if commits_series
+            else ""
+        ),
+        "releases_sparkline_svg": (
+            _sparkline_svg(
+                releases_series,
+                width=112,
+                height=20,
+                title="Org releases last 90 days",
+            )
+            if releases_series
+            else ""
+        ),
         "branch_protection_count": bp_count,
         "branch_protection_total": bp_total,
         "codeowners_count": co_count,
@@ -1460,18 +1673,20 @@ def adapt(
     # docs/METHODOLOGY.md §Methodology versioning.
     from render import METHODOLOGY_UPDATED, METHODOLOGY_VERSION
 
+    history_view = _history_view(history_index)
+
     return {
         "generated_at": iso,
         # The templates' visible header uses this human-readable form.
         "generated_at_display": _generated_at_display(iso),
-        "org": _org_summary(modules, policy=policy),
+        "org": _org_summary(modules, policy=policy, history_index=history_index),
         "packages": [_module_view(m, policy=policy) for m in modules],
         "heartbeat": _heartbeat_block(snapshot),
         # Page-specific summaries — the index template ignores these;
         # the per-section pages consume them.
         "security_summary": _security_summary(modules),
         "supply_chain_summary": _supply_chain_summary(modules, policy=policy),
-        "governance_summary": _governance_summary(modules),
+        "governance_summary": _governance_summary(modules, history_index=history_index),
         "license_policy": _license_policy_view(policy, modules),
         # Integrity: snapshot signing + JSON Schema availability. Falls
         # back to a "no signature, no schema" stub so the template can
@@ -1487,7 +1702,7 @@ def adapt(
         # P7: 90-day rolling history + previous-sweep baseline. Named
         # `signal_history` rather than `history` so it doesn't collide
         # with the diary template's existing diary-entry `history` slot.
-        "signal_history": _history_view(history_index),
+        "signal_history": history_view,
     }
 
 
@@ -1552,11 +1767,12 @@ def _sparkline_svg(
 
     The SVG never embeds a <script> — strict CSP-safe by construction.
     """
+    safe_title = html.escape(title or "sparkline", quote=True)
     if not values:
         return (
             f'<svg class="spark" width="{width}" height="{height}" '
             f'viewBox="0 0 {width} {height}" role="img" '
-            f'aria-label="{title or "sparkline"}: no history"></svg>'
+            f'aria-label="{safe_title}: no history"></svg>'
         )
 
     # Convert booleans → 1/0, ints/floats kept, None → None.
@@ -1572,11 +1788,7 @@ def _sparkline_svg(
             numeric.append(None)
 
     known = [v for v in numeric if v is not None]
-    aria_label = (
-        f"{title}: {len(known)} day{'s' if len(known) != 1 else ''} of history"
-        if title
-        else f"{len(known)} day(s) of history"
-    )
+    aria_label = f"{safe_title}: {len(known)} day{'s' if len(known) != 1 else ''} of history"
     if not known:
         return (
             f'<svg class="spark" width="{width}" height="{height}" '
@@ -1712,15 +1924,18 @@ def _history_view(
 
     dates = index_obj.get("dates") or []
     accumulating = len(dates) <= 1
-    # We surface 4 sparkline signals on the index — build/tests are
-    # collapsed to the same CI conclusion in the snapshot today, but
-    # we still draw both because they're separate columns in the
-    # grid + separate signals in the methodology.
+    # Build/tests are collapsed to the same CI conclusion in the
+    # snapshot today, but we still draw both because they're separate
+    # columns in the grid + separate signals in the methodology. The
+    # activity entries power package-detail and governance SVGs.
     signal_map = {
         "build": ("build_pass", "Build"),
         "tests": ("tests_pass", "Tests"),
         "security": ("security_pass", "Security"),
         "attestation": ("attestation_present", "Attestation"),
+        "commits": ("commits_90d", "Commits 90d"),
+        "releases": ("releases_90d", "Releases 90d"),
+        "loc": ("loc_total", "Lines of code"),
     }
     sparklines: dict[str, dict[str, str]] = {}
     for pkg_name, sigs in (index_obj.get("packages") or {}).items():
@@ -1747,6 +1962,11 @@ def _history_view(
         "attestation_present": "Attestation",
         "branch_protection_enabled": "Branch protection",
         "commits_90d": "Commits (90d)",
+        "releases_90d": "Releases (90d)",
+        "loc_total": "Lines of code",
+        "src_loc": "Source LoC",
+        "tests_loc": "Tests LoC",
+        "files_total": "Source + test files",
     }
     decorated_packages: dict[str, list[dict[str, Any]]] = {}
     for name, per_sig in (diff_obj.get("packages") or {}).items():
