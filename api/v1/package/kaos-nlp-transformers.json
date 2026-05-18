@@ -8,167 +8,35 @@
     "identity": {
       "pypi_version": "0.2.0a8",
       "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.2.0a8/",
-      "main_head_sha": "7ef731a74f5abedba6a0fbec7c0c860e972b62ee",
+      "main_head_sha": "26a2b3c9688ae157453532fcc805cd16ff0df61c",
       "latest_tag": "v0.2.0a8",
       "latest_tag_sha": "7ef731a74f5abedba6a0fbec7c0c860e972b62ee",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-16T15:02:53Z"
+      "last_commit_at": "2026-05-18T17:13:17Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 25965159768,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/25965159768",
-      "head_sha": "7ef731a74f5abedba6a0fbec7c0c860e972b62ee",
-      "run_completed_at": "2026-05-16T15:09:22Z",
-      "matrix": [
-        {
-          "name": "Pre-commit hooks",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:02:58Z",
-          "completed_at": "2026-05-16T15:05:26Z",
-          "duration_seconds": 148
-        },
-        {
-          "name": "Lint",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:02:59Z",
-          "completed_at": "2026-05-16T15:05:28Z",
-          "duration_seconds": 149
-        },
-        {
-          "name": "Rust tests",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:04:23Z",
-          "completed_at": "2026-05-16T15:06:07Z",
-          "duration_seconds": 104
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:04:14Z",
-          "completed_at": "2026-05-16T15:06:43Z",
-          "duration_seconds": 149
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:02:58Z",
-          "completed_at": "2026-05-16T15:05:33Z",
-          "duration_seconds": 155
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:04:13Z",
-          "completed_at": "2026-05-16T15:06:47Z",
-          "duration_seconds": 154
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:04:14Z",
-          "completed_at": "2026-05-16T15:04:56Z",
-          "duration_seconds": 42
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:02:58Z",
-          "completed_at": "2026-05-16T15:09:21Z",
-          "duration_seconds": 383
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:04:09Z",
-          "completed_at": "2026-05-16T15:06:35Z",
-          "duration_seconds": 146
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:02:58Z",
-          "completed_at": "2026-05-16T15:05:46Z",
-          "duration_seconds": 168
-        },
-        {
-          "name": "Build distribution + smoke test",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T15:06:56Z",
-          "completed_at": "2026-05-16T15:08:54Z",
-          "duration_seconds": 118
-        }
-      ]
+      "workflow_conclusion": "",
+      "workflow_run_id": 26048671429,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26048671429",
+      "head_sha": "26a2b3c9688ae157453532fcc805cd16ff0df61c",
+      "run_completed_at": "2026-05-18T17:13:21Z",
+      "matrix": []
     },
     "security": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 26011542405,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26011542405",
-      "jobs": [
-        {
-          "name": "pip-audit (Python dependency CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:17:21Z"
-        },
-        {
-          "name": "cargo-audit (Rust CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:18:02Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:15:16Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:15:20Z"
-        },
-        {
-          "name": "gitleaks (secret scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:15:19Z"
-        },
-        {
-          "name": "cargo-deny (licenses + bans + advisories)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:15:45Z"
-        }
-      ],
-      "run_completed_at": "2026-05-18T03:18:03Z"
+      "workflow_conclusion": "",
+      "workflow_run_id": 26048671320,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26048671320",
+      "jobs": [],
+      "run_completed_at": "2026-05-18T17:13:22Z"
     },
     "open_prs": {
-      "count": 5,
-      "titles": [
-        "#28 chore(deps): Bump kaos-nlp-core from 0.1.0a6 to 0.1.0a8",
-        "#27 chore(deps-dev): Bump kaos-mcp from 0.1.0a2 to 0.1.0a4",
-        "#26 chore(deps): Bump kaos-core from 0.1.0a4 to 0.1.0a10",
-        "#25 chore(deps-dev): Bump the deps-minor group with 3 updates",
-        "#24 chore(deps): Bump the actions-all group with 4 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 2,
+      "days_since_last_commit": 0,
       "days_since_last_release": 2,
       "days_since_last_security_scan": 0
     },
@@ -278,10 +146,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.508,
-      "conventional_commits_rate_90d": 0.81,
-      "verified_commit_ratio_90d": 0.222,
-      "commits_90d": 63,
+      "dco_signoff_rate_90d": 0.544,
+      "conventional_commits_rate_90d": 0.824,
+      "verified_commit_ratio_90d": 0.279,
+      "commits_90d": 68,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -370,8 +238,8 @@
         "NOTICE"
       ],
       "releases_90d": 9,
-      "median_pr_age_days": 0.233,
-      "open_pr_count": 5,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 645,
       "errors": []

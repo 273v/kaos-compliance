@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "date": "2026-05-18",
-  "generated_at": "2026-05-18T17:14:36Z",
+  "generated_at": "2026-05-18T17:17:08Z",
   "modules": [
     {
       "name": "kaos-agents",
@@ -59,12 +59,12 @@
     },
     {
       "name": "kaos-llm-core",
-      "build_pass": true,
-      "tests_pass": true,
-      "security_pass": true,
+      "build_pass": false,
+      "tests_pass": false,
+      "security_pass": false,
       "attestation_present": true,
       "branch_protection_enabled": true,
-      "commits_90d": 50
+      "commits_90d": 54
     },
     {
       "name": "kaos-mcp",
@@ -73,7 +73,7 @@
       "security_pass": true,
       "attestation_present": true,
       "branch_protection_enabled": true,
-      "commits_90d": 19
+      "commits_90d": 20
     },
     {
       "name": "kaos-ml-core",
@@ -86,30 +86,30 @@
     },
     {
       "name": "kaos-names",
-      "build_pass": true,
-      "tests_pass": true,
+      "build_pass": false,
+      "tests_pass": false,
       "security_pass": true,
       "attestation_present": true,
       "branch_protection_enabled": true,
-      "commits_90d": 12
+      "commits_90d": 14
     },
     {
       "name": "kaos-nlp-core",
-      "build_pass": true,
-      "tests_pass": true,
-      "security_pass": true,
+      "build_pass": false,
+      "tests_pass": false,
+      "security_pass": false,
       "attestation_present": true,
       "branch_protection_enabled": true,
-      "commits_90d": 26
+      "commits_90d": 28
     },
     {
       "name": "kaos-nlp-transformers",
-      "build_pass": true,
-      "tests_pass": true,
-      "security_pass": true,
+      "build_pass": false,
+      "tests_pass": false,
+      "security_pass": false,
       "attestation_present": true,
       "branch_protection_enabled": true,
-      "commits_90d": 63
+      "commits_90d": 68
     },
     {
       "name": "kaos-office",
@@ -133,19 +133,19 @@
       "name": "kaos-source",
       "build_pass": false,
       "tests_pass": false,
-      "security_pass": false,
+      "security_pass": true,
       "attestation_present": true,
       "branch_protection_enabled": true,
       "commits_90d": 85
     },
     {
       "name": "kaos-tabular",
-      "build_pass": true,
-      "tests_pass": true,
+      "build_pass": false,
+      "tests_pass": false,
       "security_pass": true,
       "attestation_present": true,
       "branch_protection_enabled": true,
-      "commits_90d": 21
+      "commits_90d": 23
     },
     {
       "name": "kaos-ui",
@@ -154,13 +154,13 @@
       "security_pass": true,
       "attestation_present": true,
       "branch_protection_enabled": false,
-      "commits_90d": 54
+      "commits_90d": 56
     },
     {
       "name": "kaos-web",
       "build_pass": false,
       "tests_pass": false,
-      "security_pass": false,
+      "security_pass": true,
       "attestation_present": true,
       "branch_protection_enabled": true,
       "commits_90d": 151

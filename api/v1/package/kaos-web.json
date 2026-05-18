@@ -18,91 +18,43 @@
     },
     "ci": {
       "workflow_conclusion": "",
-      "workflow_run_id": 26048700728,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26048700728",
-      "head_sha": "10b3ef6d95cc4d760d86f78b7db5cb146640fc2b",
-      "run_completed_at": "2026-05-18T17:13:56Z",
-      "matrix": [
-        {
-          "name": "Pre-commit hooks",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:14:00Z",
-          "completed_at": null,
-          "duration_seconds": 10
-        },
-        {
-          "name": "Lint",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:14:00Z",
-          "completed_at": null,
-          "duration_seconds": 10
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:14:00Z",
-          "completed_at": null,
-          "duration_seconds": 10
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "in_progress",
-          "started_at": "2026-05-18T17:14:04Z",
-          "completed_at": null,
-          "duration_seconds": 6
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:14:00Z",
-          "completed_at": null,
-          "duration_seconds": 10
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:14:00Z",
-          "completed_at": null,
-          "duration_seconds": 10
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:14:00Z",
-          "completed_at": null,
-          "duration_seconds": 10
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": null,
-          "status": "in_progress",
-          "started_at": "2026-05-18T17:14:03Z",
-          "completed_at": null,
-          "duration_seconds": 7
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:14:00Z",
-          "completed_at": null,
-          "duration_seconds": 10
-        }
-      ]
+      "workflow_run_id": 26048717099,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26048717099",
+      "head_sha": "aa689052a4c8ff4cbe6259ac79c7bf7fe314c8c3",
+      "run_completed_at": "2026-05-18T17:14:16Z",
+      "matrix": []
     },
     "security": {
-      "workflow_conclusion": "",
-      "workflow_run_id": 26048709325,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26048709325",
-      "jobs": [],
-      "run_completed_at": "2026-05-18T17:14:09Z"
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26048717249,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26048717249",
+      "jobs": [
+        {
+          "name": "pip-audit (dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:14:40Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:14:30Z"
+        },
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:14:29Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:14:30Z"
+        }
+      ],
+      "run_completed_at": "2026-05-18T17:14:41Z"
     },
     "open_prs": {
       "count": 0,

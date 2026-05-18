@@ -8,164 +8,35 @@
     "identity": {
       "pypi_version": "0.1.0a8",
       "pypi_url": "https://pypi.org/project/kaos-nlp-core/0.1.0a8/",
-      "main_head_sha": "e9d914771158f821c0bc5c7c5b62ad5195b89212",
+      "main_head_sha": "6b9c946d3c82dd549ca4387e02545df6c4b96cbb",
       "latest_tag": "v0.1.0a8",
       "latest_tag_sha": "e9d914771158f821c0bc5c7c5b62ad5195b89212",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-16T16:58:51Z"
+      "last_commit_at": "2026-05-18T17:11:35Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 25967705276,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/25967705276",
-      "head_sha": "e9d914771158f821c0bc5c7c5b62ad5195b89212",
-      "run_completed_at": "2026-05-16T17:10:38Z",
-      "matrix": [
-        {
-          "name": "Lint",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T17:00:04Z",
-          "completed_at": "2026-05-16T17:04:04Z",
-          "duration_seconds": 240
-        },
-        {
-          "name": "Pre-commit hooks",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T16:58:56Z",
-          "completed_at": "2026-05-16T17:01:29Z",
-          "duration_seconds": 153
-        },
-        {
-          "name": "Rust tests (no PyO3)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T16:58:56Z",
-          "completed_at": "2026-05-16T17:00:57Z",
-          "duration_seconds": 121
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T17:00:09Z",
-          "completed_at": "2026-05-16T17:06:52Z",
-          "duration_seconds": 403
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T16:59:59Z",
-          "completed_at": "2026-05-16T17:00:41Z",
-          "duration_seconds": 42
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T16:59:59Z",
-          "completed_at": "2026-05-16T17:06:32Z",
-          "duration_seconds": 393
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T16:58:56Z",
-          "completed_at": "2026-05-16T17:05:33Z",
-          "duration_seconds": 397
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T16:59:14Z",
-          "completed_at": "2026-05-16T17:05:47Z",
-          "duration_seconds": 393
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T16:58:56Z",
-          "completed_at": "2026-05-16T17:04:47Z",
-          "duration_seconds": 351
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T16:58:57Z",
-          "completed_at": "2026-05-16T17:07:45Z",
-          "duration_seconds": 528
-        },
-        {
-          "name": "Build distribution + smoke test",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T17:07:47Z",
-          "completed_at": "2026-05-16T17:10:37Z",
-          "duration_seconds": 170
-        }
-      ]
+      "workflow_conclusion": "",
+      "workflow_run_id": 26048594759,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26048594759",
+      "head_sha": "6b9c946d3c82dd549ca4387e02545df6c4b96cbb",
+      "run_completed_at": "2026-05-18T17:11:54Z",
+      "matrix": []
     },
     "security": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 26011143352,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26011143352",
-      "jobs": [
-        {
-          "name": "pip-audit (dependency CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:02:58Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:00:08Z"
-        },
-        {
-          "name": "cargo-deny (licenses + bans + advisories)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:00:37Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:00:06Z"
-        },
-        {
-          "name": "gitleaks (secret scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:00:08Z"
-        },
-        {
-          "name": "cargo-audit (Rust CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:02:50Z"
-        }
-      ],
-      "run_completed_at": "2026-05-18T03:02:59Z"
+      "workflow_conclusion": "",
+      "workflow_run_id": 26048591422,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26048591422",
+      "jobs": [],
+      "run_completed_at": "2026-05-18T17:11:46Z"
     },
     "open_prs": {
-      "count": 2,
-      "titles": [
-        "#19 chore(deps-dev): bump kaos-core from 0.1.0a7 to 0.1.0a10",
-        "#18 chore(deps-dev): bump the deps-minor group with 4 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 2,
+      "days_since_last_commit": 0,
       "days_since_last_release": 1,
       "days_since_last_security_scan": 0
     },
@@ -263,10 +134,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.846,
-      "conventional_commits_rate_90d": 0.885,
-      "verified_commit_ratio_90d": 0.308,
-      "commits_90d": 26,
+      "dco_signoff_rate_90d": 0.857,
+      "conventional_commits_rate_90d": 0.893,
+      "verified_commit_ratio_90d": 0.357,
+      "commits_90d": 28,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -355,8 +226,8 @@
         "NOTICE"
       ],
       "releases_90d": 7,
-      "median_pr_age_days": 0.232,
-      "open_pr_count": 2,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 1010,
       "errors": []

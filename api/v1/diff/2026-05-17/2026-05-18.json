@@ -101,18 +101,18 @@
     "kaos-llm-core": {
       "build_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "tests_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "security_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "attestation_present": {
         "from": true,
@@ -126,11 +126,11 @@
       },
       "commits_90d": {
         "from": 46,
-        "to": 50,
+        "to": 54,
         "delta": "better"
       }
     },
-    "kaos-names": {
+    "kaos-mcp": {
       "build_pass": {
         "from": true,
         "to": true,
@@ -157,8 +157,104 @@
         "delta": "same"
       },
       "commits_90d": {
+        "from": 19,
+        "to": 20,
+        "delta": "better"
+      }
+    },
+    "kaos-names": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "commits_90d": {
         "from": 11,
-        "to": 12,
+        "to": 14,
+        "delta": "better"
+      }
+    },
+    "kaos-nlp-core": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 26,
+        "to": 28,
+        "delta": "better"
+      }
+    },
+    "kaos-nlp-transformers": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 63,
+        "to": 68,
         "delta": "better"
       }
     },
@@ -239,8 +335,8 @@
       },
       "security_pass": {
         "from": true,
-        "to": false,
-        "delta": "worse"
+        "to": true,
+        "delta": "same"
       },
       "attestation_present": {
         "from": true,
@@ -261,13 +357,13 @@
     "kaos-tabular": {
       "build_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "tests_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "security_pass": {
         "from": true,
@@ -286,7 +382,39 @@
       },
       "commits_90d": {
         "from": 17,
-        "to": 21,
+        "to": 23,
+        "delta": "better"
+      }
+    },
+    "kaos-ui": {
+      "build_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "tests_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 54,
+        "to": 56,
         "delta": "better"
       }
     },
@@ -303,8 +431,8 @@
       },
       "security_pass": {
         "from": true,
-        "to": false,
-        "delta": "worse"
+        "to": true,
+        "delta": "same"
       },
       "attestation_present": {
         "from": true,
