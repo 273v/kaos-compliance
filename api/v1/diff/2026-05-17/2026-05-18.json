@@ -5,13 +5,13 @@
     "kaos-agents": {
       "build_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "tests_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "security_pass": {
         "from": true,
@@ -30,20 +30,102 @@
       },
       "commits_90d": {
         "from": 32,
-        "to": 36,
+        "to": 42,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 15,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 74157,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 29451,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 44706,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 515,
+        "delta": "unknown"
+      }
+    },
+    "kaos-citations": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 17,
+        "to": 20,
+        "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 3,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 10260,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 7788,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 2472,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 51,
+        "delta": "unknown"
       }
     },
     "kaos-content": {
       "build_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "tests_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "security_pass": {
         "from": true,
@@ -62,8 +144,33 @@
       },
       "commits_90d": {
         "from": 35,
-        "to": 47,
+        "to": 49,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 12,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 37472,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 14622,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 22850,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 173,
+        "delta": "unknown"
       }
     },
     "kaos-core": {
@@ -96,6 +203,145 @@
         "from": 49,
         "to": 52,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 11,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 14133,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 7824,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 6309,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 141,
+        "delta": "unknown"
+      }
+    },
+    "kaos-graph": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 26,
+        "to": 29,
+        "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 4,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 14641,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 10111,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 4530,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 72,
+        "delta": "unknown"
+      }
+    },
+    "kaos-llm-client": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 21,
+        "to": 23,
+        "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 4,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 19675,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 7381,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 12294,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 101,
+        "delta": "unknown"
       }
     },
     "kaos-llm-core": {
@@ -111,8 +357,8 @@
       },
       "security_pass": {
         "from": true,
-        "to": false,
-        "delta": "worse"
+        "to": true,
+        "delta": "same"
       },
       "attestation_present": {
         "from": true,
@@ -128,18 +374,43 @@
         "from": 46,
         "to": 54,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 15,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 60224,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 28085,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 32139,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 393,
+        "delta": "unknown"
       }
     },
     "kaos-mcp": {
       "build_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "tests_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "security_pass": {
         "from": true,
@@ -158,8 +429,90 @@
       },
       "commits_90d": {
         "from": 19,
-        "to": 20,
+        "to": 21,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 4,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 4470,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 2668,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 1802,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 37,
+        "delta": "unknown"
+      }
+    },
+    "kaos-ml-core": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 43,
+        "to": 48,
+        "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 3,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 5787,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 3009,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 2778,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 52,
+        "delta": "unknown"
       }
     },
     "kaos-names": {
@@ -192,6 +545,31 @@
         "from": 11,
         "to": 14,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 2,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 903,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 638,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 265,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 9,
+        "delta": "unknown"
       }
     },
     "kaos-nlp-core": {
@@ -207,8 +585,8 @@
       },
       "security_pass": {
         "from": true,
-        "to": false,
-        "delta": "worse"
+        "to": true,
+        "delta": "same"
       },
       "attestation_present": {
         "from": true,
@@ -224,6 +602,31 @@
         "from": 26,
         "to": 28,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 7,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 52458,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 35872,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 16586,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 243,
+        "delta": "unknown"
       }
     },
     "kaos-nlp-transformers": {
@@ -239,8 +642,8 @@
       },
       "security_pass": {
         "from": true,
-        "to": false,
-        "delta": "worse"
+        "to": true,
+        "delta": "same"
       },
       "attestation_present": {
         "from": true,
@@ -256,6 +659,31 @@
         "from": 63,
         "to": 68,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 9,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 12137,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 7723,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 4414,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 83,
+        "delta": "unknown"
       }
     },
     "kaos-office": {
@@ -288,6 +716,31 @@
         "from": 92,
         "to": 98,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 6,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 16621,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 7285,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 9336,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 79,
+        "delta": "unknown"
       }
     },
     "kaos-pdf": {
@@ -320,6 +773,31 @@
         "from": 22,
         "to": 28,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 7,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 5800,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 3333,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 2467,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 33,
+        "delta": "unknown"
       }
     },
     "kaos-source": {
@@ -352,6 +830,31 @@
         "from": 80,
         "to": 85,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 9,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 15463,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 9604,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 5859,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 122,
+        "delta": "unknown"
       }
     },
     "kaos-tabular": {
@@ -384,6 +887,31 @@
         "from": 17,
         "to": 23,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 4,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 5533,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 2653,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 2880,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 32,
+        "delta": "unknown"
       }
     },
     "kaos-ui": {
@@ -414,8 +942,33 @@
       },
       "commits_90d": {
         "from": 54,
-        "to": 56,
+        "to": 58,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 8,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 8768,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 4846,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 3922,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 87,
+        "delta": "unknown"
       }
     },
     "kaos-web": {
@@ -448,6 +1001,31 @@
         "from": 146,
         "to": 151,
         "delta": "better"
+      },
+      "releases_90d": {
+        "from": null,
+        "to": 5,
+        "delta": "unknown"
+      },
+      "loc_total": {
+        "from": null,
+        "to": 25785,
+        "delta": "unknown"
+      },
+      "src_loc": {
+        "from": null,
+        "to": 12428,
+        "delta": "unknown"
+      },
+      "tests_loc": {
+        "from": null,
+        "to": 13357,
+        "delta": "unknown"
+      },
+      "files_total": {
+        "from": null,
+        "to": 120,
+        "delta": "unknown"
       }
     }
   }

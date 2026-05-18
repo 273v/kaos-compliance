@@ -8,28 +8,65 @@
     "identity": {
       "pypi_version": "0.2.0a8",
       "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.2.0a8/",
-      "main_head_sha": "26a2b3c9688ae157453532fcc805cd16ff0df61c",
+      "main_head_sha": "d3bae8704dd2c65c7b7f663a12297b808aed4352",
       "latest_tag": "v0.2.0a8",
       "latest_tag_sha": "7ef731a74f5abedba6a0fbec7c0c860e972b62ee",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-18T17:13:17Z"
+      "last_commit_at": "2026-05-18T17:13:21Z"
     },
     "ci": {
       "workflow_conclusion": "",
-      "workflow_run_id": 26048671429,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26048671429",
-      "head_sha": "26a2b3c9688ae157453532fcc805cd16ff0df61c",
-      "run_completed_at": "2026-05-18T17:13:21Z",
+      "workflow_run_id": 26048682060,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26048682060",
+      "head_sha": "d3bae8704dd2c65c7b7f663a12297b808aed4352",
+      "run_completed_at": "2026-05-18T17:13:35Z",
       "matrix": []
     },
     "security": {
-      "workflow_conclusion": "",
-      "workflow_run_id": 26048671320,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26048671320",
-      "jobs": [],
-      "run_completed_at": "2026-05-18T17:13:22Z"
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26048682026,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26048682026",
+      "jobs": [
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:16:37Z"
+        },
+        {
+          "name": "pip-audit (Python dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:18:49Z"
+        },
+        {
+          "name": "cargo-audit (Rust CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:19:25Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:16:38Z"
+        },
+        {
+          "name": "cargo-deny (licenses + bans + advisories)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:17:04Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:16:39Z"
+        }
+      ],
+      "run_completed_at": "2026-05-18T17:19:26Z"
     },
     "open_prs": {
       "count": 0,

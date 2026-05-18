@@ -50,6 +50,16 @@ table.matrix td.env{font-family:var(--mono)}
 .callout{border-left:3px solid var(--n-fg);background:var(--n-bg);padding:var(--s-3) var(--s-4);font-size:0.875rem;color:var(--text);border-radius:0 4px 4px 0}
 .callout strong{display:block;margin-bottom:var(--s-1)}
 .spark{vertical-align:middle;margin-left:var(--s-2)}
+.activity-svg{display:inline-block;vertical-align:middle;margin-left:var(--s-2);overflow:visible;color:var(--primary)}
+.code-viz{display:flex;align-items:center;gap:var(--s-3);flex-wrap:wrap;margin-bottom:var(--s-3)}
+.code-viz .activity-svg{display:block;margin-left:0}
+.code-legend{display:flex;gap:var(--s-3);flex-wrap:wrap;color:var(--muted);font-size:0.75rem}
+.code-legend span{display:inline-flex;align-items:center;gap:var(--s-1)}
+.sw{width:10px;height:10px;border-radius:2px;display:inline-block}
+.sw.py-src{background:var(--primary)}
+.sw.py-tests{background:var(--accent)}
+.sw.rs-src{background:var(--aw-color-copper)}
+.sw.rs-tests{background:var(--muted)}
 footer{margin-top:var(--s-7);padding-top:var(--s-4);border-top:1px solid var(--border);color:var(--muted);font-size:0.75rem;font-family:var(--mono)}
 footer a{color:var(--muted)}
 @media (max-width:720px){
@@ -226,8 +236,8 @@ footer a{color:var(--muted)}
    <dt>Commits 90d</dt>
    <dd>
     14
-   </dd>
-   <dt>Releases 90d</dt><dd>2</dd>
+<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-names Commits 90d: 8 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,14.0 12.9,12.0 23.7,10.0 34.6,10.0 45.4,10.0 56.3,8.0 67.1,8.0 78.0,2.0"></polyline><circle cx="78.0" cy="2.0" r="1.5" fill="currentColor"></circle></svg>   </dd>
+   <dt>Releases 90d</dt><dd>2<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-names Releases 90d: 1 day of history"><circle cx="78.0" cy="8.0" r="2" fill="currentColor"></circle></svg></dd>
   </dl>
  </div>
 </section>
@@ -235,6 +245,15 @@ footer a{color:var(--muted)}
 <section aria-labelledby="cm-h">
  <h2 id="cm-h">Code surface area</h2>
  <div class="card">
+   <div class="code-viz">
+    <svg class="activity-svg activity-stack" width="112" height="18" viewBox="0 0 112 18" role="img" aria-label="kaos-names code surface: Python source 638, Python tests 265, Rust source 0, Rust tests 0 lines"><rect x="0.5" y="4.5" width="111" height="9" rx="2" fill="none" stroke="var(--border)"></rect><rect x="1.0" y="5" width="77.7" height="8" fill="var(--primary)"></rect><rect x="78.7" y="5" width="32.3" height="8" fill="var(--accent)"></rect></svg>
+    <div class="code-legend" aria-hidden="true">
+     <span><i class="sw py-src"></i>Py src</span>
+     <span><i class="sw py-tests"></i>Py tests</span>
+     <span><i class="sw rs-src"></i>Rust src</span>
+     <span><i class="sw rs-tests"></i>Rust tests</span>
+    </div>
+   </div>
   <dl class="kv">
    <dt>Python source (LoC)</dt>
    <dd>638 across 5 files</dd>
@@ -245,7 +264,7 @@ footer a{color:var(--muted)}
    <dt>Rust tests (LoC)</dt>
    <dd>—</dd>
    <dt>Source lines of code</dt>
-   <dd>903 LoC</dd>
+   <dd>903 LoC<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-names Lines of code: 1 day of history"><circle cx="78.0" cy="8.0" r="2" fill="currentColor"></circle></svg></dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
    Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
@@ -294,7 +313,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-05-18 17:17 UTC
+ Generated 2026-05-18 17:27 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

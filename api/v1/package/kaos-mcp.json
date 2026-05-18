@@ -8,150 +8,66 @@
     "identity": {
       "pypi_version": "0.1.0a4",
       "pypi_url": "https://pypi.org/project/kaos-mcp/0.1.0a4/",
-      "main_head_sha": "a6bb635251a3041f1287ccd125b313e13edc16f5",
+      "main_head_sha": "6b5621f12b2f49427a46c09fd874b30ca309ca52",
       "latest_tag": "v0.1.0a4",
       "latest_tag_sha": "a6bb635251a3041f1287ccd125b313e13edc16f5",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-16T20:39:13Z"
+      "last_commit_at": "2026-05-18T17:11:13Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 25972364129,
-      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/25972364129",
-      "head_sha": "a6bb635251a3041f1287ccd125b313e13edc16f5",
-      "run_completed_at": "2026-05-16T20:40:48Z",
-      "matrix": [
-        {
-          "name": "Pre-commit hooks",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:39:54Z",
-          "completed_at": "2026-05-16T20:40:11Z",
-          "duration_seconds": 17
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:39:18Z",
-          "completed_at": "2026-05-16T20:39:35Z",
-          "duration_seconds": 17
-        },
-        {
-          "name": "Lint",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:40:04Z",
-          "completed_at": "2026-05-16T20:40:12Z",
-          "duration_seconds": 8
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:39:19Z",
-          "completed_at": "2026-05-16T20:39:38Z",
-          "duration_seconds": 19
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:39:18Z",
-          "completed_at": "2026-05-16T20:40:32Z",
-          "duration_seconds": 74
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:39:18Z",
-          "completed_at": "2026-05-16T20:39:38Z",
-          "duration_seconds": 20
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:39:18Z",
-          "completed_at": "2026-05-16T20:39:37Z",
-          "duration_seconds": 19
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:40:04Z",
-          "completed_at": "2026-05-16T20:40:33Z",
-          "duration_seconds": 29
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:40:04Z",
-          "completed_at": "2026-05-16T20:40:18Z",
-          "duration_seconds": 14
-        },
-        {
-          "name": "Build distribution + smoke test",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-16T20:40:35Z",
-          "completed_at": "2026-05-16T20:40:48Z",
-          "duration_seconds": 13
-        }
-      ]
+      "workflow_conclusion": "",
+      "workflow_run_id": 26048571726,
+      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/26048571726",
+      "head_sha": "6b5621f12b2f49427a46c09fd874b30ca309ca52",
+      "run_completed_at": "2026-05-18T17:11:23Z",
+      "matrix": []
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26011198859,
-      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/26011198859",
+      "workflow_run_id": 26048578872,
+      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/26048578872",
       "jobs": [
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:02:00Z"
-        },
-        {
-          "name": "pip-audit (dependency CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:02:08Z"
-        },
         {
           "name": "gitleaks (secret scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-18T03:01:57Z"
-        },
-        {
-          "name": "integration tests",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T03:02:06Z"
+          "completed_at": "2026-05-18T17:11:48Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-18T03:01:59Z"
+          "completed_at": "2026-05-18T17:11:52Z"
+        },
+        {
+          "name": "pip-audit (dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:12:00Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:11:56Z"
+        },
+        {
+          "name": "integration tests",
+          "conclusion": "skipped",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:11:40Z"
         }
       ],
-      "run_completed_at": "2026-05-18T03:02:08Z"
+      "run_completed_at": "2026-05-18T17:12:01Z"
     },
     "open_prs": {
-      "count": 2,
-      "titles": [
-        "#18 chore(deps): bump kaos-core from 0.1.0a5 to 0.1.0a10",
-        "#17 chore(deps): bump the deps-minor group with 4 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 1,
+      "days_since_last_commit": 0,
       "days_since_last_release": 1,
       "days_since_last_security_scan": 0
     },
@@ -205,16 +121,16 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.75,
-      "conventional_commits_rate_90d": 0.75,
-      "verified_commit_ratio_90d": 0.6,
-      "commits_90d": 20,
+      "dco_signoff_rate_90d": 0.762,
+      "conventional_commits_rate_90d": 0.762,
+      "verified_commit_ratio_90d": 0.619,
+      "commits_90d": 21,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
         "source": "branches_api",
         "required_status_checks": {
-          "enforcement_level": "non_admins",
+          "enforcement_level": "everyone",
           "contexts": [
             "Lint",
             "Pre-commit hooks",

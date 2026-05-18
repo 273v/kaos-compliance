@@ -25,11 +25,48 @@
       "matrix": []
     },
     "security": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 26048591422,
       "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26048591422",
-      "jobs": [],
-      "run_completed_at": "2026-05-18T17:11:46Z"
+      "jobs": [
+        {
+          "name": "pip-audit (dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:18:12Z"
+        },
+        {
+          "name": "cargo-audit (Rust CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:18:12Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:15:21Z"
+        },
+        {
+          "name": "cargo-deny (licenses + bans + advisories)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:15:45Z"
+        },
+        {
+          "name": "gitleaks (secret scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:15:21Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T17:15:18Z"
+        }
+      ],
+      "run_completed_at": "2026-05-18T17:18:13Z"
     },
     "open_prs": {
       "count": 0,
@@ -37,7 +74,7 @@
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 1,
+      "days_since_last_release": 2,
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
