@@ -48,10 +48,13 @@ jobs:
         run: uvx --from twine twine check --strict dist/*
 
       - name: Smoke-test the built wheel in a clean venv
+        # The kaos-compliance wheel ships two packages (`collector` and
+        # `render`) rather than a single `kaos_compliance` module. Smoke
+        # is just install + import-both — no version attribute on either.
         run: |
           uv venv --python 3.13 /tmp/smoke
           uv pip install --python /tmp/smoke/bin/python dist/kaos_compliance-*-py3-none-any.whl
-          /tmp/smoke/bin/python -c "import kaos_compliance; assert kaos_compliance.__version__; print(kaos_compliance.__version__)"
+          /tmp/smoke/bin/python -c "import collector, render; print('kaos-compliance wheel installed cleanly')"
 
       - name: Upload distribution artifacts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
