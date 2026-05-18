@@ -285,15 +285,53 @@ def _identity(repo: str) -> IdentitySection:
 
 
 def _ci_section(repo: str) -> CISection:
-    """Latest CI workflow run on main + matrix breakdown."""
-    run = _latest_run(repo, "CI")
-    if not run:
+    """Latest CI posture for the main branch.
+
+    The 273v/kaos-* org migrated (2026-05-18) from a single monolithic
+    ``CI`` workflow to the standard lane split defined in
+    ``kaos-modules/docs/oss/40-ci-cd/runner-cost-reduction-plan.md``:
+    PR / push / tag fire three lightweight workflows (``quality`` /
+    ``test`` / ``build``) instead of one ``CI`` workflow with a
+    cross-OS / preview-Python matrix. Cross-OS + preview-Python
+    coverage moved to ``compat`` on a weekly schedule.
+
+    To keep the dashboard's existing "build passing / tests passing"
+    pills meaningful, we synthesize a CISection by folding the latest
+    main-branch run of each PR-required lane (``quality``, ``test``,
+    ``build``) into a single envelope. The composite conclusion is:
+
+      - ``success`` if all three lanes ran and every one succeeded
+      - ``failure`` if any of the three concluded ``failure``
+      - ``cancelled`` if any concluded ``cancelled`` (no failures)
+      - ``None`` if no main-branch run is observable
+
+    The ``matrix`` field surfaces the most recent ``compat`` run's
+    jobs when present (covers Linux 3.14/3.14t/3.15, macOS arm64,
+    Windows x64). When compat hasn't run yet the matrix is empty —
+    that's the documented "no signal yet" state, not a regression.
+
+    Legacy fallback: if a repo still ships the monolithic ``CI``
+    workflow, fall through to it so dashboard signal survives during
+    the rollout window.
+    """
+    # Try the new lane split first
+    quality_run = _latest_run(repo, "quality")
+    test_run = _latest_run(repo, "test")
+    build_run = _latest_run(repo, "build")
+    runs = [r for r in (quality_run, test_run, build_run) if r]
+
+    if runs:
+        return _synthesize_ci(repo, runs)
+
+    # Legacy: pre-migration monolithic CI workflow
+    legacy = _latest_run(repo, "CI")
+    if not legacy:
         return CISection()
 
     matrix: list[dict[str, Any]] = []
     try:
         jobs_raw = gh_run(
-            ["api", f"repos/{ORG}/{repo}/actions/runs/{run['databaseId']}/jobs?per_page=100"],
+            ["api", f"repos/{ORG}/{repo}/actions/runs/{legacy['databaseId']}/jobs?per_page=100"],
         ).stdout
         jobs = json.loads(jobs_raw).get("jobs", [])
         for j in jobs:
@@ -313,18 +351,86 @@ def _ci_section(repo: str) -> CISection:
         pass
 
     return CISection(
-        workflow_conclusion=run.get("conclusion"),
-        workflow_run_id=run.get("databaseId"),
-        workflow_run_url=run.get("url"),
-        head_sha=run.get("headSha"),
-        run_completed_at=run.get("updatedAt"),
+        workflow_conclusion=legacy.get("conclusion"),
+        workflow_run_id=legacy.get("databaseId"),
+        workflow_run_url=legacy.get("url"),
+        head_sha=legacy.get("headSha"),
+        run_completed_at=legacy.get("updatedAt"),
+        matrix=matrix,
+    )
+
+
+def _synthesize_ci(repo: str, runs: list[dict[str, Any]]) -> CISection:
+    """Fold quality / test / build runs into a single CISection.
+
+    Picks ``compat`` as the matrix source when it has a main-branch run
+    (it's the only post-migration lane that exercises the cross-OS /
+    preview-Python combinations the dashboard's matrix view expects).
+    The composite ``workflow_run_url`` links to the newest of the three
+    runs so reviewers land on the latest evidence with one click.
+    """
+    conclusions = [r.get("conclusion") for r in runs]
+    if any(c == "failure" for c in conclusions):
+        composite = "failure"
+    elif any(c == "cancelled" for c in conclusions):
+        composite = "cancelled"
+    elif all(c == "success" for c in conclusions):
+        composite = "success"
+    else:
+        composite = None  # at least one in-flight or unobservable
+
+    # Use the freshest run for the "Latest CI run" link.
+    runs_sorted = sorted(runs, key=lambda r: r.get("updatedAt") or "", reverse=True)
+    head_run = runs_sorted[0]
+
+    # Matrix view: compat.yml weekly run on main, if available.
+    matrix: list[dict[str, Any]] = []
+    compat = _latest_run(repo, "compat")
+    if compat:
+        try:
+            jobs_raw = gh_run(
+                ["api", f"repos/{ORG}/{repo}/actions/runs/{compat['databaseId']}/jobs?per_page=100"],
+            ).stdout
+            for j in json.loads(jobs_raw).get("jobs", []):
+                matrix.append(
+                    {
+                        "name": j.get("name"),
+                        "conclusion": j.get("conclusion"),
+                        "status": j.get("status"),
+                        "started_at": j.get("started_at"),
+                        "completed_at": j.get("completed_at"),
+                        "duration_seconds": _duration_seconds(
+                            j.get("started_at"), j.get("completed_at")
+                        ),
+                    }
+                )
+        except Exception:
+            pass
+
+    return CISection(
+        workflow_conclusion=composite,
+        workflow_run_id=head_run.get("databaseId"),
+        workflow_run_url=head_run.get("url"),
+        head_sha=head_run.get("headSha"),
+        run_completed_at=head_run.get("updatedAt"),
         matrix=matrix,
     )
 
 
 def _security_section(repo: str) -> SecuritySection:
-    """Latest Security workflow + per-job breakdown."""
-    run = _latest_run(repo, "Security")
+    """Latest security posture for main.
+
+    Post-migration the security surface splits into ``security-light``
+    (PR / push: incremental gitleaks + bandit + vulture) and
+    ``security-full`` (weekly / tag: full-history gitleaks +
+    pip-audit + cargo-audit). The dashboard tile reflects the
+    PR-required lane (``security-light``) so it surfaces the same
+    cadence the developer sees on every commit. Falls back to the
+    legacy ``Security`` workflow during the rollout window.
+    """
+    run = _latest_run(repo, "security-light")
+    if not run:
+        run = _latest_run(repo, "Security")  # legacy fallback
     if not run:
         return SecuritySection()
 

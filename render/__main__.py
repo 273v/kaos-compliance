@@ -244,18 +244,21 @@ def _release_age_days(module: dict[str, Any]) -> int | None:
 
 
 _TEST_JOB_RE = __import__("re").compile(
-    r"^Test\s*\((?P<os>[a-z0-9-]+)\s*/\s*Python\s*(?P<python>[0-9]+\.[0-9]+t?)\)\s*$"
+    # Matches both the pre-migration job name `Test (linux-x64 / Python 3.13)`
+    # and the post-migration lane job name `test (linux-x64 / Python 3.13)`
+    # produced by `compat.yml`.
+    r"^[Tt]est\s*\((?P<os>[a-z0-9-]+)\s*/\s*Python\s*(?P<python>[0-9]+\.[0-9]+t?)\)\s*$"
 )
 
 
 def _ci_matrix_view(jobs: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Reshape collector job list into (os, python, checks) rows.
 
-    The kaos-* CI workflows name test jobs as ``Test (linux-x64 / Python 3.13)``,
-    so we can group by (os, python). Auxiliary jobs that don't match the
-    pattern (Lint, Pre-commit, Rust tests, Build, min-deps) are not
-    surfaced here; they belong in a separate "tooling" panel in a future
-    iteration.
+    The kaos-* `compat.yml` (and the legacy monolithic `ci.yml`) name
+    test jobs as ``test (linux-x64 / Python 3.13)`` so we can group by
+    (os, python). Auxiliary jobs that don't match the pattern (quality,
+    build, min-deps, rust-test) are not surfaced here; they belong in a
+    separate "tooling" panel in a future iteration.
     """
     grouped: dict[tuple[str, str], dict[str, str]] = {}
     for j in jobs:
