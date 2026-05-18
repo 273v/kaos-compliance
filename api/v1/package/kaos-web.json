@@ -8,53 +8,28 @@
     "identity": {
       "pypi_version": "0.1.0a5",
       "pypi_url": "https://pypi.org/project/kaos-web/0.1.0a5/",
-      "main_head_sha": "aa689052a4c8ff4cbe6259ac79c7bf7fe314c8c3",
+      "main_head_sha": "79dcff40b3725417638853e2c213cc4c07c78df5",
       "latest_tag": "v0.1.0a5",
       "latest_tag_sha": "5fd7bdd72f0488148722c32457c3b258f113fd43",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-18T17:14:01Z"
+      "last_commit_at": "2026-05-18T18:32:43Z"
     },
     "ci": {
-      "workflow_conclusion": "",
-      "workflow_run_id": 26048892163,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26048892163",
-      "head_sha": "030fcddedc06b8a77aa816429b1bd0a8324e3d5f",
-      "run_completed_at": "2026-05-18T17:17:44Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "head_sha": null,
+      "run_completed_at": null,
       "matrix": []
     },
     "security": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 26048892190,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26048892190",
-      "jobs": [
-        {
-          "name": "gitleaks (secret scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:17:59Z"
-        },
-        {
-          "name": "pip-audit (dependency CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:18:04Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:17:59Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:17:54Z"
-        }
-      ],
-      "run_completed_at": "2026-05-18T17:18:05Z"
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "jobs": [],
+      "run_completed_at": null
     },
     "open_prs": {
       "count": 0,
@@ -62,8 +37,8 @@
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 0,
-      "days_since_last_security_scan": 0
+      "days_since_last_release": 1,
+      "days_since_last_security_scan": null
     },
     "supply_chain": {
       "pypi_version": "0.1.0a5",
@@ -120,10 +95,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.119,
-      "conventional_commits_rate_90d": 0.437,
-      "verified_commit_ratio_90d": 0.119,
-      "commits_90d": 151,
+      "dco_signoff_rate_90d": 0.125,
+      "conventional_commits_rate_90d": 0.441,
+      "verified_commit_ratio_90d": 0.125,
+      "commits_90d": 152,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -131,56 +106,36 @@
         "required_status_checks": {
           "enforcement_level": "everyone",
           "contexts": [
-            "Lint",
-            "Pre-commit hooks",
-            "Test (linux-x64 / Python 3.13)",
-            "Test (linux-x64 / Python 3.14)",
-            "Test against minimum dependencies",
-            "Build distribution + smoke test",
-            "gitleaks (secret scan)",
-            "pip-audit (dependency CVEs)",
             "bandit (static security)",
-            "vulture (dead-code scan)"
+            "vulture (dead-code scan)",
+            "quality",
+            "test",
+            "build",
+            "gitleaks (incremental)"
           ],
           "checks": [
-            {
-              "context": "Lint",
-              "app_id": 15368
-            },
-            {
-              "context": "Pre-commit hooks",
-              "app_id": 15368
-            },
-            {
-              "context": "Test (linux-x64 / Python 3.13)",
-              "app_id": 15368
-            },
-            {
-              "context": "Test (linux-x64 / Python 3.14)",
-              "app_id": 15368
-            },
-            {
-              "context": "Test against minimum dependencies",
-              "app_id": 15368
-            },
-            {
-              "context": "Build distribution + smoke test",
-              "app_id": 15368
-            },
-            {
-              "context": "gitleaks (secret scan)",
-              "app_id": 15368
-            },
-            {
-              "context": "pip-audit (dependency CVEs)",
-              "app_id": 15368
-            },
             {
               "context": "bandit (static security)",
               "app_id": 15368
             },
             {
               "context": "vulture (dead-code scan)",
+              "app_id": 15368
+            },
+            {
+              "context": "quality",
+              "app_id": 15368
+            },
+            {
+              "context": "test",
+              "app_id": 15368
+            },
+            {
+              "context": "build",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (incremental)",
               "app_id": 15368
             }
           ]

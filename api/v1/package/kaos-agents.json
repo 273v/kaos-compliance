@@ -17,12 +17,101 @@
       "last_commit_at": "2026-05-18T17:12:35Z"
     },
     "ci": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 26048649412,
       "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/26048649412",
       "head_sha": "63d182cdaf75f2d8d4f65be91d13f486a2cd80b7",
-      "run_completed_at": "2026-05-18T17:12:56Z",
-      "matrix": []
+      "run_completed_at": "2026-05-18T18:07:36Z",
+      "matrix": [
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:39:15Z",
+          "completed_at": "2026-05-18T17:39:28Z",
+          "duration_seconds": 13
+        },
+        {
+          "name": "Pre-commit hooks",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:48:29Z",
+          "completed_at": "2026-05-18T17:48:58Z",
+          "duration_seconds": 29
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:36:56Z",
+          "completed_at": "2026-05-18T17:43:30Z",
+          "duration_seconds": 394
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:04:39Z",
+          "completed_at": "2026-05-18T18:05:37Z",
+          "duration_seconds": 58
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:35:47Z",
+          "completed_at": "2026-05-18T17:37:14Z",
+          "duration_seconds": 87
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:02:08Z",
+          "completed_at": "2026-05-18T18:03:50Z",
+          "duration_seconds": 102
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:35:48Z",
+          "completed_at": "2026-05-18T17:36:40Z",
+          "duration_seconds": 52
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-05-18T18:02:36Z",
+          "completed_at": "2026-05-18T18:03:16Z",
+          "duration_seconds": 40
+        },
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:04:48Z",
+          "completed_at": "2026-05-18T18:05:53Z",
+          "duration_seconds": 65
+        },
+        {
+          "name": "Live integration tests",
+          "conclusion": "skipped",
+          "status": "completed",
+          "started_at": "2026-05-18T17:35:45Z",
+          "completed_at": "2026-05-18T17:35:45Z",
+          "duration_seconds": 0
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:07:16Z",
+          "completed_at": "2026-05-18T18:07:35Z",
+          "duration_seconds": 19
+        }
+      ]
     },
     "security": {
       "workflow_conclusion": "success",
@@ -57,8 +146,10 @@
       "run_completed_at": "2026-05-18T17:14:13Z"
     },
     "open_prs": {
-      "count": 0,
-      "titles": []
+      "count": 1,
+      "titles": [
+        "#55 ci: migrate to standard lanes per runner-cost-reduction-plan"
+      ]
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -137,9 +228,41 @@
       "branch_protection_summary": {
         "source": "branches_api",
         "required_status_checks": {
-          "enforcement_level": "off",
-          "contexts": [],
-          "checks": []
+          "enforcement_level": "everyone",
+          "contexts": [
+            "quality",
+            "test",
+            "build",
+            "bandit (static security)",
+            "gitleaks (incremental)",
+            "vulture (dead-code scan)"
+          ],
+          "checks": [
+            {
+              "context": "quality",
+              "app_id": 15368
+            },
+            {
+              "context": "test",
+              "app_id": 15368
+            },
+            {
+              "context": "build",
+              "app_id": 15368
+            },
+            {
+              "context": "bandit (static security)",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (incremental)",
+              "app_id": 15368
+            },
+            {
+              "context": "vulture (dead-code scan)",
+              "app_id": 15368
+            }
+          ]
         },
         "required_pull_request_reviews": null,
         "required_signatures": null
@@ -153,8 +276,8 @@
         "NOTICE"
       ],
       "releases_90d": 15,
-      "median_pr_age_days": null,
-      "open_pr_count": 0,
+      "median_pr_age_days": 0.017,
+      "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 135,
       "errors": []

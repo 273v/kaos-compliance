@@ -8,118 +8,28 @@
     "identity": {
       "pypi_version": "0.1.0a12",
       "pypi_url": "https://pypi.org/project/kaos-content/0.1.0a12/",
-      "main_head_sha": "d181bc685fe46ef4acaf14aa58b2722abda8b288",
+      "main_head_sha": "abddfd718304bfd31eb2d6e7dfa4fc2654488d3a",
       "latest_tag": "v0.1.0a12",
       "latest_tag_sha": "2435daa91eafe7b85ee708f233e42186802b39d7",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-18T17:09:48Z"
+      "last_commit_at": "2026-05-18T18:31:53Z"
     },
     "ci": {
-      "workflow_conclusion": "",
-      "workflow_run_id": 26048497177,
-      "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/26048497177",
-      "head_sha": "d181bc685fe46ef4acaf14aa58b2722abda8b288",
-      "run_completed_at": "2026-05-18T17:20:29Z",
-      "matrix": [
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:20:28Z",
-          "completed_at": null,
-          "duration_seconds": 564
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T17:20:32Z",
-          "completed_at": "2026-05-18T17:21:41Z",
-          "duration_seconds": 69
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T17:20:57Z",
-          "completed_at": "2026-05-18T17:25:59Z",
-          "duration_seconds": 302
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:20:29Z",
-          "completed_at": null,
-          "duration_seconds": 563
-        },
-        {
-          "name": "Pre-commit hooks",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T17:28:46Z",
-          "completed_at": "2026-05-18T17:29:05Z",
-          "duration_seconds": 19
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:20:29Z",
-          "completed_at": null,
-          "duration_seconds": 563
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T17:20:33Z",
-          "completed_at": "2026-05-18T17:22:52Z",
-          "duration_seconds": 139
-        },
-        {
-          "name": "Lint",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:20:29Z",
-          "completed_at": null,
-          "duration_seconds": 563
-        }
-      ]
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "head_sha": null,
+      "run_completed_at": null,
+      "matrix": []
     },
     "security": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 26048497117,
-      "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/26048497117",
-      "jobs": [
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:10:29Z"
-        },
-        {
-          "name": "pip-audit (dependency CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:10:46Z"
-        },
-        {
-          "name": "gitleaks (secret scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:10:25Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:10:28Z"
-        }
-      ],
-      "run_completed_at": "2026-05-18T17:10:47Z"
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "jobs": [],
+      "run_completed_at": null
     },
     "open_prs": {
       "count": 0,
@@ -128,7 +38,7 @@
     "freshness": {
       "days_since_last_commit": 0,
       "days_since_last_release": 0,
-      "days_since_last_security_scan": 0
+      "days_since_last_security_scan": null
     },
     "supply_chain": {
       "pypi_version": "0.1.0a12",
@@ -187,18 +97,50 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.857,
-      "conventional_commits_rate_90d": 0.857,
-      "verified_commit_ratio_90d": 0.633,
-      "commits_90d": 49,
+      "dco_signoff_rate_90d": 0.86,
+      "conventional_commits_rate_90d": 0.86,
+      "verified_commit_ratio_90d": 0.64,
+      "commits_90d": 50,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
         "source": "branches_api",
         "required_status_checks": {
-          "enforcement_level": "off",
-          "contexts": [],
-          "checks": []
+          "enforcement_level": "everyone",
+          "contexts": [
+            "quality",
+            "test",
+            "build",
+            "bandit (static security)",
+            "gitleaks (incremental)",
+            "vulture (dead-code scan)"
+          ],
+          "checks": [
+            {
+              "context": "quality",
+              "app_id": 15368
+            },
+            {
+              "context": "test",
+              "app_id": 15368
+            },
+            {
+              "context": "build",
+              "app_id": 15368
+            },
+            {
+              "context": "bandit (static security)",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (incremental)",
+              "app_id": 15368
+            },
+            {
+              "context": "vulture (dead-code scan)",
+              "app_id": 15368
+            }
+          ]
         },
         "required_pull_request_reviews": null,
         "required_signatures": null

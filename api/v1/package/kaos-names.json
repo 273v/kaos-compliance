@@ -8,118 +8,28 @@
     "identity": {
       "pypi_version": "0.1.0a2",
       "pypi_url": "https://pypi.org/project/kaos-names/0.1.0a2/",
-      "main_head_sha": "41c5436ca5f3b233df1a15295e837e0b1e9ae577",
+      "main_head_sha": "2a72cfecaad9e67d028b4918e228cd8de1807755",
       "latest_tag": "v0.1.0a2",
       "latest_tag_sha": "3eebe3f0fa5dbb97970269d32ff8bd4d5335c3c2",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-18T17:10:47Z"
+      "last_commit_at": "2026-05-18T18:16:19Z"
     },
     "ci": {
-      "workflow_conclusion": "",
-      "workflow_run_id": 26048545461,
-      "workflow_run_url": "https://github.com/273v/kaos-names/actions/runs/26048545461",
-      "head_sha": "41c5436ca5f3b233df1a15295e837e0b1e9ae577",
-      "run_completed_at": "2026-05-18T17:25:30Z",
-      "matrix": [
-        {
-          "name": "Lint",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:25:30Z",
-          "completed_at": null,
-          "duration_seconds": 426
-        },
-        {
-          "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T17:25:33Z",
-          "completed_at": "2026-05-18T17:26:02Z",
-          "duration_seconds": 29
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T17:29:10Z",
-          "completed_at": "2026-05-18T17:29:20Z",
-          "duration_seconds": 10
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:25:30Z",
-          "completed_at": null,
-          "duration_seconds": 426
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:25:30Z",
-          "completed_at": null,
-          "duration_seconds": 426
-        },
-        {
-          "name": "Test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-05-18T17:25:33Z",
-          "completed_at": "2026-05-18T17:25:47Z",
-          "duration_seconds": 14
-        },
-        {
-          "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:25:30Z",
-          "completed_at": null,
-          "duration_seconds": 426
-        },
-        {
-          "name": "Test against minimum dependencies",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-05-18T17:25:30Z",
-          "completed_at": null,
-          "duration_seconds": 426
-        }
-      ]
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "head_sha": null,
+      "run_completed_at": null,
+      "matrix": []
     },
     "security": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 26048550645,
-      "workflow_run_url": "https://github.com/273v/kaos-names/actions/runs/26048550645",
-      "jobs": [
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:11:32Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:11:28Z"
-        },
-        {
-          "name": "gitleaks",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:11:27Z"
-        },
-        {
-          "name": "pip-audit",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:11:48Z"
-        }
-      ],
-      "run_completed_at": "2026-05-18T17:11:49Z"
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "jobs": [],
+      "run_completed_at": null
     },
     "open_prs": {
       "count": 0,
@@ -128,7 +38,7 @@
     "freshness": {
       "days_since_last_commit": 0,
       "days_since_last_release": 0,
-      "days_since_last_security_scan": 0
+      "days_since_last_security_scan": null
     },
     "supply_chain": {
       "pypi_version": "0.1.0a2",
@@ -173,10 +83,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.857,
-      "conventional_commits_rate_90d": 0.929,
-      "verified_commit_ratio_90d": 0.643,
-      "commits_90d": 14,
+      "dco_signoff_rate_90d": 0.867,
+      "conventional_commits_rate_90d": 0.933,
+      "verified_commit_ratio_90d": 0.667,
+      "commits_90d": 15,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -184,51 +94,36 @@
         "required_status_checks": {
           "enforcement_level": "everyone",
           "contexts": [
-            "Lint",
-            "Test (linux-x64 / Python 3.13)",
-            "Test (linux-x64 / Python 3.14)",
-            "Test against minimum dependencies",
-            "Build distribution and smoke test",
-            "gitleaks",
-            "pip-audit",
             "bandit (static security)",
-            "vulture (dead-code scan)"
+            "vulture (dead-code scan)",
+            "quality",
+            "test",
+            "build",
+            "gitleaks (incremental)"
           ],
           "checks": [
-            {
-              "context": "Lint",
-              "app_id": 15368
-            },
-            {
-              "context": "Test (linux-x64 / Python 3.13)",
-              "app_id": 15368
-            },
-            {
-              "context": "Test (linux-x64 / Python 3.14)",
-              "app_id": 15368
-            },
-            {
-              "context": "Test against minimum dependencies",
-              "app_id": 15368
-            },
-            {
-              "context": "Build distribution and smoke test",
-              "app_id": 15368
-            },
-            {
-              "context": "gitleaks",
-              "app_id": 15368
-            },
-            {
-              "context": "pip-audit",
-              "app_id": 15368
-            },
             {
               "context": "bandit (static security)",
               "app_id": 15368
             },
             {
               "context": "vulture (dead-code scan)",
+              "app_id": 15368
+            },
+            {
+              "context": "quality",
+              "app_id": 15368
+            },
+            {
+              "context": "test",
+              "app_id": 15368
+            },
+            {
+              "context": "build",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (incremental)",
               "app_id": 15368
             }
           ]

@@ -8,65 +8,28 @@
     "identity": {
       "pypi_version": "0.1.0a8",
       "pypi_url": "https://pypi.org/project/kaos-nlp-core/0.1.0a8/",
-      "main_head_sha": "6b9c946d3c82dd549ca4387e02545df6c4b96cbb",
+      "main_head_sha": "a578a61971b8d5b1f3518a20bdf025ddef8c2b47",
       "latest_tag": "v0.1.0a8",
       "latest_tag_sha": "e9d914771158f821c0bc5c7c5b62ad5195b89212",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-18T17:11:35Z"
+      "last_commit_at": "2026-05-18T18:36:07Z"
     },
     "ci": {
-      "workflow_conclusion": "",
-      "workflow_run_id": 26048594759,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26048594759",
-      "head_sha": "6b9c946d3c82dd549ca4387e02545df6c4b96cbb",
-      "run_completed_at": "2026-05-18T17:11:54Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "head_sha": null,
+      "run_completed_at": null,
       "matrix": []
     },
     "security": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 26048591422,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26048591422",
-      "jobs": [
-        {
-          "name": "pip-audit (dependency CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:18:12Z"
-        },
-        {
-          "name": "cargo-audit (Rust CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:18:12Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:15:21Z"
-        },
-        {
-          "name": "cargo-deny (licenses + bans + advisories)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:15:45Z"
-        },
-        {
-          "name": "gitleaks (secret scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:15:21Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-18T17:15:18Z"
-        }
-      ],
-      "run_completed_at": "2026-05-18T17:18:13Z"
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "jobs": [],
+      "run_completed_at": null
     },
     "open_prs": {
       "count": 0,
@@ -75,7 +38,7 @@
     "freshness": {
       "days_since_last_commit": 0,
       "days_since_last_release": 2,
-      "days_since_last_security_scan": 0
+      "days_since_last_security_scan": null
     },
     "supply_chain": {
       "pypi_version": "0.1.0a8",
@@ -171,10 +134,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.857,
-      "conventional_commits_rate_90d": 0.893,
-      "verified_commit_ratio_90d": 0.357,
-      "commits_90d": 28,
+      "dco_signoff_rate_90d": 0.862,
+      "conventional_commits_rate_90d": 0.897,
+      "verified_commit_ratio_90d": 0.379,
+      "commits_90d": 29,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -182,53 +145,15 @@
         "required_status_checks": {
           "enforcement_level": "everyone",
           "contexts": [
-            "Lint",
-            "Pre-commit hooks",
-            "Test (linux-x64 / Python 3.13)",
-            "Test (linux-x64 / Python 3.14)",
-            "Test against minimum dependencies",
-            "Build distribution + smoke test",
-            "gitleaks (secret scan)",
-            "pip-audit (dependency CVEs)",
             "bandit (static security)",
             "vulture (dead-code scan)",
-            "Rust tests (no PyO3)",
-            "cargo-audit (Rust CVEs)",
-            "cargo-deny (licenses + bans + advisories)"
+            "quality",
+            "test",
+            "rust-test (no PyO3)",
+            "build",
+            "gitleaks (incremental)"
           ],
           "checks": [
-            {
-              "context": "Lint",
-              "app_id": 15368
-            },
-            {
-              "context": "Pre-commit hooks",
-              "app_id": 15368
-            },
-            {
-              "context": "Test (linux-x64 / Python 3.13)",
-              "app_id": 15368
-            },
-            {
-              "context": "Test (linux-x64 / Python 3.14)",
-              "app_id": 15368
-            },
-            {
-              "context": "Test against minimum dependencies",
-              "app_id": 15368
-            },
-            {
-              "context": "Build distribution + smoke test",
-              "app_id": 15368
-            },
-            {
-              "context": "gitleaks (secret scan)",
-              "app_id": 15368
-            },
-            {
-              "context": "pip-audit (dependency CVEs)",
-              "app_id": 15368
-            },
             {
               "context": "bandit (static security)",
               "app_id": 15368
@@ -238,15 +163,23 @@
               "app_id": 15368
             },
             {
-              "context": "Rust tests (no PyO3)",
+              "context": "quality",
               "app_id": 15368
             },
             {
-              "context": "cargo-audit (Rust CVEs)",
+              "context": "test",
               "app_id": 15368
             },
             {
-              "context": "cargo-deny (licenses + bans + advisories)",
+              "context": "rust-test (no PyO3)",
+              "app_id": 15368
+            },
+            {
+              "context": "build",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (incremental)",
               "app_id": 15368
             }
           ]

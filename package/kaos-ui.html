@@ -103,13 +103,23 @@ footer a{color:var(--muted)}
   </p>
   <ul style="margin:0;padding-left:var(--s-5)">
     <li>
+     <span class="pill r" aria-label="Security: worse">
+      <span class="gly" aria-hidden="true">▼</span>
+      <span class="wd" aria-hidden="true">worse</span>
+     </span>
+     <strong>Security</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      True &rarr; False
+     </span>
+    </li>
+    <li>
      <span class="pill g" aria-label="Commits (90d): better">
       <span class="gly" aria-hidden="true">▲</span>
       <span class="wd" aria-hidden="true">better</span>
      </span>
      <strong>Commits (90d)</strong>:
      <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      54 &rarr; 59
+      54 &rarr; 61
      </span>
     </li>
   </ul>
@@ -119,20 +129,20 @@ footer a{color:var(--muted)}
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 5/8 green</div>
+  <div class="composite">Composite: 4/8 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
-    <span class="pill r" aria-label="Build passing: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: failure</div></div>
+    <span class="pill n" aria-label="Build passing: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: unknown</div></div>
    </div>
    <div class="check">
-    <span class="pill r" aria-label="Tests + coverage: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Tests + coverage</div><div class="note">Latest CI conclusion: failure</div></div>
+    <span class="pill n" aria-label="Tests + coverage: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Tests + coverage</div><div class="note">Latest CI conclusion: unknown</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="No critical CVEs: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">No critical CVEs</div><div class="note">Latest Security workflow conclusion: success</div></div>
+    <span class="pill n" aria-label="No critical CVEs: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">No critical CVEs</div><div class="note">Latest Security workflow conclusion: unknown</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Signed release artifacts: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -170,54 +180,6 @@ footer a{color:var(--muted)}
    </tr>
   </thead>
   <tbody>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.14</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.14t</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.15</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">macos-arm64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">windows-x64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
   </tbody>
  </table>
  </div>
@@ -263,8 +225,8 @@ footer a{color:var(--muted)}
    <dt>Maintainers</dt><dd>2</dd>
    <dt>Commits 90d</dt>
    <dd>
-    59
-<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ui Commits 90d: 5 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="34.6,14.0 45.4,13.2 56.3,5.1 67.1,3.9 78.0,2.0"></polyline><circle cx="2.0" cy="8.0" r="1" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"></circle><circle cx="12.9" cy="8.0" r="1" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"></circle><circle cx="23.7" cy="8.0" r="1" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"></circle><circle cx="78.0" cy="2.0" r="1.5" fill="currentColor"></circle></svg>   </dd>
+    61
+<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ui Commits 90d: 5 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="34.6,14.0 45.4,13.3 56.3,5.6 67.1,4.5 78.0,2.0"></polyline><circle cx="2.0" cy="8.0" r="1" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"></circle><circle cx="12.9" cy="8.0" r="1" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"></circle><circle cx="23.7" cy="8.0" r="1" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"></circle><circle cx="78.0" cy="2.0" r="1.5" fill="currentColor"></circle></svg>   </dd>
    <dt>Releases 90d</dt><dd>8<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ui Releases 90d: 1 day of history"><circle cx="78.0" cy="8.0" r="2" fill="currentColor"></circle></svg></dd>
   </dl>
  </div>
@@ -274,7 +236,7 @@ footer a{color:var(--muted)}
  <h2 id="cm-h">Code surface area</h2>
  <div class="card">
    <div class="code-viz">
-    <svg class="activity-svg activity-stack" width="112" height="18" viewBox="0 0 112 18" role="img" aria-label="kaos-ui code surface: Python source 4910, Python tests 3922, Rust source 0, Rust tests 0 lines"><rect x="0.5" y="4.5" width="111" height="9" rx="2" fill="none" stroke="var(--border)"></rect><rect x="1.0" y="5" width="61.2" height="8" fill="var(--primary)"></rect><rect x="62.2" y="5" width="48.8" height="8" fill="var(--accent)"></rect></svg>
+    <svg class="activity-svg activity-stack" width="112" height="18" viewBox="0 0 112 18" role="img" aria-label="kaos-ui code surface: Python source 4922, Python tests 3922, Rust source 0, Rust tests 0 lines"><rect x="0.5" y="4.5" width="111" height="9" rx="2" fill="none" stroke="var(--border)"></rect><rect x="1.0" y="5" width="61.2" height="8" fill="var(--primary)"></rect><rect x="62.2" y="5" width="48.8" height="8" fill="var(--accent)"></rect></svg>
     <div class="code-legend" aria-hidden="true">
      <span><i class="sw py-src"></i>Py src</span>
      <span><i class="sw py-tests"></i>Py tests</span>
@@ -284,7 +246,7 @@ footer a{color:var(--muted)}
    </div>
   <dl class="kv">
    <dt>Python source (LoC)</dt>
-   <dd>4,910 across 43 files</dd>
+   <dd>4,922 across 43 files</dd>
    <dt>Python tests (LoC)</dt>
    <dd>3,922 across 45 files</dd>
    <dt>Rust source (LoC)</dt>
@@ -292,7 +254,7 @@ footer a{color:var(--muted)}
    <dt>Rust tests (LoC)</dt>
    <dd>—</dd>
    <dt>Source lines of code</dt>
-   <dd>8,832 LoC<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ui Lines of code: 1 day of history"><circle cx="78.0" cy="8.0" r="2" fill="currentColor"></circle></svg></dd>
+   <dd>8,844 LoC<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ui Lines of code: 1 day of history"><circle cx="78.0" cy="8.0" r="2" fill="currentColor"></circle></svg></dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
    Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
@@ -320,7 +282,7 @@ footer a{color:var(--muted)}
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-ui">Repository</a></li><li><a href="https://pypi.org/project/kaos-ui/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-ui/actions/runs/26049734761">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-ui/actions/runs/26049735124">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-ui.json"><code>api/v1/package/kaos-ui.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-ui">Repository</a></li><li><a href="https://pypi.org/project/kaos-ui/">PyPI project</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-ui.json"><code>api/v1/package/kaos-ui.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
@@ -341,7 +303,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-05-18 17:36 UTC
+ Generated 2026-05-18 19:00 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

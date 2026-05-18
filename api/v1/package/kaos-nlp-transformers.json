@@ -17,12 +17,101 @@
       "last_commit_at": "2026-05-18T17:13:21Z"
     },
     "ci": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 26048682060,
       "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26048682060",
       "head_sha": "d3bae8704dd2c65c7b7f663a12297b808aed4352",
-      "run_completed_at": "2026-05-18T17:13:35Z",
-      "matrix": []
+      "run_completed_at": "2026-05-18T18:12:57Z",
+      "matrix": [
+        {
+          "name": "Rust tests",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:45:43Z",
+          "completed_at": "2026-05-18T17:47:11Z",
+          "duration_seconds": 88
+        },
+        {
+          "name": "Lint",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:03:34Z",
+          "completed_at": "2026-05-18T18:06:23Z",
+          "duration_seconds": 169
+        },
+        {
+          "name": "Pre-commit hooks",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:47:08Z",
+          "completed_at": "2026-05-18T17:49:34Z",
+          "duration_seconds": 146
+        },
+        {
+          "name": "Test against minimum dependencies",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:05:15Z",
+          "completed_at": "2026-05-18T18:07:55Z",
+          "duration_seconds": 160
+        },
+        {
+          "name": "Test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:41:57Z",
+          "completed_at": "2026-05-18T17:45:57Z",
+          "duration_seconds": 240
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:05:19Z",
+          "completed_at": "2026-05-18T18:07:50Z",
+          "duration_seconds": 151
+        },
+        {
+          "name": "Test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:41:56Z",
+          "completed_at": "2026-05-18T17:48:33Z",
+          "duration_seconds": 397
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:05:47Z",
+          "completed_at": "2026-05-18T18:08:39Z",
+          "duration_seconds": 172
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:06:29Z",
+          "completed_at": "2026-05-18T18:09:55Z",
+          "duration_seconds": 206
+        },
+        {
+          "name": "Test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:48:32Z",
+          "completed_at": "2026-05-18T17:49:05Z",
+          "duration_seconds": 33
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T18:10:59Z",
+          "completed_at": "2026-05-18T18:12:56Z",
+          "duration_seconds": 117
+        }
+      ]
     },
     "security": {
       "workflow_conclusion": "success",
@@ -69,8 +158,10 @@
       "run_completed_at": "2026-05-18T17:19:26Z"
     },
     "open_prs": {
-      "count": 0,
-      "titles": []
+      "count": 1,
+      "titles": [
+        "#29 ci: migrate to standard lanes per runner-cost-reduction-plan"
+      ]
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -194,71 +285,41 @@
         "required_status_checks": {
           "enforcement_level": "everyone",
           "contexts": [
-            "Lint",
-            "Pre-commit hooks",
-            "Rust tests",
-            "Test (linux-x64 / Python 3.13)",
-            "Test (linux-x64 / Python 3.14)",
-            "Test against minimum dependencies",
-            "Build distribution + smoke test",
-            "gitleaks (secret scan)",
-            "pip-audit (Python dependency CVEs)",
-            "cargo-audit (Rust CVEs)",
-            "cargo-deny (licenses + bans + advisories)",
             "bandit (static security)",
-            "vulture (dead-code scan)"
+            "vulture (dead-code scan)",
+            "quality",
+            "test",
+            "rust-test (no PyO3)",
+            "build",
+            "gitleaks (incremental)"
           ],
           "checks": [
-            {
-              "context": "Lint",
-              "app_id": 15368
-            },
-            {
-              "context": "Pre-commit hooks",
-              "app_id": 15368
-            },
-            {
-              "context": "Rust tests",
-              "app_id": 15368
-            },
-            {
-              "context": "Test (linux-x64 / Python 3.13)",
-              "app_id": 15368
-            },
-            {
-              "context": "Test (linux-x64 / Python 3.14)",
-              "app_id": 15368
-            },
-            {
-              "context": "Test against minimum dependencies",
-              "app_id": 15368
-            },
-            {
-              "context": "Build distribution + smoke test",
-              "app_id": 15368
-            },
-            {
-              "context": "gitleaks (secret scan)",
-              "app_id": 15368
-            },
-            {
-              "context": "pip-audit (Python dependency CVEs)",
-              "app_id": 15368
-            },
-            {
-              "context": "cargo-audit (Rust CVEs)",
-              "app_id": 15368
-            },
-            {
-              "context": "cargo-deny (licenses + bans + advisories)",
-              "app_id": 15368
-            },
             {
               "context": "bandit (static security)",
               "app_id": 15368
             },
             {
               "context": "vulture (dead-code scan)",
+              "app_id": 15368
+            },
+            {
+              "context": "quality",
+              "app_id": 15368
+            },
+            {
+              "context": "test",
+              "app_id": 15368
+            },
+            {
+              "context": "rust-test (no PyO3)",
+              "app_id": 15368
+            },
+            {
+              "context": "build",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (incremental)",
               "app_id": 15368
             }
           ]
@@ -275,8 +336,8 @@
         "NOTICE"
       ],
       "releases_90d": 9,
-      "median_pr_age_days": null,
-      "open_pr_count": 0,
+      "median_pr_age_days": 0.019,
+      "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 645,
       "errors": []
