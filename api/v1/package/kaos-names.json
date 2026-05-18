@@ -17,19 +17,38 @@
       "last_commit_at": "2026-05-18T18:16:19Z"
     },
     "ci": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "head_sha": null,
-      "run_completed_at": null,
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26051916449,
+      "workflow_run_url": "https://github.com/273v/kaos-names/actions/runs/26051916449",
+      "head_sha": "2a72cfecaad9e67d028b4918e228cd8de1807755",
+      "run_completed_at": "2026-05-18T18:17:07Z",
       "matrix": []
     },
     "security": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "jobs": [],
-      "run_completed_at": null
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26051913261,
+      "workflow_run_url": "https://github.com/273v/kaos-names/actions/runs/26051913261",
+      "jobs": [
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T18:16:45Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T18:16:49Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T18:16:48Z"
+        }
+      ],
+      "run_completed_at": "2026-05-18T18:16:50Z"
     },
     "open_prs": {
       "count": 0,
@@ -38,7 +57,7 @@
     "freshness": {
       "days_since_last_commit": 0,
       "days_since_last_release": 0,
-      "days_since_last_security_scan": null
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.0a2",

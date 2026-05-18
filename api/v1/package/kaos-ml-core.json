@@ -17,19 +17,38 @@
       "last_commit_at": "2026-05-18T18:32:17Z"
     },
     "ci": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "head_sha": null,
-      "run_completed_at": null,
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26052716759,
+      "workflow_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/26052716759",
+      "head_sha": "14b7f7c1f73cc0022393084801abea173e2898a0",
+      "run_completed_at": "2026-05-18T18:35:41Z",
       "matrix": []
     },
     "security": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "jobs": [],
-      "run_completed_at": null
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26052716764,
+      "workflow_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/26052716764",
+      "jobs": [
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T18:32:33Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T18:32:32Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T18:32:32Z"
+        }
+      ],
+      "run_completed_at": "2026-05-18T18:32:34Z"
     },
     "open_prs": {
       "count": 1,
@@ -39,8 +58,8 @@
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 1,
-      "days_since_last_security_scan": null
+      "days_since_last_release": 2,
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.0a3",
@@ -170,7 +189,7 @@
         "NOTICE"
       ],
       "releases_90d": 3,
-      "median_pr_age_days": 0.042,
+      "median_pr_age_days": 0.079,
       "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 231,

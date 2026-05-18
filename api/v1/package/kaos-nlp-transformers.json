@@ -17,19 +17,38 @@
       "last_commit_at": "2026-05-18T19:05:11Z"
     },
     "ci": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "head_sha": null,
-      "run_completed_at": null,
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26054420068,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26054420068",
+      "head_sha": "3deab76b32a84c389f4aa73e3a46d1a8d495f96c",
+      "run_completed_at": "2026-05-18T19:08:34Z",
       "matrix": []
     },
     "security": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "jobs": [],
-      "run_completed_at": null
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26054417187,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26054417187",
+      "jobs": [
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T19:05:33Z"
+        },
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T19:05:38Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T19:05:29Z"
+        }
+      ],
+      "run_completed_at": "2026-05-18T19:05:39Z"
     },
     "open_prs": {
       "count": 0,
@@ -38,7 +57,7 @@
     "freshness": {
       "days_since_last_commit": 0,
       "days_since_last_release": 2,
-      "days_since_last_security_scan": null
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.2.0a8",

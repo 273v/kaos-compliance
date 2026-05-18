@@ -17,19 +17,38 @@
       "last_commit_at": "2026-05-18T18:31:53Z"
     },
     "ci": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "head_sha": null,
-      "run_completed_at": null,
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26052694600,
+      "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/26052694600",
+      "head_sha": "abddfd718304bfd31eb2d6e7dfa4fc2654488d3a",
+      "run_completed_at": "2026-05-18T18:34:00Z",
       "matrix": []
     },
     "security": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "jobs": [],
-      "run_completed_at": null
+      "workflow_conclusion": "success",
+      "workflow_run_id": 26052694637,
+      "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/26052694637",
+      "jobs": [
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T18:32:13Z"
+        },
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T18:32:09Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T18:32:11Z"
+        }
+      ],
+      "run_completed_at": "2026-05-18T18:32:14Z"
     },
     "open_prs": {
       "count": 1,
@@ -40,7 +59,7 @@
     "freshness": {
       "days_since_last_commit": 0,
       "days_since_last_release": 0,
-      "days_since_last_security_scan": null
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.0a12",
@@ -156,7 +175,7 @@
         "NOTICE"
       ],
       "releases_90d": 12,
-      "median_pr_age_days": 0.057,
+      "median_pr_age_days": 0.096,
       "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 180,
