@@ -389,7 +389,10 @@ def _synthesize_ci(repo: str, runs: list[dict[str, Any]]) -> CISection:
     if compat:
         try:
             jobs_raw = gh_run(
-                ["api", f"repos/{ORG}/{repo}/actions/runs/{compat['databaseId']}/jobs?per_page=100"],
+                [
+                    "api",
+                    f"repos/{ORG}/{repo}/actions/runs/{compat['databaseId']}/jobs?per_page=100",
+                ],
             ).stdout
             for j in json.loads(jobs_raw).get("jobs", []):
                 matrix.append(
