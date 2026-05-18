@@ -30,6 +30,11 @@ def _module(
     total: int = 2,
     bp: bool | None = True,
     commits: int | None = 42,
+    releases: int | None = 2,
+    py_src: int | None = 100,
+    py_tests: int | None = 25,
+    rs_src: int | None = 10,
+    rs_tests: int | None = 5,
 ) -> dict[str, Any]:
     return {
         "name": name,
@@ -45,6 +50,21 @@ def _module(
         "governance": {
             "branch_protection_enabled": bp,
             "commits_90d": commits,
+            "releases_90d": releases,
+        },
+        "code_metrics": {
+            "python": {
+                "src_loc": py_src,
+                "tests_loc": py_tests,
+                "src_files": 3 if py_src is not None else None,
+                "tests_files": 2 if py_tests is not None else None,
+            },
+            "rust": {
+                "src_loc": rs_src,
+                "tests_loc": rs_tests,
+                "src_files": 1 if rs_src is not None else None,
+                "tests_files": 1 if rs_tests is not None else None,
+            },
         },
     }
 
@@ -73,6 +93,11 @@ def test_daily_summary_extracts_expected_fields() -> None:
     assert summary["modules"][0]["attestation_present"] is True
     assert summary["modules"][0]["branch_protection_enabled"] is True
     assert summary["modules"][0]["commits_90d"] == 42
+    assert summary["modules"][0]["releases_90d"] == 2
+    assert summary["modules"][0]["loc_total"] == 140
+    assert summary["modules"][0]["src_loc"] == 110
+    assert summary["modules"][0]["tests_loc"] == 30
+    assert summary["modules"][0]["files_total"] == 7
 
 
 def test_daily_summary_attestation_partial_is_not_present() -> None:
@@ -102,6 +127,9 @@ def test_daily_summary_handles_missing_signals_as_none() -> None:
     assert row["attestation_present"] is False
     assert row["branch_protection_enabled"] is None
     assert row["commits_90d"] is None
+    assert row["releases_90d"] is None
+    assert row["loc_total"] is None
+    assert row["files_total"] is None
 
 
 # ----- write_daily_summary + idempotency -------------------------------------------
@@ -318,6 +346,11 @@ def test_per_day_file_format_is_stable(tmp_path: Path) -> None:
         "attestation_present",
         "branch_protection_enabled",
         "commits_90d",
+        "releases_90d",
+        "loc_total",
+        "src_loc",
+        "tests_loc",
+        "files_total",
     }
 
 

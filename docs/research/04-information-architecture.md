@@ -108,11 +108,16 @@ up. A page full of red because a check is missing trains auditors to ignore red.
 ## Sparkline placement strategy
 
 **Show** sparklines for time-series signals where the trend is the point:
-commits/week, release cadence, open-CVE count over 90 days. SVG path,
-inline, no library.
+commits/week, release cadence, code-surface growth, open-CVE count over
+90 days. SVG path, inline, no library.
 
 **Skip** sparklines for point-in-time states (license, branch protection,
 current build status). A sparkline of a boolean is noise.
 
 Cap: one sparkline per card, max four per page. They are decoration without
 the underlying number; always pair with the current value.
+
+Use compact SVG bars for current activity distributions (for example
+per-package commit share or Python/Rust source/test LoC mix). Bars must sit
+beside the raw number they encode and must not reuse green/yellow/red pill
+colors as a fake health state.

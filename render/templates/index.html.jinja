@@ -57,6 +57,9 @@ h2{font-size:1.5rem;line-height:1.25;margin:var(--s-6) 0 var(--s-3);font-weight:
 .strip .stat{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:var(--s-3) var(--s-4)}
 .strip .stat .n{font-family:var(--mono);font-size:1.75rem;font-weight:700;line-height:1.1;display:block}
 .strip .stat .lab{color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em}
+.strip .stat .mini-viz{display:block;margin:var(--s-2) 0 0;color:var(--primary)}
+.activity-svg{display:block;max-width:100%;overflow:visible}
+.activity-stack{color:var(--primary)}
 table.grid{width:100%;border-collapse:collapse;font-size:0.875rem}
 table.grid th,table.grid td{padding:var(--s-3) var(--s-2);text-align:left;border-bottom:1px solid var(--border);vertical-align:middle}
 table.grid th{font-weight:600;color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;background:transparent}
@@ -235,7 +238,11 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
  <h2 id="strip-h" class="sr-only">Headline metrics</h2>
  <div class="strip">
   <div class="stat"><span class="n">{{ org.repos_total | default(16) }}</span><span class="lab">Repositories</span></div>
-  <div class="stat"><span class="n">{{ org.commits_total | default('—') }}</span><span class="lab">Commits</span></div>
+  <div class="stat">
+   <span class="n">{{ org.commits_total | default('—') }}</span>
+   {% if org.commits_sparkline_svg %}<span class="mini-viz">{{ org.commits_sparkline_svg | safe }}</span>{% endif %}
+   <span class="lab">Commits last 90d</span>
+  </div>
   <div class="stat"><span class="n">{{ org.tests_total | default('—') }}</span><span class="lab">Tests</span></div>
   <div class="stat"><span class="n">{{ org.platforms_total | default('—') }}</span><span class="lab">Supported platforms</span></div>
  </div>
@@ -246,6 +253,7 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
  <div class="strip" style="margin-top:var(--s-3)">
   <div class="stat">
    <span class="n">{% if org.loc_total is number %}{{ '{:,}'.format(org.loc_total) }}{% else %}{{ org.loc_total | default('—') }}{% endif %}</span>
+   {% if org.code_composition_svg %}<span class="mini-viz">{{ org.code_composition_svg | safe }}</span>{% endif %}
    <span class="lab">Source lines of code</span>
   </div>
   <div class="stat">

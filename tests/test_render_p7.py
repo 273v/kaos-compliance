@@ -85,7 +85,11 @@ def _module_stub(name: str, *, ci: str = "success") -> dict[str, Any]:
             "conventional_commits_rate_90d": 1.0,
             "verified_commit_ratio_90d": 1.0,
         },
-        "code_metrics": {},
+        "code_metrics": {
+            "python": {"src_loc": 100, "tests_loc": 25, "src_files": 3, "tests_files": 2},
+            "rust": {"src_loc": 10, "tests_loc": 5, "src_files": 1, "tests_files": 1},
+            "errors": [],
+        },
         "errors": [],
     }
 
@@ -183,6 +187,15 @@ def test_history_view_marks_one_day_as_accumulating(tmp_path: Path) -> None:
     assert "kaos-core" in v["sparklines"]
 
 
+def test_history_view_includes_activity_sparklines(tmp_path: Path) -> None:
+    history.write_daily_summary(_snapshot("2026-05-11", [_module_stub("kaos-core")]), tmp_path)
+    idx = history.rebuild_index(tmp_path)
+    v = render_main._history_view(idx)
+    sparks = v["sparklines"]["kaos-core"]
+    assert "Commits 90d" in sparks["commits"]
+    assert "Lines of code" in sparks["loc"]
+
+
 def test_history_view_decorates_diff_with_labels(tmp_path: Path) -> None:
     history.write_daily_summary(
         _snapshot("2026-05-10", [_bare_module("kaos-core", ci="failure")]), tmp_path
@@ -218,6 +231,20 @@ def test_render_first_deploy_shows_accumulating_label(tmp_path: Path) -> None:
     assert "accumulating history" in index
     # Sparkline SVG MUST be present.
     assert '<svg class="spark"' in index
+
+
+def test_render_adds_activity_svgs_to_key_pages(tmp_path: Path) -> None:
+    snap = _snapshot("2026-05-11", [_module_stub("kaos-core")])
+    render_main.render(snap, output_dir=tmp_path)
+
+    index = (tmp_path / "index.html").read_text(encoding="utf-8")
+    governance = (tmp_path / "governance.html").read_text(encoding="utf-8")
+    pkg_html = (tmp_path / "package" / "kaos-core.html").read_text(encoding="utf-8")
+
+    assert "Org commits last 90 days" in index
+    assert "Org code surface" in index
+    assert "commit activity relative to the most active package" in governance
+    assert "kaos-core Lines of code" in pkg_html
 
 
 def test_render_first_deploy_package_no_prior_sweep(tmp_path: Path) -> None:
