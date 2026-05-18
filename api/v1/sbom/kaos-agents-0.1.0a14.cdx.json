@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c2c69b4f-119c-4283-8ae4-04dc5ba0730c",
+  "serialNumber": "urn:uuid:4a01d557-0088-4b70-acca-d42a33c526aa",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-18T01:10:03Z",
+    "timestamp": "2026-05-18T03:22:02Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-agents@0.1.0a13",
+      "bom-ref": "pkg:pypi/kaos-agents@0.1.0a14",
       "name": "kaos-agents",
-      "version": "0.1.0a13",
-      "purl": "pkg:pypi/kaos-agents@0.1.0a13"
+      "version": "0.1.0a14",
+      "purl": "pkg:pypi/kaos-agents@0.1.0a14"
     }
   },
   "components": [
@@ -3648,21 +3648,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-core@0.1.0a6",
+      "bom-ref": "pkg:pypi/kaos-core@0.1.0a10",
       "name": "kaos-core",
-      "version": "0.1.0a6",
-      "purl": "pkg:pypi/kaos-core@0.1.0a6",
+      "version": "0.1.0a10",
+      "purl": "pkg:pypi/kaos-core@0.1.0a10",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "57969c31dd2cf5529da762d0c7e83de4f07778186732e3d24686dc446be60df6"
+          "content": "6237422136b352d9a6805ccf634714d6b086b39a6551d77e779a9fd9eba0bae7"
         },
         {
           "alg": "SHA-256",
-          "content": "4bc5b1aa4138ef46163a1af2a48daabea8772eec234b5381b0a7cc310c01befb"
+          "content": "5690a55dd4720a68083328dad20c6d59f13fcc6dc2d557c710936a1f48257f2f"
         }
       ],
       "licenses": [
@@ -3675,11 +3675,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/da/c4/8ccd8268d82261a0060a78cde7b0410ec35314819835b332ff0fa4d609ee/kaos_core-0.1.0a6.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/b3/fa/7fe7eba42dae8acdb036a1863aec8d009f9bd077258ac8937e515c3c706d/kaos_core-0.1.0a10.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-core/0.1.0a6/"
+          "url": "https://pypi.org/project/kaos-core/0.1.0a10/"
         }
       ],
       "properties": [
@@ -11858,10 +11858,10 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-agents@0.1.0a13",
+      "ref": "pkg:pypi/kaos-agents@0.1.0a14",
       "dependsOn": [
         "pkg:pypi/kaos-content@0.1.0a6",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/kaos-graph@0.1.0a3",
         "pkg:pypi/kaos-nlp-core@0.1.0a3",
         "pkg:pypi/pydantic-settings@2.13.1",
@@ -12153,20 +12153,20 @@
     {
       "ref": "pkg:pypi/kaos-citations@0.1.0a2",
       "dependsOn": [
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/kaos-nlp-core@0.1.0a3"
       ]
     },
     {
       "ref": "pkg:pypi/kaos-content@0.1.0a6",
       "dependsOn": [
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/pydantic@2.12.5",
         "pkg:pypi/uuid6@2025.0.1"
       ]
     },
     {
-      "ref": "pkg:pypi/kaos-core@0.1.0a6",
+      "ref": "pkg:pypi/kaos-core@0.1.0a10",
       "dependsOn": [
         "pkg:pypi/click@8.3.2",
         "pkg:pypi/pydantic-settings@2.13.1",
@@ -12183,7 +12183,7 @@
       "ref": "pkg:pypi/kaos-llm-client@0.1.0a3",
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/pydantic-settings@2.13.1",
         "pkg:pypi/pydantic@2.12.5"
       ]
@@ -12192,7 +12192,7 @@
       "ref": "pkg:pypi/kaos-llm-core@0.1.0a7",
       "dependsOn": [
         "pkg:pypi/kaos-content@0.1.0a6",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/kaos-llm-client@0.1.0a3",
         "pkg:pypi/kaos-nlp-core@0.1.0a3",
         "pkg:pypi/pydantic@2.12.5"
@@ -12203,7 +12203,7 @@
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
         "pkg:pypi/kaos-content@0.1.0a6",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/mcp@1.27.0",
         "pkg:pypi/pydantic-settings@2.13.1",
         "pkg:pypi/pydantic@2.12.5",
@@ -12215,7 +12215,7 @@
       "dependsOn": [
         "pkg:pypi/joblib@1.5.3",
         "pkg:pypi/kaos-content@0.1.0a6",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/kaos-nlp-core@0.1.0a3",
         "pkg:pypi/numpy@2.4.4",
         "pkg:pypi/scikit-learn@1.8.0",
@@ -12230,7 +12230,7 @@
       "ref": "pkg:pypi/kaos-nlp-transformers@0.2.0a4",
       "dependsOn": [
         "pkg:pypi/huggingface-hub@1.11.0",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/kaos-nlp-core@0.1.0a3",
         "pkg:pypi/numpy@2.4.4"
       ]
@@ -12239,7 +12239,7 @@
       "ref": "pkg:pypi/kaos-office@0.1.0a2",
       "dependsOn": [
         "pkg:pypi/kaos-content@0.1.0a6",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/lxml@6.1.0"
       ]
     },
@@ -12247,7 +12247,7 @@
       "ref": "pkg:pypi/kaos-pdf@0.1.0a2",
       "dependsOn": [
         "pkg:pypi/kaos-content@0.1.0a6",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/pypdfium2@5.7.0"
       ]
     },
@@ -12255,7 +12255,7 @@
       "ref": "pkg:pypi/kaos-source@0.1.0a3",
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/pydantic@2.12.5"
       ]
     },
@@ -12264,7 +12264,7 @@
       "dependsOn": [
         "pkg:pypi/duckdb@1.5.2",
         "pkg:pypi/kaos-content@0.1.0a6",
-        "pkg:pypi/kaos-core@0.1.0a6"
+        "pkg:pypi/kaos-core@0.1.0a10"
       ]
     },
     {
@@ -12272,7 +12272,7 @@
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
         "pkg:pypi/kaos-content@0.1.0a6",
-        "pkg:pypi/kaos-core@0.1.0a6",
+        "pkg:pypi/kaos-core@0.1.0a10",
         "pkg:pypi/lxml@6.1.0"
       ]
     },

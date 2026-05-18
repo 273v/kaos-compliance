@@ -115,47 +115,47 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 25965159740,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/25965159740",
+      "workflow_run_id": 26011542405,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26011542405",
       "jobs": [
+        {
+          "name": "pip-audit (Python dependency CVEs)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T03:17:21Z"
+        },
         {
           "name": "cargo-audit (Rust CVEs)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-16T15:05:54Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-16T15:03:05Z"
+          "completed_at": "2026-05-18T03:18:02Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-16T15:03:06Z"
+          "completed_at": "2026-05-18T03:15:16Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-18T03:15:20Z"
         },
         {
           "name": "gitleaks (secret scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-16T15:03:05Z"
-        },
-        {
-          "name": "pip-audit (Python dependency CVEs)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-16T15:05:17Z"
+          "completed_at": "2026-05-18T03:15:19Z"
         },
         {
           "name": "cargo-deny (licenses + bans + advisories)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-16T15:03:35Z"
+          "completed_at": "2026-05-18T03:15:45Z"
         }
       ],
-      "run_completed_at": "2026-05-16T15:05:55Z"
+      "run_completed_at": "2026-05-18T03:18:03Z"
     },
     "open_prs": {
       "count": 0,
@@ -164,7 +164,7 @@
     "freshness": {
       "days_since_last_commit": 1,
       "days_since_last_release": 1,
-      "days_since_last_security_scan": 1
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.2.0a8",

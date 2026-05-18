@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a537f837-b036-40a8-86da-aa4dea7ec490",
+  "serialNumber": "urn:uuid:942846a0-3d80-4a69-9970-434930f40052",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-18T01:10:52Z",
+    "timestamp": "2026-05-18T03:29:47Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-content@0.1.0a9",
-      "name": "kaos-content",
-      "version": "0.1.0a9",
-      "purl": "pkg:pypi/kaos-content@0.1.0a9"
+      "bom-ref": "pkg:pypi/kaos-office@0.1.0a6",
+      "name": "kaos-office",
+      "version": "0.1.0a6",
+      "purl": "pkg:pypi/kaos-office@0.1.0a6"
     }
   },
   "components": [
@@ -153,6 +153,49 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/attrs@26.1.0",
+      "name": "attrs",
+      "version": "26.1.0",
+      "purl": "pkg:pypi/attrs@26.1.0",
+      "supplier": {
+        "name": "Unknown / community"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d03ceb89cb322a8fd706d4fb91940737b6642aa36998fe130a9bc96c985eff32"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9a/8e/82a0fe20a541c03148528be8cac2408564a6c9a0cc7e9171802bc1d26985/attrs-26.1.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/attrs/26.1.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/certifi@2026.4.22",
       "name": "certifi",
       "version": "2026.4.22",
@@ -191,6 +234,181 @@
         {
           "name": "kaos:license-class",
           "value": "weak-copyleft"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/cffi@2.0.0",
+      "name": "cffi",
+      "version": "2.0.0",
+      "purl": "pkg:pypi/cffi@2.0.0",
+      "supplier": {
+        "name": "Armin Rigo, Maciej Fijalkowski"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "00bdf7acc5f795150faa6957054fbbca2439db2f775ce831222b66f192f03beb"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "45d5e886156860dc35862657e1494b9bae8dfa63bf56796f2fb56e1679fc0bca"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "07b271772c100085dd28b74fa0cd81c8fb1a3ba18b21e03d7c27f3436a10606b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d48a880098c96020b02d5a1f7d9251308510ce8858940e6fa99ece33f610838b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f93fd8e5c8c0a4aa1f424d6173f14a892044054871c771f8566e4008eaa359d2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "dd4f05f54a52fb558f1ba9f528228066954fee3ebe629fc1660d874d040ae5a3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c8d3b5532fc71b7a77c09192b4a5a200ea992702734a2e9279a37f2478236f26"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d9b29c1f0ae438d5ee9acb31cadee00a58c46cc9c0b2f9038c6b0b3470877a8c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6d50360be4546678fc1b79ffe7a66265e28667840010348dd69a314145807a1b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "74a03b9698e198d47562765773b4a8309919089150a0bb17d829ad7b44b60d27"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "19f705ada2530c1167abacb171925dd886168931e0a7b78f5bffcae5c6b5be75"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "256f80b80ca3853f90c21b23ee78cd008713787b1b1e93eae9f3d6a7134abd91"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "fc33c5141b55ed366cfaad382df24fe7dcbc686de5be719b207bb248e3053dc5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c654de545946e0db659b3400168c9ad31b5d29593291482c43e3564effbcee13"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "24b6f81f1983e6df8db3adc38562c83f7d4a0c36162885ec7f7b77c7dcbec97b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "12873ca6cb9b0f0d3a0da705d6086fe911591737a59f28b7936bdfed27c0d47c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d9b97165e8aed9272a6bb17c01e3cc5871a594a446ebedc996e2397a1c1ea8ef"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "afb8db5439b81cf9c9d0c80404b60c3cc9c3add93e114dcae767f1477cb53775"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "737fe7d37e1a1bffe70bd5754ea763a62a066dc5913ca57e957824b72a85e205"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "38100abb9d1b1435bc4cc340bb4489635dc2f0da7456590877030c9b3d40b0c1"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "087067fa8953339c723661eda6b54bc98c5625757ea62e95eb4898ad5e776e9f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "203a48d1fb583fc7d78a4c6655692963b860a417c0528492a6bc21f1aaefab25"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "dbd5c7a25a7cb98f5ca55d258b103a2054f859a46ae11aaf23134f9cc0d356ad"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9a67fc9e8eb39039280526379fb3a70023d77caec1852002b4da7e8b270c4dd9"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7a66c7204d8869299919db4d5069a82f1561581af12b11b3c9f48c584eb8743d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7cc09976e8b56f8cebd752f7113ad07752461f48a58cbba644139015ac24954c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "92b68146a71df78564e4ef48af17551a5ddd142e5190cdf2c5624d0c3ff5b2e8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b1e74d11748e7e98e2f426ab176d4ed720a64412b6a15054378afdb71e0f37dc"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "28a3a209b96630bca57cce802da70c266eb08c6e97e5afd61a75611ee6c64592"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7553fb2090d71822f02c629afe6042c299edf91ba1bf94951165613553984512"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6c6c373cfc5c83a975506110d17457138c8c63016b563cc9ed6e056a82f13ce4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1fc9ea04857caf665289b7a75923f2c6ed559b8298a1b8c49e59f7dd95c8481e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d68b6cef7827e8641e8ef16f4494edda8b36104d79773a334beaa1e3521430f6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0a1527a803f0a659de1af2e1fd700213caba79377e27e4693648c2923da066f9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/eb/56/b1ba7935a17738ae8453301356628e8147c79dbb825bcbc73dc7401f9846/cffi-2.0.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/cffi/2.0.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
         }
       ]
     },
@@ -282,261 +500,261 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/coverage@7.14.0",
+      "bom-ref": "pkg:pypi/coverage@7.13.5",
       "name": "coverage",
-      "version": "7.14.0",
-      "purl": "pkg:pypi/coverage@7.14.0",
+      "version": "7.13.5",
+      "purl": "pkg:pypi/coverage@7.13.5",
       "supplier": {
-        "name": "Ned Batchelder and 255 others"
+        "name": "Ned Batchelder and 253 others"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "057a6af2f160a85384cde4ab36f0d2777bae1057bae255f95413cdd382aa5c74"
+          "content": "c81f6515c4c40141f83f502b07bbfa5c240ba25bbe73da7b33f1e5b6120ff179"
         },
         {
           "alg": "SHA-256",
-          "content": "f2bbb8254370eb4c628ff3d6fa8a7f74ddc40565394d4f7ab791d1fe568e37ef"
+          "content": "5ec4af212df513e399cf11610cc27063f1586419e814755ab362e50a85ea69c1"
         },
         {
           "alg": "SHA-256",
-          "content": "23b81107f46d3f21d0cbce30664fcec0f5d9f585638a67081750f99738f6bf66"
+          "content": "941617e518602e2d64942c88ec8499f7fbd49d3f6c4327d3a71d43a1973032f3"
         },
         {
           "alg": "SHA-256",
-          "content": "22a7e06a5f11a757cdfe79018e9095f9f69ae283c5cd8123774c788deec8717b"
+          "content": "da305e9937617ee95c2e39d8ff9f040e0487cbf1ac174f777ed5eddd7a7c1f26"
         },
         {
           "alg": "SHA-256",
-          "content": "9d1aa57a1dc8e05bdc42e81c5d671d849577aeedf279f4c449d6d286f9ed88ca"
+          "content": "78e696e1cc714e57e8b25760b33a8b1026b7048d270140d25dafe1b0a1ee05a3"
         },
         {
           "alg": "SHA-256",
-          "content": "90c1a51bcfddf645b3bb7ec333d9e94393a8e94f55642380fa8a9a5a9e636cb7"
+          "content": "02ca0eed225b2ff301c474aeeeae27d26e2537942aa0f87491d3e147e784a82b"
         },
         {
           "alg": "SHA-256",
-          "content": "a841fae2fadcae4f438d43b6ccc4aac2ad609f47cdb6cfdce60cbb3fe5ca7bc2"
+          "content": "04690832cbea4e4663d9149e05dba142546ca05cb1848816760e7f58285c970a"
         },
         {
           "alg": "SHA-256",
-          "content": "c79d2319cabef1fe8e86df73371126931550804738f78ad7d31e3aad85a67367"
+          "content": "0590e44dd2745c696a778f7bab6aa95256de2cbc8b8cff4f7db8ff09813d6969"
         },
         {
           "alg": "SHA-256",
-          "content": "1b23b0c6f0b1db6ad769b7050c8b641c0bf215ded26c1816955b17b7f26edfa9"
+          "content": "d7cfad2d6d81dd298ab6b89fe72c3b7b05ec7544bdda3b707ddaecff8d25c161"
         },
         {
           "alg": "SHA-256",
-          "content": "55d3089079ce181a4566b1065ab28d2575eb76d8ac8f81f4fcda2bf037fee087"
+          "content": "e092b9499de38ae0fbfbc603a74660eb6ff3e869e507b50d85a13b6db9863e15"
         },
         {
           "alg": "SHA-256",
-          "content": "49c005cba1e2f9677fb2845dcdf9a2e72a52a17d63e8231aaaae35d9f50215ef"
+          "content": "48c39bc4a04d983a54a705a6389512883d4a3b9862991b3617d547940e9f52b1"
         },
         {
           "alg": "SHA-256",
-          "content": "9117377b823daa28aa8635fbb08cda1cd6be3d7143257345459559aeef852d52"
+          "content": "2d3807015f138ffea1ed9afeeb8624fd781703f2858b62a8dd8da5a0994c57b6"
         },
         {
           "alg": "SHA-256",
-          "content": "7b79d646cf46d5cf9a9f40281d4441df5849e445726e369006d2b117710b33fe"
+          "content": "ee2aa19e03161671ec964004fb74b2257805d9710bf14a5c704558b9d8dbaf17"
         },
         {
           "alg": "SHA-256",
-          "content": "fb609b3658479e33f9516d46f1a89dbb9b6c261366e3a11844a96ec487533dae"
+          "content": "ce1998c0483007608c8382f4ff50164bfc5bd07a2246dd272aa4043b75e61e85"
         },
         {
           "alg": "SHA-256",
-          "content": "0773d8329cf32b6fd222e4b52622c61fe8d503eb966cfc8d3c3c10c96266d50e"
+          "content": "631efb83f01569670a5e866ceb80fe483e7c159fac6f167e6571522636104a0b"
         },
         {
           "alg": "SHA-256",
-          "content": "b4e26a0f1b696faf283bffe5b8569e44e336c582439df5d53281ab89ee0cba96"
+          "content": "f4cd16206ad171cbc2470dbea9103cf9a7607d5fe8c242fdf1edf36174020664"
         },
         {
           "alg": "SHA-256",
-          "content": "953f521ca9445300397e65fda3dca58b2dbd68fee983777420b57ac3c77e9f90"
+          "content": "0428cbef5783ad91fe240f673cc1f76b25e74bbfe1a13115e4aa30d3f538162d"
         },
         {
           "alg": "SHA-256",
-          "content": "98af83fd65ae24b1fdd03aaead967a9f523bcd2f1aab2d4f3ffda65bb568a6f1"
+          "content": "e0b216a19534b2427cc201a26c25da4a48633f29a487c61258643e89d28200c0"
         },
         {
           "alg": "SHA-256",
-          "content": "668b92e6958c4db7cf92e81caac328dfbbdbb215db2850ad28f0cbe1eea0bfbd"
+          "content": "972a9cd27894afe4bc2b1480107054e062df08e671df7c2f18c205e805ccd806"
         },
         {
           "alg": "SHA-256",
-          "content": "9fbd898551762dea00d3fef2b1c4f99afd2c6a3ff952ea07d60a9bd5ed4f34bc"
+          "content": "4b59148601efcd2bac8c4dbf1f0ad6391693ccf7a74b8205781751637076aee3"
         },
         {
           "alg": "SHA-256",
-          "content": "68af363c07ecd8d4b7d4043d85cb376d7d227eceb54e5323ee45da73dbd3e426"
+          "content": "505d7083c8b0c87a8fa8c07370c285847c1f77739b22e299ad75a6af6c32c5c9"
         },
         {
           "alg": "SHA-256",
-          "content": "6e57054a583da8ac55edf24117ea4c9133032cfc4cf72aa2d48c1e5d4b52f899"
+          "content": "60365289c3741e4db327e7baff2a4aaacf22f788e80fa4683393891b70a89fbd"
         },
         {
           "alg": "SHA-256",
-          "content": "cc3499459bbcdd51a65b64c35ab7ed2764eaf3cba826e0df3f1d7fe2e102b70b"
+          "content": "1b88c69c8ef5d4b6fe7dea66d6636056a0f6a7527c440e890cf9259011f5e606"
         },
         {
           "alg": "SHA-256",
-          "content": "45899ec2138a4346ed34d601dedf5076fb74edf2d1dd9dc76a78e82397edee90"
+          "content": "5b13955d31d1633cf9376908089b7cebe7d15ddad7aeaabcbe969a595a97e95e"
         },
         {
           "alg": "SHA-256",
-          "content": "8767486808c436f05b23ab98eb963fb29185e32a9357a166971685cb3459900f"
+          "content": "f70c9ab2595c56f81a89620e22899eea8b212a4041bd728ac6f4a28bf5d3ddd0"
         },
         {
           "alg": "SHA-256",
-          "content": "a3b5ddfd6aa7ddad53ee3edb231e88a2151507a43229b7d71b953916deca127d"
+          "content": "084b84a8c63e8d6fc7e3931b316a9bcafca1458d753c539db82d31ed20091a87"
         },
         {
           "alg": "SHA-256",
-          "content": "63df0fe568e698e1045792399f8ab6da3a6c2dce3182813fb92afa2641087b47"
+          "content": "ad14385487393e386e2ea988b09d62dd42c397662ac2dabc3832d71253eee479"
         },
         {
           "alg": "SHA-256",
-          "content": "827d6397dbd95144939b18f89edf31f63e1f99633e8d5f32f22ba8bdda567477"
+          "content": "7f2c47b36fe7709a6e83bfadf4eefb90bd25fbe4014d715224c4316f808e59a2"
         },
         {
           "alg": "SHA-256",
-          "content": "7bf43e000d24012599b879791cff41589af90674722421ef11b11a5431920bab"
+          "content": "67e9bc5449801fad0e5dff329499fb090ba4c5800b86805c80617b4e29809b2a"
         },
         {
           "alg": "SHA-256",
-          "content": "3f5549365af25d770e06b1f8f5682d9a5637d06eb494db91c6fa75d3950cc917"
+          "content": "da86cdcf10d2519e10cabb8ac2de03da1bcb6e4853790b7fbd48523332e3a819"
         },
         {
           "alg": "SHA-256",
-          "content": "6d160217ec6fe890f16ad3a9531761589443749e448f91986c972714fad361c8"
+          "content": "0ecf12ecb326fe2c339d93fc131816f3a7367d223db37817208905c89bded911"
         },
         {
           "alg": "SHA-256",
-          "content": "9aed9fa983514ca032790f3fe0d1c0e42ca7e16b42432af1706b50a9a46bef5d"
+          "content": "fbabfaceaeb587e16f7008f7795cd80d20ec548dc7f94fbb0d4ec2e038ce563f"
         },
         {
           "alg": "SHA-256",
-          "content": "ba3b8390db29296dbbf49e91b6fe08f990743a90c8f447ba4c2ffc29670dfa63"
+          "content": "9bb2a28101a443669a423b665939381084412b81c3f8c0fcfbac57f4e30b5b8e"
         },
         {
           "alg": "SHA-256",
-          "content": "3a5d8e876dfa2f102e970b183863d6dedd023d3c0eeca1fe7a9787bc5f28b212"
+          "content": "bd3a2fbc1c6cccb3c5106140d87cc6a8715110373ef42b63cf5aea29df8c217a"
         },
         {
           "alg": "SHA-256",
-          "content": "5ebb8f4614a3787d567e610bbfdf96a4798dd69a1afb1bd8ad228d4111fe6ff3"
+          "content": "6c36ddb64ed9d7e496028d1d00dfec3e428e0aabf4006583bb1839958d280510"
         },
         {
           "alg": "SHA-256",
-          "content": "6b9bf47223dd8db3d4c4b2e443b02bace480d428f0822c3f991600448a176c97"
+          "content": "380e8e9084d8eb38db3a9176a1a4f3c0082c3806fa0dc882d1d87abc3c789247"
         },
         {
           "alg": "SHA-256",
-          "content": "3485a836550b303d006d57cc06e3d5afaabc642c77050b7c985a97b13e3776b8"
+          "content": "e808af52a0513762df4d945ea164a24b37f2f518cbe97e03deaa0ee66139b4d6"
         },
         {
           "alg": "SHA-256",
-          "content": "3e7e88110bae996d199d1693ca8ec3fd52441d426401ae963437598667b4c5eb"
+          "content": "e301d30dd7e95ae068671d746ba8c34e945a82682e62918e41b2679acd2051a0"
         },
         {
           "alg": "SHA-256",
-          "content": "15228a6800ce7bdf1b74800595e56db7138cecb338fdbf044806e10dcf182dfe"
+          "content": "800bc829053c80d240a687ceeb927a94fd108bbdc68dfbe505d0d75ab578a882"
         },
         {
           "alg": "SHA-256",
-          "content": "9d26ac7f5398bafc5b57421ad994e8a4749e8a7a0e62d05ec7d53014d5963bfa"
+          "content": "0b67af5492adb31940ee418a5a655c28e48165da5afab8c7fa6fd72a142f8740"
         },
         {
           "alg": "SHA-256",
-          "content": "2fb73254ff43c911c967a899e1359bc5049b4b115d6e8fbdde4937d0a2246cd5"
+          "content": "c9136ff29c3a91e25b1d1552b5308e53a1e0653a23e53b6366d7c2dcbbaf8a16"
         },
         {
           "alg": "SHA-256",
-          "content": "454a380af72c6adada298ed270d38c7a391288198dbfb8467f786f588751a90c"
+          "content": "cff784eef7f0b8f6cb28804fbddcfa99f89efe4cc35fb5627e3ac58f91ed3ac0"
         },
         {
           "alg": "SHA-256",
-          "content": "65c86fb646d2bd2972e96bd1a8b45817ed907cee68655d6295fe7ec031d04cca"
+          "content": "68a4953be99b17ac3c23b6efbc8a38330d99680c9458927491d18700ef23ded0"
         },
         {
           "alg": "SHA-256",
-          "content": "6a6516b02a6101398e19a3f44820f69bab2590697f7def4331f668b14adaf828"
+          "content": "35a31f2b1578185fbe6aa2e74cea1b1d0bbf4c552774247d9160d29b80ed56cc"
         },
         {
           "alg": "SHA-256",
-          "content": "45e0f79d8351fa76e256716df91eab12890d32678b9590df7ae1042e4bd4cf5d"
+          "content": "2aa055ae1857258f9e0045be26a6d62bdb47a72448b62d7b55f4820f361a2633"
         },
         {
           "alg": "SHA-256",
-          "content": "4b899594a8b2d81e5cc064a0d7f9cac2081fed91049456cae7676787e41549c9"
+          "content": "1b11eef33edeae9d142f9b4358edb76273b3bfd30bc3df9a4f95d0e49caf94e8"
         },
         {
           "alg": "SHA-256",
-          "content": "f580f8c80acd94ac72e863efe2cab791d8c38d153e0b463b92dfa000d5c84cd1"
+          "content": "10a0c37f0b646eaff7cce1874c31d1f1ccb297688d4c747291f4f4c70741cc8b"
         },
         {
           "alg": "SHA-256",
-          "content": "a2bd259c442cd43c49b30fbafc51776eb19ea396faf159d26a83e6a0a5f13b0c"
+          "content": "b5db73ba3c41c7008037fa731ad5459fc3944cb7452fc0aa9f822ad3533c583c"
         },
         {
           "alg": "SHA-256",
-          "content": "a706b908dfa85538863504c624b237a3cc34232bf403c057414ebfdb3b4d9f84"
+          "content": "750db93a81e3e5a9831b534be7b1229df848b2e125a604fe6651e48aa070e5f9"
         },
         {
           "alg": "SHA-256",
-          "content": "7333cd944ee4393b9b3d3c1b598c936d4fc8d70573a4c7dacfec5590dd50e436"
+          "content": "9ddb4f4a5479f2539644be484da179b653273bca1a323947d48ab107b3ed1f29"
         },
         {
           "alg": "SHA-256",
-          "content": "0f162bc9a15b82d947b02651b0c7e1609d6f7a8735ca330cfadec8481dd97d5a"
+          "content": "d8a7a2049c14f413163e2bdabd37e41179b1d1ccb10ffc6ccc4b7a718429c607"
         },
         {
           "alg": "SHA-256",
-          "content": "362cb78e01a5dc82009d88004cf60f2e6b6d6fcbfdec05b05af73b0abf40118f"
+          "content": "e1c85e0b6c05c592ea6d8768a66a254bfb3874b53774b12d4c89c481eb78cb90"
         },
         {
           "alg": "SHA-256",
-          "content": "acebd068fca5512c3a6fde9c045f901613478781a73f0e82b307b214daef23fb"
+          "content": "777c4d1eff1b67876139d24288aaf1817f6c03d6bae9c5cc8d27b83bcfe38fe3"
         },
         {
           "alg": "SHA-256",
-          "content": "29fe3da551dface75deb2ccbf87b6b66e2e7ef38f6d89050b428be94afff3490"
+          "content": "6697e29b93707167687543480a40f0db8f356e86d9f67ddf2e37e2dfd91a9dab"
         },
         {
           "alg": "SHA-256",
-          "content": "b4cc4fce8672fffcb09b0eafc167b396b3ba53c4a7230f54b7aaffbf6c835fa9"
+          "content": "8fdf453a942c3e4d99bd80088141c4c6960bb232c409d9c3558e2dbaa3998562"
         },
         {
           "alg": "SHA-256",
-          "content": "5d4a51aad8ba8bdcd2b8bd8f03d4aca19693fa2327a3470e4718a25b03481020"
+          "content": "32ca0c0114c9834a43f045a87dcebd69d108d8ffb666957ea65aa132f50332e2"
         },
         {
           "alg": "SHA-256",
-          "content": "9f323af3e1e4f68b60b7b247e37b8515563a61375518fa59de1af48ba28a3db6"
+          "content": "8769751c10f339021e2638cd354e13adeac54004d1941119b2c96fe5276d45ea"
         },
         {
           "alg": "SHA-256",
-          "content": "1a0abc7342ea9711c469dd8b821c6c311e6bc6aac1442e5fbd6b27fae0a8f3db"
+          "content": "cec2d83125531bd153175354055cdb7a09987af08a9430bd173c937c6d0fba2a"
         },
         {
           "alg": "SHA-256",
-          "content": "a9f864ef57b7172e2db87a096642dd51e179e085ab6b2c371c29e885f65c8fb2"
+          "content": "0cd9ed7a8b181775459296e402ca4fb27db1279740a24e93b3b41942ebe4b215"
         },
         {
           "alg": "SHA-256",
-          "content": "29943e552fdc08e082eb51400fb2f58e118a83b5542bd06531214e084399b644"
+          "content": "301e3b7dfefecaca37c9f1aa6f0049b7d4ab8dd933742b607765d757aca77d43"
         },
         {
           "alg": "SHA-256",
-          "content": "742a73ea621953b012f2c4c2219b512180dd84489acf5b1596b0aafc55b9100b"
+          "content": "9dacc2ad679b292709e0f5fc1ac74a6d4d5562e424058962c7bb0c658ad25e45"
         },
         {
           "alg": "SHA-256",
-          "content": "8de5b61163aee3d05c8a2beab6f47913df7981dad1baf82c414d99158c286ab1"
+          "content": "34b02417cf070e173989b3db962f7ed56d2f644307b2cf9d5a0f258e13084a61"
         }
       ],
       "licenses": [
@@ -549,11 +767,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/23/7f/d0720730a397a999ffc0fd3f5bebef347338e3a47b727da66fbb228e2ff2/coverage-7.14.0.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/9d/e0/70553e3000e345daff267cec284ce4cbf3fc141b6da229ac52775b5428f1/coverage-7.13.5.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/coverage/7.14.0/"
+          "url": "https://pypi.org/project/coverage/7.13.5/"
         }
       ],
       "properties": [
@@ -565,73 +783,226 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/duckdb@1.5.2",
-      "name": "duckdb",
-      "version": "1.5.2",
-      "purl": "pkg:pypi/duckdb@1.5.2",
+      "bom-ref": "pkg:pypi/cryptography@48.0.0",
+      "name": "cryptography",
+      "version": "48.0.0",
+      "purl": "pkg:pypi/cryptography@48.0.0",
       "supplier": {
-        "name": "DuckDB Foundation"
+        "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "638da0d5102b6cb6f7d47f83d0600708ac1d3cb46c5e9aaabc845f9ba4d69246"
+          "content": "5c3932f4436d1cccb036cb0eaef46e6e2db91035166f1ad6505c3c9d5a635920"
         },
         {
           "alg": "SHA-256",
-          "content": "4420b3f47027a7849d0e1815532007f377fa95ee5810b47ea717d35525c12f79"
+          "content": "0c558d2cdffd8f4bbb30fc7134c74d2ca9a476f830bb053074498fbc86f41ed6"
         },
         {
           "alg": "SHA-256",
-          "content": "bb42e6ed543902e14eae647850da24103a89f0bc2587dec5601b1c1f213bd2ed"
+          "content": "f5333311663ea94f75dd408665686aaf426563556bb5283554a3539177e03b8c"
         },
         {
           "alg": "SHA-256",
-          "content": "98c0535cd6d901f61a5ea3c2e26a1fd28482953d794deb183daf568e3aa5dda6"
+          "content": "7995ef305d7165c3f11ae07f2517e5a4f1d5c18da1376a0a9ed496336b69e5f3"
         },
         {
           "alg": "SHA-256",
-          "content": "486c862bf7f163c0110b6d85b3e5c031d224a671cca468f12ebb1d3a348f6b39"
+          "content": "40ba1f85eaa6959837b1d51c9767e230e14612eea4ef110ee8854ada22da1bf5"
         },
         {
           "alg": "SHA-256",
-          "content": "70631c847ca918ee710ec874241b00cf9d2e5be90762cbb2a0389f17823c08f7"
+          "content": "369a6348999f94bbd53435c894377b20ab95f25a9065c283570e70150d8abc3c"
         },
         {
           "alg": "SHA-256",
-          "content": "52a21823f3fbb52f0f0e5425e20b07391ad882464b955879499b5ff0b45a376b"
+          "content": "a0e692c683f4df67815a2d258b324e66f4738bd7a96a218c826dce4f4bd05d8f"
         },
         {
           "alg": "SHA-256",
-          "content": "411ad438bd4140f189a10e7f515781335962c5d18bd07837dc6d202e3985253d"
+          "content": "18349bbc56f4743c8b12dc32e2bccb2cf83ee8b69a3bba74ef8ae857e26b3d25"
         },
         {
           "alg": "SHA-256",
-          "content": "6b0fe75c148000f060aa1a27b293cacc0ea08cc1cad724fbf2143d56070a3785"
+          "content": "7e8eac43dfca5c4cccc6dad9a80504436fca53bb9bc3100a2386d730fbe6b602"
         },
         {
           "alg": "SHA-256",
-          "content": "35579b8e3a064b5eaf15b0eafc558056a13f79a0a62e34cc4baf57119daecfec"
+          "content": "9ccdac7d40688ecb5a3b4a604b8a88c8002e3442d6c60aead1db2a89a041560c"
         },
         {
           "alg": "SHA-256",
-          "content": "ea58ff5b0880593a280cf5511734b17711b32ee1f58b47d726e8600848358160"
+          "content": "bd72e68b06bb1e96913f97dd4901119bc17f39d4586a5adf2d3e47bc2b9d58b5"
         },
         {
           "alg": "SHA-256",
-          "content": "ef461bca07313412dc09961c4a4757a851f56b95ac01c58fac6007632b7b94f2"
+          "content": "59baa2cb386c4f0b9905bd6eb4c2a79a69a128408fd31d32ca4d7102d4156321"
         },
         {
           "alg": "SHA-256",
-          "content": "be37680ddb380015cb37318e378c53511c45c4f0d8fac5599d22b7d092b9217a"
+          "content": "9249e3cd978541d665967ac2cb2787fd6a62bddf1e75b3e347a594d7dacf4f74"
         },
         {
           "alg": "SHA-256",
-          "content": "0b291786014df1133f8f18b9df4d004484613146e858d71a21791e0fcca16cf4"
+          "content": "9c459db21422be75e2809370b829a87eb37f74cd785fc4aa9ea1e5f43b47cda4"
         },
         {
           "alg": "SHA-256",
-          "content": "c9f3e0b71b8a50fccfb42794899285d9d318ce2503782b9dd54868e5ecd0ad31"
+          "content": "5b012212e08b8dd5edc78ef54da83dd9892fd9105323b3993eff6bea65dc21d7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3cb07a3ed6431663cd321ea8a000a1314c74211f823e4177fefa2255e057d1ec"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8c7378637d7d88016fa6791c159f698b3d3eed28ebf844ac36b9dc04a14dae18"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "cc90c0b39b2e3c65ef52c804b72e3c58f8a04ab2a1871272798e5f9572c17d20"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "76341972e1eff8b4bea859f09c0d3e64b96ce931b084f9b9b7db8ef364c30eff"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "55b7718303bf06a5753dcdccf2f3945cf18ad7bffde41b61226e4db31ab89a9c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a64697c641c7b1b2178e573cbc31c7c6684cd56883a478d75143dbb7118036db"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "561215ea3879cb1cbbf272867e2efda62476f240fb58c64de6b393ae19246741"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ad64688338ed4bc1a6618076ba75fd7194a5f1797ac60b47afe926285adb3166"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "906cbf0670286c6e0044156bc7d4af9cbb0ef6db9f73e52c3ec56ba6bdde5336"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ea8990436d914540a40ab24b6a77c0969695ed52f4a4874c5137ccf7045a7057"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c18684a7f0cc9a3cb60328f496b8e3372def7c5d2df39ac267878b05565aaaae"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9be5aafa5736574f8f15f262adc81b2a9869e2cfe9014d52a44633905b40d52c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c17dfe85494deaeddc5ce251aebd1d60bbe6afc8b62071bb0b469431a000124f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "27241b1dc9962e056062a8eef1991d02c3a24569c95975bd2322a8a52c6e5e12"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "58d00498e8933e4a194f3076aee1b4a97dfec1a6da444535755822fe5d8b0b86"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "614d0949f4790582d2cc25553abd09dd723025f0c0e7c67376a1d77196743d6e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7ce4bfae76319a532a2dc68f82cc32f5676ee792a983187dac07183690e5c66f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2eb992bbd4661238c5a397594c83f5b4dc2bc5b848c365c8f991b6780efcc5c7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "22a5cb272895dce158b2cacdfdc3debd299019659f42947dbdac6f32d68fe832"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2b4d59804e8408e2fea7d1fbaf218e5ec984325221db76e6a241a9abd6cdd95c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "984a20b0f62a26f48a3396c72e4bc34c66e356d356bf370053066b3b6d54634a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5a5ed8fde7a1d09376ca0b40e68cd59c69fe23b1f9768bd5824f54681626032a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8cd666227ef7af430aa5914a9910e0ddd703e75f039cef0825cd0da71b6b711a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9071196d81abc88b3516ac8cdfad32e2b66dd4a5393a8e68a961e9161ddc6239"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1e2d54c8be6152856a36f0882ab231e70f8ec7f14e93cf87db8a2ed056bf160c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a5da777e32ffed6f85a7b2b3f7c5cbc88c146bfcd0a1d7baf5fcc6c52ee35dd4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "77a2ccbbe917f6710e05ba9adaa25fb5075620bf3ea6fb751997875aff4ae4bd"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "16cd65b9330583e4619939b3a3843eec1e6e789744bb01e7c7e2e62e33c239c8"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "Apache-2.0 OR BSD-3-Clause"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9f/a9/db8f313fdcd85d767d4973515e1db101f9c71f95fced83233de224673757/cryptography-48.0.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/cryptography/48.0.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/et-xmlfile@2.0.0",
+      "name": "et-xmlfile",
+      "version": "2.0.0",
+      "purl": "pkg:pypi/et-xmlfile@2.0.0",
+      "supplier": {
+        "name": "See AUTHORS.txt"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dab3f4764309081ce75662649be815c4c9081e88f0837825f90fd28317d4da54"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa"
         }
       ],
       "licenses": [
@@ -644,97 +1015,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/0c/66/744b4931b799a42f8cb9bc7a6f169e7b8e51195b62b246db407fd90bf15f/duckdb-1.5.2.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/d3/38/af70d7ab1ae9d4da450eeec1fa3918940a5fafb9055e934af8d6eb0c2313/et_xmlfile-2.0.0.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/duckdb/1.5.2/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/filelock@3.29.0",
-      "name": "filelock",
-      "version": "3.29.0",
-      "purl": "pkg:pypi/filelock@3.29.0",
-      "supplier": {
-        "name": "github.com"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "69974355e960702e789734cb4871f884ea6fe50bd8404051a3530bc07809cf90"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "96f5f6344709aa1572bbf631c640e4ebeeb519e08da902c39a001882f30ac258"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/b5/fe/997687a931ab51049acce6fa1f23e8f01216374ea81374ddee763c493db5/filelock-3.29.0.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/filelock/3.29.0/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/fsspec@2026.4.0",
-      "name": "fsspec",
-      "version": "2026.4.0",
-      "purl": "pkg:pypi/fsspec@2026.4.0",
-      "supplier": {
-        "name": "github.com"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "301d8ac70ae90ef3ad05dcf94d6c3754a097f9b5fe4667d2787aa359ec7df7e4"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "11ef7bb35dab8a394fde6e608221d5cf3e8499401c249bebaeaad760a1a8dec2"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "BSD-3-Clause"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/d5/8d/1c51c094345df128ca4a990d633fe1a0ff28726c9e6b3c41ba65087bba1d/fsspec-2026.4.0.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/fsspec/2026.4.0/"
+          "url": "https://pypi.org/project/et-xmlfile/2.0.0/"
         }
       ],
       "properties": [
@@ -778,141 +1063,6 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/h11/0.16.0/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/hf-xet@1.5.0",
-      "name": "hf-xet",
-      "version": "1.5.0",
-      "purl": "pkg:pypi/hf-xet@1.5.0",
-      "supplier": {
-        "name": "github.com"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "e0fb0a34d9f406eed88233e829a67ec016bec5af19e480eac65a233ea289a948"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "7d70fe2ce97b9db73b9c9b9c81fe3693640aec83416a966c446afea54acfae3c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "73a0dae8c71de3b0633a45c73f4a4a5ed09e94b43441d82981a781d4f12baa42"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a60290ec57e9b71767fba7c3645ddafdd0759974b540441510c629c6db6db24a"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "e5de0f6deada0dada870bb376a11bcd1f08abf3a968a6d118f33e72d1b1eb480"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "c799d49f1a5544a0ef7591c0ee75e0d6b93d6f56dc7a4979f59f7518d2872216"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2baea1b0b989e5c152fe81425f7745ddc8901280ba3d97c98d8cdece7b706c60"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "526345b3ed45f374f6317349df489167606736c876241ba984105afe7fd4839d"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "786d28e2eb8315d5035544b9d137b4a842d600c434bb91bf7d0d953cce906ad4"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "872d5601e6deea30d15865ede55d29eac6daf5a534ab417b99b6ef6b076dd96c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9929561f5abf4581c8ea79587881dfef6b8abb2a0d8a51915936fc2a614f4e73"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "f7b7bbae318e583a86fb21e5a4a175d6721d628a2874f4bd022d0e660c32a682"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "cf7b2dc6f31a4ea754bb50f74cde482dcf5d366d184076d8530b9872787f3761"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "8dbcbab554c9ef158ef2c991545c3e970ddd8cc7acdcd0a78c5a41095dab4ded"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5906bf7718d3636dc13402914736abe723492cb730f744834f5f5b67d3a12702"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5f3dc2248fc01cc0a00cd392ab497f1ca373fcbc7e3f2da1f452480b384e839e"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "b285cea1b5bab46b758772716ba8d6854a1a0310fed1c249d678a8b38601e5a0"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "dad0dc84e941b8ba3c860659fe1fdc35c049d47cce293f003287757e971a8f56"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "fd6e5a9b0fdac4ed03ed45ef79254a655b1aaab514a02202617fbf643f5fdf7a"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "3531b1823a0e6d77d80f9ed15ca0e00f0d115094f8ac033d5cae88f4564cc949"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9a0ee58cd18d5ea799f7ed11290bbccbe56bdd8b1d97ca74b9cc49a3945d7a3b"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "1e60df5a42e9bed8628b6416af2cba4cba57ae9f02de226a06b020d98e1aab18"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4b35549ce62601b84da4ff9b24d970032ace3d4430f52d91bcbb26c901d6c690"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2806c7c17b4d23f8d88f7c4814f838c3b6150773fe339c20af23e1cfaf2797e4"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "b6c9df403040248c76d808d3e047d64db2d923bae593eb244c41e425cf6cd7be"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "Apache-2.0"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/74/d8/5c06fc76461418326a7decf8367480c35be11a41fd938633929c60a9ec6b/hf_xet-1.5.0.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/hf-xet/1.5.0/"
         }
       ],
       "properties": [
@@ -1010,38 +1160,38 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/huggingface-hub@1.14.0",
-      "name": "huggingface-hub",
-      "version": "1.14.0",
-      "purl": "pkg:pypi/huggingface-hub@1.14.0",
+      "bom-ref": "pkg:pypi/httpx-sse@0.4.3",
+      "name": "httpx-sse",
+      "version": "0.4.3",
+      "purl": "pkg:pypi/httpx-sse@0.4.3",
       "supplier": {
-        "name": "Hugging Face, Inc."
+        "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d6d2c9cd6be1d02ae9ec6672d5587d10a427f377db688e82528f426a041622c2"
+          "content": "9b1ed0127459a66014aec3c56bebd93da3c1bc8bb6618c8082039a44889a755d"
         },
         {
           "alg": "SHA-256",
-          "content": "efe075535c62e130b30e836b138e13785f6f043d1f0539e0a39aa411a99e90b8"
+          "content": "0ac1c9fe3c0afad2e0ebb25a934a59f4c7823b60792691f779fad2c5568830fc"
         }
       ],
       "licenses": [
         {
           "license": {
-            "id": "Apache-2.0"
+            "id": "MIT"
           }
         }
       ],
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/39/40/43109e943fd718b0ccd0cd61eb4f1c347df22bf81f5874c6f22adf44bcff/huggingface_hub-1.14.0.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/0f/4c/751061ffa58615a32c31b2d82e8482be8dd4a89154f003147acee90f2be9/httpx_sse-0.4.3.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/huggingface-hub/1.14.0/"
+          "url": "https://pypi.org/project/httpx-sse/0.4.3/"
         }
       ],
       "properties": [
@@ -1053,64 +1203,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/hypothesis@6.152.7",
-      "name": "hypothesis",
-      "version": "6.152.7",
-      "purl": "pkg:pypi/hypothesis@6.152.7",
-      "supplier": {
-        "name": "Unknown / community"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "741dedcede2ae0f32c32929a5992804b61f2b0400403b6a51a881a2b58482782"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "c0b17dd428fcb6e962f60315f6f4a77816c72fbb281ce9ba73699dabead5ec82"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MPL-2.0"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/91/dd/19d273652eb20dac15f32bbc484f2f6d51ccd8fe51fdb27da3f85f9017e8/hypothesis-6.152.7.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/hypothesis/6.152.7/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "weak-copyleft"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/idna@3.15",
+      "bom-ref": "pkg:pypi/idna@3.13",
       "name": "idna",
-      "version": "3.15",
-      "purl": "pkg:pypi/idna@3.15",
+      "version": "3.13",
+      "purl": "pkg:pypi/idna@3.13",
       "supplier": {
         "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ca962446ea538f7092a95e057da437618e886f4d349216d2b1e294abfdb65fdc"
+          "content": "585ea8fe5d69b9181ec1afba340451fba6ba764af97026f92a91d4eef164a242"
         },
         {
           "alg": "SHA-256",
-          "content": "048adeaf8c2d788c40fee287673ccaa74c24ffd8dcf09ffa555a2fbb59f10ac8"
+          "content": "892ea0cde124a99ce773decba204c5552b69c3c67ffd5f232eb7696135bc8bb3"
         }
       ],
       "licenses": [
@@ -1123,60 +1230,17 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/82/77/7b3966d0b9d1d31a36ddf1746926a11dface89a83409bf1483f0237aa758/idna-3.15.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/ce/cc/762dfb036166873f0059f3b7de4565e1b5bc3d6f28a414c13da27e442f99/idna-3.13.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/idna/3.15/"
+          "url": "https://pypi.org/project/idna/3.13/"
         }
       ],
       "properties": [
         {
           "name": "kaos:license-class",
           "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/imagehash@4.3.2",
-      "name": "imagehash",
-      "version": "4.3.2",
-      "purl": "pkg:pypi/imagehash@4.3.2",
-      "supplier": {
-        "name": "Johannes Buchner"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "e54a79805afb82a34acde4746a16540503a9636fd1ffb31d8e099b29bbbf8156"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "02b0f965f8c77cd813f61d7d39031ea27d4780e7ebcad56c6cd6a709acc06e5f"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "name": "LicenseRef-unknown-257a8106"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/cd/de/5c0189b0582e21583c2a213081c35a2501c0f9e51f21f6a52f55fbb9a4ff/ImageHash-4.3.2.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/imagehash/4.3.2/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "unknown"
         }
       ]
     },
@@ -1225,21 +1289,150 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-core@0.1.0a7",
+      "bom-ref": "pkg:pypi/jsonschema@4.26.0",
+      "name": "jsonschema",
+      "version": "4.26.0",
+      "purl": "pkg:pypi/jsonschema@4.26.0",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0c26707e2efad8aa1bfc5b7ce170f3fccc2e4918ff85989ba9ffa9facb2be326"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b3/fc/e067678238fa451312d4c62bf6e6cf5ec56375422aee02f9cb5f909b3047/jsonschema-4.26.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/jsonschema/4.26.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/jsonschema-specifications@2025.9.1",
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "purl": "pkg:pypi/jsonschema-specifications@2025.9.1",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b540987f239e745613c7a9176f3edb72b832a4ac465cf02712288397832b5e8d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/19/74/a633ee74eb36c44aa6d1095e7cc5569bebf04342ee146178e2d36600708b/jsonschema_specifications-2025.9.1.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/jsonschema-specifications/2025.9.1/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/kaos-content@0.1.0a2",
+      "name": "kaos-content",
+      "version": "0.1.0a2",
+      "purl": "pkg:pypi/kaos-content@0.1.0a2",
+      "supplier": {
+        "name": "kelvin.legal"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8b252a4cb6448f92f8e09b2878efea4c179ab24d6d6c959b6d8649280fd1a811"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ec416b228752eaef3e4470e91bde1bf22bf5ba65b0d36d172a3667c61c48de12"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d5/4e/70e8390e197e331109d321e51756310955276f62c077bf08f93447e2945f/kaos_content-0.1.0a2.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/kaos-content/0.1.0a2/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/kaos-core@0.1.0a10",
       "name": "kaos-core",
-      "version": "0.1.0a7",
-      "purl": "pkg:pypi/kaos-core@0.1.0a7",
+      "version": "0.1.0a10",
+      "purl": "pkg:pypi/kaos-core@0.1.0a10",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "df249e194f53c3d9ccec0dbd0497c12e99b7daa750a780b356cc1a5118776d27"
+          "content": "6237422136b352d9a6805ccf634714d6b086b39a6551d77e779a9fd9eba0bae7"
         },
         {
           "alg": "SHA-256",
-          "content": "08f76a0024f9ae339b6c54f6d9fedb5e1185afab6f52692732a6d981f1e52705"
+          "content": "5690a55dd4720a68083328dad20c6d59f13fcc6dc2d557c710936a1f48257f2f"
         }
       ],
       "licenses": [
@@ -1252,11 +1445,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/e5/3d/dfb8f766e706893870977fc035582b37c6b2fa63f4ecf81190dbae20f53f/kaos_core-0.1.0a7.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/b3/fa/7fe7eba42dae8acdb036a1863aec8d009f9bd077258ac8937e515c3c706d/kaos_core-0.1.0a10.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-core/0.1.0a7/"
+          "url": "https://pypi.org/project/kaos-core/0.1.0a10/"
         }
       ],
       "properties": [
@@ -1268,37 +1461,88 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.0a8",
+      "bom-ref": "pkg:pypi/kaos-mcp@0.1.0a3",
+      "name": "kaos-mcp",
+      "version": "0.1.0a3",
+      "purl": "pkg:pypi/kaos-mcp@0.1.0a3",
+      "supplier": {
+        "name": "kelvin.legal"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fd9ae284d8f47abdac217431621439c167b05d5a5dd1e6c090a5d8aa34d200b5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e6fbc3f803b5fff6f16106b31398cb8cc88100e9cd357c790c3e400d10f266f9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/e6/5d/ce41b0f5b3e08bc998c7a58ed36a7ebc0179aeccfbfa6deef5f556237fc2/kaos_mcp-0.1.0a3.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/kaos-mcp/0.1.0a3/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.0a2",
       "name": "kaos-nlp-core",
-      "version": "0.1.0a8",
-      "purl": "pkg:pypi/kaos-nlp-core@0.1.0a8",
+      "version": "0.1.0a2",
+      "purl": "pkg:pypi/kaos-nlp-core@0.1.0a2",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8b899cd988e4d1505ac88ce71c1fd7d1734efc08792ca3a27696bb45b85fb8fb"
+          "content": "90a4afee1432786301a79c1046e5783a6e94bc8c1e6023d3455f9f706a3bd1e8"
         },
         {
           "alg": "SHA-256",
-          "content": "c7bfe5df8f4d9cefd58bbab9007aa1f17140bb1b8757dedb05a26c63a0e555e1"
+          "content": "dcb8d13c92f2cd5c4c520d284d86dae8c77d65b8d6986c67a40a6f3654b011f5"
         },
         {
           "alg": "SHA-256",
-          "content": "c6b0c8ad7330507c9bce2a88167eb6373d07f723bca4b7976a4f1d9be0a8461e"
+          "content": "24b53cdaa8ffde33b5b462a2449f2d9ae0f139618acac0af9322c6e8083b85b1"
         },
         {
           "alg": "SHA-256",
-          "content": "535d7bcd06c28fa2a023ce5c0c0ddb3b59b5e4c878629e0cb4c8135d1cbba5d2"
+          "content": "c7599a7e24da67aba7dbbc0face38937f480b6375552d7ca92623cad097c3856"
         },
         {
           "alg": "SHA-256",
-          "content": "da499824f890d7ccac6e82aacd07b972402a45be9532300fdf69fce57b292900"
+          "content": "46ab2830feb74c49c7715131cb961c7eee4cbdf61487184ed1f89c72e570c78f"
         },
         {
           "alg": "SHA-256",
-          "content": "3073dc3ae7397668612407e9c3afcdabb7b4819e0f6caf87cd0d3eb4835efa39"
+          "content": "7a0aebd7e77a47d9e24ad806fb10bf81474bf290f769f2054d6b1a9fcd7ec241"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "09c10a20f9aaff5bf87903501ac065a989c55a92e6f7fa8be6e67c5da8746244"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "bb625a1487f5c7673b422a7b1e67a772ce1b0168d83071c5aa1fb000736d0dc6"
         }
       ],
       "licenses": [
@@ -1311,113 +1555,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/b8/e0/aa336da82cf3a0b4c40107e6c99505782d30a00e56c7709aaf57e0ac6857/kaos_nlp_core-0.1.0a8.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/76/b0/7417ac53b9c0fb3312bb091acea653f13dd6101b99ba7cf31e39a8dbec86/kaos_nlp_core-0.1.0a2.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-nlp-core/0.1.0a8/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/kaos-nlp-transformers@0.2.0a8",
-      "name": "kaos-nlp-transformers",
-      "version": "0.2.0a8",
-      "purl": "pkg:pypi/kaos-nlp-transformers@0.2.0a8",
-      "supplier": {
-        "name": "kelvin.legal"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "d5e0d1b10b9ca28c6fd0691857d34a9f14261541b53e4087d3084f43c117d71b"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9004fd30aefe77e878f003ddda1c1266ed38309d860cdadbc6e96a7a51d9388c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "3fe1d5583d8c9ba5a360142db48c9d2add1a3c7d211a4e88748ff97d7d674f37"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "3c7e9c66ee54f260265999fd9cd5b1dceebbe2c63e40bfe5219661f0363c94e4"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "35955760defb963fe3529f7e4d676db81bbd870ed9d9963a1663536972266d28"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5c55379cd28f9efcc476d9503fffda418b7c4dcf1f8be3033a4c9ab66c742fe9"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "Apache-2.0"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/5c/38/8721a456d06517e72e33f1f75e381221db405f33f0c46bf24956c1b3a51a/kaos_nlp_transformers-0.2.0a8.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/kaos-nlp-transformers/0.2.0a8/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/kaos-office@0.1.0a4",
-      "name": "kaos-office",
-      "version": "0.1.0a4",
-      "purl": "pkg:pypi/kaos-office@0.1.0a4",
-      "supplier": {
-        "name": "kelvin.legal"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "4486f1c4f79039364675d610bd0e99655a9fb7911c2e2141c75e5e1c0f58f89f"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "b8a34eec684112fc5e61219c404dfe7069c6b81228c31d1ea01e714ef687aed5"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "Apache-2.0"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/ab/0d/fcd021e8adf751f923b01b508c55808bda254570c2c6dd360d8dd3a4b87c/kaos_office-0.1.0a4.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/kaos-office/0.1.0a4/"
+          "url": "https://pypi.org/project/kaos-nlp-core/0.1.0a2/"
         }
       ],
       "properties": [
@@ -1727,21 +1869,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/mdit-py-plugins@0.6.1",
-      "name": "mdit-py-plugins",
-      "version": "0.6.1",
-      "purl": "pkg:pypi/mdit-py-plugins@0.6.1",
+      "bom-ref": "pkg:pypi/mcp@1.27.1",
+      "name": "mcp",
+      "version": "1.27.1",
+      "purl": "pkg:pypi/mcp@1.27.1",
       "supplier": {
-        "name": "github.com"
+        "name": "Anthropic, PBC."
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a2bca0f039f39dbd35fb74ae1b5f998608c437463371f0ff7f49a19a17a114d0"
+          "content": "0f47e1820f8f8f941466b39749eb1d1839a04caddca2bc60e9d46e8a99914924"
         },
         {
           "alg": "SHA-256",
-          "content": "214c82fb2ac524472ab6a5bcab1de80f73b50443e187f401bfd77efbc7c6481d"
+          "content": "1af3c4203b329430fde7a87b4fcb6392a041f5cb851fd68fc674016ab4e7c06f"
         }
       ],
       "licenses": [
@@ -1754,11 +1896,54 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/59/fc/f8d0863f8862f25602c0404d75568e89fb6b4109804645e5cdfb1be5cf56/mdit_py_plugins-0.6.1.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/38/83/d1efe7c2980d8a3afa476f4e3d42d53dd54c0ab94c27bee5d755b45c8b73/mcp-1.27.1.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/mdit-py-plugins/0.6.1/"
+          "url": "https://pypi.org/project/mcp/1.27.1/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/mdit-py-plugins@0.6.0",
+      "name": "mdit-py-plugins",
+      "version": "0.6.0",
+      "purl": "pkg:pypi/mdit-py-plugins@0.6.0",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2436f14a7295837ac9228a36feeabda867c4abc488c8d019ad5c0bda88eee040"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f7e7a25d8b616fee99cb1e330da73451d11a8061baf39bb9663ab9ce0e005b90"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d8/3d/e0e8d9d1cee04f758120915e2b2a3a07eb41f8cf4654b4734788a522bcd1/mdit_py_plugins-0.6.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/mdit-py-plugins/0.6.0/"
         }
       ],
       "properties": [
@@ -1813,200 +1998,38 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/numpy@2.4.4",
-      "name": "numpy",
-      "version": "2.4.4",
-      "purl": "pkg:pypi/numpy@2.4.4",
+      "bom-ref": "pkg:pypi/openpyxl@3.1.5",
+      "name": "openpyxl",
+      "version": "3.1.5",
+      "purl": "pkg:pypi/openpyxl@3.1.5",
       "supplier": {
-        "name": "Travis E. Oliphant et al."
+        "name": "See AUTHORS"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2d390634c5182175533585cc89f3608a4682ccb173cc9bb940b2881c8d6f8fa0"
+          "content": "cf0e3cf56142039133628b5acffe8ef0c12bc902d2aadd3e0fe5878dc08d1050"
         },
         {
           "alg": "SHA-256",
-          "content": "08f2e31ed5e6f04b118e49821397f12767934cfdd12a1ce86a058f91e004ee50"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "e823b8b6edc81e747526f70f71a9c0a07ac4e7ad13020aa736bb7c9d67196115"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4a19d9dba1a76618dd86b164d608566f393f8ec6ac7c44f0cc879011c45e65af"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "d2a8490669bfe99a233298348acc2d824d496dee0e66e31b66a6022c2ad74a5c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "45dbed2ab436a9e826e302fcdcbe9133f9b0006e5af7168afb8963a6520da103"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "c901b15172510173f5cb310eae652908340f8dede90fff9e3bf6c0d8dfd92f83"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "99d838547ace2c4aace6c4f76e879ddfe02bb58a80c1549928477862b7a6d6ed"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "0aec54fd785890ecca25a6003fd9a5aed47ad607bbac5cd64f836ad8666f4959"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "07077278157d02f65c43b1b26a3886bce886f95d20aabd11f87932750dfb14ed"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5c70f1cc1c4efbe316a572e2d8b9b9cc44e89b95f79ca3331553fbb63716e2bf"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "ef4059d6e5152fa1a39f888e344c73fdc926e1b2dd58c771d67b0acfbf2aa67d"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4bbc7f303d125971f60ec0aaad5e12c62d0d2c925f0ab1273debd0e4ba37aba5"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4d6d57903571f86180eb98f8f0c839fa9ebbfb031356d87f1361be91e433f5b7"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4636de7fd195197b7535f231b5de9e4b36d2c440b6e566d2e4e4746e6af0ca93"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "ad2e2ef14e0b04e544ea2fa0a36463f847f113d314aa02e5b402fdf910ef309e"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5a285b3b96f951841799528cd1f4f01cd70e7e0204b4abebac9463eecfcf2a40"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "f8474c4241bc18b750be2abea9d7a9ec84f46ef861dbacf86a4f6e043401f79e"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4e874c976154687c1f71715b034739b45c7711bec81db01914770373d125e392"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9c585a1790d5436a5374bac930dad6ed244c046ed91b2b2a3634eb2971d21008"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "93e15038125dc1e5345d9b5b68aa7f996ec33b98118d18c6ca0d0b7d6198b7e8"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "0dfd3f9d3adbe2920b68b5cd3d51444e13a10792ec7154cd0a2f6e74d4ab3233"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "f169b9a863d34f5d11b8698ead99febeaa17a13ca044961aa8e2662a6c7766a0"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2483e4584a1cb3092da4470b38866634bafb223cbcd551ee047633fd2584599a"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2d19e6e2095506d1736b7d80595e0f252d76b89f5e715c35e06e937679ea7d7a"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "6a246d5914aa1c820c9443ddcee9c02bec3e203b0c080349533fae17727dfd1b"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "989824e9faf85f96ec9c7761cd8d29c531ad857bfa1daa930cba85baaecf1a9a"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "27a8d92cd10f1382a67d7cf4db7ce18341b66438bdd9f691d7b0e48d104c2a9d"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "e44319a2953c738205bf3354537979eaa3998ed673395b964c1176083dd46252"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "e892aff75639bbef0d2a2cfd55535510df26ff92f63c92cd84ef8d4ba5a5557f"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "1378871da56ca8943c2ba674530924bb8ca40cd228358a3b5f302ad60cf875fc"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "715d1c092715954784bc79e1174fc2a90093dc4dc84ea15eb14dad8abdcdeb74"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2c194dd721e54ecad9ad387c1d35e63dce5c4450c6dc7dd5611283dda239aabb"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2aa0613a5177c264ff5921051a5719d20095ea586ca88cc802c5c218d1c67d3e"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "42c16925aa5a02362f986765f9ebabf20de75cdefdca827d14315c568dcab113"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "874f200b2a981c647340f841730fc3a2b54c9d940566a3c4149099591e2c4c3d"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "c9b39d38a9bd2ae1becd7eac1303d031c5c110ad31f2b319c6e7d98b135c934d"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "b268594bccac7d7cf5844c7732e3f20c50921d94e36d7ec9b79e9857694b1b2f"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "ac6b31e35612a26483e20750126d30d0941f949426974cace8e6b5c58a3657b0"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "8e3ed142f2728df44263aaf5fb1f5b0b99f4070c553a0d7f033be65338329150"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "dddbbd259598d7240b18c9d87c56a9d2fb3b02fe266f49a7c101532e78c1d871"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a7164afb23be6e37ad90b2f10426149fd75aee07ca55653d2aa41e66c4ef697e"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "ba203255017337d39f89bdd58417f03c4426f12beed0440cfd933cb15f8669c7"
+          "content": "5282c12b107bffeef825f4617dc029afaf41d0ea60823bbb665ef3079dc79de2"
         }
       ],
       "licenses": [
         {
-          "expression": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0"
+          "license": {
+            "id": "MIT"
+          }
         }
       ],
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/d7/9f/b8cef5bffa569759033adda9481211426f12f53299629b410340795c2514/numpy-2.4.4.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/3d/f9/88d94a75de065ea32619465d2f77b29a0469500e99012523b91cc4141cd1/openpyxl-3.1.5.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/numpy/2.4.4/"
+          "url": "https://pypi.org/project/openpyxl/3.1.5/"
         }
       ],
       "properties": [
@@ -2341,109 +2364,38 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/polars@1.40.1",
-      "name": "polars",
-      "version": "1.40.1",
-      "purl": "pkg:pypi/polars@1.40.1",
+      "bom-ref": "pkg:pypi/pycparser@3.0",
+      "name": "pycparser",
+      "version": "3.0",
+      "purl": "pkg:pypi/pycparser@3.0",
       "supplier": {
-        "name": "pola.rs"
+        "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ab2694134b137596b5a59bfd7b4c54ebbc9b59f9403127f18e32d363777552e8"
+          "content": "600f49d217304a5902ac3c37e1281c9fe94e4d0489de643a9504c5cdfdfc6b29"
         },
         {
           "alg": "SHA-256",
-          "content": "c0f861219d1319cdea45c4ce4d30355a47176b8f98dcedf95ea8269f131b8abd"
+          "content": "b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992"
         }
       ],
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "BSD-3-Clause"
           }
         }
       ],
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/b3/8c/bc9bc948058348ed43117cecc3007cd608f395915dae8a00974579a5dab1/polars-1.40.1.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/1b/7d/92392ff7815c21062bea51aa7b87d45576f649f16458d78b7cf94b9ab2e6/pycparser-3.0.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/polars/1.40.1/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/polars-runtime-32@1.40.1",
-      "name": "polars-runtime-32",
-      "version": "1.40.1",
-      "purl": "pkg:pypi/polars-runtime-32@1.40.1",
-      "supplier": {
-        "name": "pola.rs"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "37f3065615d1bf90d03b5326222df4c5c1f8a5d33e50470aa588e3465e6eb814"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "b748ef652270cc49e9e69f99a035e0eb4d5f856d42bcd6ac4d9d80a40142aa1e"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "d249b3743e05986060cec0a7aaa542d020df6c6b876e556023a310efd581f9be"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5987b30e7aa1059d069498496e8dda35afd592b0ac3d46ed87e3ff8df1ad652c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "8d7f42a8b3f16fc66002cc0f6516f7dd7653396886ae0ed362ab95c0b3408b59"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "e5f7becc237a7ec9d9a10878dc8e54b73bbf4e2d94a2991c37d7a0b38590d8f9"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "992d14cf191dde043d36fbdbc98a65e43fbc7e9a5024cecd45f838ac4988c1ee"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "f78bb2abd00101cbb23cc0cb068f7e36e081057a15d2ec2dde3dda280709f030"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "b5cbfaf6b085b420b4bfcbe24e8f665076d1cccfdb80c0484c02a023ce205537"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/54/ba/26d40f039be9f552b5fd7365a621bdfc0f8e912ef77094ae4693491b0bae/polars_runtime_32-1.40.1.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/polars-runtime-32/1.40.1/"
+          "url": "https://pypi.org/project/pycparser/3.0/"
         }
       ],
       "properties": [
@@ -2717,21 +2669,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/pydantic-settings@2.14.1",
+      "bom-ref": "pkg:pypi/pydantic-settings@2.14.0",
       "name": "pydantic-settings",
-      "version": "2.14.1",
-      "purl": "pkg:pypi/pydantic-settings@2.14.1",
+      "version": "2.14.0",
+      "purl": "pkg:pypi/pydantic-settings@2.14.0",
       "supplier": {
         "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e874d3bec7e787b0c9958277956ed9b4dd5de6a80e162188fdaff7c5e26fd5fa"
+          "content": "24285fd4b0e0c06507dd9fdfd331ee23794305352aaec8fc4eb92d4047aeb67d"
         },
         {
           "alg": "SHA-256",
-          "content": "6e3c7edfd8277687cdc598f56e5cff0e9bfff0910a3749deaa8d4401c3a2b9de"
+          "content": "fc8d5d692eb7092e43c8647c1c35a3ecd00e040fcf02ed86f4cb5458ca62182e"
         }
       ],
       "licenses": [
@@ -2744,11 +2696,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/07/60/1d1e59c9c90d54591469ada7d268251f71c24bdb765f1a8a832cee8c6653/pydantic_settings-2.14.1.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/42/98/c8345dccdc31de4228c039a98f6467a941e39558da41c1744fbe29fa5666/pydantic_settings-2.14.0.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/pydantic-settings/2.14.1/"
+          "url": "https://pypi.org/project/pydantic-settings/2.14.0/"
         }
       ],
       "properties": [
@@ -2792,6 +2744,49 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/pygments/2.20.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/pyjwt@2.12.1",
+      "name": "pyjwt",
+      "version": "2.12.1",
+      "purl": "pkg:pypi/pyjwt@2.12.1",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c74a7a2adf861c04d002db713dd85f84beb242228e671280bf709d765b03672b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "28ca37c070cad8ba8cd9790cd940535d40274d22f80ab87f3ac6a713e6e8454c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/c2/27/a3b6e5bf6ff856d2509292e95c8f57f0df7017cf5394921fc4e4ef40308a/pyjwt-2.12.1.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/pyjwt/2.12.1/"
         }
       ],
       "properties": [
@@ -2932,6 +2927,261 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/python-calamine@0.6.2",
+      "name": "python-calamine",
+      "version": "0.6.2",
+      "purl": "pkg:pypi/python-calamine@0.6.2",
+      "supplier": {
+        "name": "Unknown / community"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2c90e5224c5e92db9fcd8f22b6085ce63b935cfe7a893ac9a1c3c56793bafd9d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4c6e68c233841604fa3f63899d13bd2e47cddf0787c4b4b8188f74c3be452045"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0fd5bcbd904d05f8b9f127a93706fdbb0a5934efdc9677b402a82d91e6e3f920"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "cef6454aa1b3b2137d7a202c9f84b87dffdd187ff218f2cee459480c102c20a3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "19c55c35edaf89b4d18d5d3cfaac619362f2e8339e4c876f9f0c80640d990db3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d29984496a22286f511668ea6483293c0e58ac0f25916e1d88125e5e1d83313b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3b0c4deabc2646c6c07abb3620088c5d6d2af26f8954726938ebcdbc6c56a8bd"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "fc536feb86c948b330c4db8a9f1d9f9094f8d70a981d04de87ece9d9b9300458"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7c0f9e769c735cfb0564aefb4273c6dfeee9fbab1db69b9099cb19cfb8208ddf"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e3824c211eb9505461a9820ed893cf6e39a3af8024fd1892d2cc174ce8329955"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8323edededa282cace538805cfa7cab30ad9dd19bca4a23215ea975c73ce9f26"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f64b93e41dd878a317f958fbf9bfa64342ef9aea58956a93a52d4b9d646a6ef4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "91fbfa837aaa6f7fc72e9277678aa0c95b0c3c7df76c7c7bac4ab4a128834a70"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0b2464e036819ecce50181220e120d674b1caac806a31e48eed2e2183acf9a69"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "64b1ce2bd452a9d2ae00a97e2629e3444b9669ce348e1f534f3a91f55694de15"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "050f0b830fcdf209826e98849432fb6ee1328895949bf7c63632fd34130cef8d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f3636e14736cd2ab2377418aeb2ef8c17d1ce7e19bbbe52e445027cf43a2a745"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f86a51485f93264679eb449dc93dc498553f449322c81936eac47ace45365e89"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b44fbdd11ac44dc5eecf49c1597e7234633cbc9f38c73521ce00278cf0bd8976"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a0d5fd48c92ae04bf8ef1f326d7ec23295545d171f4b810dc8fa08f28932900f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "19363504d08c5c2c7aca188a5c4ded89a47cbba1cbc9a083cd230839f977c5a8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "72078b550a871249c07b71fe5b94fbd30857604ff99380304d273d84a8bcd7c8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e18e524ef1532f8269739b63ca9c6ab7dbd75e9dff20ca7e2e2d8d13c59964b2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b665c55d5d03b5cc205e4b68c711712cff8aac273f2aa930ab8ab5960b9dc90f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "dc21843a6fca8ae5a722e66bde14324da4f43be98b772b0689ac75dd89d888fd"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e16192fbbb3a3009c89aa62530d807bca272e68a67b362da5c9d156a8950cd51"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a94a560c0b7ec791f6edfb3fede6ade35b048a61be80e584de8411bf930a8902"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2574072b9e26aeae26ebd051a1661bb72fd202ce2904f920f9c605de9555c057"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "630d32f10b16bafbca86fb9373e7a4eccbd0268bc9e80dac923b731a8e472704"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "39de4d8c1f9db34d02a2d9b7eaad55cdd013b5881cf0a5ab281e2167d090b22e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "36148e9c5022494fd6a2c111fb51d24e6e39cbf3027a3ddedad44545598609ca"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2526bddc75829b4376a515cad83afeab4019bbe5b770a892852de66b0017527b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "711a664b8cf1e4f6c55fbd5e15e70fc5792e382e3866416044c23b0d3ffdd055"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8d449b6130f1469810ebe9f423f9efecaabc60e110db7a5a56d0f098ea78b22f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8f3841986cf512893e8871555ef586387e5e36484cebd0d9398046c3bde1e13c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7a8f437273c8dee9d9ae89cc766b6c313a1a99155b74a1a6560a01b82db89b51"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6a2dfcfbf1907f37e6a13e2dffff409f79cff911e44e1ce7deb65510b8bbb0de"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0c4a6131835f28897cdf36942067220e2c8c6c23f4b7747a094dca6748190c12"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e8f50885c5042fb3bdd9ad820e4b871e6a1758e15957964acf0515b5d0fb3984"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d4b6fe3564596b1a85fdb7dea60ae7dda2bd56898e88128e0306ebfca29d3659"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "39a6703c80e71c9df2eefa4b9aedd994c27d6ae1fda07a48ee3306414d76d39b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "cedae91678a016690775a815c7dc66288b3f0968451bf2161689846b5b330b84"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5c3ca40133330cccdafb7326c39f7dd60247ad1995d9b92fdcd5052853fc31e5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5599d12fa06ad42694255fecb1de48f6eb2d074fa55b2f532a93158ae1cc3958"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "fb50c1f6303650d5712a707c8c13842eeebcd433bd660dcdaebc8aedd9085d37"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "42f1b3172fc2c916990a9749c30f5c2aad5351a807c6597febf7b5b9444eaf4d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5f3bb6370d855c9035e8727e6d8685775d411e5f5a3b114e0048bacd2efc2dc5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8d790fa2065c3c5d07de27ead53486b6afa64b935036444e5593c670baaf7394"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ba4ac4bc59fb16e76d57bbbb2b5567e9d78f99e0b7d6cf27b1fc968dddad9e52"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "16750f933fd68d6796c24390d5379abe02cc592b8cb5c2c715d09885a4e4db78"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0c3a65ee5e1bbed8d32225882b6fae147c187a5019b895bd1a9631fb1e8ebd1b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "80f54662715b25078e90794d792df6ef45154f1affea472c9e802c5d3dda5a9e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7568800d967b7b7b56d1a139d8d6c343b70d88695c8f3c3906aaa1b8bff76900"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "aab8ef96f19feb5df3704dc04805b1e0d6e82827546bea92d660344c674ed9e1"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "514b3b0ccba57cf807bd4869a76020eb53e2d797f35c95fceb274a5208da1651"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/01/18/e1e53ade001b30a3c6642d876e5defe8431da8c31fb7798909e6c8ab8c34/python_calamine-0.6.2.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/python-calamine/0.6.2/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/python-dotenv@1.2.2",
       "name": "python-dotenv",
       "version": "1.2.2",
@@ -2975,160 +3225,38 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/pywavelets@1.9.0",
-      "name": "pywavelets",
-      "version": "1.9.0",
-      "purl": "pkg:pypi/pywavelets@1.9.0",
+      "bom-ref": "pkg:pypi/python-multipart@0.0.27",
+      "name": "python-multipart",
+      "version": "0.0.27",
+      "purl": "pkg:pypi/python-multipart@0.0.27",
       "supplier": {
-        "name": "Unknown / community"
+        "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "148d12203377772bea452a59211d98649c8ee4a05eff019a9021853a36babdc8"
+          "content": "9870a6a8c5a20a5bf4f07c017bd1489006ff8836cff097b6933355ee2b49b602"
         },
         {
           "alg": "SHA-256",
-          "content": "74f8455c143818e4b026fc67b27fd82f38e522701b94b8a6d1aaf3a45fcc1a25"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "c50320fe0a4a23ddd8835b3dc9b53b09ee05c7cc6c56b81d0916f04fc1649070"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "d6e059265223ed659e5214ab52a84883c88ddf3decbf08d7ec6abb8e4c5ed7be"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "ae10ed46c139c7ddb8b1249cfe0989f8ccb610d93f2899507b1b1573a0e424b5"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "c8f8b1cc2df012401cb837ee6fa2f59607c7b4fe0ff409d9a4f6906daf40dc86"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "db43969c7a8fbb17693ecfd14f21616edc3b29f0e47a49b32fa4127c01312a67"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9e7d60819d87dcd6c68a2d1bc1d37deb1f4d96607799ab6a25633ea484dcda41"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "0d70da9d7858c869e24dc254f16a61dc09d8a224cad85a10c393b2eccddeb126"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4dc85f44c38d76a184a1aa2cb038f802c3740428c9bb877525f4be83a223b134"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "7acf6f950c6deaecd210fbff44421f234a8ca81eb6f4da945228e498361afa9d"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "144d4fc15c98da56654d0dca2d391b812b8d04127b194a37ad4a497f8e887141"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "1aa3729585408a979d655736f74b995b511c86b9be1544f95d4a3142f8f4b8b5"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "e0e24ad6b8eb399c49606dd1fcdcbf9749ad7f6d638be3fe6f59c1f3098821e2"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "3830e6657236b53a3aae20c735cccead942bb97c54bbca9e7d07bae01645fe9c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "81bb65facfbd7b50dec50450516e72cdc51376ecfdd46f2e945bb89d39bfb783"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "47d52cf35e2afded8cfe1133663f6f67106a3220b77645476ae660ad34922cb4"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "53043d2f3f4e55a576f51ac594fe33181e1d096d958e01524db5070eb3825306"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "56bc36b42b1b125fd9cb56e7956b22f8d0f83c1093f49c77fc042135e588c799"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "08076eb9a182ddc6054ac86868fb71df6267c341635036dc63d20bdbacd9ad7e"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4ee1ee7d80f88c64b8ec3b5021dd1e94545cc97f0cd479fb51aa7b10f6def08e"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "3226b6f62838a6ccd7782cb7449ee5d8b9d61999506c1d9b03b2baf41b01b6fd"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9fb7f4b11d18e2db6dd8deee7b3ce8343d45f195f3f278c2af6e3724b1b93a24"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9902d9fc9812588ab2dce359a1307d8e7f002b53a835640e2c9388fe62a82fd4"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "7e57792bde40e331d6cc65458e5970fd814dba18cfc4e9add9d051e901a7b7c7"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "b47c72fb4b76d665c4c598a5b621b505944e5b761bf03df9d169029aafcb652f"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "969e369899e7eab546ea5d77074e4125082e6f9dad71966499bf5dee3758be55"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "8aeffd4f35036c1fade972a61454de5709a7a8fc9a7d177eefe3ac34d76962e5"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "f63f400fcd4e7007529bd06a5886009760da35cd7e76bb6adb5a5fbee4ffeb8c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a63bcb6b5759a7eb187aeb5e8cd316b7adab7de1f4b5a0446c9a6bcebdfc22fb"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9950eb7c8b942e9bfa53d87c7e45a420dcddbd835c4c5f1aca045a3f775c6113"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "097f157e07858a1eb370e0d9c1bd11185acdece5cca10756d6c3c7b35b52771a"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "3b6ff6ba4f625d8c955f68c2c39b0a913776d406ab31ee4057f34ad4019fb33b"
+          "content": "6fccfad17a27334bd0193681b369f476eda3409f17381a2d65aa7df3f7275645"
         }
       ],
       "licenses": [
         {
-          "expression": "MIT AND BSD-3-Clause"
+          "license": {
+            "id": "Apache-2.0"
+          }
         }
       ],
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/5a/75/50581633d199812205ea8cdd0f6d52f12a624886b74bf1486335b67f01ff/pywavelets-1.9.0.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/69/9b/f23807317a113dc36e74e75eb265a02dd1a4d9082abc3c1064acd22997c4/python_multipart-0.0.27.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/pywavelets/1.9.0/"
+          "url": "https://pypi.org/project/python-multipart/0.0.27/"
         }
       ],
       "properties": [
@@ -3140,129 +3268,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/pyyaml@6.0.3",
-      "name": "pyyaml",
-      "version": "6.0.3",
-      "purl": "pkg:pypi/pyyaml@6.0.3",
+      "bom-ref": "pkg:pypi/python-pptx@1.0.2",
+      "name": "python-pptx",
+      "version": "1.0.2",
+      "purl": "pkg:pypi/python-pptx@1.0.2",
       "supplier": {
-        "name": "Kirill Simonov"
+        "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
+          "content": "479a8af0eaf0f0d76b6f00b0887732874ad2e3188230315290cd1f9dd9cc7095"
         },
         {
           "alg": "SHA-256",
-          "content": "8da9669d359f02c0b91ccc01cac4a67f16afec0dac22c2ad09f46bee0697eba8"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2283a07e2c21a2aa78d9c4442724ec1eb15f5e42a723b99cb3d822d48f5f7ad1"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "ee2922902c45ae8ccada2c5b501ab86c36525b883eff4255313a253a3160861c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a33284e20b78bd4a18c8c2282d549d10bc8408a2a7ff57653c0cf0b9be0afce5"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "f7057c9a337546edc7973c0d3ba84ddcdf0daa14533c2065749c9075001090e6"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "eda16858a3cab07b80edaf74336ece1f986ba330fdb8ee0d6c0d68fe82bc96be"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "d0eae10f8159e8fdad514efdc92d74fd8d682c933a6dd088030f3834bc8e6b26"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "79005a0d97d5ddabfeeea4cf676af11e647e41d81c9a7722a193022accdb6b7c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5498cd1645aa724a7c71c8f378eb29ebe23da2fc0d7a08071d89469bf1d2defb"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "8d1fab6bb153a416f9aeb4b8763bc0f22a5586065f86f7664fc23339fc1c1fac"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "34d5fcd24b8445fadc33f9cf348c1047101756fd760b4dacb5c3e99755703310"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "501a031947e3a9025ed4405a168e6ef5ae3126c59f90ce0cd6f2bfc477be31b7"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "b3bc83488de33889877a0f2543ade9f70c67d66d9ebb4ac959502e12de895788"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "c458b6d084f9b935061bc36216e8a69a7e293a2f1e68bf956dcd9e6cbcd143f5"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "7c6610def4f163542a622a73fb39f534f8c101d690126992300bf3207eab9764"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5190d403f121660ce8d1d2c1bb2ef1bd05b5f68533fc5c2ea899bd15f4399b35"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4a2e8cebe2ff6ab7d1050ecd59c25d4c8bd7e6f400f5f82b96557ac0abafd0ac"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "93dda82c9c22deb0a405ea4dc5f2d0cda384168e466364dec6255b293923b2f3"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "02893d100e99e03eda1c8fd5c441d8c60103fd175728e23e431db1b589cf5ab3"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "c1ff362665ae507275af2853520967820d9124984e0f7466736aea23d8611fba"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "6adc77889b628398debc7b65c073bcb99c4a0237b248cacaf3fe8a557563ef6c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a80cb027f6b349846a3bf6d73b5e95e782175e52f22108cfa17876aaeff93702"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "00c4bdeba853cc34e7dd471f16b4114f4162dc03e6b7afcc2128711f0eca823c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "66e1674c3ef6f541c35191caae2d429b967b99e02040f5ba928632d9a7f0f065"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b"
+          "content": "160838e0b8565a8b1f67947675886e9fea18aa5e795db7ae531606d68e785cba"
         }
       ],
       "licenses": [
@@ -3275,11 +3295,113 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/52/a9/0c0db8d37b2b8a645666f7fd8accea4c6224e013c42b1d5c17c93590cd06/python_pptx-1.0.2.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/pyyaml/6.0.3/"
+          "url": "https://pypi.org/project/python-pptx/1.0.2/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/pywin32@311",
+      "name": "pywin32",
+      "version": "311",
+      "purl": "pkg:pypi/pywin32@311",
+      "supplier": {
+        "name": "Mark Hammond (et al)"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f95ba5a847cba10dd8c4d8fefa9f2a6cf283b8b88ed6178fa8a6c1ab16054d0d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "718a38f7e5b058e76aee1c56ddd06908116d35147e133427e59a3983f703a20d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7b4075d959648406202d92a2310cb990fea19b535c7f4a78d3f5e10b926eeb8a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b7a2c10b93f8986666d0c803ee19b5990885872a7de910fc460f9b0c2fbf92ee"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3aca44c046bd2ed8c90de9cb8427f581c479e594e99b5c0bb19b29c10fd6cb87"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a508e2d9025764a8270f93111a970e1d0fbfc33f4153b388bb649b7eec4f9b42"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Python-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/a5/be/3fd5de0979fcb3994bfee0d65ed8ca9506a8a1260651b86174f6a86f52b3/pywin32-311-cp313-cp313-win32.whl"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/pywin32/311/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/referencing@0.37.0",
+      "name": "referencing",
+      "version": "0.37.0",
+      "purl": "pkg:pypi/referencing@0.37.0",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44aefc3142c5b842538163acb373e24cce6632bd54bdb01b21ad5863489f50d8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/22/f5/df4e9027acead3ecc63e50fe1e36aca1523e1719559c499951bb4b53188f/referencing-0.37.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/referencing/0.37.0/"
         }
       ],
       "properties": [
@@ -3323,6 +3445,277 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/rich/15.0.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/rpds-py@0.30.0",
+      "name": "rpds-py",
+      "version": "0.30.0",
+      "purl": "pkg:pypi/rpds-py@0.30.0",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dd8ff7cf90014af0c0f787eea34794ebf6415242ee1d6fa91eaba725cc441e84"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f83424d738204d9770830d35290ff3273fbb02b41f919870479fab14b9d303b2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e7536cd91353c5273434b4e003cbda89034d67e7710eab8761fd918ec6c69cf8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2771c6c15973347f50fece41fc447c054b7ac2ae0502388ce3b6738cd366e3d4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0a59119fc6e3f460315fe9d08149f8102aa322299deaa5cab5b40092345c2136"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "76fec018282b4ead0364022e3c54b60bf368b9d926877957a8624b58419169b7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "692bef75a5525db97318e8cd061542b5a79812d711ea03dbc1f6f8dbb0c5f0d2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9027da1ce107104c50c81383cae773ef5c24d296dd11c99e2629dbd7967a20c6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9cf69cdda1f5968a30a359aba2f7f9aa648a9ce4b580d6826437f2b291cfc86e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a4796a717bf12b9da9d3ad002519a86063dcac8988b030e405704ef7d74d2d9d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5d4c2aa7c50ad4728a094ebd5eb46c452e9cb7edbfdb18f9e1221f597a73e1e7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ba81a9203d07805435eb06f536d95a266c21e5b2dfbf6517748ca40c98d19e31"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "945dccface01af02675628334f7cf49c2af4c1c904748efc5cf7bbdf0b579f95"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b40fb160a2db369a194cb27943582b38f79fc4887291417685f3ad693c5a1d5d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "806f36b1b605e2d6a72716f321f20036b9489d29c51c91f4dd29a3e3afb73b15"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d96c2086587c7c30d44f31f42eae4eac89b60dabbac18c7669be3700f13c3ce1"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "eb0b93f2e5c2189ee831ee43f156ed34e2a89a78a66b98cadad955972548be5a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "922e10f31f303c7c920da8981051ff6d8c1a56207dbdf330d9047f6d30b70e5e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "cdc62c8286ba9bf7f47befdcea13ea0e26bf294bda99758fd90535cbaf408000"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "47f9a91efc418b54fb8190a6b4aa7813a23fb79c51f4bb84e418f5476c38b8db"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1f3587eb9b17f3789ad50824084fa6f81921bbf9a795826570bda82cb3ed91f2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "39c02563fc592411c2c61d26b6c5fe1e51eaa44a75aa2c8735ca88b0d9599daa"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "51a1234d8febafdfd33a42d97da7a43f5dcb120c1060e352a3fbc0c6d36e2083"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "eb2c4071ab598733724c08221091e8d80e89064cd472819285a9ab0f24bcedb9"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6bdfdb946967d816e6adf9a3d8201bfad269c67efe6cefd7093ef959683c8de0"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c77afbd5f5250bf27bf516c7c4a016813eb2d3e116139aed0096940c5982da94"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "61046904275472a76c8c90c9ccee9013d70a6d0f73eecefd38c1ae7c39045a08"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4c5f36a861bc4b7da6516dbdf302c55313afa09b81931e8280361a4f6c9a2d27"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3d4a69de7a3e50ffc214ae16d79d8fbb0922972da0356dcf4d0fdca2878559c6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f14fc5df50a716f7ece6a80b6c78bb35ea2ca47c499e422aa4463455dd96d56d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "68f19c879420aa08f61203801423f6cd5ac5f0ac4ac82a2368a9fcd6a9a075e0"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ec7c4490c672c1a0389d319b3a9cfcd098dcdc4783991553c332a15acf7249be"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f251c812357a3fed308d684a5079ddfb9d933860fc6de89f2b7ab00da481e65f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ac98b175585ecf4c0348fd7b29c3864bda53b805c773cbf7bfdaffc8070c976f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3e62880792319dbeb7eb866547f2e35973289e7d5696c6e295476448f5b63c87"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4e7fc54e0900ab35d041b0601431b0a0eb495f0851a0639b6ef90f7741b39a18"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "47e77dc9822d3ad616c3d5759ea5631a75e5809d5a28707744ef79d7a1bcfcad"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b4dc1a6ff022ff85ecafef7979a2c6eb423430e05f1165d6688234e62ba99a07"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4559c972db3a360808309e06a74628b95eaccbf961c335c8fe0d590cf587456f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0ed177ed9bded28f8deb6ab40c183cd1192aa0de40c12f38be4d59cd33cb5c65"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ad1fa8db769b76ea911cb4e10f049d80bf518c104f15b3edb2371cc65375c46f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "46e83c697b1f1c72b50e5ee5adb4353eef7406fb3f2043d64c33f20ad1c2fc53"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ee454b2a007d57363c2dfd5b6ca4a5d7e2c518938f8ed3b706e37e5d470801ed"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "95f0802447ac2d10bcc69f6dc28fe95fdf17940367b21d34e34c737870758950"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "613aa4771c99f03346e54c3f038e4cc574ac09a3ddfb0e8878487335e96dead6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7e6ecfcb62edfd632e56983964e6884851786443739dbfe3582947e87274f7cb"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a1d0bc22a7cdc173fedebb73ef81e07faef93692b8c1ad3733b67e31e1b6e1b8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0d08f00679177226c4cb8c5265012eea897c8ca3b93f429e546600c971bcbae7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5965af57d5848192c13534f90f9dd16464f3c37aaf166cc1da1cae1fd5a34898"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9a4e86e34e9ab6b667c27f3211ca48f73dba7cd3d90f8d5b11be56e5dbc3fb4e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e5d3e6b26f2c785d65cc25ef1e5267ccbe1b069c5c21b8cc724efee290554419"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "626a7433c34566535b6e56a1b39a7b17ba961e97ce3b80ec62e6f1312c025551"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "acd7eb3f4471577b9b5a41baf02a978e8bdeb08b4b355273994f8b87032000a8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "fe5fa731a1fa8a0a56b0977413f8cacac1768dad38d16b3a296712709476fbd5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "74a3243a411126362712ee1524dfc90c650a503502f135d54d1b352bd01f2404"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3e8eeb0544f2eb0d2581774be4c3410356eba189529a6b3e36bbbf9696175856"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "dbd936cde57abfee19ab3213cf9c26be06d60750e60a8e4dd85d1ab12c8b1f40"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "dc824125c72246d924f7f796b4f63c1e9dc810c7d9e2355864b3c3a73d59ade0"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "27f4b0e92de5bfbc6f86e43959e6edd1425c33b5e69aab0984a72047f2bcf1e3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/20/af/3f2f423103f1113b36230496629986e0ef7e199d2aa8392452b484b38ced/rpds_py-0.30.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/rpds-py/0.30.0/"
         }
       ],
       "properties": [
@@ -3441,205 +3834,6 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/scipy@1.17.1",
-      "name": "scipy",
-      "version": "1.17.1",
-      "purl": "pkg:pypi/scipy@1.17.1",
-      "supplier": {
-        "name": "Unknown / community"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "95d8e012d8cb8816c226aef832200b1d45109ed4464303e997c5b13122b297c0"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5e3c5c011904115f88a39308379c17f91546f77c1667cea98739fe0fccea804c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "6fac755ca3d2c3edcb22f479fceaa241704111414831ddd3bc6056e18516892f"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "7ff200bf9d24f2e4d5dc6ee8c3ac64d739d3a89e2326ba68aaf6c4a2b838fd7d"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "4b400bdc6f79fa02a4d86640310dde87a21fba0c979efff5248908c6f15fad1b"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2b64ca7d4aee0102a97f3ba22124052b4bd2152522355073580bf4845e2550b6"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "581b2264fc0aa555f3f435a5944da7504ea3a065d7029ad60e7c3d1ae09c5464"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "beeda3d4ae615106d7094f7e7cef6218392e4465cc95d25f900bebabfded0950"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "6609bc224e9568f65064cfa72edc0f24ee6655b47575954ec6339534b2798369"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "37425bc9175607b0268f493d79a292c39f9d001a357bebb6b88fdfaff13f6448"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5cf36e801231b6a2059bf354720274b7558746f3b1a4efb43fcf557ccd484a87"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "d59c30000a16d8edc7e64152e30220bfbd724c9bbb08368c054e24c651314f0a"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "010f4333c96c9bb1a4516269e33cb5917b08ef2166d5556ca2fd9f082a9e6ea0"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2ceb2d3e01c5f1d83c4189737a42d9cb2fc38a6eeed225e7515eef71ad301dce"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "844e165636711ef41f80b4103ed234181646b98a53c8f05da12ca5ca289134f6"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "158dd96d2207e21c966063e1635b1063cd7787b627b6f07305315dd73d9c679e"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "74cbb80d93260fe2ffa334efa24cb8f2f0f622a9b9febf8b483c0b865bfb3475"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "dbc12c9f3d185f5c737d801da555fb74b3dcfa1a50b66a1a93e09190f41fab50"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "94055a11dfebe37c656e70317e1996dc197e1a15bbcc351bcdd4610e128fe1ca"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "e30bdeaa5deed6bc27b4cc490823cd0347d7dae09119b8803ae576ea0ce52e4c"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a720477885a9d2411f94a93d16f9d89bad0f28ca23c3f8daa521e2dcc3f44d49"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a48a72c77a310327f6a3a920092fa2b8fd03d7deaa60f093038f22d98e096717"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "45abad819184f07240d8a696117a7aacd39787af9e0b719d00285549ed19a1e9"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "3fd1fcdab3ea951b610dc4cef356d416d5802991e7e32b5254828d342f7b7e0b"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "7bdf2da170b67fdf10bca777614b1c7d96ae3ca5794fd9587dce41eb2966e866"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "adb2642e060a6549c343603a3851ba76ef0b74cc8c079a9a58121c7ec9fe2350"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "eee2cfda04c00a857206a4330f0c5e3e56535494e30ca445eb19ec624ae75118"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "d2650c1fb97e184d12d8ba010493ee7b322864f7d3d00d3f9bb97d9c21de4068"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "08b900519463543aa604a06bec02461558a6e1cef8fdbb8098f77a48a83c8118"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "3877ac408e14da24a6196de0ddcace62092bfc12a83823e92e49e40747e52c19"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "f8885db0bc2bffa59d5c1b72fad7a6a92d3e80e7257f967dd81abb553a90d293"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "1cc682cea2ae55524432f3cdff9e9a3be743d52a7443d0cba9017c23c87ae2f6"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "2040ad4d1795a0ae89bfc7e8429677f365d45aa9fd5e4587cf1ea737f927b4a1"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "131f5aaea57602008f9822e2115029b55d4b5f7c070287699fe45c661d051e39"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9cdc1a2fcfd5c52cfb3045feb399f7b3ce822abdde3a193a6b9a60b3cb5854ca"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "6e3dcd57ab780c741fde8dc68619de988b966db759a3c3152e8e9142c26295ad"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a9956e4d4f4a301ebf6cde39850333a6b6110799d470dbbb1e25326ac447f52a"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a4328d245944d09fd639771de275701ccadf5f781ba0ff092ad141e017eccda4"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a77cbd07b940d326d39a1d1b37817e2ee4d79cb30e7338f3d0cddffae70fcaa2"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "eb092099205ef62cd1782b006658db09e2fed75bffcae7cc0d44052d8aa0f484"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "200e1050faffacc162be6a486a984a0497866ec54149a01270adc8a59b7c7d21"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "BSD-3-Clause"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/7a/97/5a3609c4f8d58b039179648e62dd220f89864f56f7357f5d4f45c29eb2cc/scipy-1.17.1.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/scipy/1.17.1/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
       "bom-ref": "pkg:pypi/shellingham@1.5.4",
       "name": "shellingham",
       "version": "1.5.4",
@@ -3683,38 +3877,38 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/sortedcontainers@2.4.0",
-      "name": "sortedcontainers",
-      "version": "2.4.0",
-      "purl": "pkg:pypi/sortedcontainers@2.4.0",
+      "bom-ref": "pkg:pypi/sse-starlette@3.4.2",
+      "name": "sse-starlette",
+      "version": "3.4.2",
+      "purl": "pkg:pypi/sse-starlette@3.4.2",
       "supplier": {
-        "name": "Grant Jenks"
+        "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88"
+          "content": "2f9a7f51ed84395a0427fb9f66cb1ec11f7899d977a72cbc9070b962a2e14489"
         },
         {
           "alg": "SHA-256",
-          "content": "a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0"
+          "content": "6ea5d35b7ce979a3de5a0db5f77fe886b1616e4b3e1ad93fba502bd9b5fb662f"
         }
       ],
       "licenses": [
         {
           "license": {
-            "id": "Apache-2.0"
+            "id": "BSD-3-Clause"
           }
         }
       ],
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/e8/c4/ba2f8066cceb6f23394729afe52f3bf7adec04bf9ed2c820b39e19299111/sortedcontainers-2.4.0.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/38/82/10cdfab4ab663a6b6bd624d33f55b2cfa41af5105be033a6d5d135a92c5f/sse_starlette-3.4.2.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/sortedcontainers/2.4.0/"
+          "url": "https://pypi.org/project/sse-starlette/3.4.2/"
         }
       ],
       "properties": [
@@ -3726,126 +3920,124 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/tqdm@4.67.3",
-      "name": "tqdm",
-      "version": "4.67.3",
-      "purl": "pkg:pypi/tqdm@4.67.3",
-      "supplier": {
-        "name": "Unknown / community"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "7d825f03f89244ef73f1d4ce193cb1774a8179fd96f31d7e1dcde62092b960bb"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "ee1e4c0e59148062281c49d80b25b67771a127c85fc9676d3be5f243206826bf"
-        }
-      ],
-      "licenses": [
-        {
-          "expression": "MPL-2.0 AND MIT"
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/09/a9/6ba95a270c6f1fbcd8dac228323f2777d886cb206987444e4bce66338dd4/tqdm-4.67.3.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/tqdm/4.67.3/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "weak-copyleft"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/ty@0.0.35",
-      "name": "ty",
-      "version": "0.0.35",
-      "purl": "pkg:pypi/ty@0.0.35",
+      "bom-ref": "pkg:pypi/starlette@1.0.0",
+      "name": "starlette",
+      "version": "1.0.0",
+      "purl": "pkg:pypi/starlette@1.0.0",
       "supplier": {
         "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8375c240ab38138a19db07996c9808fb7a92047c1492e1ce587c2ef5112ad3a9"
+          "content": "6a4beaf1f81bb472fd19ea9b918b50dc3a77a6f2e190a12954b25e6ed5eea149"
         },
         {
           "alg": "SHA-256",
-          "content": "85ae1e59b9fb0b40e9d84fe61b29653c5f2f5e78b487ece371a7a38c20c781cf"
+          "content": "d3ec55e0bb321692d275455ddfd3df75fff145d009685eb40dc91fc66b03d38b"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/81/69/17425771797c36cded50b7fe44e850315d039f28b15901ab44839e70b593/starlette-1.0.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/starlette/1.0.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/ty@0.0.34",
+      "name": "ty",
+      "version": "0.0.34",
+      "purl": "pkg:pypi/ty@0.0.34",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a6efe66b0f13c03a65e6c72ec9abfe2792e2fd063c74fa67e2c4930e29d661be"
         },
         {
           "alg": "SHA-256",
-          "content": "709dbb7af4fcadb1196863c00b8791bbbbcc9dacbe15a0ff17f0af82b35d415b"
+          "content": "9ecc3d14f07a95a6ceb88e07f8e62358dbd37325d3d5bd56da7217ff1fef7fb8"
         },
         {
           "alg": "SHA-256",
-          "content": "2cb0877419ab0c8708b6925cb0c2800b263842bd3c425113f200538772f3a0cc"
+          "content": "0dccffd8a9d02321cd2dee3249df205e26d62694e741f4eeca36b157fd8b419f"
         },
         {
           "alg": "SHA-256",
-          "content": "e7afbcfc61904b7e82e7fe1a1db832a40d8f01e69dee1775f6594e552980536c"
+          "content": "b0ea47a2998e167ab3b21d2f4b5309a9cf33c297809f6d7e3e753252223174d0"
         },
         {
           "alg": "SHA-256",
-          "content": "b61498cc3e4178031c079951257fbdb209a891b4feb10ad6c40f615a51846f41"
+          "content": "8b37da00b41a118a459ae56d8947e70651073fb33ebfbceb820e4a10b22d5023"
         },
         {
           "alg": "SHA-256",
-          "content": "573b1eacda349fc8dba0d767b41631c3a6f66412363127c5bf2b1b40a1d898d2"
+          "content": "81cbbb93c2342fe3de43e625d3a9eb149633e9f485e816ebf6395d08685355d8"
         },
         {
           "alg": "SHA-256",
-          "content": "a7209746158d6393c1040aa64b3ca29622e212ea7d8bae22ba50dbcbb4f96f0a"
+          "content": "4c5b4dea1594a021289e172582df9cde7089dce14b276fc650e7b212b1772e12"
         },
         {
           "alg": "SHA-256",
-          "content": "4466a1470aa4418d49a9aa45d9da7de42033addd0a2837c5b2b0eb71d3c2bcd3"
+          "content": "030fb00aa2d2a5b5ae9d9183d574e0c82dae80566700a7490c43669d8ece40cd"
         },
         {
           "alg": "SHA-256",
-          "content": "eb44bb742d52c309dcaa6598bcf4d82eb4bf1241b9e4940461e522e30093fe8b"
+          "content": "5ae9555e24e36c63a8218e037a5a63f15579eb6aa94f41017e57cd41d335cfb5"
         },
         {
           "alg": "SHA-256",
-          "content": "34b219250736c989b2670a03782c61315f523f3a2be37f1f90b1207e2212c188"
+          "content": "99eb23df9ed129fc26d1ab00d6f0b8dfe5253b09c2ac6abdb11523fa70d67f10"
         },
         {
           "alg": "SHA-256",
-          "content": "88e2ac497decc0940ef1a07571dee8a746112a93a09cdc7f8bca0099752e2e05"
+          "content": "85de45382016eceae69e104815eb2cfa200787df104002e262a86cbd43ed2c02"
         },
         {
           "alg": "SHA-256",
-          "content": "02cae51b53e6ec17d5d827ff1a3a76fd119705b56a92156e04399eda6e911596"
+          "content": "14cb575fb8fa5131f5129d100cfe23c1575d23faf5dfc5158432749a3e38c9b5"
         },
         {
           "alg": "SHA-256",
-          "content": "11871d730c9400d899ac0b9f3d660ed2e7e433377c8725549f8250a36a7f2620"
+          "content": "c6fc0b69d8450e6910ba9db34572b959b81329a97ae273c391f70e9fb6c1aade"
         },
         {
           "alg": "SHA-256",
-          "content": "1ad0a2f0530d0933dcc99ad36ac556c63e384ea72ab9a18d23ad2e2c9fd61c73"
+          "content": "30dfcec2f0fde3993f4f912ed0e057dcbebc8615299f610a4c2ddb7b5a3e1e06"
         },
         {
           "alg": "SHA-256",
-          "content": "0e25d63ec4ab116e7f6757e44d16ca9216bca679d19ecc36d119cf80faada61a"
+          "content": "97b77ddf007271b812a313a8f0a14929bc5590958433e1fb83ef585676f53342"
         },
         {
           "alg": "SHA-256",
-          "content": "6a0a6d259f6f2f8f2f954c6f013d4e0b5eba68af6b353bf19a47d59ec254a3d5"
+          "content": "1f543968accb952705134028d1fda8656882787dbbc667ad4d6c3ba23791d604"
         },
         {
           "alg": "SHA-256",
-          "content": "619c52c0fb2aa21961a848a1995135ad3b6d0a9aa54da0194e60f679cc200e13"
+          "content": "ea09108cbcb16b6b06d7596312b433bf49681e78d30e4dc7fb3c1b248a95e09a"
         }
       ],
       "licenses": [
@@ -3858,11 +4050,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/4e/53/440e7b1212c4b0abbd4adb7aed93f4971aa1f8dca386ac5515930afa9172/ty-0.0.35.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/c4/69/e24eefe2c35c0fdbdec9b60e162727af669bb76d64d993d982eb67b24c38/ty-0.0.34.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/ty/0.0.35/"
+          "url": "https://pypi.org/project/ty/0.0.34/"
         }
       ],
       "properties": [
@@ -4043,15 +4235,101 @@
           "value": "permissive"
         }
       ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/uvicorn@0.46.0",
+      "name": "uvicorn",
+      "version": "0.46.0",
+      "purl": "pkg:pypi/uvicorn@0.46.0",
+      "supplier": {
+        "name": "uvicorn.dev"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fb9da0926999cc6cb22dc7cd71a94a632f078e6ae47ff683c5c420750fb7413d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "bbebbcbed972d162afca128605223022bedd345b7bc7855ce66deb31487a9048"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/1f/93/041fca8274050e40e6791f267d82e0e2e27dd165627bd640d3e0e378d877/uvicorn-0.46.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/uvicorn/0.46.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/xlsxwriter@3.2.9",
+      "name": "xlsxwriter",
+      "version": "3.2.9",
+      "purl": "pkg:pypi/xlsxwriter@3.2.9",
+      "supplier": {
+        "name": "John McNamara"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "254b1c37a368c444eac6e2f867405cc9e461b0ed97a3233b2ac1e574efb4140c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9a5db42bc5dff014806c58a20b9eae7322a134abb6fce3c92c181bfb275ec5b3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-2-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/46/2c/c06ef49dc36e7954e55b802a8b231770d286a9758b3d936bd1e04ce5ba88/xlsxwriter-3.2.9.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/xlsxwriter/3.2.9/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
     }
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-content@0.1.0a9",
+      "ref": "pkg:pypi/kaos-office@0.1.0a6",
       "dependsOn": [
-        "pkg:pypi/kaos-core@0.1.0a7",
-        "pkg:pypi/pydantic@2.13.4",
-        "pkg:pypi/uuid6@2025.0.1"
+        "pkg:pypi/kaos-content@0.1.0a2",
+        "pkg:pypi/kaos-core@0.1.0a10",
+        "pkg:pypi/lxml@6.1.0"
       ]
     },
     {
@@ -4065,12 +4343,22 @@
     {
       "ref": "pkg:pypi/anyio@4.13.0",
       "dependsOn": [
-        "pkg:pypi/idna@3.15"
+        "pkg:pypi/idna@3.13"
       ]
+    },
+    {
+      "ref": "pkg:pypi/attrs@26.1.0",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/certifi@2026.4.22",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/cffi@2.0.0",
+      "dependsOn": [
+        "pkg:pypi/pycparser@3.0"
+      ]
     },
     {
       "ref": "pkg:pypi/click@8.3.3",
@@ -4083,27 +4371,21 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/coverage@7.14.0",
+      "ref": "pkg:pypi/coverage@7.13.5",
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/duckdb@1.5.2",
-      "dependsOn": []
+      "ref": "pkg:pypi/cryptography@48.0.0",
+      "dependsOn": [
+        "pkg:pypi/cffi@2.0.0"
+      ]
     },
     {
-      "ref": "pkg:pypi/filelock@3.29.0",
-      "dependsOn": []
-    },
-    {
-      "ref": "pkg:pypi/fsspec@2026.4.0",
+      "ref": "pkg:pypi/et-xmlfile@2.0.0",
       "dependsOn": []
     },
     {
       "ref": "pkg:pypi/h11@0.16.0",
-      "dependsOn": []
-    },
-    {
-      "ref": "pkg:pypi/hf-xet@1.5.0",
       "dependsOn": []
     },
     {
@@ -4119,76 +4401,67 @@
         "pkg:pypi/anyio@4.13.0",
         "pkg:pypi/certifi@2026.4.22",
         "pkg:pypi/httpcore@1.0.9",
-        "pkg:pypi/idna@3.15"
+        "pkg:pypi/idna@3.13"
       ]
     },
     {
-      "ref": "pkg:pypi/huggingface-hub@1.14.0",
-      "dependsOn": [
-        "pkg:pypi/filelock@3.29.0",
-        "pkg:pypi/fsspec@2026.4.0",
-        "pkg:pypi/hf-xet@1.5.0",
-        "pkg:pypi/httpx@0.28.1",
-        "pkg:pypi/packaging@26.2",
-        "pkg:pypi/pyyaml@6.0.3",
-        "pkg:pypi/tqdm@4.67.3",
-        "pkg:pypi/typer@0.25.1",
-        "pkg:pypi/typing-extensions@4.15.0"
-      ]
-    },
-    {
-      "ref": "pkg:pypi/hypothesis@6.152.7",
-      "dependsOn": [
-        "pkg:pypi/sortedcontainers@2.4.0"
-      ]
-    },
-    {
-      "ref": "pkg:pypi/idna@3.15",
+      "ref": "pkg:pypi/httpx-sse@0.4.3",
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/imagehash@4.3.2",
-      "dependsOn": [
-        "pkg:pypi/numpy@2.4.4",
-        "pkg:pypi/pillow@12.2.0",
-        "pkg:pypi/pywavelets@1.9.0",
-        "pkg:pypi/scipy@1.17.1"
-      ]
+      "ref": "pkg:pypi/idna@3.13",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/iniconfig@2.3.0",
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/kaos-core@0.1.0a7",
+      "ref": "pkg:pypi/jsonschema@4.26.0",
+      "dependsOn": [
+        "pkg:pypi/attrs@26.1.0",
+        "pkg:pypi/jsonschema-specifications@2025.9.1",
+        "pkg:pypi/referencing@0.37.0",
+        "pkg:pypi/rpds-py@0.30.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/jsonschema-specifications@2025.9.1",
+      "dependsOn": [
+        "pkg:pypi/referencing@0.37.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/kaos-content@0.1.0a2",
+      "dependsOn": [
+        "pkg:pypi/kaos-core@0.1.0a10",
+        "pkg:pypi/pydantic@2.13.4",
+        "pkg:pypi/uuid6@2025.0.1"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/kaos-core@0.1.0a10",
       "dependsOn": [
         "pkg:pypi/click@8.3.3",
-        "pkg:pypi/pydantic-settings@2.14.1",
+        "pkg:pypi/pydantic-settings@2.14.0",
         "pkg:pypi/pydantic@2.13.4"
       ]
     },
     {
-      "ref": "pkg:pypi/kaos-nlp-core@0.1.0a8",
+      "ref": "pkg:pypi/kaos-mcp@0.1.0a3",
       "dependsOn": [
-        "pkg:pypi/numpy@2.4.4"
+        "pkg:pypi/httpx@0.28.1",
+        "pkg:pypi/kaos-content@0.1.0a2",
+        "pkg:pypi/kaos-core@0.1.0a10",
+        "pkg:pypi/mcp@1.27.1",
+        "pkg:pypi/pydantic-settings@2.14.0",
+        "pkg:pypi/pydantic@2.13.4",
+        "pkg:pypi/starlette@1.0.0"
       ]
     },
     {
-      "ref": "pkg:pypi/kaos-nlp-transformers@0.2.0a8",
-      "dependsOn": [
-        "pkg:pypi/huggingface-hub@1.14.0",
-        "pkg:pypi/kaos-core@0.1.0a7",
-        "pkg:pypi/kaos-nlp-core@0.1.0a8",
-        "pkg:pypi/numpy@2.4.4"
-      ]
-    },
-    {
-      "ref": "pkg:pypi/kaos-office@0.1.0a4",
-      "dependsOn": [
-        "pkg:pypi/kaos-content@0.0.0%2Bunknown",
-        "pkg:pypi/kaos-core@0.1.0a7",
-        "pkg:pypi/lxml@6.1.0"
-      ]
+      "ref": "pkg:pypi/kaos-nlp-core@0.1.0a2",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/lxml@6.1.0",
@@ -4201,7 +4474,26 @@
       ]
     },
     {
-      "ref": "pkg:pypi/mdit-py-plugins@0.6.1",
+      "ref": "pkg:pypi/mcp@1.27.1",
+      "dependsOn": [
+        "pkg:pypi/anyio@4.13.0",
+        "pkg:pypi/httpx-sse@0.4.3",
+        "pkg:pypi/httpx@0.28.1",
+        "pkg:pypi/jsonschema@4.26.0",
+        "pkg:pypi/pydantic-settings@2.14.0",
+        "pkg:pypi/pydantic@2.13.4",
+        "pkg:pypi/pyjwt@2.12.1",
+        "pkg:pypi/python-multipart@0.0.27",
+        "pkg:pypi/pywin32@311",
+        "pkg:pypi/sse-starlette@3.4.2",
+        "pkg:pypi/starlette@1.0.0",
+        "pkg:pypi/typing-extensions@4.15.0",
+        "pkg:pypi/typing-inspection@0.4.2",
+        "pkg:pypi/uvicorn@0.46.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/mdit-py-plugins@0.6.0",
       "dependsOn": [
         "pkg:pypi/markdown-it-py@4.2.0"
       ]
@@ -4211,8 +4503,10 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/numpy@2.4.4",
-      "dependsOn": []
+      "ref": "pkg:pypi/openpyxl@3.1.5",
+      "dependsOn": [
+        "pkg:pypi/et-xmlfile@2.0.0"
+      ]
     },
     {
       "ref": "pkg:pypi/packaging@26.2",
@@ -4227,13 +4521,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/polars@1.40.1",
-      "dependsOn": [
-        "pkg:pypi/polars-runtime-32@1.40.1"
-      ]
-    },
-    {
-      "ref": "pkg:pypi/polars-runtime-32@1.40.1",
+      "ref": "pkg:pypi/pycparser@3.0",
       "dependsOn": []
     },
     {
@@ -4252,7 +4540,7 @@
       ]
     },
     {
-      "ref": "pkg:pypi/pydantic-settings@2.14.1",
+      "ref": "pkg:pypi/pydantic-settings@2.14.0",
       "dependsOn": [
         "pkg:pypi/pydantic@2.13.4",
         "pkg:pypi/python-dotenv@1.2.2",
@@ -4261,6 +4549,10 @@
     },
     {
       "ref": "pkg:pypi/pygments@2.20.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/pyjwt@2.12.1",
       "dependsOn": []
     },
     {
@@ -4282,24 +4574,42 @@
     {
       "ref": "pkg:pypi/pytest-cov@7.1.0",
       "dependsOn": [
-        "pkg:pypi/coverage@7.14.0",
+        "pkg:pypi/coverage@7.13.5",
         "pkg:pypi/pluggy@1.6.0",
         "pkg:pypi/pytest@9.0.3"
       ]
+    },
+    {
+      "ref": "pkg:pypi/python-calamine@0.6.2",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/python-dotenv@1.2.2",
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/pywavelets@1.9.0",
+      "ref": "pkg:pypi/python-multipart@0.0.27",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/python-pptx@1.0.2",
       "dependsOn": [
-        "pkg:pypi/numpy@2.4.4"
+        "pkg:pypi/lxml@6.1.0",
+        "pkg:pypi/pillow@12.2.0",
+        "pkg:pypi/typing-extensions@4.15.0",
+        "pkg:pypi/xlsxwriter@3.2.9"
       ]
     },
     {
-      "ref": "pkg:pypi/pyyaml@6.0.3",
+      "ref": "pkg:pypi/pywin32@311",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/referencing@0.37.0",
+      "dependsOn": [
+        "pkg:pypi/attrs@26.1.0",
+        "pkg:pypi/rpds-py@0.30.0"
+      ]
     },
     {
       "ref": "pkg:pypi/rich@15.0.0",
@@ -4309,31 +4619,32 @@
       ]
     },
     {
-      "ref": "pkg:pypi/ruff@0.15.12",
+      "ref": "pkg:pypi/rpds-py@0.30.0",
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/scipy@1.17.1",
-      "dependsOn": [
-        "pkg:pypi/numpy@2.4.4"
-      ]
+      "ref": "pkg:pypi/ruff@0.15.12",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/shellingham@1.5.4",
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/sortedcontainers@2.4.0",
-      "dependsOn": []
-    },
-    {
-      "ref": "pkg:pypi/tqdm@4.67.3",
+      "ref": "pkg:pypi/sse-starlette@3.4.2",
       "dependsOn": [
-        "pkg:pypi/colorama@0.4.6"
+        "pkg:pypi/anyio@4.13.0",
+        "pkg:pypi/starlette@1.0.0"
       ]
     },
     {
-      "ref": "pkg:pypi/ty@0.0.35",
+      "ref": "pkg:pypi/starlette@1.0.0",
+      "dependsOn": [
+        "pkg:pypi/anyio@4.13.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/ty@0.0.34",
       "dependsOn": []
     },
     {
@@ -4357,6 +4668,17 @@
     },
     {
       "ref": "pkg:pypi/uuid6@2025.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/uvicorn@0.46.0",
+      "dependsOn": [
+        "pkg:pypi/click@8.3.3",
+        "pkg:pypi/h11@0.16.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/xlsxwriter@3.2.9",
       "dependsOn": []
     }
   ]
