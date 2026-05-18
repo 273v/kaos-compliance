@@ -17,11 +17,11 @@
       "last_commit_at": "2026-05-18T17:12:59Z"
     },
     "ci": {
-      "workflow_conclusion": "",
+      "workflow_conclusion": "success",
       "workflow_run_id": 26048668898,
       "workflow_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/26048668898",
       "head_sha": "2d79d7ea445d2eef52c9307ed0ccec99a97255c1",
-      "run_completed_at": "2026-05-18T17:21:42Z",
+      "run_completed_at": "2026-05-18T17:31:48Z",
       "matrix": [
         {
           "name": "Rust tests (no PyO3)",
@@ -57,10 +57,10 @@
         },
         {
           "name": "Test (windows-x64 / Python 3.13)",
-          "conclusion": null,
-          "status": "in_progress",
+          "conclusion": "success",
+          "status": "completed",
           "started_at": "2026-05-18T17:21:41Z",
-          "completed_at": null,
+          "completed_at": "2026-05-18T17:23:44Z",
           "duration_seconds": 123
         },
         {
@@ -81,11 +81,11 @@
         },
         {
           "name": "Test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "in_progress",
+          "conclusion": "success",
+          "status": "completed",
           "started_at": "2026-05-18T17:21:41Z",
-          "completed_at": null,
-          "duration_seconds": 123
+          "completed_at": "2026-05-18T17:31:04Z",
+          "duration_seconds": 563
         },
         {
           "name": "Test (linux-x64 / Python 3.13)",
@@ -97,11 +97,19 @@
         },
         {
           "name": "Test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "in_progress",
+          "conclusion": "success",
+          "status": "completed",
           "started_at": "2026-05-18T17:21:40Z",
-          "completed_at": null,
-          "duration_seconds": 124
+          "completed_at": "2026-05-18T17:25:36Z",
+          "duration_seconds": 236
+        },
+        {
+          "name": "Build distribution + smoke test",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-18T17:31:08Z",
+          "completed_at": "2026-05-18T17:31:48Z",
+          "duration_seconds": 40
         }
       ]
     },
