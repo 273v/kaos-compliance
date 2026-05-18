@@ -41,11 +41,20 @@
 
 name: Sweep
 
+# Step 8 of kaos-modules/docs/oss/40-ci-cd/runner-cost-reduction-plan.md:
+# the "light" profile is not yet truly light — the collector CLI today
+# accepts only --module / --output / --pretty (no --no-supply-chain /
+# --no-governance switch), so every profile runs the same full
+# collection. The hourly cron was therefore paying the full-collection
+# cost 24× a day. Drop it until the collector grows a light-profile
+# switch; the 4-hour cadence keeps the dashboard fresh enough for
+# in-day oncall review, and the daily run still produces the diary.
+# Re-add the hourly cron once `kaos-compliance` ships a real
+# light-mode collector.
+
 on:
   schedule:
-    # Hourly light sweep.
-    - cron: "0 * * * *"
-    # Every 4 hours: security-oriented refresh.
+    # Every 4 hours: security-oriented refresh (was the second tier).
     - cron: "0 */4 * * *"
     # Daily UTC midnight: full sweep + diary.
     - cron: "0 0 * * *"
