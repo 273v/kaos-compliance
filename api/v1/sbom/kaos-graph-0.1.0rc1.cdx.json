@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4be68ce7-fe21-406a-941c-e3416e2a81c0",
+  "serialNumber": "urn:uuid:46610d4a-d552-4be3-bd1a-87d72adaa903",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-20T17:18:24Z",
+    "timestamp": "2026-05-20T20:50:55Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-graph@0.1.0a4",
+      "bom-ref": "pkg:pypi/kaos-graph@0.1.0rc1",
       "name": "kaos-graph",
-      "version": "0.1.0a4",
-      "purl": "pkg:pypi/kaos-graph@0.1.0a4"
+      "version": "0.1.0rc1",
+      "purl": "pkg:pypi/kaos-graph@0.1.0rc1"
     }
   },
   "components": [
@@ -902,21 +902,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-core@0.1.0a10",
+      "bom-ref": "pkg:pypi/kaos-core@0.1.0rc1",
       "name": "kaos-core",
-      "version": "0.1.0a10",
-      "purl": "pkg:pypi/kaos-core@0.1.0a10",
+      "version": "0.1.0rc1",
+      "purl": "pkg:pypi/kaos-core@0.1.0rc1",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6237422136b352d9a6805ccf634714d6b086b39a6551d77e779a9fd9eba0bae7"
+          "content": "a84f52ac55d296fa7979d766ff157cc6164764ca42d93e45df78dbf8d53a42ef"
         },
         {
           "alg": "SHA-256",
-          "content": "5690a55dd4720a68083328dad20c6d59f13fcc6dc2d557c710936a1f48257f2f"
+          "content": "0a691b6e4c5688368de2e0112138cfa46b3827887df728f19df55bc2abdf44c1"
         }
       ],
       "licenses": [
@@ -929,11 +929,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/b3/fa/7fe7eba42dae8acdb036a1863aec8d009f9bd077258ac8937e515c3c706d/kaos_core-0.1.0a10.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/7e/56/97682b2cfeaeb1c9806b39b32b702a2dbe1a2695cd0e2c1012e30a4cfa80/kaos_core-0.1.0rc1.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-core/0.1.0a10/"
+          "url": "https://pypi.org/project/kaos-core/0.1.0rc1/"
         }
       ],
       "properties": [
@@ -4025,7 +4025,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-graph@0.1.0a4",
+      "ref": "pkg:pypi/kaos-graph@0.1.0rc1",
       "dependsOn": [
         "pkg:cargo/oxrdf@0.3.3",
         "pkg:cargo/oxrdfio@0.2.5",
@@ -4074,7 +4074,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/kaos-core@0.1.0a10",
+      "ref": "pkg:pypi/kaos-core@0.1.0rc1",
       "dependsOn": [
         "pkg:pypi/click@8.3.3",
         "pkg:pypi/pydantic-settings@2.14.0",
