@@ -2,53 +2,53 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-agents",
-  "version": "0.1.0a19",
+  "version": "0.1.0rc1",
   "snapshot_slice": {
     "name": "kaos-agents",
     "identity": {
-      "pypi_version": "0.1.0a19",
-      "pypi_url": "https://pypi.org/project/kaos-agents/0.1.0a19/",
-      "main_head_sha": "5f5c11ed0e48ce63e5f870faff6a20217d137bd3",
-      "latest_tag": "v0.1.0a19",
-      "latest_tag_sha": "5f5c11ed0e48ce63e5f870faff6a20217d137bd3",
+      "pypi_version": "0.1.0rc1",
+      "pypi_url": "https://pypi.org/project/kaos-agents/0.1.0rc1/",
+      "main_head_sha": "16d8ea1f33ee502b300763d7bee1e88baefbf975",
+      "latest_tag": "v0.1.0rc1",
+      "latest_tag_sha": "16d8ea1f33ee502b300763d7bee1e88baefbf975",
       "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-20T19:24:43Z"
+      "last_commit_at": "2026-05-20T22:25:52Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26184848109,
-      "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/26184848109",
-      "head_sha": "5f5c11ed0e48ce63e5f870faff6a20217d137bd3",
-      "run_completed_at": "2026-05-20T19:29:57Z",
+      "workflow_run_id": 26193547046,
+      "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/26193547046",
+      "head_sha": "16d8ea1f33ee502b300763d7bee1e88baefbf975",
+      "run_completed_at": "2026-05-20T22:33:40Z",
       "matrix": []
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26184848159,
-      "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/26184848159",
+      "workflow_run_id": 26193547014,
+      "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/26193547014",
       "jobs": [
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-20T19:25:00Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-20T19:25:01Z"
+          "completed_at": "2026-05-20T22:26:08Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-20T19:24:59Z"
+          "completed_at": "2026-05-20T22:26:09Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-20T22:26:10Z"
         }
       ],
-      "run_completed_at": "2026-05-20T19:25:01Z"
+      "run_completed_at": "2026-05-20T22:26:11Z"
     },
     "open_prs": {
       "count": 1,
@@ -62,14 +62,14 @@
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.0a19",
-      "pypi_release_iso": "2026-05-20T19:30:37.030141Z",
+      "pypi_version": "0.1.0rc1",
+      "pypi_release_iso": "2026-05-20T22:34:58.428327Z",
       "wheel_platforms": [
         "any"
       ],
       "wheel_sha256s": {
-        "kaos_agents-0.1.0a19-py3-none-any.whl": "393fceab899d3593e4dbc9b6440eb13e0d6ceb456886af79879ece8c83aea875",
-        "kaos_agents-0.1.0a19.tar.gz": "e9a7a01beaa9ada5f0e392a03572ae263c9699184ccb28a84d22c5918882a1e9"
+        "kaos_agents-0.1.0rc1-py3-none-any.whl": "96b0d6241ec629170cfb758f9be7e49c75cca2399ef66ec5026e504215e76463",
+        "kaos_agents-0.1.0rc1.tar.gz": "c800abb0ff1de003662e480862b2799e11e08803744245b2f7a33ceb2e13600d"
       },
       "is_abi3": false,
       "has_musllinux_wheel": false,
@@ -83,7 +83,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-agents",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1586686699,
+        "rekor_log_index": 1587983837,
         "verified_count": 2,
         "total_count": 2
       },
@@ -119,15 +119,15 @@
           "py-rust-stemmers",
           "regex"
         ],
-        "sbom_artifact_path": "data/sbom/kaos-agents-0.1.0a19.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-agents-0.1.0rc1.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.848,
-      "conventional_commits_rate_90d": 0.804,
-      "verified_commit_ratio_90d": 0.978,
-      "commits_90d": 46,
+      "dco_signoff_rate_90d": 0.851,
+      "conventional_commits_rate_90d": 0.787,
+      "verified_commit_ratio_90d": 0.979,
+      "commits_90d": 47,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -180,11 +180,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 18,
-      "median_pr_age_days": 1.073,
+      "releases_90d": 19,
+      "median_pr_age_days": 1.232,
       "open_pr_count": 1,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 153,
+      "time_to_pypi_seconds_median": 156,
       "errors": []
     },
     "code_metrics": {
@@ -205,15 +205,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-agents-0.1.0a19.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-agents/releases/download/v0.1.0a19/kaos-agents-0.1.0a19.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-agents-0.1.0rc1.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-agents/releases/download/v0.1.0rc1/kaos-agents-0.1.0rc1.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-agents",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1586686699,
+    "rekor_log_index": 1587983837,
     "verified_count": 2,
     "total_count": 2,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-agents/"

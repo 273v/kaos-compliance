@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:3ae08205-ee08-42b5-accb-2993ae81e2bd",
+  "serialNumber": "urn:uuid:63a434bd-8ccb-4c41-9894-c0a627310431",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-20T20:55:26Z",
+    "timestamp": "2026-05-21T00:43:31Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.0rc1",
+      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.0",
       "name": "kaos-nlp-core",
-      "version": "0.1.0rc1",
-      "purl": "pkg:pypi/kaos-nlp-core@0.1.0rc1"
+      "version": "0.1.0",
+      "purl": "pkg:pypi/kaos-nlp-core@0.1.0"
     }
   },
   "components": [
@@ -1117,21 +1117,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-core@0.1.0rc1",
+      "bom-ref": "pkg:pypi/kaos-core@0.1.0",
       "name": "kaos-core",
-      "version": "0.1.0rc1",
-      "purl": "pkg:pypi/kaos-core@0.1.0rc1",
+      "version": "0.1.0",
+      "purl": "pkg:pypi/kaos-core@0.1.0",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a84f52ac55d296fa7979d766ff157cc6164764ca42d93e45df78dbf8d53a42ef"
+          "content": "5535f80661492101caa1fefd536c5f3c6a3d3597c6eb1f505e974907931c6945"
         },
         {
           "alg": "SHA-256",
-          "content": "0a691b6e4c5688368de2e0112138cfa46b3827887df728f19df55bc2abdf44c1"
+          "content": "1f6ef9862a3ff5136d485289a5c8ff6af30e7006a8ad14508bc0ff4ec3fac391"
         }
       ],
       "licenses": [
@@ -1144,11 +1144,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/7e/56/97682b2cfeaeb1c9806b39b32b702a2dbe1a2695cd0e2c1012e30a4cfa80/kaos_core-0.1.0rc1.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/5a/b7/e60e6d6a05010f77e7535b09528f9efa994d9594abde9b26feecea20f059/kaos_core-0.1.0.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-core/0.1.0rc1/"
+          "url": "https://pypi.org/project/kaos-core/0.1.0/"
         }
       ],
       "properties": [
@@ -9515,7 +9515,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-nlp-core@0.1.0rc1",
+      "ref": "pkg:pypi/kaos-nlp-core@0.1.0",
       "dependsOn": [
         "pkg:cargo/ahash@0.8.12",
         "pkg:cargo/aho-corasick@1.1.4",
@@ -9614,7 +9614,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/kaos-core@0.1.0rc1",
+      "ref": "pkg:pypi/kaos-core@0.1.0",
       "dependsOn": [
         "pkg:pypi/click@8.3.2",
         "pkg:pypi/pydantic-settings@2.13.1",

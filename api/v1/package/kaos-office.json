@@ -2,57 +2,59 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-office",
-  "version": "0.1.0a8",
+  "version": "0.1.0",
   "snapshot_slice": {
     "name": "kaos-office",
     "identity": {
-      "pypi_version": "0.1.0a8",
-      "pypi_url": "https://pypi.org/project/kaos-office/0.1.0a8/",
-      "main_head_sha": "1c4dd7e483d2ed2217a8885eea60906d252d05f5",
-      "latest_tag": "v0.1.0a8",
-      "latest_tag_sha": "1c4dd7e483d2ed2217a8885eea60906d252d05f5",
+      "pypi_version": "0.1.0",
+      "pypi_url": "https://pypi.org/project/kaos-office/0.1.0/",
+      "main_head_sha": "042a69bf0d4f897f423cd8011f8cb655db23db08",
+      "latest_tag": "v0.1.0",
+      "latest_tag_sha": "042a69bf0d4f897f423cd8011f8cb655db23db08",
       "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-20T19:09:24Z"
+      "last_commit_at": "2026-05-21T00:31:28Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26184086465,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26184086465",
-      "head_sha": "1c4dd7e483d2ed2217a8885eea60906d252d05f5",
-      "run_completed_at": "2026-05-20T19:24:17Z",
+      "workflow_run_id": 26198116356,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26198116356",
+      "head_sha": "042a69bf0d4f897f423cd8011f8cb655db23db08",
+      "run_completed_at": "2026-05-21T00:33:11Z",
       "matrix": []
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26184086468,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26184086468",
+      "workflow_run_id": 26198116340,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26198116340",
       "jobs": [
         {
-          "name": "vulture (dead-code scan)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-20T19:09:42Z"
+          "completed_at": "2026-05-21T00:31:41Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-20T19:09:38Z"
+          "completed_at": "2026-05-21T00:31:39Z"
         },
         {
-          "name": "bandit (static security)",
+          "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-20T19:09:41Z"
+          "completed_at": "2026-05-21T00:31:45Z"
         }
       ],
-      "run_completed_at": "2026-05-20T19:09:43Z"
+      "run_completed_at": "2026-05-21T00:31:46Z"
     },
     "open_prs": {
-      "count": 0,
-      "titles": []
+      "count": 1,
+      "titles": [
+        "#32 docs: refresh README for 0.1.0 GA \u2014 WU-B"
+      ]
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -60,14 +62,14 @@
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.0a8",
-      "pypi_release_iso": "2026-05-20T19:21:30.645337Z",
+      "pypi_version": "0.1.0",
+      "pypi_release_iso": "2026-05-21T00:37:08.199476Z",
       "wheel_platforms": [
         "any"
       ],
       "wheel_sha256s": {
-        "kaos_office-0.1.0a8-py3-none-any.whl": "1d328f8d630b472a509ae8bdb8a40dbed3d75f93e3b4abfd4be260470734521d",
-        "kaos_office-0.1.0a8.tar.gz": "aaf6f19ee4b4a3c805b00471d2b5daa89e1881ee811fc7c8306037baca374f82"
+        "kaos_office-0.1.0-py3-none-any.whl": "6a354e4cc8f0c206d964c6e8a5cbc18c445ec0f14566355d32a8fa4bdf0a5cce",
+        "kaos_office-0.1.0.tar.gz": "bef313daec782ef54da14bd16a090d0609d745cc22d30cf92de40f7b03c4fe33"
       },
       "is_abi3": false,
       "has_musllinux_wheel": false,
@@ -81,7 +83,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-office",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1586652207,
+        "rekor_log_index": 1588661495,
         "verified_count": 2,
         "total_count": 2
       },
@@ -106,15 +108,15 @@
         ],
         "strong_copyleft": [],
         "unknown_license": [],
-        "sbom_artifact_path": "data/sbom/kaos-office-0.1.0a8.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-office-0.1.0.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.228,
-      "conventional_commits_rate_90d": 0.762,
-      "verified_commit_ratio_90d": 0.248,
-      "commits_90d": 101,
+      "dco_signoff_rate_90d": 0.243,
+      "conventional_commits_rate_90d": 0.748,
+      "verified_commit_ratio_90d": 0.262,
+      "commits_90d": 103,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -167,9 +169,9 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 8,
-      "median_pr_age_days": null,
-      "open_pr_count": 0,
+      "releases_90d": 10,
+      "median_pr_age_days": 0.071,
+      "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 345,
       "errors": []
@@ -192,15 +194,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-office-0.1.0a8.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-office/releases/download/v0.1.0a8/kaos-office-0.1.0a8.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-office-0.1.0.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-office/releases/download/v0.1.0/kaos-office-0.1.0.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-office",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1586652207,
+    "rekor_log_index": 1588661495,
     "verified_count": 2,
     "total_count": 2,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-office/"
