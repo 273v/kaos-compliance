@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:cd3af7a8-9002-4a4b-be4c-2609afc6d057",
+  "serialNumber": "urn:uuid:166dbea0-92e9-4e7d-9dcf-4a3ae7d6d518",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-22T16:58:36Z",
+    "timestamp": "2026-05-22T20:42:42Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -1659,21 +1659,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/idna@3.13",
+      "bom-ref": "pkg:pypi/idna@3.15",
       "name": "idna",
-      "version": "3.13",
-      "purl": "pkg:pypi/idna@3.13",
+      "version": "3.15",
+      "purl": "pkg:pypi/idna@3.15",
       "supplier": {
         "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "585ea8fe5d69b9181ec1afba340451fba6ba764af97026f92a91d4eef164a242"
+          "content": "ca962446ea538f7092a95e057da437618e886f4d349216d2b1e294abfdb65fdc"
         },
         {
           "alg": "SHA-256",
-          "content": "892ea0cde124a99ce773decba204c5552b69c3c67ffd5f232eb7696135bc8bb3"
+          "content": "048adeaf8c2d788c40fee287673ccaa74c24ffd8dcf09ffa555a2fbb59f10ac8"
         }
       ],
       "licenses": [
@@ -1686,11 +1686,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/ce/cc/762dfb036166873f0059f3b7de4565e1b5bc3d6f28a414c13da27e442f99/idna-3.13.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/82/77/7b3966d0b9d1d31a36ddf1746926a11dface89a83409bf1483f0237aa758/idna-3.15.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/idna/3.13/"
+          "url": "https://pypi.org/project/idna/3.15/"
         }
       ],
       "properties": [
@@ -4589,21 +4589,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/starlette@1.0.0",
+      "bom-ref": "pkg:pypi/starlette@1.0.1",
       "name": "starlette",
-      "version": "1.0.0",
-      "purl": "pkg:pypi/starlette@1.0.0",
+      "version": "1.0.1",
+      "purl": "pkg:pypi/starlette@1.0.1",
       "supplier": {
         "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6a4beaf1f81bb472fd19ea9b918b50dc3a77a6f2e190a12954b25e6ed5eea149"
+          "content": "512399c5f1de7fac99c88572212ded9ddeddef2fb32afa82d724000e88b38f4f"
         },
         {
           "alg": "SHA-256",
-          "content": "d3ec55e0bb321692d275455ddfd3df75fff145d009685eb40dc91fc66b03d38b"
+          "content": "7c0e69b2ee1c848bd54669d908500117a3ee13de603a21427e5c6fc1adf98dcd"
         }
       ],
       "licenses": [
@@ -4616,11 +4616,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/81/69/17425771797c36cded50b7fe44e850315d039f28b15901ab44839e70b593/starlette-1.0.0.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/08/a3/84e821cc54b4ab50ae6dbc6ac3800a651b65ec35f045cc73785380654057/starlette-1.0.1.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/starlette/1.0.0/"
+          "url": "https://pypi.org/project/starlette/1.0.1/"
         }
       ],
       "properties": [
@@ -16344,7 +16344,7 @@
       ]
     },
     {
-      "ref": "pkg:pypi/idna@3.13",
+      "ref": "pkg:pypi/idna@3.15",
       "dependsOn": []
     },
     {
@@ -16401,7 +16401,7 @@
         "pkg:pypi/mcp@1.27.0",
         "pkg:pypi/pydantic-settings@2.14.1",
         "pkg:pypi/pydantic@2.13.4",
-        "pkg:pypi/starlette@1.0.0"
+        "pkg:pypi/starlette@1.0.1"
       ]
     },
     {
@@ -16437,7 +16437,7 @@
         "pkg:pypi/python-multipart@0.0.27",
         "pkg:pypi/pywin32@311",
         "pkg:pypi/sse-starlette@3.4.2",
-        "pkg:pypi/starlette@1.0.0",
+        "pkg:pypi/starlette@1.0.1",
         "pkg:pypi/typing-extensions@4.15.0",
         "pkg:pypi/typing-inspection@0.4.2",
         "pkg:pypi/uvicorn@0.46.0"
@@ -16611,11 +16611,11 @@
       "ref": "pkg:pypi/sse-starlette@3.4.2",
       "dependsOn": [
         "pkg:pypi/anyio@4.13.0",
-        "pkg:pypi/starlette@1.0.0"
+        "pkg:pypi/starlette@1.0.1"
       ]
     },
     {
-      "ref": "pkg:pypi/starlette@1.0.0",
+      "ref": "pkg:pypi/starlette@1.0.1",
       "dependsOn": [
         "pkg:pypi/anyio@4.13.0"
       ]
