@@ -5,7 +5,7 @@ All notable changes to `kaos-compliance` are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.0.2] — 2026-05-23
 
 ### Methodology — 1.1.1 (audit-04 §23-H bookkeeping)
 
@@ -99,6 +99,4 @@ methodology document. This entry plus the corresponding
     transitive deps).
   - 69 green / 29 yellow / 4 gray pill states across the org grid.
 
-[Unreleased]: https://github.com/273v/kaos-compliance/compare/...HEAD
-
-[Unreleased]: https://github.com/273v/kaos-compliance/compare/...HEAD
+[0.0.2]: https://github.com/273v/kaos-compliance/releases/tag/v0.0.2
