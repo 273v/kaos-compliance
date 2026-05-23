@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d2996497-d353-461e-867f-8ebcd874f253",
+  "serialNumber": "urn:uuid:f3636479-4ee8-4f4a-8337-0aaa159199c0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-22T20:43:58Z",
+    "timestamp": "2026-05-23T00:40:10Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -804,21 +804,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/idna@3.13",
+      "bom-ref": "pkg:pypi/idna@3.16",
       "name": "idna",
-      "version": "3.13",
-      "purl": "pkg:pypi/idna@3.13",
+      "version": "3.16",
+      "purl": "pkg:pypi/idna@3.16",
       "supplier": {
         "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "585ea8fe5d69b9181ec1afba340451fba6ba764af97026f92a91d4eef164a242"
+          "content": "d7a6da03db833450fca25d2358ac9ff06cd624577a4aea3a596d5c0f77b8e03d"
         },
         {
           "alg": "SHA-256",
-          "content": "892ea0cde124a99ce773decba204c5552b69c3c67ffd5f232eb7696135bc8bb3"
+          "content": "cc246e3a3f89580c3a951b5ad298ca4638078b2cdd4f115654332b5c26daded5"
         }
       ],
       "licenses": [
@@ -831,11 +831,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/ce/cc/762dfb036166873f0059f3b7de4565e1b5bc3d6f28a414c13da27e442f99/idna-3.13.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/1a/88/bcf9709822fe69d02c2a6a77956c98ce6ea8ca8767a9aadcedc7eb6a2390/idna-3.16.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/idna/3.13/"
+          "url": "https://pypi.org/project/idna/3.16/"
         }
       ],
       "properties": [
@@ -2806,7 +2806,7 @@
     {
       "ref": "pkg:pypi/anyio@4.13.0",
       "dependsOn": [
-        "pkg:pypi/idna@3.13"
+        "pkg:pypi/idna@3.16"
       ]
     },
     {
@@ -2848,11 +2848,11 @@
         "pkg:pypi/anyio@4.13.0",
         "pkg:pypi/certifi@2026.4.22",
         "pkg:pypi/httpcore@1.0.9",
-        "pkg:pypi/idna@3.13"
+        "pkg:pypi/idna@3.16"
       ]
     },
     {
-      "ref": "pkg:pypi/idna@3.13",
+      "ref": "pkg:pypi/idna@3.16",
       "dependsOn": []
     },
     {
