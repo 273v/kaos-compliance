@@ -30,14 +30,17 @@
    their own bar from the per-signal evidence.
 5. **Stale data is loudly marked stale.** Every snapshot carries a
    generation timestamp; the dashboard shows a freshness indicator on
-   every card. If the cron stops running, the indicator goes amber
-   within 2 hours and red within 24.
+   every card. The snapshot's `stale_threshold_hours = 26` constant
+   (`collector/snapshot.py:14-19`, `:634-639`) defines the loudly-stale
+   boundary — sized for the 24h full-sweep cadence plus a 2h tolerance.
+   The amber/red split was originally specified for an hourly light
+   profile that has been paused (see Cadence below).
 
 ## Cadence
 
 | Cron | Cadence | What runs | Why |
 |---|---|---|---|
-| Light | every 1h | CI conclusions, open PR counts, queue depth | These move fast; staleness is misleading. |
+| Light | **paused** (originally every 1h) | CI conclusions, open PR counts, queue depth | The light profile was paying the full-collection cost because a dedicated light-profile collector hadn't shipped yet. The hourly cron is paused — see `.github/workflows/sweep.yml:44-60` for the rationale. The light cadence returns when a real light-profile collector lands. |
 | Security | every 4h | bandit / vulture / cargo-* / pip-audit / gitleaks conclusions; OSV cross-check; PyPI attestation refresh | Slower-moving but high-signal; refresh often enough that a published advisory shows up within a working day. |
 | Full | every 24h (UTC midnight) | Full sweep + SBOM rebuild + LLM diary + history rotation | The expensive path. Rebuilds the full transitive dep tree and runs the daily narrative. |
 
@@ -359,7 +362,7 @@ JSON shape changes; the methodology version above governs the
 
 ---
 
-*Methodology version 1.1 — 2026-05-11.*
+*Methodology version 1.1.1 — 2026-05-23.*
 
 *Changelog:*
 
