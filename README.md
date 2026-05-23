@@ -50,8 +50,13 @@ metadata, sigstore Rekor log, or a file in this repo).
 
 ## How it works
 
-1. A collector script runs on a cron schedule (1h light, 4h security
-   scan refresh, 24h full sweep + SBOM rebuild + LLM diary).
+1. A collector script runs on a cron schedule (4h security scan refresh,
+   24h full sweep + SBOM rebuild + LLM diary). The previously-documented
+   hourly light profile is paused — see `.github/workflows/sweep.yml:44-60`
+   for the rationale (the light profile was paying the full-collection
+   cost; it will return when a true light-profile collector ships). The
+   snapshot's freshness gate is `stale_threshold_hours = 26` in
+   `collector/snapshot.py:14-19`, sized for the 24h-full + 2h buffer cadence.
 2. The collector queries public sources only: GitHub REST API for repos,
    PyPI JSON + simple-index for package metadata, sigstore Rekor for
    attestation chains, and the local sibling repo clones for filesystem

@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Methodology — 1.1.1 (audit-04 §23-H bookkeeping)
+
+Per the methodology's own versioning rule (R25 / `docs/METHODOLOGY.md:347-353`),
+the renderer's `METHODOLOGY_VERSION = "1.1.1"` (`render/__init__.py:10`)
+must have a matching CHANGELOG entry and a matching footer line in the
+methodology document. This entry plus the corresponding
+`docs/METHODOLOGY.md` footer change close the gap audit-04/kaos-compliance.md
+§23-H flagged:
+
+- 1.1.1 is a **patch bump** under the R25 matrix — restoring honest cadence
+  prose (paused hourly light cron, `stale_threshold_hours = 26` constant)
+  and the corresponding 26-hour freshness boundary. No signal definitions
+  or thresholds changed. The pill colors, snapshot schema, and per-signal
+  evidence boundaries are unchanged.
+- This is the missing CHANGELOG entry the audit called out; methodology
+  doc footer is updated in the same patch.
+
 ### Methodology
 
 - Public PR and CI/CD hardening policy detail in the methodology,
