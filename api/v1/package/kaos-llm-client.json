@@ -25,39 +25,22 @@
       "matrix": []
     },
     "security": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 26317147526,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/26317147526",
-      "jobs": [
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-22T23:39:34Z"
-        },
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-22T23:39:29Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-22T23:39:35Z"
-        }
-      ],
-      "run_completed_at": "2026-05-22T23:39:36Z"
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "jobs": [],
+      "run_completed_at": null
     },
     "open_prs": {
-      "count": 0,
-      "titles": []
+      "count": 1,
+      "titles": [
+        "#30 fix(packaging): declare [mcp] extra for kaos-llm-serve"
+      ]
     },
     "freshness": {
       "days_since_last_commit": 0,
       "days_since_last_release": 0,
-      "days_since_last_security_scan": 0
+      "days_since_last_security_scan": null
     },
     "supply_chain": {
       "pypi_version": "0.1.5",
@@ -160,19 +143,22 @@
         "required_signatures": null
       },
       "codeowners_path": ".github/CODEOWNERS",
-      "security_md_present": true,
-      "security_md_disclosure_window_days": 90,
+      "security_md_present": false,
+      "security_md_disclosure_window_days": null,
       "notice_present": true,
       "license_files_in_sdist": [
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 10,
-      "median_pr_age_days": null,
-      "open_pr_count": 0,
+      "releases_90d": null,
+      "median_pr_age_days": 0.009,
+      "open_pr_count": 1,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 121,
-      "errors": []
+      "time_to_pypi_seconds_median": null,
+      "errors": [
+        "security_md: Command '['gh', 'api', 'repos/273v/kaos-llm-client/contents/SECURITY.md']' returned non-zero exit status 1.",
+        "releases: Command '['gh', 'api', 'repos/273v/kaos-llm-client/releases?per_page=100']' returned non-zero exit status 1."
+      ]
     },
     "code_metrics": {
       "python": {

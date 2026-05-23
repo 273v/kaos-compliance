@@ -51,8 +51,10 @@
       "run_completed_at": "2026-05-22T18:48:20Z"
     },
     "open_prs": {
-      "count": 0,
-      "titles": []
+      "count": 1,
+      "titles": [
+        "#29 docs(readme): point CI badge at actual quality.yml workflow"
+      ]
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -156,9 +158,9 @@
         "required_pull_request_reviews": null,
         "required_signatures": null
       },
-      "codeowners_path": ".github/CODEOWNERS",
-      "security_md_present": true,
-      "security_md_disclosure_window_days": 90,
+      "codeowners_path": null,
+      "security_md_present": false,
+      "security_md_disclosure_window_days": null,
       "notice_present": true,
       "license_files_in_sdist": [
         "LICENSE",
@@ -166,10 +168,14 @@
       ],
       "releases_90d": 15,
       "median_pr_age_days": null,
-      "open_pr_count": 0,
+      "open_pr_count": null,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 301,
-      "errors": []
+      "errors": [
+        "codeowners[.github/CODEOWNERS]: Command '['gh', 'api', 'repos/273v/kaos-core/contents/.github/CODEOWNERS']' returned non-zero exit status 1.",
+        "security_md: Command '['gh', 'api', 'repos/273v/kaos-core/contents/SECURITY.md']' returned non-zero exit status 1.",
+        "open_prs: Command '['gh', 'api', 'repos/273v/kaos-core/pulls?state=open&per_page=100', '--paginate']' returned non-zero exit status 1."
+      ]
     },
     "code_metrics": {
       "python": {

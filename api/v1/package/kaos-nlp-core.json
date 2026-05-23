@@ -9,50 +9,33 @@
       "pypi_version": "0.1.1",
       "pypi_url": "https://pypi.org/project/kaos-nlp-core/0.1.1/",
       "main_head_sha": "ad7359bebbbfbd279e6536799c23c59512263ffd",
-      "latest_tag": "v0.1.1",
-      "latest_tag_sha": "ad7359bebbbfbd279e6536799c23c59512263ffd",
-      "tag_at_head": true,
+      "latest_tag": null,
+      "latest_tag_sha": null,
+      "tag_at_head": null,
       "commits_past_tag": null,
-      "repo_visibility": "public",
+      "repo_visibility": null,
       "last_commit_at": "2026-05-23T02:30:15Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26321118903,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26321118903",
+      "workflow_run_id": 26321118914,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26321118914",
       "head_sha": "ad7359bebbbfbd279e6536799c23c59512263ffd",
-      "run_completed_at": "2026-05-23T02:34:59Z",
+      "run_completed_at": "2026-05-23T02:33:02Z",
       "matrix": []
     },
     "security": {
       "workflow_conclusion": "success",
       "workflow_run_id": 26321118916,
       "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26321118916",
-      "jobs": [
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-23T02:30:32Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-23T02:30:32Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-23T02:30:32Z"
-        }
-      ],
+      "jobs": [],
       "run_completed_at": "2026-05-23T02:30:33Z"
     },
     "open_prs": {
-      "count": 0,
-      "titles": []
+      "count": 1,
+      "titles": [
+        "#26 chore(packaging): bump classifier to Production/Stable"
+      ]
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -158,68 +141,27 @@
       "verified_commit_ratio_90d": 0.444,
       "commits_90d": 36,
       "unique_committers_90d": 2,
-      "branch_protection_enabled": true,
-      "branch_protection_summary": {
-        "source": "branches_api",
-        "required_status_checks": {
-          "enforcement_level": "everyone",
-          "contexts": [
-            "bandit (static security)",
-            "vulture (dead-code scan)",
-            "quality",
-            "test",
-            "rust-test (no PyO3)",
-            "build",
-            "gitleaks (incremental)"
-          ],
-          "checks": [
-            {
-              "context": "bandit (static security)",
-              "app_id": 15368
-            },
-            {
-              "context": "vulture (dead-code scan)",
-              "app_id": 15368
-            },
-            {
-              "context": "quality",
-              "app_id": 15368
-            },
-            {
-              "context": "test",
-              "app_id": 15368
-            },
-            {
-              "context": "rust-test (no PyO3)",
-              "app_id": 15368
-            },
-            {
-              "context": "build",
-              "app_id": 15368
-            },
-            {
-              "context": "gitleaks (incremental)",
-              "app_id": 15368
-            }
-          ]
-        },
-        "required_pull_request_reviews": null,
-        "required_signatures": null
-      },
-      "codeowners_path": ".github/CODEOWNERS",
+      "branch_protection_enabled": null,
+      "branch_protection_summary": null,
+      "codeowners_path": null,
       "security_md_present": true,
       "security_md_disclosure_window_days": 90,
-      "notice_present": true,
+      "notice_present": false,
       "license_files_in_sdist": [
         "LICENSE",
         "NOTICE"
       ],
       "releases_90d": 11,
-      "median_pr_age_days": null,
-      "open_pr_count": 0,
+      "median_pr_age_days": 0.0,
+      "open_pr_count": 1,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 1010,
-      "errors": []
+      "time_to_pypi_seconds_median": 1079,
+      "errors": [
+        "branch_protection: Command '['gh', 'api', 'repos/273v/kaos-nlp-core/branches/main/protection']' returned non-zero exit status 1.",
+        "branch_protection_public: Command '['gh', 'api', 'repos/273v/kaos-nlp-core/branches/main']' returned non-zero exit status 1.",
+        "codeowners[.github/CODEOWNERS]: Command '['gh', 'api', 'repos/273v/kaos-nlp-core/contents/.github/CODEOWNERS']' returned non-zero exit status 1.",
+        "notice: Command '['gh', 'api', 'repos/273v/kaos-nlp-core/contents/NOTICE']' returned non-zero exit status 1."
+      ]
     },
     "code_metrics": {
       "python": {

@@ -51,8 +51,10 @@
       "run_completed_at": "2026-05-22T23:22:03Z"
     },
     "open_prs": {
-      "count": 0,
-      "titles": []
+      "count": 1,
+      "titles": [
+        "#22 fix(packaging): declare [mcp], [tabular], [programs] extras"
+      ]
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -125,11 +127,11 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.743,
-      "conventional_commits_rate_90d": 0.771,
-      "verified_commit_ratio_90d": 0.543,
-      "commits_90d": 35,
-      "unique_committers_90d": 2,
+      "dco_signoff_rate_90d": null,
+      "conventional_commits_rate_90d": null,
+      "verified_commit_ratio_90d": null,
+      "commits_90d": null,
+      "unique_committers_90d": null,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
         "source": "branches_api",
@@ -181,17 +183,20 @@
       "codeowners_path": ".github/CODEOWNERS",
       "security_md_present": true,
       "security_md_disclosure_window_days": 90,
-      "notice_present": true,
+      "notice_present": false,
       "license_files_in_sdist": [
         "LICENSE",
         "NOTICE"
       ],
       "releases_90d": 7,
-      "median_pr_age_days": null,
-      "open_pr_count": 0,
+      "median_pr_age_days": 0.002,
+      "open_pr_count": 1,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 498,
-      "errors": []
+      "time_to_pypi_seconds_median": 531,
+      "errors": [
+        "commits: Command '['gh', 'api', 'repos/273v/kaos-graph/commits?since=2026-02-22T16:27:02Z&until=2026-05-23T16:27:02Z&per_page=100', '--paginate']' returned non-zero exit status 1.",
+        "notice: Command '['gh', 'api', 'repos/273v/kaos-graph/contents/NOTICE']' returned non-zero exit status 1."
+      ]
     },
     "code_metrics": {
       "python": {
