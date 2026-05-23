@@ -2,74 +2,72 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-tabular",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "snapshot_slice": {
     "name": "kaos-tabular",
     "identity": {
-      "pypi_version": "0.1.0",
-      "pypi_url": "https://pypi.org/project/kaos-tabular/0.1.0/",
-      "main_head_sha": "d0ca3aff34b74e8db0e76075ea1ab79fe8af0fea",
-      "latest_tag": "v0.1.0",
-      "latest_tag_sha": "d7ba188b247e60ee4acbbf3f764b07acd698f150",
-      "tag_at_head": false,
+      "pypi_version": "0.1.1",
+      "pypi_url": "https://pypi.org/project/kaos-tabular/0.1.1/",
+      "main_head_sha": "fb0429a76eb55d1c202d6a52ad66d033dd9e174b",
+      "latest_tag": "v0.1.1",
+      "latest_tag_sha": "fb0429a76eb55d1c202d6a52ad66d033dd9e174b",
+      "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-22T23:35:54Z"
+      "last_commit_at": "2026-05-23T19:44:05Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26317055668,
-      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/26317055668",
-      "head_sha": "d0ca3aff34b74e8db0e76075ea1ab79fe8af0fea",
-      "run_completed_at": "2026-05-22T23:40:05Z",
+      "workflow_run_id": 26341842014,
+      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/26341842014",
+      "head_sha": "fb0429a76eb55d1c202d6a52ad66d033dd9e174b",
+      "run_completed_at": "2026-05-23T20:00:28Z",
       "matrix": []
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26317055614,
-      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/26317055614",
+      "workflow_run_id": 26341842016,
+      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/26341842016",
       "jobs": [
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-23T19:44:21Z"
+        },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-22T23:36:07Z"
+          "completed_at": "2026-05-23T19:44:22Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-22T23:36:08Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-22T23:36:07Z"
+          "completed_at": "2026-05-23T19:44:20Z"
         }
       ],
-      "run_completed_at": "2026-05-22T23:36:08Z"
+      "run_completed_at": "2026-05-23T19:44:23Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#31 chore(packaging): bump classifier to Production/Stable"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 2,
+      "days_since_last_release": 0,
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.0",
-      "pypi_release_iso": "2026-05-21T00:37:19.738429Z",
+      "pypi_version": "0.1.1",
+      "pypi_release_iso": "2026-05-23T19:57:21.804870Z",
       "wheel_platforms": [
         "any"
       ],
       "wheel_sha256s": {
-        "kaos_tabular-0.1.0-py3-none-any.whl": "3664d440d8473e5caaaa27ad8824a122312616ac194e751f2b99d772371c314f",
-        "kaos_tabular-0.1.0.tar.gz": "a193b46769c5aff38f8c10d483f7412be0a75631e57ca51539ff3484a31cdc79"
+        "kaos_tabular-0.1.1-py3-none-any.whl": "af8f3be6220aaf8ab1fa90a1d9fa2d3e65ec30249c447cef3871a6497c15204b",
+        "kaos_tabular-0.1.1.tar.gz": "164685f0ddbbca6e8b4b1133b8bb3d209062e266891a35a4f677603a28711276"
       },
       "is_abi3": false,
       "has_musllinux_wheel": false,
@@ -83,7 +81,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-tabular",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1588662282,
+        "rekor_log_index": 1615728389,
         "verified_count": 2,
         "total_count": 2
       },
@@ -106,15 +104,15 @@
         ],
         "strong_copyleft": [],
         "unknown_license": [],
-        "sbom_artifact_path": "data/sbom/kaos-tabular-0.1.0.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-tabular-0.1.1.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.8,
-      "conventional_commits_rate_90d": 0.867,
-      "verified_commit_ratio_90d": 0.8,
-      "commits_90d": 30,
+      "dco_signoff_rate_90d": 0.818,
+      "conventional_commits_rate_90d": 0.848,
+      "verified_commit_ratio_90d": 0.788,
+      "commits_90d": 33,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -168,15 +166,15 @@
         "NOTICE"
       ],
       "releases_90d": 7,
-      "median_pr_age_days": 0.002,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 240,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 2653,
+        "src_loc": 2657,
         "tests_loc": 2880,
         "src_files": 11,
         "tests_files": 21
@@ -192,15 +190,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-tabular-0.1.0.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-tabular/releases/download/v0.1.0/kaos-tabular-0.1.0.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-tabular-0.1.1.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-tabular/releases/download/v0.1.1/kaos-tabular-0.1.1.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-tabular",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1588662282,
+    "rekor_log_index": 1615728389,
     "verified_count": 2,
     "total_count": 2,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-tabular/"

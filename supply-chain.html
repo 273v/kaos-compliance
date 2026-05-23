@@ -125,7 +125,7 @@ footer a{color:var(--muted)}
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-05-23 16:32 UTC
+  Generated 2026-05-23 20:33 UTC
  </div>
 </header>
 
@@ -582,6 +582,20 @@ footer a{color:var(--muted)}
       </tr>
       <tr id="license-findings-kaos-citations">
        <td class="pkg" data-h="Package"><a href="package/kaos-citations.html">kaos-citations</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
+       <td class="pkg" data-h="Package"><a href="package/kaos-citations.html">kaos-citations</a></td>
        <td data-h="Status"><span class="pill g" aria-label="Documented parser gap: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
        <td class="mono" data-h="Component">regex</td>
        <td class="mono" data-h="License">Apache-2.0 OR MIT</td>
@@ -659,6 +673,20 @@ footer a{color:var(--muted)}
        </td>
       </tr>
       <tr id="license-findings-kaos-graph">
+       <td class="pkg" data-h="Package"><a href="package/kaos-graph.html">kaos-graph</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
+      <tr>
        <td class="pkg" data-h="Package"><a href="package/kaos-graph.html">kaos-graph</a></td>
        <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
        <td class="mono" data-h="Component">r-efi</td>
@@ -1269,6 +1297,20 @@ footer a{color:var(--muted)}
          </details>
        </td>
       </tr>
+      <tr id="license-findings-kaos-pdf">
+       <td class="pkg" data-h="Package"><a href="package/kaos-pdf.html">kaos-pdf</a></td>
+       <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+       <td class="mono" data-h="Component">certifi</td>
+       <td class="mono" data-h="License">MPL-2.0</td>
+       <td data-h="Decision">
+<a href="license-policy.html#certifi">Allowed by policy</a><br><span class="mono">audit A.1</span>       </td>
+       <td data-h="Explanation" class="finding-note">
+         <details>
+          <summary>Show rationale</summary>
+          <p>certifi ships the Mozilla CA bundle as cacert.pem plus a 30-line Python wrapper. MPL-2.0 is file-scoped (MPL-2.0 §3.3): obligations attach to the modified file, not the consuming codebase. We ship cacert.pem unmodified. This is the same posture requests, httpx, urllib3, aiohttp, boto3 take; Mozilla's own MPL FAQ confirms this interpretation. Standard enterprise legal-review outcome.</p>
+         </details>
+       </td>
+      </tr>
       <tr id="license-findings-kaos-source">
        <td class="pkg" data-h="Package"><a href="package/kaos-source.html">kaos-source</a></td>
        <td data-h="Status"><span class="pill g" aria-label="Approved exception: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
@@ -1344,39 +1386,39 @@ footer a{color:var(--muted)}
   <div class="lic-list">
     <div class="lic g">
      <span class="spdx">MIT</span>
-     <span class="bar" role="img" aria-label="MIT: 494 of 1439 components">
-      <span style="width:34%"></span>
+     <span class="bar" role="img" aria-label="MIT: 589 of 1600 components">
+      <span style="width:36%"></span>
      </span>
-     <span class="ct">494</span>
+     <span class="ct">589</span>
      <span class="pill-wrap"><span class="pill g" aria-label="MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">MIT OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="MIT OR Apache-2.0: 295 of 1439 components">
-      <span style="width:20%"></span>
+     <span class="bar" role="img" aria-label="MIT OR Apache-2.0: 295 of 1600 components">
+      <span style="width:18%"></span>
      </span>
      <span class="ct">295</span>
      <span class="pill-wrap"><span class="pill g" aria-label="MIT OR Apache-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">BSD-3-Clause</span>
-     <span class="bar" role="img" aria-label="BSD-3-Clause: 161 of 1439 components">
+     <span class="bar" role="img" aria-label="BSD-3-Clause: 191 of 1600 components">
       <span style="width:11%"></span>
      </span>
-     <span class="ct">161</span>
+     <span class="ct">191</span>
      <span class="pill-wrap"><span class="pill g" aria-label="BSD-3-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0</span>
-     <span class="bar" role="img" aria-label="Apache-2.0: 151 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0: 168 of 1600 components">
       <span style="width:10%"></span>
      </span>
-     <span class="ct">151</span>
+     <span class="ct">168</span>
      <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT: 34 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT: 34 of 1600 components">
       <span style="width:2%"></span>
      </span>
      <span class="ct">34</span>
@@ -1384,7 +1426,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Unicode-3.0</span>
-     <span class="bar" role="img" aria-label="Unicode-3.0: 34 of 1439 components">
+     <span class="bar" role="img" aria-label="Unicode-3.0: 34 of 1600 components">
       <span style="width:2%"></span>
      </span>
      <span class="ct">34</span>
@@ -1392,7 +1434,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">BSD-2-Clause</span>
-     <span class="bar" role="img" aria-label="BSD-2-Clause: 32 of 1439 components">
+     <span class="bar" role="img" aria-label="BSD-2-Clause: 32 of 1600 components">
       <span style="width:2%"></span>
      </span>
      <span class="ct">32</span>
@@ -1400,79 +1442,79 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT: 30 of 1439 components">
-      <span style="width:2%"></span>
+     <span class="bar" role="img" aria-label="Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT: 30 of 1600 components">
+      <span style="width:1%"></span>
      </span>
      <span class="ct">30</span>
      <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-ec5c82d8</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-ec5c82d8: 27 of 1439 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-ec5c82d8: 27 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">27</span>
      <span class="pill-wrap"><span class="pill g" aria-label="LicenseRef-unknown-ec5c82d8: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
+     <span class="spdx">ISC</span>
+     <span class="bar" role="img" aria-label="ISC: 19 of 1600 components">
+      <span style="width:1%"></span>
+     </span>
+     <span class="ct">19</span>
+     <span class="pill-wrap"><span class="pill g" aria-label="ISC: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
+    </div>
+    <div class="lic g">
      <span class="spdx">Apache-2.0 OR BSD-2-Clause</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-2-Clause: 18 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-2-Clause: 18 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">18</span>
      <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 OR BSD-2-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
+     <span class="spdx">MPL-2.0</span>
+     <span class="bar" role="img" aria-label="MPL-2.0: 18 of 1600 components">
+      <span style="width:1%"></span>
+     </span>
+     <span class="ct">18</span>
+     <span class="pill-wrap"><span class="pill g" aria-label="MPL-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
+    </div>
+    <div class="lic g">
      <span class="spdx">PSF-2.0</span>
-     <span class="bar" role="img" aria-label="PSF-2.0: 18 of 1439 components">
+     <span class="bar" role="img" aria-label="PSF-2.0: 18 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">18</span>
      <span class="pill-wrap"><span class="pill g" aria-label="PSF-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
-     <span class="spdx">MPL-2.0</span>
-     <span class="bar" role="img" aria-label="MPL-2.0: 15 of 1439 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">15</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="MPL-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
-    </div>
-    <div class="lic g">
      <span class="spdx">Apache-2.0 OR BSD-3-Clause</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-3-Clause: 13 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-3-Clause: 16 of 1600 components">
       <span style="width:1%"></span>
      </span>
-     <span class="ct">13</span>
+     <span class="ct">16</span>
      <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 OR BSD-3-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
-     <span class="spdx">ISC</span>
-     <span class="bar" role="img" aria-label="ISC: 13 of 1439 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">13</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="ISC: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
-    </div>
-    <div class="lic g">
-     <span class="spdx">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0</span>
-     <span class="bar" role="img" aria-label="BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: 11 of 1439 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">11</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
-    </div>
-    <div class="lic g">
      <span class="spdx">Python-2.0</span>
-     <span class="bar" role="img" aria-label="Python-2.0: 10 of 1439 components">
+     <span class="bar" role="img" aria-label="Python-2.0: 16 of 1600 components">
       <span style="width:1%"></span>
      </span>
-     <span class="ct">10</span>
+     <span class="ct">16</span>
      <span class="pill-wrap"><span class="pill g" aria-label="Python-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
+     <span class="spdx">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0</span>
+     <span class="bar" role="img" aria-label="BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: 12 of 1600 components">
+      <span style="width:1%"></span>
+     </span>
+     <span class="ct">12</span>
+     <span class="pill-wrap"><span class="pill g" aria-label="BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
+    </div>
+    <div class="lic g">
      <span class="spdx">Unlicense OR MIT</span>
-     <span class="bar" role="img" aria-label="Unlicense OR MIT: 9 of 1439 components">
+     <span class="bar" role="img" aria-label="Unlicense OR MIT: 9 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">9</span>
@@ -1480,7 +1522,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MIT-CMU</span>
-     <span class="bar" role="img" aria-label="MIT-CMU: 7 of 1439 components">
+     <span class="bar" role="img" aria-label="MIT-CMU: 7 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">7</span>
@@ -1488,7 +1530,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">BSD-2-Clause OR Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="BSD-2-Clause OR Apache-2.0 OR MIT: 6 of 1439 components">
+     <span class="bar" role="img" aria-label="BSD-2-Clause OR Apache-2.0 OR MIT: 6 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">6</span>
@@ -1496,7 +1538,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-30d4520d</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-30d4520d: 6 of 1439 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-30d4520d: 6 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">6</span>
@@ -1504,7 +1546,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-e3b0c442</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-e3b0c442: 5 of 1439 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-e3b0c442: 5 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">5</span>
@@ -1512,7 +1554,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic r">
      <span class="spdx">MIT OR Apache-2.0 OR LGPL-2.1-or-later</span>
-     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR LGPL-2.1-or-later: 5 of 1439 components">
+     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR LGPL-2.1-or-later: 5 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">5</span>
@@ -1520,7 +1562,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">(MIT OR Apache-2.0) AND Unicode-3.0</span>
-     <span class="bar" role="img" aria-label="(MIT OR Apache-2.0) AND Unicode-3.0: 4 of 1439 components">
+     <span class="bar" role="img" aria-label="(MIT OR Apache-2.0) AND Unicode-3.0: 4 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">4</span>
@@ -1528,7 +1570,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 WITH LLVM-exception</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 WITH LLVM-exception: 4 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 WITH LLVM-exception: 4 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">4</span>
@@ -1536,7 +1578,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MPL-2.0 AND MIT</span>
-     <span class="bar" role="img" aria-label="MPL-2.0 AND MIT: 4 of 1439 components">
+     <span class="bar" role="img" aria-label="MPL-2.0 AND MIT: 4 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">4</span>
@@ -1544,7 +1586,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Zlib</span>
-     <span class="bar" role="img" aria-label="Zlib: 4 of 1439 components">
+     <span class="bar" role="img" aria-label="Zlib: 4 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">4</span>
@@ -1552,7 +1594,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">0BSD OR MIT OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="0BSD OR MIT OR Apache-2.0: 2 of 1439 components">
+     <span class="bar" role="img" aria-label="0BSD OR MIT OR Apache-2.0: 2 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1560,7 +1602,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR BSL-1.0</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR BSL-1.0: 2 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR BSL-1.0: 2 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1568,7 +1610,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR ISC OR MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR ISC OR MIT: 2 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR ISC OR MIT: 2 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1576,7 +1618,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR MIT OR Zlib</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT OR Zlib: 2 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT OR Zlib: 2 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1584,7 +1626,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-7dcb5226</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-7dcb5226: 2 of 1439 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-7dcb5226: 2 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1592,7 +1634,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-df4fa55c</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-df4fa55c: 2 of 1439 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-df4fa55c: 2 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1600,7 +1642,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MIT AND PSF-2.0</span>
-     <span class="bar" role="img" aria-label="MIT AND PSF-2.0: 2 of 1439 components">
+     <span class="bar" role="img" aria-label="MIT AND PSF-2.0: 2 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1608,7 +1650,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MIT OR Apache-2.0 OR Zlib</span>
-     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR Zlib: 2 of 1439 components">
+     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR Zlib: 2 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1616,7 +1658,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MIT OR Zlib OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="MIT OR Zlib OR Apache-2.0: 2 of 1439 components">
+     <span class="bar" role="img" aria-label="MIT OR Zlib OR Apache-2.0: 2 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1624,7 +1666,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 AND ISC</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 AND ISC: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 AND ISC: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1632,7 +1674,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 AND MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 AND MIT: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 AND MIT: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1640,7 +1682,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception</span>
-     <span class="bar" role="img" aria-label="CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1648,7 +1690,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">CC0-1.0 OR MIT-0 OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="CC0-1.0 OR MIT-0 OR Apache-2.0: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="CC0-1.0 OR MIT-0 OR Apache-2.0: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1656,7 +1698,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-15934bcf</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-15934bcf: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-15934bcf: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1664,7 +1706,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-257a8106</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-257a8106: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-257a8106: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1672,7 +1714,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-a7af1b0a</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-a7af1b0a: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-a7af1b0a: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1680,7 +1722,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-cb277f17</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-cb277f17: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-cb277f17: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1688,7 +1730,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MIT AND BSD-3-Clause</span>
-     <span class="bar" role="img" aria-label="MIT AND BSD-3-Clause: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="MIT AND BSD-3-Clause: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1696,7 +1738,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Unlicense</span>
-     <span class="bar" role="img" aria-label="Unlicense: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="Unlicense: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1704,7 +1746,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Zlib OR Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="Zlib OR Apache-2.0 OR MIT: 1 of 1439 components">
+     <span class="bar" role="img" aria-label="Zlib OR Apache-2.0 OR MIT: 1 of 1600 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1944,7 +1986,7 @@ footer a{color:var(--muted)}
  </p>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-agents <span class="pmeta">0.1.11</span></span>
+   <span class="pname">kaos-agents <span class="pmeta">0.1.12</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -1953,7 +1995,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-agents-0.1.11.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-agents/releases/download/v0.1.11/kaos-agents-0.1.11.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-agents-0.1.12.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-agents/releases/download/v0.1.12/kaos-agents-0.1.12.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -1977,7 +2019,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-citations <span class="pmeta">0.1.0</span></span>
+   <span class="pname">kaos-citations <span class="pmeta">0.1.1</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -1986,18 +2028,18 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-citations-0.1.0.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-citations/releases/download/v0.1.0/kaos-citations-0.1.0.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-citations-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-citations/releases/download/v0.1.1/kaos-citations-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-       <span class="chip g">MIT &times; 11</span>
-       <span class="chip g">Apache-2.0 &times; 5</span>
-       <span class="chip g">BSD-3-Clause &times; 5</span>
+       <span class="chip g">MIT &times; 29</span>
+       <span class="chip g">BSD-3-Clause &times; 12</span>
+       <span class="chip g">Apache-2.0 &times; 8</span>
        <span class="chip g">BSD-2-Clause &times; 4</span>
        <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
        <span class="chip g">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0 &times; 1</span>
-       <span class="chip g">LicenseRef-unknown-df4fa55c &times; 1</span>
-       <span class="chip g">PSF-2.0 &times; 1</span>
+       <span class="chip g">ISC &times; 1</span>
      </span>
     </dd>
     <dt>Wheel matrix</dt>
@@ -2010,7 +2052,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-content <span class="pmeta">0.1.0</span></span>
+   <span class="pname">kaos-content <span class="pmeta">0.1.1</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2019,7 +2061,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-content-0.1.0.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-content/releases/download/v0.1.0/kaos-content-0.1.0.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-content-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-content/releases/download/v0.1.1/kaos-content-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2043,7 +2085,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-core <span class="pmeta">0.1.1</span></span>
+   <span class="pname">kaos-core <span class="pmeta">0.1.2</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2052,7 +2094,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-core-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-core/releases/download/v0.1.1/kaos-core-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-core-0.1.2.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-core/releases/download/v0.1.2/kaos-core-0.1.2.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2076,7 +2118,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-graph <span class="pmeta">0.1.0</span></span>
+   <span class="pname">kaos-graph <span class="pmeta">0.1.1</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2085,18 +2127,18 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-graph-0.1.0.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-graph/releases/download/v0.1.0/kaos-graph-0.1.0.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-graph-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-graph/releases/download/v0.1.1/kaos-graph-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
        <span class="chip g">MIT OR Apache-2.0 &times; 37</span>
-       <span class="chip g">MIT &times; 15</span>
-       <span class="chip g">BSD-3-Clause &times; 5</span>
-       <span class="chip g">Apache-2.0 &times; 4</span>
+       <span class="chip g">MIT &times; 35</span>
+       <span class="chip g">BSD-3-Clause &times; 11</span>
+       <span class="chip g">Apache-2.0 &times; 9</span>
        <span class="chip g">Apache-2.0 OR MIT &times; 3</span>
        <span class="chip g">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT &times; 2</span>
        <span class="chip g">BSD-2-Clause OR Apache-2.0 OR MIT &times; 2</span>
-       <span class="chip g">(MIT OR Apache-2.0) AND Unicode-3.0 &times; 1</span>
+       <span class="chip g">Python-2.0 &times; 2</span>
      </span>
     </dd>
     <dt>Wheel matrix</dt>
@@ -2109,7 +2151,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-llm-client <span class="pmeta">0.1.5</span></span>
+   <span class="pname">kaos-llm-client <span class="pmeta">0.1.6</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2118,18 +2160,18 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-llm-client-0.1.5.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-llm-client/releases/download/v0.1.5/kaos-llm-client-0.1.5.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-llm-client-0.1.6.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-llm-client/releases/download/v0.1.6/kaos-llm-client-0.1.6.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-       <span class="chip g">MIT &times; 22</span>
-       <span class="chip g">BSD-3-Clause &times; 7</span>
-       <span class="chip g">Apache-2.0 &times; 4</span>
+       <span class="chip g">MIT &times; 36</span>
+       <span class="chip g">BSD-3-Clause &times; 10</span>
+       <span class="chip g">Apache-2.0 &times; 7</span>
        <span class="chip g">LicenseRef-unknown-e3b0c442 &times; 2</span>
        <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
        <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
        <span class="chip g">BSD-2-Clause &times; 1</span>
-       <span class="chip g">MPL-2.0 &times; 1</span>
+       <span class="chip g">ISC &times; 1</span>
      </span>
     </dd>
     <dt>Wheel matrix</dt>
@@ -2155,14 +2197,14 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-       <span class="chip g">MIT &times; 18</span>
-       <span class="chip g">Apache-2.0 &times; 8</span>
-       <span class="chip g">BSD-3-Clause &times; 6</span>
+       <span class="chip g">MIT &times; 33</span>
+       <span class="chip g">Apache-2.0 &times; 10</span>
+       <span class="chip g">BSD-3-Clause &times; 10</span>
        <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
        <span class="chip g">BSD-2-Clause &times; 1</span>
        <span class="chip g">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0 &times; 1</span>
-       <span class="chip g">MIT-CMU &times; 1</span>
-       <span class="chip g">MPL-2.0 &times; 1</span>
+       <span class="chip g">ISC &times; 1</span>
      </span>
     </dd>
     <dt>Wheel matrix</dt>
@@ -2175,7 +2217,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-mcp <span class="pmeta">0.1.0</span></span>
+   <span class="pname">kaos-mcp <span class="pmeta">0.1.1</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2184,7 +2226,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-mcp-0.1.0.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-mcp/releases/download/v0.1.0/kaos-mcp-0.1.0.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-mcp-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-mcp/releases/download/v0.1.1/kaos-mcp-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2208,7 +2250,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-ml-core <span class="pmeta">0.1.0</span></span>
+   <span class="pname">kaos-ml-core <span class="pmeta">0.1.1</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2217,7 +2259,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-ml-core-0.1.0.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-ml-core/releases/download/v0.1.0/kaos-ml-core-0.1.0.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-ml-core-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-ml-core/releases/download/v0.1.1/kaos-ml-core-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2241,7 +2283,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-names <span class="pmeta">0.1.0a2</span></span>
+   <span class="pname">kaos-names <span class="pmeta">0.1.0a4</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2250,7 +2292,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-names-0.1.0a2.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-names/releases/download/v0.1.0a2/kaos-names-0.1.0a2.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-names-0.1.0a4.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-names/releases/download/v0.1.0a4/kaos-names-0.1.0a4.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2271,7 +2313,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-nlp-core <span class="pmeta">0.1.1</span></span>
+   <span class="pname">kaos-nlp-core <span class="pmeta">0.1.2</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2280,7 +2322,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-nlp-core-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-nlp-core/releases/download/v0.1.1/kaos-nlp-core-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-nlp-core-0.1.2.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-nlp-core/releases/download/v0.1.2/kaos-nlp-core-0.1.2.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2304,7 +2346,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-nlp-transformers <span class="pmeta">0.1.0</span></span>
+   <span class="pname">kaos-nlp-transformers <span class="pmeta">0.1.1</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2313,7 +2355,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-nlp-transformers-0.1.0.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-nlp-transformers/releases/download/v0.1.0/kaos-nlp-transformers-0.1.0.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-nlp-transformers-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-nlp-transformers/releases/download/v0.1.1/kaos-nlp-transformers-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2370,7 +2412,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-pdf <span class="pmeta">0.1.0</span></span>
+   <span class="pname">kaos-pdf <span class="pmeta">0.1.1</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2379,18 +2421,18 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-pdf-0.1.0.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-pdf/releases/download/v0.1.0/kaos-pdf-0.1.0.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-pdf-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-pdf/releases/download/v0.1.1/kaos-pdf-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-       <span class="chip g">MIT &times; 19</span>
-       <span class="chip g">Apache-2.0 &times; 6</span>
-       <span class="chip g">BSD-3-Clause &times; 5</span>
+       <span class="chip g">MIT &times; 32</span>
+       <span class="chip g">BSD-3-Clause &times; 11</span>
+       <span class="chip g">Apache-2.0 &times; 8</span>
        <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
        <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
        <span class="chip g">BSD-2-Clause &times; 1</span>
        <span class="chip g">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0 &times; 1</span>
-       <span class="chip g">MIT-CMU &times; 1</span>
+       <span class="chip g">ISC &times; 1</span>
      </span>
     </dd>
     <dt>Wheel matrix</dt>
@@ -2403,7 +2445,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-source <span class="pmeta">0.1.0</span></span>
+   <span class="pname">kaos-source <span class="pmeta">0.1.1</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2412,18 +2454,18 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-source-0.1.0.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-source/releases/download/v0.1.0/kaos-source-0.1.0.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-source-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-source/releases/download/v0.1.1/kaos-source-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-       <span class="chip g">MIT &times; 15</span>
-       <span class="chip g">BSD-3-Clause &times; 7</span>
-       <span class="chip g">Apache-2.0 &times; 5</span>
+       <span class="chip g">MIT &times; 30</span>
+       <span class="chip g">BSD-3-Clause &times; 11</span>
+       <span class="chip g">Apache-2.0 &times; 7</span>
        <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
+       <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
        <span class="chip g">BSD-2-Clause &times; 1</span>
        <span class="chip g">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0 &times; 1</span>
-       <span class="chip g">LicenseRef-unknown-e3b0c442 &times; 1</span>
-       <span class="chip g">MIT AND PSF-2.0 &times; 1</span>
+       <span class="chip g">ISC &times; 1</span>
      </span>
     </dd>
     <dt>Wheel matrix</dt>
@@ -2436,7 +2478,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-tabular <span class="pmeta">0.1.0</span></span>
+   <span class="pname">kaos-tabular <span class="pmeta">0.1.1</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2445,7 +2487,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-tabular-0.1.0.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-tabular/releases/download/v0.1.0/kaos-tabular-0.1.0.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-tabular-0.1.1.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-tabular/releases/download/v0.1.1/kaos-tabular-0.1.1.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2500,7 +2542,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-web <span class="pmeta">0.1.5</span></span>
+   <span class="pname">kaos-web <span class="pmeta">0.1.6</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2509,7 +2551,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-web-0.1.5.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-web/releases/download/v0.1.5/kaos-web-0.1.5.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-web-0.1.6.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-web/releases/download/v0.1.6/kaos-web-0.1.6.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2552,7 +2594,7 @@ footer a{color:var(--muted)}
 </main>
 
 <footer>
- Generated 2026-05-23 16:32 UTC
+ Generated 2026-05-23 20:33 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

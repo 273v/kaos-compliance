@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b7fdae74-1a94-430e-ab9c-aab036cf3553",
+  "serialNumber": "urn:uuid:a037522b-d3a5-42d3-a9bf-69e9005d9c33",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-23T20:26:45Z",
+    "timestamp": "2026-05-23T20:27:48Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-llm-core@0.1.0",
-      "name": "kaos-llm-core",
-      "version": "0.1.0",
-      "purl": "pkg:pypi/kaos-llm-core@0.1.0"
+      "bom-ref": "pkg:pypi/kaos-ml-core@0.1.1",
+      "name": "kaos-ml-core",
+      "version": "0.1.1",
+      "purl": "pkg:pypi/kaos-ml-core@0.1.1"
     }
   },
   "components": [
@@ -196,21 +196,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/certifi@2026.2.25",
+      "bom-ref": "pkg:pypi/certifi@2026.4.22",
       "name": "certifi",
-      "version": "2026.2.25",
-      "purl": "pkg:pypi/certifi@2026.2.25",
+      "version": "2026.4.22",
+      "purl": "pkg:pypi/certifi@2026.4.22",
       "supplier": {
         "name": "Kenneth Reitz"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e887ab5cee78ea814d3472169153c2d12cd43b14bd03329a39a9c6e2e80bfba7"
+          "content": "8d455352a37b71bf76a79caa83a3d6c25afee4a385d632127b6afb3963f1c580"
         },
         {
           "alg": "SHA-256",
-          "content": "027692e4402ad994f1c42e52a4997a9763c646b73e4096e4d5d6db8af1d6f0fa"
+          "content": "3cb2210c8f88ba2318d29b0388d1023c8492ff72ecdde4ebdaddbb13a31b1c4a"
         }
       ],
       "licenses": [
@@ -223,11 +223,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/af/2d/7bf41579a8986e348fa033a31cdd0e4121114f6bce2457e8876010b092dd/certifi-2026.2.25.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/25/ee/6caf7a40c36a1220410afe15a1cc64993a1f864871f698c0f93acb72842a/certifi-2026.4.22.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/certifi/2026.2.25/"
+          "url": "https://pypi.org/project/certifi/2026.4.22/"
         }
       ],
       "properties": [
@@ -414,21 +414,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/click@8.3.2",
+      "bom-ref": "pkg:pypi/click@8.3.3",
       "name": "click",
-      "version": "8.3.2",
-      "purl": "pkg:pypi/click@8.3.2",
+      "version": "8.3.3",
+      "purl": "pkg:pypi/click@8.3.3",
       "supplier": {
         "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "14162b8b3b3550a7d479eafa77dfd3c38d9dc8951f6f69c78913a8f9a7540fd5"
+          "content": "398329ad4837b2ff7cbe1dd166a4c0f8900c3ca3a218de04466f38f6497f18a2"
         },
         {
           "alg": "SHA-256",
-          "content": "1924d2c27c5653561cd2cae4548d1406039cb79b858b747cfea24924bbc1616d"
+          "content": "a2bf429bb3033c89fa4936ffb35d5cb471e3719e1f3c8a7c3fff0b8314305613"
         }
       ],
       "licenses": [
@@ -441,11 +441,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/57/75/31212c6bf2503fdf920d87fee5d7a86a2e3bcf444984126f13d8e4016804/click-8.3.2.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/bb/63/f9e1ea081ce35720d8b92acde70daaedace594dc93b693c869e0d5910718/click-8.3.3.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/click/8.3.2/"
+          "url": "https://pypi.org/project/click/8.3.3/"
         }
       ],
       "properties": [
@@ -500,261 +500,261 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/coverage@7.13.5",
+      "bom-ref": "pkg:pypi/coverage@7.14.0",
       "name": "coverage",
-      "version": "7.13.5",
-      "purl": "pkg:pypi/coverage@7.13.5",
+      "version": "7.14.0",
+      "purl": "pkg:pypi/coverage@7.14.0",
       "supplier": {
-        "name": "Ned Batchelder and 253 others"
+        "name": "Ned Batchelder and 255 others"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c81f6515c4c40141f83f502b07bbfa5c240ba25bbe73da7b33f1e5b6120ff179"
+          "content": "057a6af2f160a85384cde4ab36f0d2777bae1057bae255f95413cdd382aa5c74"
         },
         {
           "alg": "SHA-256",
-          "content": "5ec4af212df513e399cf11610cc27063f1586419e814755ab362e50a85ea69c1"
+          "content": "f2bbb8254370eb4c628ff3d6fa8a7f74ddc40565394d4f7ab791d1fe568e37ef"
         },
         {
           "alg": "SHA-256",
-          "content": "941617e518602e2d64942c88ec8499f7fbd49d3f6c4327d3a71d43a1973032f3"
+          "content": "23b81107f46d3f21d0cbce30664fcec0f5d9f585638a67081750f99738f6bf66"
         },
         {
           "alg": "SHA-256",
-          "content": "da305e9937617ee95c2e39d8ff9f040e0487cbf1ac174f777ed5eddd7a7c1f26"
+          "content": "22a7e06a5f11a757cdfe79018e9095f9f69ae283c5cd8123774c788deec8717b"
         },
         {
           "alg": "SHA-256",
-          "content": "78e696e1cc714e57e8b25760b33a8b1026b7048d270140d25dafe1b0a1ee05a3"
+          "content": "9d1aa57a1dc8e05bdc42e81c5d671d849577aeedf279f4c449d6d286f9ed88ca"
         },
         {
           "alg": "SHA-256",
-          "content": "02ca0eed225b2ff301c474aeeeae27d26e2537942aa0f87491d3e147e784a82b"
+          "content": "90c1a51bcfddf645b3bb7ec333d9e94393a8e94f55642380fa8a9a5a9e636cb7"
         },
         {
           "alg": "SHA-256",
-          "content": "04690832cbea4e4663d9149e05dba142546ca05cb1848816760e7f58285c970a"
+          "content": "a841fae2fadcae4f438d43b6ccc4aac2ad609f47cdb6cfdce60cbb3fe5ca7bc2"
         },
         {
           "alg": "SHA-256",
-          "content": "0590e44dd2745c696a778f7bab6aa95256de2cbc8b8cff4f7db8ff09813d6969"
+          "content": "c79d2319cabef1fe8e86df73371126931550804738f78ad7d31e3aad85a67367"
         },
         {
           "alg": "SHA-256",
-          "content": "d7cfad2d6d81dd298ab6b89fe72c3b7b05ec7544bdda3b707ddaecff8d25c161"
+          "content": "1b23b0c6f0b1db6ad769b7050c8b641c0bf215ded26c1816955b17b7f26edfa9"
         },
         {
           "alg": "SHA-256",
-          "content": "e092b9499de38ae0fbfbc603a74660eb6ff3e869e507b50d85a13b6db9863e15"
+          "content": "55d3089079ce181a4566b1065ab28d2575eb76d8ac8f81f4fcda2bf037fee087"
         },
         {
           "alg": "SHA-256",
-          "content": "48c39bc4a04d983a54a705a6389512883d4a3b9862991b3617d547940e9f52b1"
+          "content": "49c005cba1e2f9677fb2845dcdf9a2e72a52a17d63e8231aaaae35d9f50215ef"
         },
         {
           "alg": "SHA-256",
-          "content": "2d3807015f138ffea1ed9afeeb8624fd781703f2858b62a8dd8da5a0994c57b6"
+          "content": "9117377b823daa28aa8635fbb08cda1cd6be3d7143257345459559aeef852d52"
         },
         {
           "alg": "SHA-256",
-          "content": "ee2aa19e03161671ec964004fb74b2257805d9710bf14a5c704558b9d8dbaf17"
+          "content": "7b79d646cf46d5cf9a9f40281d4441df5849e445726e369006d2b117710b33fe"
         },
         {
           "alg": "SHA-256",
-          "content": "ce1998c0483007608c8382f4ff50164bfc5bd07a2246dd272aa4043b75e61e85"
+          "content": "fb609b3658479e33f9516d46f1a89dbb9b6c261366e3a11844a96ec487533dae"
         },
         {
           "alg": "SHA-256",
-          "content": "631efb83f01569670a5e866ceb80fe483e7c159fac6f167e6571522636104a0b"
+          "content": "0773d8329cf32b6fd222e4b52622c61fe8d503eb966cfc8d3c3c10c96266d50e"
         },
         {
           "alg": "SHA-256",
-          "content": "f4cd16206ad171cbc2470dbea9103cf9a7607d5fe8c242fdf1edf36174020664"
+          "content": "b4e26a0f1b696faf283bffe5b8569e44e336c582439df5d53281ab89ee0cba96"
         },
         {
           "alg": "SHA-256",
-          "content": "0428cbef5783ad91fe240f673cc1f76b25e74bbfe1a13115e4aa30d3f538162d"
+          "content": "953f521ca9445300397e65fda3dca58b2dbd68fee983777420b57ac3c77e9f90"
         },
         {
           "alg": "SHA-256",
-          "content": "e0b216a19534b2427cc201a26c25da4a48633f29a487c61258643e89d28200c0"
+          "content": "98af83fd65ae24b1fdd03aaead967a9f523bcd2f1aab2d4f3ffda65bb568a6f1"
         },
         {
           "alg": "SHA-256",
-          "content": "972a9cd27894afe4bc2b1480107054e062df08e671df7c2f18c205e805ccd806"
+          "content": "668b92e6958c4db7cf92e81caac328dfbbdbb215db2850ad28f0cbe1eea0bfbd"
         },
         {
           "alg": "SHA-256",
-          "content": "4b59148601efcd2bac8c4dbf1f0ad6391693ccf7a74b8205781751637076aee3"
+          "content": "9fbd898551762dea00d3fef2b1c4f99afd2c6a3ff952ea07d60a9bd5ed4f34bc"
         },
         {
           "alg": "SHA-256",
-          "content": "505d7083c8b0c87a8fa8c07370c285847c1f77739b22e299ad75a6af6c32c5c9"
+          "content": "68af363c07ecd8d4b7d4043d85cb376d7d227eceb54e5323ee45da73dbd3e426"
         },
         {
           "alg": "SHA-256",
-          "content": "60365289c3741e4db327e7baff2a4aaacf22f788e80fa4683393891b70a89fbd"
+          "content": "6e57054a583da8ac55edf24117ea4c9133032cfc4cf72aa2d48c1e5d4b52f899"
         },
         {
           "alg": "SHA-256",
-          "content": "1b88c69c8ef5d4b6fe7dea66d6636056a0f6a7527c440e890cf9259011f5e606"
+          "content": "cc3499459bbcdd51a65b64c35ab7ed2764eaf3cba826e0df3f1d7fe2e102b70b"
         },
         {
           "alg": "SHA-256",
-          "content": "5b13955d31d1633cf9376908089b7cebe7d15ddad7aeaabcbe969a595a97e95e"
+          "content": "45899ec2138a4346ed34d601dedf5076fb74edf2d1dd9dc76a78e82397edee90"
         },
         {
           "alg": "SHA-256",
-          "content": "f70c9ab2595c56f81a89620e22899eea8b212a4041bd728ac6f4a28bf5d3ddd0"
+          "content": "8767486808c436f05b23ab98eb963fb29185e32a9357a166971685cb3459900f"
         },
         {
           "alg": "SHA-256",
-          "content": "084b84a8c63e8d6fc7e3931b316a9bcafca1458d753c539db82d31ed20091a87"
+          "content": "a3b5ddfd6aa7ddad53ee3edb231e88a2151507a43229b7d71b953916deca127d"
         },
         {
           "alg": "SHA-256",
-          "content": "ad14385487393e386e2ea988b09d62dd42c397662ac2dabc3832d71253eee479"
+          "content": "63df0fe568e698e1045792399f8ab6da3a6c2dce3182813fb92afa2641087b47"
         },
         {
           "alg": "SHA-256",
-          "content": "7f2c47b36fe7709a6e83bfadf4eefb90bd25fbe4014d715224c4316f808e59a2"
+          "content": "827d6397dbd95144939b18f89edf31f63e1f99633e8d5f32f22ba8bdda567477"
         },
         {
           "alg": "SHA-256",
-          "content": "67e9bc5449801fad0e5dff329499fb090ba4c5800b86805c80617b4e29809b2a"
+          "content": "7bf43e000d24012599b879791cff41589af90674722421ef11b11a5431920bab"
         },
         {
           "alg": "SHA-256",
-          "content": "da86cdcf10d2519e10cabb8ac2de03da1bcb6e4853790b7fbd48523332e3a819"
+          "content": "3f5549365af25d770e06b1f8f5682d9a5637d06eb494db91c6fa75d3950cc917"
         },
         {
           "alg": "SHA-256",
-          "content": "0ecf12ecb326fe2c339d93fc131816f3a7367d223db37817208905c89bded911"
+          "content": "6d160217ec6fe890f16ad3a9531761589443749e448f91986c972714fad361c8"
         },
         {
           "alg": "SHA-256",
-          "content": "fbabfaceaeb587e16f7008f7795cd80d20ec548dc7f94fbb0d4ec2e038ce563f"
+          "content": "9aed9fa983514ca032790f3fe0d1c0e42ca7e16b42432af1706b50a9a46bef5d"
         },
         {
           "alg": "SHA-256",
-          "content": "9bb2a28101a443669a423b665939381084412b81c3f8c0fcfbac57f4e30b5b8e"
+          "content": "ba3b8390db29296dbbf49e91b6fe08f990743a90c8f447ba4c2ffc29670dfa63"
         },
         {
           "alg": "SHA-256",
-          "content": "bd3a2fbc1c6cccb3c5106140d87cc6a8715110373ef42b63cf5aea29df8c217a"
+          "content": "3a5d8e876dfa2f102e970b183863d6dedd023d3c0eeca1fe7a9787bc5f28b212"
         },
         {
           "alg": "SHA-256",
-          "content": "6c36ddb64ed9d7e496028d1d00dfec3e428e0aabf4006583bb1839958d280510"
+          "content": "5ebb8f4614a3787d567e610bbfdf96a4798dd69a1afb1bd8ad228d4111fe6ff3"
         },
         {
           "alg": "SHA-256",
-          "content": "380e8e9084d8eb38db3a9176a1a4f3c0082c3806fa0dc882d1d87abc3c789247"
+          "content": "6b9bf47223dd8db3d4c4b2e443b02bace480d428f0822c3f991600448a176c97"
         },
         {
           "alg": "SHA-256",
-          "content": "e808af52a0513762df4d945ea164a24b37f2f518cbe97e03deaa0ee66139b4d6"
+          "content": "3485a836550b303d006d57cc06e3d5afaabc642c77050b7c985a97b13e3776b8"
         },
         {
           "alg": "SHA-256",
-          "content": "e301d30dd7e95ae068671d746ba8c34e945a82682e62918e41b2679acd2051a0"
+          "content": "3e7e88110bae996d199d1693ca8ec3fd52441d426401ae963437598667b4c5eb"
         },
         {
           "alg": "SHA-256",
-          "content": "800bc829053c80d240a687ceeb927a94fd108bbdc68dfbe505d0d75ab578a882"
+          "content": "15228a6800ce7bdf1b74800595e56db7138cecb338fdbf044806e10dcf182dfe"
         },
         {
           "alg": "SHA-256",
-          "content": "0b67af5492adb31940ee418a5a655c28e48165da5afab8c7fa6fd72a142f8740"
+          "content": "9d26ac7f5398bafc5b57421ad994e8a4749e8a7a0e62d05ec7d53014d5963bfa"
         },
         {
           "alg": "SHA-256",
-          "content": "c9136ff29c3a91e25b1d1552b5308e53a1e0653a23e53b6366d7c2dcbbaf8a16"
+          "content": "2fb73254ff43c911c967a899e1359bc5049b4b115d6e8fbdde4937d0a2246cd5"
         },
         {
           "alg": "SHA-256",
-          "content": "cff784eef7f0b8f6cb28804fbddcfa99f89efe4cc35fb5627e3ac58f91ed3ac0"
+          "content": "454a380af72c6adada298ed270d38c7a391288198dbfb8467f786f588751a90c"
         },
         {
           "alg": "SHA-256",
-          "content": "68a4953be99b17ac3c23b6efbc8a38330d99680c9458927491d18700ef23ded0"
+          "content": "65c86fb646d2bd2972e96bd1a8b45817ed907cee68655d6295fe7ec031d04cca"
         },
         {
           "alg": "SHA-256",
-          "content": "35a31f2b1578185fbe6aa2e74cea1b1d0bbf4c552774247d9160d29b80ed56cc"
+          "content": "6a6516b02a6101398e19a3f44820f69bab2590697f7def4331f668b14adaf828"
         },
         {
           "alg": "SHA-256",
-          "content": "2aa055ae1857258f9e0045be26a6d62bdb47a72448b62d7b55f4820f361a2633"
+          "content": "45e0f79d8351fa76e256716df91eab12890d32678b9590df7ae1042e4bd4cf5d"
         },
         {
           "alg": "SHA-256",
-          "content": "1b11eef33edeae9d142f9b4358edb76273b3bfd30bc3df9a4f95d0e49caf94e8"
+          "content": "4b899594a8b2d81e5cc064a0d7f9cac2081fed91049456cae7676787e41549c9"
         },
         {
           "alg": "SHA-256",
-          "content": "10a0c37f0b646eaff7cce1874c31d1f1ccb297688d4c747291f4f4c70741cc8b"
+          "content": "f580f8c80acd94ac72e863efe2cab791d8c38d153e0b463b92dfa000d5c84cd1"
         },
         {
           "alg": "SHA-256",
-          "content": "b5db73ba3c41c7008037fa731ad5459fc3944cb7452fc0aa9f822ad3533c583c"
+          "content": "a2bd259c442cd43c49b30fbafc51776eb19ea396faf159d26a83e6a0a5f13b0c"
         },
         {
           "alg": "SHA-256",
-          "content": "750db93a81e3e5a9831b534be7b1229df848b2e125a604fe6651e48aa070e5f9"
+          "content": "a706b908dfa85538863504c624b237a3cc34232bf403c057414ebfdb3b4d9f84"
         },
         {
           "alg": "SHA-256",
-          "content": "9ddb4f4a5479f2539644be484da179b653273bca1a323947d48ab107b3ed1f29"
+          "content": "7333cd944ee4393b9b3d3c1b598c936d4fc8d70573a4c7dacfec5590dd50e436"
         },
         {
           "alg": "SHA-256",
-          "content": "d8a7a2049c14f413163e2bdabd37e41179b1d1ccb10ffc6ccc4b7a718429c607"
+          "content": "0f162bc9a15b82d947b02651b0c7e1609d6f7a8735ca330cfadec8481dd97d5a"
         },
         {
           "alg": "SHA-256",
-          "content": "e1c85e0b6c05c592ea6d8768a66a254bfb3874b53774b12d4c89c481eb78cb90"
+          "content": "362cb78e01a5dc82009d88004cf60f2e6b6d6fcbfdec05b05af73b0abf40118f"
         },
         {
           "alg": "SHA-256",
-          "content": "777c4d1eff1b67876139d24288aaf1817f6c03d6bae9c5cc8d27b83bcfe38fe3"
+          "content": "acebd068fca5512c3a6fde9c045f901613478781a73f0e82b307b214daef23fb"
         },
         {
           "alg": "SHA-256",
-          "content": "6697e29b93707167687543480a40f0db8f356e86d9f67ddf2e37e2dfd91a9dab"
+          "content": "29fe3da551dface75deb2ccbf87b6b66e2e7ef38f6d89050b428be94afff3490"
         },
         {
           "alg": "SHA-256",
-          "content": "8fdf453a942c3e4d99bd80088141c4c6960bb232c409d9c3558e2dbaa3998562"
+          "content": "b4cc4fce8672fffcb09b0eafc167b396b3ba53c4a7230f54b7aaffbf6c835fa9"
         },
         {
           "alg": "SHA-256",
-          "content": "32ca0c0114c9834a43f045a87dcebd69d108d8ffb666957ea65aa132f50332e2"
+          "content": "5d4a51aad8ba8bdcd2b8bd8f03d4aca19693fa2327a3470e4718a25b03481020"
         },
         {
           "alg": "SHA-256",
-          "content": "8769751c10f339021e2638cd354e13adeac54004d1941119b2c96fe5276d45ea"
+          "content": "9f323af3e1e4f68b60b7b247e37b8515563a61375518fa59de1af48ba28a3db6"
         },
         {
           "alg": "SHA-256",
-          "content": "cec2d83125531bd153175354055cdb7a09987af08a9430bd173c937c6d0fba2a"
+          "content": "1a0abc7342ea9711c469dd8b821c6c311e6bc6aac1442e5fbd6b27fae0a8f3db"
         },
         {
           "alg": "SHA-256",
-          "content": "0cd9ed7a8b181775459296e402ca4fb27db1279740a24e93b3b41942ebe4b215"
+          "content": "a9f864ef57b7172e2db87a096642dd51e179e085ab6b2c371c29e885f65c8fb2"
         },
         {
           "alg": "SHA-256",
-          "content": "301e3b7dfefecaca37c9f1aa6f0049b7d4ab8dd933742b607765d757aca77d43"
+          "content": "29943e552fdc08e082eb51400fb2f58e118a83b5542bd06531214e084399b644"
         },
         {
           "alg": "SHA-256",
-          "content": "9dacc2ad679b292709e0f5fc1ac74a6d4d5562e424058962c7bb0c658ad25e45"
+          "content": "742a73ea621953b012f2c4c2219b512180dd84489acf5b1596b0aafc55b9100b"
         },
         {
           "alg": "SHA-256",
-          "content": "34b02417cf070e173989b3db962f7ed56d2f644307b2cf9d5a0f258e13084a61"
+          "content": "8de5b61163aee3d05c8a2beab6f47913df7981dad1baf82c414d99158c286ab1"
         }
       ],
       "licenses": [
@@ -767,11 +767,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/9d/e0/70553e3000e345daff267cec284ce4cbf3fc141b6da229ac52775b5428f1/coverage-7.13.5.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/23/7f/d0720730a397a999ffc0fd3f5bebef347338e3a47b727da66fbb228e2ff2/coverage-7.14.0.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/coverage/7.13.5/"
+          "url": "https://pypi.org/project/coverage/7.14.0/"
         }
       ],
       "properties": [
@@ -988,6 +988,92 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/filelock@3.29.0",
+      "name": "filelock",
+      "version": "3.29.0",
+      "purl": "pkg:pypi/filelock@3.29.0",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "69974355e960702e789734cb4871f884ea6fe50bd8404051a3530bc07809cf90"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "96f5f6344709aa1572bbf631c640e4ebeeb519e08da902c39a001882f30ac258"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b5/fe/997687a931ab51049acce6fa1f23e8f01216374ea81374ddee763c493db5/filelock-3.29.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/filelock/3.29.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/fsspec@2026.4.0",
+      "name": "fsspec",
+      "version": "2026.4.0",
+      "purl": "pkg:pypi/fsspec@2026.4.0",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "301d8ac70ae90ef3ad05dcf94d6c3754a097f9b5fe4667d2787aa359ec7df7e4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "11ef7bb35dab8a394fde6e608221d5cf3e8499401c249bebaeaad760a1a8dec2"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/d5/8d/1c51c094345df128ca4a990d633fe1a0ff28726c9e6b3c41ba65087bba1d/fsspec-2026.4.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/fsspec/2026.4.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/h11@0.16.0",
       "name": "h11",
       "version": "0.16.0",
@@ -1063,6 +1149,141 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/h2/4.3.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/hf-xet@1.5.0",
+      "name": "hf-xet",
+      "version": "1.5.0",
+      "purl": "pkg:pypi/hf-xet@1.5.0",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e0fb0a34d9f406eed88233e829a67ec016bec5af19e480eac65a233ea289a948"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7d70fe2ce97b9db73b9c9b9c81fe3693640aec83416a966c446afea54acfae3c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "73a0dae8c71de3b0633a45c73f4a4a5ed09e94b43441d82981a781d4f12baa42"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a60290ec57e9b71767fba7c3645ddafdd0759974b540441510c629c6db6db24a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e5de0f6deada0dada870bb376a11bcd1f08abf3a968a6d118f33e72d1b1eb480"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c799d49f1a5544a0ef7591c0ee75e0d6b93d6f56dc7a4979f59f7518d2872216"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2baea1b0b989e5c152fe81425f7745ddc8901280ba3d97c98d8cdece7b706c60"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "526345b3ed45f374f6317349df489167606736c876241ba984105afe7fd4839d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "786d28e2eb8315d5035544b9d137b4a842d600c434bb91bf7d0d953cce906ad4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "872d5601e6deea30d15865ede55d29eac6daf5a534ab417b99b6ef6b076dd96c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9929561f5abf4581c8ea79587881dfef6b8abb2a0d8a51915936fc2a614f4e73"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f7b7bbae318e583a86fb21e5a4a175d6721d628a2874f4bd022d0e660c32a682"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "cf7b2dc6f31a4ea754bb50f74cde482dcf5d366d184076d8530b9872787f3761"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8dbcbab554c9ef158ef2c991545c3e970ddd8cc7acdcd0a78c5a41095dab4ded"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5906bf7718d3636dc13402914736abe723492cb730f744834f5f5b67d3a12702"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5f3dc2248fc01cc0a00cd392ab497f1ca373fcbc7e3f2da1f452480b384e839e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b285cea1b5bab46b758772716ba8d6854a1a0310fed1c249d678a8b38601e5a0"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "dad0dc84e941b8ba3c860659fe1fdc35c049d47cce293f003287757e971a8f56"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "fd6e5a9b0fdac4ed03ed45ef79254a655b1aaab514a02202617fbf643f5fdf7a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3531b1823a0e6d77d80f9ed15ca0e00f0d115094f8ac033d5cae88f4564cc949"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9a0ee58cd18d5ea799f7ed11290bbccbe56bdd8b1d97ca74b9cc49a3945d7a3b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1e60df5a42e9bed8628b6416af2cba4cba57ae9f02de226a06b020d98e1aab18"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4b35549ce62601b84da4ff9b24d970032ace3d4430f52d91bcbb26c901d6c690"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2806c7c17b4d23f8d88f7c4814f838c3b6150773fe339c20af23e1cfaf2797e4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b6c9df403040248c76d808d3e047d64db2d923bae593eb244c41e425cf6cd7be"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/74/d8/5c06fc76461418326a7decf8367480c35be11a41fd938633929c60a9ec6b/hf_xet-1.5.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/hf-xet/1.5.0/"
         }
       ],
       "properties": [
@@ -1246,6 +1467,49 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/huggingface-hub@1.14.0",
+      "name": "huggingface-hub",
+      "version": "1.14.0",
+      "purl": "pkg:pypi/huggingface-hub@1.14.0",
+      "supplier": {
+        "name": "Hugging Face, Inc."
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d6d2c9cd6be1d02ae9ec6672d5587d10a427f377db688e82528f426a041622c2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "efe075535c62e130b30e836b138e13785f6f043d1f0539e0a39aa411a99e90b8"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/39/40/43109e943fd718b0ccd0cd61eb4f1c347df22bf81f5874c6f22adf44bcff/huggingface_hub-1.14.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/huggingface-hub/1.14.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/hyperframe@6.1.0",
       "name": "hyperframe",
       "version": "6.1.0",
@@ -1289,21 +1553,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/idna@3.11",
+      "bom-ref": "pkg:pypi/idna@3.15",
       "name": "idna",
-      "version": "3.11",
-      "purl": "pkg:pypi/idna@3.11",
+      "version": "3.15",
+      "purl": "pkg:pypi/idna@3.15",
       "supplier": {
         "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "795dafcc9c04ed0c1fb032c2aa73654d8e8c5023a7df64a53f39190ada629902"
+          "content": "ca962446ea538f7092a95e057da437618e886f4d349216d2b1e294abfdb65fdc"
         },
         {
           "alg": "SHA-256",
-          "content": "771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea"
+          "content": "048adeaf8c2d788c40fee287673ccaa74c24ffd8dcf09ffa555a2fbb59f10ac8"
         }
       ],
       "licenses": [
@@ -1316,54 +1580,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/6f/6d/0703ccc57f3a7233505399edb88de3cbd678da106337b9fcde432b65ed60/idna-3.11.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/82/77/7b3966d0b9d1d31a36ddf1746926a11dface89a83409bf1483f0237aa758/idna-3.15.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/idna/3.11/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/importlib-metadata@8.7.1",
-      "name": "importlib-metadata",
-      "version": "8.7.1",
-      "purl": "pkg:pypi/importlib-metadata@8.7.1",
-      "supplier": {
-        "name": "Unknown / community"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "49fef1ae6440c182052f407c8d34a68f72efc36db9ca90dc0113398f2fdde8bb"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "5a1f80bf1daa489495071efbb095d75a634cf28a8bc299581244063b53176151"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "Apache-2.0"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/f3/49/3b30cad09e7771a4982d9975a8cbf64f00d4a1ececb53297f1d9a7be1b10/importlib_metadata-8.7.1.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/importlib-metadata/8.7.1/"
+          "url": "https://pypi.org/project/idna/3.15/"
         }
       ],
       "properties": [
@@ -1407,6 +1628,49 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/iniconfig/2.3.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/joblib@1.5.3",
+      "name": "joblib",
+      "version": "1.5.3",
+      "purl": "pkg:pypi/joblib@1.5.3",
+      "supplier": {
+        "name": "joblib.readthedocs.io"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8561a3269e6801106863fd0d6d84bb737be9e7631e33aaed3fb9ce5953688da3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5fc3c5039fc5ca8c0276333a188bbd59d6b7ab37fe6632daa76bc7f9ec18e713"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/41/f2/d34e8b3a08a9cc79a50b2208a93dce981fe615b64d5a4d4abee421d898df/joblib-1.5.3.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/joblib/1.5.3/"
         }
       ],
       "properties": [
@@ -1633,6 +1897,49 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/kaos-llm-core@0.1.0",
+      "name": "kaos-llm-core",
+      "version": "0.1.0",
+      "purl": "pkg:pypi/kaos-llm-core@0.1.0",
+      "supplier": {
+        "name": "kelvin.legal"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d6505f390e5a08feade366916250e5ea54e22b11fc4e0b5b5c41a962f215307b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1124e42b20e94936d07c2263ecd685b20000761f8be56eb027201f20a4a0a7fd"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/3a/57/a5a73bf6956af26f83a8adfbab95e3b9088c700b0b5e45d4083c2e30b68b/kaos_llm_core-0.1.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/kaos-llm-core/0.1.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/kaos-mcp@0.1.0",
       "name": "kaos-mcp",
       "version": "0.1.0",
@@ -1735,6 +2042,108 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/kaos-nlp-transformers@0.1.0",
+      "name": "kaos-nlp-transformers",
+      "version": "0.1.0",
+      "purl": "pkg:pypi/kaos-nlp-transformers@0.1.0",
+      "supplier": {
+        "name": "kelvin.legal"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e04a92acaa12d406aebc9ab0ef79534731739b6d16292e7255dccc97d5bbdd93"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "70279a0543270777a288a19184ecfdfb4780ede89c7160799c9eb2c5b8eebc4e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b549c6f6bbc651a5c8005ad6928db50b82454d878e404c3227cbd0a65e933b6b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "cf35cb1a94bc6b76db3d2d399c6c0da9e684e8601c67c27f57455a79f476cb81"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "90dd23825bf6ca5aae83bf939be387a3c335c033b4ed2c5e739288e4af557e6c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "dd5a9770dc96d95d12436d6d5974bace59b67fbcd92bc375b91e1fda7cba21b5"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/55/39/68590561d40f4e32b2c03f6b72d6245c854101421ab714b4363478665468/kaos_nlp_transformers-0.1.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/kaos-nlp-transformers/0.1.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/kaos-pdf@0.1.0",
+      "name": "kaos-pdf",
+      "version": "0.1.0",
+      "purl": "pkg:pypi/kaos-pdf@0.1.0",
+      "supplier": {
+        "name": "kelvin.legal"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f7d993c08a0c7130945c180fd808c9d6414b5cc6b630c85d018eb9b9c1a90c50"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "053e3a5f7e9c1f708910e4e8fa3232d10f5e51068fe4759b9354dd1237ac947c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/f0/8c/a34867b33cd0e3fc0d0afa86fca85330fd51e17bcba51ca2597b690ae9ed/kaos_pdf-0.1.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/kaos-pdf/0.1.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/markdown-it-py@4.2.0",
       "name": "markdown-it-py",
       "version": "4.2.0",
@@ -1767,6 +2176,95 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/markdown-it-py/4.2.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/maturin@1.13.3",
+      "name": "maturin",
+      "version": "1.13.3",
+      "purl": "pkg:pypi/maturin@1.13.3",
+      "supplier": {
+        "name": "github.com"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "771e1e9e71a278e56db01552e0d1acfd1464259f9575b6e72842f893cd299079"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3cc13929ca82aefa4adbf0f2c35419369796213c6fb0eb24e914945f50ef5d8c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "53b08bd075649ce96513ad9abf241a43cb685ed6e9e7790f8dbc2d66e95d8323"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4cd478e6e4c56251e48ed079b8efd55b30bc5c09cf695a1bdafaeb582ee735a0"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a2675e25f313034ae6f57388cf14818f87d8961c4a96795287f3e155f59beb11"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4667ef609ab446c1b5e0bfe4f9fb99699ab6d8548433f8d1a684256e0b67217f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3db93337ed97e60ffc878aa8b493cd7ae44d3a5e1a37256db3a4491f57565018"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1cc0a110b224ca90406b668a3e3c1f5a515062e59e26292f6dbaf5fd4909c6f3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c00ea6428dea17bf616fe93770837634454b28c2de1a876e42ef8036c616079a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "49fd6ab08da28098ccf37afca24cdba72376ba9c1eedf9dd25ff82ed771961ff"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b6741d7bf4af97da937528fd1e523c6ab54f53d9a21870fa735d6e67fd88e273"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0ef257e692cc756c87af5bea95ddfe7d3ac49d3376a7a87f728d63f06e7b6f8b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "def4a435ea9d2ee93b18ba579dc8c9cf898889a66f312cd379b5e374ec3e3ad6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2389fe92d017cea9d94e521fa0175314a4c52f79a1057b901fbc9f8686ef7d0b"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/9c/1c/612d23d33ec21b9ae7ece7b3f0dd5f9dfd57b4009e9d2938165869ebd6ae/maturin-1.13.3.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/maturin/1.13.3/"
         }
       ],
       "properties": [
@@ -2112,64 +2610,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/opentelemetry-api@1.41.1",
-      "name": "opentelemetry-api",
-      "version": "1.41.1",
-      "purl": "pkg:pypi/opentelemetry-api@1.41.1",
-      "supplier": {
-        "name": "github.com"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "0ad1814d73b875f84494387dae86ce0b12c68556331ce6ce8fe789197c949621"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "a22df900e75c76dc08440710e51f52f1aa6b451b429298896023e60db5b3139f"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "Apache-2.0"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/fa/fc/b7564cbef36601aef0d6c9bc01f7badb64be8e862c2e1c3c5c3b43b53e4f/opentelemetry_api-1.41.1.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/opentelemetry-api/1.41.1/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/packaging@26.0",
+      "bom-ref": "pkg:pypi/packaging@26.2",
       "name": "packaging",
-      "version": "26.0",
-      "purl": "pkg:pypi/packaging@26.0",
+      "version": "26.2",
+      "purl": "pkg:pypi/packaging@26.2",
       "supplier": {
         "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "00243ae351a257117b6a241061796684b084ed1c516a08c48a3f7e147a9d80b4"
+          "content": "ff452ff5a3e828ce110190feff1178bb1f2ea2281fa2075aadb987c2fb221661"
         },
         {
           "alg": "SHA-256",
-          "content": "b36f1fef9334a5588b4166f8bcd26a14e521f2b55e6b9de3aaa80d3ff7a37529"
+          "content": "5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e"
         }
       ],
       "licenses": [
@@ -2180,11 +2635,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/65/ee/299d360cdc32edc7d2cf530f3accf79c4fca01e96ffc950d8a52213bd8e4/packaging-26.0.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/d7/f1/e7a6dd94a8d4a5626c03e4e99c87f241ba9e350cd9e6d75123f992427270/packaging-26.2.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/packaging/26.0/"
+          "url": "https://pypi.org/project/packaging/26.2/"
         }
       ],
       "properties": [
@@ -2467,6 +2922,49 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/pluggy/1.6.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/py-cpuinfo@9.0.0",
+      "name": "py-cpuinfo",
+      "version": "9.0.0",
+      "purl": "pkg:pypi/py-cpuinfo@9.0.0",
+      "supplier": {
+        "name": "Matthew Brennan Jones"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3cdbbf3fac90dc6f118bfd64384f309edeadd902d7c8fb17f02ffa1fc3f49690"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "859625bc251f64e21f077d099d4162689c762b5d6a4c3c97553d56241c9674d5"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/37/a8/d832f7293ebb21690860d2e01d8115e5ff6f2ae8bbdc953f0eb0fa4bd2c7/py-cpuinfo-9.0.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/py-cpuinfo/9.0.0/"
         }
       ],
       "properties": [
@@ -2783,21 +3281,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/pydantic-settings@2.13.1",
+      "bom-ref": "pkg:pypi/pydantic-settings@2.14.1",
       "name": "pydantic-settings",
-      "version": "2.13.1",
-      "purl": "pkg:pypi/pydantic-settings@2.13.1",
+      "version": "2.14.1",
+      "purl": "pkg:pypi/pydantic-settings@2.14.1",
       "supplier": {
         "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4c11847b15237fb0171e1462bf540e294affb9b86db4d9aa5c01730bdbe4025"
+          "content": "e874d3bec7e787b0c9958277956ed9b4dd5de6a80e162188fdaff7c5e26fd5fa"
         },
         {
           "alg": "SHA-256",
-          "content": "d56fd801823dbeae7f0975e1f8c8e25c258eb75d278ea7abb5d9cebb01b56237"
+          "content": "6e3c7edfd8277687cdc598f56e5cff0e9bfff0910a3749deaa8d4401c3a2b9de"
         }
       ],
       "licenses": [
@@ -2810,11 +3308,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/52/6d/fffca34caecc4a3f97bda81b2098da5e8ab7efc9a66e819074a11955d87e/pydantic_settings-2.13.1.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/07/60/1d1e59c9c90d54591469ada7d268251f71c24bdb765f1a8a832cee8c6653/pydantic_settings-2.14.1.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/pydantic-settings/2.13.1/"
+          "url": "https://pypi.org/project/pydantic-settings/2.14.1/"
         }
       ],
       "properties": [
@@ -2912,6 +3410,129 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/pypdfium2@5.8.0",
+      "name": "pypdfium2",
+      "version": "5.8.0",
+      "purl": "pkg:pypi/pypdfium2@5.8.0",
+      "supplier": {
+        "name": "pypdfium2-team"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "049397c647e50f83115ee951c49394dab9e9ba52ebdd5a11ab1109390eb3d34e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f67b6c74b716d9ac725ad1af49ae786ad813ac20823d45606d59f1fc06caa8af"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "53e82bf3e6a2da170b1bda83f93b7eec57cb6efe3cacd05cba78823879a85203"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "085e633dcc89b65ff4035a4787e98ce7ae636836eb39c83dd0db26113d9774bc"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "bc84b7c6efede88fcfb9467f81daf416f26b973a54fc1cf4d3410d622fda6d7a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a63bf09b2e13ba8545c930d243f0650c664a1b51314daa3b5f38df6d1a17b4bc"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "937881c1698456749ed203a58db1895baa5eb7178cdb837ef84867790638da28"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6be9dc2b84a8694ad7e626bab133244e8241014d5ed1930d865a9bdf90df1e24"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7f27bd82891ae302dd02d736b14809661f6d1220ee1e96dbed9b23e2811922a3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "26c1089cdbbdc7fe1248f6d17fe3f30214be4f287dd0196b31aaee18a1564240"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1c038a9290864aaa4862dd32e591993d82551ca4d152b4e8ce6d43ba37dc04a8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f104bc1a6d8bfc1ff088aa50db13b9729cfdb3722b44975c3c457e9a7b9c7318"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "04ca7c57a553facf8d46c6ea8ba6fa557e698670cfa4a58e0e01fdae2f6be87d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ad42b9c22477b32dbedcbc8232833f385d92fd0cf92822547b02383cf9a476d7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "388e3119cf5ca0979b7d5f6d40b7fcd5ab49e17ed4e6de6af89ba116061acfda"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "aa05bbfa485ce7916217aa78d856c9f9cd86b08b20846c650392a67975ee72e9"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f0813a16bb39d5ebd173ea5484430bb67a89b4b181db0a636c73b64ad063c3ea"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a3c78f7d20dd821bec6c072efdb21a1370b9efe10fdeeb68c969e67608e25385"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "86d302e207c138c827b885a72784f7b306d840646ebeae07e8efdbc39321c629"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3f25fd436920a907291462b41bdc0ab9f8235c3944b4c9c15398da595ffd1fed"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "55592af0bddd2d62bed18e0053c546c9b72041430c5115e54870f7f6163125b0"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3f17ed97ae8a5a1705301ca93af256a5b02f9009dee4e99c5e175831d46ebd7c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/6d/3d/dc934d3b606c51c3ecc95b6731d84b7dd7ab8e513a50b0e98a4da6c8a719/pypdfium2-5.8.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/pypdfium2/5.8.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/pytest@9.0.3",
       "name": "pytest",
       "version": "9.0.3",
@@ -2987,6 +3608,49 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/pytest-asyncio/1.3.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/pytest-benchmark@5.2.3",
+      "name": "pytest-benchmark",
+      "version": "5.2.3",
+      "purl": "pkg:pypi/pytest-benchmark@5.2.3",
+      "supplier": {
+        "name": "Unknown / community"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "deb7317998a23c650fd4ff76e1230066a76cb45dcece0aca5607143c619e7779"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "bc839726ad20e99aaa0d11a127445457b4219bdb9e80a1afc4b51da7f96b0803"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-2-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/24/34/9f732b76456d64faffbef6232f1f9dbec7a7c4999ff46282fa418bd1af66/pytest_benchmark-5.2.3.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/pytest-benchmark/5.2.3/"
         }
       ],
       "properties": [
@@ -3084,21 +3748,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/python-multipart@0.0.29",
+      "bom-ref": "pkg:pypi/python-multipart@0.0.28",
       "name": "python-multipart",
-      "version": "0.0.29",
-      "purl": "pkg:pypi/python-multipart@0.0.29",
+      "version": "0.0.28",
+      "purl": "pkg:pypi/python-multipart@0.0.28",
       "supplier": {
         "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "643e93849196645e2dbdd81a0f8829a23123ad7f797a84a364c6fb3563f18904"
+          "content": "8550da197eac0f7ab748961fc9509b999fa2662ea25cef857f05249f6893c0f8"
         },
         {
           "alg": "SHA-256",
-          "content": "2ddcc971cef266225f54f552d8fa10bcfbb1f14446caec199060daac59ff2d69"
+          "content": "10faac07eb966c3f48dc415f9dee46c04cb10d58d30a35677db8027c825ed9b6"
         }
       ],
       "licenses": [
@@ -3111,11 +3775,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/4e/fe/70bd71a6738b09a0bdf6480ca6436b167469ca4578b2a0efbe390b4b0e70/python_multipart-0.0.29.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/82/54/a85eb421fbdd5007bc5af39d0f4ed9fa609e0fedbfdc2adcf0b34526870e/python_multipart-0.0.28.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/python-multipart/0.0.29/"
+          "url": "https://pypi.org/project/python-multipart/0.0.28/"
         }
       ],
       "properties": [
@@ -3175,6 +3839,157 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/pywin32/311/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/pyyaml@6.0.3",
+      "name": "pyyaml",
+      "version": "6.0.3",
+      "purl": "pkg:pypi/pyyaml@6.0.3",
+      "supplier": {
+        "name": "Kirill Simonov"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8da9669d359f02c0b91ccc01cac4a67f16afec0dac22c2ad09f46bee0697eba8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2283a07e2c21a2aa78d9c4442724ec1eb15f5e42a723b99cb3d822d48f5f7ad1"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ee2922902c45ae8ccada2c5b501ab86c36525b883eff4255313a253a3160861c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a33284e20b78bd4a18c8c2282d549d10bc8408a2a7ff57653c0cf0b9be0afce5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f7057c9a337546edc7973c0d3ba84ddcdf0daa14533c2065749c9075001090e6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "eda16858a3cab07b80edaf74336ece1f986ba330fdb8ee0d6c0d68fe82bc96be"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d0eae10f8159e8fdad514efdc92d74fd8d682c933a6dd088030f3834bc8e6b26"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "79005a0d97d5ddabfeeea4cf676af11e647e41d81c9a7722a193022accdb6b7c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5498cd1645aa724a7c71c8f378eb29ebe23da2fc0d7a08071d89469bf1d2defb"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8d1fab6bb153a416f9aeb4b8763bc0f22a5586065f86f7664fc23339fc1c1fac"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "34d5fcd24b8445fadc33f9cf348c1047101756fd760b4dacb5c3e99755703310"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "501a031947e3a9025ed4405a168e6ef5ae3126c59f90ce0cd6f2bfc477be31b7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b3bc83488de33889877a0f2543ade9f70c67d66d9ebb4ac959502e12de895788"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c458b6d084f9b935061bc36216e8a69a7e293a2f1e68bf956dcd9e6cbcd143f5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7c6610def4f163542a622a73fb39f534f8c101d690126992300bf3207eab9764"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5190d403f121660ce8d1d2c1bb2ef1bd05b5f68533fc5c2ea899bd15f4399b35"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4a2e8cebe2ff6ab7d1050ecd59c25d4c8bd7e6f400f5f82b96557ac0abafd0ac"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "93dda82c9c22deb0a405ea4dc5f2d0cda384168e466364dec6255b293923b2f3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "02893d100e99e03eda1c8fd5c441d8c60103fd175728e23e431db1b589cf5ab3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c1ff362665ae507275af2853520967820d9124984e0f7466736aea23d8611fba"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6adc77889b628398debc7b65c073bcb99c4a0237b248cacaf3fe8a557563ef6c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a80cb027f6b349846a3bf6d73b5e95e782175e52f22108cfa17876aaeff93702"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "00c4bdeba853cc34e7dd471f16b4114f4162dc03e6b7afcc2128711f0eca823c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "66e1674c3ef6f541c35191caae2d429b967b99e02040f5ba928632d9a7f0f065"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/pyyaml/6.0.3/"
         }
       ],
       "properties": [
@@ -3650,6 +4465,340 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/scikit-learn@1.8.0",
+      "name": "scikit-learn",
+      "version": "1.8.0",
+      "purl": "pkg:pypi/scikit-learn@1.8.0",
+      "supplier": {
+        "name": "Unknown / community"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9bccbb3b40e3de10351f8f5068e105d0f4083b1a65fa07b6634fbc401a6287fd"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0d6ae97234d5d7079dc0040990a6f7aeb97cb7fa7e8945f1999a429b23569e0a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "edec98c5e7c128328124a029bceb09eda2d526997780fef8d65e9a69eead963e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "74b66d8689d52ed04c271e1329f0c61635bcaf5b926db9b12d58914cdc01fe57"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8fdf95767f989b0cfedb85f7ed8ca215d4be728031f56ff5a519ee1e3276dc2e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2de443b9373b3b615aec1bb57f9baa6bb3a9bd093f1269ba95c17d870422b271"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "eddde82a035681427cbedded4e6eff5e57fa59216c2e3e90b10b19ab1d0a65c3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7cc267b6108f0a1499a734167282c00c4ebf61328566b55ef262d48e9849c735"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "fe1c011a640a9f0791146011dfd3c7d9669785f9fed2b2a5f9e207536cf5c2fd"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "72358cce49465d140cc4e7792015bb1f0296a9742d5622c67e31399b75468b9e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "80832434a6cc114f5219211eec13dcbc16c2bac0e31ef64c6d346cde3cf054cb"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ee787491dbfe082d9c3013f01f5991658b0f38aa8177e4cd4bf434c58f551702"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "bf97c10a3f5a7543f9b88cbf488d33d175e9146115a451ae34568597ba33dcde"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c22a2da7a198c28dd1a6e1136f19c830beab7fdca5b3e5c8bba8394f8a5c45b3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6b595b07a03069a2b1740dc08c2299993850ea81cce4fe19b2421e0c970de6b7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "29ffc74089f3d5e87dfca4c2c8450f88bdc61b0fc6ed5d267f3988f19a1309f6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "fb65db5d7531bccf3a4f6bec3462223bea71384e2cda41da0f10b7c292b9e7c4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "56079a99c20d230e873ea40753102102734c5953366972a71d5cb39a32bc40c6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3bad7565bc9cf37ce19a7c0d107742b320c1285df7aab1a6e2d28780df167242"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4511be56637e46c25721e83d1a9cea9614e7badc7040c4d573d75fbe257d6fd7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a69525355a641bf8ef136a7fa447672fb54fe8d60cab5538d9eb7c6438543fb9"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c2656924ec73e5939c76ac4c8b026fc203b83d8900362eb2599d8aee80e4880f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "15fc3b5d19cc2be65404786857f2e13c70c83dd4782676dd6814e3b89dc8f5b9"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "00d6f1d66fbcf4eba6e356e1420d33cc06c70a45bb1363cd6f6a8e4ebbbdece2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f28dd15c6bb0b66ba09728cf09fd8736c304be29409bd8445a080c1280619e8c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/0e/d4/40988bf3b8e34feec1d0e6a051446b1f66225f8529b9309becaeef62b6c4/scikit_learn-1.8.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/scikit-learn/1.8.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/scipy@1.17.1",
+      "name": "scipy",
+      "version": "1.17.1",
+      "purl": "pkg:pypi/scipy@1.17.1",
+      "supplier": {
+        "name": "Unknown / community"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95d8e012d8cb8816c226aef832200b1d45109ed4464303e997c5b13122b297c0"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5e3c5c011904115f88a39308379c17f91546f77c1667cea98739fe0fccea804c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6fac755ca3d2c3edcb22f479fceaa241704111414831ddd3bc6056e18516892f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7ff200bf9d24f2e4d5dc6ee8c3ac64d739d3a89e2326ba68aaf6c4a2b838fd7d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4b400bdc6f79fa02a4d86640310dde87a21fba0c979efff5248908c6f15fad1b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2b64ca7d4aee0102a97f3ba22124052b4bd2152522355073580bf4845e2550b6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "581b2264fc0aa555f3f435a5944da7504ea3a065d7029ad60e7c3d1ae09c5464"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "beeda3d4ae615106d7094f7e7cef6218392e4465cc95d25f900bebabfded0950"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6609bc224e9568f65064cfa72edc0f24ee6655b47575954ec6339534b2798369"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "37425bc9175607b0268f493d79a292c39f9d001a357bebb6b88fdfaff13f6448"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5cf36e801231b6a2059bf354720274b7558746f3b1a4efb43fcf557ccd484a87"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d59c30000a16d8edc7e64152e30220bfbd724c9bbb08368c054e24c651314f0a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "010f4333c96c9bb1a4516269e33cb5917b08ef2166d5556ca2fd9f082a9e6ea0"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2ceb2d3e01c5f1d83c4189737a42d9cb2fc38a6eeed225e7515eef71ad301dce"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "844e165636711ef41f80b4103ed234181646b98a53c8f05da12ca5ca289134f6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "158dd96d2207e21c966063e1635b1063cd7787b627b6f07305315dd73d9c679e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "74cbb80d93260fe2ffa334efa24cb8f2f0f622a9b9febf8b483c0b865bfb3475"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "dbc12c9f3d185f5c737d801da555fb74b3dcfa1a50b66a1a93e09190f41fab50"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "94055a11dfebe37c656e70317e1996dc197e1a15bbcc351bcdd4610e128fe1ca"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e30bdeaa5deed6bc27b4cc490823cd0347d7dae09119b8803ae576ea0ce52e4c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a720477885a9d2411f94a93d16f9d89bad0f28ca23c3f8daa521e2dcc3f44d49"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a48a72c77a310327f6a3a920092fa2b8fd03d7deaa60f093038f22d98e096717"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "45abad819184f07240d8a696117a7aacd39787af9e0b719d00285549ed19a1e9"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3fd1fcdab3ea951b610dc4cef356d416d5802991e7e32b5254828d342f7b7e0b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7bdf2da170b67fdf10bca777614b1c7d96ae3ca5794fd9587dce41eb2966e866"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "adb2642e060a6549c343603a3851ba76ef0b74cc8c079a9a58121c7ec9fe2350"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "eee2cfda04c00a857206a4330f0c5e3e56535494e30ca445eb19ec624ae75118"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d2650c1fb97e184d12d8ba010493ee7b322864f7d3d00d3f9bb97d9c21de4068"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "08b900519463543aa604a06bec02461558a6e1cef8fdbb8098f77a48a83c8118"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3877ac408e14da24a6196de0ddcace62092bfc12a83823e92e49e40747e52c19"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f8885db0bc2bffa59d5c1b72fad7a6a92d3e80e7257f967dd81abb553a90d293"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1cc682cea2ae55524432f3cdff9e9a3be743d52a7443d0cba9017c23c87ae2f6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2040ad4d1795a0ae89bfc7e8429677f365d45aa9fd5e4587cf1ea737f927b4a1"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "131f5aaea57602008f9822e2115029b55d4b5f7c070287699fe45c661d051e39"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9cdc1a2fcfd5c52cfb3045feb399f7b3ce822abdde3a193a6b9a60b3cb5854ca"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6e3dcd57ab780c741fde8dc68619de988b966db759a3c3152e8e9142c26295ad"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a9956e4d4f4a301ebf6cde39850333a6b6110799d470dbbb1e25326ac447f52a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a4328d245944d09fd639771de275701ccadf5f781ba0ff092ad141e017eccda4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a77cbd07b940d326d39a1d1b37817e2ee4d79cb30e7338f3d0cddffae70fcaa2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "eb092099205ef62cd1782b006658db09e2fed75bffcae7cc0d44052d8aa0f484"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "200e1050faffacc162be6a486a984a0497866ec54149a01270adc8a59b7c7d21"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/7a/97/5a3609c4f8d58b039179648e62dd220f89864f56f7357f5d4f45c29eb2cc/scipy-1.17.1.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/scipy/1.17.1/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/shellingham@1.5.4",
       "name": "shellingham",
       "version": "1.5.4",
@@ -3774,6 +4923,90 @@
         {
           "name": "kaos:license-class",
           "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/threadpoolctl@3.6.0",
+      "name": "threadpoolctl",
+      "version": "3.6.0",
+      "purl": "pkg:pypi/threadpoolctl@3.6.0",
+      "supplier": {
+        "name": "Thomas Moreau"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ab8b4aa3491d812b623328249fab5302a68d2d71745c8a4c719a2fcaba9f44e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "43a0b8fd5a2928500110039e43a5eed8480b918967083ea48dc3ab9f13c4a7fb"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/b7/4d/08c89e34946fce2aec4fbb45c9016efd5f4d7f24af8e5d93296e935631d8/threadpoolctl-3.6.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/threadpoolctl/3.6.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/tqdm@4.67.3",
+      "name": "tqdm",
+      "version": "4.67.3",
+      "purl": "pkg:pypi/tqdm@4.67.3",
+      "supplier": {
+        "name": "Unknown / community"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7d825f03f89244ef73f1d4ce193cb1774a8179fd96f31d7e1dcde62092b960bb"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ee1e4c0e59148062281c49d80b25b67771a127c85fc9676d3be5f243206826bf"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MPL-2.0 AND MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/09/a9/6ba95a270c6f1fbcd8dac228323f2777d886cb206987444e4bce66338dd4/tqdm-4.67.3.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/tqdm/4.67.3/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "weak-copyleft"
         }
       ]
     },
@@ -4058,21 +5291,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/uvicorn@0.47.0",
+      "bom-ref": "pkg:pypi/uvicorn@0.46.0",
       "name": "uvicorn",
-      "version": "0.47.0",
-      "purl": "pkg:pypi/uvicorn@0.47.0",
+      "version": "0.46.0",
+      "purl": "pkg:pypi/uvicorn@0.46.0",
       "supplier": {
         "name": "uvicorn.dev"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c9a0ea1a9414106bbab7324609c162d8fa0cdcdcb703060987269d77c7bb533"
+          "content": "fb9da0926999cc6cb22dc7cd71a94a632f078e6ae47ff683c5c420750fb7413d"
         },
         {
           "alg": "SHA-256",
-          "content": "2c5715bc12d1892d84752049f400cd1c3cb018514967fdfeb97640443a6a9432"
+          "content": "bbebbcbed972d162afca128605223022bedd345b7bc7855ce66deb31487a9048"
         }
       ],
       "licenses": [
@@ -4085,11 +5318,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/f6/b1/8e7077a8641086aea449e1b5752a570f1b5906c64e0a33cd6d93b63a066b/uvicorn-0.47.0.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/1f/93/041fca8274050e40e6791f267d82e0e2e27dd165627bd640d3e0e378d877/uvicorn-0.46.0.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/uvicorn/0.47.0/"
+          "url": "https://pypi.org/project/uvicorn/0.46.0/"
         }
       ],
       "properties": [
@@ -4101,38 +5334,495 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/zipp@3.23.0",
-      "name": "zipp",
-      "version": "3.23.0",
-      "purl": "pkg:pypi/zipp@3.23.0",
+      "bom-ref": "pkg:cargo/heck@0.5.0",
+      "name": "heck",
+      "version": "0.5.0",
+      "purl": "pkg:cargo/heck@0.5.0",
       "supplier": {
-        "name": "Unknown / community"
+        "name": "Jonas Platte"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a07157588a12518c9d4034df3fbbee09c814741a33ff63c05fa29d26a2404166"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "071652d6115ed432f5ce1d34c336c0adfd6a884660d1e9712a256d3d3bd4b14e"
+          "content": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
         }
       ],
       "licenses": [
         {
-          "license": {
-            "id": "MIT"
-          }
+          "expression": "MIT OR Apache-2.0"
         }
       ],
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/e3/02/0f2892c661036d50ede074e376733dca2ae7c6eb617489437771209d4180/zipp-3.23.0.tar.gz"
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/zipp/3.23.0/"
+          "url": "https://crates.io/crates/heck/0.5.0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/libc@0.2.186",
+      "name": "libc",
+      "version": "0.2.186",
+      "purl": "pkg:cargo/libc@0.2.186",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/libc/0.2.186"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/once_cell@1.21.4",
+      "name": "once_cell",
+      "version": "1.21.4",
+      "purl": "pkg:cargo/once_cell@1.21.4",
+      "supplier": {
+        "name": "Alex Kladov"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/once_cell/1.21.4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/portable-atomic@1.13.1",
+      "name": "portable-atomic",
+      "version": "1.13.1",
+      "purl": "pkg:cargo/portable-atomic@1.13.1",
+      "supplier": {
+        "name": "Taiki Endo"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c33a9471896f1c69cecef8d20cbe2f7accd12527ce60845ff44c153bb2a21b49"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "Apache-2.0 OR MIT"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/portable-atomic/1.13.1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/proc-macro2@1.0.106",
+      "name": "proc-macro2",
+      "version": "1.0.106",
+      "purl": "pkg:cargo/proc-macro2@1.0.106",
+      "supplier": {
+        "name": "David Tolnay"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/proc-macro2/1.0.106"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/pyo3@0.28.3",
+      "name": "pyo3",
+      "version": "0.28.3",
+      "purl": "pkg:cargo/pyo3@0.28.3",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "91fd8e38a3b50ed1167fb981cd6fd60147e091784c427b8f7183a7ee32c31c12"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/pyo3/0.28.3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/pyo3-build-config@0.28.3",
+      "name": "pyo3-build-config",
+      "version": "0.28.3",
+      "purl": "pkg:cargo/pyo3-build-config@0.28.3",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e368e7ddfdeb98c9bca7f8383be1648fd84ab466bf2bc015e94008db6d35611e"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/pyo3-build-config/0.28.3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/pyo3-ffi@0.28.3",
+      "name": "pyo3-ffi",
+      "version": "0.28.3",
+      "purl": "pkg:cargo/pyo3-ffi@0.28.3",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7f29e10af80b1f7ccaf7f69eace800a03ecd13e883acfacc1e5d0988605f651e"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/pyo3-ffi/0.28.3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/pyo3-macros@0.28.3",
+      "name": "pyo3-macros",
+      "version": "0.28.3",
+      "purl": "pkg:cargo/pyo3-macros@0.28.3",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df6e520eff47c45997d2fc7dd8214b25dd1310918bbb2642156ef66a67f29813"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/pyo3-macros/0.28.3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/pyo3-macros-backend@0.28.3",
+      "name": "pyo3-macros-backend",
+      "version": "0.28.3",
+      "purl": "pkg:cargo/pyo3-macros-backend@0.28.3",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c4cdc218d835738f81c2338f822078af45b4afdf8b2e33cbb5916f108b813acb"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/pyo3-macros-backend/0.28.3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/quote@1.0.45",
+      "name": "quote",
+      "version": "1.0.45",
+      "purl": "pkg:cargo/quote@1.0.45",
+      "supplier": {
+        "name": "David Tolnay"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/quote/1.0.45"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/syn@2.0.117",
+      "name": "syn",
+      "version": "2.0.117",
+      "purl": "pkg:cargo/syn@2.0.117",
+      "supplier": {
+        "name": "David Tolnay"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/syn/2.0.117"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/target-lexicon@0.13.5",
+      "name": "target-lexicon",
+      "version": "0.13.5",
+      "purl": "pkg:cargo/target-lexicon@0.13.5",
+      "supplier": {
+        "name": "Dan Gohman"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "adb6935a6f5c20170eeceb1a3835a49e12e19d792f6dd344ccc76a985ca5a6ca"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "Apache-2.0 WITH LLVM-exception"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/target-lexicon/0.13.5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "unknown"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/unicode-ident@1.0.24",
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "purl": "pkg:cargo/unicode-ident@1.0.24",
+      "supplier": {
+        "name": "David Tolnay"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "(MIT OR Apache-2.0) AND Unicode-3.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/unicode-ident/1.0.24"
         }
       ],
       "properties": [
@@ -4145,13 +5835,9 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-llm-core@0.1.0",
+      "ref": "pkg:pypi/kaos-ml-core@0.1.1",
       "dependsOn": [
-        "pkg:pypi/kaos-content@0.1.0",
-        "pkg:pypi/kaos-core@0.1.0",
-        "pkg:pypi/kaos-llm-client@0.1.0",
-        "pkg:pypi/kaos-nlp-core@0.1.0",
-        "pkg:pypi/pydantic@2.13.4"
+        "pkg:cargo/pyo3@0.28.3"
       ]
     },
     {
@@ -4165,7 +5851,7 @@
     {
       "ref": "pkg:pypi/anyio@4.13.0",
       "dependsOn": [
-        "pkg:pypi/idna@3.11"
+        "pkg:pypi/idna@3.15"
       ]
     },
     {
@@ -4173,7 +5859,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/certifi@2026.2.25",
+      "ref": "pkg:pypi/certifi@2026.4.22",
       "dependsOn": []
     },
     {
@@ -4183,7 +5869,7 @@
       ]
     },
     {
-      "ref": "pkg:pypi/click@8.3.2",
+      "ref": "pkg:pypi/click@8.3.3",
       "dependsOn": [
         "pkg:pypi/colorama@0.4.6"
       ]
@@ -4193,7 +5879,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/coverage@7.13.5",
+      "ref": "pkg:pypi/coverage@7.14.0",
       "dependsOn": []
     },
     {
@@ -4201,6 +5887,14 @@
       "dependsOn": [
         "pkg:pypi/cffi@2.0.0"
       ]
+    },
+    {
+      "ref": "pkg:pypi/filelock@3.29.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/fsspec@2026.4.0",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/h11@0.16.0",
@@ -4214,13 +5908,17 @@
       ]
     },
     {
+      "ref": "pkg:pypi/hf-xet@1.5.0",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:pypi/hpack@4.1.0",
       "dependsOn": []
     },
     {
       "ref": "pkg:pypi/httpcore@1.0.9",
       "dependsOn": [
-        "pkg:pypi/certifi@2026.2.25",
+        "pkg:pypi/certifi@2026.4.22",
         "pkg:pypi/h11@0.16.0"
       ]
     },
@@ -4228,9 +5926,9 @@
       "ref": "pkg:pypi/httpx@0.28.1",
       "dependsOn": [
         "pkg:pypi/anyio@4.13.0",
-        "pkg:pypi/certifi@2026.2.25",
+        "pkg:pypi/certifi@2026.4.22",
         "pkg:pypi/httpcore@1.0.9",
-        "pkg:pypi/idna@3.11"
+        "pkg:pypi/idna@3.15"
       ]
     },
     {
@@ -4238,21 +5936,33 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:pypi/huggingface-hub@1.14.0",
+      "dependsOn": [
+        "pkg:pypi/filelock@3.29.0",
+        "pkg:pypi/fsspec@2026.4.0",
+        "pkg:pypi/hf-xet@1.5.0",
+        "pkg:pypi/httpx@0.28.1",
+        "pkg:pypi/packaging@26.2",
+        "pkg:pypi/pyyaml@6.0.3",
+        "pkg:pypi/tqdm@4.67.3",
+        "pkg:pypi/typer@0.25.1",
+        "pkg:pypi/typing-extensions@4.15.0"
+      ]
+    },
+    {
       "ref": "pkg:pypi/hyperframe@6.1.0",
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/idna@3.11",
+      "ref": "pkg:pypi/idna@3.15",
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/importlib-metadata@8.7.1",
-      "dependsOn": [
-        "pkg:pypi/zipp@3.23.0"
-      ]
+      "ref": "pkg:pypi/iniconfig@2.3.0",
+      "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/iniconfig@2.3.0",
+      "ref": "pkg:pypi/joblib@1.5.3",
       "dependsOn": []
     },
     {
@@ -4281,8 +5991,8 @@
     {
       "ref": "pkg:pypi/kaos-core@0.1.0",
       "dependsOn": [
-        "pkg:pypi/click@8.3.2",
-        "pkg:pypi/pydantic-settings@2.13.1",
+        "pkg:pypi/click@8.3.3",
+        "pkg:pypi/pydantic-settings@2.14.1",
         "pkg:pypi/pydantic@2.13.4"
       ]
     },
@@ -4291,7 +6001,17 @@
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
         "pkg:pypi/kaos-core@0.1.0",
-        "pkg:pypi/pydantic-settings@2.13.1",
+        "pkg:pypi/pydantic-settings@2.14.1",
+        "pkg:pypi/pydantic@2.13.4"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/kaos-llm-core@0.1.0",
+      "dependsOn": [
+        "pkg:pypi/kaos-content@0.1.0",
+        "pkg:pypi/kaos-core@0.1.0",
+        "pkg:pypi/kaos-llm-client@0.1.0",
+        "pkg:pypi/kaos-nlp-core@0.1.0",
         "pkg:pypi/pydantic@2.13.4"
       ]
     },
@@ -4302,7 +6022,7 @@
         "pkg:pypi/kaos-content@0.1.0",
         "pkg:pypi/kaos-core@0.1.0",
         "pkg:pypi/mcp@1.27.1",
-        "pkg:pypi/pydantic-settings@2.13.1",
+        "pkg:pypi/pydantic-settings@2.14.1",
         "pkg:pypi/pydantic@2.13.4",
         "pkg:pypi/starlette@1.0.0"
       ]
@@ -4314,10 +6034,31 @@
       ]
     },
     {
+      "ref": "pkg:pypi/kaos-nlp-transformers@0.1.0",
+      "dependsOn": [
+        "pkg:pypi/huggingface-hub@1.14.0",
+        "pkg:pypi/kaos-core@0.1.0",
+        "pkg:pypi/kaos-nlp-core@0.1.0",
+        "pkg:pypi/numpy@2.4.4"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/kaos-pdf@0.1.0",
+      "dependsOn": [
+        "pkg:pypi/kaos-content@0.1.0",
+        "pkg:pypi/kaos-core@0.1.0",
+        "pkg:pypi/pypdfium2@5.8.0"
+      ]
+    },
+    {
       "ref": "pkg:pypi/markdown-it-py@4.2.0",
       "dependsOn": [
         "pkg:pypi/mdurl@0.1.2"
       ]
+    },
+    {
+      "ref": "pkg:pypi/maturin@1.13.3",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/mcp@1.27.1",
@@ -4326,16 +6067,16 @@
         "pkg:pypi/httpx-sse@0.4.3",
         "pkg:pypi/httpx@0.28.1",
         "pkg:pypi/jsonschema@4.26.0",
-        "pkg:pypi/pydantic-settings@2.13.1",
+        "pkg:pypi/pydantic-settings@2.14.1",
         "pkg:pypi/pydantic@2.13.4",
         "pkg:pypi/pyjwt@2.12.1",
-        "pkg:pypi/python-multipart@0.0.29",
+        "pkg:pypi/python-multipart@0.0.28",
         "pkg:pypi/pywin32@311",
         "pkg:pypi/sse-starlette@3.4.4",
         "pkg:pypi/starlette@1.0.0",
         "pkg:pypi/typing-extensions@4.15.0",
         "pkg:pypi/typing-inspection@0.4.2",
-        "pkg:pypi/uvicorn@0.47.0"
+        "pkg:pypi/uvicorn@0.46.0"
       ]
     },
     {
@@ -4353,14 +6094,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/opentelemetry-api@1.41.1",
-      "dependsOn": [
-        "pkg:pypi/importlib-metadata@8.7.1",
-        "pkg:pypi/typing-extensions@4.15.0"
-      ]
-    },
-    {
-      "ref": "pkg:pypi/packaging@26.0",
+      "ref": "pkg:pypi/packaging@26.2",
       "dependsOn": []
     },
     {
@@ -4369,6 +6103,10 @@
     },
     {
       "ref": "pkg:pypi/pluggy@1.6.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/py-cpuinfo@9.0.0",
       "dependsOn": []
     },
     {
@@ -4391,7 +6129,7 @@
       ]
     },
     {
-      "ref": "pkg:pypi/pydantic-settings@2.13.1",
+      "ref": "pkg:pypi/pydantic-settings@2.14.1",
       "dependsOn": [
         "pkg:pypi/pydantic@2.13.4",
         "pkg:pypi/python-dotenv@1.2.2",
@@ -4407,11 +6145,15 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:pypi/pypdfium2@5.8.0",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:pypi/pytest@9.0.3",
       "dependsOn": [
         "pkg:pypi/colorama@0.4.6",
         "pkg:pypi/iniconfig@2.3.0",
-        "pkg:pypi/packaging@26.0",
+        "pkg:pypi/packaging@26.2",
         "pkg:pypi/pluggy@1.6.0",
         "pkg:pypi/pygments@2.20.0"
       ]
@@ -4423,9 +6165,16 @@
       ]
     },
     {
+      "ref": "pkg:pypi/pytest-benchmark@5.2.3",
+      "dependsOn": [
+        "pkg:pypi/py-cpuinfo@9.0.0",
+        "pkg:pypi/pytest@9.0.3"
+      ]
+    },
+    {
       "ref": "pkg:pypi/pytest-cov@7.1.0",
       "dependsOn": [
-        "pkg:pypi/coverage@7.13.5",
+        "pkg:pypi/coverage@7.14.0",
         "pkg:pypi/pluggy@1.6.0",
         "pkg:pypi/pytest@9.0.3"
       ]
@@ -4435,11 +6184,15 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/python-multipart@0.0.29",
+      "ref": "pkg:pypi/python-multipart@0.0.28",
       "dependsOn": []
     },
     {
       "ref": "pkg:pypi/pywin32@311",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/pyyaml@6.0.3",
       "dependsOn": []
     },
     {
@@ -4465,6 +6218,21 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:pypi/scikit-learn@1.8.0",
+      "dependsOn": [
+        "pkg:pypi/joblib@1.5.3",
+        "pkg:pypi/numpy@2.4.4",
+        "pkg:pypi/scipy@1.17.1",
+        "pkg:pypi/threadpoolctl@3.6.0"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/scipy@1.17.1",
+      "dependsOn": [
+        "pkg:pypi/numpy@2.4.4"
+      ]
+    },
+    {
       "ref": "pkg:pypi/shellingham@1.5.4",
       "dependsOn": []
     },
@@ -4482,6 +6250,16 @@
       ]
     },
     {
+      "ref": "pkg:pypi/threadpoolctl@3.6.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/tqdm@4.67.3",
+      "dependsOn": [
+        "pkg:pypi/colorama@0.4.6"
+      ]
+    },
+    {
       "ref": "pkg:pypi/ty@0.0.36",
       "dependsOn": []
     },
@@ -4489,7 +6267,7 @@
       "ref": "pkg:pypi/typer@0.25.1",
       "dependsOn": [
         "pkg:pypi/annotated-doc@0.0.4",
-        "pkg:pypi/click@8.3.2",
+        "pkg:pypi/click@8.3.3",
         "pkg:pypi/rich@15.0.0",
         "pkg:pypi/shellingham@1.5.4"
       ]
@@ -4509,14 +6287,97 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/uvicorn@0.47.0",
+      "ref": "pkg:pypi/uvicorn@0.46.0",
       "dependsOn": [
-        "pkg:pypi/click@8.3.2",
+        "pkg:pypi/click@8.3.3",
         "pkg:pypi/h11@0.16.0"
       ]
     },
     {
-      "ref": "pkg:pypi/zipp@3.23.0",
+      "ref": "pkg:cargo/heck@0.5.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:cargo/libc@0.2.186",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:cargo/once_cell@1.21.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:cargo/portable-atomic@1.13.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:cargo/proc-macro2@1.0.106",
+      "dependsOn": [
+        "pkg:cargo/unicode-ident@1.0.24"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/pyo3@0.28.3",
+      "dependsOn": [
+        "pkg:cargo/libc@0.2.186",
+        "pkg:cargo/once_cell@1.21.4",
+        "pkg:cargo/portable-atomic@1.13.1",
+        "pkg:cargo/pyo3-build-config@0.28.3",
+        "pkg:cargo/pyo3-ffi@0.28.3",
+        "pkg:cargo/pyo3-macros@0.28.3"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/pyo3-build-config@0.28.3",
+      "dependsOn": [
+        "pkg:cargo/target-lexicon@0.13.5"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/pyo3-ffi@0.28.3",
+      "dependsOn": [
+        "pkg:cargo/libc@0.2.186",
+        "pkg:cargo/pyo3-build-config@0.28.3"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/pyo3-macros@0.28.3",
+      "dependsOn": [
+        "pkg:cargo/proc-macro2@1.0.106",
+        "pkg:cargo/pyo3-macros-backend@0.28.3",
+        "pkg:cargo/quote@1.0.45",
+        "pkg:cargo/syn@2.0.117"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/pyo3-macros-backend@0.28.3",
+      "dependsOn": [
+        "pkg:cargo/heck@0.5.0",
+        "pkg:cargo/proc-macro2@1.0.106",
+        "pkg:cargo/pyo3-build-config@0.28.3",
+        "pkg:cargo/quote@1.0.45",
+        "pkg:cargo/syn@2.0.117"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/quote@1.0.45",
+      "dependsOn": [
+        "pkg:cargo/proc-macro2@1.0.106"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/syn@2.0.117",
+      "dependsOn": [
+        "pkg:cargo/proc-macro2@1.0.106",
+        "pkg:cargo/quote@1.0.45",
+        "pkg:cargo/unicode-ident@1.0.24"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/target-lexicon@0.13.5",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:cargo/unicode-ident@1.0.24",
       "dependsOn": []
     }
   ]

@@ -2,60 +2,57 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-web",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "snapshot_slice": {
     "name": "kaos-web",
     "identity": {
-      "pypi_version": "0.1.5",
-      "pypi_url": "https://pypi.org/project/kaos-web/0.1.5/",
-      "main_head_sha": "cd9117954cb30d46e86e6e09f0320ff5500615db",
-      "latest_tag": "v0.1.5",
-      "latest_tag_sha": "426da4d173e851efe02f2768f591b7ba65fd92fe",
+      "pypi_version": "0.1.6",
+      "pypi_url": "https://pypi.org/project/kaos-web/0.1.6/",
+      "main_head_sha": "9d48025aff59959eade5b1f46dcf1417e2935af8",
+      "latest_tag": "v0.1.6",
+      "latest_tag_sha": "a32621eba7f2f5dc70c2df75e1906fc72271cf8d",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-22T23:40:49Z"
+      "last_commit_at": "2026-05-23T20:25:33Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26317189905,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26317189905",
-      "head_sha": "cd9117954cb30d46e86e6e09f0320ff5500615db",
-      "run_completed_at": "2026-05-22T23:43:17Z",
+      "workflow_run_id": 26342704052,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26342704052",
+      "head_sha": "9d48025aff59959eade5b1f46dcf1417e2935af8",
+      "run_completed_at": "2026-05-23T20:28:22Z",
       "matrix": []
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26317189900,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26317189900",
+      "workflow_run_id": 26342704053,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/26342704053",
       "jobs": [
         {
-          "name": "bandit (static security)",
+          "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-22T23:41:05Z"
+          "completed_at": "2026-05-23T20:25:48Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-22T23:40:59Z"
+          "completed_at": "2026-05-23T20:25:43Z"
         },
         {
-          "name": "vulture (dead-code scan)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-22T23:41:05Z"
+          "completed_at": "2026-05-23T20:25:50Z"
         }
       ],
-      "run_completed_at": "2026-05-22T23:41:06Z"
+      "run_completed_at": "2026-05-23T20:25:51Z"
     },
     "open_prs": {
-      "count": 2,
-      "titles": [
-        "#34 chore(packaging): bump classifier to Production/Stable",
-        "#33 feat(extract): RSS/Atom feed parser + live extraction matrix"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -63,14 +60,14 @@
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.5",
-      "pypi_release_iso": "2026-05-22T22:23:21.131352Z",
+      "pypi_version": "0.1.6",
+      "pypi_release_iso": "2026-05-23T19:40:02.557414Z",
       "wheel_platforms": [
         "any"
       ],
       "wheel_sha256s": {
-        "kaos_web-0.1.5-py3-none-any.whl": "3c925080fbdfabf685dcc2a525e659d3c5e6b8e542aafbaf8dbf82032c89fec0",
-        "kaos_web-0.1.5.tar.gz": "9356d924b71c5a62f8ce62bc5e6441de61ea21af191fc6f85e6ec5de3cad1ae1"
+        "kaos_web-0.1.6-py3-none-any.whl": "2086673c2666241636c293de7e2f07ef49e44ca216e6b4534987a657750608ab",
+        "kaos_web-0.1.6.tar.gz": "9e52471622cdcded792c861f9a6adb8865c28bcb07d765225fb9b48e86167645"
       },
       "is_abi3": false,
       "has_musllinux_wheel": false,
@@ -84,7 +81,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-web",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1608541921,
+        "rekor_log_index": 1615700867,
         "verified_count": 2,
         "total_count": 2
       },
@@ -112,59 +109,18 @@
         "unknown_license": [
           "playwright"
         ],
-        "sbom_artifact_path": "data/sbom/kaos-web-0.1.5.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-web-0.1.6.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.194,
-      "conventional_commits_rate_90d": 0.455,
-      "verified_commit_ratio_90d": 0.139,
-      "commits_90d": 165,
+      "dco_signoff_rate_90d": 0.218,
+      "conventional_commits_rate_90d": 0.459,
+      "verified_commit_ratio_90d": 0.159,
+      "commits_90d": 170,
       "unique_committers_90d": 2,
-      "branch_protection_enabled": true,
-      "branch_protection_summary": {
-        "source": "branches_api",
-        "required_status_checks": {
-          "enforcement_level": "everyone",
-          "contexts": [
-            "bandit (static security)",
-            "vulture (dead-code scan)",
-            "quality",
-            "test",
-            "build",
-            "gitleaks (incremental)"
-          ],
-          "checks": [
-            {
-              "context": "bandit (static security)",
-              "app_id": 15368
-            },
-            {
-              "context": "vulture (dead-code scan)",
-              "app_id": 15368
-            },
-            {
-              "context": "quality",
-              "app_id": 15368
-            },
-            {
-              "context": "test",
-              "app_id": 15368
-            },
-            {
-              "context": "build",
-              "app_id": 15368
-            },
-            {
-              "context": "gitleaks (incremental)",
-              "app_id": 15368
-            }
-          ]
-        },
-        "required_pull_request_reviews": null,
-        "required_signatures": null
-      },
+      "branch_protection_enabled": false,
+      "branch_protection_summary": {},
       "codeowners_path": ".github/CODEOWNERS",
       "security_md_present": true,
       "security_md_disclosure_window_days": 90,
@@ -173,19 +129,19 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 11,
-      "median_pr_age_days": 0.327,
-      "open_pr_count": 2,
+      "releases_90d": 12,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 236,
+      "time_to_pypi_seconds_median": 259,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 12583,
-        "tests_loc": 13557,
+        "src_loc": 12607,
+        "tests_loc": 13667,
         "src_files": 61,
-        "tests_files": 62
+        "tests_files": 64
       },
       "rust": {
         "src_loc": 0,
@@ -198,15 +154,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-web-0.1.5.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-web/releases/download/v0.1.5/kaos-web-0.1.5.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-web-0.1.6.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-web/releases/download/v0.1.6/kaos-web-0.1.6.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-web",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1608541921,
+    "rekor_log_index": 1615700867,
     "verified_count": 2,
     "total_count": 2,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-web/"

@@ -8,53 +8,51 @@
     "identity": {
       "pypi_version": "0.1.0",
       "pypi_url": "https://pypi.org/project/kaos-office/0.1.0/",
-      "main_head_sha": "42740bec78a8ed87b719a6d6487533e24facc471",
+      "main_head_sha": "390089880446588887bddabd85944535e8b318d4",
       "latest_tag": "v0.1.0",
       "latest_tag_sha": "042a69bf0d4f897f423cd8011f8cb655db23db08",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-22T23:39:27Z"
+      "last_commit_at": "2026-05-23T20:29:43Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 26317150834,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26317150834",
-      "head_sha": "42740bec78a8ed87b719a6d6487533e24facc471",
-      "run_completed_at": "2026-05-22T23:42:37Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": 26342793133,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26342793133",
+      "head_sha": "390089880446588887bddabd85944535e8b318d4",
+      "run_completed_at": "2026-05-23T20:30:56Z",
       "matrix": []
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26317150813,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26317150813",
+      "workflow_run_id": 26342793141,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26342793141",
       "jobs": [
         {
-          "name": "bandit (static security)",
+          "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-22T23:39:39Z"
+          "completed_at": "2026-05-23T20:29:56Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-22T23:39:38Z"
+          "completed_at": "2026-05-23T20:29:54Z"
         },
         {
-          "name": "vulture (dead-code scan)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-22T23:39:38Z"
+          "completed_at": "2026-05-23T20:29:57Z"
         }
       ],
-      "run_completed_at": "2026-05-22T23:39:40Z"
+      "run_completed_at": "2026-05-23T20:29:57Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#35 chore(packaging): bump classifier to Production/Stable"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -113,54 +111,13 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.257,
-      "conventional_commits_rate_90d": 0.752,
-      "verified_commit_ratio_90d": 0.276,
-      "commits_90d": 105,
+      "dco_signoff_rate_90d": 0.278,
+      "conventional_commits_rate_90d": 0.759,
+      "verified_commit_ratio_90d": 0.296,
+      "commits_90d": 108,
       "unique_committers_90d": 2,
-      "branch_protection_enabled": true,
-      "branch_protection_summary": {
-        "source": "branches_api",
-        "required_status_checks": {
-          "enforcement_level": "everyone",
-          "contexts": [
-            "bandit (static security)",
-            "vulture (dead-code scan)",
-            "quality",
-            "test",
-            "build",
-            "gitleaks (incremental)"
-          ],
-          "checks": [
-            {
-              "context": "bandit (static security)",
-              "app_id": 15368
-            },
-            {
-              "context": "vulture (dead-code scan)",
-              "app_id": 15368
-            },
-            {
-              "context": "quality",
-              "app_id": 15368
-            },
-            {
-              "context": "test",
-              "app_id": 15368
-            },
-            {
-              "context": "build",
-              "app_id": 15368
-            },
-            {
-              "context": "gitleaks (incremental)",
-              "app_id": 15368
-            }
-          ]
-        },
-        "required_pull_request_reviews": null,
-        "required_signatures": null
-      },
+      "branch_protection_enabled": false,
+      "branch_protection_summary": {},
       "codeowners_path": ".github/CODEOWNERS",
       "security_md_present": true,
       "security_md_disclosure_window_days": 90,
@@ -170,8 +127,8 @@
         "NOTICE"
       ],
       "releases_90d": 10,
-      "median_pr_age_days": 0.001,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 345,
       "errors": []
