@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.1",
       "pypi_url": "https://pypi.org/project/kaos-tabular/0.1.1/",
-      "main_head_sha": "fb0429a76eb55d1c202d6a52ad66d033dd9e174b",
+      "main_head_sha": "3f4a4de7e964f253518704fca94f7f5ac40ecce0",
       "latest_tag": "v0.1.1",
       "latest_tag_sha": "fb0429a76eb55d1c202d6a52ad66d033dd9e174b",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-23T19:44:05Z"
+      "last_commit_at": "2026-05-25T15:55:58Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26341842014,
-      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/26341842014",
-      "head_sha": "fb0429a76eb55d1c202d6a52ad66d033dd9e174b",
-      "run_completed_at": "2026-05-23T20:00:28Z",
+      "workflow_run_id": 26409040205,
+      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/26409040205",
+      "head_sha": "3f4a4de7e964f253518704fca94f7f5ac40ecce0",
+      "run_completed_at": "2026-05-25T16:00:10Z",
       "matrix": [
         {
           "name": "test (windows-x64 / Python 3.13)",
@@ -67,40 +67,38 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26341842016,
-      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/26341842016",
+      "workflow_run_id": 26409040270,
+      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/26409040270",
       "jobs": [
         {
-          "name": "bandit (static security)",
+          "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-23T19:44:21Z"
+          "completed_at": "2026-05-25T15:56:08Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-23T19:44:22Z"
+          "completed_at": "2026-05-25T15:56:09Z"
         },
         {
-          "name": "gitleaks (incremental)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-23T19:44:20Z"
+          "completed_at": "2026-05-25T15:56:14Z"
         }
       ],
-      "run_completed_at": "2026-05-23T19:44:23Z"
+      "run_completed_at": "2026-05-25T15:56:14Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#33 chore(deps): bump the deps-minor group with 6 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 1,
+      "days_since_last_commit": 0,
       "days_since_last_release": 1,
-      "days_since_last_security_scan": 1
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.1",
@@ -152,10 +150,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.818,
-      "conventional_commits_rate_90d": 0.848,
-      "verified_commit_ratio_90d": 0.788,
-      "commits_90d": 33,
+      "dco_signoff_rate_90d": 0.824,
+      "conventional_commits_rate_90d": 0.853,
+      "verified_commit_ratio_90d": 0.794,
+      "commits_90d": 34,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -209,8 +207,8 @@
         "NOTICE"
       ],
       "releases_90d": 7,
-      "median_pr_age_days": 0.12,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 240,
       "errors": []

@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.1",
       "pypi_url": "https://pypi.org/project/kaos-content/0.1.1/",
-      "main_head_sha": "9d0865726f06c55fe094f447ac3f612feba72c6a",
+      "main_head_sha": "9ed9d79d72ee03965c6cfed942e82937b1d97145",
       "latest_tag": "v0.1.1",
       "latest_tag_sha": "9d0865726f06c55fe094f447ac3f612feba72c6a",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-23T19:29:21Z"
+      "last_commit_at": "2026-05-25T15:56:26Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26341540118,
-      "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/26341540118",
-      "head_sha": "9d0865726f06c55fe094f447ac3f612feba72c6a",
-      "run_completed_at": "2026-05-23T19:37:47Z",
+      "workflow_run_id": 26409058642,
+      "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/26409058642",
+      "head_sha": "9ed9d79d72ee03965c6cfed942e82937b1d97145",
+      "run_completed_at": "2026-05-25T16:05:15Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14)",
@@ -67,40 +67,38 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26341539996,
-      "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/26341539996",
+      "workflow_run_id": 26409058652,
+      "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/26409058652",
       "jobs": [
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-23T19:29:42Z"
+          "completed_at": "2026-05-25T15:56:37Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-23T19:29:46Z"
+          "completed_at": "2026-05-25T15:56:40Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-23T19:29:43Z"
+          "completed_at": "2026-05-25T15:56:40Z"
         }
       ],
-      "run_completed_at": "2026-05-23T19:29:47Z"
+      "run_completed_at": "2026-05-25T15:56:40Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#47 chore(deps): bump the deps-minor group with 9 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 1,
+      "days_since_last_commit": 0,
       "days_since_last_release": 1,
-      "days_since_last_security_scan": 1
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.1",
@@ -129,9 +127,9 @@
         "total_count": 2
       },
       "sbom": {
-        "components_count": 54,
+        "components_count": 56,
         "license_breakdown": {
-          "MIT": 25,
+          "MIT": 26,
           "MPL-2.0": 2,
           "BSD-3-Clause": 9,
           "Apache-2.0": 9,
@@ -139,7 +137,7 @@
           "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
           "Apache-2.0 OR BSD-2-Clause": 1,
           "MIT-CMU": 1,
-          "BSD-2-Clause": 1,
+          "BSD-2-Clause": 2,
           "MIT AND BSD-3-Clause": 1,
           "ISC": 1,
           "MPL-2.0 AND MIT": 1,
@@ -159,10 +157,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.879,
-      "conventional_commits_rate_90d": 0.828,
-      "verified_commit_ratio_90d": 0.672,
-      "commits_90d": 58,
+      "dco_signoff_rate_90d": 0.881,
+      "conventional_commits_rate_90d": 0.831,
+      "verified_commit_ratio_90d": 0.678,
+      "commits_90d": 59,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -216,8 +214,8 @@
         "NOTICE"
       ],
       "releases_90d": 15,
-      "median_pr_age_days": 0.115,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 180,
       "errors": []

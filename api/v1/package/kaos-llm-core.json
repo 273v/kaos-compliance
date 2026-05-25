@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.2",
       "pypi_url": "https://pypi.org/project/kaos-llm-core/0.1.2/",
-      "main_head_sha": "96876042742da09c0c96de1b800f8083f40c6ce1",
+      "main_head_sha": "b1435c5f3c28fa0f3b3cd3a2838c1abb6cdbdeb0",
       "latest_tag": "v0.1.2",
       "latest_tag_sha": "96876042742da09c0c96de1b800f8083f40c6ce1",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-25T12:09:06Z"
+      "last_commit_at": "2026-05-25T15:53:30Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26399757476,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/26399757476",
-      "head_sha": "96876042742da09c0c96de1b800f8083f40c6ce1",
-      "run_completed_at": "2026-05-25T12:10:15Z",
+      "workflow_run_id": 26408944131,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/26408944131",
+      "head_sha": "b1435c5f3c28fa0f3b3cd3a2838c1abb6cdbdeb0",
+      "run_completed_at": "2026-05-25T15:54:44Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14t)",
@@ -67,35 +67,33 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26399757494,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/26399757494",
+      "workflow_run_id": 26408944111,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/26408944111",
       "jobs": [
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-25T12:09:22Z"
-        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-25T12:09:19Z"
+          "completed_at": "2026-05-25T15:53:46Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-25T12:09:23Z"
+          "completed_at": "2026-05-25T15:53:49Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-25T15:53:49Z"
         }
       ],
-      "run_completed_at": "2026-05-25T12:09:24Z"
+      "run_completed_at": "2026-05-25T15:53:50Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#49 chore(deps): bump the deps-minor group with 8 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -129,12 +127,12 @@
         "total_count": 2
       },
       "sbom": {
-        "components_count": 62,
+        "components_count": 60,
         "license_breakdown": {
-          "MIT": 33,
+          "MIT": 32,
           "MPL-2.0": 1,
           "BSD-3-Clause": 10,
-          "Apache-2.0": 10,
+          "Apache-2.0": 9,
           "Apache-2.0 OR BSD-3-Clause": 1,
           "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
           "Apache-2.0 OR BSD-2-Clause": 1,
@@ -154,10 +152,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.775,
-      "conventional_commits_rate_90d": 0.803,
-      "verified_commit_ratio_90d": 0.535,
-      "commits_90d": 71,
+      "dco_signoff_rate_90d": 0.778,
+      "conventional_commits_rate_90d": 0.806,
+      "verified_commit_ratio_90d": 0.542,
+      "commits_90d": 72,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -170,8 +168,8 @@
         "NOTICE"
       ],
       "releases_90d": 21,
-      "median_pr_age_days": 0.117,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 194,
       "errors": []

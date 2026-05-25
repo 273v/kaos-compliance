@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.1",
       "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.1.1/",
-      "main_head_sha": "8f38ca658dc88293611a12b1cc3dcdff55f2c901",
+      "main_head_sha": "ac21ee388747c3775f31852fb0ee6e1387e6b765",
       "latest_tag": "v0.2.0a8",
       "latest_tag_sha": "7ef731a74f5abedba6a0fbec7c0c860e972b62ee",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-23T20:00:09Z"
+      "last_commit_at": "2026-05-25T15:56:17Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26342173424,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26342173424",
-      "head_sha": "8f38ca658dc88293611a12b1cc3dcdff55f2c901",
-      "run_completed_at": "2026-05-23T20:12:10Z",
+      "workflow_run_id": 26409052728,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26409052728",
+      "head_sha": "ac21ee388747c3775f31852fb0ee6e1387e6b765",
+      "run_completed_at": "2026-05-25T16:07:41Z",
       "matrix": [
         {
           "name": "test (windows-x64 / Python 3.13)",
@@ -67,43 +67,38 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26342173408,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26342173408",
+      "workflow_run_id": 26409052746,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26409052746",
       "jobs": [
         {
-          "name": "bandit (static security)",
+          "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-23T20:00:27Z"
+          "completed_at": "2026-05-25T15:56:38Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-23T20:00:37Z"
+          "completed_at": "2026-05-25T15:56:49Z"
         },
         {
-          "name": "vulture (dead-code scan)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-23T20:00:26Z"
+          "completed_at": "2026-05-25T15:56:39Z"
         }
       ],
-      "run_completed_at": "2026-05-23T20:00:37Z"
+      "run_completed_at": "2026-05-25T15:56:50Z"
     },
     "open_prs": {
-      "count": 4,
-      "titles": [
-        "#38 chore(deps): Bump huggingface-hub from 0.36.2 to 1.16.1",
-        "#37 chore(deps): Bump the deps-minor group with 6 updates",
-        "#36 chore(deps): Bump github/codeql-action from 4.35.5 to 4.36.0 in the actions-all group",
-        "#35 chore(deps): Bump serde_json from 1.0.149 to 1.0.150 in the cargo-minor group"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 1,
+      "days_since_last_commit": 0,
       "days_since_last_release": 1,
-      "days_since_last_security_scan": 1
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.1",
@@ -140,12 +135,12 @@
         "total_count": 6
       },
       "sbom": {
-        "components_count": 372,
+        "components_count": 369,
         "license_breakdown": {
-          "MIT": 77,
+          "MIT": 75,
           "MPL-2.0": 2,
           "BSD-3-Clause": 15,
-          "Apache-2.0": 21,
+          "Apache-2.0": 20,
           "Apache-2.0 OR BSD-3-Clause": 1,
           "MIT OR Apache-2.0": 154,
           "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
@@ -211,10 +206,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.603,
-      "conventional_commits_rate_90d": 0.795,
-      "verified_commit_ratio_90d": 0.321,
-      "commits_90d": 78,
+      "dco_signoff_rate_90d": 0.622,
+      "conventional_commits_rate_90d": 0.805,
+      "verified_commit_ratio_90d": 0.354,
+      "commits_90d": 82,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -273,8 +268,8 @@
         "NOTICE"
       ],
       "releases_90d": 13,
-      "median_pr_age_days": 0.254,
-      "open_pr_count": 4,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 692,
       "errors": []
