@@ -2,26 +2,26 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-graph",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "snapshot_slice": {
     "name": "kaos-graph",
     "identity": {
-      "pypi_version": "0.1.1",
-      "pypi_url": "https://pypi.org/project/kaos-graph/0.1.1/",
-      "main_head_sha": "344fe948f76e388d4f24f9fd82c13231d0c0ceeb",
-      "latest_tag": "v0.1.1",
-      "latest_tag_sha": "cfe8ee4c73ad45e6e55ae3dba575b2a6a4780a76",
-      "tag_at_head": false,
+      "pypi_version": "0.1.3",
+      "pypi_url": "https://pypi.org/project/kaos-graph/0.1.3/",
+      "main_head_sha": "02f2f0fd557cb0fbffb002fc8d06287f54357088",
+      "latest_tag": "v0.1.3",
+      "latest_tag_sha": "02f2f0fd557cb0fbffb002fc8d06287f54357088",
+      "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-25T15:55:48Z"
+      "last_commit_at": "2026-05-25T18:20:48Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26409033653,
-      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/26409033653",
-      "head_sha": "344fe948f76e388d4f24f9fd82c13231d0c0ceeb",
-      "run_completed_at": "2026-05-25T16:07:05Z",
+      "workflow_run_id": 26414200258,
+      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/26414200258",
+      "head_sha": "02f2f0fd557cb0fbffb002fc8d06287f54357088",
+      "run_completed_at": "2026-05-25T18:35:20Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14t)",
@@ -67,29 +67,29 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26409033668,
-      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/26409033668",
+      "workflow_run_id": 26414200259,
+      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/26414200259",
       "jobs": [
         {
-          "name": "bandit (static security)",
+          "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-25T15:56:04Z"
+          "completed_at": "2026-05-25T18:21:01Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-25T15:56:01Z"
+          "completed_at": "2026-05-25T18:20:59Z"
         },
         {
-          "name": "vulture (dead-code scan)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-25T15:56:03Z"
+          "completed_at": "2026-05-25T18:21:05Z"
         }
       ],
-      "run_completed_at": "2026-05-25T15:56:05Z"
+      "run_completed_at": "2026-05-25T18:21:05Z"
     },
     "open_prs": {
       "count": 0,
@@ -97,12 +97,12 @@
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 1,
+      "days_since_last_release": 0,
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.1",
-      "pypi_release_iso": "2026-05-23T20:14:46.290068Z",
+      "pypi_version": "0.1.3",
+      "pypi_release_iso": "2026-05-25T18:55:45.128833Z",
       "wheel_platforms": [
         "macos-arm64",
         "linux-aarch64-manylinux_2_28",
@@ -111,12 +111,12 @@
         "win-arm64"
       ],
       "wheel_sha256s": {
-        "kaos_graph-0.1.1-cp313-abi3-macosx_11_0_arm64.whl": "b405b4bb39661c7cec66dfe6b6fe7db78c4c2651e08889f166749548fbc129d5",
-        "kaos_graph-0.1.1-cp313-abi3-manylinux_2_28_aarch64.whl": "a0bb654c5ce72b61c1493ab3378243b5adfa2aeafac3a964c75b4e34f6c2f7b9",
-        "kaos_graph-0.1.1-cp313-abi3-manylinux_2_28_x86_64.whl": "580bc3e88ee6b99be5ffacec12dc32f73667249621ac10cb5a1ea2e54be9e7e1",
-        "kaos_graph-0.1.1-cp313-abi3-win_amd64.whl": "775aff22877f6cc4c045ce180411a9195c6b1024afedf54ae32431ad972bea68",
-        "kaos_graph-0.1.1-cp313-abi3-win_arm64.whl": "b32dccf4b54eb0fe2d5de9bf6bb40dd52a82a98f69a137ed88b39ae920a18571",
-        "kaos_graph-0.1.1.tar.gz": "89aae6a93b718fc3838592358437a29150648aabd00b306af5aaff9f286dd839"
+        "kaos_graph-0.1.3-cp313-abi3-macosx_11_0_arm64.whl": "74778000207a5167702828b9bd0f701b08790f8b9697e898854e82b621a5ed2f",
+        "kaos_graph-0.1.3-cp313-abi3-manylinux_2_28_aarch64.whl": "7632f8bd3de45bbb73357ce026f28fff57b591c44f9a1679d1f4c7720caedb92",
+        "kaos_graph-0.1.3-cp313-abi3-manylinux_2_28_x86_64.whl": "e0c8ff30d19433440262ee2af0db1072379a527793a302e591e5d1b3999ba942",
+        "kaos_graph-0.1.3-cp313-abi3-win_amd64.whl": "8f9f0efe5313afcb2b7e9bfa6c3dbceca2cf5d6bae6b999c8907c378ae35a78b",
+        "kaos_graph-0.1.3-cp313-abi3-win_arm64.whl": "acd77a075a13fa9494ccf6ce8d5d635ffd7fe1ba21c6d83ce7463a97499234c4",
+        "kaos_graph-0.1.3.tar.gz": "fcccfa0a98f99d117c7c801db1e098f9e914e887b1f2c3096d20a530d2f07938"
       },
       "is_abi3": true,
       "has_musllinux_wheel": false,
@@ -130,7 +130,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-graph",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1615757966,
+        "rekor_log_index": 1630671492,
         "verified_count": 6,
         "total_count": 6
       },
@@ -165,15 +165,15 @@
         ],
         "strong_copyleft": [],
         "unknown_license": [],
-        "sbom_artifact_path": "data/sbom/kaos-graph-0.1.1.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-graph-0.1.3.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.786,
-      "conventional_commits_rate_90d": 0.786,
-      "verified_commit_ratio_90d": 0.595,
-      "commits_90d": 42,
+      "dco_signoff_rate_90d": 0.791,
+      "conventional_commits_rate_90d": 0.767,
+      "verified_commit_ratio_90d": 0.581,
+      "commits_90d": 43,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -231,11 +231,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 8,
+      "releases_90d": 9,
       "median_pr_age_days": null,
       "open_pr_count": 0,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 532,
+      "time_to_pypi_seconds_median": 565,
       "errors": []
     },
     "code_metrics": {
@@ -256,15 +256,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-graph-0.1.1.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-graph/releases/download/v0.1.1/kaos-graph-0.1.1.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-graph-0.1.3.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-graph/releases/download/v0.1.3/kaos-graph-0.1.3.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-graph",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1615757966,
+    "rekor_log_index": 1630671492,
     "verified_count": 6,
     "total_count": 6,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-graph/"
