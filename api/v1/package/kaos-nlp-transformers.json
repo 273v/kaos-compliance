@@ -22,7 +22,48 @@
       "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26342173424",
       "head_sha": "8f38ca658dc88293611a12b1cc3dcdff55f2c901",
       "run_completed_at": "2026-05-23T20:12:10Z",
-      "matrix": []
+      "matrix": [
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-25T06:48:49Z",
+          "completed_at": "2026-05-25T06:56:14Z",
+          "duration_seconds": 445
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-25T06:49:03Z",
+          "completed_at": "2026-05-25T06:51:52Z",
+          "duration_seconds": 169
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-25T06:50:18Z",
+          "completed_at": "2026-05-25T06:54:17Z",
+          "duration_seconds": 239
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-05-25T06:53:25Z",
+          "completed_at": "2026-05-25T06:53:53Z",
+          "duration_seconds": 28
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-05-25T06:59:59Z",
+          "completed_at": "2026-05-25T07:02:23Z",
+          "duration_seconds": 144
+        }
+      ]
     },
     "security": {
       "workflow_conclusion": "success",
@@ -230,7 +271,7 @@
         "NOTICE"
       ],
       "releases_90d": 13,
-      "median_pr_age_days": 0.074,
+      "median_pr_age_days": 0.232,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 692,
