@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.3",
       "pypi_url": "https://pypi.org/project/kaos-office/0.1.3/",
-      "main_head_sha": "0b8205db56f553a407f0e23eb5b517b68d01f7ae",
+      "main_head_sha": "f5244f9a516ed2fa84714ae9d655325a1029fda6",
       "latest_tag": "v0.1.3",
       "latest_tag_sha": "0b8205db56f553a407f0e23eb5b517b68d01f7ae",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-26T17:05:27Z"
+      "last_commit_at": "2026-05-27T16:50:23Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26463088147,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26463088147",
-      "head_sha": "0b8205db56f553a407f0e23eb5b517b68d01f7ae",
-      "run_completed_at": "2026-05-26T17:07:14Z",
+      "workflow_run_id": 26525523627,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26525523627",
+      "head_sha": "f5244f9a516ed2fa84714ae9d655325a1029fda6",
+      "run_completed_at": "2026-05-27T16:54:58Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14t)",
@@ -67,39 +67,37 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26463088146,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26463088146",
+      "workflow_run_id": 26525523607,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/26525523607",
       "jobs": [
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-27T16:50:39Z"
+        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-26T17:05:41Z"
+          "completed_at": "2026-05-27T16:50:39Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-26T17:05:47Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-26T17:05:43Z"
+          "completed_at": "2026-05-27T16:50:42Z"
         }
       ],
-      "run_completed_at": "2026-05-26T17:05:47Z"
+      "run_completed_at": "2026-05-27T16:50:43Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#39 build(deps): Bump github/codeql-action from 4.35.5 to 4.36.0 in the actions-all group"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 0,
+      "days_since_last_release": 1,
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
@@ -154,10 +152,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.301,
-      "conventional_commits_rate_90d": 0.735,
-      "verified_commit_ratio_90d": 0.301,
-      "commits_90d": 113,
+      "dco_signoff_rate_90d": 0.307,
+      "conventional_commits_rate_90d": 0.737,
+      "verified_commit_ratio_90d": 0.307,
+      "commits_90d": 114,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -170,8 +168,8 @@
         "NOTICE"
       ],
       "releases_90d": 13,
-      "median_pr_age_days": 1.55,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 390,
       "errors": []
