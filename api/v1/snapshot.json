@@ -1,36 +1,36 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-05-27T17:22:28Z",
+  "generated_at": "2026-05-27T20:59:02Z",
   "generator": {
     "name": "kaos-compliance",
     "version": "0.0.1"
   },
   "heartbeat": {
-    "last_full_sweep_at": "2026-05-27T17:22:28Z",
-    "last_light_sweep_at": "2026-05-27T17:22:28Z",
-    "last_security_sweep_at": "2026-05-27T17:22:28Z",
+    "last_full_sweep_at": "2026-05-27T20:59:02Z",
+    "last_light_sweep_at": "2026-05-27T20:59:02Z",
+    "last_security_sweep_at": "2026-05-27T20:59:02Z",
     "stale_threshold_hours": 26
   },
   "modules": [
     {
       "name": "kaos-agents",
       "identity": {
-        "pypi_version": "0.1.23",
-        "pypi_url": "https://pypi.org/project/kaos-agents/0.1.23/",
-        "main_head_sha": "1edc8d5db13f72ef559925cf6b011923da5714a7",
-        "latest_tag": "v0.1.23",
-        "latest_tag_sha": "1edc8d5db13f72ef559925cf6b011923da5714a7",
+        "pypi_version": "0.1.24",
+        "pypi_url": "https://pypi.org/project/kaos-agents/0.1.24/",
+        "main_head_sha": "5fbd92019c136dfb19dc77b96626deca2f7a9fb7",
+        "latest_tag": "v0.1.24",
+        "latest_tag_sha": "5fbd92019c136dfb19dc77b96626deca2f7a9fb7",
         "tag_at_head": true,
         "commits_past_tag": null,
         "repo_visibility": "public",
-        "last_commit_at": "2026-05-27T16:29:16Z"
+        "last_commit_at": "2026-05-27T20:26:21Z"
       },
       "ci": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 26524392835,
-        "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/26524392835",
-        "head_sha": "1edc8d5db13f72ef559925cf6b011923da5714a7",
-        "run_completed_at": "2026-05-27T16:31:44Z",
+        "workflow_run_id": 26536746100,
+        "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/26536746100",
+        "head_sha": "5fbd92019c136dfb19dc77b96626deca2f7a9fb7",
+        "run_completed_at": "2026-05-27T20:27:57Z",
         "matrix": [
           {
             "name": "test (linux-x64 / Python 3.14t)",
@@ -76,29 +76,29 @@
       },
       "security": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 26524392840,
-        "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/26524392840",
+        "workflow_run_id": 26536746136,
+        "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/26536746136",
         "jobs": [
+          {
+            "name": "gitleaks (incremental)",
+            "conclusion": "success",
+            "status": "completed",
+            "completed_at": "2026-05-27T20:26:36Z"
+          },
           {
             "name": "bandit (static security)",
             "conclusion": "success",
             "status": "completed",
-            "completed_at": "2026-05-27T16:29:44Z"
+            "completed_at": "2026-05-27T20:26:40Z"
           },
           {
             "name": "vulture (dead-code scan)",
             "conclusion": "success",
             "status": "completed",
-            "completed_at": "2026-05-27T16:29:42Z"
-          },
-          {
-            "name": "gitleaks (incremental)",
-            "conclusion": "success",
-            "status": "completed",
-            "completed_at": "2026-05-27T16:29:40Z"
+            "completed_at": "2026-05-27T20:26:36Z"
           }
         ],
-        "run_completed_at": "2026-05-27T16:29:45Z"
+        "run_completed_at": "2026-05-27T20:26:41Z"
       },
       "open_prs": {
         "count": 0,
@@ -110,14 +110,14 @@
         "days_since_last_security_scan": 0
       },
       "supply_chain": {
-        "pypi_version": "0.1.23",
-        "pypi_release_iso": "2026-05-27T16:32:31.803701Z",
+        "pypi_version": "0.1.24",
+        "pypi_release_iso": "2026-05-27T20:29:35.433187Z",
         "wheel_platforms": [
           "any"
         ],
         "wheel_sha256s": {
-          "kaos_agents-0.1.23-py3-none-any.whl": "d4d4559e58f47b9d3421c2380932224d14593728905251ae132145374b48ab56",
-          "kaos_agents-0.1.23.tar.gz": "45fb0666aa159829933f9e20541bdb332c886728fa97436e1b51996df63b2505"
+          "kaos_agents-0.1.24-py3-none-any.whl": "40ce57a2d5d6ec1e85711959d0595990bb6f3dbdab0eddc3f8925fcdc828cc14",
+          "kaos_agents-0.1.24.tar.gz": "b4787b4febb353dab282f730b1244735348fb7b0fb872974ef1cbc8a160af3c4"
         },
         "is_abi3": false,
         "has_musllinux_wheel": false,
@@ -131,7 +131,7 @@
           "publisher_kind": "GitHub",
           "publisher_source_repo": "273v/kaos-agents",
           "publisher_workflow_ref": "release.yml@pypi",
-          "rekor_log_index": 1644791466,
+          "rekor_log_index": 1647004991,
           "verified_count": 2,
           "total_count": 2
         },
@@ -168,15 +168,15 @@
             "py-rust-stemmers",
             "regex"
           ],
-          "sbom_artifact_path": "data/sbom/kaos-agents-0.1.23.cdx.json"
+          "sbom_artifact_path": "data/sbom/kaos-agents-0.1.24.cdx.json"
         },
         "errors": []
       },
       "governance": {
-        "dco_signoff_rate_90d": 0.826,
-        "conventional_commits_rate_90d": 0.761,
-        "verified_commit_ratio_90d": 0.804,
-        "commits_90d": 92,
+        "dco_signoff_rate_90d": 0.828,
+        "conventional_commits_rate_90d": 0.763,
+        "verified_commit_ratio_90d": 0.806,
+        "commits_90d": 93,
         "unique_committers_90d": 2,
         "branch_protection_enabled": true,
         "branch_protection_summary": {
@@ -229,17 +229,17 @@
           "LICENSE",
           "NOTICE"
         ],
-        "releases_90d": 40,
+        "releases_90d": 41,
         "median_pr_age_days": null,
         "open_pr_count": 0,
         "open_issue_count": 0,
-        "time_to_pypi_seconds_median": 160,
+        "time_to_pypi_seconds_median": 161,
         "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": 34804,
-          "tests_loc": 62931,
+          "src_loc": 34828,
+          "tests_loc": 62939,
           "src_files": 257,
           "tests_files": 364
         },
@@ -346,9 +346,9 @@
         "titles": []
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 1,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 2,
+        "days_since_last_release": 2,
+        "days_since_last_security_scan": 2
       },
       "supply_chain": {
         "pypi_version": "0.1.2",
@@ -577,9 +577,9 @@
         "titles": []
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 1,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 2,
+        "days_since_last_release": 2,
+        "days_since_last_security_scan": 2
       },
       "supply_chain": {
         "pypi_version": "0.1.2",
@@ -721,22 +721,22 @@
     {
       "name": "kaos-core",
       "identity": {
-        "pypi_version": "0.1.3",
-        "pypi_url": "https://pypi.org/project/kaos-core/0.1.3/",
-        "main_head_sha": "4e7035850bfe1949bc56bd803cba4e5849ce54b6",
-        "latest_tag": "v0.1.3",
-        "latest_tag_sha": "56b17e2109a0c139ffceccb0e1d46de0164badc5",
-        "tag_at_head": false,
+        "pypi_version": "0.1.4",
+        "pypi_url": "https://pypi.org/project/kaos-core/0.1.4/",
+        "main_head_sha": "f32844ad6ae770155acd51f91cf618ae7964f65a",
+        "latest_tag": "v0.1.4",
+        "latest_tag_sha": "f32844ad6ae770155acd51f91cf618ae7964f65a",
+        "tag_at_head": true,
         "commits_past_tag": null,
         "repo_visibility": "public",
-        "last_commit_at": "2026-05-25T18:46:28Z"
+        "last_commit_at": "2026-05-27T18:05:27Z"
       },
       "ci": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 26415081284,
-        "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/26415081284",
-        "head_sha": "4e7035850bfe1949bc56bd803cba4e5849ce54b6",
-        "run_completed_at": "2026-05-25T18:56:23Z",
+        "workflow_run_id": 26529465129,
+        "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/26529465129",
+        "head_sha": "f32844ad6ae770155acd51f91cf618ae7964f65a",
+        "run_completed_at": "2026-05-27T18:06:13Z",
         "matrix": [
           {
             "name": "test (macos-arm64 / Python 3.13)",
@@ -782,48 +782,48 @@
       },
       "security": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 26415081286,
-        "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/26415081286",
+        "workflow_run_id": 26529465203,
+        "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/26529465203",
         "jobs": [
-          {
-            "name": "bandit (static security)",
-            "conclusion": "success",
-            "status": "completed",
-            "completed_at": "2026-05-25T18:46:45Z"
-          },
           {
             "name": "gitleaks (incremental)",
             "conclusion": "success",
             "status": "completed",
-            "completed_at": "2026-05-25T18:46:43Z"
+            "completed_at": "2026-05-27T18:05:47Z"
+          },
+          {
+            "name": "bandit (static security)",
+            "conclusion": "success",
+            "status": "completed",
+            "completed_at": "2026-05-27T18:05:43Z"
           },
           {
             "name": "vulture (dead-code scan)",
             "conclusion": "success",
             "status": "completed",
-            "completed_at": "2026-05-25T18:46:40Z"
+            "completed_at": "2026-05-27T18:05:46Z"
           }
         ],
-        "run_completed_at": "2026-05-25T18:46:46Z"
+        "run_completed_at": "2026-05-27T18:05:48Z"
       },
       "open_prs": {
         "count": 0,
         "titles": []
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 1,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 0,
+        "days_since_last_release": 0,
+        "days_since_last_security_scan": 0
       },
       "supply_chain": {
-        "pypi_version": "0.1.3",
-        "pypi_release_iso": "2026-05-25T19:13:32.645098Z",
+        "pypi_version": "0.1.4",
+        "pypi_release_iso": "2026-05-27T18:47:52.058907Z",
         "wheel_platforms": [
           "any"
         ],
         "wheel_sha256s": {
-          "kaos_core-0.1.3-py3-none-any.whl": "347f1deb41f2edaa0ff1f26c470221fd1c406f3afb93d073404f040f56014c48",
-          "kaos_core-0.1.3.tar.gz": "3051ba0af6682c05f646bc045c1dd4531d047f61d191e78b3368ae3244f22e24"
+          "kaos_core-0.1.4-py3-none-any.whl": "207483ffbb1c5e83bacca210f95264fe727850b328351ba44908f2ba2009eed2",
+          "kaos_core-0.1.4.tar.gz": "3ebf2af4c4b5cef8d88fbd2aefc73568dd9defcc7510a25c12a885e0e64b1532"
         },
         "is_abi3": false,
         "has_musllinux_wheel": false,
@@ -837,7 +837,7 @@
           "publisher_kind": "GitHub",
           "publisher_source_repo": "273v/kaos-core",
           "publisher_workflow_ref": "release.yml@pypi",
-          "rekor_log_index": 1630710656,
+          "rekor_log_index": 1646053954,
           "verified_count": 2,
           "total_count": 2
         },
@@ -859,15 +859,15 @@
           ],
           "strong_copyleft": [],
           "unknown_license": [],
-          "sbom_artifact_path": "data/sbom/kaos-core-0.1.3.cdx.json"
+          "sbom_artifact_path": "data/sbom/kaos-core-0.1.4.cdx.json"
         },
         "errors": []
       },
       "governance": {
-        "dco_signoff_rate_90d": 0.791,
-        "conventional_commits_rate_90d": 0.776,
-        "verified_commit_ratio_90d": 0.448,
-        "commits_90d": 67,
+        "dco_signoff_rate_90d": 0.794,
+        "conventional_commits_rate_90d": 0.779,
+        "verified_commit_ratio_90d": 0.456,
+        "commits_90d": 68,
         "unique_committers_90d": 2,
         "branch_protection_enabled": true,
         "branch_protection_summary": {
@@ -920,16 +920,16 @@
           "LICENSE",
           "NOTICE"
         ],
-        "releases_90d": 17,
+        "releases_90d": 18,
         "median_pr_age_days": null,
         "open_pr_count": 0,
         "open_issue_count": 0,
-        "time_to_pypi_seconds_median": 301,
+        "time_to_pypi_seconds_median": 319,
         "errors": []
       },
       "code_metrics": {
         "python": {
-          "src_loc": 7902,
+          "src_loc": 7926,
           "tests_loc": 6602,
           "src_files": 94,
           "tests_files": 51
@@ -1037,9 +1037,9 @@
         "titles": []
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 1,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 2,
+        "days_since_last_release": 2,
+        "days_since_last_security_scan": 2
       },
       "supply_chain": {
         "pypi_version": "0.1.3",
@@ -1521,7 +1521,7 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": 1,
+        "days_since_last_release": 2,
         "days_since_last_security_scan": 0
       },
       "supply_chain": {
@@ -1708,9 +1708,9 @@
         "titles": []
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 1,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 2,
+        "days_since_last_release": 2,
+        "days_since_last_security_scan": 2
       },
       "supply_chain": {
         "pypi_version": "0.1.2",
@@ -1935,9 +1935,9 @@
         "titles": []
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 1,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 2,
+        "days_since_last_release": 2,
+        "days_since_last_security_scan": 2
       },
       "supply_chain": {
         "pypi_version": "0.1.2",
@@ -2184,7 +2184,7 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": 1,
+        "days_since_last_release": 2,
         "days_since_last_security_scan": 0
       },
       "supply_chain": {
@@ -2404,7 +2404,7 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": 1,
+        "days_since_last_release": 2,
         "days_since_last_security_scan": 0
       },
       "supply_chain": {
@@ -2633,9 +2633,9 @@
         "titles": []
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 1,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 2,
+        "days_since_last_release": 2,
+        "days_since_last_security_scan": 2
       },
       "supply_chain": {
         "pypi_version": "0.1.3",
@@ -3339,7 +3339,7 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": 1,
+        "days_since_last_release": 2,
         "days_since_last_security_scan": 0
       },
       "supply_chain": {
@@ -3571,9 +3571,9 @@
         "titles": []
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 1,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 2,
+        "days_since_last_release": 2,
+        "days_since_last_security_scan": 2
       },
       "supply_chain": {
         "pypi_version": "0.1.2",
@@ -3710,20 +3710,20 @@
       "identity": {
         "pypi_version": "0.1.0a14",
         "pypi_url": "https://pypi.org/project/kaos-ui/0.1.0a14/",
-        "main_head_sha": "2cf874bb0c9f5663ea27b8c1cbd5391e67c59c00",
+        "main_head_sha": "d5e077e7c98844f9f7693bf12e69e076ada2f453",
         "latest_tag": "v0.1.0a14",
         "latest_tag_sha": "9b8807b7c08c3aed4db591e848a5f7477a9448cf",
         "tag_at_head": false,
         "commits_past_tag": null,
         "repo_visibility": "public",
-        "last_commit_at": "2026-05-27T16:50:40Z"
+        "last_commit_at": "2026-05-27T20:34:38Z"
       },
       "ci": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 26525539187,
-        "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/26525539187",
-        "head_sha": "2cf874bb0c9f5663ea27b8c1cbd5391e67c59c00",
-        "run_completed_at": "2026-05-27T16:54:39Z",
+        "workflow_run_id": 26537170196,
+        "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/26537170196",
+        "head_sha": "d5e077e7c98844f9f7693bf12e69e076ada2f453",
+        "run_completed_at": "2026-05-27T20:35:09Z",
         "matrix": [
           {
             "name": "test (windows-x64 / Python 3.13)",
@@ -3769,23 +3769,23 @@
       },
       "security": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 26525537648,
-        "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/26525537648",
+        "workflow_run_id": 26537170111,
+        "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/26537170111",
         "jobs": [
-          {
-            "name": "bandit (static security)",
-            "conclusion": "success",
-            "status": "completed",
-            "completed_at": "2026-05-27T16:51:03Z"
-          },
           {
             "name": "gitleaks (incremental)",
             "conclusion": "success",
             "status": "completed",
-            "completed_at": "2026-05-27T16:51:04Z"
+            "completed_at": "2026-05-27T20:34:51Z"
+          },
+          {
+            "name": "bandit (static security)",
+            "conclusion": "success",
+            "status": "completed",
+            "completed_at": "2026-05-27T20:34:52Z"
           }
         ],
-        "run_completed_at": "2026-05-27T16:51:05Z"
+        "run_completed_at": "2026-05-27T20:34:53Z"
       },
       "open_prs": {
         "count": 0,
@@ -3793,7 +3793,7 @@
       },
       "freshness": {
         "days_since_last_commit": 0,
-        "days_since_last_release": 3,
+        "days_since_last_release": 4,
         "days_since_last_security_scan": 0
       },
       "supply_chain": {
@@ -3840,10 +3840,10 @@
         "errors": []
       },
       "governance": {
-        "dco_signoff_rate_90d": 0.897,
-        "conventional_commits_rate_90d": 0.862,
-        "verified_commit_ratio_90d": 0.368,
-        "commits_90d": 87,
+        "dco_signoff_rate_90d": 0.898,
+        "conventional_commits_rate_90d": 0.864,
+        "verified_commit_ratio_90d": 0.375,
+        "commits_90d": 88,
         "unique_committers_90d": 2,
         "branch_protection_enabled": false,
         "branch_protection_summary": {},
@@ -3972,9 +3972,9 @@
         "titles": []
       },
       "freshness": {
-        "days_since_last_commit": 1,
-        "days_since_last_release": 1,
-        "days_since_last_security_scan": 1
+        "days_since_last_commit": 2,
+        "days_since_last_release": 2,
+        "days_since_last_security_scan": 2
       },
       "supply_chain": {
         "pypi_version": "0.1.10",
