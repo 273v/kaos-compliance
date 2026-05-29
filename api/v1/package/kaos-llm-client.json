@@ -2,26 +2,26 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-llm-client",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "snapshot_slice": {
     "name": "kaos-llm-client",
     "identity": {
-      "pypi_version": "0.1.8",
-      "pypi_url": "https://pypi.org/project/kaos-llm-client/0.1.8/",
-      "main_head_sha": "e5642dc48fe3d35d7accb1d4e280ab7928bd035d",
-      "latest_tag": "v0.1.8",
-      "latest_tag_sha": "e5642dc48fe3d35d7accb1d4e280ab7928bd035d",
+      "pypi_version": "0.1.9",
+      "pypi_url": "https://pypi.org/project/kaos-llm-client/0.1.9/",
+      "main_head_sha": "e4411950b56ebd730235b5fd0b925c63f6a9f53c",
+      "latest_tag": "v0.1.9",
+      "latest_tag_sha": "e4411950b56ebd730235b5fd0b925c63f6a9f53c",
       "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-27T13:00:04Z"
+      "last_commit_at": "2026-05-29T16:54:52Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26512594505,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/26512594505",
-      "head_sha": "e5642dc48fe3d35d7accb1d4e280ab7928bd035d",
-      "run_completed_at": "2026-05-27T13:01:05Z",
+      "workflow_run_id": 26650487634,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/26650487634",
+      "head_sha": "e4411950b56ebd730235b5fd0b925c63f6a9f53c",
+      "run_completed_at": "2026-05-29T16:56:59Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14t)",
@@ -67,48 +67,48 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26512594515,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/26512594515",
+      "workflow_run_id": 26650487073,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/26650487073",
       "jobs": [
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-05-29T16:55:07Z"
+        },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-27T13:00:44Z"
+          "completed_at": "2026-05-29T16:55:09Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-27T13:00:41Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-27T13:00:39Z"
+          "completed_at": "2026-05-29T16:55:07Z"
         }
       ],
-      "run_completed_at": "2026-05-27T13:00:45Z"
+      "run_completed_at": "2026-05-29T16:55:10Z"
     },
     "open_prs": {
       "count": 0,
       "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 2,
-      "days_since_last_release": 2,
-      "days_since_last_security_scan": 2
+      "days_since_last_commit": 0,
+      "days_since_last_release": 0,
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.8",
-      "pypi_release_iso": "2026-05-27T13:02:55.355980Z",
+      "pypi_version": "0.1.9",
+      "pypi_release_iso": "2026-05-29T16:58:01.805699Z",
       "wheel_platforms": [
         "any"
       ],
       "wheel_sha256s": {
-        "kaos_llm_client-0.1.8-py3-none-any.whl": "561cda6354c0a919e616e8936ad4f0135a8df46ff772b2e3f208fe242bf2442f",
-        "kaos_llm_client-0.1.8.tar.gz": "9b52710e198568ec4e262b2a26d8ba0b8e7985e7009651d327d9899e93332206"
+        "kaos_llm_client-0.1.9-py3-none-any.whl": "9b39624ca8301d666b9d64274acdb62ed381502ad36374a7be6ee04072359311",
+        "kaos_llm_client-0.1.9.tar.gz": "e51237aa418ada7c69f5bf163023ad45d25e5c21adf27b2f0dc96a3a6c3b6ac2"
       },
       "is_abi3": false,
       "has_musllinux_wheel": false,
@@ -122,7 +122,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-llm-client",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1643538822,
+        "rekor_log_index": 1671814455,
         "verified_count": 2,
         "total_count": 2
       },
@@ -149,15 +149,15 @@
           "azure-core",
           "azure-identity"
         ],
-        "sbom_artifact_path": "data/sbom/kaos-llm-client-0.1.8.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-llm-client-0.1.9.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.8,
-      "conventional_commits_rate_90d": 0.711,
-      "verified_commit_ratio_90d": 0.644,
-      "commits_90d": 45,
+      "dco_signoff_rate_90d": 0.809,
+      "conventional_commits_rate_90d": 0.723,
+      "verified_commit_ratio_90d": 0.638,
+      "commits_90d": 47,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -210,17 +210,17 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 13,
+      "releases_90d": 14,
       "median_pr_age_days": null,
       "open_pr_count": 0,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 143,
+      "time_to_pypi_seconds_median": 147,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 7698,
-        "tests_loc": 13447,
+        "src_loc": 7770,
+        "tests_loc": 13509,
         "src_files": 46,
         "tests_files": 65
       },
@@ -235,15 +235,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-llm-client-0.1.8.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-llm-client/releases/download/v0.1.8/kaos-llm-client-0.1.8.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-llm-client-0.1.9.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-llm-client/releases/download/v0.1.9/kaos-llm-client-0.1.9.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-llm-client",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1643538822,
+    "rekor_log_index": 1671814455,
     "verified_count": 2,
     "total_count": 2,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-llm-client/"
