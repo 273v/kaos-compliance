@@ -813,4 +813,6 @@ def _write_markdown_artifact(
     # stable across collectors, regardless of whether ``data_root`` was
     # passed as an absolute or relative path.
     rel_from_root = out_path.relative_to(data_root)
-    return str(pathlib.Path("data") / rel_from_root)
+    # ``as_posix()`` keeps the identifier forward-slashed on Windows so the
+    # persisted/dashboard path is byte-stable across operating systems.
+    return (pathlib.Path("data") / rel_from_root).as_posix()

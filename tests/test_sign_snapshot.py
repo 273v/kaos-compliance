@@ -21,9 +21,20 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 import pytest
+
+# ``sign-snapshot.sh`` is a POSIX-shell artifact of the Linux keyless-signing
+# release lane (cosign OIDC). It is never invoked from a Windows dev machine,
+# and the suite relies on Unix execute bits + a PATH-shimmed shell stub that
+# Git Bash on the Windows runner does not honor. Skip on Windows; macOS/Linux
+# (which have a real bash + execute bits) keep full coverage.
+pytestmark = pytest.mark.skipif(
+    sys.platform == "win32",
+    reason="POSIX-shell CI signing script; not exercised on Windows",
+)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = REPO_ROOT / "scripts" / "_ci" / "sign-snapshot.sh"
