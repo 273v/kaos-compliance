@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### CI / infra
+
+- Corrected `main` branch-protection required status checks. They pinned
+  pre-rename contexts (`Lint`, `Pre-commit hooks`, `Test (Linux / Python
+  3.13|3.14)`, `Build distribution`) that no longer report, so every PR was
+  permanently blocked on phantom checks. Now require the real, always-on
+  PR gates: `quality`, `test`, `build` (`strict` preserved). Security jobs
+  (`gitleaks`, `bandit`) still run on every PR but are intentionally not
+  required, to avoid a conditionally-skipped check blocking forever.
+
 ### Methodology — 1.2.0 (new headline signal: real test count)
 
 The headline **Tests** tile was a misnomer: it summed CI matrix legs
