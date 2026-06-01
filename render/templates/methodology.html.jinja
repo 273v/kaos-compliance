@@ -374,10 +374,15 @@ footer a{color:var(--muted)}
        <td><code>sum(modules[].governance.commits_90d)</code> over the 90-day window</td>
        <td colspan="4">Cardinality. Rendered as <code>&mdash;</code> when no module has the signal yet; never zero-filled.</td>
       </tr>
-      <tr id="sig-tests-total">
+      <tr id="sig-tests-count">
        <td><strong>Tests</strong> (headline)</td>
+       <td><code>sum(modules[].code_metrics.{python,rust}.tests_count)</code></td>
+       <td colspan="4">Cardinality of <em>test functions</em> across the org &mdash; Python <code>def test_*</code> / <code>async def test_*</code> in files pytest collects (a <code>tests/</code> dir or <code>test_*.py</code> / <code>*_test.py</code> name), and Rust <code>#[test]</code> / <code>#[tokio::test]</code> / <code>#[rstest]</code> / <code>#[test_case]</code> attributes (counted inline across <code>.rs</code>). Counted statically from the source &mdash; the dashboard never executes the suites &mdash; so a parametrized row (<code>@pytest.mark.parametrize</code>, <code>#[rstest]</code> cases) counts <strong>once</strong>; this is a deliberate, honest lower bound on test <em>cases</em>. Rendered <code>&mdash;</code> when no clone is inspectable; never zero-filled.</td>
+      </tr>
+      <tr id="sig-tests-total">
+       <td><strong>CI test legs</strong> (headline)</td>
        <td><code>sum over modules of count(ci.matrix[] where name ~ "Test (&lt;os&gt; / Python &lt;ver&gt;)")</code></td>
-       <td colspan="4">Cardinality: number of <code>(os, python)</code> test legs across the org. Bounded above by Supported platforms &times; repos.</td>
+       <td colspan="4">Cardinality: number of <code>(os, python)</code> CI test legs across the org &mdash; testing <em>breadth</em>, not test count. Bounded above by Supported platforms &times; repos.</td>
       </tr>
       <tr id="sig-platforms-total">
        <td><strong>Supported platforms</strong> (headline)</td>

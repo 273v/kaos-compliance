@@ -362,10 +362,19 @@ JSON shape changes; the methodology version above governs the
 
 ---
 
-*Methodology version 1.1.1 — 2026-05-23.*
+*Methodology version 1.2.0 — 2026-06-01.*
 
 *Changelog:*
 
+- *1.2.0 (2026-06-01): Minor. Added a new headline signal — **Tests**
+  (`code_metrics.{python,rust}.tests_count`), the cardinality of test
+  functions across the org (Python `def test_*` in pytest-collected files;
+  Rust `#[test]`-family attributes), counted statically from source with
+  parametrized rows counted once (an honest lower bound on test cases). The
+  former "Tests" headline (CI matrix legs) is relabelled **CI test legs** to
+  name what it measures — testing breadth, not test count. No threshold or
+  source change to any existing signal; snapshot `schema_version` stays 1.0
+  (the new field is additive / non-breaking).*
 - *1.1 (2026-05-11): Patch. Added NIST SSDF practice-ID matrix (R18),
   CRA Annex II / Article 13 traceability (R19), CVE / advisory feed
   sources (R11), maintainer-identity boundary clarification (R5),

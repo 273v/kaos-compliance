@@ -5,6 +5,36 @@ All notable changes to `kaos-compliance` are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Methodology — 1.2.0 (new headline signal: real test count)
+
+The headline **Tests** tile was a misnomer: it summed CI matrix legs
+(one per `(os, python)` cell ≈ 90), which a reviewer reads as "the org
+has 90 tests." It now shows the **real test-function cardinality** across
+every package — ~tens of thousands — and the matrix-leg number is
+relabelled **CI test legs** to name what it actually measures (testing
+breadth).
+
+- New collector field `code_metrics.{python,rust}.tests_count`: counts
+  Python `def test_*` / `async def test_*` in pytest-collected files
+  (`tests/` dir or `test_*.py` / `*_test.py`) and Rust `#[test]` /
+  `#[tokio::test]` / `#[rstest]` / `#[test_case]` attributes (inline
+  across `.rs`). Counted statically from the sibling clones — the
+  dashboard never executes a suite — so a parametrized row counts **once**;
+  this is a deliberate, honest lower bound on test *cases*. `None` (never
+  zero) when a clone is not inspectable.
+- Renderer aggregates it into `org.tests_count_total` (the **Tests**
+  headline); `org.tests_total` (CI matrix legs) is now labelled **CI test
+  legs**. Both link to their methodology rows (`#sig-tests-count`,
+  `#sig-tests-total`).
+- Methodology bumped 1.1.1 → **1.2.0** (minor: new signal under R25).
+  Snapshot `schema_version` stays **1.0** — the new field is additive and
+  non-breaking, and that field bumps on breaking changes only.
+- Regression tests: `tests/test_code_metrics.py` (Python + Rust counting,
+  parametrize-counted-once, missing-clone → `None`).
+
+
 ## [0.0.2] — 2026-05-23
 
 ### Methodology — 1.1.1 (audit-04 §23-H bookkeeping)

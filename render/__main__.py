@@ -686,6 +686,10 @@ def _org_summary(
     py_src = py_test = rs_src = rs_test = 0
     py_src_files = py_test_files = rs_src_files = rs_test_files = 0
     py_src_known = py_test_known = rs_src_known = rs_test_known = False
+    # Real test-function count (cardinality), distinct from tests_total above
+    # which counts CI matrix legs (breadth). None until any module reports it.
+    tests_count_sum = 0
+    tests_count_known = False
     for m in modules:
         cm = m.get("code_metrics") or {}
         py = cm.get("python") or {}
@@ -706,6 +710,10 @@ def _org_summary(
             rs_test += rs["tests_loc"]
             rs_test_files += rs.get("tests_files") or 0
             rs_test_known = True
+        for _lang in (py, rs):
+            if isinstance(_lang.get("tests_count"), int):
+                tests_count_sum += _lang["tests_count"]
+                tests_count_known = True
 
     loc_total = (
         (py_src + py_test + rs_src + rs_test)
@@ -730,6 +738,10 @@ def _org_summary(
         # Headline strip:
         "repos_total": total,
         "commits_total": _dash(commits_total),
+        # tests_count_total = real test-function cardinality (the headline
+        # "Tests" tile). tests_total = CI matrix legs (now labelled "CI test
+        # legs"); platforms_total = unique (os, python) cells.
+        "tests_count_total": _dash(tests_count_sum if tests_count_known else None),
         "tests_total": _dash(tests_total or None),
         "platforms_total": _dash(len(platform_set) or None),
         "commits_sparkline_svg": (
