@@ -66,6 +66,9 @@ from collector import code_metrics, governance, supply_chain
 from collector._retry import gh_run, url_get_json
 
 ORG = "273v"
+# schema_version bumps on BREAKING changes only (see the field description
+# in collector/schema.py). The 1.2.0-methodology addition of an optional
+# code_metrics.*.tests_count is additive / non-breaking, so it stays "1.0".
 SCHEMA_VERSION = "1.0"
 STALE_THRESHOLD_HOURS = 26
 

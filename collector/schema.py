@@ -324,6 +324,9 @@ def _code_metrics_section() -> dict[str, Any]:
             "tests_loc": {"type": ["integer", "null"], "minimum": 0},
             "src_files": {"type": ["integer", "null"], "minimum": 0},
             "tests_files": {"type": ["integer", "null"], "minimum": 0},
+            # Test functions (parametrized cases counted once — a conservative
+            # lower bound on test cases; the dashboard never runs the suites).
+            "tests_count": {"type": ["integer", "null"], "minimum": 0},
         },
     }
     return {

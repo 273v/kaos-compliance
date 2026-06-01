@@ -243,7 +243,8 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
    {% if org.commits_sparkline_svg %}<span class="mini-viz">{{ org.commits_sparkline_svg | safe }}</span>{% endif %}
    <span class="lab">Commits last 90d</span>
   </div>
-  <div class="stat"><span class="n">{{ org.tests_total | default('—') }}</span><span class="lab">Tests</span></div>
+  <div class="stat"><span class="n">{{ org.tests_count_total | default('—') }}</span><span class="lab"><a href="methodology.html#sig-tests-count">Tests</a></span></div>
+  <div class="stat"><span class="n">{{ org.tests_total | default('—') }}</span><span class="lab"><a href="methodology.html#sig-tests-total">CI test legs</a></span></div>
   <div class="stat"><span class="n">{{ org.platforms_total | default('—') }}</span><span class="lab">Supported platforms</span></div>
  </div>
 </section>

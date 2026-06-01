@@ -31,12 +31,14 @@ inspect the repo" (sibling clone missing) — never a silent zero.
             "tests_loc": int | None,
             "src_files": int | None,
             "tests_files": int | None,
+            "tests_count": int | None,   # test functions (parametrize counted once)
         },
         "rust": {
             "src_loc": int | None,
             "tests_loc": int | None,
             "src_files": int | None,
             "tests_files": int | None,
+            "tests_count": int | None,   # test functions (parametrize counted once)
         },
         "errors": list[str],
     }
@@ -73,9 +75,41 @@ _PY_LINE_COMMENT = re.compile(r"^\s*#")
 _RS_LINE_COMMENT = re.compile(r"^\s*(//|/\*|\*/?)")
 _BLANK = re.compile(r"^\s*$")
 
+# Test-function counters (static, dependency-free — no test suite is run).
+#
+# These count *test functions*, which is a deliberate, honest lower bound on
+# the number of test *cases*: a single ``@pytest.mark.parametrize`` /
+# ``#[rstest]`` row expands to many cases at runtime but is counted once
+# here. We never import or execute the trees, so an exact case count (which
+# requires collection in each repo's environment) is out of scope; this is
+# the surface the dashboard can measure consistently from the source alone.
+#
+# Python: pytest collects ``def test_*`` / ``async def test_*`` (including
+#   unittest ``TestCase`` methods, which match the same shape).
+# Rust:   ``#[test]`` and its async variants / ``#[rstest]`` / ``#[test_case]``;
+#   counted across all ``.rs`` files because Rust unit tests live inline in
+#   ``src`` under ``#[cfg(test)]``, not only under a tests/ directory.
+_PY_TEST_FN = re.compile(r"^[ \t]*(?:async[ \t]+)?def[ \t]+test[A-Za-z0-9_]*[ \t]*\(", re.M)
+_RS_TEST_ATTR = re.compile(r"#\[\s*(?:tokio::|async_std::)?test\s*\]|#\[\s*rstest|#\[\s*test_case")
+
 
 def _is_test_path(parts: tuple[str, ...]) -> bool:
     return any(p in _TEST_DIR_NAMES for p in parts)
+
+
+def _is_py_test_file(name: str, in_test_dir: bool) -> bool:
+    """pytest's default collection scope: files under a tests/ dir, or named
+    ``test_*.py`` / ``*_test.py`` anywhere."""
+    return in_test_dir or name.startswith("test_") or name.endswith("_test.py")
+
+
+def _count_test_functions(path: Path, lang: str) -> int:
+    try:
+        text = path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return 0
+    pattern = _PY_TEST_FN if lang == "py" else _RS_TEST_ATTR
+    return len(pattern.findall(text))
 
 
 def _count_sloc(path: Path, lang: str) -> int:
@@ -142,20 +176,22 @@ def collect(repo_dir: Path | None) -> dict[str, Any]:
                 "tests_loc": None,
                 "src_files": None,
                 "tests_files": None,
+                "tests_count": None,
             },
             "rust": {
                 "src_loc": None,
                 "tests_loc": None,
                 "src_files": None,
                 "tests_files": None,
+                "tests_count": None,
             },
             "errors": ["sibling clone not present at expected path"]
             if repo_dir is not None
             else ["no repo_dir passed"],
         }
 
-    py = {"src_loc": 0, "tests_loc": 0, "src_files": 0, "tests_files": 0}
-    rs = {"src_loc": 0, "tests_loc": 0, "src_files": 0, "tests_files": 0}
+    py = {"src_loc": 0, "tests_loc": 0, "src_files": 0, "tests_files": 0, "tests_count": 0}
+    rs = {"src_loc": 0, "tests_loc": 0, "src_files": 0, "tests_files": 0, "tests_count": 0}
 
     for p in repo_dir.rglob("*"):
         if not p.is_file():
@@ -173,9 +209,14 @@ def collect(repo_dir: Path | None) -> dict[str, Any]:
             if p.suffix == ".py":
                 py["tests_files" if is_test else "src_files"] += 1
                 py["tests_loc" if is_test else "src_loc"] += _count_sloc(p, "py")
+                if _is_py_test_file(p.name, is_test):
+                    py["tests_count"] += _count_test_functions(p, "py")
             elif p.suffix == ".rs":
                 rs["tests_files" if is_test else "src_files"] += 1
                 rs["tests_loc" if is_test else "src_loc"] += _count_sloc(p, "rs")
+                # Rust unit tests live inline in src under #[cfg(test)], so
+                # count #[test]-family attributes across every .rs file.
+                rs["tests_count"] += _count_test_functions(p, "rs")
         except Exception as exc:
             errors.append(f"{p}: {type(exc).__name__}: {exc}")
 
