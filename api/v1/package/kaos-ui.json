@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.0a15",
       "pypi_url": "https://pypi.org/project/kaos-ui/0.1.0a15/",
-      "main_head_sha": "a1479266a5e56a961b6e0bc00aef9812213d4218",
+      "main_head_sha": "d8f7f7e57ec156c083d204164c3820d19005239e",
       "latest_tag": "v0.1.0a15",
       "latest_tag_sha": "a1479266a5e56a961b6e0bc00aef9812213d4218",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-31T23:45:48Z"
+      "last_commit_at": "2026-06-01T10:39:57Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26727956067,
-      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/26727956067",
-      "head_sha": "a1479266a5e56a961b6e0bc00aef9812213d4218",
-      "run_completed_at": "2026-05-31T23:46:14Z",
+      "workflow_run_id": 26749904373,
+      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/26749904373",
+      "head_sha": "d8f7f7e57ec156c083d204164c3820d19005239e",
+      "run_completed_at": "2026-06-01T10:42:29Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.15)",
@@ -67,23 +67,23 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26727956060,
-      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/26727956060",
+      "workflow_run_id": 26749904445,
+      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/26749904445",
       "jobs": [
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-31T23:45:59Z"
-        },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-31T23:46:05Z"
+          "completed_at": "2026-06-01T10:40:14Z"
+        },
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-06-01T10:40:11Z"
         }
       ],
-      "run_completed_at": "2026-05-31T23:46:05Z"
+      "run_completed_at": "2026-06-01T10:40:14Z"
     },
     "open_prs": {
       "count": 0,
@@ -138,10 +138,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.907,
-      "conventional_commits_rate_90d": 0.866,
-      "verified_commit_ratio_90d": 0.423,
-      "commits_90d": 97,
+      "dco_signoff_rate_90d": 0.908,
+      "conventional_commits_rate_90d": 0.867,
+      "verified_commit_ratio_90d": 0.429,
+      "commits_90d": 98,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -165,13 +165,15 @@
         "src_loc": 8804,
         "tests_loc": 6884,
         "src_files": 58,
-        "tests_files": 67
+        "tests_files": 67,
+        "tests_count": 455
       },
       "rust": {
         "src_loc": 0,
         "tests_loc": 0,
         "src_files": 0,
-        "tests_files": 0
+        "tests_files": 0,
+        "tests_count": 0
       },
       "errors": []
     },
