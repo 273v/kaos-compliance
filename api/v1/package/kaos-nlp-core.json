@@ -2,26 +2,26 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-nlp-core",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "snapshot_slice": {
     "name": "kaos-nlp-core",
     "identity": {
-      "pypi_version": "0.1.4",
-      "pypi_url": "https://pypi.org/project/kaos-nlp-core/0.1.4/",
-      "main_head_sha": "2fe13100187bfbe7fba9f9e8933daf630c8070e5",
-      "latest_tag": "v0.1.4",
-      "latest_tag_sha": "2fe13100187bfbe7fba9f9e8933daf630c8070e5",
+      "pypi_version": "0.1.5",
+      "pypi_url": "https://pypi.org/project/kaos-nlp-core/0.1.5/",
+      "main_head_sha": "2eabd03904dfe233b1753ecd62653c96de69bb36",
+      "latest_tag": "v0.1.5",
+      "latest_tag_sha": "2eabd03904dfe233b1753ecd62653c96de69bb36",
       "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-06-01T17:56:02Z"
+      "last_commit_at": "2026-06-02T15:17:55Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26772264230,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26772264230",
-      "head_sha": "2fe13100187bfbe7fba9f9e8933daf630c8070e5",
-      "run_completed_at": "2026-06-01T18:00:33Z",
+      "workflow_run_id": 26829467048,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26829467048",
+      "head_sha": "2eabd03904dfe233b1753ecd62653c96de69bb36",
+      "run_completed_at": "2026-06-02T15:23:19Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14t)",
@@ -67,33 +67,34 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26772264236,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26772264236",
+      "workflow_run_id": 26829466431,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/26829466431",
       "jobs": [
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-06-02T15:18:18Z"
+        },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-01T17:56:20Z"
+          "completed_at": "2026-06-02T15:18:18Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-01T17:56:19Z"
-        },
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-06-01T17:56:19Z"
+          "completed_at": "2026-06-02T15:18:20Z"
         }
       ],
-      "run_completed_at": "2026-06-01T17:56:21Z"
+      "run_completed_at": "2026-06-02T15:18:20Z"
     },
     "open_prs": {
-      "count": 1,
+      "count": 2,
       "titles": [
+        "#37 feat: class_tfidf (c-TF-IDF Rust kernel) + derived stopword resource (0.1.6)",
         "#35 chore(deps-dev): bump the deps-minor group with 4 updates"
       ]
     },
@@ -103,8 +104,8 @@
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.4",
-      "pypi_release_iso": "2026-06-01T18:11:01.514026Z",
+      "pypi_version": "0.1.5",
+      "pypi_release_iso": "2026-06-02T15:36:18.496885Z",
       "wheel_platforms": [
         "macos-arm64",
         "linux-aarch64-manylinux_2_28",
@@ -113,12 +114,12 @@
         "win-arm64"
       ],
       "wheel_sha256s": {
-        "kaos_nlp_core-0.1.4-cp313-abi3-macosx_11_0_arm64.whl": "3908c0abb547d7496a2e5c382e2acc273827662450ef03e0f2520c7cac24eb8a",
-        "kaos_nlp_core-0.1.4-cp313-abi3-manylinux_2_28_aarch64.whl": "0ffff0ababb1f547dee1c8a6b726119d4d57df2f0b710f65ef82467cd7b7d799",
-        "kaos_nlp_core-0.1.4-cp313-abi3-manylinux_2_28_x86_64.whl": "7690051c31935e108f10b7098ae7c2e7b8e261c50ff037dbba238300edf9d560",
-        "kaos_nlp_core-0.1.4-cp313-abi3-win_amd64.whl": "3106445ffba62da3f94c23d6b1cc58da802485c405bcac3d4f348902f3f3f3c6",
-        "kaos_nlp_core-0.1.4-cp313-abi3-win_arm64.whl": "6fa0f9f7d9a96b02e9903fd68ed7d6ccc2b8ffe8b1b4d555c165b0133929534f",
-        "kaos_nlp_core-0.1.4.tar.gz": "d58a53f10be9285c559cb35fdb5883eba47ba6845ff35e739073cd6b4557ae96"
+        "kaos_nlp_core-0.1.5-cp313-abi3-macosx_11_0_arm64.whl": "66b7ed38974876373c84501f4a5a79e9eff84a7add61d3a87a40bd05ce9442ac",
+        "kaos_nlp_core-0.1.5-cp313-abi3-manylinux_2_28_aarch64.whl": "63414c61d1bbe126af67f87192908021850710188c23e564f246c4f6b5dcdc8c",
+        "kaos_nlp_core-0.1.5-cp313-abi3-manylinux_2_28_x86_64.whl": "bdb7d0ab058733fecf9ec1dfbc3d62ba7f01af06131d03ad7796a6c3b8da05b1",
+        "kaos_nlp_core-0.1.5-cp313-abi3-win_amd64.whl": "15d2320549f30b80431a8349c0ce8a89c84df10726b4bd32e9c7ec5b9f653e54",
+        "kaos_nlp_core-0.1.5-cp313-abi3-win_arm64.whl": "d02f4047aabaab91cccb3ce0c49afa1693cb515da994e791b96e74a009db53c0",
+        "kaos_nlp_core-0.1.5.tar.gz": "bcb8e4ce067537d05428d2aeee357d5e8e74ca86354d58e29b593496ad5979ce"
       },
       "is_abi3": true,
       "has_musllinux_wheel": false,
@@ -132,7 +133,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-nlp-core",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1695127701,
+        "rekor_log_index": 1704345758,
         "verified_count": 6,
         "total_count": 6
       },
@@ -191,15 +192,15 @@
           "winapi-x86_64-pc-windows-gnu",
           "zstd-sys"
         ],
-        "sbom_artifact_path": "data/sbom/kaos-nlp-core-0.1.4.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-nlp-core-0.1.5.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.915,
-      "conventional_commits_rate_90d": 0.809,
-      "verified_commit_ratio_90d": 0.532,
-      "commits_90d": 47,
+      "dco_signoff_rate_90d": 0.917,
+      "conventional_commits_rate_90d": 0.812,
+      "verified_commit_ratio_90d": 0.542,
+      "commits_90d": 48,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -211,42 +212,42 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 14,
-      "median_pr_age_days": 0.591,
-      "open_pr_count": 1,
+      "releases_90d": 15,
+      "median_pr_age_days": 0.383,
+      "open_pr_count": 2,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 1023,
+      "time_to_pypi_seconds_median": 1035,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 10359,
-        "tests_loc": 15273,
+        "src_loc": 10427,
+        "tests_loc": 15407,
         "src_files": 66,
-        "tests_files": 88,
-        "tests_count": 1822
+        "tests_files": 89,
+        "tests_count": 1838
       },
       "rust": {
-        "src_loc": 25605,
+        "src_loc": 25940,
         "tests_loc": 1488,
-        "src_files": 80,
+        "src_files": 81,
         "tests_files": 10,
-        "tests_count": 682
+        "tests_count": 694
       },
       "errors": []
     },
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-nlp-core-0.1.4.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-nlp-core/releases/download/v0.1.4/kaos-nlp-core-0.1.4.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-nlp-core-0.1.5.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-nlp-core/releases/download/v0.1.5/kaos-nlp-core-0.1.5.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-nlp-core",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1695127701,
+    "rekor_log_index": 1704345758,
     "verified_count": 6,
     "total_count": 6,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-nlp-core/"
