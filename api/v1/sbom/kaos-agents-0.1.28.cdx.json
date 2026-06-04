@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e50af89a-b492-471a-b6d5-fa000e135e94",
+  "serialNumber": "urn:uuid:f7081163-5199-4c65-b6aa-79bac71254ed",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-03T21:10:36Z",
+    "timestamp": "2026-06-04T00:46:32Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-agents@0.1.27",
+      "bom-ref": "pkg:pypi/kaos-agents@0.1.28",
       "name": "kaos-agents",
-      "version": "0.1.27",
-      "purl": "pkg:pypi/kaos-agents@0.1.27"
+      "version": "0.1.28",
+      "purl": "pkg:pypi/kaos-agents@0.1.28"
     }
   },
   "components": [
@@ -3793,21 +3793,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-llm-client@0.1.6",
+      "bom-ref": "pkg:pypi/kaos-llm-client@0.1.9",
       "name": "kaos-llm-client",
-      "version": "0.1.6",
-      "purl": "pkg:pypi/kaos-llm-client@0.1.6",
+      "version": "0.1.9",
+      "purl": "pkg:pypi/kaos-llm-client@0.1.9",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "16ee734ed8da16f7020fbc989733e64ae061166ca4a4ea43e115819e7505bf1e"
+          "content": "e51237aa418ada7c69f5bf163023ad45d25e5c21adf27b2f0dc96a3a6c3b6ac2"
         },
         {
           "alg": "SHA-256",
-          "content": "67b11ee2527abf98c9ae6bfb7f238c2b6cf873563c1469559868de81078a82a5"
+          "content": "9b39624ca8301d666b9d64274acdb62ed381502ad36374a7be6ee04072359311"
         }
       ],
       "licenses": [
@@ -3820,11 +3820,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/de/8b/d90b56413c7185301ea9d64c4adc876ac4d88ce0fbf0bba4ca650861b2c4/kaos_llm_client-0.1.6.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/dd/99/00f3378d59b7a31c2497024bef811735269382ee247322484fbb099ac906/kaos_llm_client-0.1.9.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-llm-client/0.1.6/"
+          "url": "https://pypi.org/project/kaos-llm-client/0.1.9/"
         }
       ],
       "properties": [
@@ -3836,21 +3836,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-llm-core@0.1.7",
+      "bom-ref": "pkg:pypi/kaos-llm-core@0.1.12",
       "name": "kaos-llm-core",
-      "version": "0.1.7",
-      "purl": "pkg:pypi/kaos-llm-core@0.1.7",
+      "version": "0.1.12",
+      "purl": "pkg:pypi/kaos-llm-core@0.1.12",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "369f78b9baba41994639bdc81bfeb92aea83a2cb4046d337e960201a2d8ec76b"
+          "content": "fa174ac48b8f5b91b928cee723a50e6f1b1c2f7a3d2262892367936fe9c1e342"
         },
         {
           "alg": "SHA-256",
-          "content": "b5573d5ae9fbf0a02392a3c4b525208ef821764909c0d588fa1f282f4e86f007"
+          "content": "41b792a311ed1a66ac0f03da00a95e3b0d98ebb9db267dcc191201eddb427c8f"
         }
       ],
       "licenses": [
@@ -3863,11 +3863,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/99/eb/f0b98806d1c65b523ec3111b5cc12622bb0e5d81f90b45a5f1a71d8dfec6/kaos_llm_core-0.1.7.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/79/f7/1fb1ab6342cb3b417bf59ff4598ba9ed0ff8b91bcb97770d407af4d44371/kaos_llm_core-0.1.12.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-llm-core/0.1.7/"
+          "url": "https://pypi.org/project/kaos-llm-core/0.1.12/"
         }
       ],
       "properties": [
@@ -12155,7 +12155,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-agents@0.1.27",
+      "ref": "pkg:pypi/kaos-agents@0.1.28",
       "dependsOn": [
         "pkg:pypi/kaos-content@0.1.1",
         "pkg:pypi/kaos-core@0.1.2",
@@ -12480,7 +12480,7 @@
       ]
     },
     {
-      "ref": "pkg:pypi/kaos-llm-client@0.1.6",
+      "ref": "pkg:pypi/kaos-llm-client@0.1.9",
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
         "pkg:pypi/kaos-core@0.1.2",
@@ -12489,11 +12489,11 @@
       ]
     },
     {
-      "ref": "pkg:pypi/kaos-llm-core@0.1.7",
+      "ref": "pkg:pypi/kaos-llm-core@0.1.12",
       "dependsOn": [
         "pkg:pypi/kaos-content@0.1.1",
         "pkg:pypi/kaos-core@0.1.2",
-        "pkg:pypi/kaos-llm-client@0.1.6",
+        "pkg:pypi/kaos-llm-client@0.1.9",
         "pkg:pypi/kaos-nlp-core@0.1.2",
         "pkg:pypi/pydantic@2.13.4"
       ]
