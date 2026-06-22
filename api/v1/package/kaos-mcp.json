@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.3",
       "pypi_url": "https://pypi.org/project/kaos-mcp/0.1.3/",
-      "main_head_sha": "ef20368f99b1c45057d744005f1ddce25078104b",
+      "main_head_sha": "86fbf841142bcd6ad1874b3bbd29bd22a7d6ac56",
       "latest_tag": "v0.1.3",
       "latest_tag_sha": "ef20368f99b1c45057d744005f1ddce25078104b",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-06-01T17:38:07Z"
+      "last_commit_at": "2026-06-22T15:30:30Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26771356820,
-      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/26771356820",
-      "head_sha": "ef20368f99b1c45057d744005f1ddce25078104b",
-      "run_completed_at": "2026-06-01T17:38:43Z",
+      "workflow_run_id": 27964235338,
+      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/27964235338",
+      "head_sha": "86fbf841142bcd6ad1874b3bbd29bd22a7d6ac56",
+      "run_completed_at": "2026-06-22T15:45:48Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.15)",
@@ -67,41 +67,38 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26771356868,
-      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/26771356868",
+      "workflow_run_id": 27964233330,
+      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/27964233330",
       "jobs": [
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-06-22T15:30:48Z"
+        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-01T17:38:20Z"
+          "completed_at": "2026-06-22T15:30:46Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-01T17:38:25Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-06-01T17:38:22Z"
+          "completed_at": "2026-06-22T15:30:50Z"
         }
       ],
-      "run_completed_at": "2026-06-01T17:38:26Z"
+      "run_completed_at": "2026-06-22T15:30:51Z"
     },
     "open_prs": {
-      "count": 2,
-      "titles": [
-        "#39 chore(deps): bump the deps-minor group across 1 directory with 6 updates",
-        "#38 chore(deps): bump the actions-all group across 1 directory with 3 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 20,
-      "days_since_last_release": 20,
-      "days_since_last_security_scan": 20
+      "days_since_last_commit": 0,
+      "days_since_last_release": 21,
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.3",
@@ -153,10 +150,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.872,
-      "conventional_commits_rate_90d": 0.692,
-      "verified_commit_ratio_90d": 0.744,
-      "commits_90d": 39,
+      "dco_signoff_rate_90d": 0.878,
+      "conventional_commits_rate_90d": 0.707,
+      "verified_commit_ratio_90d": 0.756,
+      "commits_90d": 41,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -210,8 +207,8 @@
         "NOTICE"
       ],
       "releases_90d": 10,
-      "median_pr_age_days": 6.992,
-      "open_pr_count": 2,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 434,
       "errors": []

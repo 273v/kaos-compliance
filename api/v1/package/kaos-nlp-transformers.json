@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.5",
       "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.1.5/",
-      "main_head_sha": "d7d17a56a29b5a7de9e9583159b4571e55971dde",
+      "main_head_sha": "f2e546981a2860058bf9eeb0c9b47b02868f5b18",
       "latest_tag": "v0.2.0a8",
       "latest_tag_sha": "7ef731a74f5abedba6a0fbec7c0c860e972b62ee",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-06-02T20:05:11Z"
+      "last_commit_at": "2026-06-22T15:56:35Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26844919349,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26844919349",
-      "head_sha": "d7d17a56a29b5a7de9e9583159b4571e55971dde",
-      "run_completed_at": "2026-06-02T20:08:37Z",
+      "workflow_run_id": 27965904919,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/27965904919",
+      "head_sha": "f2e546981a2860058bf9eeb0c9b47b02868f5b18",
+      "run_completed_at": "2026-06-22T16:00:07Z",
       "matrix": [
         {
           "name": "test (windows-x64 / Python 3.13)",
@@ -67,43 +67,38 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26844919304,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/26844919304",
+      "workflow_run_id": 27965904887,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/27965904887",
       "jobs": [
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-06-02T20:05:38Z"
-        },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-02T20:05:34Z"
+          "completed_at": "2026-06-22T15:57:37Z"
+        },
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-06-22T15:57:43Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-02T20:05:32Z"
+          "completed_at": "2026-06-22T15:57:26Z"
         }
       ],
-      "run_completed_at": "2026-06-02T20:05:39Z"
+      "run_completed_at": "2026-06-22T15:57:44Z"
     },
     "open_prs": {
-      "count": 4,
-      "titles": [
-        "#46 chore(deps): Bump the deps-minor group across 1 directory with 10 updates",
-        "#44 chore(deps): Bump regex from 1.12.3 to 1.12.4 in the cargo-minor group",
-        "#43 feat(reranker): CrossEncoderReranker.from_local_path()",
-        "#42 chore(deps): Bump the actions-all group with 3 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 19,
+      "days_since_last_commit": 0,
       "days_since_last_release": 19,
-      "days_since_last_security_scan": 19
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.5",
@@ -140,9 +135,9 @@
         "total_count": 6
       },
       "sbom": {
-        "components_count": 369,
+        "components_count": 368,
         "license_breakdown": {
-          "MIT": 75,
+          "MIT": 74,
           "MPL-2.0": 2,
           "BSD-3-Clause": 15,
           "Apache-2.0": 20,
@@ -211,10 +206,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.635,
-      "conventional_commits_rate_90d": 0.8,
-      "verified_commit_ratio_90d": 0.365,
-      "commits_90d": 85,
+      "dco_signoff_rate_90d": 0.652,
+      "conventional_commits_rate_90d": 0.809,
+      "verified_commit_ratio_90d": 0.393,
+      "commits_90d": 89,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -273,22 +268,22 @@
         "NOTICE"
       ],
       "releases_90d": 16,
-      "median_pr_age_days": 7.758,
-      "open_pr_count": 4,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 694,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 4289,
-        "tests_loc": 4580,
+        "src_loc": 4325,
+        "tests_loc": 4595,
         "src_files": 19,
-        "tests_files": 42,
-        "tests_count": 309
+        "tests_files": 43,
+        "tests_count": 312
       },
       "rust": {
-        "src_loc": 3619,
+        "src_loc": 3705,
         "tests_loc": 6,
         "src_files": 23,
         "tests_files": 1,

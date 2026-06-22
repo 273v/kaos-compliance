@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.2",
       "pypi_url": "https://pypi.org/project/kaos-citations/0.1.2/",
-      "main_head_sha": "869c87145a6817b3f110064bc92e5322923038ea",
+      "main_head_sha": "bdfe50f870c0590088bb8b43aa458f6f4ba96492",
       "latest_tag": "v0.1.2",
       "latest_tag_sha": "0be92bc4dc478ab4fdf24b24958c16af8c0d2272",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-05-25T18:34:43Z"
+      "last_commit_at": "2026-06-22T15:49:11Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26414681422,
-      "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/26414681422",
-      "head_sha": "869c87145a6817b3f110064bc92e5322923038ea",
-      "run_completed_at": "2026-05-25T18:54:47Z",
+      "workflow_run_id": 27965431294,
+      "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/27965431294",
+      "head_sha": "bdfe50f870c0590088bb8b43aa458f6f4ba96492",
+      "run_completed_at": "2026-06-22T15:52:56Z",
       "matrix": [
         {
           "name": "test (macos-arm64 / Python 3.13)",
@@ -67,45 +67,38 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26414681420,
-      "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/26414681420",
+      "workflow_run_id": 27965431346,
+      "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/27965431346",
       "jobs": [
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-06-22T15:49:28Z"
+        },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-25T18:34:56Z"
+          "completed_at": "2026-06-22T15:49:31Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-05-25T18:34:54Z"
-        },
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-05-25T18:34:56Z"
+          "completed_at": "2026-06-22T15:49:36Z"
         }
       ],
-      "run_completed_at": "2026-05-25T18:34:56Z"
+      "run_completed_at": "2026-06-22T15:49:37Z"
     },
     "open_prs": {
-      "count": 6,
-      "titles": [
-        "#36 chore(deps): Bump the deps-minor group across 1 directory with 7 updates",
-        "#35 chore(deps): Bump cryptography from 48.0.0 to 48.0.1",
-        "#34 chore(deps): Bump starlette from 1.0.1 to 1.3.1",
-        "#33 chore(deps): Bump python-multipart from 0.0.29 to 0.0.31",
-        "#32 chore(deps): Bump pyjwt from 2.12.1 to 2.13.0",
-        "#31 chore(deps): Bump the actions-all group across 1 directory with 3 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 27,
+      "days_since_last_commit": 0,
       "days_since_last_release": 27,
-      "days_since_last_security_scan": 27
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.2",
@@ -161,10 +154,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.818,
-      "conventional_commits_rate_90d": 0.758,
-      "verified_commit_ratio_90d": 0.758,
-      "commits_90d": 33,
+      "dco_signoff_rate_90d": 0.85,
+      "conventional_commits_rate_90d": 0.8,
+      "verified_commit_ratio_90d": 0.8,
+      "commits_90d": 40,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -218,8 +211,8 @@
         "NOTICE"
       ],
       "releases_90d": 8,
-      "median_pr_age_days": 5.532,
-      "open_pr_count": 6,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 190,
       "errors": []

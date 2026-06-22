@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.12",
       "pypi_url": "https://pypi.org/project/kaos-llm-core/0.1.12/",
-      "main_head_sha": "e711fabd504d7ed1d0e8d2abca4f130146c0cc7c",
+      "main_head_sha": "c46955136361d3c07efc8d33a8cb999aec48552b",
       "latest_tag": "v0.1.12",
       "latest_tag_sha": "e711fabd504d7ed1d0e8d2abca4f130146c0cc7c",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-06-03T22:06:53Z"
+      "last_commit_at": "2026-06-22T15:48:36Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26916012567,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/26916012567",
-      "head_sha": "e711fabd504d7ed1d0e8d2abca4f130146c0cc7c",
-      "run_completed_at": "2026-06-03T22:08:11Z",
+      "workflow_run_id": 27965397114,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/27965397114",
+      "head_sha": "c46955136361d3c07efc8d33a8cb999aec48552b",
+      "run_completed_at": "2026-06-22T15:53:46Z",
       "matrix": [
         {
           "name": "test (macos-arm64 / Python 3.13)",
@@ -67,41 +67,40 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 26916012584,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/26916012584",
+      "workflow_run_id": 27965397158,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/27965397158",
       "jobs": [
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-06-03T22:07:08Z"
-        },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-03T22:07:10Z"
+          "completed_at": "2026-06-22T15:48:57Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-03T22:07:09Z"
+          "completed_at": "2026-06-22T15:49:00Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-06-22T15:48:57Z"
         }
       ],
-      "run_completed_at": "2026-06-03T22:07:11Z"
+      "run_completed_at": "2026-06-22T15:49:01Z"
     },
     "open_prs": {
-      "count": 2,
+      "count": 1,
       "titles": [
-        "#69 chore(deps): bump the deps-minor group across 1 directory with 8 updates",
-        "#68 chore(deps): bump the actions-all group across 1 directory with 3 updates"
+        "#70 chore(deps): bump actions/checkout from 6.0.3 to 7.0.0 in the actions-all group"
       ]
     },
     "freshness": {
-      "days_since_last_commit": 18,
+      "days_since_last_commit": 0,
       "days_since_last_release": 18,
-      "days_since_last_security_scan": 18
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.12",
@@ -155,10 +154,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.822,
-      "conventional_commits_rate_90d": 0.833,
-      "verified_commit_ratio_90d": 0.556,
-      "commits_90d": 90,
+      "dco_signoff_rate_90d": 0.826,
+      "conventional_commits_rate_90d": 0.837,
+      "verified_commit_ratio_90d": 0.565,
+      "commits_90d": 92,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -171,8 +170,8 @@
         "NOTICE"
       ],
       "releases_90d": 29,
-      "median_pr_age_days": 7.069,
-      "open_pr_count": 2,
+      "median_pr_age_days": 0.004,
+      "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 158,
       "errors": []
@@ -180,7 +179,7 @@
     "code_metrics": {
       "python": {
         "src_loc": 28568,
-        "tests_loc": 33108,
+        "tests_loc": 33109,
         "src_files": 218,
         "tests_files": 183,
         "tests_count": 2317
