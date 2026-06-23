@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:96f4fdd6-0d07-4826-bbf8-f5bff2c5a65a",
+  "serialNumber": "urn:uuid:b29f5941-ede9-4305-a123-a3a2816c5e77",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-23T16:57:18Z",
+    "timestamp": "2026-06-23T20:56:30Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-llm-core@0.1.12",
-      "name": "kaos-llm-core",
-      "version": "0.1.12",
-      "purl": "pkg:pypi/kaos-llm-core@0.1.12"
+      "bom-ref": "pkg:pypi/kaos-source@0.1.4",
+      "name": "kaos-source",
+      "version": "0.1.4",
+      "purl": "pkg:pypi/kaos-source@0.1.4"
     }
   },
   "components": [
@@ -196,21 +196,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/certifi@2026.2.25",
+      "bom-ref": "pkg:pypi/certifi@2026.4.22",
       "name": "certifi",
-      "version": "2026.2.25",
-      "purl": "pkg:pypi/certifi@2026.2.25",
+      "version": "2026.4.22",
+      "purl": "pkg:pypi/certifi@2026.4.22",
       "supplier": {
         "name": "Kenneth Reitz"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e887ab5cee78ea814d3472169153c2d12cd43b14bd03329a39a9c6e2e80bfba7"
+          "content": "8d455352a37b71bf76a79caa83a3d6c25afee4a385d632127b6afb3963f1c580"
         },
         {
           "alg": "SHA-256",
-          "content": "027692e4402ad994f1c42e52a4997a9763c646b73e4096e4d5d6db8af1d6f0fa"
+          "content": "3cb2210c8f88ba2318d29b0388d1023c8492ff72ecdde4ebdaddbb13a31b1c4a"
         }
       ],
       "licenses": [
@@ -223,11 +223,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/af/2d/7bf41579a8986e348fa033a31cdd0e4121114f6bce2457e8876010b092dd/certifi-2026.2.25.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/25/ee/6caf7a40c36a1220410afe15a1cc64993a1f864871f698c0f93acb72842a/certifi-2026.4.22.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/certifi/2026.2.25/"
+          "url": "https://pypi.org/project/certifi/2026.4.22/"
         }
       ],
       "properties": [
@@ -414,21 +414,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/click@8.3.2",
+      "bom-ref": "pkg:pypi/click@8.3.3",
       "name": "click",
-      "version": "8.3.2",
-      "purl": "pkg:pypi/click@8.3.2",
+      "version": "8.3.3",
+      "purl": "pkg:pypi/click@8.3.3",
       "supplier": {
         "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "14162b8b3b3550a7d479eafa77dfd3c38d9dc8951f6f69c78913a8f9a7540fd5"
+          "content": "398329ad4837b2ff7cbe1dd166a4c0f8900c3ca3a218de04466f38f6497f18a2"
         },
         {
           "alg": "SHA-256",
-          "content": "1924d2c27c5653561cd2cae4548d1406039cb79b858b747cfea24924bbc1616d"
+          "content": "a2bf429bb3033c89fa4936ffb35d5cb471e3719e1f3c8a7c3fff0b8314305613"
         }
       ],
       "licenses": [
@@ -441,11 +441,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/57/75/31212c6bf2503fdf920d87fee5d7a86a2e3bcf444984126f13d8e4016804/click-8.3.2.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/bb/63/f9e1ea081ce35720d8b92acde70daaedace594dc93b693c869e0d5910718/click-8.3.3.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/click/8.3.2/"
+          "url": "https://pypi.org/project/click/8.3.3/"
         }
       ],
       "properties": [
@@ -988,6 +988,159 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/greenlet@3.5.0",
+      "name": "greenlet",
+      "version": "3.5.0",
+      "purl": "pkg:pypi/greenlet@3.5.0",
+      "supplier": {
+        "name": "greenlet.readthedocs.io"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d419647372241bc68e957bf38d5c1f98852155e4146bd1e4121adea81f4f01e4"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5a5ed18de6a0f6cc7087f1563f6bd93fc7df1c19165ca01e9bde5a5dc281d106"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3a717fbc46d8a354fa675f7c1e813485b6ba3885f9bef0cd56e5ba27d758ff5b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ddc090c5c1792b10246a78e8c2163ebbe04cf877f9d785c230a7b27b39ad038e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4964101b8585c144cbda5532b1aa644255126c08a265dae90c16e7a0e63aaa9d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2094acd54b272cb6eae8c03dd87b3fa1820a4cef18d6889c378d503500a1dc13"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7022615368890680e67b9965d33f5773aade330d5343bbe25560135aaa849eae"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5e05ba267789ea87b5a155cf0e810b1ab88bf18e9e8740813945ceb8ee4350ba"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0ecec963079cd58cbd14723582384f11f166fd58883c15dcbfb342e0bc9b5846"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "728d9667d8f2f586644b748dbd9bb67e50d6a9381767d1357714ea6825bb3bf5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "47422135b1d308c14b2c6e758beedb1acd33bb91679f5670edf77bf46244722b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f35807464c4c58c55f0d31dfa83c541a5615d825c2fe3d2b95360cf7c4e3c0a8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "55fa7ea52771be44af0de27d8b80c02cd18c2c3cddde6c847ecebdf72418b6a1"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a97e4821aa710603f94de0da25f25096454d78ffdace5dc77f3a006bc01abba3"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "bf2d8a80bec89ab46221ae45c5373d5ba0bd36c19aa8508e85c6cd7e5106cd37"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8f52a464e4ed91780bdfbbdd2b97197f3accaa629b98c200f4dffada759f3ae7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1bae92a1dd94c5f9d9493c3a212dd874c202442047cf96446412c862feca83a2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "762612baf1161ccb8437c0161c668a688223cba28e1bf038f4eb47b13e39ccdf"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "57a43c6079a89713522bc4bcb9f75070ecf5d3dbad7792bfe42239362cbf2a16"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3bc59be3945ae9750b9e7d45067d01ae3fe90ea5f9ade99239dabdd6e28a5033"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a96fcee45e03fe30a62669fd16ab5c9d3c172660d3085605cb1e2d1280d3c988"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a10a732421ab4fec934783ce3e54763470d0181db6e3468f9103a275c3ed1853"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7fc391b1566f2907d17aaebe78f8855dc45675159a775fcf9e61f8ee0078e87f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "680bd0e7ad5e8daa8a4aa89f68fd6adc834b8a8036dc256533f7e08f4a4b01f7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1aa4ce8debcd4ea7fb2e150f3036588c41493d1d52c43538924ae1819003f4ce"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ddb36c7d6c9c0a65f18c7258634e0c416c6ab59caac8c987b96f80c2ebda0112"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "728a73687e39ae9ca34e4694cbf2f049d3fbc7174639468d0f67200a97d8f9e2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e5ddf316ced87539144621453c3aef229575825fe60c604e62bedc4003f372b2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4a448128607be0de65342dc9b31be7f948ef4cc0bc8832069350abefd310a8f2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d60097128cb0a1cab9ea541186ea13cd7b847b8449a7787c2e2350da0cb82d86"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "MIT AND PSF-2.0"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/3c/3f/dbf99fb14bfeb88c28f16729215478c0e265cacd6dc22270c8f31bb6892f/greenlet-3.5.0.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/greenlet/3.5.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/h11@0.16.0",
       "name": "h11",
       "version": "0.16.0",
@@ -1020,92 +1173,6 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/h11/0.16.0/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/h2@4.3.0",
-      "name": "h2",
-      "version": "4.3.0",
-      "purl": "pkg:pypi/h2@4.3.0",
-      "supplier": {
-        "name": "github.com"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "6c59efe4323fa18b47a632221a1888bd7fde6249819beda254aeca909f221bf1"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "c438f029a25f7945c69e0ccf0fb951dc3f73a5f6412981daee861431b70e2bdd"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/1d/17/afa56379f94ad0fe8defd37d6eb3f89a25404ffc71d4d848893d270325fc/h2-4.3.0.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/h2/4.3.0/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/hpack@4.1.0",
-      "name": "hpack",
-      "version": "4.1.0",
-      "purl": "pkg:pypi/hpack@4.1.0",
-      "supplier": {
-        "name": "github.com"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "ec5eca154f7056aa06f196a557655c5b009b382873ac8d1e66e79e87535f1dca"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "157ac792668d995c657d93111f46b4535ed114f0c9c8d672271bbec7eae1b496"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/2c/48/71de9ed269fdae9c8057e5a4c0aa7402e8bb16f2c6e90b3aa53327b113f8/hpack-4.1.0.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/hpack/4.1.0/"
         }
       ],
       "properties": [
@@ -1246,64 +1313,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/hyperframe@6.1.0",
-      "name": "hyperframe",
-      "version": "6.1.0",
-      "purl": "pkg:pypi/hyperframe@6.1.0",
-      "supplier": {
-        "name": "github.com"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "f630908a00854a7adeabd6382b43923a4c4cd4b821fcb527e6ab9e15382a3b08"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "b03380493a519fce58ea5af42e4a42317bf9bd425596f7a0835ffce80f1a42e5"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/02/e7/94f8232d4a74cc99514c13a9f995811485a6903d48e5d952771ef6322e30/hyperframe-6.1.0.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/hyperframe/6.1.0/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/idna@3.11",
+      "bom-ref": "pkg:pypi/idna@3.16",
       "name": "idna",
-      "version": "3.11",
-      "purl": "pkg:pypi/idna@3.11",
+      "version": "3.16",
+      "purl": "pkg:pypi/idna@3.16",
       "supplier": {
         "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "795dafcc9c04ed0c1fb032c2aa73654d8e8c5023a7df64a53f39190ada629902"
+          "content": "d7a6da03db833450fca25d2358ac9ff06cd624577a4aea3a596d5c0f77b8e03d"
         },
         {
           "alg": "SHA-256",
-          "content": "771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea"
+          "content": "cc246e3a3f89580c3a951b5ad298ca4638078b2cdd4f115654332b5c26daded5"
         }
       ],
       "licenses": [
@@ -1316,11 +1340,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/6f/6d/0703ccc57f3a7233505399edb88de3cbd678da106337b9fcde432b65ed60/idna-3.11.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/1a/88/bcf9709822fe69d02c2a6a77956c98ce6ea8ca8767a9aadcedc7eb6a2390/idna-3.16.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/idna/3.11/"
+          "url": "https://pypi.org/project/idna/3.16/"
         }
       ],
       "properties": [
@@ -1461,21 +1485,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-content@0.1.6",
+      "bom-ref": "pkg:pypi/kaos-content@0.1.0",
       "name": "kaos-content",
-      "version": "0.1.6",
-      "purl": "pkg:pypi/kaos-content@0.1.6",
+      "version": "0.1.0",
+      "purl": "pkg:pypi/kaos-content@0.1.0",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8ac15d4d1cedf86de7fbe093453f3a27e3057c08244ba117787782a2e3f9457d"
+          "content": "d97e5199b234953fb1ed45df64f57c090e9d013533743c010a0f493a8a340b7e"
         },
         {
           "alg": "SHA-256",
-          "content": "7164225bf99522f91bb29355ff03aeb498b5ad3064773861b7bd004bbed967ef"
+          "content": "0240c9d7f58364ab94fb6460febbf9d382b78723b0a7e1a3ff26b079da8c272a"
         }
       ],
       "licenses": [
@@ -1488,11 +1512,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/7e/05/6cae7aa58928fa6f24a52108a952e752d2f40289e5506e32b82979ab3b72/kaos_content-0.1.6.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/eb/5e/3cc6db536a819981fc49159228b95e66b891d3f4dcd7c4f6a5fff56b7968/kaos_content-0.1.0.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-content/0.1.6/"
+          "url": "https://pypi.org/project/kaos-content/0.1.0/"
         }
       ],
       "properties": [
@@ -1536,49 +1560,6 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/kaos-core/0.1.4/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/kaos-llm-client@0.1.9",
-      "name": "kaos-llm-client",
-      "version": "0.1.9",
-      "purl": "pkg:pypi/kaos-llm-client@0.1.9",
-      "supplier": {
-        "name": "kelvin.legal"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "e51237aa418ada7c69f5bf163023ad45d25e5c21adf27b2f0dc96a3a6c3b6ac2"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "9b39624ca8301d666b9d64274acdb62ed381502ad36374a7be6ee04072359311"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "Apache-2.0"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/dd/99/00f3378d59b7a31c2497024bef811735269382ee247322484fbb099ac906/kaos_llm_client-0.1.9.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/kaos-llm-client/0.1.9/"
         }
       ],
       "properties": [
@@ -1681,6 +1662,261 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/kaos-nlp-core/0.1.6/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/lxml@6.1.1",
+      "name": "lxml",
+      "version": "6.1.1",
+      "purl": "pkg:pypi/lxml@6.1.1",
+      "supplier": {
+        "name": "lxml dev team"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ba96ae44888e0185281e937633a743ea90d5a196c6000f82565ebb0580012d40"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "68a9198d0fc122d14bb76837de9aa80cf84caed990b5b237f532ed87d3706736"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7d47866cb32fb503450b6edc9df355d10dc49836af2e89901bd6ac6b0896d9d9"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "eb7c9811bfaa8b1ed5ed319f5d370dfbcaa59d52ea64be2a5a85e18195930354"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "762ff394d5bd56da0cf034a23dcce4e13923f15321a2adfa2ac00201dc6d3fca"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a088f287f7d8275a33c07f2cac6c50b9319309a0200a39e7e75d80c707723099"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "e902da4b04e6b52e5893900d4b8ab46068f75f3561f01bf1080957f9fd932ed6"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1d4962d4c66bf830a7e59ed6cfc17d148149898a3aefa8ec6e59763e6e3ed085"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "581d4c8ae690a6609e64862dd6b7c2489635c2d13907fc2b20f2bc200ff1d21e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "876e1ff5930ed8bf295ec5ef9a8155e9b6b1876bbf1deed8b3a8069311875a8f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9eb9b5a968f6e0f6d640092a567e14529ff8cea2e29d00da6f78a79fa49f013c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "aa49e06d94aba782c6a02eecb7e507969e7e7a41b267f1b359bb35585f295d5b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "70cdfd80589d59e43e18005dd7244e8895e93db8ab6a620b7e23df5445a4e3d2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "aad9aa39483ed8ec44d6d2e59e5b98a0d80676ef0d92f44bfc374836111f62f5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d49514be2f28d895c38cf9d2b72d7b9a07d00314519f456c0b50b53cfcf4c785"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "47402e62c52ff5988c1e8c6c63177f5708bccf48e366dea4e3dcf1e645e04947"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3483644525531e1d5762b0c44a8e18b6efba321b6dcf8a8952de10b037618bca"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "a10bd2fd62e8ce916ececb342f348f190724a098c1faa056fdfb2a22ad5e8660"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "424aa57aca0897eb922aef34395bd1289b3b6f04e6bae20ea123c0c7e333cffc"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "19b7ab10b210b0b3ad7985d9ac4eb66ab09a90b20fe6e2f7ba55d01a234345d0"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c08e5c694306507275f2290073350c4f32e383db15213b2c69e7ff39c1193840"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "74a9717fd0d82effef5c2854f0d917231d5324b5a3eb7275c43ac9fa32f97a14"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "efe0374196335f93b53269acd811b944f2e6bdc88e8894f214bd636455484909"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ac931cdc9442c1763b8a8f6cd62c0c938737eafc5be75eff88df55fc73bc0d00"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "aee395f5d0927f947758b4ec119fd5fc8ec71f07a1c5c52077b30b04c0fa6955"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9395002973c827b3ed67db77e6ec09f092919a587022174554096a269378fb13"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "73bc2086f141224ebddb7fc5c6a36ca58b31b94b561e1dfe8e073e3270fad1e7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3779def59032b81e44a5f70096ef6bf2082f8d901937dca354474ba09782e245"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "86c89b9d55ebf820ad7c90bc533410f0d098054f293351f10603c0c46ff598f5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "19607c6bbff2a44cf3fe8250abccd20942d3462473e0a721d01d379ed017e462"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c6ed5141a5c7507cf3ee76bd363b0d6f801e3321adc35b5d825a23115faa5465"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "62aeb7e85b5d60320b9d77eef2e773994e2c0ce10121b277e0a19804e1654a5a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b1b963fd8f5caa68e99dfae060d54de1fe9cba899b8718b44a00cdca53c3e590"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "63876be28efefa04a1df615b46770e82042cce445cfdce55160522f57b231ccb"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "7f7a92e8583f06b1fd49d01158143b8461cfcd135dcb10ec807270a3051bd603"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "b2d444f2e66624d68e9c6b211e28a76e22fff5fcabcfff4deac18b529b7d4137"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3fd9728a2735fda14f4e8235830c86b539e9661e849665bf926d3f867943b4bf"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "787b2496d0dbe8cd180984e8d29e3a6f76e7ea34db781cb3bd55e4ba1ef8b4ee"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2c8daa471358dc2d6fcf02165e80ec68f77871a286df95bc5cc3816153b0fd2c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "acd7d70b64c0aae0c7922cca83d288a16f5f6da523637697872253415269baef"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4f0dd2f01f9f8a89f565d000e03abcf0a13d692a346c8d22f628d49af098777a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "0b7e8a14c8634bf6f7a568634cb395305a6d964aeb5b7ee32248094bed3a7e2c"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "86281fbdd6a8162756f8d603f37e3435bfa38043adb79c6dc6a2dfee065e7525"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "c5d7152ec39ca7c402d8fb9bad86140a15b9503bd0c54484e3f1bbe3dd37ceca"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "88d8cb75b9d82858497a5393e3c63cfbf03035225e4b35a49ed7ccb151e4dc0e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f64ec5397ea6a41fc1b4af0380d79b44a755b5531dcaccd9940fb260dca93038"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "d34bbf07dbc7ca5970671b1512e928991fb5e9d95365636c9b2d8b4f53af405e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "17e0e18d4ad8adbd0399291bc44845b69d9dd68439a3cdebdf35ff902ec05072"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "3ab541146f1f6968c462d6c2ac495148e8cdba2f8347700b2141b6ec5a75bf52"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2a0217714657e023ef4293500f65aa20fce6164c8fd6b08fa5bd4a859fb14b9b"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "05a82eb6e1530a64f26225b55cbd178113bd0b5af1c2b625f25e5296742c26d2"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9e36f163528fc50cbef305f02a5fd66d404edf7049cdaff211dbc2cba5a7013e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "649dda677cf3bd6ac9ae14007ba0c824ded8ce5808b53fc7431d9140399118c1"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "793033d6c5cdf33a573f910d9bea14ef8f5771820411d118da8e1182edb53d5e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "58bb955caba94e467d2a96da17660d2d704e0675894cba21ab8a775b8621fd1c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/05/3b/aab6728cae887456f409b4d75e8a01856e4f04bd510de38052a47768b680/lxml-6.1.1.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/lxml/6.1.1/"
         }
       ],
       "properties": [
@@ -2069,64 +2305,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/opentelemetry-api@1.42.1",
-      "name": "opentelemetry-api",
-      "version": "1.42.1",
-      "purl": "pkg:pypi/opentelemetry-api@1.42.1",
-      "supplier": {
-        "name": "github.com"
-      },
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "56c63bea9f77b62856be8c47600474acad853b2924b99b1687c4cb6297166716"
-        },
-        {
-          "alg": "SHA-256",
-          "content": "51a69edacadbc03a8950ace1c4c21099cacc538820ac2c9e36277e78cebba714"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "Apache-2.0"
-          }
-        }
-      ],
-      "externalReferences": [
-        {
-          "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/b4/1c/125e1c936c0873796771b7f04f6c93b9f1bf5d424cea90fda94a99f61da8/opentelemetry_api-1.42.1.tar.gz"
-        },
-        {
-          "type": "website",
-          "url": "https://pypi.org/project/opentelemetry-api/1.42.1/"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kaos:license-class",
-          "value": "permissive"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "pkg:pypi/packaging@26.0",
+      "bom-ref": "pkg:pypi/packaging@26.2",
       "name": "packaging",
-      "version": "26.0",
-      "purl": "pkg:pypi/packaging@26.0",
+      "version": "26.2",
+      "purl": "pkg:pypi/packaging@26.2",
       "supplier": {
         "name": "Unknown / community"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "00243ae351a257117b6a241061796684b084ed1c516a08c48a3f7e147a9d80b4"
+          "content": "ff452ff5a3e828ce110190feff1178bb1f2ea2281fa2075aadb987c2fb221661"
         },
         {
           "alg": "SHA-256",
-          "content": "b36f1fef9334a5588b4166f8bcd26a14e521f2b55e6b9de3aaa80d3ff7a37529"
+          "content": "5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e"
         }
       ],
       "licenses": [
@@ -2137,11 +2330,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/65/ee/299d360cdc32edc7d2cf530f3accf79c4fca01e96ffc950d8a52213bd8e4/packaging-26.0.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/d7/f1/e7a6dd94a8d4a5626c03e4e99c87f241ba9e350cd9e6d75123f992427270/packaging-26.2.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/packaging/26.0/"
+          "url": "https://pypi.org/project/packaging/26.2/"
         }
       ],
       "properties": [
@@ -2381,6 +2574,73 @@
         {
           "type": "website",
           "url": "https://pypi.org/project/pillow/12.2.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "unknown"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/playwright@1.60.0",
+      "name": "playwright",
+      "version": "1.60.0",
+      "purl": "pkg:pypi/playwright@1.60.0",
+      "supplier": {
+        "name": "Microsoft Corporation License-Expression: Apache-2.0"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6a8cd0fec171fb3089e95e898c8bc8a6f35dea0b78b399e12fcc19427e91b1d7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "39b5420ba6145045b69ced4c5c47d4d9fe5bddfc8ff816c518913afcb25ec7a5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "2581d0e6a3392c71f91b27460c7fd093356818dc430f48153896c8aeeaef7705"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1c2bfae7884fb3fb05b853290eab8f343d524e5016f2f1def702acbbdf14c93e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "43e66564125ee31b07a58cefb21e256d62d67d8d1713e6858df7a3019d8ed353"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ec94e416ea320711e0ad4bf185dcbf41833672961e90773e1885255d7db7b7e7"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "9566821ce6030a1f9e7146a24e19355ab0d98805fd0f9be50bb3d8fef1750c02"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "6e4f6700a4c2250efff8e690a81d66e3855754fb587b6b87cf5c784014f91537"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "LicenseRef-unknown-e3b0c442"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/21/f0/832bd9677194908da118064eef20082f2791e3d18215cc6d9391ee2c5a67/playwright-1.60.0-py3-none-macosx_10_13_x86_64.whl"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/playwright/1.60.0/"
         }
       ],
       "properties": [
@@ -2740,21 +3000,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/pydantic-settings@2.13.1",
+      "bom-ref": "pkg:pypi/pydantic-settings@2.14.0",
       "name": "pydantic-settings",
-      "version": "2.13.1",
-      "purl": "pkg:pypi/pydantic-settings@2.13.1",
+      "version": "2.14.0",
+      "purl": "pkg:pypi/pydantic-settings@2.14.0",
       "supplier": {
         "name": "github.com"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4c11847b15237fb0171e1462bf540e294affb9b86db4d9aa5c01730bdbe4025"
+          "content": "24285fd4b0e0c06507dd9fdfd331ee23794305352aaec8fc4eb92d4047aeb67d"
         },
         {
           "alg": "SHA-256",
-          "content": "d56fd801823dbeae7f0975e1f8c8e25c258eb75d278ea7abb5d9cebb01b56237"
+          "content": "fc8d5d692eb7092e43c8647c1c35a3ecd00e040fcf02ed86f4cb5458ca62182e"
         }
       ],
       "licenses": [
@@ -2767,11 +3027,54 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/52/6d/fffca34caecc4a3f97bda81b2098da5e8ab7efc9a66e819074a11955d87e/pydantic_settings-2.13.1.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/42/98/c8345dccdc31de4228c039a98f6467a941e39558da41c1744fbe29fa5666/pydantic_settings-2.14.0.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/pydantic-settings/2.13.1/"
+          "url": "https://pypi.org/project/pydantic-settings/2.14.0/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/pyee@13.0.1",
+      "name": "pyee",
+      "version": "13.0.1",
+      "purl": "pkg:pypi/pyee@13.0.1",
+      "supplier": {
+        "name": "Unknown / community"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0b931f7c14535667ed4c7e0d531716368715e860b988770fc7eb8578d1f67fc8"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "af2f8fede4171ef667dfded53f96e2ed0d6e6bd7ee3bb46437f77e3b57689228"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/8b/04/e7c1fe4dc78a6fdbfd6c337b1c3732ff543b8a397683ab38378447baa331/pyee-13.0.1.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/pyee/13.0.1/"
         }
       ],
       "properties": [
@@ -4059,12 +4362,10 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-llm-core@0.1.12",
+      "ref": "pkg:pypi/kaos-source@0.1.4",
       "dependsOn": [
-        "pkg:pypi/kaos-content@0.1.6",
+        "pkg:pypi/httpx@0.28.1",
         "pkg:pypi/kaos-core@0.1.4",
-        "pkg:pypi/kaos-llm-client@0.1.9",
-        "pkg:pypi/kaos-nlp-core@0.1.6",
         "pkg:pypi/pydantic@2.13.4"
       ]
     },
@@ -4079,7 +4380,7 @@
     {
       "ref": "pkg:pypi/anyio@4.13.0",
       "dependsOn": [
-        "pkg:pypi/idna@3.11"
+        "pkg:pypi/idna@3.16"
       ]
     },
     {
@@ -4087,7 +4388,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/certifi@2026.2.25",
+      "ref": "pkg:pypi/certifi@2026.4.22",
       "dependsOn": []
     },
     {
@@ -4097,7 +4398,7 @@
       ]
     },
     {
-      "ref": "pkg:pypi/click@8.3.2",
+      "ref": "pkg:pypi/click@8.3.3",
       "dependsOn": [
         "pkg:pypi/colorama@0.4.6"
       ]
@@ -4117,24 +4418,17 @@
       ]
     },
     {
-      "ref": "pkg:pypi/h11@0.16.0",
+      "ref": "pkg:pypi/greenlet@3.5.0",
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/h2@4.3.0",
-      "dependsOn": [
-        "pkg:pypi/hpack@4.1.0",
-        "pkg:pypi/hyperframe@6.1.0"
-      ]
-    },
-    {
-      "ref": "pkg:pypi/hpack@4.1.0",
+      "ref": "pkg:pypi/h11@0.16.0",
       "dependsOn": []
     },
     {
       "ref": "pkg:pypi/httpcore@1.0.9",
       "dependsOn": [
-        "pkg:pypi/certifi@2026.2.25",
+        "pkg:pypi/certifi@2026.4.22",
         "pkg:pypi/h11@0.16.0"
       ]
     },
@@ -4142,9 +4436,9 @@
       "ref": "pkg:pypi/httpx@0.28.1",
       "dependsOn": [
         "pkg:pypi/anyio@4.13.0",
-        "pkg:pypi/certifi@2026.2.25",
+        "pkg:pypi/certifi@2026.4.22",
         "pkg:pypi/httpcore@1.0.9",
-        "pkg:pypi/idna@3.11"
+        "pkg:pypi/idna@3.16"
       ]
     },
     {
@@ -4152,11 +4446,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/hyperframe@6.1.0",
-      "dependsOn": []
-    },
-    {
-      "ref": "pkg:pypi/idna@3.11",
+      "ref": "pkg:pypi/idna@3.16",
       "dependsOn": []
     },
     {
@@ -4179,7 +4469,7 @@
       ]
     },
     {
-      "ref": "pkg:pypi/kaos-content@0.1.6",
+      "ref": "pkg:pypi/kaos-content@0.1.0",
       "dependsOn": [
         "pkg:pypi/kaos-core@0.1.4",
         "pkg:pypi/pydantic@2.13.4",
@@ -4189,17 +4479,8 @@
     {
       "ref": "pkg:pypi/kaos-core@0.1.4",
       "dependsOn": [
-        "pkg:pypi/click@8.3.2",
-        "pkg:pypi/pydantic-settings@2.13.1",
-        "pkg:pypi/pydantic@2.13.4"
-      ]
-    },
-    {
-      "ref": "pkg:pypi/kaos-llm-client@0.1.9",
-      "dependsOn": [
-        "pkg:pypi/httpx@0.28.1",
-        "pkg:pypi/kaos-core@0.1.4",
-        "pkg:pypi/pydantic-settings@2.13.1",
+        "pkg:pypi/click@8.3.3",
+        "pkg:pypi/pydantic-settings@2.14.0",
         "pkg:pypi/pydantic@2.13.4"
       ]
     },
@@ -4207,10 +4488,10 @@
       "ref": "pkg:pypi/kaos-mcp@0.1.3",
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
-        "pkg:pypi/kaos-content@0.1.6",
+        "pkg:pypi/kaos-content@0.1.0",
         "pkg:pypi/kaos-core@0.1.4",
         "pkg:pypi/mcp@1.27.1",
-        "pkg:pypi/pydantic-settings@2.13.1",
+        "pkg:pypi/pydantic-settings@2.14.0",
         "pkg:pypi/pydantic@2.13.4",
         "pkg:pypi/starlette@1.0.1"
       ]
@@ -4220,6 +4501,10 @@
       "dependsOn": [
         "pkg:pypi/numpy@2.4.4"
       ]
+    },
+    {
+      "ref": "pkg:pypi/lxml@6.1.1",
+      "dependsOn": []
     },
     {
       "ref": "pkg:pypi/markdown-it-py@4.2.0",
@@ -4234,7 +4519,7 @@
         "pkg:pypi/httpx-sse@0.4.3",
         "pkg:pypi/httpx@0.28.1",
         "pkg:pypi/jsonschema@4.26.0",
-        "pkg:pypi/pydantic-settings@2.13.1",
+        "pkg:pypi/pydantic-settings@2.14.0",
         "pkg:pypi/pydantic@2.13.4",
         "pkg:pypi/pyjwt@2.12.1",
         "pkg:pypi/python-multipart@0.0.29",
@@ -4261,18 +4546,19 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:pypi/opentelemetry-api@1.42.1",
-      "dependsOn": [
-        "pkg:pypi/typing-extensions@4.15.0"
-      ]
-    },
-    {
-      "ref": "pkg:pypi/packaging@26.0",
+      "ref": "pkg:pypi/packaging@26.2",
       "dependsOn": []
     },
     {
       "ref": "pkg:pypi/pillow@12.2.0",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/playwright@1.60.0",
+      "dependsOn": [
+        "pkg:pypi/greenlet@3.5.0",
+        "pkg:pypi/pyee@13.0.1"
+      ]
     },
     {
       "ref": "pkg:pypi/pluggy@1.6.0",
@@ -4298,11 +4584,17 @@
       ]
     },
     {
-      "ref": "pkg:pypi/pydantic-settings@2.13.1",
+      "ref": "pkg:pypi/pydantic-settings@2.14.0",
       "dependsOn": [
         "pkg:pypi/pydantic@2.13.4",
         "pkg:pypi/python-dotenv@1.2.2",
         "pkg:pypi/typing-inspection@0.4.2"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/pyee@13.0.1",
+      "dependsOn": [
+        "pkg:pypi/typing-extensions@4.15.0"
       ]
     },
     {
@@ -4318,7 +4610,7 @@
       "dependsOn": [
         "pkg:pypi/colorama@0.4.6",
         "pkg:pypi/iniconfig@2.3.0",
-        "pkg:pypi/packaging@26.0",
+        "pkg:pypi/packaging@26.2",
         "pkg:pypi/pluggy@1.6.0",
         "pkg:pypi/pygments@2.20.0"
       ]
@@ -4396,7 +4688,7 @@
       "ref": "pkg:pypi/typer@0.25.1",
       "dependsOn": [
         "pkg:pypi/annotated-doc@0.0.4",
-        "pkg:pypi/click@8.3.2",
+        "pkg:pypi/click@8.3.3",
         "pkg:pypi/rich@15.0.0",
         "pkg:pypi/shellingham@1.5.4"
       ]
@@ -4418,7 +4710,7 @@
     {
       "ref": "pkg:pypi/uvicorn@0.47.0",
       "dependsOn": [
-        "pkg:pypi/click@8.3.2",
+        "pkg:pypi/click@8.3.3",
         "pkg:pypi/h11@0.16.0"
       ]
     }
