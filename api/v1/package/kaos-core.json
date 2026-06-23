@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.4",
       "pypi_url": "https://pypi.org/project/kaos-core/0.1.4/",
-      "main_head_sha": "f56335b897e7c28f1b35e85cc8166a89f1f3a40b",
-      "latest_tag": "v0.1.4",
-      "latest_tag_sha": "f32844ad6ae770155acd51f91cf618ae7964f65a",
-      "tag_at_head": false,
+      "main_head_sha": "55f473fa9397a237797027c393d89b97858afe97",
+      "latest_tag": "v0.1.5",
+      "latest_tag_sha": "55f473fa9397a237797027c393d89b97858afe97",
+      "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-06-22T15:48:03Z"
+      "last_commit_at": "2026-06-23T14:21:31Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 27965360439,
-      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/27965360439",
-      "head_sha": "f56335b897e7c28f1b35e85cc8166a89f1f3a40b",
-      "run_completed_at": "2026-06-22T15:52:04Z",
+      "workflow_run_id": 28033152019,
+      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/28033152019",
+      "head_sha": "55f473fa9397a237797027c393d89b97858afe97",
+      "run_completed_at": "2026-06-23T14:24:01Z",
       "matrix": [
         {
           "name": "test (windows-x64 / Python 3.13)",
@@ -67,29 +67,29 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 27965360477,
-      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/27965360477",
+      "workflow_run_id": 28033152049,
+      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/28033152049",
       "jobs": [
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-06-23T14:21:55Z"
+        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-22T15:48:20Z"
+          "completed_at": "2026-06-23T14:21:50Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-22T15:48:18Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-06-22T15:48:19Z"
+          "completed_at": "2026-06-23T14:21:50Z"
         }
       ],
-      "run_completed_at": "2026-06-22T15:48:21Z"
+      "run_completed_at": "2026-06-23T14:21:55Z"
     },
     "open_prs": {
       "count": 0,
@@ -149,10 +149,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.806,
-      "conventional_commits_rate_90d": 0.792,
-      "verified_commit_ratio_90d": 0.486,
-      "commits_90d": 72,
+      "dco_signoff_rate_90d": 0.808,
+      "conventional_commits_rate_90d": 0.781,
+      "verified_commit_ratio_90d": 0.493,
+      "commits_90d": 73,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -205,7 +205,7 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 18,
+      "releases_90d": 19,
       "median_pr_age_days": null,
       "open_pr_count": 0,
       "open_issue_count": 0,
@@ -214,11 +214,11 @@
     },
     "code_metrics": {
       "python": {
-        "src_loc": 7926,
-        "tests_loc": 6602,
+        "src_loc": 7941,
+        "tests_loc": 6634,
         "src_files": 94,
         "tests_files": 51,
-        "tests_count": 526
+        "tests_count": 530
       },
       "rust": {
         "src_loc": 0,
