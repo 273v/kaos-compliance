@@ -24,44 +24,44 @@
       "run_completed_at": "2026-06-23T14:24:01Z",
       "matrix": [
         {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-06-29T07:08:07Z",
+          "completed_at": "2026-06-29T07:08:19Z",
+          "duration_seconds": 12
+        },
+        {
           "name": "test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-06-22T07:05:13Z",
-          "completed_at": "2026-06-22T07:05:49Z",
-          "duration_seconds": 36
-        },
-        {
-          "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-06-22T07:07:14Z",
-          "completed_at": "2026-06-22T07:07:25Z",
-          "duration_seconds": 11
-        },
-        {
-          "name": "test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-06-22T07:05:18Z",
-          "completed_at": "2026-06-22T07:05:34Z",
-          "duration_seconds": 16
+          "started_at": "2026-06-29T06:56:33Z",
+          "completed_at": "2026-06-29T06:57:07Z",
+          "duration_seconds": 34
         },
         {
           "name": "test (linux-x64 / Python 3.14t)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-06-22T07:08:59Z",
-          "completed_at": "2026-06-22T07:09:12Z",
-          "duration_seconds": 13
+          "started_at": "2026-06-29T07:08:53Z",
+          "completed_at": "2026-06-29T07:09:08Z",
+          "duration_seconds": 15
         },
         {
-          "name": "test (linux-x64 / Python 3.14)",
+          "name": "test (linux-x64 / Python 3.15)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-06-22T07:08:49Z",
-          "completed_at": "2026-06-22T07:09:00Z",
-          "duration_seconds": 11
+          "started_at": "2026-06-29T07:09:14Z",
+          "completed_at": "2026-06-29T07:10:34Z",
+          "duration_seconds": 80
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-06-29T06:56:33Z",
+          "completed_at": "2026-06-29T06:56:48Z",
+          "duration_seconds": 15
         }
       ]
     },
@@ -92,8 +92,12 @@
       "run_completed_at": "2026-06-23T14:21:55Z"
     },
     "open_prs": {
-      "count": 0,
-      "titles": []
+      "count": 3,
+      "titles": [
+        "#46 chore(deps-dev): bump cryptography from 48.0.1 to 49.0.0",
+        "#45 chore(deps-dev): bump pywin32 from 311 to 312",
+        "#44 chore(deps): bump the deps-minor group with 4 updates"
+      ]
     },
     "freshness": {
       "days_since_last_commit": 5,
@@ -206,8 +210,8 @@
         "NOTICE"
       ],
       "releases_90d": 19,
-      "median_pr_age_days": null,
-      "open_pr_count": 0,
+      "median_pr_age_days": 0.106,
+      "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 337,
       "errors": []
