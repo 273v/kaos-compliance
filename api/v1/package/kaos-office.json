@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.6",
       "pypi_url": "https://pypi.org/project/kaos-office/0.1.6/",
-      "main_head_sha": "548d9868dd8982d1d209edde2fff0d681963dc7a",
+      "main_head_sha": "22214e1c64863b0be131e89ef83400cf2dcaa1f3",
       "latest_tag": "v0.1.6",
       "latest_tag_sha": "6508baf2064b74d05005350acbcc5c607de749a3",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-06-28T11:35:46Z"
+      "last_commit_at": "2026-06-29T13:08:25Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 28320918685,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/28320918685",
-      "head_sha": "548d9868dd8982d1d209edde2fff0d681963dc7a",
-      "run_completed_at": "2026-06-28T11:37:30Z",
+      "workflow_run_id": 28374343744,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/28374343744",
+      "head_sha": "22214e1c64863b0be131e89ef83400cf2dcaa1f3",
+      "run_completed_at": "2026-06-29T13:11:16Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14t)",
@@ -67,35 +67,33 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 28320918690,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/28320918690",
+      "workflow_run_id": 28374343739,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/28374343739",
       "jobs": [
         {
-          "name": "gitleaks (incremental)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-28T11:35:58Z"
+          "completed_at": "2026-06-29T13:08:39Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-28T11:36:03Z"
+          "completed_at": "2026-06-29T13:08:44Z"
         },
         {
-          "name": "bandit (static security)",
+          "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-28T11:35:59Z"
+          "completed_at": "2026-06-29T13:08:36Z"
         }
       ],
-      "run_completed_at": "2026-06-28T11:36:03Z"
+      "run_completed_at": "2026-06-29T13:08:45Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#50 build(deps): Bump the deps-minor group with 4 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -154,10 +152,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.394,
-      "conventional_commits_rate_90d": 0.742,
-      "verified_commit_ratio_90d": 0.318,
-      "commits_90d": 132,
+      "dco_signoff_rate_90d": 0.398,
+      "conventional_commits_rate_90d": 0.744,
+      "verified_commit_ratio_90d": 0.323,
+      "commits_90d": 133,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -170,8 +168,8 @@
         "NOTICE"
       ],
       "releases_90d": 16,
-      "median_pr_age_days": 0.11,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 281,
       "errors": []

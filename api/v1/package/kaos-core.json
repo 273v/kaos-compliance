@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.5",
       "pypi_url": "https://pypi.org/project/kaos-core/0.1.5/",
-      "main_head_sha": "55f473fa9397a237797027c393d89b97858afe97",
+      "main_head_sha": "d6fc40a1ba00d92c14489c93f051e78f70de24b2",
       "latest_tag": "v0.1.5",
       "latest_tag_sha": "55f473fa9397a237797027c393d89b97858afe97",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-06-23T14:21:31Z"
+      "last_commit_at": "2026-06-29T13:29:13Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 28033152019,
-      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/28033152019",
-      "head_sha": "55f473fa9397a237797027c393d89b97858afe97",
-      "run_completed_at": "2026-06-23T14:24:01Z",
+      "workflow_run_id": 28375637808,
+      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/28375637808",
+      "head_sha": "d6fc40a1ba00d92c14489c93f051e78f70de24b2",
+      "run_completed_at": "2026-06-29T13:29:57Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14)",
@@ -67,42 +67,38 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 28033152049,
-      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/28033152049",
+      "workflow_run_id": 28375637825,
+      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/28375637825",
       "jobs": [
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-06-23T14:21:55Z"
-        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-23T14:21:50Z"
+          "completed_at": "2026-06-29T13:29:25Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-23T14:21:50Z"
+          "completed_at": "2026-06-29T13:29:26Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-06-29T13:29:26Z"
         }
       ],
-      "run_completed_at": "2026-06-23T14:21:55Z"
+      "run_completed_at": "2026-06-29T13:29:27Z"
     },
     "open_prs": {
-      "count": 3,
-      "titles": [
-        "#46 chore(deps-dev): bump cryptography from 48.0.1 to 49.0.0",
-        "#45 chore(deps-dev): bump pywin32 from 311 to 312",
-        "#44 chore(deps): bump the deps-minor group with 4 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 5,
+      "days_since_last_commit": 0,
       "days_since_last_release": 5,
-      "days_since_last_security_scan": 5
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.5",
@@ -153,10 +149,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.808,
-      "conventional_commits_rate_90d": 0.781,
-      "verified_commit_ratio_90d": 0.493,
-      "commits_90d": 73,
+      "dco_signoff_rate_90d": 0.818,
+      "conventional_commits_rate_90d": 0.792,
+      "verified_commit_ratio_90d": 0.519,
+      "commits_90d": 77,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -210,8 +206,8 @@
         "NOTICE"
       ],
       "releases_90d": 19,
-      "median_pr_age_days": 0.106,
-      "open_pr_count": 3,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 337,
       "errors": []
