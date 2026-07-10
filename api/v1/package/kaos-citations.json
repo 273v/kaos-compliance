@@ -206,22 +206,19 @@
         "required_signatures": null
       },
       "codeowners_path": ".github/CODEOWNERS",
-      "security_md_present": false,
-      "security_md_disclosure_window_days": null,
-      "notice_present": false,
+      "security_md_present": true,
+      "security_md_disclosure_window_days": 90,
+      "notice_present": true,
       "license_files_in_sdist": [
         "LICENSE",
         "NOTICE"
       ],
       "releases_90d": 8,
-      "median_pr_age_days": 3.456,
+      "median_pr_age_days": 3.618,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 190,
-      "errors": [
-        "security_md: Command '['gh', 'api', 'repos/273v/kaos-citations/contents/SECURITY.md']' returned non-zero exit status 1.",
-        "notice: Command '['gh', 'api', 'repos/273v/kaos-citations/contents/NOTICE']' returned non-zero exit status 1."
-      ]
+      "errors": []
     },
     "code_metrics": {
       "python": {

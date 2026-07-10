@@ -100,7 +100,7 @@
     },
     "freshness": {
       "days_since_last_commit": 10,
-      "days_since_last_release": 36,
+      "days_since_last_release": 37,
       "days_since_last_security_scan": 10
     },
     "supply_chain": {
@@ -209,24 +209,20 @@
         "required_pull_request_reviews": null,
         "required_signatures": null
       },
-      "codeowners_path": null,
-      "security_md_present": false,
-      "security_md_disclosure_window_days": null,
-      "notice_present": false,
+      "codeowners_path": ".github/CODEOWNERS",
+      "security_md_present": true,
+      "security_md_disclosure_window_days": 90,
+      "notice_present": true,
       "license_files_in_sdist": [
         "LICENSE",
         "NOTICE"
       ],
       "releases_90d": 20,
-      "median_pr_age_days": 3.498,
+      "median_pr_age_days": 3.66,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 180,
-      "errors": [
-        "codeowners[.github/CODEOWNERS]: Command '['gh', 'api', 'repos/273v/kaos-content/contents/.github/CODEOWNERS']' returned non-zero exit status 1.",
-        "security_md: Command '['gh', 'api', 'repos/273v/kaos-content/contents/SECURITY.md']' returned non-zero exit status 1.",
-        "notice: Command '['gh', 'api', 'repos/273v/kaos-content/contents/NOTICE']' returned non-zero exit status 1."
-      ]
+      "errors": []
     },
     "code_metrics": {
       "python": {
