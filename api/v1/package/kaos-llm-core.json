@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.14",
       "pypi_url": "https://pypi.org/project/kaos-llm-core/0.1.14/",
-      "main_head_sha": "308c6aa3fe7196ec5164803f1343f7b25b409f81",
+      "main_head_sha": "09081d6a7887bed2975a36aa133ba314c0c9a5d6",
       "latest_tag": "v0.1.14",
       "latest_tag_sha": "6798c90f8f3772b4747b1a4471a22d08585c47ce",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-06-29T13:27:35Z"
+      "last_commit_at": "2026-07-20T13:58:22Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 28375538757,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/28375538757",
-      "head_sha": "308c6aa3fe7196ec5164803f1343f7b25b409f81",
-      "run_completed_at": "2026-06-29T13:30:04Z",
+      "workflow_conclusion": "failure",
+      "workflow_run_id": 29748571804,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/29748571804",
+      "head_sha": "09081d6a7887bed2975a36aa133ba314c0c9a5d6",
+      "run_completed_at": "2026-07-20T14:11:42Z",
       "matrix": [
         {
           "name": "test (windows-x64 / Python 3.13)",
@@ -67,41 +67,38 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 28375538653,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/28375538653",
+      "workflow_run_id": 29748571779,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/29748571779",
       "jobs": [
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-07-20T13:58:44Z"
+        },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-29T13:27:54Z"
+          "completed_at": "2026-07-20T13:58:51Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-06-29T13:27:50Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-06-29T13:27:48Z"
+          "completed_at": "2026-07-20T13:58:48Z"
         }
       ],
-      "run_completed_at": "2026-06-29T13:27:55Z"
+      "run_completed_at": "2026-07-20T13:58:52Z"
     },
     "open_prs": {
-      "count": 2,
-      "titles": [
-        "#78 chore(deps): bump the deps-minor group across 1 directory with 3 updates",
-        "#76 chore(deps): bump the actions-all group with 2 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 20,
+      "days_since_last_commit": 0,
       "days_since_last_release": 23,
-      "days_since_last_security_scan": 20
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.14",
@@ -155,10 +152,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.835,
-      "conventional_commits_rate_90d": 0.825,
-      "verified_commit_ratio_90d": 0.588,
-      "commits_90d": 97,
+      "dco_signoff_rate_90d": 0.84,
+      "conventional_commits_rate_90d": 0.83,
+      "verified_commit_ratio_90d": 0.6,
+      "commits_90d": 100,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -171,8 +168,8 @@
         "NOTICE"
       ],
       "releases_90d": 31,
-      "median_pr_age_days": 7.02,
-      "open_pr_count": 2,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 194,
       "errors": []
@@ -180,7 +177,7 @@
     "code_metrics": {
       "python": {
         "src_loc": 28779,
-        "tests_loc": 33216,
+        "tests_loc": 33218,
         "src_files": 222,
         "tests_files": 184,
         "tests_count": 2326
