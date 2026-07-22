@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.14",
       "pypi_url": "https://pypi.org/project/kaos-web/0.1.14/",
-      "main_head_sha": "b38b1ec378ffdcce5f6a77d7c12df609a492fcf5",
+      "main_head_sha": "72cc4cd28f2dfc187edb02ab1fa38d42853218d5",
       "latest_tag": "v0.1.14",
       "latest_tag_sha": "a6f9c5e4734dc1a92a887e4b4f9aef3f2edf8783",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-07-20T14:01:56Z"
+      "last_commit_at": "2026-07-22T00:39:01Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 29748837373,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/29748837373",
-      "head_sha": "b38b1ec378ffdcce5f6a77d7c12df609a492fcf5",
-      "run_completed_at": "2026-07-20T14:17:58Z",
+      "workflow_run_id": 29880842017,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/29880842017",
+      "head_sha": "72cc4cd28f2dfc187edb02ab1fa38d42853218d5",
+      "run_completed_at": "2026-07-22T00:42:02Z",
       "matrix": [
         {
           "name": "test (windows-x64 / Python 3.13)",
@@ -67,41 +67,40 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 29748837267,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/29748837267",
+      "workflow_run_id": 29880842030,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/29880842030",
       "jobs": [
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-20T14:02:25Z"
-        },
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-07-20T14:02:28Z"
+          "completed_at": "2026-07-22T00:39:18Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-20T14:02:25Z"
+          "completed_at": "2026-07-22T00:39:18Z"
+        },
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-07-22T00:39:14Z"
         }
       ],
-      "run_completed_at": "2026-07-20T14:02:29Z"
+      "run_completed_at": "2026-07-22T00:39:19Z"
     },
     "open_prs": {
-      "count": 2,
+      "count": 1,
       "titles": [
-        "#54 feat(browser): add optional rustwright CDP backend",
         "#53 chore(deps): bump the actions-all group with 4 updates"
       ]
     },
     "freshness": {
-      "days_since_last_commit": 1,
+      "days_since_last_commit": 0,
       "days_since_last_release": 28,
-      "days_since_last_security_scan": 1
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.14",
@@ -130,9 +129,9 @@
         "total_count": 2
       },
       "sbom": {
-        "components_count": 65,
+        "components_count": 66,
         "license_breakdown": {
-          "MIT": 35,
+          "MIT": 36,
           "MPL-2.0": 1,
           "BSD-3-Clause": 11,
           "Apache-2.0": 8,
@@ -155,10 +154,10 @@
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.576,
-      "conventional_commits_rate_90d": 0.826,
-      "verified_commit_ratio_90d": 0.435,
-      "commits_90d": 92,
+      "dco_signoff_rate_90d": 0.581,
+      "conventional_commits_rate_90d": 0.828,
+      "verified_commit_ratio_90d": 0.441,
+      "commits_90d": 93,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -171,19 +170,19 @@
         "NOTICE"
       ],
       "releases_90d": 20,
-      "median_pr_age_days": 0.739,
-      "open_pr_count": 2,
+      "median_pr_age_days": 1.281,
+      "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 214,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 13274,
-        "tests_loc": 14729,
+        "src_loc": 13328,
+        "tests_loc": 14829,
         "src_files": 62,
-        "tests_files": 68,
-        "tests_count": 1505
+        "tests_files": 70,
+        "tests_count": 1519
       },
       "rust": {
         "src_loc": 0,

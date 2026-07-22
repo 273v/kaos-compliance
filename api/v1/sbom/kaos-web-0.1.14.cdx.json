@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c6ab20eb-f348-411a-9155-96f83db5b0d4",
+  "serialNumber": "urn:uuid:efda46e8-c0b8-4185-8263-89780b879a71",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-22T00:34:07Z",
+    "timestamp": "2026-07-22T00:51:34Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -3972,6 +3972,65 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:pypi/rustwright@0.1.1",
+      "name": "rustwright",
+      "version": "0.1.1",
+      "purl": "pkg:pypi/rustwright@0.1.1",
+      "supplier": {
+        "name": "Rustwright Contributors"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a42264eaa7c7aa1a11eaa81a34699e8b8c83a504bd6eb3c61a444c242a5b98d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "fcfb8afc5ec10146727d7d57b66528022a37fd9bc2408c25dcdc72868521e131"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "01f969f691acb2b61f830c32e2b23c97c59a108b661086bde58652d84821841f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "ddc60409aa12478c9617b742356be7f5baae81b17e77dabfbe040fc43864fa4e"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "4c9bd1a72db79fbfaf20ba829a74564e8a82088ae8a939daff1cf3c9c3e7f8cd"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "fc44f2be7918c98fd444522848d506786cb35b4e2e02a9efc722734f4e700458"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://files.pythonhosted.org/packages/51/80/c4b1fe7f942b8fbbf0420295cb265413bb6ad874d2064a53e95782c7d8c5/rustwright-0.1.1.tar.gz"
+        },
+        {
+          "type": "website",
+          "url": "https://pypi.org/project/rustwright/0.1.1/"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:pypi/shellingham@1.5.4",
       "name": "shellingham",
       "version": "1.5.4",
@@ -4757,6 +4816,10 @@
     },
     {
       "ref": "pkg:pypi/ruff@0.15.21",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:pypi/rustwright@0.1.1",
       "dependsOn": []
     },
     {

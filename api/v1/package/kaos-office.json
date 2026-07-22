@@ -22,7 +22,48 @@
       "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/29748650787",
       "head_sha": "2c2641bc0832c5fbb8814616d131d94d2d483cf0",
       "run_completed_at": "2026-07-20T14:15:04Z",
-      "matrix": []
+      "matrix": [
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-07-20T06:25:18Z",
+          "completed_at": "2026-07-20T06:25:30Z",
+          "duration_seconds": 12
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-07-20T06:25:22Z",
+          "completed_at": "2026-07-20T06:26:46Z",
+          "duration_seconds": 84
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-07-20T06:24:27Z",
+          "completed_at": "2026-07-20T06:25:26Z",
+          "duration_seconds": 59
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-07-20T06:23:20Z",
+          "completed_at": "2026-07-20T06:25:18Z",
+          "duration_seconds": 118
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "failure",
+          "status": "completed",
+          "started_at": "2026-07-20T06:28:21Z",
+          "completed_at": "2026-07-20T06:32:07Z",
+          "duration_seconds": 226
+        }
+      ]
     },
     "security": {
       "workflow_conclusion": "success",
@@ -129,7 +170,7 @@
         "NOTICE"
       ],
       "releases_90d": 16,
-      "median_pr_age_days": 1.254,
+      "median_pr_age_days": 1.265,
       "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 281,
