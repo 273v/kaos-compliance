@@ -168,6 +168,8 @@ def dataclass_to_schema(cls: type) -> dict[str, Any]:
     ``None`` — that pattern is the project's idiom for "we tried and
     couldn't extract it" and consumers MUST tolerate it.
     """
+    if not dataclasses.is_dataclass(cls):
+        raise TypeError(f"{cls!r} is not a dataclass type")
     hints = get_type_hints(cls)
     properties: dict[str, dict[str, Any]] = {}
     required: list[str] = []
