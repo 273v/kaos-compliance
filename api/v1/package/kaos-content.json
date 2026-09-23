@@ -63,7 +63,13 @@
           "completed_at": "2026-09-23T02:43:00Z",
           "duration_seconds": 50
         }
-      ]
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-content/actions/runs/35810740442",
+      "compat_completed_at": "2026-09-23T02:51:44Z",
+      "min_deps_conclusion": "success",
+      "min_deps_run_url": "https://github.com/273v/kaos-content/actions/runs/35810741820",
+      "min_deps_completed_at": "2026-09-23T02:38:55Z"
     },
     "security": {
       "workflow_conclusion": "success",
@@ -89,11 +95,31 @@
           "completed_at": "2026-09-23T03:12:33Z"
         }
       ],
-      "run_completed_at": "2026-09-23T03:12:34Z"
+      "run_completed_at": "2026-09-23T03:12:34Z",
+      "full_workflow_conclusion": "success",
+      "full_workflow_run_id": 35810743415,
+      "full_workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/35810743415",
+      "full_jobs": [
+        {
+          "name": "pip-audit (resolved lock)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T02:32:37Z"
+        },
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T02:32:24Z"
+        }
+      ],
+      "full_run_completed_at": "2026-09-23T02:32:37Z"
     },
     "open_prs": {
       "count": 0,
-      "titles": []
+      "titles": [],
+      "oldest_age_days": null,
+      "dependabot_count": 0
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -235,6 +261,21 @@
         "src_files": 0,
         "tests_files": 0,
         "tests_count": 0
+      },
+      "errors": []
+    },
+    "advisories": {
+      "source": "osv.dev",
+      "scanned_components": 58,
+      "open": [],
+      "notices": [],
+      "counts": {
+        "critical": 0,
+        "high": 0,
+        "moderate": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
       },
       "errors": []
     },

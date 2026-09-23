@@ -63,7 +63,13 @@
           "completed_at": "2026-09-23T03:23:07Z",
           "duration_seconds": 189
         }
-      ]
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/35813889099",
+      "compat_completed_at": "2026-09-23T03:26:23Z",
+      "min_deps_conclusion": "success",
+      "min_deps_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/35813890431",
+      "min_deps_completed_at": "2026-09-23T03:23:33Z"
     },
     "security": {
       "workflow_conclusion": "success",
@@ -89,11 +95,43 @@
           "completed_at": "2026-09-23T03:34:43Z"
         }
       ],
-      "run_completed_at": "2026-09-23T03:34:44Z"
+      "run_completed_at": "2026-09-23T03:34:44Z",
+      "full_workflow_conclusion": "success",
+      "full_workflow_run_id": 35813887748,
+      "full_workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/35813887748",
+      "full_jobs": [
+        {
+          "name": "cargo-deny (advisories + licenses + bans + sources)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T03:22:02Z"
+        },
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T03:20:05Z"
+        },
+        {
+          "name": "cargo-audit",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T03:23:05Z"
+        },
+        {
+          "name": "pip-audit (resolved lock)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T03:22:00Z"
+        }
+      ],
+      "full_run_completed_at": "2026-09-23T03:23:05Z"
     },
     "open_prs": {
       "count": 0,
-      "titles": []
+      "titles": [],
+      "oldest_age_days": null,
+      "dependabot_count": 0
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -197,8 +235,54 @@
       "verified_commit_ratio_90d": 1.0,
       "commits_90d": 21,
       "unique_committers_90d": 2,
-      "branch_protection_enabled": false,
-      "branch_protection_summary": {},
+      "branch_protection_enabled": true,
+      "branch_protection_summary": {
+        "source": "branches_api",
+        "required_status_checks": {
+          "enforcement_level": "everyone",
+          "contexts": [
+            "quality",
+            "test",
+            "build",
+            "bandit (static security)",
+            "gitleaks (incremental)",
+            "vulture (dead-code scan)",
+            "rust-test (no PyO3)"
+          ],
+          "checks": [
+            {
+              "context": "quality",
+              "app_id": 15368
+            },
+            {
+              "context": "test",
+              "app_id": 15368
+            },
+            {
+              "context": "build",
+              "app_id": 15368
+            },
+            {
+              "context": "bandit (static security)",
+              "app_id": 15368
+            },
+            {
+              "context": "gitleaks (incremental)",
+              "app_id": 15368
+            },
+            {
+              "context": "vulture (dead-code scan)",
+              "app_id": 15368
+            },
+            {
+              "context": "rust-test (no PyO3)",
+              "app_id": 15368
+            }
+          ]
+        },
+        "required_pull_request_reviews": null,
+        "required_signatures": null
+      },
       "codeowners_path": ".github/CODEOWNERS",
       "security_md_present": true,
       "security_md_disclosure_window_days": 90,
@@ -228,6 +312,21 @@
         "src_files": 86,
         "tests_files": 11,
         "tests_count": 747
+      },
+      "errors": []
+    },
+    "advisories": {
+      "source": "osv.dev",
+      "scanned_components": 209,
+      "open": [],
+      "notices": [],
+      "counts": {
+        "critical": 0,
+        "high": 0,
+        "moderate": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
       },
       "errors": []
     },

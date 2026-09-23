@@ -178,6 +178,42 @@
                   "type": "object",
                   "additionalProperties": {}
                 }
+              },
+              "compat_conclusion": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "compat_run_url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "compat_completed_at": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "min_deps_conclusion": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "min_deps_run_url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "min_deps_completed_at": {
+                "type": [
+                  "string",
+                  "null"
+                ]
               }
             },
             "additionalProperties": false,
@@ -217,6 +253,37 @@
                   "string",
                   "null"
                 ]
+              },
+              "full_workflow_conclusion": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "full_workflow_run_id": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "full_workflow_run_url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "full_jobs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": {}
+                }
+              },
+              "full_run_completed_at": {
+                "type": [
+                  "string",
+                  "null"
+                ]
               }
             },
             "additionalProperties": false,
@@ -237,6 +304,18 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "oldest_age_days": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "dependabot_count": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
               }
             },
             "additionalProperties": false,
@@ -638,6 +717,117 @@
               }
             }
           },
+          "advisories": {
+            "type": "object",
+            "title": "AdvisoriesSection",
+            "description": "Output of collector.advisories.collect(): OSV.dev advisories open against the repo's locked dependencies (uv.lock + Cargo.lock). scanned_components is null when the scan did not run.",
+            "additionalProperties": true,
+            "properties": {
+              "source": {
+                "type": "string"
+              },
+              "scanned_components": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "open": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "aliases": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "package": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "ecosystem": {
+                      "type": "string"
+                    },
+                    "severity": {
+                      "type": "string",
+                      "enum": [
+                        "critical",
+                        "high",
+                        "moderate",
+                        "low",
+                        "unknown"
+                      ]
+                    },
+                    "informational": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "summary": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "notices": {
+                "type": "array",
+                "description": "RustSec unmaintained / notice entries; not counted.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "counts": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "critical": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "high": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "moderate": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "low": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "unknown": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "total": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "errors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "errors": {
             "type": "array",
             "items": {
@@ -761,6 +951,42 @@
             "type": "object",
             "additionalProperties": {}
           }
+        },
+        "compat_conclusion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "compat_run_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "compat_completed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "min_deps_conclusion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "min_deps_run_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "min_deps_completed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "additionalProperties": false,
@@ -800,6 +1026,37 @@
             "string",
             "null"
           ]
+        },
+        "full_workflow_conclusion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "full_workflow_run_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "full_workflow_run_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "full_jobs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "full_run_completed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "additionalProperties": false,
@@ -820,6 +1077,18 @@
           "items": {
             "type": "string"
           }
+        },
+        "oldest_age_days": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "dependabot_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
         }
       },
       "additionalProperties": false,

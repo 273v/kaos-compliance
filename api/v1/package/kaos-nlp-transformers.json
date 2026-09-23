@@ -63,7 +63,13 @@
           "completed_at": "2026-09-23T13:16:46Z",
           "duration_seconds": 291
         }
-      ]
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35865397611",
+      "compat_completed_at": "2026-09-23T13:17:20Z",
+      "min_deps_conclusion": "success",
+      "min_deps_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35854887831",
+      "min_deps_completed_at": "2026-09-23T11:32:37Z"
     },
     "security": {
       "workflow_conclusion": "success",
@@ -89,11 +95,43 @@
           "completed_at": "2026-09-23T11:52:34Z"
         }
       ],
-      "run_completed_at": "2026-09-23T11:52:47Z"
+      "run_completed_at": "2026-09-23T11:52:47Z",
+      "full_workflow_conclusion": "success",
+      "full_workflow_run_id": 35865400570,
+      "full_workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35865400570",
+      "full_jobs": [
+        {
+          "name": "cargo-deny (advisories + licenses + bans + sources)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T13:14:04Z"
+        },
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T13:12:05Z"
+        },
+        {
+          "name": "cargo-audit",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T13:15:13Z"
+        },
+        {
+          "name": "pip-audit (resolved lock)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T13:14:44Z"
+        }
+      ],
+      "full_run_completed_at": "2026-09-23T13:15:14Z"
     },
     "open_prs": {
       "count": 0,
-      "titles": []
+      "titles": [],
+      "oldest_age_days": null,
+      "dependabot_count": 0
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -287,6 +325,33 @@
         "src_files": 23,
         "tests_files": 1,
         "tests_count": 49
+      },
+      "errors": []
+    },
+    "advisories": {
+      "source": "osv.dev",
+      "scanned_components": 348,
+      "open": [],
+      "notices": [
+        {
+          "id": "RUSTSEC-2024-0436",
+          "aliases": [],
+          "package": "paste",
+          "version": "1.0.15",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unmaintained",
+          "summary": "paste - no longer maintained",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2024-0436"
+        }
+      ],
+      "counts": {
+        "critical": 0,
+        "high": 0,
+        "moderate": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
       },
       "errors": []
     },

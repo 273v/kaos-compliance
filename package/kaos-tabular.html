@@ -103,6 +103,16 @@ footer a{color:var(--muted)}
   </p>
   <ul style="margin:0;padding-left:var(--s-5)">
     <li>
+     <span class="pill r" aria-label="Security: worse">
+      <span class="gly" aria-hidden="true">▼</span>
+      <span class="wd" aria-hidden="true">worse</span>
+     </span>
+     <strong>Security</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      True &rarr; False
+     </span>
+    </li>
+    <li>
      <span class="pill g" aria-label="Commits (90d): better">
       <span class="gly" aria-hidden="true">▲</span>
       <span class="wd" aria-hidden="true">better</span>
@@ -129,7 +139,7 @@ footer a{color:var(--muted)}
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 8/8 green</div>
+  <div class="composite">Composite: 8/9 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
@@ -137,12 +147,16 @@ footer a{color:var(--muted)}
     <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: success</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="Tests + coverage: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Tests + coverage</div><div class="note">Latest CI conclusion: success</div></div>
+    <span class="pill g" aria-label="Tests: PR + compat + min-deps: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
+    <div class="body"><div class="lab">Tests: PR + compat + min-deps</div><div class="note">PR lanes: success; compat: success; min-deps: success</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="No critical CVEs: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">No critical CVEs</div><div class="note">Latest Security workflow conclusion: success</div></div>
+    <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: success; 20 open advisories (OSV.dev): 1 critical, 7 high, 7 moderate, 5 low</div></div>
+   </div>
+   <div class="check">
+    <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
+    <div class="body"><div class="lab">Updates merged promptly</div><div class="note">No open PRs</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Signed release artifacts: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -230,14 +244,142 @@ footer a{color:var(--muted)}
  <h2 id="sec-h">Security</h2>
  <div class="card">
   <dl class="kv">
-   <dt>Open advisories</dt><dd>0</dd>
-   <dt>Fixed in 90d</dt><dd>0</dd>
-   <dt>Dependabot alerts</dt><dd>—</dd>
+   <dt>Open advisories</dt><dd>
+20 <span style="color:var(--muted);font-size:0.75rem">across 53 locked dependencies (OSV.dev)</span>   </dd>
+   <dt>Maintenance notices</dt><dd>
+0   </dd>
+   <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
+   <dt>Open Dependabot PRs</dt><dd>0</dd>
    <dt>Suppressions (total)</dt>
    <dd>
      <span style="color:var(--muted)">not inspected (sibling clone absent)</span>
    </dd>
   </dl>
+  <table class="grid" style="margin-top:var(--s-3)" aria-label="Open advisories against locked dependencies">
+   <thead><tr><th scope="col">Advisory</th><th scope="col">Package</th><th scope="col">Severity</th><th scope="col">Summary</th></tr></thead>
+   <tbody>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-82r6-8w77-94w6" target="_blank" rel="noopener">GHSA-82r6-8w77-94w6</a></td>
+     <td data-h="Package">anyio 4.13.0</td>
+     <td data-h="Severity">critical</td>
+     <td data-h="Summary">AnyIO: TLSStream IDNA 2003 host name encoding enables potential TLS certificate spoofing</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-537c-gmf6-5ccf" target="_blank" rel="noopener">GHSA-537c-gmf6-5ccf</a></td>
+     <td data-h="Package">cryptography 48.0.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Vulnerable OpenSSL included in cryptography wheels</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-5rvq-cxj2-64vf" target="_blank" rel="noopener">GHSA-5rvq-cxj2-64vf</a></td>
+     <td data-h="Package">python-multipart 0.0.27</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">python-multipart: Quadratic-time querystring parsing with semicolon separators causes CPU denial of service</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-82w8-qh3p-5jfq" target="_blank" rel="noopener">GHSA-82w8-qh3p-5jfq</a></td>
+     <td data-h="Package">starlette 1.0.1</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Starlette: request.form() limits silently ignored for application/x-www-form-urlencoded enable DoS</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-g6cj-pr64-35w5" target="_blank" rel="noopener">GHSA-g6cj-pr64-35w5</a></td>
+     <td data-h="Package">cryptography 48.0.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">cryptography: PKCS#7 EnvelopedData decryption exposes a Bleichenbacher oracle through distinguishable errors and timing</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-jwv3-5hgf-82ww" target="_blank" rel="noopener">GHSA-jwv3-5hgf-82ww</a></td>
+     <td data-h="Package">cryptography 48.0.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">python-cryptography: Duplicate self-signed intermediates can cause exponential path-building</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-wqp7-x3pw-xc5r" target="_blank" rel="noopener">GHSA-wqp7-x3pw-xc5r</a></td>
+     <td data-h="Package">starlette 1.0.1</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Starlette: SSRF and NTLM credential theft via UNC paths in StaticFiles on Windows</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-xgmm-8j9v-c9wx" target="_blank" rel="noopener">GHSA-xgmm-8j9v-c9wx</a></td>
+     <td data-h="Package">pyjwt 2.12.1</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">PyJWT: Public-key JWK accepted as HMAC secret enables forged HS256 tokens when mixed families are allowed</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-5p39-cfhj-2xmp" target="_blank" rel="noopener">GHSA-5p39-cfhj-2xmp</a></td>
+     <td data-h="Package">anyio 4.13.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">AnyIO process-pool workers can block indefinitely on undrained stderr</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-65pc-fj4g-8rjx" target="_blank" rel="noopener">GHSA-65pc-fj4g-8rjx</a></td>
+     <td data-h="Package">idna 3.13</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Internationalized Domain Names in Applications (IDNA): Specially crafted inputs to idna.encode() can bypass CVE-2024-3651 fix</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-993g-76c3-p5m4" target="_blank" rel="noopener">GHSA-993g-76c3-p5m4</a></td>
+     <td data-h="Package">pyjwt 2.12.1</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">PyJWKClient: missing scheme allowlist enables CVE-2024-21643-class SSRF + token forgery via file://, ftp://, data: schemes</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-jq35-7prp-9v3f" target="_blank" rel="noopener">GHSA-jq35-7prp-9v3f</a></td>
+     <td data-h="Package">pyjwt 2.12.1</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">PyJWT: Algorithm allow-list bypass when decoding with `PyJWK` / `PyJWKClient` keys</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-m2h6-j472-rp4c" target="_blank" rel="noopener">GHSA-m2h6-j472-rp4c</a></td>
+     <td data-h="Package">cryptography 48.0.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">python-cryptography verifier accepts wildcard DNS names allowing escape from permittedSubtrees</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-w7vc-732c-9m39" target="_blank" rel="noopener">GHSA-w7vc-732c-9m39</a></td>
+     <td data-h="Package">pyjwt 2.12.1</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">PyJWT: Unauthenticated DoS via unbounded Base64URL decoding of unused payload segment in b64=false detached JWS</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-x746-7m8f-x49c" target="_blank" rel="noopener">GHSA-x746-7m8f-x49c</a></td>
+     <td data-h="Package">starlette 1.0.1</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Starlette: Arbitrary HTTP method dispatched to `HTTPEndpoint` attributes via `getattr`</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-6jv3-5f52-599m" target="_blank" rel="noopener">GHSA-6jv3-5f52-599m</a></td>
+     <td data-h="Package">python-multipart 0.0.27</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">python-multipart: Semicolon treated as querystring field separator enables parameter smuggling</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-fhv5-28vv-h8m8" target="_blank" rel="noopener">GHSA-fhv5-28vv-h8m8</a></td>
+     <td data-h="Package">pyjwt 2.12.1</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">PyJWKClient unbounded JWKS endpoint requests via attacker-controlled kid values (DoS)</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-jp82-jpqv-5vv3" target="_blank" rel="noopener">GHSA-jp82-jpqv-5vv3</a></td>
+     <td data-h="Package">starlette 1.0.1</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">Starlette: Unvalidated request path concatenated into authority poisons request.url.hostname</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-v9pg-7xvm-68hf" target="_blank" rel="noopener">GHSA-v9pg-7xvm-68hf</a></td>
+     <td data-h="Package">python-multipart 0.0.27</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">python-multipart: Negative Content-Length in parse_form buffers the entire body in memory</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-vffw-93wf-4j4q" target="_blank" rel="noopener">GHSA-vffw-93wf-4j4q</a></td>
+     <td data-h="Package">python-multipart 0.0.27</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">python-multipart: Content-Disposition parameter smuggling via RFC 2231/5987 extended parameters</td>
+    </tr>
+   </tbody>
+  </table>
   <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
    Suppressions are markers that silence a linter, type-checker, or
    security scanner. See <a href="security.html#sup-h">security.html</a>
@@ -343,7 +485,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-09-23 13:49 UTC
+ Generated 2026-09-23 14:57 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
