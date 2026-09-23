@@ -103,16 +103,6 @@ footer a{color:var(--muted)}
   </p>
   <ul style="margin:0;padding-left:var(--s-5)">
     <li>
-     <span class="pill r" aria-label="Security: worse">
-      <span class="gly" aria-hidden="true">▼</span>
-      <span class="wd" aria-hidden="true">worse</span>
-     </span>
-     <strong>Security</strong>:
-     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      True &rarr; False
-     </span>
-    </li>
-    <li>
      <span class="pill g" aria-label="Branch protection: better">
       <span class="gly" aria-hidden="true">▲</span>
       <span class="wd" aria-hidden="true">better</span>
@@ -129,7 +119,7 @@ footer a{color:var(--muted)}
      </span>
      <strong>Commits (90d)</strong>:
      <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      9 &rarr; 13
+      9 &rarr; 15
      </span>
     </li>
     <li>
@@ -142,6 +132,26 @@ footer a{color:var(--muted)}
       1 &rarr; 2
      </span>
     </li>
+    <li>
+     <span class="pill g" aria-label="Lines of code: better">
+      <span class="gly" aria-hidden="true">▲</span>
+      <span class="wd" aria-hidden="true">better</span>
+     </span>
+     <strong>Lines of code</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      62014 &rarr; 62023
+     </span>
+    </li>
+    <li>
+     <span class="pill g" aria-label="Tests LoC: better">
+      <span class="gly" aria-hidden="true">▲</span>
+      <span class="wd" aria-hidden="true">better</span>
+     </span>
+     <strong>Tests LoC</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      33218 &rarr; 33227
+     </span>
+    </li>
   </ul>
  </div>
 </section>
@@ -149,7 +159,7 @@ footer a{color:var(--muted)}
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 8/9 green</div>
+  <div class="composite">Composite: 9/9 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
@@ -161,8 +171,8 @@ footer a{color:var(--muted)}
     <div class="body"><div class="lab">Tests: PR + compat + min-deps</div><div class="note">PR lanes: success; compat: success; min-deps: success</div></div>
    </div>
    <div class="check">
-    <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: success; 17 open advisories (OSV.dev): 7 high, 5 moderate, 5 low</div></div>
+    <span class="pill g" aria-label="Security scans + dependency advisories: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: success; 0 open advisories across 60 locked dependencies (OSV.dev)</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -255,7 +265,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-17 <span style="color:var(--muted);font-size:0.75rem">across 60 locked dependencies (OSV.dev)</span>   </dd>
+0 <span style="color:var(--muted);font-size:0.75rem">across 60 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -265,113 +275,6 @@ footer a{color:var(--muted)}
      <span style="color:var(--muted)">not inspected (sibling clone absent)</span>
    </dd>
   </dl>
-  <table class="grid" style="margin-top:var(--s-3)" aria-label="Open advisories against locked dependencies">
-   <thead><tr><th scope="col">Advisory</th><th scope="col">Package</th><th scope="col">Severity</th><th scope="col">Summary</th></tr></thead>
-   <tbody>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-537c-gmf6-5ccf" target="_blank" rel="noopener">GHSA-537c-gmf6-5ccf</a></td>
-     <td data-h="Package">cryptography 48.0.0</td>
-     <td data-h="Severity">high</td>
-     <td data-h="Summary">Vulnerable OpenSSL included in cryptography wheels</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-5rvq-cxj2-64vf" target="_blank" rel="noopener">GHSA-5rvq-cxj2-64vf</a></td>
-     <td data-h="Package">python-multipart 0.0.29</td>
-     <td data-h="Severity">high</td>
-     <td data-h="Summary">python-multipart: Quadratic-time querystring parsing with semicolon separators causes CPU denial of service</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-82w8-qh3p-5jfq" target="_blank" rel="noopener">GHSA-82w8-qh3p-5jfq</a></td>
-     <td data-h="Package">starlette 1.0.1</td>
-     <td data-h="Severity">high</td>
-     <td data-h="Summary">Starlette: request.form() limits silently ignored for application/x-www-form-urlencoded enable DoS</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-g6cj-pr64-35w5" target="_blank" rel="noopener">GHSA-g6cj-pr64-35w5</a></td>
-     <td data-h="Package">cryptography 48.0.0</td>
-     <td data-h="Severity">high</td>
-     <td data-h="Summary">cryptography: PKCS#7 EnvelopedData decryption exposes a Bleichenbacher oracle through distinguishable errors and timing</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-jwv3-5hgf-82ww" target="_blank" rel="noopener">GHSA-jwv3-5hgf-82ww</a></td>
-     <td data-h="Package">cryptography 48.0.0</td>
-     <td data-h="Severity">high</td>
-     <td data-h="Summary">python-cryptography: Duplicate self-signed intermediates can cause exponential path-building</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-wqp7-x3pw-xc5r" target="_blank" rel="noopener">GHSA-wqp7-x3pw-xc5r</a></td>
-     <td data-h="Package">starlette 1.0.1</td>
-     <td data-h="Severity">high</td>
-     <td data-h="Summary">Starlette: SSRF and NTLM credential theft via UNC paths in StaticFiles on Windows</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-xgmm-8j9v-c9wx" target="_blank" rel="noopener">GHSA-xgmm-8j9v-c9wx</a></td>
-     <td data-h="Package">pyjwt 2.12.1</td>
-     <td data-h="Severity">high</td>
-     <td data-h="Summary">PyJWT: Public-key JWK accepted as HMAC secret enables forged HS256 tokens when mixed families are allowed</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-993g-76c3-p5m4" target="_blank" rel="noopener">GHSA-993g-76c3-p5m4</a></td>
-     <td data-h="Package">pyjwt 2.12.1</td>
-     <td data-h="Severity">moderate</td>
-     <td data-h="Summary">PyJWKClient: missing scheme allowlist enables CVE-2024-21643-class SSRF + token forgery via file://, ftp://, data: schemes</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-jq35-7prp-9v3f" target="_blank" rel="noopener">GHSA-jq35-7prp-9v3f</a></td>
-     <td data-h="Package">pyjwt 2.12.1</td>
-     <td data-h="Severity">moderate</td>
-     <td data-h="Summary">PyJWT: Algorithm allow-list bypass when decoding with `PyJWK` / `PyJWKClient` keys</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-m2h6-j472-rp4c" target="_blank" rel="noopener">GHSA-m2h6-j472-rp4c</a></td>
-     <td data-h="Package">cryptography 48.0.0</td>
-     <td data-h="Severity">moderate</td>
-     <td data-h="Summary">python-cryptography verifier accepts wildcard DNS names allowing escape from permittedSubtrees</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-w7vc-732c-9m39" target="_blank" rel="noopener">GHSA-w7vc-732c-9m39</a></td>
-     <td data-h="Package">pyjwt 2.12.1</td>
-     <td data-h="Severity">moderate</td>
-     <td data-h="Summary">PyJWT: Unauthenticated DoS via unbounded Base64URL decoding of unused payload segment in b64=false detached JWS</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-x746-7m8f-x49c" target="_blank" rel="noopener">GHSA-x746-7m8f-x49c</a></td>
-     <td data-h="Package">starlette 1.0.1</td>
-     <td data-h="Severity">moderate</td>
-     <td data-h="Summary">Starlette: Arbitrary HTTP method dispatched to `HTTPEndpoint` attributes via `getattr`</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-6jv3-5f52-599m" target="_blank" rel="noopener">GHSA-6jv3-5f52-599m</a></td>
-     <td data-h="Package">python-multipart 0.0.29</td>
-     <td data-h="Severity">low</td>
-     <td data-h="Summary">python-multipart: Semicolon treated as querystring field separator enables parameter smuggling</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-fhv5-28vv-h8m8" target="_blank" rel="noopener">GHSA-fhv5-28vv-h8m8</a></td>
-     <td data-h="Package">pyjwt 2.12.1</td>
-     <td data-h="Severity">low</td>
-     <td data-h="Summary">PyJWKClient unbounded JWKS endpoint requests via attacker-controlled kid values (DoS)</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-jp82-jpqv-5vv3" target="_blank" rel="noopener">GHSA-jp82-jpqv-5vv3</a></td>
-     <td data-h="Package">starlette 1.0.1</td>
-     <td data-h="Severity">low</td>
-     <td data-h="Summary">Starlette: Unvalidated request path concatenated into authority poisons request.url.hostname</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-v9pg-7xvm-68hf" target="_blank" rel="noopener">GHSA-v9pg-7xvm-68hf</a></td>
-     <td data-h="Package">python-multipart 0.0.29</td>
-     <td data-h="Severity">low</td>
-     <td data-h="Summary">python-multipart: Negative Content-Length in parse_form buffers the entire body in memory</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-vffw-93wf-4j4q" target="_blank" rel="noopener">GHSA-vffw-93wf-4j4q</a></td>
-     <td data-h="Package">python-multipart 0.0.29</td>
-     <td data-h="Severity">low</td>
-     <td data-h="Summary">python-multipart: Content-Disposition parameter smuggling via RFC 2231/5987 extended parameters</td>
-    </tr>
-   </tbody>
-  </table>
   <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
    Suppressions are markers that silence a linter, type-checker, or
    security scanner. See <a href="security.html#sup-h">security.html</a>
@@ -399,8 +302,8 @@ footer a{color:var(--muted)}
    <dt>Maintainers</dt><dd>2</dd>
    <dt>Commits 90d</dt>
    <dd>
-    13
-<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-core Commits 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,3.2 2.9,2.9 3.7,2.8 4.6,2.6 5.4,2.6 6.3,2.6 7.1,2.6 8.0,2.6 8.8,2.6 9.7,2.6 10.5,2.6 11.4,2.6 12.2,2.6 13.1,2.6 14.0,2.6 14.8,2.6 15.7,2.6 16.5,2.6 17.4,2.6 18.2,2.6 19.1,2.6 19.9,2.6 20.8,2.6 21.6,2.6 22.5,2.3 23.3,2.3 24.2,2.0 25.1,2.0 25.9,2.0 26.8,2.0 27.6,2.0 28.5,2.0 29.3,2.0 30.2,2.0 31.0,2.0 31.9,2.0 32.7,2.0 33.6,2.0 34.4,2.0 35.3,2.0 36.2,2.3 37.0,2.6 37.9,2.9 38.7,3.0 39.6,4.3 40.4,4.6 41.3,4.8 42.1,5.4 43.0,7.5 43.8,7.8 44.7,7.9 45.6,9.1 46.4,9.2 47.3,9.4 48.1,9.6 49.0,9.6 49.8,9.7 50.7,10.1 51.5,11.4 52.4,11.4 53.2,11.5 54.1,12.7 54.9,13.0 55.8,13.0 56.7,13.1 57.5,13.1 58.4,13.5 59.2,13.5 60.1,13.6 60.9,13.6 61.8,13.6 62.6,13.6 63.5,13.6 64.3,13.6 65.2,13.6 66.0,13.6 66.9,13.6 67.8,13.6 68.6,13.6 69.5,13.6 70.3,13.6 71.2,13.6 72.0,13.6 72.9,13.6 73.7,13.6 74.6,13.6 75.4,13.9 76.3,13.9 77.1,14.0 78.0,13.5"></polyline><circle cx="78.0" cy="13.5" r="1.5" fill="currentColor"></circle></svg>   </dd>
+    15
+<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-core Commits 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,3.2 2.9,2.9 3.7,2.8 4.6,2.6 5.4,2.6 6.3,2.6 7.1,2.6 8.0,2.6 8.8,2.6 9.7,2.6 10.5,2.6 11.4,2.6 12.2,2.6 13.1,2.6 14.0,2.6 14.8,2.6 15.7,2.6 16.5,2.6 17.4,2.6 18.2,2.6 19.1,2.6 19.9,2.6 20.8,2.6 21.6,2.6 22.5,2.3 23.3,2.3 24.2,2.0 25.1,2.0 25.9,2.0 26.8,2.0 27.6,2.0 28.5,2.0 29.3,2.0 30.2,2.0 31.0,2.0 31.9,2.0 32.7,2.0 33.6,2.0 34.4,2.0 35.3,2.0 36.2,2.3 37.0,2.6 37.9,2.9 38.7,3.0 39.6,4.3 40.4,4.6 41.3,4.8 42.1,5.4 43.0,7.5 43.8,7.8 44.7,7.9 45.6,9.1 46.4,9.2 47.3,9.4 48.1,9.6 49.0,9.6 49.8,9.7 50.7,10.1 51.5,11.4 52.4,11.4 53.2,11.5 54.1,12.7 54.9,13.0 55.8,13.0 56.7,13.1 57.5,13.1 58.4,13.5 59.2,13.5 60.1,13.6 60.9,13.6 61.8,13.6 62.6,13.6 63.5,13.6 64.3,13.6 65.2,13.6 66.0,13.6 66.9,13.6 67.8,13.6 68.6,13.6 69.5,13.6 70.3,13.6 71.2,13.6 72.0,13.6 72.9,13.6 73.7,13.6 74.6,13.6 75.4,13.9 76.3,13.9 77.1,14.0 78.0,13.2"></polyline><circle cx="78.0" cy="13.2" r="1.5" fill="currentColor"></circle></svg>   </dd>
    <dt>Releases 90d</dt><dd>2<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-core Releases 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.4 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,2.0 12.2,2.0 13.1,2.0 14.0,2.0 14.8,2.0 15.7,2.0 16.5,2.0 17.4,2.0 18.2,2.0 19.1,2.0 19.9,2.0 20.8,2.0 21.6,2.0 22.5,2.0 23.3,2.0 24.2,2.0 25.1,2.0 25.9,2.0 26.8,2.0 27.6,2.0 28.5,2.0 29.3,2.0 30.2,2.0 31.0,2.0 31.9,2.0 32.7,2.0 33.6,2.0 34.4,2.0 35.3,2.0 36.2,2.8 37.0,3.2 37.9,3.2 38.7,3.2 39.6,4.0 40.4,4.8 41.3,4.8 42.1,4.8 43.0,6.0 43.8,6.8 44.7,6.8 45.6,8.0 46.4,8.4 47.3,8.8 48.1,9.6 49.0,9.6 49.8,9.6 50.7,10.0 51.5,10.8 52.4,10.8 53.2,10.8 54.1,11.6 54.9,12.0 55.8,12.0 56.7,12.0 57.5,12.0 58.4,13.2 59.2,13.2 60.1,13.6 60.9,13.6 61.8,13.6 62.6,13.6 63.5,13.6 64.3,13.6 65.2,13.6 66.0,13.6 66.9,13.6 67.8,13.6 68.6,13.6 69.5,13.6 70.3,13.6 71.2,13.6 72.0,13.6 72.9,13.6 73.7,13.6 74.6,13.6 75.4,13.6 76.3,13.6 77.1,14.0 78.0,13.6"></polyline><circle cx="78.0" cy="13.6" r="1.5" fill="currentColor"></circle></svg></dd>
   </dl>
  </div>
@@ -410,7 +313,7 @@ footer a{color:var(--muted)}
  <h2 id="cm-h">Code surface area</h2>
  <div class="card">
    <div class="code-viz">
-    <svg class="activity-svg activity-stack" width="112" height="18" viewBox="0 0 112 18" role="img" aria-label="kaos-llm-core code surface: Python source 28796, Python tests 33218, Rust source 0, Rust tests 0 lines"><rect x="0.5" y="4.5" width="111" height="9" rx="2" fill="none" stroke="var(--border)"></rect><rect x="1.0" y="5" width="51.1" height="8" fill="var(--primary)"></rect><rect x="52.1" y="5" width="58.9" height="8" fill="var(--accent)"></rect></svg>
+    <svg class="activity-svg activity-stack" width="112" height="18" viewBox="0 0 112 18" role="img" aria-label="kaos-llm-core code surface: Python source 28796, Python tests 33227, Rust source 0, Rust tests 0 lines"><rect x="0.5" y="4.5" width="111" height="9" rx="2" fill="none" stroke="var(--border)"></rect><rect x="1.0" y="5" width="51.1" height="8" fill="var(--primary)"></rect><rect x="52.1" y="5" width="58.9" height="8" fill="var(--accent)"></rect></svg>
     <div class="code-legend" aria-hidden="true">
      <span><i class="sw py-src"></i>Py src</span>
      <span><i class="sw py-tests"></i>Py tests</span>
@@ -422,13 +325,13 @@ footer a{color:var(--muted)}
    <dt>Python source (LoC)</dt>
    <dd>28,796 across 222 files</dd>
    <dt>Python tests (LoC)</dt>
-   <dd>33,218 across 184 files</dd>
+   <dd>33,227 across 184 files</dd>
    <dt>Rust source (LoC)</dt>
    <dd>—</dd>
    <dt>Rust tests (LoC)</dt>
    <dd>—</dd>
    <dt>Source lines of code</dt>
-   <dd>62,014 LoC<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-core Lines of code: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,14.0 2.9,2.7 3.7,2.7 4.6,2.7 5.4,2.7 6.3,2.7 7.1,2.7 8.0,2.7 8.8,2.7 9.7,2.7 10.5,2.7 11.4,2.7 12.2,2.7 13.1,2.7 14.0,2.7 14.8,2.7 15.7,2.7 16.5,2.7 17.4,2.7 18.2,2.7 19.1,2.7 19.9,2.7 20.8,2.7 21.6,2.7 22.5,2.6 23.3,2.6 24.2,2.0 25.1,2.0 25.9,2.0 26.8,2.0 27.6,2.0 28.5,2.0 29.3,2.0 30.2,2.0 31.0,2.0 31.9,2.0 32.7,2.0 33.6,2.0 34.4,2.0 35.3,2.0 36.2,2.0 37.0,2.0 37.9,2.0 38.7,2.0 39.6,2.0 40.4,2.0 41.3,2.0 42.1,2.0 43.0,2.0 43.8,2.0 44.7,2.0 45.6,2.0 46.4,2.0 47.3,2.0 48.1,2.0 49.0,2.0 49.8,2.0 50.7,2.0 51.5,2.0 52.4,2.0 53.2,2.0 54.1,2.0 54.9,2.0 55.8,2.0 56.7,2.0 57.5,2.0 58.4,2.0 59.2,2.0 60.1,2.0 60.9,2.0 61.8,2.0 62.6,2.0 63.5,2.0 64.3,2.0 65.2,2.0 66.0,2.0 66.9,2.0 67.8,2.0 68.6,2.0 69.5,2.0 70.3,2.0 71.2,2.0 72.0,2.0 72.9,2.0 73.7,2.0 74.6,2.0 75.4,2.0 76.3,2.0 77.1,2.0 78.0,2.0"></polyline><circle cx="78.0" cy="2.0" r="1.5" fill="currentColor"></circle></svg></dd>
+   <dd>62,023 LoC<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-core Lines of code: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,14.0 2.9,3.0 3.7,3.0 4.6,3.0 5.4,3.0 6.3,3.0 7.1,3.0 8.0,3.0 8.8,3.0 9.7,3.0 10.5,3.0 11.4,3.0 12.2,3.0 13.1,3.0 14.0,3.0 14.8,3.0 15.7,3.0 16.5,3.0 17.4,3.0 18.2,3.0 19.1,3.0 19.9,3.0 20.8,3.0 21.6,3.0 22.5,2.9 23.3,2.9 24.2,2.3 25.1,2.3 25.9,2.3 26.8,2.3 27.6,2.3 28.5,2.3 29.3,2.3 30.2,2.3 31.0,2.3 31.9,2.3 32.7,2.3 33.6,2.3 34.4,2.3 35.3,2.3 36.2,2.3 37.0,2.3 37.9,2.3 38.7,2.3 39.6,2.3 40.4,2.3 41.3,2.3 42.1,2.3 43.0,2.3 43.8,2.3 44.7,2.3 45.6,2.3 46.4,2.3 47.3,2.3 48.1,2.3 49.0,2.3 49.8,2.3 50.7,2.3 51.5,2.3 52.4,2.3 53.2,2.3 54.1,2.3 54.9,2.3 55.8,2.3 56.7,2.3 57.5,2.3 58.4,2.3 59.2,2.3 60.1,2.3 60.9,2.3 61.8,2.3 62.6,2.3 63.5,2.3 64.3,2.3 65.2,2.3 66.0,2.3 66.9,2.3 67.8,2.3 68.6,2.3 69.5,2.3 70.3,2.3 71.2,2.3 72.0,2.3 72.9,2.3 73.7,2.3 74.6,2.3 75.4,2.3 76.3,2.3 77.1,2.3 78.0,2.0"></polyline><circle cx="78.0" cy="2.0" r="1.5" fill="currentColor"></circle></svg></dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
    Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
@@ -456,7 +359,7 @@ footer a{color:var(--muted)}
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-llm-core">Repository</a></li><li><a href="https://pypi.org/project/kaos-llm-core/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/35858833470">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/35858833716">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-llm-core.json"><code>api/v1/package/kaos-llm-core.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-llm-core">Repository</a></li><li><a href="https://pypi.org/project/kaos-llm-core/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/35885793617">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-llm-core/actions/runs/35885793482">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-llm-core.json"><code>api/v1/package/kaos-llm-core.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
@@ -477,7 +380,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-09-23 14:57 UTC
+ Generated 2026-09-23 16:09 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.5",
       "pypi_url": "https://pypi.org/project/kaos-source/0.1.5/",
-      "main_head_sha": "c878bf946baeafd966fa9f55245c9660ada07446",
+      "main_head_sha": "5f9feb5af682fea7449ff3b8b1b1aab79182ecdd",
       "latest_tag": "v0.1.5",
       "latest_tag_sha": "c878bf946baeafd966fa9f55245c9660ada07446",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T11:55:54Z"
+      "last_commit_at": "2026-09-23T15:32:22Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35857399174,
-      "workflow_run_url": "https://github.com/273v/kaos-source/actions/runs/35857399174",
-      "head_sha": "c878bf946baeafd966fa9f55245c9660ada07446",
-      "run_completed_at": "2026-09-23T12:03:42Z",
+      "workflow_run_id": 35882301117,
+      "workflow_run_url": "https://github.com/273v/kaos-source/actions/runs/35882301117",
+      "head_sha": "5f9feb5af682fea7449ff3b8b1b1aab79182ecdd",
+      "run_completed_at": "2026-09-23T15:32:49Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14)",
@@ -73,47 +73,47 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35857399227,
-      "workflow_run_url": "https://github.com/273v/kaos-source/actions/runs/35857399227",
+      "workflow_run_id": 35882301246,
+      "workflow_run_url": "https://github.com/273v/kaos-source/actions/runs/35882301246",
       "jobs": [
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:35:09Z"
+        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T11:56:06Z"
+          "completed_at": "2026-09-23T15:35:06Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T11:56:13Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T11:56:10Z"
+          "completed_at": "2026-09-23T15:35:20Z"
         }
       ],
-      "run_completed_at": "2026-09-23T11:56:14Z",
+      "run_completed_at": "2026-09-23T15:38:32Z",
       "full_workflow_conclusion": "success",
-      "full_workflow_run_id": 35810901726,
-      "full_workflow_run_url": "https://github.com/273v/kaos-source/actions/runs/35810901726",
+      "full_workflow_run_id": 35882305126,
+      "full_workflow_run_url": "https://github.com/273v/kaos-source/actions/runs/35882305126",
       "full_jobs": [
         {
           "name": "gitleaks (full history)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:34:42Z"
+          "completed_at": "2026-09-23T15:32:45Z"
         },
         {
           "name": "pip-audit (resolved lock)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:35:00Z"
+          "completed_at": "2026-09-23T15:32:41Z"
         }
       ],
-      "full_run_completed_at": "2026-09-23T02:35:00Z"
+      "full_run_completed_at": "2026-09-23T15:32:45Z"
     },
     "open_prs": {
       "count": 0,
@@ -180,9 +180,9 @@
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.875,
+      "conventional_commits_rate_90d": 0.889,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 8,
+      "commits_90d": 9,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {

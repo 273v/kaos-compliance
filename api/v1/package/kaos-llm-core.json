@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.15",
       "pypi_url": "https://pypi.org/project/kaos-llm-core/0.1.15/",
-      "main_head_sha": "0c13b9dacaf1c17368cad01f029449724486160c",
+      "main_head_sha": "b5da219752648caf59faf4d548c131579534b314",
       "latest_tag": "v0.1.15",
       "latest_tag_sha": "0c13b9dacaf1c17368cad01f029449724486160c",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T12:10:20Z"
+      "last_commit_at": "2026-09-23T16:01:12Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35858833470,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/35858833470",
-      "head_sha": "0c13b9dacaf1c17368cad01f029449724486160c",
-      "run_completed_at": "2026-09-23T12:12:20Z",
+      "workflow_run_id": 35885793617,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/35885793617",
+      "head_sha": "b5da219752648caf59faf4d548c131579534b314",
+      "run_completed_at": "2026-09-23T16:03:17Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14)",
@@ -73,47 +73,47 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35858833716,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/35858833716",
+      "workflow_run_id": 35885793482,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/35885793482",
       "jobs": [
         {
-          "name": "bandit (static security)",
+          "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T12:10:38Z"
+          "completed_at": "2026-09-23T16:01:29Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T12:10:32Z"
+          "completed_at": "2026-09-23T16:01:29Z"
         },
         {
-          "name": "vulture (dead-code scan)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T12:10:50Z"
+          "completed_at": "2026-09-23T16:01:29Z"
         }
       ],
-      "run_completed_at": "2026-09-23T12:10:51Z",
+      "run_completed_at": "2026-09-23T16:01:30Z",
       "full_workflow_conclusion": "success",
-      "full_workflow_run_id": 35853764199,
-      "full_workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/35853764199",
+      "full_workflow_run_id": 35884351059,
+      "full_workflow_run_url": "https://github.com/273v/kaos-llm-core/actions/runs/35884351059",
       "full_jobs": [
-        {
-          "name": "gitleaks (full history)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T11:18:41Z"
-        },
         {
           "name": "pip-audit (resolved lock)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T11:18:52Z"
+          "completed_at": "2026-09-23T15:49:37Z"
+        },
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:49:25Z"
         }
       ],
-      "full_run_completed_at": "2026-09-23T11:18:53Z"
+      "full_run_completed_at": "2026-09-23T15:49:41Z"
     },
     "open_prs": {
       "count": 0,
@@ -179,9 +179,9 @@
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.846,
+      "conventional_commits_rate_90d": 0.867,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 13,
+      "commits_90d": 15,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -244,7 +244,7 @@
     "code_metrics": {
       "python": {
         "src_loc": 28796,
-        "tests_loc": 33218,
+        "tests_loc": 33227,
         "src_files": 222,
         "tests_files": 184,
         "tests_count": 2326
@@ -261,251 +261,15 @@
     "advisories": {
       "source": "osv.dev",
       "scanned_components": 60,
-      "open": [
-        {
-          "id": "GHSA-537c-gmf6-5ccf",
-          "aliases": [],
-          "package": "cryptography",
-          "version": "48.0.0",
-          "ecosystem": "pypi",
-          "severity": "high",
-          "informational": null,
-          "summary": "Vulnerable OpenSSL included in cryptography wheels",
-          "url": "https://osv.dev/vulnerability/GHSA-537c-gmf6-5ccf"
-        },
-        {
-          "id": "GHSA-5rvq-cxj2-64vf",
-          "aliases": [
-            "CVE-2026-53539",
-            "PYSEC-2026-3036"
-          ],
-          "package": "python-multipart",
-          "version": "0.0.29",
-          "ecosystem": "pypi",
-          "severity": "high",
-          "informational": null,
-          "summary": "python-multipart: Quadratic-time querystring parsing with semicolon separators causes CPU denial of service",
-          "url": "https://osv.dev/vulnerability/GHSA-5rvq-cxj2-64vf"
-        },
-        {
-          "id": "GHSA-82w8-qh3p-5jfq",
-          "aliases": [
-            "CVE-2026-54283",
-            "PYSEC-2026-249"
-          ],
-          "package": "starlette",
-          "version": "1.0.1",
-          "ecosystem": "pypi",
-          "severity": "high",
-          "informational": null,
-          "summary": "Starlette: request.form() limits silently ignored for application/x-www-form-urlencoded enable DoS",
-          "url": "https://osv.dev/vulnerability/GHSA-82w8-qh3p-5jfq"
-        },
-        {
-          "id": "GHSA-g6cj-pr64-35w5",
-          "aliases": [
-            "CVE-2026-69247",
-            "PYSEC-2026-3552"
-          ],
-          "package": "cryptography",
-          "version": "48.0.0",
-          "ecosystem": "pypi",
-          "severity": "high",
-          "informational": null,
-          "summary": "cryptography: PKCS#7 EnvelopedData decryption exposes a Bleichenbacher oracle through distinguishable errors and timing",
-          "url": "https://osv.dev/vulnerability/GHSA-g6cj-pr64-35w5"
-        },
-        {
-          "id": "GHSA-jwv3-5hgf-82ww",
-          "aliases": [
-            "CVE-2026-69249",
-            "PYSEC-2026-3553"
-          ],
-          "package": "cryptography",
-          "version": "48.0.0",
-          "ecosystem": "pypi",
-          "severity": "high",
-          "informational": null,
-          "summary": "python-cryptography: Duplicate self-signed intermediates can cause exponential path-building",
-          "url": "https://osv.dev/vulnerability/GHSA-jwv3-5hgf-82ww"
-        },
-        {
-          "id": "GHSA-wqp7-x3pw-xc5r",
-          "aliases": [
-            "CVE-2026-48818",
-            "PYSEC-2026-2281"
-          ],
-          "package": "starlette",
-          "version": "1.0.1",
-          "ecosystem": "pypi",
-          "severity": "high",
-          "informational": null,
-          "summary": "Starlette: SSRF and NTLM credential theft via UNC paths in StaticFiles on Windows",
-          "url": "https://osv.dev/vulnerability/GHSA-wqp7-x3pw-xc5r"
-        },
-        {
-          "id": "GHSA-xgmm-8j9v-c9wx",
-          "aliases": [
-            "CVE-2026-48526",
-            "PYSEC-2026-179"
-          ],
-          "package": "pyjwt",
-          "version": "2.12.1",
-          "ecosystem": "pypi",
-          "severity": "high",
-          "informational": null,
-          "summary": "PyJWT: Public-key JWK accepted as HMAC secret enables forged HS256 tokens when mixed families are allowed",
-          "url": "https://osv.dev/vulnerability/GHSA-xgmm-8j9v-c9wx"
-        },
-        {
-          "id": "GHSA-993g-76c3-p5m4",
-          "aliases": [
-            "CVE-2026-48522",
-            "PYSEC-2026-175"
-          ],
-          "package": "pyjwt",
-          "version": "2.12.1",
-          "ecosystem": "pypi",
-          "severity": "moderate",
-          "informational": null,
-          "summary": "PyJWKClient: missing scheme allowlist enables CVE-2024-21643-class SSRF + token forgery via file://, ftp://, data: schemes",
-          "url": "https://osv.dev/vulnerability/GHSA-993g-76c3-p5m4"
-        },
-        {
-          "id": "GHSA-jq35-7prp-9v3f",
-          "aliases": [
-            "CVE-2026-48523",
-            "PYSEC-2026-176"
-          ],
-          "package": "pyjwt",
-          "version": "2.12.1",
-          "ecosystem": "pypi",
-          "severity": "moderate",
-          "informational": null,
-          "summary": "PyJWT: Algorithm allow-list bypass when decoding with `PyJWK` / `PyJWKClient` keys",
-          "url": "https://osv.dev/vulnerability/GHSA-jq35-7prp-9v3f"
-        },
-        {
-          "id": "GHSA-m2h6-j472-rp4c",
-          "aliases": [
-            "CVE-2026-69248",
-            "PYSEC-2026-3554"
-          ],
-          "package": "cryptography",
-          "version": "48.0.0",
-          "ecosystem": "pypi",
-          "severity": "moderate",
-          "informational": null,
-          "summary": "python-cryptography verifier accepts wildcard DNS names allowing escape from permittedSubtrees",
-          "url": "https://osv.dev/vulnerability/GHSA-m2h6-j472-rp4c"
-        },
-        {
-          "id": "GHSA-w7vc-732c-9m39",
-          "aliases": [
-            "CVE-2026-48525",
-            "PYSEC-2026-178"
-          ],
-          "package": "pyjwt",
-          "version": "2.12.1",
-          "ecosystem": "pypi",
-          "severity": "moderate",
-          "informational": null,
-          "summary": "PyJWT: Unauthenticated DoS via unbounded Base64URL decoding of unused payload segment in b64=false detached JWS",
-          "url": "https://osv.dev/vulnerability/GHSA-w7vc-732c-9m39"
-        },
-        {
-          "id": "GHSA-x746-7m8f-x49c",
-          "aliases": [
-            "CVE-2026-48817",
-            "PYSEC-2026-2280"
-          ],
-          "package": "starlette",
-          "version": "1.0.1",
-          "ecosystem": "pypi",
-          "severity": "moderate",
-          "informational": null,
-          "summary": "Starlette: Arbitrary HTTP method dispatched to `HTTPEndpoint` attributes via `getattr`",
-          "url": "https://osv.dev/vulnerability/GHSA-x746-7m8f-x49c"
-        },
-        {
-          "id": "GHSA-6jv3-5f52-599m",
-          "aliases": [
-            "CVE-2026-53538",
-            "PYSEC-2026-3037"
-          ],
-          "package": "python-multipart",
-          "version": "0.0.29",
-          "ecosystem": "pypi",
-          "severity": "low",
-          "informational": null,
-          "summary": "python-multipart: Semicolon treated as querystring field separator enables parameter smuggling",
-          "url": "https://osv.dev/vulnerability/GHSA-6jv3-5f52-599m"
-        },
-        {
-          "id": "GHSA-fhv5-28vv-h8m8",
-          "aliases": [
-            "CVE-2026-48524",
-            "PYSEC-2026-177"
-          ],
-          "package": "pyjwt",
-          "version": "2.12.1",
-          "ecosystem": "pypi",
-          "severity": "low",
-          "informational": null,
-          "summary": "PyJWKClient unbounded JWKS endpoint requests via attacker-controlled kid values (DoS)",
-          "url": "https://osv.dev/vulnerability/GHSA-fhv5-28vv-h8m8"
-        },
-        {
-          "id": "GHSA-jp82-jpqv-5vv3",
-          "aliases": [
-            "CVE-2026-54282",
-            "PYSEC-2026-248"
-          ],
-          "package": "starlette",
-          "version": "1.0.1",
-          "ecosystem": "pypi",
-          "severity": "low",
-          "informational": null,
-          "summary": "Starlette: Unvalidated request path concatenated into authority poisons request.url.hostname",
-          "url": "https://osv.dev/vulnerability/GHSA-jp82-jpqv-5vv3"
-        },
-        {
-          "id": "GHSA-v9pg-7xvm-68hf",
-          "aliases": [
-            "CVE-2026-53540",
-            "PYSEC-2026-3040"
-          ],
-          "package": "python-multipart",
-          "version": "0.0.29",
-          "ecosystem": "pypi",
-          "severity": "low",
-          "informational": null,
-          "summary": "python-multipart: Negative Content-Length in parse_form buffers the entire body in memory",
-          "url": "https://osv.dev/vulnerability/GHSA-v9pg-7xvm-68hf"
-        },
-        {
-          "id": "GHSA-vffw-93wf-4j4q",
-          "aliases": [
-            "CVE-2026-53537",
-            "PYSEC-2026-3041"
-          ],
-          "package": "python-multipart",
-          "version": "0.0.29",
-          "ecosystem": "pypi",
-          "severity": "low",
-          "informational": null,
-          "summary": "python-multipart: Content-Disposition parameter smuggling via RFC 2231/5987 extended parameters",
-          "url": "https://osv.dev/vulnerability/GHSA-vffw-93wf-4j4q"
-        }
-      ],
+      "open": [],
       "notices": [],
       "counts": {
         "critical": 0,
-        "high": 7,
-        "moderate": 5,
-        "low": 5,
+        "high": 0,
+        "moderate": 0,
+        "low": 0,
         "unknown": 0,
-        "total": 17
+        "total": 0
       },
       "errors": []
     },

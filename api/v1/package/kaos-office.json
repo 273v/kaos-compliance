@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.7",
       "pypi_url": "https://pypi.org/project/kaos-office/0.1.7/",
-      "main_head_sha": "fef180afa53517274817a449e7674ffc1fa85f8c",
+      "main_head_sha": "e557c746ec8aa217bde0584e71e213d3690e9867",
       "latest_tag": "v0.1.7",
       "latest_tag_sha": "fef180afa53517274817a449e7674ffc1fa85f8c",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T12:01:15Z"
+      "last_commit_at": "2026-09-23T15:13:01Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35857917853,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35857917853",
-      "head_sha": "fef180afa53517274817a449e7674ffc1fa85f8c",
-      "run_completed_at": "2026-09-23T12:05:49Z",
+      "workflow_run_id": 35879906387,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35879906387",
+      "head_sha": "e557c746ec8aa217bde0584e71e213d3690e9867",
+      "run_completed_at": "2026-09-23T15:14:51Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14)",
@@ -73,47 +73,47 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35857917580,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35857917580",
+      "workflow_run_id": 35879906461,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35879906461",
       "jobs": [
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T12:01:31Z"
+          "completed_at": "2026-09-23T15:13:14Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T12:01:30Z"
+          "completed_at": "2026-09-23T15:13:18Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T12:01:31Z"
+          "completed_at": "2026-09-23T15:13:17Z"
         }
       ],
-      "run_completed_at": "2026-09-23T12:01:32Z",
+      "run_completed_at": "2026-09-23T15:13:18Z",
       "full_workflow_conclusion": "success",
-      "full_workflow_run_id": 35813808963,
-      "full_workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35813808963",
+      "full_workflow_run_id": 35879910829,
+      "full_workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35879910829",
       "full_jobs": [
-        {
-          "name": "gitleaks (full history)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T03:18:48Z"
-        },
         {
           "name": "pip-audit (resolved lock)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T03:19:05Z"
+          "completed_at": "2026-09-23T15:13:27Z"
+        },
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:13:20Z"
         }
       ],
-      "full_run_completed_at": "2026-09-23T03:19:06Z"
+      "full_run_completed_at": "2026-09-23T15:13:32Z"
     },
     "open_prs": {
       "count": 0,
@@ -179,9 +179,9 @@
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.833,
+      "conventional_commits_rate_90d": 0.846,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 12,
+      "commits_90d": 13,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -261,30 +261,15 @@
     "advisories": {
       "source": "osv.dev",
       "scanned_components": 63,
-      "open": [
-        {
-          "id": "GHSA-65pc-fj4g-8rjx",
-          "aliases": [
-            "CVE-2026-45409",
-            "PYSEC-2026-215"
-          ],
-          "package": "idna",
-          "version": "3.13",
-          "ecosystem": "pypi",
-          "severity": "moderate",
-          "informational": null,
-          "summary": "Internationalized Domain Names in Applications (IDNA): Specially crafted inputs to idna.encode() can bypass CVE-2024-3651 fix",
-          "url": "https://osv.dev/vulnerability/GHSA-65pc-fj4g-8rjx"
-        }
-      ],
+      "open": [],
       "notices": [],
       "counts": {
         "critical": 0,
         "high": 0,
-        "moderate": 1,
+        "moderate": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1
+        "total": 0
       },
       "errors": []
     },
