@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.2",
       "pypi_url": "https://pypi.org/project/kaos-citations/0.1.2/",
-      "main_head_sha": "e743a3a96a4138e0a77baad5accc19ba5efd674e",
+      "main_head_sha": "b2cdbf808f36cd6c4bc559f143991169ecb91c09",
       "latest_tag": "v0.1.2",
       "latest_tag_sha": "0be92bc4dc478ab4fdf24b24958c16af8c0d2272",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-07-20T14:18:13Z"
+      "last_commit_at": "2026-09-23T02:08:01Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 29750052990,
-      "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/29750052990",
-      "head_sha": "e743a3a96a4138e0a77baad5accc19ba5efd674e",
-      "run_completed_at": "2026-07-20T14:20:03Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": 35809136904,
+      "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/35809136904",
+      "head_sha": "b2cdbf808f36cd6c4bc559f143991169ecb91c09",
+      "run_completed_at": "2026-09-23T02:11:23Z",
       "matrix": [
         {
           "name": "test (windows-x64 / Python 3.13)",
@@ -67,43 +67,41 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 29750049493,
-      "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/29750049493",
+      "workflow_run_id": 35809136968,
+      "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/35809136968",
       "jobs": [
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-07-20T14:18:33Z"
-        },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-20T14:18:31Z"
+          "completed_at": "2026-09-23T02:08:14Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T02:08:16Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-20T14:18:28Z"
+          "completed_at": "2026-09-23T02:08:12Z"
         }
       ],
-      "run_completed_at": "2026-07-20T14:18:34Z"
+      "run_completed_at": "2026-09-23T02:08:17Z"
     },
     "open_prs": {
-      "count": 4,
+      "count": 2,
       "titles": [
-        "#49 chore(deps): Bump anyio from 4.13.0 to 4.14.2",
         "#48 chore(deps): Bump cryptography from 48.0.1 to 50.0.0",
-        "#47 chore(deps): Bump the actions-all group across 1 directory with 5 updates",
         "#45 chore(deps): Bump the deps-minor group with 3 updates"
       ]
     },
     "freshness": {
-      "days_since_last_commit": 64,
+      "days_since_last_commit": 0,
       "days_since_last_release": 120,
-      "days_since_last_security_scan": 64
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.2",
@@ -162,8 +160,8 @@
       "dco_signoff_rate_90d": 1.0,
       "conventional_commits_rate_90d": 1.0,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 5,
-      "unique_committers_90d": 1,
+      "commits_90d": 7,
+      "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
         "source": "branches_api",
@@ -216,15 +214,15 @@
         "NOTICE"
       ],
       "releases_90d": 0,
-      "median_pr_age_days": 49.67,
-      "open_pr_count": 4,
+      "median_pr_age_days": 53.342,
+      "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": null,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 7788,
+        "src_loc": 7787,
         "tests_loc": 2486,
         "src_files": 30,
         "tests_files": 22,

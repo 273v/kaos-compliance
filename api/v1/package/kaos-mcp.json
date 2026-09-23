@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.3",
       "pypi_url": "https://pypi.org/project/kaos-mcp/0.1.3/",
-      "main_head_sha": "d762598fab40fa6d45ed061c6c2ecacaa14f3fdf",
-      "latest_tag": "v0.1.3",
-      "latest_tag_sha": "ef20368f99b1c45057d744005f1ddce25078104b",
-      "tag_at_head": false,
+      "main_head_sha": "2975e60ab62ecee5d029a76651cab422c8ce69e3",
+      "latest_tag": "v0.1.4",
+      "latest_tag_sha": "2975e60ab62ecee5d029a76651cab422c8ce69e3",
+      "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-07-22T01:14:38Z"
+      "last_commit_at": "2026-09-23T01:56:43Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 29882564440,
-      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/29882564440",
-      "head_sha": "d762598fab40fa6d45ed061c6c2ecacaa14f3fdf",
-      "run_completed_at": "2026-07-22T01:16:52Z",
+      "workflow_run_id": 35808376806,
+      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/35808376806",
+      "head_sha": "2975e60ab62ecee5d029a76651cab422c8ce69e3",
+      "run_completed_at": "2026-09-23T02:01:39Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14t)",
@@ -67,41 +67,42 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 29882564484,
-      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/29882564484",
+      "workflow_run_id": 35808376777,
+      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/35808376777",
       "jobs": [
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-22T01:14:50Z"
+          "completed_at": "2026-09-23T01:56:53Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-22T01:15:05Z"
+          "completed_at": "2026-09-23T01:56:55Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-22T01:14:58Z"
+          "completed_at": "2026-09-23T01:56:56Z"
         }
       ],
-      "run_completed_at": "2026-07-22T01:15:06Z"
+      "run_completed_at": "2026-09-23T01:56:57Z"
     },
     "open_prs": {
-      "count": 2,
+      "count": 3,
       "titles": [
-        "#51 chore(deps): bump the deps-minor group across 1 directory with 5 updates",
+        "#54 chore(deps): security lock refresh + mcp>=1.28.1 floor (0.1.5)",
+        "#53 chore(deps): bump the deps-minor group across 1 directory with 6 updates",
         "#48 chore(deps): bump the actions-all group across 1 directory with 4 updates"
       ]
     },
     "freshness": {
-      "days_since_last_commit": 62,
+      "days_since_last_commit": 0,
       "days_since_last_release": 113,
-      "days_since_last_security_scan": 62
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.3",
@@ -156,8 +157,8 @@
       "dco_signoff_rate_90d": 1.0,
       "conventional_commits_rate_90d": 1.0,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 5,
-      "unique_committers_90d": 1,
+      "commits_90d": 6,
+      "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
         "source": "branches_api",
@@ -209,20 +210,22 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 0,
-      "median_pr_age_days": 32.934,
-      "open_pr_count": 2,
+      "releases_90d": 1,
+      "median_pr_age_days": 0.01,
+      "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": null,
-      "errors": []
+      "errors": [
+        "time_to_pypi: no resolvable (tag, pypi-upload) pairs in window"
+      ]
     },
     "code_metrics": {
       "python": {
         "src_loc": 2659,
-        "tests_loc": 1848,
+        "tests_loc": 1865,
         "src_files": 24,
-        "tests_files": 13,
-        "tests_count": 140
+        "tests_files": 14,
+        "tests_count": 142
       },
       "rust": {
         "src_loc": 0,

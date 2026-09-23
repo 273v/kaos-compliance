@@ -8,100 +8,97 @@
     "identity": {
       "pypi_version": "0.1.0a5",
       "pypi_url": "https://pypi.org/project/kaos-names/0.1.0a5/",
-      "main_head_sha": "2ff8eb1294b331b67c6ba90ee1aba6906f5dc3f3",
+      "main_head_sha": "d65a249026a20440a8987f7d82f8ddf54aa2a1b0",
       "latest_tag": "v0.1.0a5",
       "latest_tag_sha": "10c55846a392f9a6f3e5d0a57d6129fc863177d8",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-07-20T14:20:15Z"
+      "last_commit_at": "2026-09-23T02:06:07Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 29750194122,
-      "workflow_run_url": "https://github.com/273v/kaos-names/actions/runs/29750194122",
-      "head_sha": "2ff8eb1294b331b67c6ba90ee1aba6906f5dc3f3",
-      "run_completed_at": "2026-07-20T14:21:57Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": 35809011963,
+      "workflow_run_url": "https://github.com/273v/kaos-names/actions/runs/35809011963",
+      "head_sha": "d65a249026a20440a8987f7d82f8ddf54aa2a1b0",
+      "run_completed_at": "2026-09-23T02:13:07Z",
       "matrix": [
-        {
-          "name": "test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:27:25Z",
-          "completed_at": "2026-09-21T05:27:43Z",
-          "duration_seconds": 18
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:28:12Z",
-          "completed_at": "2026-09-21T05:28:20Z",
-          "duration_seconds": 8
-        },
-        {
-          "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:28:18Z",
-          "completed_at": "2026-09-21T05:28:29Z",
-          "duration_seconds": 11
-        },
         {
           "name": "test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:27:34Z",
-          "completed_at": "2026-09-21T05:27:52Z",
-          "duration_seconds": 18
+          "started_at": "2026-09-23T02:10:41Z",
+          "completed_at": "2026-09-23T02:10:56Z",
+          "duration_seconds": 15
         },
         {
           "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:10:35Z",
+          "completed_at": null,
+          "duration_seconds": 321
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:10:35Z",
+          "completed_at": null,
+          "duration_seconds": 321
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:28:17Z",
-          "completed_at": "2026-09-21T05:28:28Z",
-          "duration_seconds": 11
+          "started_at": "2026-09-23T02:10:36Z",
+          "completed_at": "2026-09-23T02:10:58Z",
+          "duration_seconds": 22
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:10:35Z",
+          "completed_at": null,
+          "duration_seconds": 321
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 29750194424,
-      "workflow_run_url": "https://github.com/273v/kaos-names/actions/runs/29750194424",
+      "workflow_run_id": 35809012114,
+      "workflow_run_url": "https://github.com/273v/kaos-names/actions/runs/35809012114",
       "jobs": [
         {
-          "name": "gitleaks (incremental)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-20T14:20:31Z"
+          "completed_at": "2026-09-23T02:06:23Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-20T14:20:29Z"
+          "completed_at": "2026-09-23T02:06:22Z"
         },
         {
-          "name": "bandit (static security)",
+          "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-20T14:20:29Z"
+          "completed_at": "2026-09-23T02:06:17Z"
         }
       ],
-      "run_completed_at": "2026-07-20T14:20:32Z"
+      "run_completed_at": "2026-09-23T02:06:24Z"
     },
     "open_prs": {
-      "count": 2,
-      "titles": [
-        "#31 chore(deps): Bump the actions-all group across 1 directory with 5 updates",
-        "#29 chore(deps-dev): Bump the deps-minor group with 2 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 64,
+      "days_since_last_commit": 0,
       "days_since_last_release": 120,
-      "days_since_last_security_scan": 64
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.0a5",
@@ -149,8 +146,8 @@
       "dco_signoff_rate_90d": 1.0,
       "conventional_commits_rate_90d": 1.0,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 4,
-      "unique_committers_90d": 1,
+      "commits_90d": 7,
+      "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
         "source": "branches_api",
@@ -203,8 +200,8 @@
         "NOTICE"
       ],
       "releases_90d": 0,
-      "median_pr_age_days": 54.08,
-      "open_pr_count": 2,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": null,
       "errors": []

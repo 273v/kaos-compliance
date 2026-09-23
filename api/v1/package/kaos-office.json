@@ -8,100 +8,97 @@
     "identity": {
       "pypi_version": "0.1.6",
       "pypi_url": "https://pypi.org/project/kaos-office/0.1.6/",
-      "main_head_sha": "d93f36c0eb31114aa25dc9df106e42492aafe996",
+      "main_head_sha": "9510a8f58e30759749348a78de98704e937c9f76",
       "latest_tag": "v0.1.6",
       "latest_tag_sha": "6508baf2064b74d05005350acbcc5c607de749a3",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-07-22T01:13:45Z"
+      "last_commit_at": "2026-09-23T02:12:57Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 29882524202,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/29882524202",
-      "head_sha": "d93f36c0eb31114aa25dc9df106e42492aafe996",
-      "run_completed_at": "2026-07-22T01:16:56Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": 35809462225,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35809462225",
+      "head_sha": "9510a8f58e30759749348a78de98704e937c9f76",
+      "run_completed_at": "2026-09-23T02:18:15Z",
       "matrix": [
         {
-          "name": "test (linux-x64 / Python 3.14)",
+          "name": "test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:29:28Z",
-          "completed_at": "2026-09-21T05:30:46Z",
-          "duration_seconds": 78
+          "started_at": "2026-09-23T02:13:53Z",
+          "completed_at": "2026-09-23T02:15:12Z",
+          "duration_seconds": 79
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": null,
+          "status": "in_progress",
+          "started_at": "2026-09-23T02:16:21Z",
+          "completed_at": null,
+          "duration_seconds": 124
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:13:46Z",
+          "completed_at": null,
+          "duration_seconds": 279
         },
         {
           "name": "test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:28:15Z",
-          "completed_at": "2026-09-21T05:30:29Z",
-          "duration_seconds": 134
+          "started_at": "2026-09-23T02:13:48Z",
+          "completed_at": "2026-09-23T02:15:39Z",
+          "duration_seconds": 111
         },
         {
-          "name": "test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:28:19Z",
-          "completed_at": "2026-09-21T05:29:29Z",
-          "duration_seconds": 70
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:31:39Z",
-          "completed_at": "2026-09-21T05:32:57Z",
-          "duration_seconds": 78
-        },
-        {
-          "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": "failure",
-          "status": "completed",
-          "started_at": "2026-09-21T05:31:38Z",
-          "completed_at": "2026-09-21T05:31:47Z",
-          "duration_seconds": 9
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:13:46Z",
+          "completed_at": null,
+          "duration_seconds": 279
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 29882524214,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/29882524214",
+      "workflow_run_id": 35809462320,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35809462320",
       "jobs": [
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-07-22T01:14:01Z"
-        },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-22T01:13:59Z"
+          "completed_at": "2026-09-23T02:13:13Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-07-22T01:14:05Z"
+          "completed_at": "2026-09-23T02:13:11Z"
+        },
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T02:13:07Z"
         }
       ],
-      "run_completed_at": "2026-07-22T01:14:06Z"
+      "run_completed_at": "2026-09-23T02:13:14Z"
     },
     "open_prs": {
-      "count": 2,
-      "titles": [
-        "#60 build(deps): Bump the deps-minor group across 1 directory with 4 updates",
-        "#59 build(deps): Bump the actions-all group across 1 directory with 4 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
-      "days_since_last_commit": 62,
-      "days_since_last_release": 87,
-      "days_since_last_security_scan": 62
+      "days_since_last_commit": 0,
+      "days_since_last_release": 88,
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.6",
@@ -156,9 +153,9 @@
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.857,
+      "conventional_commits_rate_90d": 0.9,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 7,
+      "commits_90d": 10,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -171,8 +168,8 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 39.995,
-      "open_pr_count": 2,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 176,
       "errors": []
