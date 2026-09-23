@@ -54,7 +54,7 @@
         workflow_state   : str       # "green"|"yellow"|"red"|"gray"
         workflow_url     : str|None  # actions run URL ("" / None hides link)
         workflow_run_id  : str|None  # for the "run #N" hint
-        advisories_open  : int       # 0..N (currently always 0)
+        advisories_open  : int|None  # OSV.dev count; None when not scanned
         last_run_display : str       # "2h ago" | "—"
         jobs : dict[str, dict]       # keyed by tool id, where tool ids come from
                                      # {"gitleaks","bandit","vulture","pip_audit",
@@ -203,13 +203,21 @@ footer a{color:var(--muted)}
    </div>
   </div>
   <p class="honest">
-   {% if adv_total == 0 %}
-    <strong>0 open advisories</strong> across the org as of this snapshot.
-    Source: per-package OSV cross-check + GitHub Security Advisories API.
-    Verify via <a href="methodology.html#sec-5">the methodology table</a>.
+   {% set scanned = sec.advisories_scanned_modules | default(0) %}
+   {% if scanned == 0 %}
+    <strong>Not scanned.</strong> No package's locked dependencies were checked in this
+    snapshot, so no advisory count is claimed.
+   {% elif adv_total == 0 %}
+    <strong>0 open advisories</strong> in the locked dependencies of {{ scanned }} package(s)
+    as of this snapshot.
    {% else %}
-    {{ adv_total }} open advisories across the org. See per-package rows below for breakdown.
+    {{ adv_total }} open advisories in the locked dependencies of {{ scanned }} package(s)
+    {%- if adv.unknown | default(0) %} ({{ adv.unknown }} without a published severity){% endif %}.
+    See per-package rows below for breakdown.
    {% endif %}
+   Source: OSV.dev, which aggregates GitHub Security Advisories, PyPA and RustSec, queried for
+   every pin in each repo's <code>uv.lock</code> and <code>Cargo.lock</code>.
+   Verify via <a href="methodology.html#sec-5">the methodology table</a>.
   </p>
  </div>
 </section>
@@ -279,7 +287,7 @@ footer a{color:var(--muted)}
      {% set j = jobs.get(k, {"state":"gray","url":None}) %}
      <td data-h="{{ label }}">{{ pill_link(j.state, label, j.url) }}</td>
     {% endfor %}
-    <td data-h="Advisories">{{ r.advisories_open | default(0) }}</td>
+    <td data-h="Advisories">{{ r.advisories_open if r.advisories_open is not none else '—' }}</td>
     <td class="age" data-h="Last run">{{ r.last_run_display | default('—') }}</td>
    </tr>
    {% endfor %}

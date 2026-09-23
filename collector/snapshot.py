@@ -62,8 +62,8 @@ from pathlib import Path
 from typing import Any
 
 from collector import __version__ as COLLECTOR_VERSION
-from collector import code_metrics, governance, supply_chain
-from collector._retry import gh_run, url_get_json
+from collector import advisories, code_metrics, governance, supply_chain
+from collector._retry import gh_run, url_get_json, url_post_json
 
 ORG = "273v"
 # schema_version bumps on BREAKING changes only (see the field description
@@ -98,6 +98,15 @@ class CISection:
     head_sha: str | None = None
     run_completed_at: str | None = None
     matrix: list[dict[str, Any]] = field(default_factory=list)
+    # Scheduled lanes (weekly + on release tags). ``compat`` runs the
+    # cross-OS / preview-Python matrix; ``min-deps`` runs the suite at the
+    # lowest declared dependency versions. Latest main-branch run each.
+    compat_conclusion: str | None = None
+    compat_run_url: str | None = None
+    compat_completed_at: str | None = None
+    min_deps_conclusion: str | None = None
+    min_deps_run_url: str | None = None
+    min_deps_completed_at: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -109,6 +118,13 @@ class SecuritySection:
     workflow_run_url: str | None = None
     jobs: list[dict[str, Any]] = field(default_factory=list)
     run_completed_at: str | None = None
+    # ``security-full`` (weekly + on release tags): full-history gitleaks,
+    # pip-audit on the resolved lock, cargo-audit / cargo-deny.
+    full_workflow_conclusion: str | None = None
+    full_workflow_run_id: int | None = None
+    full_workflow_run_url: str | None = None
+    full_jobs: list[dict[str, Any]] = field(default_factory=list)
+    full_run_completed_at: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -117,6 +133,8 @@ class OpenPRsSection:
 
     count: int | None = None  # None if lookup failed after retries
     titles: list[str] = field(default_factory=list)
+    oldest_age_days: int | None = None  # None when there are no open PRs
+    dependabot_count: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -147,6 +165,8 @@ class ModuleSnapshot:
     supply_chain: dict[str, Any] = field(default_factory=dict)
     governance: dict[str, Any] = field(default_factory=dict)
     code_metrics: dict[str, Any] = field(default_factory=dict)
+    # Known advisories against locked dependencies (collector/advisories.py).
+    advisories: dict[str, Any] = field(default_factory=dict)
     errors: list[str] = field(default_factory=list)
 
 
@@ -413,6 +433,8 @@ def _synthesize_ci(repo: str, runs: list[dict[str, Any]]) -> CISection:
         except Exception:
             pass
 
+    min_deps = _latest_run(repo, "min-deps")
+
     return CISection(
         workflow_conclusion=composite,
         workflow_run_id=head_run.get("databaseId"),
@@ -420,6 +442,12 @@ def _synthesize_ci(repo: str, runs: list[dict[str, Any]]) -> CISection:
         head_sha=head_run.get("headSha"),
         run_completed_at=head_run.get("updatedAt"),
         matrix=matrix,
+        compat_conclusion=compat.get("conclusion") if compat else None,
+        compat_run_url=compat.get("url") if compat else None,
+        compat_completed_at=compat.get("updatedAt") if compat else None,
+        min_deps_conclusion=min_deps.get("conclusion") if min_deps else None,
+        min_deps_run_url=min_deps.get("url") if min_deps else None,
+        min_deps_completed_at=min_deps.get("updatedAt") if min_deps else None,
     )
 
 
@@ -429,17 +457,35 @@ def _security_section(repo: str) -> SecuritySection:
     Post-migration the security surface splits into ``security-light``
     (PR / push: incremental gitleaks + bandit + vulture) and
     ``security-full`` (weekly / tag: full-history gitleaks +
-    pip-audit + cargo-audit). The dashboard tile reflects the
-    PR-required lane (``security-light``) so it surfaces the same
-    cadence the developer sees on every commit. Falls back to the
-    legacy ``Security`` workflow during the rollout window.
+    pip-audit + cargo-audit). Both lanes are recorded: the ``workflow_*``
+    fields carry the PR-required lane (``security-light``) and the
+    ``full_*`` fields carry ``security-full``, which is where the
+    dependency audits run. Falls back to the legacy ``Security`` workflow
+    during the rollout window.
     """
     run = _latest_run(repo, "security-light")
     if not run:
         run = _latest_run(repo, "Security")  # legacy fallback
-    if not run:
+    full = _latest_run(repo, "security-full")
+    if not run and not full:
         return SecuritySection()
 
+    return SecuritySection(
+        workflow_conclusion=run.get("conclusion") if run else None,
+        workflow_run_id=run.get("databaseId") if run else None,
+        workflow_run_url=run.get("url") if run else None,
+        jobs=_run_jobs(repo, run) if run else [],
+        run_completed_at=run.get("updatedAt") if run else None,
+        full_workflow_conclusion=full.get("conclusion") if full else None,
+        full_workflow_run_id=full.get("databaseId") if full else None,
+        full_workflow_run_url=full.get("url") if full else None,
+        full_jobs=_run_jobs(repo, full) if full else [],
+        full_run_completed_at=full.get("updatedAt") if full else None,
+    )
+
+
+def _run_jobs(repo: str, run: dict[str, Any]) -> list[dict[str, Any]]:
+    """Job name / conclusion list for one workflow run (empty on failure)."""
     jobs: list[dict[str, Any]] = []
     try:
         jobs_raw = gh_run(
@@ -456,14 +502,7 @@ def _security_section(repo: str) -> SecuritySection:
             )
     except Exception:
         pass
-
-    return SecuritySection(
-        workflow_conclusion=run.get("conclusion"),
-        workflow_run_id=run.get("databaseId"),
-        workflow_run_url=run.get("url"),
-        jobs=jobs,
-        run_completed_at=run.get("updatedAt"),
-    )
+    return jobs
 
 
 def _duration_seconds(started_at: str | None, completed_at: str | None) -> int | None:
@@ -485,7 +524,7 @@ def _open_prs(repo: str) -> OpenPRsSection:
                 "--state",
                 "open",
                 "--json",
-                "number,title",
+                "number,title,createdAt,author",
             ]
         ).stdout
     except Exception:
@@ -495,7 +534,16 @@ def _open_prs(repo: str) -> OpenPRsSection:
     except json.JSONDecodeError:
         return OpenPRsSection(count=None, titles=[])
     titles = [f"#{p['number']} {p['title']}" for p in items]
-    return OpenPRsSection(count=len(items), titles=titles)
+    ages = [a for a in (_days_since(p.get("createdAt")) for p in items) if a is not None]
+    dependabot = sum(
+        1 for p in items if "dependabot" in ((p.get("author") or {}).get("login") or "")
+    )
+    return OpenPRsSection(
+        count=len(items),
+        titles=titles,
+        oldest_age_days=max(ages) if ages else None,
+        dependabot_count=dependabot,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -587,6 +635,19 @@ def collect_module(repo: str) -> ModuleSnapshot:
     # from the process audit). Computing commits_past_tag from the
     # governance section's commits_90d would require a tag-cursor we
     # don't yet collect; leaving that for a follow-up.
+    # Known advisories against locked deps (collector/advisories.py): an
+    # OSV.dev lookup over every uv.lock / Cargo.lock pin in the sibling clone.
+    try:
+        adv = advisories.collect(
+            sibling_dir if sibling_dir.is_dir() else None,
+            url_post_json=url_post_json,
+            url_get_json=url_get_json,
+        )
+    except Exception as exc:
+        adv = advisories.empty_result()
+        adv["errors"].append(f"advisories: {exc}")
+    errors.extend(adv.get("errors") or [])
+
     pypi_version = sc.get("pypi_version") if isinstance(sc, dict) else None
     if isinstance(pypi_version, str) and pypi_version and ident.pypi_version is None:
         ident = IdentitySection(
@@ -620,6 +681,7 @@ def collect_module(repo: str) -> ModuleSnapshot:
         supply_chain=sc,
         governance=gov,
         code_metrics=cm,
+        advisories=adv,
         errors=errors,
     )
 

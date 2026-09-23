@@ -46,8 +46,12 @@ import json
 from pathlib import Path
 from typing import Any
 
+from collector import health
+
 HISTORY_DAYS = 90
-HISTORY_SCHEMA_VERSION = "1.1"
+# 1.2: tests_pass / security_pass follow methodology 2.0.0 (scheduled
+# lanes + dependency advisories); adds updates_ok and advisories_open.
+HISTORY_SCHEMA_VERSION = "1.2"
 
 # Signals we track in history. Booleans capture "did the signal flip
 # green on this day" — that's the trend line a buyer asks for. The
@@ -56,10 +60,12 @@ TRACKED_BOOL_SIGNALS = (
     "build_pass",
     "tests_pass",
     "security_pass",
+    "updates_ok",
     "attestation_present",
     "branch_protection_enabled",
 )
 TRACKED_INT_SIGNALS = (
+    "advisories_open",
     "commits_90d",
     "releases_90d",
     "loc_total",
@@ -114,8 +120,6 @@ def _module_summary(module: dict[str, Any]) -> dict[str, Any]:
     snapshot.json is the canonical source for everything else;
     history is for trends, not detail.
     """
-    ci = module.get("ci") or {}
-    sec = module.get("security") or {}
     att = (module.get("supply_chain") or {}).get("attestations") or {}
     gov = module.get("governance") or {}
     code = _code_metric_totals(module)
@@ -128,13 +132,19 @@ def _module_summary(module: dict[str, Any]) -> dict[str, Any]:
 
     return {
         "name": module.get("name"),
-        "build_pass": ci.get("workflow_conclusion") == "success",
-        "tests_pass": ci.get("workflow_conclusion") == "success",
-        "security_pass": sec.get("workflow_conclusion") == "success",
+        "build_pass": health.build_state(module) == "green",
+        "tests_pass": health.tests_state(module) == "green",
+        "security_pass": health.security_state(module) == "green",
+        "updates_ok": health.updates_state(module) == "green",
         "attestation_present": attestation_present,
         "branch_protection_enabled": gov.get("branch_protection_enabled"),
         "commits_90d": gov.get("commits_90d"),
         "releases_90d": gov.get("releases_90d"),
+        "advisories_open": (
+            ((module.get("advisories") or {}).get("counts") or {}).get("total")
+            if (module.get("advisories") or {}).get("scanned_components") is not None
+            else None
+        ),
         **code,
     }
 

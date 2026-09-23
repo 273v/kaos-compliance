@@ -170,8 +170,9 @@ footer a{color:var(--muted)}
  </div>
  <div class="scorecard">
   {% for key, label in [
-    ("build","Build passing"),("tests","Tests + coverage"),
-    ("security","No critical CVEs"),("signing","Signed release artifacts"),
+    ("build","Build passing"),("tests","Tests: PR + compat + min-deps"),
+    ("security","Security scans + dependency advisories"),("updates","Updates merged promptly"),
+    ("signing","Signed release artifacts"),
     ("license","License clean"),("sbom","SBOM published"),
     ("branch_protection","Branch protection"),("docs","SECURITY.md + CODEOWNERS")
   ] %}
@@ -220,9 +221,18 @@ footer a{color:var(--muted)}
  <h2 id="sec-h">Security</h2>
  <div class="card">
   <dl class="kv">
-   <dt>Open advisories</dt><dd>{{ pkg.security_detail.open | length if pkg.security_detail and pkg.security_detail.open is iterable else 0 }}</dd>
-   <dt>Fixed in 90d</dt><dd>{{ pkg.security_detail.fixed_90d | length if pkg.security_detail and pkg.security_detail.fixed_90d is iterable else 0 }}</dd>
-   <dt>Dependabot alerts</dt><dd>{{ pkg.security_detail.dependabot if pkg.security_detail else '—' }}</dd>
+   {% set sd = pkg.security_detail if pkg.security_detail is mapping else {} %}
+   <dt>Open advisories</dt><dd>
+    {% if sd.open is none %}<span style="color:var(--muted)">not scanned</span>
+    {% else %}{{ sd.open | length }}{% if sd.scanned is not none %} <span style="color:var(--muted);font-size:0.75rem">across {{ sd.scanned }} locked dependencies (OSV.dev)</span>{% endif %}{% endif %}
+   </dd>
+   <dt>Maintenance notices</dt><dd>
+    {% if sd.notices %}{% for n in sd.notices %}<a href="{{ n.url }}" target="_blank" rel="noopener">{{ n.id }}</a> ({{ n.package }}, {{ n.informational }}){% if not loop.last %}, {% endif %}{% endfor %}
+    <span style="color:var(--muted);font-size:0.75rem">&middot; informational, not counted as advisories</span>
+    {% else %}0{% endif %}
+   </dd>
+   <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
+   <dt>Open Dependabot PRs</dt><dd>{{ sd.dependabot if sd.dependabot is not none else '—' }}</dd>
    {# R7: per-package suppressions count, threaded in by the renderer. #}
    <dt>Suppressions (total)</dt>
    <dd>
@@ -242,6 +252,21 @@ footer a{color:var(--muted)}
     {% endif %}
    </dd>
   </dl>
+  {% if sd.open %}
+  <table class="grid" style="margin-top:var(--s-3)" aria-label="Open advisories against locked dependencies">
+   <thead><tr><th scope="col">Advisory</th><th scope="col">Package</th><th scope="col">Severity</th><th scope="col">Summary</th></tr></thead>
+   <tbody>
+   {% for a in sd.open %}
+    <tr>
+     <td data-h="Advisory"><a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.id }}</a></td>
+     <td data-h="Package">{{ a.package }} {{ a.version }}</td>
+     <td data-h="Severity">{{ a.severity }}{% if a.informational %} ({{ a.informational }}){% endif %}</td>
+     <td data-h="Summary">{{ a.summary }}</td>
+    </tr>
+   {% endfor %}
+   </tbody>
+  </table>
+  {% endif %}
   <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
    Suppressions are markers that silence a linter, type-checker, or
    security scanner. See <a href="security.html#sup-h">security.html</a>

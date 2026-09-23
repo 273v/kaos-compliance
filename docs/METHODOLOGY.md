@@ -133,7 +133,7 @@ can't reach them.
 | `PS.2.1` | Provide a mechanism for verifying software-release integrity | Sigstore signature on snapshot + per-package attestations | `api/v1/snapshot.sig`, `modules[].supply_chain.attestations.*` |
 | `PS.3.1` | Archive and protect each software release | PyPI release immutability + Rekor transparency log | `modules[].supply_chain.attestations.rekor_log_index` |
 | `PS.3.2` | Provide an SBOM for each software release | CycloneDX 1.5 published per package | `modules[].supply_chain.sbom.sbom_artifact_path` |
-| `PW.4.1` | Acquire and maintain well-secured software | OSV cross-check; CVE feed (see R11 below) | `modules[].security.workflow_conclusion` |
+| `PW.4.1` | Acquire and maintain well-secured software | OSV.dev lookup of every locked dependency (see R11 below); pip-audit / cargo-audit in `security-full` | `modules[].advisories`, `modules[].security.full_workflow_conclusion` |
 | `PW.7.1` | Review and analyze human-readable code | Per-package CI matrix conclusions | `modules[].ci.workflow_conclusion`, `.matrix` |
 | `PW.8.2` | Configure compilation, interpretation, and build tools | Pinned tool versions; pre-commit hook drift | (gap — F11) |
 | `RV.1.3` | Have a vulnerability-disclosure policy | `SECURITY.md` present | `modules[].governance.security_md_present` |
@@ -173,21 +173,41 @@ will be revised against the final implementing acts when published.
 ### CVE / advisory feed sources (R11)
 
 The Security page's "0 open advisories" claim is only meaningful when
-the feed sources are named. Today the dashboard cross-references:
+the feed source is named. The dashboard queries:
 
-- **OSV.dev** — `https://api.osv.dev/v1/query`, keyed by PURL
-  (`pkg:pypi/<name>@<version>`, `pkg:cargo/<crate>@<version>`).
-  Cursor: live query at sweep time; no snapshotting.
-- **GitHub Security Advisories** — `gh api /advisories` filtered by
-  affected ecosystem and package name. Cursor: live; deduplicated
-  against OSV using the GHSA ID.
+- **OSV.dev** — `POST https://api.osv.dev/v1/querybatch` with the PURL of
+  every pin in each repo's `uv.lock` and `Cargo.lock`
+  (`pkg:pypi/<name>@<version>`, `pkg:cargo/<crate>@<version>`), then
+  `GET /v1/vulns/<id>` per hit. OSV aggregates GitHub Security Advisories
+  (GHSA), PyPA (PYSEC) and RustSec, the same data Dependabot and
+  `pip-audit` / `cargo-audit` read. Cursor: live query at sweep time.
 
-Both feeds are queried during the 4-hour Security cron. A package
-clears the "0 advisories" bar only when both feeds return empty for
-its declared version. The OSV PURL form is canonical; if a package
-publishes under a non-PyPI distribution name the lookup may miss —
-this is a known gap, tracked in
-[`docs/research/08-followup.md`](research/08-followup.md).
+Severity comes from the GHSA record (critical / high / moderate / low).
+Advisories without a GHSA severity (most RustSec entries) are counted as
+*unknown*, with the RustSec category (e.g. `unsound`) shown, never guessed.
+Withdrawn advisories are dropped. Records that alias each other (a PYSEC
+entry and its GHSA twin) are merged and counted once. RustSec
+`unmaintained` / `notice` entries describe upkeep, not a vulnerability;
+they are listed as maintenance notices on the package page and are not
+counted (`unsound` entries are counted). Editable, workspace and path packages
+(the package itself, vendored crates) are not queried: OSV keys on the
+registry release, and a local build is not that artifact. Dependabot
+alerts are not read directly because the sweep's `GITHUB_TOKEN` cannot
+read another repository's alerts. If the lookup fails, the page says
+"not scanned" rather than "0" (`advisories.scanned_components` is `null`).
+
+### Pill rules for Build, Tests, Security, Updates (2.0.0)
+
+Implemented once in `collector/health.py` and used by the grid, the org
+rollup and the 90-day history. A lane with no observable run is ignored
+(neither passes nor fails); a signal is gray only when nothing was observed.
+
+| Signal | Inputs | Green | Amber | Red |
+|---|---|---|---|---|
+| Build | `ci.workflow_conclusion` (quality + test + build on main) | success | cancelled | failure |
+| Tests | `ci.workflow_conclusion`, `ci.compat_conclusion`, `ci.min_deps_conclusion` | every observed lane success | a lane cancelled | any lane failed |
+| Security | `security.workflow_conclusion` (security-light), `security.full_workflow_conclusion` (security-full), `advisories.counts` | lanes success and 0 advisories | a lane cancelled, or only moderate / low / unknown advisories | a lane failed, or any critical / high advisory |
+| Updates | `open_prs.count`, `open_prs.oldest_age_days` | no open PRs, or oldest ≤ 14 days | oldest 15–30 days | oldest > 30 days |
 
 ## Anti-patterns we explicitly avoid
 
@@ -250,7 +270,7 @@ reproduce the underlying lookup without any privileged access:
 | Sigstore Rekor entry | `https://rekor.sigstore.dev/api/v1/log/entries?logIndex=<N>` |
 | CI run | `https://github.com/273v/<pkg>/actions/runs/<run-id>` |
 | Security scan | Same as above for the Security workflow |
-| Open advisories | `https://api.osv.dev/v1/query` with the package PURL |
+| Open advisories | `POST https://api.osv.dev/v1/querybatch` with the PURLs from the repo's `uv.lock` / `Cargo.lock` |
 | SBOM | `data/sbom/<pkg>-<version>.cdx.json` in this repo |
 | Branch protection | `gh api repos/273v/<pkg>/branches/main --jq .protected` (public enabled flag); maintainers can inspect rule detail with `gh api repos/273v/<pkg>/branches/main/protection` |
 | Disclosure policy | `https://github.com/273v/<pkg>/blob/main/SECURITY.md` |
@@ -362,10 +382,27 @@ JSON shape changes; the methodology version above governs the
 
 ---
 
-*Methodology version 1.2.0 — 2026-06-01.*
+*Methodology version 2.0.0 — 2026-09-23.*
 
 *Changelog:*
 
+- *2.0.0 (2026-09-23): Major. Changed the thresholds and sources of the
+  **Tests** and **Security** signals and added **Updates**. Tests now also
+  fails on the scheduled `compat` and `min-deps` lanes; Security now also
+  fails on `security-full` (where pip-audit / cargo-audit / cargo-deny run)
+  and on open advisories against locked dependencies, found by a new OSV.dev
+  lookup (`modules[].advisories`). Updates flags open PRs older than 14 / 30
+  days. Rationale: on 2026-09-22 every package showed green Build / Tests /
+  Security while 30 scheduled lanes were failing, 6 Dependabot alerts
+  (including 2 critical) were open, 46 update PRs had piled up and a
+  published package could not be imported. Every one of those was outside
+  the old signal sources. This version also corrects R11, which described
+  OSV and GitHub Advisories queries that had not been implemented (the
+  Security page's advisory counts were hardcoded to 0). History schema 1.2:
+  `tests_pass` / `security_pass` use the new rules from 2026-09-23 onward,
+  and `updates_ok` / `advisories_open` are added; earlier days keep their
+  1.x values, so the trend has a step on that date. Snapshot
+  `schema_version` stays 1.0 (all fields additive).*
 - *1.2.0 (2026-06-01): Minor. Added a new headline signal — **Tests**
   (`code_metrics.{python,rust}.tests_count`), the cardinality of test
   functions across the org (Python `def test_*` in pytest-collected files;

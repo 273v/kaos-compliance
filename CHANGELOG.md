@@ -5,6 +5,38 @@ All notable changes to `kaos-compliance` are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.4] — 2026-09-23
+
+### Methodology — 2.0.0 (signals that can actually go red)
+
+On 2026-09-22 every package showed green Build / Tests / Security while
+30 scheduled CI lanes were failing, 6 Dependabot alerts (2 critical) were
+open, 46 update PRs had piled up, and a published package could not be
+imported. None of that was in the old signal sources, which read only the
+per-push `quality` / `test` / `build` / `security-light` lanes.
+
+- **Tests** now also reads the scheduled `compat` and `min-deps` lanes.
+- **Security** now also reads `security-full` (pip-audit, cargo-audit,
+  cargo-deny, full-history gitleaks) and open advisories against locked
+  dependencies.
+- New **Updates** signal and index column: amber when the oldest open PR
+  is more than 14 days old, red past 30.
+- New `collector/advisories.py`: OSV.dev lookup for every pin in each
+  repo's `uv.lock` / `Cargo.lock` (no credential needed). Real per-severity
+  counts replace the Security page's hardcoded zeros, and each package page
+  lists its open advisories. An unscanned repo shows "not scanned", never 0.
+- Methodology R11 corrected: it described OSV and GitHub Advisories queries
+  that were not implemented.
+- The pill rules live in one place (`collector/health.py`), shared by the
+  grid, the org rollup and the 90-day history. History schema 1.2 adds
+  `updates_ok` and `advisories_open`; `tests_pass` / `security_pass` follow
+  the new rules from this date, so the trend shows a step here.
+- Snapshot fields added (additive; `schema_version` stays 1.0):
+  `ci.compat_*`, `ci.min_deps_*`, `security.full_*`,
+  `open_prs.oldest_age_days`, `open_prs.dependabot_count`, `advisories`.
+- Security page per-tool rollup now includes `security-full` jobs, so
+  pip-audit / cargo-audit / cargo-deny stop showing as gray.
+
 ## [0.0.3] — 2026-06-01
 
 ### CI / infra

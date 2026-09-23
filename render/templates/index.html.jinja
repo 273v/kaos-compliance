@@ -20,7 +20,7 @@
     },
     "packages": [
       {"name":"kaos-core","version":"1.4.2","build":"green","tests":"green",
-       "security":"green","signing":"green","license":"green","deps":"yellow",
+       "security":"green","updates":"green","signing":"green","license":"green","deps":"yellow",
        "last_release":"2026-05-08","release_age_days":3}
     ]
   }
@@ -303,6 +303,7 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
     <th scope="col">Build</th>
     <th scope="col">Tests</th>
     <th scope="col">Security</th>
+    <th scope="col">Updates</th>
     <th scope="col">Signing</th>
     <th scope="col">License</th>
     <th scope="col">Deps</th>
@@ -312,9 +313,9 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
   </thead>
   <tbody>
    {% for p in packages | default([
-     {"name":"kaos-core","version":"1.4.2","build":"green","tests":"green","security":"green","signing":"green","license":"green","deps":"yellow","last_release_display":"3 days ago"},
-     {"name":"kaos-cli","version":"0.9.1","build":"green","tests":"green","security":"green","signing":"red","license":"green","deps":"green","last_release_display":"11 days ago"},
-     {"name":"kaos-eval","version":"0.3.0","build":"green","tests":"yellow","security":"green","signing":"gray","license":"green","deps":"green","last_release_display":"46 days ago"}
+     {"name":"kaos-core","version":"1.4.2","build":"green","tests":"green","security":"green","updates":"green","signing":"green","license":"green","deps":"yellow","last_release_display":"3 days ago"},
+     {"name":"kaos-cli","version":"0.9.1","build":"green","tests":"green","security":"green","updates":"green","signing":"red","license":"green","deps":"green","last_release_display":"11 days ago"},
+     {"name":"kaos-eval","version":"0.3.0","build":"green","tests":"yellow","security":"green","updates":"green","signing":"gray","license":"green","deps":"green","last_release_display":"46 days ago"}
    ]) %}
    {% set states = {"green":["g","✓","Pass"],"yellow":["y","⚠","Warn"],"red":["r","✗","Fail"],"gray":["n","—","No signal"]} %}
    <tr>
@@ -334,7 +335,7 @@ nav.subnav a.methodology{font-weight:600;color:var(--text);border-bottom:1px dot
     {% set spark_slot = {"build":"build","tests":"tests","security":"security","signing":"attestation"} %}
     {% set pkg_spark = (signal_history.sparklines or {}).get(p.name, {}) if signal_history is defined else {} %}
     {% set pkg_diff = (signal_history.diff.packages or {}).get(p.name) if signal_history is defined and signal_history.diff is defined else None %}
-    {% for col in ["build","tests","security","signing","license","deps"] %}
+    {% for col in ["build","tests","security","updates","signing","license","deps"] %}
      {% set st = states[p[col]] %}
      {% set link = (p.pill_links or {})[col] %}
      {% set slot = spark_slot.get(col) %}

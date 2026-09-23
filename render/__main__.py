@@ -33,6 +33,10 @@ from typing import Any
 
 import jinja2
 
+# Health rules are stdlib-only and shared with the history writer, so the
+# grid, the rollup and the 90-day trend all use one definition of "passing".
+from collector import health
+
 # Policy module is imported lazily so the renderer still works when the
 # policy file is missing or PyYAML isn't available.
 _policy_loader: Any | None
@@ -106,20 +110,65 @@ TEMPLATES_DIR = HERE / "templates"
 
 
 def _pill_ci(conclusion: str | None) -> str:
-    if conclusion == "success":
-        return "green"
-    if conclusion in ("failure", "timed_out", "action_required"):
-        return "red"
-    if conclusion == "cancelled":
-        return "yellow"
-    return "gray"
+    return health.conclusion_state(conclusion)
 
 
-def _pill_security(conclusion: str | None) -> str:
-    # Same shape as CI but called out separately so future per-job
-    # rollup logic (e.g., bandit-failed ≠ gitleaks-failed severity)
-    # can land here without touching the CI path.
-    return _pill_ci(conclusion)
+def _pill_security(module: dict[str, Any]) -> str:
+    """security-light + security-full + open dependency advisories."""
+    return health.security_state(module)
+
+
+def _pill_updates(module: dict[str, Any]) -> str:
+    """Age of the oldest open PR (dependency updates piling up)."""
+    return health.updates_state(module)
+
+
+def _advisories_note(module: dict[str, Any]) -> str:
+    adv = module.get("advisories") or {}
+    if adv.get("scanned_components") is None:
+        return "dependency advisories: not scanned"
+    counts = adv.get("counts") or {}
+    total = counts.get("total") or 0
+    if not total:
+        return f"0 open advisories across {adv['scanned_components']} locked dependencies (OSV.dev)"
+    parts = [
+        f"{counts[s]} {s}"
+        for s in ("critical", "high", "moderate", "low", "unknown")
+        if counts.get(s)
+    ]
+    return f"{total} open advisories (OSV.dev): " + ", ".join(parts)
+
+
+def _updates_note(module: dict[str, Any]) -> str:
+    prs = module.get("open_prs") or {}
+    count = prs.get("count")
+    if count is None:
+        return "Open PR lookup failed"
+    if count == 0:
+        return "No open PRs"
+    return (
+        f"{count} open PR(s), {prs.get('dependabot_count') or 0} from Dependabot; "
+        f"oldest {prs.get('oldest_age_days')} day(s) old"
+    )
+
+
+def _security_evidence_url(module: dict[str, Any]) -> str | None:
+    """Link the Security pill to the lane that is actually failing."""
+    sec = module.get("security") or {}
+    if health.conclusion_state(sec.get("full_workflow_conclusion")) == "red":
+        return sec.get("full_workflow_run_url")
+    if health.advisories_state(module) in ("red", "yellow"):
+        return f"package/{module['name']}.html#sec-h"
+    return sec.get("workflow_run_url") or sec.get("full_workflow_run_url")
+
+
+def _tests_evidence_url(module: dict[str, Any]) -> str | None:
+    """Link the Tests pill to the lane that is actually failing."""
+    ci = module.get("ci") or {}
+    for key in ("compat", "min_deps"):
+        if health.conclusion_state(ci.get(f"{key}_conclusion")) == "red":
+            return ci.get(f"{key}_run_url")
+    return ci.get("workflow_run_url")
 
 
 def _pill_signing(module: dict[str, Any]) -> str:
@@ -229,13 +278,13 @@ def _pill_deps(module: dict[str, Any], policy: Any = None) -> str:
 
 
 def _pill_tests(module: dict[str, Any]) -> str:
-    """Tests pill is CI conclusion for now; P3 will widen to coverage trend."""
-    return _pill_ci(module.get("ci", {}).get("workflow_conclusion"))
+    """PR-required lanes plus the scheduled compat and min-deps lanes."""
+    return health.tests_state(module)
 
 
 def _pill_build(module: dict[str, Any]) -> str:
-    """Build pill — same conclusion as CI for now."""
-    return _pill_ci(module.get("ci", {}).get("workflow_conclusion"))
+    """quality + test + build lanes on main."""
+    return health.build_state(module)
 
 
 def _release_age_days(module: dict[str, Any]) -> int | None:
@@ -346,8 +395,9 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
     )
     pill_links = {
         "build": ci_run_url,
-        "tests": ci_run_url,
-        "security": sec_run_url,
+        "tests": _tests_evidence_url(module),
+        "security": _security_evidence_url(module) or sec_run_url,
+        "updates": f"https://github.com/273v/{module['name']}/pulls",
         "signing": pypi_link,
         "license": findings_link,
         "deps": findings_link,
@@ -370,7 +420,8 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
         "released_at": last_commit[:10] if last_commit else "—",
         "build": _pill_build(module),
         "tests": _pill_tests(module),
-        "security": _pill_security(sec_section.get("workflow_conclusion")),
+        "security": _pill_security(module),
+        "updates": _pill_updates(module),
         "signing": _pill_signing(module),
         "license": _pill_license(module, policy=policy),
         "deps": _pill_deps(module, policy=policy),
@@ -491,15 +542,21 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
         },
         "tests": {
             "state": row["tests"],
-            "note": f"Latest CI conclusion: {ci_section.get('workflow_conclusion') or 'unknown'}",
+            "note": (
+                f"PR lanes: {ci_section.get('workflow_conclusion') or 'unknown'}; "
+                f"compat: {ci_section.get('compat_conclusion') or 'unknown'}; "
+                f"min-deps: {ci_section.get('min_deps_conclusion') or 'unknown'}"
+            ),
         },
         "security": {
             "state": row["security"],
             "note": (
-                "Latest Security workflow conclusion: "
-                f"{sec_section.get('workflow_conclusion') or 'unknown'}"
+                f"security-light: {sec_section.get('workflow_conclusion') or 'unknown'}; "
+                f"security-full: {sec_section.get('full_workflow_conclusion') or 'unknown'}; "
+                f"{_advisories_note(module)}"
             ),
         },
+        "updates": {"state": row["updates"], "note": _updates_note(module)},
         "signing": {"state": row["signing"], "note": signing_note},
         "license": {
             "state": row["license"],
@@ -523,10 +580,17 @@ def _module_view(module: dict[str, Any], *, policy: Any = None) -> dict[str, Any
             # plus auxiliary jobs (Lint, Pre-commit, Rust tests).
             "ci_matrix": _ci_matrix_view(ci_section.get("matrix") or []),
             "security_detail": {
-                "open": [],  # P2: OSV.dev cross-ref
-                "fixed_90d": [],  # P2: GHSA history
-                "dependabot": "—",  # P3
-                "jobs": sec_section.get("jobs") or [],
+                # None (not an empty list) when the OSV scan did not run,
+                # so the page says "not scanned" instead of a false 0.
+                "open": (
+                    (module.get("advisories") or {}).get("open") or []
+                    if (module.get("advisories") or {}).get("scanned_components") is not None
+                    else None
+                ),
+                "scanned": (module.get("advisories") or {}).get("scanned_components"),
+                "notices": (module.get("advisories") or {}).get("notices") or [],
+                "dependabot": (module.get("open_prs") or {}).get("dependabot_count"),
+                "jobs": (sec_section.get("jobs") or []) + (sec_section.get("full_jobs") or []),
             },
             "supply_chain": {
                 "direct": "—",
@@ -641,9 +705,7 @@ def _org_summary(
     composite_green = sum(
         1
         for m in modules
-        if _pill_build(m) == "green"
-        and _pill_tests(m) == "green"
-        and _pill_security(m.get("security", {}).get("workflow_conclusion")) == "green"
+        if _pill_build(m) == "green" and _pill_tests(m) == "green" and _pill_security(m) == "green"
     )
 
     # Headline strip — surface-area counts (cardinality, not ratios).
@@ -984,58 +1046,70 @@ def _history_sum_series(index_obj: dict[str, Any] | None, signal: str) -> list[i
     return series
 
 
+_STATE_RANK = {"gray": 0, "green": 1, "yellow": 2, "red": 3}
+
+
 def _security_summary(modules: list[dict[str, Any]]) -> dict[str, Any]:
     """Aggregate Security workflow + per-tool job conclusions across modules."""
     tools = ("gitleaks", "bandit", "vulture", "pip_audit", "cargo_audit", "cargo_deny")
     counts = {f"{t}_green": 0 for t in tools} | {f"{t}_total": 0 for t in tools}
     wf_green = 0
     wf_total = 0
+    advisories = {"critical": 0, "high": 0, "moderate": 0, "low": 0, "unknown": 0, "total": 0}
     packages: list[dict[str, Any]] = []
     for m in modules:
         sec = m.get("security") or {}
-        wf_total += 1
-        if sec.get("workflow_conclusion") == "success":
+        adv = m.get("advisories") or {}
+        adv_counts = adv.get("counts") or {}
+        scanned = adv.get("scanned_components") is not None
+        if scanned:
+            for key in advisories:
+                advisories[key] += adv_counts.get(key) or 0
+        state = health.security_state(m)
+        if state != "gray":
+            wf_total += 1
+        if state == "green":
             wf_green += 1
         per_tool: dict[str, dict[str, Any]] = {}
-        for j in sec.get("jobs") or []:
+        # Light-lane jobs first, then security-full jobs (pip-audit,
+        # cargo-audit, cargo-deny and full-history gitleaks run only there).
+        tool_jobs = [(j, sec.get("workflow_run_url")) for j in sec.get("jobs") or []] + [
+            (j, sec.get("full_workflow_run_url")) for j in sec.get("full_jobs") or []
+        ]
+        for j, run_url in tool_jobs:
             name = (j.get("name") or "").lower()
             for t in tools:
                 # job name like "bandit (static security)" → "bandit"
                 if name.startswith(t.replace("_", "-")) or name.startswith(t):
-                    counts[f"{t}_total"] += 1
-                    if j.get("conclusion") == "success":
-                        counts[f"{t}_green"] += 1
-                    per_tool[t] = {
-                        "state": "green"
-                        if j.get("conclusion") == "success"
-                        else "red"
-                        if j.get("conclusion") in ("failure", "timed_out")
-                        else "yellow"
-                        if j.get("conclusion") == "cancelled"
-                        else "gray",
-                        "url": sec.get("workflow_run_url"),
-                    }
+                    job_state = health.conclusion_state(j.get("conclusion"))
+                    prior = per_tool.get(t)
+                    # A tool can appear in both lanes (gitleaks incremental
+                    # + full history); keep the worse of the two.
+                    if prior is None or _STATE_RANK[job_state] > _STATE_RANK[prior["state"]]:
+                        per_tool[t] = {"state": job_state, "url": run_url}
                     break
+        # One count per package per tool, after the two lanes are merged.
+        for t, entry in per_tool.items():
+            counts[f"{t}_total"] += 1
+            if entry["state"] == "green":
+                counts[f"{t}_green"] += 1
         packages.append(
             {
                 "name": m["name"],
                 "ecosystem": "rust" if (m.get("supply_chain") or {}).get("is_abi3") else "python",
-                "workflow_state": (
-                    "green"
-                    if sec.get("workflow_conclusion") == "success"
-                    else "red"
-                    if sec.get("workflow_conclusion") in ("failure", "timed_out")
-                    else "gray"
-                ),
-                "workflow_url": sec.get("workflow_run_url"),
+                "workflow_state": state,
+                "workflow_url": _security_evidence_url(m) or sec.get("workflow_run_url"),
                 "workflow_run_id": sec.get("workflow_run_id"),
-                "advisories_open": 0,
+                "advisories_open": (adv_counts.get("total") or 0) if scanned else None,
                 "last_run_display": "—",
                 "jobs": per_tool,
             }
         )
     return {
-        "advisories": {"critical": 0, "high": 0, "moderate": 0, "low": 0, "total": 0},
+        "advisories": advisories,
+        "advisories_scanned_modules": sum(
+            1 for m in modules if (m.get("advisories") or {}).get("scanned_components") is not None
+        ),
         **counts,
         "security_workflow_green": wf_green,
         "security_workflow_total": wf_total,
