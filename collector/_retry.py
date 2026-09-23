@@ -113,10 +113,42 @@ def url_get_json(
     other HTTPError / URLError / TimeoutError / OSError is retried with
     exponential backoff. The final exception is re-raised on exhaustion.
     """
+    return _url_json(url, None, headers=headers, timeout=timeout, max_attempts=max_attempts)
+
+
+def url_post_json(
+    url: str,
+    body: Any,
+    *,
+    headers: dict[str, str] | None = None,
+    timeout: float = 30.0,
+    max_attempts: int | None = None,
+) -> Any:
+    """POST ``body`` as JSON and decode the JSON response.
+
+    Same retry policy as :func:`url_get_json`. Used for query APIs that
+    only accept POST (e.g. the OSV.dev batch endpoint).
+    """
+    return _url_json(url, body, headers=headers, timeout=timeout, max_attempts=max_attempts)
+
+
+def _url_json(
+    url: str,
+    body: Any,
+    *,
+    headers: dict[str, str] | None,
+    timeout: float,
+    max_attempts: int | None,
+) -> Any:
     if urllib.parse.urlsplit(url).scheme != "https":
         raise ValueError(f"refusing to fetch non-HTTPS URL: {url}")
     attempts = max_attempts or _MAX_ATTEMPTS
-    req = urllib.request.Request(url, headers=headers or {})
+    all_headers = dict(headers or {})
+    data: bytes | None = None
+    if body is not None:
+        data = json.dumps(body).encode("utf-8")
+        all_headers.setdefault("Content-Type", "application/json")
+    req = urllib.request.Request(url, data=data, headers=all_headers)
     last_exc: BaseException | None = None
     for attempt in range(1, attempts + 1):
         try:

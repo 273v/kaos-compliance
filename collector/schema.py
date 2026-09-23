@@ -317,6 +317,63 @@ def _governance_schema() -> dict[str, Any]:
     }
 
 
+def _advisories_schema() -> dict[str, Any]:
+    count = {"type": "integer", "minimum": 0}
+    return {
+        "type": "object",
+        "title": "AdvisoriesSection",
+        "description": (
+            "Output of collector.advisories.collect(): OSV.dev advisories open "
+            "against the repo's locked dependencies (uv.lock + Cargo.lock). "
+            "scanned_components is null when the scan did not run."
+        ),
+        "additionalProperties": True,
+        "properties": {
+            "source": {"type": "string"},
+            "scanned_components": {"type": ["integer", "null"], "minimum": 0},
+            "open": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": True,
+                    "properties": {
+                        "id": {"type": "string"},
+                        "aliases": {"type": "array", "items": {"type": "string"}},
+                        "package": {"type": "string"},
+                        "version": {"type": "string"},
+                        "ecosystem": {"type": "string"},
+                        "severity": {
+                            "type": "string",
+                            "enum": ["critical", "high", "moderate", "low", "unknown"],
+                        },
+                        "informational": {"type": ["string", "null"]},
+                        "summary": {"type": "string"},
+                        "url": {"type": "string"},
+                    },
+                },
+            },
+            "notices": {
+                "type": "array",
+                "description": "RustSec unmaintained / notice entries; not counted.",
+                "items": {"type": "object", "additionalProperties": True},
+            },
+            "counts": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {
+                    "critical": count,
+                    "high": count,
+                    "moderate": count,
+                    "low": count,
+                    "unknown": count,
+                    "total": count,
+                },
+            },
+            "errors": {"type": "array", "items": {"type": "string"}},
+        },
+    }
+
+
 def _code_metrics_section() -> dict[str, Any]:
     leaf = {
         "type": "object",
@@ -367,6 +424,7 @@ def build_snapshot_schema(*, generator_version: str | None = None) -> dict[str, 
     module_schema["properties"]["supply_chain"] = _supply_chain_schema()
     module_schema["properties"]["governance"] = _governance_schema()
     module_schema["properties"]["code_metrics"] = _code_metrics_section()
+    module_schema["properties"]["advisories"] = _advisories_schema()
 
     return {
         "$schema": SCHEMA_DRAFT,

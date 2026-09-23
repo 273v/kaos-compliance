@@ -28,12 +28,14 @@ snapshot.json
     ├── supply_chain                    dict — output of collector.supply_chain
     ├── governance                      dict — output of collector.governance
     ├── code_metrics                    dict — output of collector.code_metrics
+    ├── advisories                      dict — output of collector.advisories (OSV.dev)
     └── errors[]                        per-section failure strings
 ```
 
 The schema is **closed at the top level**: `additionalProperties: false`
-on the root snapshot and on every dataclass-backed section. The three
-dict-backed sections (`supply_chain`, `governance`, `code_metrics`)
+on the root snapshot and on every dataclass-backed section. The four
+dict-backed sections (`supply_chain`, `governance`, `code_metrics`,
+`advisories`)
 permit additional properties so collectors can add new fields without
 a breaking schema bump.
 
@@ -66,12 +68,19 @@ breakdown (one entry per `{os, python-version}` cell).
 | `head_sha` | `str \| null` | SHA the run was triggered against. |
 | `run_completed_at` | `str \| null` | RFC 3339 completion timestamp. |
 | `matrix[]` | `array` | Per-job dicts: `name`, `conclusion`, `status`, `started_at`, `completed_at`, `duration_seconds`. |
+| `compat_conclusion` | `str \| null` | Latest `compat` run on `main` (cross-OS / preview-Python, weekly + tags). |
+| `compat_run_url` / `compat_completed_at` | `str \| null` | Evidence link and completion time for that run. |
+| `min_deps_conclusion` | `str \| null` | Latest `min-deps` run on `main` (suite at lowest declared versions). |
+| `min_deps_run_url` / `min_deps_completed_at` | `str \| null` | Evidence link and completion time for that run. |
 
 ### security (`SecuritySection`)
 
-Latest workflow run named `Security`. Same shape as `ci` but with a
-`jobs[]` array carrying per-tool conclusions (bandit, gitleaks,
-pip-audit, cargo-audit, &hellip;).
+`workflow_*`, `jobs[]` and `run_completed_at` describe the latest
+`security-light` run (every PR / push: incremental gitleaks, bandit,
+vulture). The `full_*` fields describe the latest `security-full` run
+(weekly + tags: full-history gitleaks, pip-audit, cargo-audit,
+cargo-deny): `full_workflow_conclusion`, `full_workflow_run_id`,
+`full_workflow_run_url`, `full_jobs[]`, `full_run_completed_at`.
 
 ### open_prs (`OpenPRsSection`)
 
@@ -79,6 +88,8 @@ pip-audit, cargo-audit, &hellip;).
 |---|---|---|
 | `count` | `int \| null` | Open PR count against `main`. `null` on lookup failure. |
 | `titles[]` | `array of str` | `#<num> <title>` entries. |
+| `oldest_age_days` | `int \| null` | Age of the oldest open PR; `null` when none are open. |
+| `dependabot_count` | `int \| null` | Open PRs authored by Dependabot. |
 
 ### freshness (`FreshnessSection`)
 
@@ -130,6 +141,25 @@ Emitted by `collector/code_metrics.py`. Shape:
 }
 ```
 
+### advisories (dict)
+
+Emitted by `collector/advisories.py`: OSV.dev advisories open against
+every third-party pin in the repo's `uv.lock` and `Cargo.lock`.
+
+```jsonc
+{
+  "source": "osv.dev",
+  "scanned_components": int|null,   // null = scan did not run (gray, not 0)
+  "open": [{"id", "aliases", "package", "version", "ecosystem",
+            "severity",             // critical|high|moderate|low|unknown
+            "informational",        // RustSec category, e.g. "unsound"
+            "summary", "url"}],
+  "notices": [ ...same row shape... ],  // RustSec unmaintained / notice; not counted
+  "counts": {"critical", "high", "moderate", "low", "unknown", "total"},
+  "errors": [string, ...]
+}
+```
+
 ## Rolling History Endpoints
 
 `api/v1/history/YYYY-MM-DD.json` is a compact per-day projection of
@@ -138,9 +168,10 @@ diffs; `snapshot.json` remains the source of truth for evidence URLs and
 nested detail.
 
 Each per-module history row carries booleans for build/tests/security/
-attestation/branch-protection state plus integer activity counters:
-`commits_90d`, `releases_90d`, `loc_total`, `src_loc`, `tests_loc`, and
-`files_total`. Missing or uncollected counters are `null`.
+updates/attestation/branch-protection state (`*_pass` follow the pill
+rules in `collector/health.py`; history schema 1.2 from 2026-09-23) plus
+integer counters: `advisories_open`, `commits_90d`, `releases_90d`,
+`loc_total`, `src_loc`, `tests_loc`, and `files_total`. Missing or uncollected counters are `null`.
 
 `api/v1/history.json` is the rolling 90-day index. Arrays under
 `packages.<name>.<signal>` are aligned to the top-level `dates` array.
