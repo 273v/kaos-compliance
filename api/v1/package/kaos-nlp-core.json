@@ -8,96 +8,92 @@
     "identity": {
       "pypi_version": "0.1.11",
       "pypi_url": "https://pypi.org/project/kaos-nlp-core/0.1.11/",
-      "main_head_sha": "91b448776472ba590d0dcf1e618702908de1db1c",
+      "main_head_sha": "9c061ae3f3a8d4976ce83a87731fef57a7e0c2cb",
       "latest_tag": "v0.1.11",
       "latest_tag_sha": "18fe491c94d454b691782b2f2ecf5309a7bac454",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T01:56:45Z"
+      "last_commit_at": "2026-09-23T02:31:21Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 35808379357,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/35808379357",
-      "head_sha": "91b448776472ba590d0dcf1e618702908de1db1c",
-      "run_completed_at": "2026-09-23T02:03:00Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": 35810690082,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/35810690082",
+      "head_sha": "9c061ae3f3a8d4976ce83a87731fef57a7e0c2cb",
+      "run_completed_at": "2026-09-23T02:37:53Z",
       "matrix": [
         {
-          "name": "test (linux-x64 / Python 3.14t)",
+          "name": "test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:36:09Z",
-          "completed_at": "2026-09-21T05:40:18Z",
-          "duration_seconds": 249
+          "started_at": "2026-09-23T02:31:45Z",
+          "completed_at": "2026-09-23T02:34:47Z",
+          "duration_seconds": 182
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:31:38Z",
+          "completed_at": null,
+          "duration_seconds": 431
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": null,
+          "status": "in_progress",
+          "started_at": "2026-09-23T02:37:44Z",
+          "completed_at": null,
+          "duration_seconds": 65
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:31:38Z",
+          "completed_at": null,
+          "duration_seconds": 431
         },
         {
           "name": "test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:29:19Z",
-          "completed_at": "2026-09-21T05:34:31Z",
-          "duration_seconds": 312
-        },
-        {
-          "name": "test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:29:31Z",
-          "completed_at": "2026-09-21T05:32:06Z",
-          "duration_seconds": 155
-        },
-        {
-          "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:34:40Z",
-          "completed_at": "2026-09-21T05:37:58Z",
-          "duration_seconds": 198
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:38:01Z",
-          "completed_at": "2026-09-21T05:41:15Z",
-          "duration_seconds": 194
+          "started_at": "2026-09-23T02:31:40Z",
+          "completed_at": "2026-09-23T02:36:51Z",
+          "duration_seconds": 311
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35808379394,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/35808379394",
+      "workflow_run_id": 35810690040,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/35810690040",
       "jobs": [
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T01:57:00Z"
-        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T01:57:07Z"
+          "completed_at": "2026-09-23T02:31:42Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T02:31:39Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T01:57:04Z"
+          "completed_at": "2026-09-23T02:31:41Z"
         }
       ],
-      "run_completed_at": "2026-09-23T01:57:08Z"
+      "run_completed_at": "2026-09-23T02:31:43Z"
     },
     "open_prs": {
-      "count": 3,
-      "titles": [
-        "#73 chore(deps): bump the cargo-minor group across 1 directory with 11 updates",
-        "#70 chore(deps): bump the deps-minor group across 1 directory with 5 updates",
-        "#65 chore(deps): bump stringzilla from 4.6.2 to 5.0.3"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -139,17 +135,17 @@
         "total_count": 6
       },
       "sbom": {
-        "components_count": 223,
+        "components_count": 209,
         "license_breakdown": {
-          "MIT": 30,
+          "MIT": 31,
           "MPL-2.0": 1,
-          "BSD-3-Clause": 7,
+          "BSD-3-Clause": 9,
           "Apache-2.0": 8,
           "Apache-2.0 OR BSD-3-Clause": 1,
-          "MIT OR Apache-2.0": 93,
+          "MIT OR Apache-2.0": 88,
           "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
           "Apache-2.0 OR BSD-2-Clause": 1,
-          "BSD-2-Clause": 4,
+          "BSD-2-Clause": 3,
           "PSF-2.0": 1,
           "0BSD OR MIT OR Apache-2.0": 1,
           "Unlicense OR MIT": 3,
@@ -160,8 +156,8 @@
           "Zlib": 2,
           "LicenseRef-unknown-30d4520d": 4,
           "Unicode-3.0": 16,
-          "LicenseRef-unknown-ec5c82d8": 13,
-          "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT": 13,
+          "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT": 4,
+          "LicenseRef-unknown-ec5c82d8": 11,
           "MIT OR Zlib OR Apache-2.0": 1,
           "MIT OR Apache-2.0 OR LGPL-2.1-or-later": 2,
           "Apache-2.0 WITH LLVM-exception": 1,
@@ -176,7 +172,6 @@
         "unknown_license": [
           "fnv",
           "fst",
-          "id-arena",
           "matrixmultiply",
           "page_size",
           "quick-error",
@@ -190,8 +185,7 @@
           "walkdir",
           "winapi",
           "winapi-i686-pc-windows-gnu",
-          "winapi-x86_64-pc-windows-gnu",
-          "zstd-sys"
+          "winapi-x86_64-pc-windows-gnu"
         ],
         "sbom_artifact_path": "data/sbom/kaos-nlp-core-0.1.11.cdx.json"
       },
@@ -201,7 +195,7 @@
       "dco_signoff_rate_90d": 1.0,
       "conventional_commits_rate_90d": 1.0,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 18,
+      "commits_90d": 19,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -214,8 +208,8 @@
         "NOTICE"
       ],
       "releases_90d": 5,
-      "median_pr_age_days": 15.623,
-      "open_pr_count": 4,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 821,
       "errors": []
@@ -229,11 +223,11 @@
         "tests_count": 1902
       },
       "rust": {
-        "src_loc": 27592,
+        "src_loc": 27701,
         "tests_loc": 1529,
         "src_files": 86,
         "tests_files": 11,
-        "tests_count": 743
+        "tests_count": 747
       },
       "errors": []
     },

@@ -2,117 +2,115 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-mcp",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "snapshot_slice": {
     "name": "kaos-mcp",
     "identity": {
-      "pypi_version": "0.1.3",
-      "pypi_url": "https://pypi.org/project/kaos-mcp/0.1.3/",
-      "main_head_sha": "2975e60ab62ecee5d029a76651cab422c8ce69e3",
-      "latest_tag": "v0.1.4",
-      "latest_tag_sha": "2975e60ab62ecee5d029a76651cab422c8ce69e3",
+      "pypi_version": "0.1.5",
+      "pypi_url": "https://pypi.org/project/kaos-mcp/0.1.5/",
+      "main_head_sha": "99aa2377cf542bcdc5fd505937e9ebeb4f09f602",
+      "latest_tag": "v0.1.5",
+      "latest_tag_sha": "99aa2377cf542bcdc5fd505937e9ebeb4f09f602",
       "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T01:56:43Z"
+      "last_commit_at": "2026-09-23T02:25:04Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35808376806,
-      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/35808376806",
-      "head_sha": "2975e60ab62ecee5d029a76651cab422c8ce69e3",
-      "run_completed_at": "2026-09-23T02:01:39Z",
+      "workflow_run_id": 35810269948,
+      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/35810269948",
+      "head_sha": "99aa2377cf542bcdc5fd505937e9ebeb4f09f602",
+      "run_completed_at": "2026-09-23T02:28:10Z",
       "matrix": [
         {
-          "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:26:50Z",
-          "completed_at": "2026-09-21T05:27:13Z",
-          "duration_seconds": 23
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:36:27Z",
+          "completed_at": null,
+          "duration_seconds": 81
         },
         {
           "name": "test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:26:50Z",
-          "completed_at": "2026-09-21T05:27:11Z",
-          "duration_seconds": 21
-        },
-        {
-          "name": "test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:26:56Z",
-          "completed_at": "2026-09-21T05:27:18Z",
-          "duration_seconds": 22
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:36:27Z",
+          "completed_at": null,
+          "duration_seconds": 81
         },
         {
           "name": "test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:26:52Z",
-          "completed_at": "2026-09-21T05:27:31Z",
-          "duration_seconds": 39
+          "started_at": "2026-09-23T02:36:29Z",
+          "completed_at": "2026-09-23T02:37:19Z",
+          "duration_seconds": 50
         },
         {
-          "name": "test (linux-x64 / Python 3.15)",
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:36:27Z",
+          "completed_at": null,
+          "duration_seconds": 81
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:26:50Z",
-          "completed_at": "2026-09-21T05:28:34Z",
-          "duration_seconds": 104
+          "started_at": "2026-09-23T02:36:36Z",
+          "completed_at": "2026-09-23T02:37:00Z",
+          "duration_seconds": 24
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35808376777,
-      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/35808376777",
+      "workflow_run_id": 35810269836,
+      "workflow_run_url": "https://github.com/273v/kaos-mcp/actions/runs/35810269836",
       "jobs": [
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T01:56:53Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T01:56:55Z"
+          "completed_at": "2026-09-23T02:25:22Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T01:56:56Z"
+          "completed_at": "2026-09-23T02:25:18Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T02:25:20Z"
         }
       ],
-      "run_completed_at": "2026-09-23T01:56:57Z"
+      "run_completed_at": "2026-09-23T02:25:23Z"
     },
     "open_prs": {
-      "count": 3,
+      "count": 1,
       "titles": [
-        "#54 chore(deps): security lock refresh + mcp>=1.28.1 floor (0.1.5)",
-        "#53 chore(deps): bump the deps-minor group across 1 directory with 6 updates",
-        "#48 chore(deps): bump the actions-all group across 1 directory with 4 updates"
+        "#55 chore(deps-dev): bump packaging from 26.0 to 26.3 in the deps-minor group across 1 directory"
       ]
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 113,
+      "days_since_last_release": 0,
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.3",
-      "pypi_release_iso": "2026-06-01T17:40:39.929054Z",
+      "pypi_version": "0.1.5",
+      "pypi_release_iso": "2026-09-23T02:35:36.653904Z",
       "wheel_platforms": [
         "any"
       ],
       "wheel_sha256s": {
-        "kaos_mcp-0.1.3-py3-none-any.whl": "7c120c8fd0002e0ac2dd274e1d8161f0de706628c4bb8a04a4c281183d0b0900",
-        "kaos_mcp-0.1.3.tar.gz": "418dc2234d06ee35dc99df4fb331be02f0c3e876c65ded57b5ead3f0ab479930"
+        "kaos_mcp-0.1.5-py3-none-any.whl": "6bb0e2150ef4153ce8486716b77f9cfad16b8baf9bd7dc6b6f8898b7699c92f5",
+        "kaos_mcp-0.1.5.tar.gz": "8e119051656306e62ea45d97869c1e0983b826c74468e643b309d32158a503f6"
       },
       "is_abi3": false,
       "has_musllinux_wheel": false,
@@ -122,13 +120,13 @@
         "NOTICE"
       ],
       "attestations": {
-        "pep740_present": true,
-        "publisher_kind": "GitHub",
-        "publisher_source_repo": "273v/kaos-mcp",
-        "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1694810815,
-        "verified_count": 2,
-        "total_count": 2
+        "pep740_present": false,
+        "publisher_kind": null,
+        "publisher_source_repo": null,
+        "publisher_workflow_ref": null,
+        "rekor_log_index": null,
+        "verified_count": 0,
+        "total_count": 0
       },
       "sbom": {
         "components_count": 51,
@@ -149,7 +147,7 @@
         ],
         "strong_copyleft": [],
         "unknown_license": [],
-        "sbom_artifact_path": "data/sbom/kaos-mcp-0.1.3.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-mcp-0.1.5.cdx.json"
       },
       "errors": []
     },
@@ -157,7 +155,7 @@
       "dco_signoff_rate_90d": 1.0,
       "conventional_commits_rate_90d": 1.0,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 6,
+      "commits_90d": 8,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -210,22 +208,20 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 1,
-      "median_pr_age_days": 0.01,
-      "open_pr_count": 3,
+      "releases_90d": 2,
+      "median_pr_age_days": 0.007,
+      "open_pr_count": 1,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": null,
-      "errors": [
-        "time_to_pypi: no resolvable (tag, pypi-upload) pairs in window"
-      ]
+      "time_to_pypi_seconds_median": 621,
+      "errors": []
     },
     "code_metrics": {
       "python": {
         "src_loc": 2659,
-        "tests_loc": 1865,
+        "tests_loc": 1867,
         "src_files": 24,
         "tests_files": 14,
-        "tests_count": 142
+        "tests_count": 143
       },
       "rust": {
         "src_loc": 0,
@@ -239,17 +235,17 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-mcp-0.1.3.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-mcp/releases/download/v0.1.3/kaos-mcp-0.1.3.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-mcp-0.1.5.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-mcp/releases/download/v0.1.5/kaos-mcp-0.1.5.cdx.json"
   },
   "attestation": {
-    "present": true,
-    "publisher_kind": "GitHub",
-    "publisher_source_repo": "273v/kaos-mcp",
-    "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1694810815,
-    "verified_count": 2,
-    "total_count": 2,
+    "present": false,
+    "publisher_kind": null,
+    "publisher_source_repo": null,
+    "publisher_workflow_ref": null,
+    "rekor_log_index": null,
+    "verified_count": 0,
+    "total_count": 0,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-mcp/"
   }
 }

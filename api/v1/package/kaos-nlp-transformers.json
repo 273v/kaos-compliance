@@ -8,96 +8,92 @@
     "identity": {
       "pypi_version": "0.1.6",
       "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.1.6/",
-      "main_head_sha": "cf83a09b4c7bc7eb1221924960dc3f94a10e8d88",
+      "main_head_sha": "12d0e6df9aa004e4e9d0b81d339b193b92381027",
       "latest_tag": "v0.2.0a8",
       "latest_tag_sha": "7ef731a74f5abedba6a0fbec7c0c860e972b62ee",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T01:57:58Z"
+      "last_commit_at": "2026-09-23T02:35:19Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 35808458385,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35808458385",
-      "head_sha": "cf83a09b4c7bc7eb1221924960dc3f94a10e8d88",
-      "run_completed_at": "2026-09-23T02:08:02Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": 35810959686,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35810959686",
+      "head_sha": "12d0e6df9aa004e4e9d0b81d339b193b92381027",
+      "run_completed_at": "2026-09-23T02:38:01Z",
       "matrix": [
-        {
-          "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:37:26Z",
-          "completed_at": "2026-09-21T05:39:24Z",
-          "duration_seconds": 118
-        },
-        {
-          "name": "test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:29:30Z",
-          "completed_at": "2026-09-21T05:35:53Z",
-          "duration_seconds": 383
-        },
-        {
-          "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": "failure",
-          "status": "completed",
-          "started_at": "2026-09-21T05:34:34Z",
-          "completed_at": "2026-09-21T05:34:56Z",
-          "duration_seconds": 22
-        },
         {
           "name": "test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:29:55Z",
-          "completed_at": "2026-09-21T05:34:07Z",
-          "duration_seconds": 252
+          "started_at": "2026-09-23T02:35:37Z",
+          "completed_at": "2026-09-23T02:38:55Z",
+          "duration_seconds": 198
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:35:29Z",
+          "completed_at": null,
+          "duration_seconds": 216
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": null,
+          "status": "in_progress",
+          "started_at": "2026-09-23T02:35:31Z",
+          "completed_at": null,
+          "duration_seconds": 214
         },
         {
           "name": "test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:35:41Z",
-          "completed_at": "2026-09-21T05:38:10Z",
-          "duration_seconds": 149
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:35:29Z",
+          "completed_at": null,
+          "duration_seconds": 216
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": null,
+          "status": "queued",
+          "started_at": "2026-09-23T02:35:29Z",
+          "completed_at": null,
+          "duration_seconds": 216
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35808458458,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35808458458",
+      "workflow_run_id": 35810959558,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35810959558",
       "jobs": [
         {
-          "name": "bandit (static security)",
+          "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T01:58:16Z"
+          "completed_at": "2026-09-23T02:35:44Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T01:58:14Z"
+          "completed_at": "2026-09-23T02:35:37Z"
         },
         {
-          "name": "gitleaks (incremental)",
+          "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T01:58:22Z"
+          "completed_at": "2026-09-23T02:35:36Z"
         }
       ],
-      "run_completed_at": "2026-09-23T01:58:23Z"
+      "run_completed_at": "2026-09-23T02:35:45Z"
     },
     "open_prs": {
-      "count": 3,
-      "titles": [
-        "#63 chore(deps): pyo3 0.29 + cargo/uv lock security bumps",
-        "#62 chore(deps): Bump the cargo-minor group across 1 directory with 6 updates",
-        "#61 chore(deps): Bump the deps-minor group across 1 directory with 8 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -139,14 +135,14 @@
         "total_count": 6
       },
       "sbom": {
-        "components_count": 368,
+        "components_count": 348,
         "license_breakdown": {
           "MIT": 74,
           "MPL-2.0": 2,
           "BSD-3-Clause": 15,
           "Apache-2.0": 20,
           "Apache-2.0 OR BSD-3-Clause": 1,
-          "MIT OR Apache-2.0": 154,
+          "MIT OR Apache-2.0": 146,
           "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0": 1,
           "Apache-2.0 OR BSD-2-Clause": 1,
           "BSD-2-Clause": 3,
@@ -157,13 +153,12 @@
           "0BSD OR MIT OR Apache-2.0": 1,
           "Unlicense OR MIT": 4,
           "Apache-2.0 OR MIT": 16,
-          "LicenseRef-unknown-ec5c82d8": 14,
+          "LicenseRef-unknown-ec5c82d8": 13,
           "LicenseRef-unknown-7dcb5226": 1,
-          "Zlib": 1,
           "Apache-2.0 OR ISC OR MIT": 2,
           "Unicode-3.0": 18,
-          "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT": 15,
-          "MIT OR Apache-2.0 OR Zlib": 2,
+          "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT": 5,
+          "MIT OR Apache-2.0 OR Zlib": 1,
           "Apache-2.0 OR MIT OR Zlib": 2,
           "MIT OR Zlib OR Apache-2.0": 1,
           "MIT OR Apache-2.0 OR LGPL-2.1-or-later": 2,
@@ -175,7 +170,8 @@
           "Zlib OR Apache-2.0 OR MIT": 1,
           "(MIT OR Apache-2.0) AND Unicode-3.0": 1,
           "LicenseRef-unknown-cb277f17": 1,
-          "BSD-2-Clause OR Apache-2.0 OR MIT": 2
+          "BSD-2-Clause OR Apache-2.0 OR MIT": 2,
+          "Zlib": 1
         },
         "weak_copyleft": [
           "certifi",
@@ -187,7 +183,6 @@
         "unknown_license": [
           "base64",
           "fnv",
-          "id-arena",
           "ident_case",
           "matrixmultiply",
           "minimal-lexical",
@@ -213,8 +208,8 @@
       "dco_signoff_rate_90d": 1.0,
       "conventional_commits_rate_90d": 1.0,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 6,
-      "unique_committers_90d": 1,
+      "commits_90d": 7,
+      "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
         "source": "branches_api",
@@ -272,8 +267,8 @@
         "NOTICE"
       ],
       "releases_90d": 0,
-      "median_pr_age_days": 15.954,
-      "open_pr_count": 3,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": null,
       "errors": []

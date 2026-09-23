@@ -125,7 +125,7 @@ footer a{color:var(--muted)}
   </nav>
  </div>
  <div class="meta" aria-label="Last generated">
-  Generated 2026-09-23 02:20 UTC
+  Generated 2026-09-23 02:40 UTC
  </div>
 </header>
 
@@ -134,10 +134,10 @@ footer a{color:var(--muted)}
 <section aria-labelledby="rollup-h">
  <h2 id="rollup-h">Org rollup</h2>
  <div class="strip">
-  <div class="stat"><span class="n">18/18</span><span class="lab"><a href="#att-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">PEP 740 attested</a></span></div>
+  <div class="stat"><span class="n">17/18</span><span class="lab"><a href="#att-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">PEP 740 attested</a></span></div>
   <div class="stat"><span class="n">18/18</span><span class="lab">SBOM published</span></div>
   <div class="stat"><span class="n">0/18</span><span class="lab"><a href="#cisa-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">SBOM has dep graph</a></span></div>
-  <div class="stat"><span class="n">18/18</span><span class="lab"><a href="#slsa-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">SLSA Build L2 (effective)</a></span></div>
+  <div class="stat"><span class="n">17/18</span><span class="lab"><a href="#slsa-h" style="color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted)">SLSA Build L2 (effective)</a></span></div>
  </div>
  <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
   No composite score. Each tile is a per-signal ratio; see
@@ -216,9 +216,9 @@ footer a{color:var(--muted)}
     </tr>
     <tr>
      <td class="pkg" data-h="Package"><a href="package/kaos-mcp.html">kaos-mcp</a></td>
-     <td data-h="Build level"><span class="pill g" aria-label="Build L2 (effective): Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L2 (effective)</span></td>
-     <td class="mono" data-h="Publisher">GitHub</td>
-     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">Hosted build platform (GitHub); every artifact in the latest release has a verified PEP 740 attestation. L3 (hardened platform) is not separately claimed — see methodology Limits & honest gaps.</td>
+     <td data-h="Build level"><span class="pill n" aria-label="Build L0: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span> <span class="mono" style="margin-left:var(--s-2)">Build L0</span></td>
+     <td class="mono" data-h="Publisher">—</td>
+     <td data-h="Note" style="font-size:0.8125rem;color:var(--muted)">No PEP 740 attestation; SLSA build claim cannot be derived.</td>
     </tr>
     <tr>
      <td class="pkg" data-h="Package"><a href="package/kaos-ml-core.html">kaos-ml-core</a></td>
@@ -831,17 +831,6 @@ footer a{color:var(--muted)}
       <tr>
        <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
        <td data-h="Status"><span class="pill g" aria-label="Documented parser gap: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-       <td class="mono" data-h="Component">id-arena</td>
-       <td class="mono" data-h="License">MIT</td>
-       <td data-h="Decision">
-<a href="license-policy.html#id-arena">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
-       <td data-h="Explanation" class="finding-note">
-         crates.io enrichment retry
-       </td>
-      </tr>
-      <tr>
-       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
-       <td data-h="Status"><span class="pill g" aria-label="Documented parser gap: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
        <td class="mono" data-h="Component">matrixmultiply</td>
        <td class="mono" data-h="License">MIT OR Apache-2.0</td>
        <td data-h="Decision">
@@ -1007,17 +996,6 @@ footer a{color:var(--muted)}
          crates.io enrichment retry
        </td>
       </tr>
-      <tr>
-       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-core.html">kaos-nlp-core</a></td>
-       <td data-h="Status"><span class="pill g" aria-label="Documented parser gap: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-       <td class="mono" data-h="Component">zstd-sys</td>
-       <td class="mono" data-h="License">MIT OR Apache-2.0</td>
-       <td data-h="Decision">
-<a href="license-policy.html#zstd-sys">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
-       <td data-h="Explanation" class="finding-note">
-         crates.io enrichment retry
-       </td>
-      </tr>
       <tr id="license-findings-kaos-nlp-transformers">
        <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
        <td data-h="Status"><span class="pill g" aria-label="Documented parser gap: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
@@ -1050,17 +1028,6 @@ footer a{color:var(--muted)}
        <td class="mono" data-h="License">Apache-2.0 OR MIT</td>
        <td data-h="Decision">
 <a href="license-policy.html#fnv">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
-       <td data-h="Explanation" class="finding-note">
-         crates.io enrichment retry
-       </td>
-      </tr>
-      <tr>
-       <td class="pkg" data-h="Package"><a href="package/kaos-nlp-transformers.html">kaos-nlp-transformers</a></td>
-       <td data-h="Status"><span class="pill g" aria-label="Documented parser gap: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-       <td class="mono" data-h="Component">id-arena</td>
-       <td class="mono" data-h="License">MIT</td>
-       <td data-h="Decision">
-<a href="license-policy.html#id-arena">Known license; parser fix tracked</a><br><span class="mono">audit B.3</span>       </td>
        <td data-h="Explanation" class="finding-note">
          crates.io enrichment retry
        </td>
@@ -1389,39 +1356,39 @@ footer a{color:var(--muted)}
   <div class="lic-list">
     <div class="lic g">
      <span class="spdx">MIT</span>
-     <span class="bar" role="img" aria-label="MIT: 596 of 1619 components">
-      <span style="width:36%"></span>
+     <span class="bar" role="img" aria-label="MIT: 597 of 1588 components">
+      <span style="width:37%"></span>
      </span>
-     <span class="ct">596</span>
+     <span class="ct">597</span>
      <span class="pill-wrap"><span class="pill g" aria-label="MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">MIT OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="MIT OR Apache-2.0: 296 of 1619 components">
-      <span style="width:18%"></span>
+     <span class="bar" role="img" aria-label="MIT OR Apache-2.0: 283 of 1588 components">
+      <span style="width:17%"></span>
      </span>
-     <span class="ct">296</span>
+     <span class="ct">283</span>
      <span class="pill-wrap"><span class="pill g" aria-label="MIT OR Apache-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">BSD-3-Clause</span>
-     <span class="bar" role="img" aria-label="BSD-3-Clause: 196 of 1619 components">
+     <span class="bar" role="img" aria-label="BSD-3-Clause: 200 of 1588 components">
       <span style="width:12%"></span>
      </span>
-     <span class="ct">196</span>
+     <span class="ct">200</span>
      <span class="pill-wrap"><span class="pill g" aria-label="BSD-3-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0</span>
-     <span class="bar" role="img" aria-label="Apache-2.0: 172 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0: 173 of 1588 components">
       <span style="width:10%"></span>
      </span>
-     <span class="ct">172</span>
+     <span class="ct">173</span>
      <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT: 34 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT: 34 of 1588 components">
       <span style="width:2%"></span>
      </span>
      <span class="ct">34</span>
@@ -1429,7 +1396,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Unicode-3.0</span>
-     <span class="bar" role="img" aria-label="Unicode-3.0: 34 of 1619 components">
+     <span class="bar" role="img" aria-label="Unicode-3.0: 34 of 1588 components">
       <span style="width:2%"></span>
      </span>
      <span class="ct">34</span>
@@ -1437,31 +1404,23 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">BSD-2-Clause</span>
-     <span class="bar" role="img" aria-label="BSD-2-Clause: 33 of 1619 components">
+     <span class="bar" role="img" aria-label="BSD-2-Clause: 32 of 1588 components">
       <span style="width:2%"></span>
      </span>
-     <span class="ct">33</span>
+     <span class="ct">32</span>
      <span class="pill-wrap"><span class="pill g" aria-label="BSD-2-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
-     <span class="spdx">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT: 30 of 1619 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">30</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
-    </div>
-    <div class="lic g">
      <span class="spdx">LicenseRef-unknown-ec5c82d8</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-ec5c82d8: 27 of 1619 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-ec5c82d8: 24 of 1588 components">
       <span style="width:1%"></span>
      </span>
-     <span class="ct">27</span>
+     <span class="ct">24</span>
      <span class="pill-wrap"><span class="pill g" aria-label="LicenseRef-unknown-ec5c82d8: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
      <span class="spdx">ISC</span>
-     <span class="bar" role="img" aria-label="ISC: 19 of 1619 components">
+     <span class="bar" role="img" aria-label="ISC: 19 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">19</span>
@@ -1469,7 +1428,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR BSD-2-Clause</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-2-Clause: 18 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-2-Clause: 18 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">18</span>
@@ -1477,7 +1436,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MPL-2.0</span>
-     <span class="bar" role="img" aria-label="MPL-2.0: 18 of 1619 components">
+     <span class="bar" role="img" aria-label="MPL-2.0: 18 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">18</span>
@@ -1485,7 +1444,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">PSF-2.0</span>
-     <span class="bar" role="img" aria-label="PSF-2.0: 18 of 1619 components">
+     <span class="bar" role="img" aria-label="PSF-2.0: 18 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">18</span>
@@ -1493,7 +1452,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Python-2.0</span>
-     <span class="bar" role="img" aria-label="Python-2.0: 17 of 1619 components">
+     <span class="bar" role="img" aria-label="Python-2.0: 17 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">17</span>
@@ -1501,7 +1460,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR BSD-3-Clause</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-3-Clause: 16 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR BSD-3-Clause: 16 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">16</span>
@@ -1509,15 +1468,23 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0</span>
-     <span class="bar" role="img" aria-label="BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: 12 of 1619 components">
+     <span class="bar" role="img" aria-label="BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: 12 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">12</span>
      <span class="pill-wrap"><span class="pill g" aria-label="BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
+     <span class="spdx">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT</span>
+     <span class="bar" role="img" aria-label="Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT: 11 of 1588 components">
+      <span style="width:1%"></span>
+     </span>
+     <span class="ct">11</span>
+     <span class="pill-wrap"><span class="pill g" aria-label="Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
+    </div>
+    <div class="lic g">
      <span class="spdx">Unlicense OR MIT</span>
-     <span class="bar" role="img" aria-label="Unlicense OR MIT: 8 of 1619 components">
+     <span class="bar" role="img" aria-label="Unlicense OR MIT: 8 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">8</span>
@@ -1525,7 +1492,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MIT-CMU</span>
-     <span class="bar" role="img" aria-label="MIT-CMU: 7 of 1619 components">
+     <span class="bar" role="img" aria-label="MIT-CMU: 7 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">7</span>
@@ -1533,7 +1500,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">BSD-2-Clause OR Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="BSD-2-Clause OR Apache-2.0 OR MIT: 6 of 1619 components">
+     <span class="bar" role="img" aria-label="BSD-2-Clause OR Apache-2.0 OR MIT: 6 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">6</span>
@@ -1541,7 +1508,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-30d4520d</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-30d4520d: 6 of 1619 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-30d4520d: 6 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">6</span>
@@ -1549,7 +1516,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic r">
      <span class="spdx">MIT OR Apache-2.0 OR LGPL-2.1-or-later</span>
-     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR LGPL-2.1-or-later: 5 of 1619 components">
+     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR LGPL-2.1-or-later: 5 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">5</span>
@@ -1557,7 +1524,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MPL-2.0 AND MIT</span>
-     <span class="bar" role="img" aria-label="MPL-2.0 AND MIT: 5 of 1619 components">
+     <span class="bar" role="img" aria-label="MPL-2.0 AND MIT: 5 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">5</span>
@@ -1565,7 +1532,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">(MIT OR Apache-2.0) AND Unicode-3.0</span>
-     <span class="bar" role="img" aria-label="(MIT OR Apache-2.0) AND Unicode-3.0: 4 of 1619 components">
+     <span class="bar" role="img" aria-label="(MIT OR Apache-2.0) AND Unicode-3.0: 4 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">4</span>
@@ -1573,7 +1540,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 WITH LLVM-exception</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 WITH LLVM-exception: 4 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 WITH LLVM-exception: 4 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">4</span>
@@ -1581,7 +1548,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Zlib</span>
-     <span class="bar" role="img" aria-label="Zlib: 4 of 1619 components">
+     <span class="bar" role="img" aria-label="Zlib: 4 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">4</span>
@@ -1589,7 +1556,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-e3b0c442</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-e3b0c442: 3 of 1619 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-e3b0c442: 3 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">3</span>
@@ -1597,7 +1564,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">0BSD OR MIT OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="0BSD OR MIT OR Apache-2.0: 2 of 1619 components">
+     <span class="bar" role="img" aria-label="0BSD OR MIT OR Apache-2.0: 2 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1605,7 +1572,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR BSL-1.0</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR BSL-1.0: 2 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR BSL-1.0: 2 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1613,7 +1580,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR ISC OR MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR ISC OR MIT: 2 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR ISC OR MIT: 2 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1621,7 +1588,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 OR MIT OR Zlib</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT OR Zlib: 2 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 OR MIT OR Zlib: 2 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1629,7 +1596,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-15934bcf</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-15934bcf: 2 of 1619 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-15934bcf: 2 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1637,7 +1604,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-7dcb5226</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-7dcb5226: 2 of 1619 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-7dcb5226: 2 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1645,7 +1612,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-df4fa55c</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-df4fa55c: 2 of 1619 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-df4fa55c: 2 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1653,23 +1620,15 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MIT AND PSF-2.0</span>
-     <span class="bar" role="img" aria-label="MIT AND PSF-2.0: 2 of 1619 components">
+     <span class="bar" role="img" aria-label="MIT AND PSF-2.0: 2 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
      <span class="pill-wrap"><span class="pill g" aria-label="MIT AND PSF-2.0: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
-     <span class="spdx">MIT OR Apache-2.0 OR Zlib</span>
-     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR Zlib: 2 of 1619 components">
-      <span style="width:1%"></span>
-     </span>
-     <span class="ct">2</span>
-     <span class="pill-wrap"><span class="pill g" aria-label="MIT OR Apache-2.0 OR Zlib: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
-    </div>
-    <div class="lic g">
      <span class="spdx">MIT OR Zlib OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="MIT OR Zlib OR Apache-2.0: 2 of 1619 components">
+     <span class="bar" role="img" aria-label="MIT OR Zlib OR Apache-2.0: 2 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">2</span>
@@ -1677,7 +1636,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">0BSD</span>
-     <span class="bar" role="img" aria-label="0BSD: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="0BSD: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1685,7 +1644,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 AND ISC</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 AND ISC: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 AND ISC: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1693,7 +1652,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Apache-2.0 AND MIT</span>
-     <span class="bar" role="img" aria-label="Apache-2.0 AND MIT: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="Apache-2.0 AND MIT: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1701,7 +1660,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception</span>
-     <span class="bar" role="img" aria-label="CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1709,7 +1668,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">CC0-1.0 OR MIT-0 OR Apache-2.0</span>
-     <span class="bar" role="img" aria-label="CC0-1.0 OR MIT-0 OR Apache-2.0: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="CC0-1.0 OR MIT-0 OR Apache-2.0: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1717,7 +1676,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-257a8106</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-257a8106: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-257a8106: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1725,7 +1684,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-a7af1b0a</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-a7af1b0a: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-a7af1b0a: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1733,7 +1692,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">LicenseRef-unknown-cb277f17</span>
-     <span class="bar" role="img" aria-label="LicenseRef-unknown-cb277f17: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="LicenseRef-unknown-cb277f17: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1741,15 +1700,23 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">MIT AND BSD-3-Clause</span>
-     <span class="bar" role="img" aria-label="MIT AND BSD-3-Clause: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="MIT AND BSD-3-Clause: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
      <span class="pill-wrap"><span class="pill g" aria-label="MIT AND BSD-3-Clause: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
     </div>
     <div class="lic g">
+     <span class="spdx">MIT OR Apache-2.0 OR Zlib</span>
+     <span class="bar" role="img" aria-label="MIT OR Apache-2.0 OR Zlib: 1 of 1588 components">
+      <span style="width:1%"></span>
+     </span>
+     <span class="ct">1</span>
+     <span class="pill-wrap"><span class="pill g" aria-label="MIT OR Apache-2.0 OR Zlib: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></span>
+    </div>
+    <div class="lic g">
      <span class="spdx">Unlicense</span>
-     <span class="bar" role="img" aria-label="Unlicense: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="Unlicense: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -1757,7 +1724,7 @@ footer a{color:var(--muted)}
     </div>
     <div class="lic g">
      <span class="spdx">Zlib OR Apache-2.0 OR MIT</span>
-     <span class="bar" role="img" aria-label="Zlib OR Apache-2.0 OR MIT: 1 of 1619 components">
+     <span class="bar" role="img" aria-label="Zlib OR Apache-2.0 OR MIT: 1 of 1588 components">
       <span style="width:1%"></span>
      </span>
      <span class="ct">1</span>
@@ -2228,7 +2195,7 @@ footer a{color:var(--muted)}
  </details>
  <details class="pkg-detail">
   <summary>
-   <span class="pname">kaos-mcp <span class="pmeta">0.1.3</span></span>
+   <span class="pname">kaos-mcp <span class="pmeta">0.1.5</span></span>
    <span class="pmeta">
 <span class="pill y" aria-label="SBOM (manifest only): Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
  <span class="pill r" aria-label="No attestation: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>   </span>
@@ -2237,7 +2204,7 @@ footer a{color:var(--muted)}
    <dl class="kv">
     <dt>SBOM</dt>
     <dd>
-       <a href="api/v1/sbom/kaos-mcp-0.1.3.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-mcp/releases/download/v0.1.3/kaos-mcp-0.1.3.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
+       <a href="api/v1/sbom/kaos-mcp-0.1.5.cdx.json">CycloneDX (mirror)</a> &middot;        <a href="https://github.com/273v/kaos-mcp/releases/download/v0.1.5/kaos-mcp-0.1.5.cdx.json">CycloneDX (GitHub Release)</a>    </dd>
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
@@ -2275,7 +2242,7 @@ footer a{color:var(--muted)}
     <dd>
      <span class="pchips">
        <span class="chip g">MIT &times; 36</span>
-       <span class="chip g">BSD-3-Clause &times; 16</span>
+       <span class="chip g">BSD-3-Clause &times; 17</span>
        <span class="chip g">Apache-2.0 &times; 13</span>
        <span class="chip g">MIT OR Apache-2.0 &times; 12</span>
        <span class="chip g">BSD-2-Clause &times; 2</span>
@@ -2337,14 +2304,14 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-       <span class="chip g">MIT OR Apache-2.0 &times; 93</span>
-       <span class="chip g">MIT &times; 30</span>
+       <span class="chip g">MIT OR Apache-2.0 &times; 88</span>
+       <span class="chip g">MIT &times; 31</span>
        <span class="chip g">Unicode-3.0 &times; 16</span>
        <span class="chip g">Apache-2.0 OR MIT &times; 14</span>
-       <span class="chip g">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT &times; 13</span>
-       <span class="chip g">LicenseRef-unknown-ec5c82d8 &times; 13</span>
+       <span class="chip g">LicenseRef-unknown-ec5c82d8 &times; 11</span>
+       <span class="chip g">BSD-3-Clause &times; 9</span>
        <span class="chip g">Apache-2.0 &times; 8</span>
-       <span class="chip g">BSD-3-Clause &times; 7</span>
+       <span class="chip g">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT &times; 4</span>
      </span>
     </dd>
     <dt>Wheel matrix</dt>
@@ -2370,14 +2337,14 @@ footer a{color:var(--muted)}
     <dt>Top licenses</dt>
     <dd>
      <span class="pchips">
-       <span class="chip g">MIT OR Apache-2.0 &times; 154</span>
+       <span class="chip g">MIT OR Apache-2.0 &times; 146</span>
        <span class="chip g">MIT &times; 74</span>
        <span class="chip g">Apache-2.0 &times; 20</span>
        <span class="chip g">Unicode-3.0 &times; 18</span>
        <span class="chip g">Apache-2.0 OR MIT &times; 16</span>
-       <span class="chip g">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT &times; 15</span>
        <span class="chip g">BSD-3-Clause &times; 15</span>
-       <span class="chip g">LicenseRef-unknown-ec5c82d8 &times; 14</span>
+       <span class="chip g">LicenseRef-unknown-ec5c82d8 &times; 13</span>
+       <span class="chip g">Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT &times; 5</span>
      </span>
     </dd>
     <dt>Wheel matrix</dt>
@@ -2404,8 +2371,8 @@ footer a{color:var(--muted)}
     <dd>
      <span class="pchips">
        <span class="chip g">MIT &times; 33</span>
-       <span class="chip g">BSD-3-Clause &times; 11</span>
-       <span class="chip g">Apache-2.0 &times; 7</span>
+       <span class="chip g">BSD-3-Clause &times; 12</span>
+       <span class="chip g">Apache-2.0 &times; 8</span>
        <span class="chip g">BSD-2-Clause &times; 2</span>
        <span class="chip g">Apache-2.0 OR BSD-2-Clause &times; 1</span>
        <span class="chip g">Apache-2.0 OR BSD-3-Clause &times; 1</span>
@@ -2605,7 +2572,7 @@ footer a{color:var(--muted)}
 </main>
 
 <footer>
- Generated 2026-09-23 02:20 UTC
+ Generated 2026-09-23 02:40 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

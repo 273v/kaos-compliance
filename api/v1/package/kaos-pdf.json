@@ -8,94 +8,92 @@
     "identity": {
       "pypi_version": "0.1.6",
       "pypi_url": "https://pypi.org/project/kaos-pdf/0.1.6/",
-      "main_head_sha": "d66dcfe3fc410ce0005dce94e2d5bdc49f4d46cb",
+      "main_head_sha": "7681cea3d088483a7d839d9624d7c400dbb48115",
       "latest_tag": "v0.1.6",
       "latest_tag_sha": "1d631a32e68a44c1f61d88d2e9e38f8a52a1c1f9",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T01:56:54Z"
+      "last_commit_at": "2026-09-23T02:29:49Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35808388469,
-      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/35808388469",
-      "head_sha": "d66dcfe3fc410ce0005dce94e2d5bdc49f4d46cb",
-      "run_completed_at": "2026-09-23T02:01:01Z",
+      "workflow_run_id": 35810581805,
+      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/35810581805",
+      "head_sha": "7681cea3d088483a7d839d9624d7c400dbb48115",
+      "run_completed_at": "2026-09-23T02:35:57Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:32:07Z",
-          "completed_at": "2026-09-21T05:33:28Z",
-          "duration_seconds": 81
-        },
-        {
-          "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": "failure",
-          "status": "completed",
-          "started_at": "2026-09-21T05:30:32Z",
-          "completed_at": "2026-09-21T05:30:57Z",
-          "duration_seconds": 25
+          "started_at": "2026-09-23T02:33:18Z",
+          "completed_at": "2026-09-23T02:34:37Z",
+          "duration_seconds": 79
         },
         {
           "name": "test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:28:42Z",
-          "completed_at": "2026-09-21T05:29:48Z",
-          "duration_seconds": 66
+          "started_at": "2026-09-23T02:30:06Z",
+          "completed_at": "2026-09-23T02:31:10Z",
+          "duration_seconds": 64
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T02:34:51Z",
+          "completed_at": "2026-09-23T02:37:13Z",
+          "duration_seconds": 142
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": null,
+          "status": "in_progress",
+          "started_at": "2026-09-23T02:37:35Z",
+          "completed_at": null,
+          "duration_seconds": 126
         },
         {
           "name": "test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-21T05:28:38Z",
-          "completed_at": "2026-09-21T05:30:29Z",
-          "duration_seconds": 111
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-21T05:32:11Z",
-          "completed_at": "2026-09-21T05:33:18Z",
-          "duration_seconds": 67
+          "started_at": "2026-09-23T02:30:03Z",
+          "completed_at": "2026-09-23T02:31:56Z",
+          "duration_seconds": 113
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35808388442,
-      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/35808388442",
+      "workflow_run_id": 35810581846,
+      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/35810581846",
       "jobs": [
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T01:57:10Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T01:57:10Z"
+          "completed_at": "2026-09-23T02:30:02Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T01:57:43Z"
+          "completed_at": "2026-09-23T02:30:04Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T02:30:04Z"
         }
       ],
-      "run_completed_at": "2026-09-23T01:57:44Z"
+      "run_completed_at": "2026-09-23T02:30:05Z"
     },
     "open_prs": {
-      "count": 1,
-      "titles": [
-        "#62 chore(deps): deps-minor bumps, patch pillow/pydantic-settings vulns, cp315-ready lock"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -160,9 +158,9 @@
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.846,
+      "conventional_commits_rate_90d": 0.857,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 13,
+      "commits_90d": 14,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -216,8 +214,8 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 0.004,
-      "open_pr_count": 1,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 296,
       "errors": []
