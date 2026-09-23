@@ -97,7 +97,7 @@ def test_cosign_absent_is_soft_failure(snapshot_file: Path, tmp_path: Path) -> N
     # and the OIDC guard is irrelevant.
     empty_bin = tmp_path / "empty-bin"
     empty_bin.mkdir()
-    env = {**os.environ, "PATH": str(empty_bin)}
+    env: dict[str, str] = {**os.environ, "PATH": str(empty_bin)}
     # Strip OIDC + Actions vars too — the cosign-missing branch should
     # short-circuit before the guard.
     for k in ("ACTIONS_ID_TOKEN_REQUEST_URL", "COSIGN_EXPERIMENTAL"):
