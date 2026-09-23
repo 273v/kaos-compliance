@@ -8,90 +8,86 @@
     "identity": {
       "pypi_version": "0.1.0a16",
       "pypi_url": "https://pypi.org/project/kaos-ui/0.1.0a16/",
-      "main_head_sha": "a2e368768180cc543e3413c039bf2237f66b3ab4",
+      "main_head_sha": "d4c10765e401b2ac4bb15e2a5bbd96c1e6252a13",
       "latest_tag": "v0.1.0a16",
       "latest_tag_sha": "08c737f93439eca630d58c2b7e8448242de4c4ac",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T02:09:26Z"
+      "last_commit_at": "2026-09-23T11:14:54Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35809227734,
-      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/35809227734",
-      "head_sha": "a2e368768180cc543e3413c039bf2237f66b3ab4",
-      "run_completed_at": "2026-09-23T02:19:23Z",
+      "workflow_run_id": 35853428251,
+      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/35853428251",
+      "head_sha": "d4c10765e401b2ac4bb15e2a5bbd96c1e6252a13",
+      "run_completed_at": "2026-09-23T11:23:24Z",
       "matrix": [
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T11:17:47Z",
+          "completed_at": "2026-09-23T11:18:10Z",
+          "duration_seconds": 23
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T11:15:20Z",
+          "completed_at": "2026-09-23T11:16:03Z",
+          "duration_seconds": 43
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T11:18:49Z",
+          "completed_at": "2026-09-23T11:19:11Z",
+          "duration_seconds": 22
+        },
         {
           "name": "test (linux-x64 / Python 3.15)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-23T02:10:35Z",
-          "completed_at": "2026-09-23T02:12:03Z",
+          "started_at": "2026-09-23T11:19:08Z",
+          "completed_at": "2026-09-23T11:20:36Z",
           "duration_seconds": 88
         },
         {
           "name": "test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-23T02:09:45Z",
-          "completed_at": "2026-09-23T02:10:10Z",
-          "duration_seconds": 25
-        },
-        {
-          "name": "test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-23T02:09:40Z",
-          "completed_at": "2026-09-23T02:10:34Z",
-          "duration_seconds": 54
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-23T02:23:11Z",
-          "completed_at": "2026-09-23T02:23:31Z",
-          "duration_seconds": 20
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-23T02:18:14Z",
-          "completed_at": "2026-09-23T02:18:34Z",
-          "duration_seconds": 20
+          "started_at": "2026-09-23T11:15:27Z",
+          "completed_at": "2026-09-23T11:15:58Z",
+          "duration_seconds": 31
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35809227730,
-      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/35809227730",
+      "workflow_run_id": 35853428214,
+      "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/35853428214",
       "jobs": [
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T02:10:14Z"
-        },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:09:44Z"
+          "completed_at": "2026-09-23T11:15:11Z"
+        },
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T11:15:07Z"
         }
       ],
-      "run_completed_at": "2026-09-23T02:10:15Z"
+      "run_completed_at": "2026-09-23T11:15:11Z"
     },
     "open_prs": {
-      "count": 3,
-      "titles": [
-        "#68 ci(dependabot): drop the npm entry the workspace layout can't support",
-        "#67 chore(deps): bump the actions-all group with 2 updates",
-        "#66 chore(deps-dev): bump the deps-minor group with 2 updates"
-      ]
+      "count": 0,
+      "titles": []
     },
     "freshness": {
       "days_since_last_commit": 0,
@@ -145,7 +141,7 @@
       "dco_signoff_rate_90d": 1.0,
       "conventional_commits_rate_90d": 1.0,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 7,
+      "commits_90d": 11,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},
@@ -158,8 +154,8 @@
         "NOTICE"
       ],
       "releases_90d": 0,
-      "median_pr_age_days": 0.261,
-      "open_pr_count": 3,
+      "median_pr_age_days": null,
+      "open_pr_count": 0,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": null,
       "errors": []

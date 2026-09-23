@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.5",
       "pypi_url": "https://pypi.org/project/kaos-core/0.1.5/",
-      "main_head_sha": "e42e972e1a2f7939fa535cef6380390ed56a6e7d",
+      "main_head_sha": "589519745a30d7e581daca59d975fa16480ff787",
       "latest_tag": "v0.1.5",
       "latest_tag_sha": "55f473fa9397a237797027c393d89b97858afe97",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T02:01:59Z"
+      "last_commit_at": "2026-09-23T11:29:20Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35808730410,
-      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/35808730410",
-      "head_sha": "e42e972e1a2f7939fa535cef6380390ed56a6e7d",
-      "run_completed_at": "2026-09-23T02:07:26Z",
+      "workflow_run_id": 35854818191,
+      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/35854818191",
+      "head_sha": "589519745a30d7e581daca59d975fa16480ff787",
+      "run_completed_at": "2026-09-23T11:35:27Z",
       "matrix": [
         {
           "name": "test (macos-arm64 / Python 3.13)",
@@ -67,29 +67,29 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35808730418,
-      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/35808730418",
+      "workflow_run_id": 35854818243,
+      "workflow_run_url": "https://github.com/273v/kaos-core/actions/runs/35854818243",
       "jobs": [
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T11:29:35Z"
+        },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:02:15Z"
+          "completed_at": "2026-09-23T11:29:35Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:02:10Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T02:02:15Z"
+          "completed_at": "2026-09-23T11:29:41Z"
         }
       ],
-      "run_completed_at": "2026-09-23T02:02:16Z"
+      "run_completed_at": "2026-09-23T11:29:42Z"
     },
     "open_prs": {
       "count": 0,
@@ -152,7 +152,7 @@
       "dco_signoff_rate_90d": 1.0,
       "conventional_commits_rate_90d": 1.0,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 8,
+      "commits_90d": 9,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {

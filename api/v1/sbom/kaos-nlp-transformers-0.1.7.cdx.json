@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:9028c7b6-f414-4372-87bd-0c95beb47853",
+  "serialNumber": "urn:uuid:e028d7f1-8dfc-470e-9a83-a09e253ae90e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-23T08:25:47Z",
+    "timestamp": "2026-09-23T12:27:01Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-nlp-transformers@0.1.6",
+      "bom-ref": "pkg:pypi/kaos-nlp-transformers@0.1.7",
       "name": "kaos-nlp-transformers",
-      "version": "0.1.6",
-      "purl": "pkg:pypi/kaos-nlp-transformers@0.1.6"
+      "version": "0.1.7",
+      "purl": "pkg:pypi/kaos-nlp-transformers@0.1.7"
     }
   },
   "components": [
@@ -1724,21 +1724,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-mcp@0.1.3",
+      "bom-ref": "pkg:pypi/kaos-mcp@0.1.5",
       "name": "kaos-mcp",
-      "version": "0.1.3",
-      "purl": "pkg:pypi/kaos-mcp@0.1.3",
+      "version": "0.1.5",
+      "purl": "pkg:pypi/kaos-mcp@0.1.5",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "418dc2234d06ee35dc99df4fb331be02f0c3e876c65ded57b5ead3f0ab479930"
+          "content": "8e119051656306e62ea45d97869c1e0983b826c74468e643b309d32158a503f6"
         },
         {
           "alg": "SHA-256",
-          "content": "7c120c8fd0002e0ac2dd274e1d8161f0de706628c4bb8a04a4c281183d0b0900"
+          "content": "6bb0e2150ef4153ce8486716b77f9cfad16b8baf9bd7dc6b6f8898b7699c92f5"
         }
       ],
       "licenses": [
@@ -1751,11 +1751,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/57/0e/f1ca6807f287c4a0ad1978eb8138b19b2154693037203e7a6e6b4a7271ce/kaos_mcp-0.1.3.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/4b/02/21ead6916c5658ecf4e21445632236c1902cf75516f70d792e0ae09622cd/kaos_mcp-0.1.5.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-mcp/0.1.3/"
+          "url": "https://pypi.org/project/kaos-mcp/0.1.5/"
         }
       ],
       "properties": [
@@ -15194,7 +15194,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-nlp-transformers@0.1.6",
+      "ref": "pkg:pypi/kaos-nlp-transformers@0.1.7",
       "dependsOn": [
         "pkg:cargo/criterion@0.8.2",
         "pkg:cargo/hf-hub@0.5.0",
@@ -15360,7 +15360,7 @@
       ]
     },
     {
-      "ref": "pkg:pypi/kaos-mcp@0.1.3",
+      "ref": "pkg:pypi/kaos-mcp@0.1.5",
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
         "pkg:pypi/kaos-content@0.1.1",
