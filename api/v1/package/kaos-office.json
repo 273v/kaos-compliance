@@ -8,88 +8,88 @@
     "identity": {
       "pypi_version": "0.1.6",
       "pypi_url": "https://pypi.org/project/kaos-office/0.1.6/",
-      "main_head_sha": "9510a8f58e30759749348a78de98704e937c9f76",
+      "main_head_sha": "a481855a831969cafd8b14a24d0f910f2f1a502a",
       "latest_tag": "v0.1.6",
       "latest_tag_sha": "6508baf2064b74d05005350acbcc5c607de749a3",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T02:12:57Z"
+      "last_commit_at": "2026-09-23T03:18:17Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35809462266,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35809462266",
-      "head_sha": "9510a8f58e30759749348a78de98704e937c9f76",
-      "run_completed_at": "2026-09-23T02:20:49Z",
+      "workflow_run_id": 35813793426,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35813793426",
+      "head_sha": "a481855a831969cafd8b14a24d0f910f2f1a502a",
+      "run_completed_at": "2026-09-23T03:19:48Z",
       "matrix": [
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T03:20:06Z",
+          "completed_at": "2026-09-23T03:21:25Z",
+          "duration_seconds": 79
+        },
         {
           "name": "test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-23T02:13:53Z",
-          "completed_at": "2026-09-23T02:15:12Z",
-          "duration_seconds": 79
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-23T02:16:21Z",
-          "completed_at": "2026-09-23T02:18:54Z",
-          "duration_seconds": 153
+          "started_at": "2026-09-23T03:18:43Z",
+          "completed_at": "2026-09-23T03:19:59Z",
+          "duration_seconds": 76
         },
         {
           "name": "test (linux-x64 / Python 3.15)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-23T02:26:20Z",
-          "completed_at": "2026-09-23T02:28:51Z",
-          "duration_seconds": 151
+          "started_at": "2026-09-23T03:21:49Z",
+          "completed_at": "2026-09-23T03:22:42Z",
+          "duration_seconds": 53
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T03:21:26Z",
+          "completed_at": "2026-09-23T03:22:16Z",
+          "duration_seconds": 50
         },
         {
           "name": "test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-23T02:13:48Z",
-          "completed_at": "2026-09-23T02:15:39Z",
-          "duration_seconds": 111
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-23T02:29:51Z",
-          "completed_at": "2026-09-23T02:31:18Z",
-          "duration_seconds": 87
+          "started_at": "2026-09-23T03:18:38Z",
+          "completed_at": "2026-09-23T03:20:40Z",
+          "duration_seconds": 122
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35809462320,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35809462320",
+      "workflow_run_id": 35813793491,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35813793491",
       "jobs": [
         {
-          "name": "vulture (dead-code scan)",
+          "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:13:13Z"
+          "completed_at": "2026-09-23T03:18:38Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:13:11Z"
+          "completed_at": "2026-09-23T03:18:33Z"
         },
         {
-          "name": "gitleaks (incremental)",
+          "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:13:07Z"
+          "completed_at": "2026-09-23T03:18:33Z"
         }
       ],
-      "run_completed_at": "2026-09-23T02:13:14Z"
+      "run_completed_at": "2026-09-23T03:18:38Z"
     },
     "open_prs": {
       "count": 0,
@@ -153,9 +153,9 @@
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.9,
+      "conventional_commits_rate_90d": 0.909,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 10,
+      "commits_90d": 11,
       "unique_committers_90d": 2,
       "branch_protection_enabled": false,
       "branch_protection_summary": {},

@@ -2,94 +2,94 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-pdf",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "snapshot_slice": {
     "name": "kaos-pdf",
     "identity": {
-      "pypi_version": "0.1.6",
-      "pypi_url": "https://pypi.org/project/kaos-pdf/0.1.6/",
-      "main_head_sha": "7681cea3d088483a7d839d9624d7c400dbb48115",
-      "latest_tag": "v0.1.6",
-      "latest_tag_sha": "1d631a32e68a44c1f61d88d2e9e38f8a52a1c1f9",
-      "tag_at_head": false,
+      "pypi_version": "0.1.7",
+      "pypi_url": "https://pypi.org/project/kaos-pdf/0.1.7/",
+      "main_head_sha": "057bb02b6c612382bca9d8656509416c92015760",
+      "latest_tag": "v0.1.7",
+      "latest_tag_sha": "057bb02b6c612382bca9d8656509416c92015760",
+      "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T02:29:49Z"
+      "last_commit_at": "2026-09-23T03:28:31Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35810581805,
-      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/35810581805",
-      "head_sha": "7681cea3d088483a7d839d9624d7c400dbb48115",
-      "run_completed_at": "2026-09-23T02:35:57Z",
+      "workflow_run_id": 35814467544,
+      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/35814467544",
+      "head_sha": "057bb02b6c612382bca9d8656509416c92015760",
+      "run_completed_at": "2026-09-23T03:30:29Z",
       "matrix": [
         {
-          "name": "test (linux-x64 / Python 3.14)",
+          "name": "test (linux-x64 / Python 3.14t)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-23T02:33:18Z",
-          "completed_at": "2026-09-23T02:34:37Z",
-          "duration_seconds": 79
+          "started_at": "2026-09-23T03:19:56Z",
+          "completed_at": "2026-09-23T03:23:29Z",
+          "duration_seconds": 213
         },
         {
           "name": "test (macos-arm64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-23T02:30:06Z",
-          "completed_at": "2026-09-23T02:31:10Z",
-          "duration_seconds": 64
-        },
-        {
-          "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-09-23T02:34:51Z",
-          "completed_at": "2026-09-23T02:37:13Z",
-          "duration_seconds": 142
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "in_progress",
-          "started_at": "2026-09-23T02:37:35Z",
-          "completed_at": null,
-          "duration_seconds": 126
+          "started_at": "2026-09-23T03:18:38Z",
+          "completed_at": "2026-09-23T03:19:49Z",
+          "duration_seconds": 71
         },
         {
           "name": "test (windows-x64 / Python 3.13)",
           "conclusion": "success",
           "status": "completed",
-          "started_at": "2026-09-23T02:30:03Z",
-          "completed_at": "2026-09-23T02:31:56Z",
-          "duration_seconds": 113
+          "started_at": "2026-09-23T03:18:37Z",
+          "completed_at": "2026-09-23T03:20:31Z",
+          "duration_seconds": 114
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T03:20:40Z",
+          "completed_at": "2026-09-23T03:21:39Z",
+          "duration_seconds": 59
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T03:19:57Z",
+          "completed_at": "2026-09-23T03:21:35Z",
+          "duration_seconds": 98
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35810581846,
-      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/35810581846",
+      "workflow_run_id": 35814467560,
+      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/35814467560",
       "jobs": [
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:30:02Z"
+          "completed_at": "2026-09-23T03:28:49Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:30:04Z"
+          "completed_at": "2026-09-23T03:28:48Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:30:04Z"
+          "completed_at": "2026-09-23T03:28:45Z"
         }
       ],
-      "run_completed_at": "2026-09-23T02:30:05Z"
+      "run_completed_at": "2026-09-23T03:28:50Z"
     },
     "open_prs": {
       "count": 0,
@@ -97,18 +97,18 @@
     },
     "freshness": {
       "days_since_last_commit": 0,
-      "days_since_last_release": 88,
+      "days_since_last_release": 0,
       "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.6",
-      "pypi_release_iso": "2026-06-27T00:54:10.080790Z",
+      "pypi_version": "0.1.7",
+      "pypi_release_iso": "2026-09-23T03:32:19.451984Z",
       "wheel_platforms": [
         "any"
       ],
       "wheel_sha256s": {
-        "kaos_pdf-0.1.6-py3-none-any.whl": "ef43ef0bad58c9f634a6f58d65d2dd6184b403e9661de08826aa3a5a442aa95c",
-        "kaos_pdf-0.1.6.tar.gz": "9c6482f55e0ce1211c268f3fbf4157b68cfa60bf722bd79dfdb675acbe006102"
+        "kaos_pdf-0.1.7-py3-none-any.whl": "0392ab1a7fffe2acd2699b8ce801f31c149088ff73955dacf751b163869043b0",
+        "kaos_pdf-0.1.7.tar.gz": "87234d52773a5cb30cffd756a5093f1459bc3f78e81d4c7ae54ff619b299a050"
       },
       "is_abi3": false,
       "has_musllinux_wheel": false,
@@ -122,7 +122,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-pdf",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 1973987659,
+        "rekor_log_index": 2914601354,
         "verified_count": 2,
         "total_count": 2
       },
@@ -152,15 +152,15 @@
         "unknown_license": [
           "protobuf"
         ],
-        "sbom_artifact_path": "data/sbom/kaos-pdf-0.1.6.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-pdf-0.1.7.cdx.json"
       },
       "errors": []
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.857,
+      "conventional_commits_rate_90d": 0.812,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 14,
+      "commits_90d": 16,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -213,11 +213,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 2,
+      "releases_90d": 3,
       "median_pr_age_days": null,
       "open_pr_count": 0,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 296,
+      "time_to_pypi_seconds_median": 223,
       "errors": []
     },
     "code_metrics": {
@@ -240,15 +240,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-pdf-0.1.6.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-pdf/releases/download/v0.1.6/kaos-pdf-0.1.6.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-pdf-0.1.7.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-pdf/releases/download/v0.1.7/kaos-pdf-0.1.7.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-pdf",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 1973987659,
+    "rekor_log_index": 2914601354,
     "verified_count": 2,
     "total_count": 2,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-pdf/"

@@ -8,28 +8,28 @@
     "identity": {
       "pypi_version": "0.1.4",
       "pypi_url": "https://pypi.org/project/kaos-graph/0.1.4/",
-      "main_head_sha": "177e3ad47a04275e07c208395be1c3befa5587a7",
+      "main_head_sha": "768b680ed1692e4a2a3210a45da741eef14f76a7",
       "latest_tag": "v0.1.4",
       "latest_tag_sha": "cf3b8cb658c69415f9c924334b1dd902d151ae27",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T02:32:24Z"
+      "last_commit_at": "2026-09-23T03:14:16Z"
     },
     "ci": {
-      "workflow_conclusion": null,
-      "workflow_run_id": 35810761686,
-      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/35810761686",
-      "head_sha": "177e3ad47a04275e07c208395be1c3befa5587a7",
-      "run_completed_at": "2026-09-23T02:32:27Z",
+      "workflow_conclusion": "success",
+      "workflow_run_id": 35813529561,
+      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/35813529561",
+      "head_sha": "768b680ed1692e4a2a3210a45da741eef14f76a7",
+      "run_completed_at": "2026-09-23T03:16:43Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-09-23T02:32:37Z",
-          "completed_at": null,
-          "duration_seconds": 260
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T02:38:10Z",
+          "completed_at": "2026-09-23T02:39:36Z",
+          "duration_seconds": 86
         },
         {
           "name": "test (windows-x64 / Python 3.13)",
@@ -41,11 +41,11 @@
         },
         {
           "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-09-23T02:32:37Z",
-          "completed_at": null,
-          "duration_seconds": 260
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T02:43:42Z",
+          "completed_at": "2026-09-23T02:44:47Z",
+          "duration_seconds": 65
         },
         {
           "name": "test (macos-arm64 / Python 3.13)",
@@ -57,39 +57,39 @@
         },
         {
           "name": "test (linux-x64 / Python 3.14)",
-          "conclusion": null,
-          "status": "queued",
-          "started_at": "2026-09-23T02:32:37Z",
-          "completed_at": null,
-          "duration_seconds": 260
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-09-23T02:44:16Z",
+          "completed_at": "2026-09-23T02:44:59Z",
+          "duration_seconds": 43
         }
       ]
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35810761545,
-      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/35810761545",
+      "workflow_run_id": 35813529612,
+      "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/35813529612",
       "jobs": [
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T03:14:28Z"
+        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:32:42Z"
+          "completed_at": "2026-09-23T03:14:26Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T02:32:53Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T02:32:40Z"
+          "completed_at": "2026-09-23T03:14:31Z"
         }
       ],
-      "run_completed_at": "2026-09-23T02:32:53Z"
+      "run_completed_at": "2026-09-23T03:14:32Z"
     },
     "open_prs": {
       "count": 0,
@@ -173,7 +173,7 @@
       "dco_signoff_rate_90d": 1.0,
       "conventional_commits_rate_90d": 1.0,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 8,
+      "commits_90d": 9,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
