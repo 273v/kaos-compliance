@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5c1ce786-6e43-45a4-aaac-e9bf66bf0768",
+  "serialNumber": "urn:uuid:6de7565e-86c6-4d32-a51b-78eacdb510c2",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T20:18:09Z",
+    "timestamp": "2026-09-26T00:22:32Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.12",
+      "bom-ref": "pkg:pypi/kaos-nlp-core@0.1.13",
       "name": "kaos-nlp-core",
-      "version": "0.1.12",
-      "purl": "pkg:pypi/kaos-nlp-core@0.1.12"
+      "version": "0.1.13",
+      "purl": "pkg:pypi/kaos-nlp-core@0.1.13"
     }
   },
   "components": [
@@ -4595,6 +4595,84 @@
     },
     {
       "type": "library",
+      "bom-ref": "pkg:cargo/icu_casemap@2.3.0",
+      "name": "icu_casemap",
+      "version": "2.3.0",
+      "purl": "pkg:cargo/icu_casemap@2.3.0",
+      "supplier": {
+        "name": "Shane F. Carr"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f2edfd120d8445de853cf53a1abec916f638f933a70a6f4bf8f7e2d7b7f884e9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Unicode-3.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/icu_casemap/2.3.0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/icu_casemap_data@2.3.0",
+      "name": "icu_casemap_data",
+      "version": "2.3.0",
+      "purl": "pkg:cargo/icu_casemap_data@2.3.0",
+      "supplier": {
+        "name": "Shane F. Carr"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "059fcda0fc8d33effc6633a8cf0d8a3c17caf7d7c91918fba9918744f501e4e8"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Unicode-3.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "registry+https://github.com/rust-lang/crates.io-index"
+        },
+        {
+          "type": "website",
+          "url": "https://crates.io/crates/icu_casemap_data/2.3.0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "kaos:license-class",
+          "value": "permissive"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "bom-ref": "pkg:cargo/icu_collections@2.3.0",
       "name": "icu_collections",
       "version": "2.3.0",
@@ -9048,7 +9126,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-nlp-core@0.1.12",
+      "ref": "pkg:pypi/kaos-nlp-core@0.1.13",
       "dependsOn": [
         "pkg:cargo/ahash@0.8.12",
         "pkg:cargo/aho-corasick@1.1.5",
@@ -9058,6 +9136,7 @@
         "pkg:cargo/fastbloom@0.17.0",
         "pkg:cargo/flate2@1.1.10",
         "pkg:cargo/fst@0.4.7",
+        "pkg:cargo/icu_casemap@2.3.0",
         "pkg:cargo/icu_properties@2.3.0",
         "pkg:cargo/infer@0.22.0",
         "pkg:cargo/lru@0.18.4",
@@ -9599,10 +9678,28 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:cargo/icu_casemap@2.3.0",
+      "dependsOn": [
+        "pkg:cargo/icu_casemap_data@2.3.0",
+        "pkg:cargo/icu_collections@2.3.0",
+        "pkg:cargo/icu_locale_core@2.3.0",
+        "pkg:cargo/icu_properties@2.3.0",
+        "pkg:cargo/icu_provider@2.3.1",
+        "pkg:cargo/potential_utf@0.1.6",
+        "pkg:cargo/writeable@0.6.4",
+        "pkg:cargo/zerovec@0.11.8"
+      ]
+    },
+    {
+      "ref": "pkg:cargo/icu_casemap_data@2.3.0",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:cargo/icu_collections@2.3.0",
       "dependsOn": [
         "pkg:cargo/displaydoc@0.2.7",
         "pkg:cargo/potential_utf@0.1.6",
+        "pkg:cargo/serde@1.0.229",
         "pkg:cargo/utf8_iter@1.0.4",
         "pkg:cargo/yoke@0.8.3",
         "pkg:cargo/zerofrom@0.1.8",
@@ -9614,6 +9711,7 @@
       "dependsOn": [
         "pkg:cargo/displaydoc@0.2.7",
         "pkg:cargo/litemap@0.8.3",
+        "pkg:cargo/serde@1.0.229",
         "pkg:cargo/tinystr@0.8.4",
         "pkg:cargo/writeable@0.6.4",
         "pkg:cargo/zerovec@0.11.8"
@@ -9640,6 +9738,8 @@
       "dependsOn": [
         "pkg:cargo/displaydoc@0.2.7",
         "pkg:cargo/icu_locale_core@2.3.0",
+        "pkg:cargo/serde@1.0.229",
+        "pkg:cargo/stable_deref_trait@1.2.1",
         "pkg:cargo/writeable@0.6.4",
         "pkg:cargo/yoke@0.8.3",
         "pkg:cargo/zerofrom@0.1.8",
@@ -9827,6 +9927,8 @@
     {
       "ref": "pkg:cargo/potential_utf@0.1.6",
       "dependsOn": [
+        "pkg:cargo/serde_core@1.0.229",
+        "pkg:cargo/writeable@0.6.4",
         "pkg:cargo/zerovec@0.11.8"
       ]
     },
@@ -10141,6 +10243,7 @@
       "ref": "pkg:cargo/tinystr@0.8.4",
       "dependsOn": [
         "pkg:cargo/displaydoc@0.2.7",
+        "pkg:cargo/serde_core@1.0.229",
         "pkg:cargo/zerovec@0.11.8"
       ]
     },
@@ -10334,12 +10437,14 @@
       "dependsOn": [
         "pkg:cargo/displaydoc@0.2.7",
         "pkg:cargo/yoke@0.8.3",
-        "pkg:cargo/zerofrom@0.1.8"
+        "pkg:cargo/zerofrom@0.1.8",
+        "pkg:cargo/zerovec@0.11.8"
       ]
     },
     {
       "ref": "pkg:cargo/zerovec@0.11.8",
       "dependsOn": [
+        "pkg:cargo/serde@1.0.229",
         "pkg:cargo/yoke@0.8.3",
         "pkg:cargo/zerofrom@0.1.8",
         "pkg:cargo/zerovec-derive@0.11.6"

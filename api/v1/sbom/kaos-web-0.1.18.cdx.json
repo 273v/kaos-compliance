@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:fca2beac-ba8a-488c-893a-584a5ead20bb",
+  "serialNumber": "urn:uuid:795a03f4-fcf7-488c-84fb-59041816f2cc",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T20:22:07Z",
+    "timestamp": "2026-09-26T00:26:57Z",
     "tools": [
       {
         "vendor": "273 Ventures",
@@ -15,10 +15,10 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-web@0.1.17",
+      "bom-ref": "pkg:pypi/kaos-web@0.1.18",
       "name": "kaos-web",
-      "version": "0.1.17",
-      "purl": "pkg:pypi/kaos-web@0.1.17"
+      "version": "0.1.18",
+      "purl": "pkg:pypi/kaos-web@0.1.18"
     }
   },
   "components": [
@@ -1645,21 +1645,21 @@
     },
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/kaos-content@0.1.6",
+      "bom-ref": "pkg:pypi/kaos-content@0.1.8",
       "name": "kaos-content",
-      "version": "0.1.6",
-      "purl": "pkg:pypi/kaos-content@0.1.6",
+      "version": "0.1.8",
+      "purl": "pkg:pypi/kaos-content@0.1.8",
       "supplier": {
         "name": "kelvin.legal"
       },
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8ac15d4d1cedf86de7fbe093453f3a27e3057c08244ba117787782a2e3f9457d"
+          "content": "ed5718e3e33f175fb648b92cf82bb9f9f8e6bc962e97203685806e6722854f60"
         },
         {
           "alg": "SHA-256",
-          "content": "7164225bf99522f91bb29355ff03aeb498b5ad3064773861b7bd004bbed967ef"
+          "content": "a996f1c686640c6b4a8596813da9beb0575f44844bddc140be7e88d2d0fd68b3"
         }
       ],
       "licenses": [
@@ -1672,11 +1672,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://files.pythonhosted.org/packages/7e/05/6cae7aa58928fa6f24a52108a952e752d2f40289e5506e32b82979ab3b72/kaos_content-0.1.6.tar.gz"
+          "url": "https://files.pythonhosted.org/packages/cc/49/a1e5b12da3e837cc25c91a6e37e17041a8caa562649826695051edaf5b86/kaos_content-0.1.8.tar.gz"
         },
         {
           "type": "website",
-          "url": "https://pypi.org/project/kaos-content/0.1.6/"
+          "url": "https://pypi.org/project/kaos-content/0.1.8/"
         }
       ],
       "properties": [
@@ -4651,10 +4651,10 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/kaos-web@0.1.17",
+      "ref": "pkg:pypi/kaos-web@0.1.18",
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
-        "pkg:pypi/kaos-content@0.1.6",
+        "pkg:pypi/kaos-content@0.1.8",
         "pkg:pypi/kaos-core@0.1.5",
         "pkg:pypi/lxml@6.1.2"
       ]
@@ -4779,7 +4779,7 @@
       ]
     },
     {
-      "ref": "pkg:pypi/kaos-content@0.1.6",
+      "ref": "pkg:pypi/kaos-content@0.1.8",
       "dependsOn": [
         "pkg:pypi/kaos-core@0.1.5",
         "pkg:pypi/pydantic@2.13.4",
@@ -4798,7 +4798,7 @@
       "ref": "pkg:pypi/kaos-mcp@0.1.5",
       "dependsOn": [
         "pkg:pypi/httpx@0.28.1",
-        "pkg:pypi/kaos-content@0.1.6",
+        "pkg:pypi/kaos-content@0.1.8",
         "pkg:pypi/kaos-core@0.1.5",
         "pkg:pypi/mcp@1.30.0",
         "pkg:pypi/pydantic-settings@2.15.0",

@@ -2,26 +2,26 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-nlp-transformers",
-  "version": "0.1.7",
+  "version": "0.1.10",
   "snapshot_slice": {
     "name": "kaos-nlp-transformers",
     "identity": {
-      "pypi_version": "0.1.7",
-      "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.1.7/",
-      "main_head_sha": "1879071e6f10398326fdc17902c51617a316d79a",
+      "pypi_version": "0.1.10",
+      "pypi_url": "https://pypi.org/project/kaos-nlp-transformers/0.1.10/",
+      "main_head_sha": "71ecf8d7e06af599e30f16ec853d673f5621a514",
       "latest_tag": "v0.2.0a8",
       "latest_tag_sha": "7ef731a74f5abedba6a0fbec7c0c860e972b62ee",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-23T15:40:01Z"
+      "last_commit_at": "2026-09-26T00:10:22Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35883233420,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35883233420",
-      "head_sha": "1879071e6f10398326fdc17902c51617a316d79a",
-      "run_completed_at": "2026-09-23T15:42:21Z",
+      "workflow_run_id": 36203833210,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/36203833210",
+      "head_sha": "71ecf8d7e06af599e30f16ec853d673f5621a514",
+      "run_completed_at": "2026-09-26T00:12:29Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.14)",
@@ -73,29 +73,29 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35883233561,
-      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35883233561",
+      "workflow_run_id": 36203833227,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/36203833227",
       "jobs": [
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T15:40:19Z"
-        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T15:40:20Z"
+          "completed_at": "2026-09-26T00:10:47Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-26T00:10:35Z"
         },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-23T15:40:20Z"
+          "completed_at": "2026-09-26T00:10:40Z"
         }
       ],
-      "run_completed_at": "2026-09-23T15:40:21Z",
+      "run_completed_at": "2026-09-26T00:10:48Z",
       "full_workflow_conclusion": "success",
       "full_workflow_run_id": 35883238023,
       "full_workflow_run_url": "https://github.com/273v/kaos-nlp-transformers/actions/runs/35883238023",
@@ -134,13 +134,13 @@
       "dependabot_count": 0
     },
     "freshness": {
-      "days_since_last_commit": 2,
-      "days_since_last_release": 2,
-      "days_since_last_security_scan": 2
+      "days_since_last_commit": 0,
+      "days_since_last_release": 0,
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.7",
-      "pypi_release_iso": "2026-09-23T12:08:51.537046Z",
+      "pypi_version": "0.1.10",
+      "pypi_release_iso": "2026-09-26T00:21:51.641563Z",
       "wheel_platforms": [
         "macos-arm64",
         "linux-aarch64-manylinux_2_28",
@@ -149,12 +149,12 @@
         "win-arm64"
       ],
       "wheel_sha256s": {
-        "kaos_nlp_transformers-0.1.7-cp313-abi3-macosx_11_0_arm64.whl": "3da2e030d5fb671c45e60c59ca948d254cab4573f9ad0f0ba1a580885b0d4fd8",
-        "kaos_nlp_transformers-0.1.7-cp313-abi3-manylinux_2_28_aarch64.whl": "93c0cdbddf4ee27df4ee73b599787ff933307f740f6b8428effb946d5924e372",
-        "kaos_nlp_transformers-0.1.7-cp313-abi3-manylinux_2_28_x86_64.whl": "2b7b4aca5a3c4e3881e559ea4363489705e0a34e7d4c7cb54d4a266d39887127",
-        "kaos_nlp_transformers-0.1.7-cp313-abi3-win_amd64.whl": "b1fdc6eb2064a4c2068b1b04227852c6a17a516d55b95517af2740eb78c26466",
-        "kaos_nlp_transformers-0.1.7-cp313-abi3-win_arm64.whl": "ebcfb5d21dc019daa0cb5661fcf68fa1ab94d988f51394546b8a3b7d595404a3",
-        "kaos_nlp_transformers-0.1.7.tar.gz": "d5b1a1982ac69c54edc040575310ff830e432ae1da31ef0af1dc69b142f3e835"
+        "kaos_nlp_transformers-0.1.10-cp313-abi3-macosx_11_0_arm64.whl": "31100457c81245a7150272017ee0892244174c6f1fb437df16aaa803564bc87e",
+        "kaos_nlp_transformers-0.1.10-cp313-abi3-manylinux_2_28_aarch64.whl": "d84284d6b61328e0b5b1d099c2463795bc7b89ce022c358ca012fbe060f2a27a",
+        "kaos_nlp_transformers-0.1.10-cp313-abi3-manylinux_2_28_x86_64.whl": "3452713defb578cc3d52bafe28142ee27dfce6fcd48a299c6d41974242f21264",
+        "kaos_nlp_transformers-0.1.10-cp313-abi3-win_amd64.whl": "00972e93a828148cec70b0934bec5bfc5f03003a2f2df3c38bbf466e1427582b",
+        "kaos_nlp_transformers-0.1.10-cp313-abi3-win_arm64.whl": "e1581b3f45579488a8dd9844b4b4067216232bc61c3320bef3fe828cac925721",
+        "kaos_nlp_transformers-0.1.10.tar.gz": "4111d08efc666b9380779becb987bb211a81d020fa353425419a2ac92bf8ecf7"
       },
       "is_abi3": true,
       "has_musllinux_wheel": false,
@@ -168,7 +168,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-nlp-transformers",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 2919352304,
+        "rekor_log_index": 2963489178,
         "verified_count": 6,
         "total_count": 6
       },
@@ -238,15 +238,15 @@
           "winapi-i686-pc-windows-gnu",
           "winapi-x86_64-pc-windows-gnu"
         ],
-        "sbom_artifact_path": "data/sbom/kaos-nlp-transformers-0.1.7.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-nlp-transformers-0.1.10.cdx.json"
       },
       "errors": []
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.9,
+      "conventional_commits_rate_90d": 0.75,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 10,
+      "commits_90d": 16,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -304,20 +304,20 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 1,
+      "releases_90d": 2,
       "median_pr_age_days": null,
       "open_pr_count": 0,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 971,
+      "time_to_pypi_seconds_median": 812,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 4325,
-        "tests_loc": 4595,
+        "src_loc": 4362,
+        "tests_loc": 4771,
         "src_files": 19,
-        "tests_files": 43,
-        "tests_count": 312
+        "tests_files": 44,
+        "tests_count": 322
       },
       "rust": {
         "src_loc": 3705,
@@ -358,15 +358,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-nlp-transformers-0.1.7.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-nlp-transformers/releases/download/v0.1.7/kaos-nlp-transformers-0.1.7.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-nlp-transformers-0.1.10.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-nlp-transformers/releases/download/v0.1.10/kaos-nlp-transformers-0.1.10.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-nlp-transformers",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 2919352304,
+    "rekor_log_index": 2963489178,
     "verified_count": 6,
     "total_count": 6,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-nlp-transformers/"
