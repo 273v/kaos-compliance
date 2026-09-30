@@ -96,36 +96,36 @@
         }
       ],
       "run_completed_at": "2026-09-23T15:48:07Z",
-      "full_workflow_conclusion": "failure",
-      "full_workflow_run_id": 34076266887,
-      "full_workflow_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/34076266887",
+      "full_workflow_conclusion": "success",
+      "full_workflow_run_id": 36370244214,
+      "full_workflow_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/36370244214",
       "full_jobs": [
-        {
-          "name": "pip-audit (resolved lock)",
-          "conclusion": "failure",
-          "status": "completed",
-          "completed_at": "2026-09-07T02:26:37Z"
-        },
         {
           "name": "cargo-deny (advisories + licenses + bans + sources)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-07T02:28:09Z"
+          "completed_at": "2026-09-28T02:35:08Z"
         },
         {
-          "name": "gitleaks (full history)",
+          "name": "pip-audit (resolved lock)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-07T02:26:08Z"
+          "completed_at": "2026-09-28T02:33:48Z"
         },
         {
           "name": "cargo-audit",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-07T02:29:10Z"
+          "completed_at": "2026-09-28T02:35:46Z"
+        },
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-28T02:33:10Z"
         }
       ],
-      "full_run_completed_at": "2026-09-07T02:29:11Z"
+      "full_run_completed_at": "2026-09-28T02:35:47Z"
     },
     "open_prs": {
       "count": 2,
@@ -137,9 +137,9 @@
       "dependabot_count": 2
     },
     "freshness": {
-      "days_since_last_commit": 6,
+      "days_since_last_commit": 7,
       "days_since_last_release": 7,
-      "days_since_last_security_scan": 6
+      "days_since_last_security_scan": 7
     },
     "supply_chain": {
       "pypi_version": "0.1.5",
@@ -269,7 +269,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 2.15,
+      "median_pr_age_days": 2.31,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 242,
@@ -295,15 +295,29 @@
     "advisories": {
       "source": "osv.dev",
       "scanned_components": 92,
-      "open": [],
+      "open": [
+        {
+          "id": "GHSA-42vr-xj54-vc7v",
+          "aliases": [
+            "CVE-2026-101918"
+          ],
+          "package": "pyjwt",
+          "version": "2.14.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
+          "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
+        }
+      ],
       "notices": [],
       "counts": {
         "critical": 0,
         "high": 0,
-        "moderate": 0,
+        "moderate": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0
+        "total": 1
       },
       "errors": []
     },

@@ -125,9 +125,9 @@
       "dependabot_count": 2
     },
     "freshness": {
-      "days_since_last_commit": 6,
+      "days_since_last_commit": 7,
       "days_since_last_release": 7,
-      "days_since_last_security_scan": 6
+      "days_since_last_security_scan": 7
     },
     "supply_chain": {
       "pypi_version": "0.1.15",
@@ -238,7 +238,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 2.004,
+      "median_pr_age_days": 2.164,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 175,
@@ -264,15 +264,29 @@
     "advisories": {
       "source": "osv.dev",
       "scanned_components": 60,
-      "open": [],
+      "open": [
+        {
+          "id": "GHSA-42vr-xj54-vc7v",
+          "aliases": [
+            "CVE-2026-101918"
+          ],
+          "package": "pyjwt",
+          "version": "2.14.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
+          "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
+        }
+      ],
       "notices": [],
       "counts": {
         "critical": 0,
         "high": 0,
-        "moderate": 0,
+        "moderate": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0
+        "total": 1
       },
       "errors": []
     },

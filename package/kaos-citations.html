@@ -109,7 +109,7 @@ footer a{color:var(--muted)}
      </span>
      <strong>advisories_open</strong>:
      <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      1 &rarr; 10
+      1 &rarr; 12
      </span>
     </li>
   </ul>
@@ -132,7 +132,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: success; 10 open advisories (OSV.dev): 1 critical, 5 high, 4 moderate</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: success; 12 open advisories (OSV.dev): 1 critical, 5 high, 6 moderate</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -225,7 +225,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-10 <span style="color:var(--muted);font-size:0.75rem">across 61 locked dependencies (OSV.dev)</span>   </dd>
+12 <span style="color:var(--muted);font-size:0.75rem">across 61 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -281,6 +281,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">PyJWT: PyJWKClient still amplifies unauthenticated JWKS fetches on unknown kid values (incomplete fix of CVE-2026-48524)</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v" target="_blank" rel="noopener">GHSA-42vr-xj54-vc7v</a></td>
+     <td data-h="Package">pyjwt 2.13.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-8wjv-2p76-3863" target="_blank" rel="noopener">GHSA-8wjv-2p76-3863</a></td>
      <td data-h="Package">pyjwt 2.13.0</td>
      <td data-h="Severity">moderate</td>
@@ -291,6 +297,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pyjwt 2.13.0</td>
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">PyJWT: Non-canonical signature segments enable raw-token revocation bypass</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-jwrc-g2q2-pq5p" target="_blank" rel="noopener">GHSA-jwrc-g2q2-pq5p</a></td>
+     <td data-h="Package">pyjwt 2.13.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">PyJWT: ReDoS vulnerability when calling the `is_pem_format` function.</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-w6j9-cwv2-h6wq" target="_blank" rel="noopener">GHSA-w6j9-cwv2-h6wq</a></td>
@@ -405,7 +417,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-09-30 12:36 UTC
+ Generated 2026-09-30 16:25 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

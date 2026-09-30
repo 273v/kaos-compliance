@@ -125,9 +125,9 @@
       "dependabot_count": 2
     },
     "freshness": {
-      "days_since_last_commit": 6,
+      "days_since_last_commit": 7,
       "days_since_last_release": 7,
-      "days_since_last_security_scan": 6
+      "days_since_last_security_scan": 7
     },
     "supply_chain": {
       "pypi_version": "0.1.11",
@@ -240,7 +240,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 2.039,
+      "median_pr_age_days": 2.199,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 432,
@@ -266,15 +266,68 @@
     "advisories": {
       "source": "osv.dev",
       "scanned_components": 62,
-      "open": [],
+      "open": [
+        {
+          "id": "GHSA-8988-9cw3-xx77",
+          "aliases": [
+            "CVE-2026-97687"
+          ],
+          "package": "urllib3",
+          "version": "2.7.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "urllib3: HTTPS proxy TLS configuration may be ignored or overridden",
+          "url": "https://osv.dev/vulnerability/GHSA-8988-9cw3-xx77"
+        },
+        {
+          "id": "GHSA-vxq7-64xx-v4gw",
+          "aliases": [
+            "CVE-2026-97689"
+          ],
+          "package": "urllib3",
+          "version": "2.7.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "urllib3: HTTPResponse.stream()/read_chunked() buffers an unbounded chunk-size line into memory",
+          "url": "https://osv.dev/vulnerability/GHSA-vxq7-64xx-v4gw"
+        },
+        {
+          "id": "GHSA-42vr-xj54-vc7v",
+          "aliases": [
+            "CVE-2026-101918"
+          ],
+          "package": "pyjwt",
+          "version": "2.14.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
+          "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
+        },
+        {
+          "id": "GHSA-gh4c-6fx4-qh6g",
+          "aliases": [
+            "CVE-2026-97688"
+          ],
+          "package": "urllib3",
+          "version": "2.7.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "urllib3: Chunked Deflate streaming can enter an infinite loop",
+          "url": "https://osv.dev/vulnerability/GHSA-gh4c-6fx4-qh6g"
+        }
+      ],
       "notices": [],
       "counts": {
         "critical": 0,
-        "high": 0,
-        "moderate": 0,
+        "high": 2,
+        "moderate": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0
+        "total": 4
       },
       "errors": []
     },
