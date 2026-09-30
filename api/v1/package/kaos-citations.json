@@ -240,7 +240,7 @@
         "NOTICE"
       ],
       "releases_90d": 5,
-      "median_pr_age_days": 1.44,
+      "median_pr_age_days": 1.608,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 126,
@@ -268,6 +268,123 @@
       "scanned_components": 61,
       "open": [
         {
+          "id": "GHSA-ffc3-869f-jxw9",
+          "aliases": [
+            "CVE-2026-102268"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "PyJWT: Asymmetric-PEM detection bypass: whitespace/line-ending-mutated public keys skip the HS/asymmetric confusion guard",
+          "url": "https://osv.dev/vulnerability/GHSA-ffc3-869f-jxw9"
+        },
+        {
+          "id": "GHSA-9j54-fg26-wv3r",
+          "aliases": [
+            "CVE-2026-102266"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "PyJWT: PyJWK accepts empty HMAC keys, bypassing PyJWT's empty-key validation",
+          "url": "https://osv.dev/vulnerability/GHSA-9j54-fg26-wv3r"
+        },
+        {
+          "id": "GHSA-9v7f-9g4p-ffgj",
+          "aliases": [
+            "CVE-2026-102267"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "PyJWT: PyJWKClient follows redirects when fetching JWKS",
+          "url": "https://osv.dev/vulnerability/GHSA-9v7f-9g4p-ffgj"
+        },
+        {
+          "id": "GHSA-p4g4-x82p-q773",
+          "aliases": [
+            "CVE-2026-102271"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "PyJWT: Public keys in DER form are accepted as HMAC secrets, bypassing the CVE-2022-29217 guard",
+          "url": "https://osv.dev/vulnerability/GHSA-p4g4-x82p-q773"
+        },
+        {
+          "id": "GHSA-r6x4-923q-g947",
+          "aliases": [
+            "CVE-2026-102272"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "PyJWT BOM Bypass",
+          "url": "https://osv.dev/vulnerability/GHSA-r6x4-923q-g947"
+        },
+        {
+          "id": "GHSA-w2cx-738m-mc7w",
+          "aliases": [
+            "CVE-2026-102273"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "PyJWT accepts public JWK containers as HMAC secrets",
+          "url": "https://osv.dev/vulnerability/GHSA-w2cx-738m-mc7w"
+        },
+        {
+          "id": "GHSA-2gx3-rcp4-g85q",
+          "aliases": [
+            "CVE-2026-101917"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT: PyJWKClient still amplifies unauthenticated JWKS fetches on unknown kid values (incomplete fix of CVE-2026-48524)",
+          "url": "https://osv.dev/vulnerability/GHSA-2gx3-rcp4-g85q"
+        },
+        {
+          "id": "GHSA-8wjv-2p76-3863",
+          "aliases": [
+            "CVE-2026-102265"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT: Uncaught RecursionError in jwt.decode() on deeply nested token header",
+          "url": "https://osv.dev/vulnerability/GHSA-8wjv-2p76-3863"
+        },
+        {
+          "id": "GHSA-hxm8-2xgr-2p9m",
+          "aliases": [
+            "CVE-2026-102269"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT: Non-canonical signature segments enable raw-token revocation bypass",
+          "url": "https://osv.dev/vulnerability/GHSA-hxm8-2xgr-2p9m"
+        },
+        {
           "id": "GHSA-w6j9-cwv2-h6wq",
           "aliases": [
             "CVE-2026-102274"
@@ -283,12 +400,12 @@
       ],
       "notices": [],
       "counts": {
-        "critical": 0,
-        "high": 0,
-        "moderate": 1,
+        "critical": 1,
+        "high": 5,
+        "moderate": 4,
         "low": 0,
         "unknown": 0,
-        "total": 1
+        "total": 10
       },
       "errors": []
     },
