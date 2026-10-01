@@ -240,7 +240,7 @@
         "NOTICE"
       ],
       "releases_90d": 5,
-      "median_pr_age_days": 2.44,
+      "median_pr_age_days": 2.61,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 126,
@@ -385,6 +385,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-8wjv-2p76-3863"
         },
         {
+          "id": "GHSA-gvp8-978c-rx2q",
+          "aliases": [
+            "CVE-2026-103001"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT.decode() reintroduces options-dict mutation, enabling silent claim-verification bypass on dict reuse",
+          "url": "https://osv.dev/vulnerability/GHSA-gvp8-978c-rx2q"
+        },
+        {
           "id": "GHSA-hxm8-2xgr-2p9m",
           "aliases": [
             "CVE-2026-102269"
@@ -428,10 +441,10 @@
       "counts": {
         "critical": 1,
         "high": 5,
-        "moderate": 6,
+        "moderate": 7,
         "low": 0,
         "unknown": 0,
-        "total": 12
+        "total": 13
       },
       "errors": []
     },
