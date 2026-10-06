@@ -250,7 +250,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 0.377,
+      "median_pr_age_days": 0.71,
       "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 172,
@@ -290,16 +290,42 @@
           "informational": null,
           "summary": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
           "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
+        },
+        {
+          "id": "GHSA-54p9-h82j-f925",
+          "aliases": [
+            "CVE-2026-104874"
+          ],
+          "package": "multidict",
+          "version": "6.9.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Multidict: Reference leak in CIMultiDict/MultiDict items-view union and subtraction",
+          "url": "https://osv.dev/vulnerability/GHSA-54p9-h82j-f925"
+        },
+        {
+          "id": "GHSA-x33g-cr3x-6449",
+          "aliases": [
+            "CVE-2026-102275"
+          ],
+          "package": "pyjwt",
+          "version": "2.14.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
+          "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
         }
       ],
       "notices": [],
       "counts": {
         "critical": 0,
         "high": 0,
-        "moderate": 1,
+        "moderate": 3,
         "low": 0,
         "unknown": 0,
-        "total": 1
+        "total": 3
       },
       "errors": []
     },

@@ -126,9 +126,9 @@
       "dependabot_count": 3
     },
     "freshness": {
-      "days_since_last_commit": 5,
-      "days_since_last_release": 5,
-      "days_since_last_security_scan": 5
+      "days_since_last_commit": 6,
+      "days_since_last_release": 6,
+      "days_since_last_security_scan": 6
     },
     "supply_chain": {
       "pypi_version": "0.1.7",
@@ -241,7 +241,7 @@
         "NOTICE"
       ],
       "releases_90d": 5,
-      "median_pr_age_days": 7.167,
+      "median_pr_age_days": 7.501,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 126,
@@ -449,16 +449,29 @@
           "informational": null,
           "summary": "PyJWT: Malformed RSA JWK aborts parsing of an entire JWK Set",
           "url": "https://osv.dev/vulnerability/GHSA-w6j9-cwv2-h6wq"
+        },
+        {
+          "id": "GHSA-x33g-cr3x-6449",
+          "aliases": [
+            "CVE-2026-102275"
+          ],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
+          "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
         }
       ],
       "notices": [],
       "counts": {
         "critical": 1,
         "high": 5,
-        "moderate": 7,
+        "moderate": 8,
         "low": 0,
         "unknown": 0,
-        "total": 13
+        "total": 14
       },
       "errors": []
     },

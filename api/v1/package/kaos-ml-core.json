@@ -270,7 +270,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 7.238,
+      "median_pr_age_days": 7.572,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 242,
@@ -298,6 +298,19 @@
       "scanned_components": 92,
       "open": [
         {
+          "id": "GHSA-27vj-qcqg-25rc",
+          "aliases": [
+            "CVE-2026-104851"
+          ],
+          "package": "fsspec",
+          "version": "2026.4.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "fsspec: Server-Side Template Injection in ReferenceFileSystem leads to Remote Code Execution",
+          "url": "https://osv.dev/vulnerability/GHSA-27vj-qcqg-25rc"
+        },
+        {
           "id": "GHSA-42vr-xj54-vc7v",
           "aliases": [
             "CVE-2026-101918",
@@ -310,16 +323,29 @@
           "informational": null,
           "summary": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
           "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
+        },
+        {
+          "id": "GHSA-x33g-cr3x-6449",
+          "aliases": [
+            "CVE-2026-102275"
+          ],
+          "package": "pyjwt",
+          "version": "2.14.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
+          "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
         }
       ],
       "notices": [],
       "counts": {
         "critical": 0,
-        "high": 0,
-        "moderate": 1,
+        "high": 1,
+        "moderate": 2,
         "low": 0,
         "unknown": 0,
-        "total": 1
+        "total": 3
       },
       "errors": []
     },

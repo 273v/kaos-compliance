@@ -239,7 +239,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 7.086,
+      "median_pr_age_days": 7.42,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 496,
@@ -279,16 +279,29 @@
           "informational": null,
           "summary": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
           "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
+        },
+        {
+          "id": "GHSA-x33g-cr3x-6449",
+          "aliases": [
+            "CVE-2026-102275"
+          ],
+          "package": "pyjwt",
+          "version": "2.14.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
+          "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
         }
       ],
       "notices": [],
       "counts": {
         "critical": 0,
         "high": 0,
-        "moderate": 1,
+        "moderate": 2,
         "low": 0,
         "unknown": 0,
-        "total": 1
+        "total": 2
       },
       "errors": []
     },

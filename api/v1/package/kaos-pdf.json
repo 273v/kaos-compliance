@@ -243,7 +243,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 7.135,
+      "median_pr_age_days": 7.469,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 340,
@@ -325,16 +325,29 @@
           "informational": null,
           "summary": "urllib3: Chunked Deflate streaming can enter an infinite loop",
           "url": "https://osv.dev/vulnerability/GHSA-gh4c-6fx4-qh6g"
+        },
+        {
+          "id": "GHSA-x33g-cr3x-6449",
+          "aliases": [
+            "CVE-2026-102275"
+          ],
+          "package": "pyjwt",
+          "version": "2.14.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
+          "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
         }
       ],
       "notices": [],
       "counts": {
         "critical": 0,
         "high": 2,
-        "moderate": 2,
+        "moderate": 3,
         "low": 0,
         "unknown": 0,
-        "total": 4
+        "total": 5
       },
       "errors": []
     },
