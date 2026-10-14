@@ -98,7 +98,21 @@ footer a{color:var(--muted)}
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-10-13.</p>
+  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
+   2026-10-13 &rarr; 2026-10-14
+  </p>
+  <ul style="margin:0;padding-left:var(--s-5)">
+    <li>
+     <span class="pill g" aria-label="advisories_open: better">
+      <span class="gly" aria-hidden="true">▲</span>
+      <span class="wd" aria-hidden="true">better</span>
+     </span>
+     <strong>advisories_open</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      3 &rarr; 7
+     </span>
+    </li>
+  </ul>
  </div>
 </section>
 
@@ -118,7 +132,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 3 open advisories (OSV.dev): 1 high, 2 moderate</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 7 open advisories (OSV.dev): 1 high, 2 moderate, 4 unknown</div></div>
    </div>
    <div class="check">
     <span class="pill y" aria-label="Updates merged promptly: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
@@ -211,7 +225,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-3 <span style="color:var(--muted);font-size:0.75rem">across 348 locked dependencies (OSV.dev)</span>   </dd>
+7 <span style="color:var(--muted);font-size:0.75rem">across 348 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 <a href="https://osv.dev/vulnerability/RUSTSEC-2024-0436" target="_blank" rel="noopener">RUSTSEC-2024-0436</a> (paste, unmaintained)    <span style="color:var(--muted);font-size:0.75rem">&middot; informational, not counted as advisories</span>
    </dd>
@@ -242,6 +256,30 @@ footer a{color:var(--muted)}
      <td data-h="Package">pyjwt 2.14.0</td>
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0346" target="_blank" rel="noopener">RUSTSEC-2026-0346</a></td>
+     <td data-h="Package">rustls 0.23.45</td>
+     <td data-h="Severity">unknown</td>
+     <td data-h="Summary">`Debug` impls for client session values expose TLS secrets</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0347" target="_blank" rel="noopener">RUSTSEC-2026-0347</a></td>
+     <td data-h="Package">rustls 0.23.45</td>
+     <td data-h="Severity">unknown</td>
+     <td data-h="Summary">Buffered application data sent to outer server after ECH rejection</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0348" target="_blank" rel="noopener">RUSTSEC-2026-0348</a></td>
+     <td data-h="Package">rustls 0.23.45</td>
+     <td data-h="Severity">unknown</td>
+     <td data-h="Summary">Brotli certificate decompression can allocate up to 1 GiB before authentication</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0349" target="_blank" rel="noopener">RUSTSEC-2026-0349</a></td>
+     <td data-h="Package">rustls 0.23.45</td>
+     <td data-h="Severity">unknown</td>
+     <td data-h="Summary">Unauthenticated ServerHello can downgrade later connections to classical key exchange</td>
     </tr>
    </tbody>
   </table>
@@ -350,7 +388,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-14 12:33 UTC
+ Generated 2026-10-14 16:24 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

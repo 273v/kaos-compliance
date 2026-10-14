@@ -309,7 +309,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 9.377,
+      "median_pr_age_days": 9.538,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 812,
@@ -376,6 +376,58 @@
           "informational": null,
           "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
           "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+        },
+        {
+          "id": "RUSTSEC-2026-0346",
+          "aliases": [
+            "GHSA-c8m5-c952-6cm4"
+          ],
+          "package": "rustls",
+          "version": "0.23.45",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "`Debug` impls for client session values expose TLS secrets",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0346"
+        },
+        {
+          "id": "RUSTSEC-2026-0347",
+          "aliases": [
+            "GHSA-vp88-798v-h67f"
+          ],
+          "package": "rustls",
+          "version": "0.23.45",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Buffered application data sent to outer server after ECH rejection",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0347"
+        },
+        {
+          "id": "RUSTSEC-2026-0348",
+          "aliases": [
+            "GHSA-h2v8-394m-p7vv"
+          ],
+          "package": "rustls",
+          "version": "0.23.45",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Brotli certificate decompression can allocate up to 1 GiB before authentication",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0348"
+        },
+        {
+          "id": "RUSTSEC-2026-0349",
+          "aliases": [
+            "GHSA-w44r-93j7-qv28"
+          ],
+          "package": "rustls",
+          "version": "0.23.45",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Unauthenticated ServerHello can downgrade later connections to classical key exchange",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0349"
         }
       ],
       "notices": [
@@ -396,8 +448,8 @@
         "high": 1,
         "moderate": 2,
         "low": 0,
-        "unknown": 0,
-        "total": 3
+        "unknown": 4,
+        "total": 7
       },
       "errors": []
     },
