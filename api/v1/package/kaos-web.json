@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.18",
       "pypi_url": "https://pypi.org/project/kaos-web/0.1.18/",
-      "main_head_sha": "f03ef0269aa69531c081d634800caf725255bf79",
+      "main_head_sha": "9ee2fa5226bd4ed0e52d5d30a0192edf9f6d66b7",
       "latest_tag": "v0.1.18",
       "latest_tag_sha": "f03ef0269aa69531c081d634800caf725255bf79",
-      "tag_at_head": true,
+      "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-09-25T23:16:37Z"
+      "last_commit_at": "2026-10-17T00:28:43Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 36200370420,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/36200370420",
-      "head_sha": "f03ef0269aa69531c081d634800caf725255bf79",
-      "run_completed_at": "2026-09-25T23:18:24Z",
+      "workflow_run_id": 38986551443,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/38986551443",
+      "head_sha": "9ee2fa5226bd4ed0e52d5d30a0192edf9f6d66b7",
+      "run_completed_at": "2026-10-17T00:30:13Z",
       "matrix": [
         {
           "name": "test (macos-arm64 / Python 3.13)",
@@ -73,29 +73,29 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 36200370413,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/36200370413",
+      "workflow_run_id": 38986551403,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/38986551403",
       "jobs": [
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-17T00:28:58Z"
+        },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-25T23:16:55Z"
+          "completed_at": "2026-10-17T00:29:02Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-09-25T23:16:53Z"
-        },
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-25T23:16:51Z"
+          "completed_at": "2026-10-17T00:28:55Z"
         }
       ],
-      "run_completed_at": "2026-09-25T23:16:55Z",
+      "run_completed_at": "2026-10-17T00:29:02Z",
       "full_workflow_conclusion": "failure",
       "full_workflow_run_id": 38195737283,
       "full_workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/38195737283",
@@ -116,9 +116,8 @@
       "full_run_completed_at": "2026-10-12T02:26:06Z"
     },
     "open_prs": {
-      "count": 3,
+      "count": 2,
       "titles": [
-        "#77 fix(extract): prefer the declared <main> over an outside region; spacing regression tests",
         "#76 chore(deps): bump the actions-all group across 1 directory with 4 updates",
         "#75 chore(deps): bump the deps-minor group across 1 directory with 6 updates"
       ],
@@ -126,9 +125,9 @@
       "dependabot_count": 2
     },
     "freshness": {
-      "days_since_last_commit": 21,
+      "days_since_last_commit": 0,
       "days_since_last_release": 21,
-      "days_since_last_security_scan": 21
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
       "pypi_version": "0.1.18",
@@ -183,9 +182,9 @@
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.75,
+      "conventional_commits_rate_90d": 0.765,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 16,
+      "commits_90d": 17,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -239,19 +238,19 @@
         "NOTICE"
       ],
       "releases_90d": 4,
-      "median_pr_age_days": 3.051,
-      "open_pr_count": 3,
+      "median_pr_age_days": 3.6,
+      "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 168,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 13350,
-        "tests_loc": 14980,
+        "src_loc": 13382,
+        "tests_loc": 15077,
         "src_files": 62,
-        "tests_files": 71,
-        "tests_count": 1535
+        "tests_files": 72,
+        "tests_count": 1545
       },
       "rust": {
         "src_loc": 0,
