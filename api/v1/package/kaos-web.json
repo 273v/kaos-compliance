@@ -8,20 +8,20 @@
     "identity": {
       "pypi_version": "0.1.18",
       "pypi_url": "https://pypi.org/project/kaos-web/0.1.18/",
-      "main_head_sha": "af5555da9be61f443d00f208e3d6cb5b924f368e",
+      "main_head_sha": "dcf0180939b929ef50518387b0a370153d318dc5",
       "latest_tag": "v0.1.18",
       "latest_tag_sha": "f03ef0269aa69531c081d634800caf725255bf79",
       "tag_at_head": false,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-10-17T04:55:31Z"
+      "last_commit_at": "2026-10-17T11:46:35Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 39004376981,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/39004376981",
-      "head_sha": "af5555da9be61f443d00f208e3d6cb5b924f368e",
-      "run_completed_at": "2026-10-17T04:56:47Z",
+      "workflow_run_id": 39029984453,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/39029984453",
+      "head_sha": "dcf0180939b929ef50518387b0a370153d318dc5",
+      "run_completed_at": "2026-10-17T11:48:34Z",
       "matrix": [
         {
           "name": "test (macos-arm64 / Python 3.13)",
@@ -73,29 +73,29 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 39004376975,
-      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/39004376975",
+      "workflow_run_id": 39029984457,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/39029984457",
       "jobs": [
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-17T11:46:53Z"
+        },
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-10-17T04:55:43Z"
+          "completed_at": "2026-10-17T11:46:47Z"
         },
         {
           "name": "vulture (dead-code scan)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-10-17T04:55:46Z"
-        },
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-10-17T04:55:45Z"
+          "completed_at": "2026-10-17T11:46:51Z"
         }
       ],
-      "run_completed_at": "2026-10-17T04:55:47Z",
+      "run_completed_at": "2026-10-17T11:46:54Z",
       "full_workflow_conclusion": "failure",
       "full_workflow_run_id": 38195737283,
       "full_workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/38195737283",
@@ -182,9 +182,9 @@
     },
     "governance": {
       "dco_signoff_rate_90d": 1.0,
-      "conventional_commits_rate_90d": 0.778,
+      "conventional_commits_rate_90d": 0.789,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 18,
+      "commits_90d": 19,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -238,7 +238,7 @@
         "NOTICE"
       ],
       "releases_90d": 4,
-      "median_pr_age_days": 3.922,
+      "median_pr_age_days": 4.089,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 168,
@@ -246,11 +246,11 @@
     },
     "code_metrics": {
       "python": {
-        "src_loc": 13434,
-        "tests_loc": 15124,
+        "src_loc": 13514,
+        "tests_loc": 15221,
         "src_files": 62,
-        "tests_files": 72,
-        "tests_count": 1549
+        "tests_files": 73,
+        "tests_count": 1559
       },
       "rust": {
         "src_loc": 0,
