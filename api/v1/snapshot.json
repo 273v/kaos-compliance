@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-19T16:27:23Z",
+  "generated_at": "2026-10-19T20:23:13Z",
   "generator": {
     "name": "kaos-compliance",
     "version": "0.0.1"
   },
   "heartbeat": {
-    "last_full_sweep_at": "2026-10-19T16:27:23Z",
-    "last_light_sweep_at": "2026-10-19T16:27:23Z",
-    "last_security_sweep_at": "2026-10-19T16:27:23Z",
+    "last_full_sweep_at": "2026-10-19T20:23:13Z",
+    "last_light_sweep_at": "2026-10-19T20:23:13Z",
+    "last_security_sweep_at": "2026-10-19T20:23:13Z",
     "stale_threshold_hours": 26
   },
   "modules": [
@@ -260,7 +260,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 0.362,
+        "median_pr_age_days": 0.527,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 172,
@@ -287,6 +287,30 @@
         "source": "osv.dev",
         "scanned_components": 145,
         "open": [
+          {
+            "id": "GHSA-2g87-pp6c-29x5",
+            "aliases": [],
+            "package": "aiohttp",
+            "version": "3.14.3",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "aiohttp: Multiple instances of excessive or unbounded memory/CPU use",
+            "url": "https://osv.dev/vulnerability/GHSA-2g87-pp6c-29x5"
+          },
+          {
+            "id": "GHSA-5wr8-gcqf-gqf3",
+            "aliases": [
+              "CVE-2026-111064"
+            ],
+            "package": "aiohttp",
+            "version": "3.14.3",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "aiohttp server lacks an initial request/header timeout",
+            "url": "https://osv.dev/vulnerability/GHSA-5wr8-gcqf-gqf3"
+          },
           {
             "id": "GHSA-42vr-xj54-vc7v",
             "aliases": [
@@ -328,16 +352,29 @@
             "informational": null,
             "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
             "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+          },
+          {
+            "id": "GHSA-494j-54xm-rwp3",
+            "aliases": [
+              "CVE-2026-111063"
+            ],
+            "package": "aiohttp",
+            "version": "3.14.3",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "AIOHTTP: Secure attribute not enforced for shared cookie",
+            "url": "https://osv.dev/vulnerability/GHSA-494j-54xm-rwp3"
           }
         ],
         "notices": [],
         "counts": {
           "critical": 0,
-          "high": 0,
+          "high": 2,
           "moderate": 3,
-          "low": 0,
+          "low": 1,
           "unknown": 0,
-          "total": 3
+          "total": 6
         },
         "errors": []
       },
@@ -462,13 +499,13 @@
           "#62 chore(deps): Bump the deps-minor group across 1 directory with 4 updates",
           "#60 chore(deps): Bump pyjwt from 2.13.0 to 2.15.0"
         ],
-        "oldest_age_days": 17,
+        "oldest_age_days": 18,
         "dependabot_count": 3
       },
       "freshness": {
-        "days_since_last_commit": 19,
-        "days_since_last_release": 19,
-        "days_since_last_security_scan": 19
+        "days_since_last_commit": 20,
+        "days_since_last_release": 20,
+        "days_since_last_security_scan": 20
       },
       "supply_chain": {
         "pypi_version": "0.1.7",
@@ -581,7 +618,7 @@
           "NOTICE"
         ],
         "releases_90d": 5,
-        "median_pr_age_days": 0.38,
+        "median_pr_age_days": 0.546,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 126,
@@ -836,20 +873,20 @@
       "identity": {
         "pypi_version": "0.1.8",
         "pypi_url": "https://pypi.org/project/kaos-content/0.1.8/",
-        "main_head_sha": "bd1be304c6992a997882c0a9971a39815f29fb1d",
+        "main_head_sha": "1ef0fe61cd460ed9e896f0141b7d3b3a645538ff",
         "latest_tag": "v0.1.8",
         "latest_tag_sha": "be3fc3d4025112d1011970e6935c50f3b8def7ff",
         "tag_at_head": false,
         "commits_past_tag": null,
         "repo_visibility": "public",
-        "last_commit_at": "2026-10-17T15:05:57Z"
+        "last_commit_at": "2026-10-19T18:03:59Z"
       },
       "ci": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 39043564605,
-        "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/39043564605",
-        "head_sha": "bd1be304c6992a997882c0a9971a39815f29fb1d",
-        "run_completed_at": "2026-10-17T15:07:24Z",
+        "workflow_run_id": 39299438473,
+        "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/39299438473",
+        "head_sha": "1ef0fe61cd460ed9e896f0141b7d3b3a645538ff",
+        "run_completed_at": "2026-10-19T18:05:07Z",
         "matrix": [
           {
             "name": "test (linux-x64 / Python 3.14t)",
@@ -901,29 +938,29 @@
       },
       "security": {
         "workflow_conclusion": "success",
-        "workflow_run_id": 39043564575,
-        "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/39043564575",
+        "workflow_run_id": 39299438651,
+        "workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/39299438651",
         "jobs": [
-          {
-            "name": "bandit (static security)",
-            "conclusion": "success",
-            "status": "completed",
-            "completed_at": "2026-10-17T15:06:12Z"
-          },
           {
             "name": "vulture (dead-code scan)",
             "conclusion": "success",
             "status": "completed",
-            "completed_at": "2026-10-17T15:06:12Z"
+            "completed_at": "2026-10-19T18:04:20Z"
           },
           {
             "name": "gitleaks (incremental)",
             "conclusion": "success",
             "status": "completed",
-            "completed_at": "2026-10-17T15:06:14Z"
+            "completed_at": "2026-10-19T18:04:16Z"
+          },
+          {
+            "name": "bandit (static security)",
+            "conclusion": "success",
+            "status": "completed",
+            "completed_at": "2026-10-19T18:04:20Z"
           }
         ],
-        "run_completed_at": "2026-10-17T15:06:15Z",
+        "run_completed_at": "2026-10-19T18:04:23Z",
         "full_workflow_conclusion": "failure",
         "full_workflow_run_id": 39189788642,
         "full_workflow_run_url": "https://github.com/273v/kaos-content/actions/runs/39189788642",
@@ -953,9 +990,9 @@
         "dependabot_count": 2
       },
       "freshness": {
-        "days_since_last_commit": 2,
+        "days_since_last_commit": 0,
         "days_since_last_release": 23,
-        "days_since_last_security_scan": 2
+        "days_since_last_security_scan": 0
       },
       "supply_chain": {
         "pypi_version": "0.1.8",
@@ -1015,10 +1052,10 @@
         "errors": []
       },
       "governance": {
-        "dco_signoff_rate_90d": 1.0,
-        "conventional_commits_rate_90d": 0.75,
+        "dco_signoff_rate_90d": 0.889,
+        "conventional_commits_rate_90d": 0.778,
         "verified_commit_ratio_90d": 1.0,
-        "commits_90d": 8,
+        "commits_90d": 9,
         "unique_committers_90d": 2,
         "branch_protection_enabled": true,
         "branch_protection_summary": {
@@ -1072,7 +1109,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.313,
+        "median_pr_age_days": 0.478,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 309,
@@ -1080,11 +1117,11 @@
       },
       "code_metrics": {
         "python": {
-          "src_loc": 15800,
-          "tests_loc": 24654,
+          "src_loc": 15833,
+          "tests_loc": 24683,
           "src_files": 85,
-          "tests_files": 110,
-          "tests_count": 2550
+          "tests_files": 111,
+          "tests_count": 2561
         },
         "rust": {
           "src_loc": 0,
@@ -1250,7 +1287,7 @@
       },
       "freshness": {
         "days_since_last_commit": 26,
-        "days_since_last_release": 117,
+        "days_since_last_release": 118,
         "days_since_last_security_scan": 26
       },
       "supply_chain": {
@@ -1359,7 +1396,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 0.267,
+        "median_pr_age_days": 0.432,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -1670,7 +1707,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.397,
+        "median_pr_age_days": 0.563,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 766,
@@ -1976,7 +2013,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 0.199,
+        "median_pr_age_days": 0.364,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 432,
@@ -2202,7 +2239,7 @@
       "open_prs": {
         "count": 2,
         "titles": [
-          "#95 chore(deps): bump the actions-all group across 1 directory with 4 updates",
+          "#96 chore(deps): bump the actions-all group across 1 directory with 5 updates",
           "#94 chore(deps): bump the deps-minor group across 1 directory with 7 updates"
         ],
         "oldest_age_days": 6,
@@ -2322,7 +2359,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 6.27,
+        "median_pr_age_days": 3.532,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 175,
@@ -2625,7 +2662,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 5.467,
+        "median_pr_age_days": 5.632,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 621,
@@ -2960,7 +2997,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.311,
+        "median_pr_age_days": 0.476,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 242,
@@ -3166,7 +3203,7 @@
       },
       "freshness": {
         "days_since_last_commit": 26,
-        "days_since_last_release": 146,
+        "days_since_last_release": 147,
         "days_since_last_security_scan": 26
       },
       "supply_chain": {
@@ -3269,7 +3306,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 10.734,
+        "median_pr_age_days": 10.899,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -3445,9 +3482,9 @@
         "dependabot_count": 4
       },
       "freshness": {
-        "days_since_last_commit": 2,
+        "days_since_last_commit": 3,
         "days_since_last_release": 19,
-        "days_since_last_security_scan": 2
+        "days_since_last_security_scan": 3
       },
       "supply_chain": {
         "pypi_version": "0.1.15",
@@ -3603,7 +3640,7 @@
           "NOTICE"
         ],
         "releases_90d": 8,
-        "median_pr_age_days": 0.212,
+        "median_pr_age_days": 0.376,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 785,
@@ -3949,7 +3986,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.539,
+        "median_pr_age_days": 0.703,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 812,
@@ -4211,7 +4248,7 @@
       "open_prs": {
         "count": 2,
         "titles": [
-          "#68 build(deps): Bump the actions-all group across 1 directory with 4 updates",
+          "#69 build(deps): Bump the actions-all group across 1 directory with 5 updates",
           "#67 build(deps-dev): Bump the deps-minor group across 1 directory with 5 updates"
         ],
         "oldest_age_days": 6,
@@ -4331,7 +4368,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 6.241,
+        "median_pr_age_days": 3.517,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 555,
@@ -4641,7 +4678,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 6.791,
+        "median_pr_age_days": 6.955,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 340,
@@ -4988,7 +5025,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 2.922,
+        "median_pr_age_days": 3.086,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 496,
@@ -5290,7 +5327,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 9.922,
+        "median_pr_age_days": 10.086,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 169,
@@ -5475,9 +5512,9 @@
         "dependabot_count": 2
       },
       "freshness": {
-        "days_since_last_commit": 2,
-        "days_since_last_release": 117,
-        "days_since_last_security_scan": 2
+        "days_since_last_commit": 3,
+        "days_since_last_release": 118,
+        "days_since_last_security_scan": 3
       },
       "supply_chain": {
         "pypi_version": "0.1.0a16",
@@ -5575,7 +5612,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 0.334,
+        "median_pr_age_days": 0.497,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -5730,7 +5767,7 @@
       "open_prs": {
         "count": 2,
         "titles": [
-          "#76 chore(deps): bump the actions-all group across 1 directory with 4 updates",
+          "#80 chore(deps): bump the actions-all group across 1 directory with 5 updates",
           "#75 chore(deps): bump the deps-minor group across 1 directory with 6 updates"
         ],
         "oldest_age_days": 6,
@@ -5850,7 +5887,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 6.255,
+        "median_pr_age_days": 3.525,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 168,

@@ -251,7 +251,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 0.362,
+      "median_pr_age_days": 0.527,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 172,
@@ -278,6 +278,30 @@
       "source": "osv.dev",
       "scanned_components": 145,
       "open": [
+        {
+          "id": "GHSA-2g87-pp6c-29x5",
+          "aliases": [],
+          "package": "aiohttp",
+          "version": "3.14.3",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "aiohttp: Multiple instances of excessive or unbounded memory/CPU use",
+          "url": "https://osv.dev/vulnerability/GHSA-2g87-pp6c-29x5"
+        },
+        {
+          "id": "GHSA-5wr8-gcqf-gqf3",
+          "aliases": [
+            "CVE-2026-111064"
+          ],
+          "package": "aiohttp",
+          "version": "3.14.3",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "aiohttp server lacks an initial request/header timeout",
+          "url": "https://osv.dev/vulnerability/GHSA-5wr8-gcqf-gqf3"
+        },
         {
           "id": "GHSA-42vr-xj54-vc7v",
           "aliases": [
@@ -319,16 +343,29 @@
           "informational": null,
           "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
           "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+        },
+        {
+          "id": "GHSA-494j-54xm-rwp3",
+          "aliases": [
+            "CVE-2026-111063"
+          ],
+          "package": "aiohttp",
+          "version": "3.14.3",
+          "ecosystem": "pypi",
+          "severity": "low",
+          "informational": null,
+          "summary": "AIOHTTP: Secure attribute not enforced for shared cookie",
+          "url": "https://osv.dev/vulnerability/GHSA-494j-54xm-rwp3"
         }
       ],
       "notices": [],
       "counts": {
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "moderate": 3,
-        "low": 0,
+        "low": 1,
         "unknown": 0,
-        "total": 3
+        "total": 6
       },
       "errors": []
     },

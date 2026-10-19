@@ -98,7 +98,21 @@ footer a{color:var(--muted)}
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-10-18.</p>
+  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
+   2026-10-18 &rarr; 2026-10-19
+  </p>
+  <ul style="margin:0;padding-left:var(--s-5)">
+    <li>
+     <span class="pill g" aria-label="advisories_open: better">
+      <span class="gly" aria-hidden="true">▲</span>
+      <span class="wd" aria-hidden="true">better</span>
+     </span>
+     <strong>advisories_open</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      3 &rarr; 6
+     </span>
+    </li>
+  </ul>
  </div>
 </section>
 
@@ -118,7 +132,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 3 open advisories (OSV.dev): 3 moderate</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 6 open advisories (OSV.dev): 2 high, 3 moderate, 1 low</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -211,7 +225,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-3 <span style="color:var(--muted);font-size:0.75rem">across 145 locked dependencies (OSV.dev)</span>   </dd>
+6 <span style="color:var(--muted);font-size:0.75rem">across 145 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -224,6 +238,18 @@ footer a{color:var(--muted)}
   <table class="grid" style="margin-top:var(--s-3)" aria-label="Open advisories against locked dependencies">
    <thead><tr><th scope="col">Advisory</th><th scope="col">Package</th><th scope="col">Severity</th><th scope="col">Summary</th></tr></thead>
    <tbody>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-2g87-pp6c-29x5" target="_blank" rel="noopener">GHSA-2g87-pp6c-29x5</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">aiohttp: Multiple instances of excessive or unbounded memory/CPU use</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-5wr8-gcqf-gqf3" target="_blank" rel="noopener">GHSA-5wr8-gcqf-gqf3</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">aiohttp server lacks an initial request/header timeout</td>
+    </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v" target="_blank" rel="noopener">GHSA-42vr-xj54-vc7v</a></td>
      <td data-h="Package">pyjwt 2.14.0</td>
@@ -241,6 +267,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pyjwt 2.14.0</td>
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-494j-54xm-rwp3" target="_blank" rel="noopener">GHSA-494j-54xm-rwp3</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">AIOHTTP: Secure attribute not enforced for shared cookie</td>
     </tr>
    </tbody>
   </table>
@@ -349,7 +381,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-19 16:27 UTC
+ Generated 2026-10-19 20:23 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
