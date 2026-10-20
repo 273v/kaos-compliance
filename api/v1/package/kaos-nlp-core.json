@@ -139,9 +139,9 @@
       "dependabot_count": 4
     },
     "freshness": {
-      "days_since_last_commit": 3,
+      "days_since_last_commit": 4,
       "days_since_last_release": 20,
-      "days_since_last_security_scan": 3
+      "days_since_last_security_scan": 4
     },
     "supply_chain": {
       "pypi_version": "0.1.15",
@@ -297,7 +297,7 @@
         "NOTICE"
       ],
       "releases_90d": 4,
-      "median_pr_age_days": 1.211,
+      "median_pr_age_days": 1.378,
       "open_pr_count": 4,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 602,
@@ -323,15 +323,27 @@
     "advisories": {
       "source": "osv.dev",
       "scanned_components": 211,
-      "open": [],
+      "open": [
+        {
+          "id": "GHSA-6q48-6c7w-9gw2",
+          "aliases": [],
+          "package": "certifi",
+          "version": "2026.2.25",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+          "url": "https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2"
+        }
+      ],
       "notices": [],
       "counts": {
-        "critical": 0,
+        "critical": 1,
         "high": 0,
         "moderate": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0
+        "total": 1
       },
       "errors": []
     },

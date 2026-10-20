@@ -125,9 +125,9 @@
       "dependabot_count": 2
     },
     "freshness": {
-      "days_since_last_commit": 0,
+      "days_since_last_commit": 1,
       "days_since_last_release": 24,
-      "days_since_last_security_scan": 0
+      "days_since_last_security_scan": 1
     },
     "supply_chain": {
       "pypi_version": "0.1.8",
@@ -244,7 +244,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 1.313,
+      "median_pr_age_days": 1.479,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 309,
@@ -272,6 +272,17 @@
       "scanned_components": 58,
       "open": [
         {
+          "id": "GHSA-6q48-6c7w-9gw2",
+          "aliases": [],
+          "package": "certifi",
+          "version": "2026.4.22",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+          "url": "https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2"
+        },
+        {
           "id": "GHSA-27vj-qcqg-25rc",
           "aliases": [
             "CVE-2026-104851",
@@ -288,12 +299,12 @@
       ],
       "notices": [],
       "counts": {
-        "critical": 0,
+        "critical": 1,
         "high": 1,
         "moderate": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1
+        "total": 2
       },
       "errors": []
     },

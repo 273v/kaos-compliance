@@ -98,7 +98,21 @@ footer a{color:var(--muted)}
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-10-19.</p>
+  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
+   2026-10-19 &rarr; 2026-10-20
+  </p>
+  <ul style="margin:0;padding-left:var(--s-5)">
+    <li>
+     <span class="pill g" aria-label="advisories_open: better">
+      <span class="gly" aria-hidden="true">▲</span>
+      <span class="wd" aria-hidden="true">better</span>
+     </span>
+     <strong>advisories_open</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      6 &rarr; 9
+     </span>
+    </li>
+  </ul>
  </div>
 </section>
 
@@ -118,7 +132,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 6 open advisories (OSV.dev): 2 high, 3 moderate, 1 low</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 9 open advisories (OSV.dev): 1 critical, 3 high, 4 moderate, 1 low</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -211,7 +225,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-6 <span style="color:var(--muted);font-size:0.75rem">across 145 locked dependencies (OSV.dev)</span>   </dd>
+9 <span style="color:var(--muted);font-size:0.75rem">across 145 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -225,6 +239,12 @@ footer a{color:var(--muted)}
    <thead><tr><th scope="col">Advisory</th><th scope="col">Package</th><th scope="col">Severity</th><th scope="col">Summary</th></tr></thead>
    <tbody>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2" target="_blank" rel="noopener">GHSA-6q48-6c7w-9gw2</a></td>
+     <td data-h="Package">certifi 2026.7.22</td>
+     <td data-h="Severity">critical</td>
+     <td data-h="Summary">certifi bundles emSign root CAs with compromised intermediate CA keys</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-2g87-pp6c-29x5" target="_blank" rel="noopener">GHSA-2g87-pp6c-29x5</a></td>
      <td data-h="Package">aiohttp 3.14.3</td>
      <td data-h="Severity">high</td>
@@ -237,6 +257,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">aiohttp server lacks an initial request/header timeout</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-9xw5-w5jj-pvcg" target="_blank" rel="noopener">GHSA-9xw5-w5jj-pvcg</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">AIOHTTP: File descriptor exhaustion in multipart requests</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v" target="_blank" rel="noopener">GHSA-42vr-xj54-vc7v</a></td>
      <td data-h="Package">pyjwt 2.14.0</td>
      <td data-h="Severity">moderate</td>
@@ -247,6 +273,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">multidict 6.9.0</td>
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">Multidict: Reference leak in CIMultiDict/MultiDict items-view union and subtraction</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-pqxq-w44r-73xw" target="_blank" rel="noopener">GHSA-pqxq-w44r-73xw</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">AIOHTTP: Pure-Python parser request smuggling</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449" target="_blank" rel="noopener">GHSA-x33g-cr3x-6449</a></td>
@@ -367,7 +399,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-20 16:26 UTC
+ Generated 2026-10-20 20:26 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

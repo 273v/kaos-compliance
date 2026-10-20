@@ -309,7 +309,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 1.538,
+      "median_pr_age_days": 1.705,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 812,
@@ -336,6 +336,17 @@
       "source": "osv.dev",
       "scanned_components": 348,
       "open": [
+        {
+          "id": "GHSA-6q48-6c7w-9gw2",
+          "aliases": [],
+          "package": "certifi",
+          "version": "2026.4.22",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+          "url": "https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2"
+        },
         {
           "id": "GHSA-27vj-qcqg-25rc",
           "aliases": [
@@ -429,6 +440,32 @@
           "informational": null,
           "summary": "Unauthenticated ServerHello can downgrade later connections to classical key exchange",
           "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0349"
+        },
+        {
+          "id": "RUSTSEC-2026-0381",
+          "aliases": [
+            "CVE-2026-111943"
+          ],
+          "package": "webpki-roots",
+          "version": "1.0.9",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Bundled root certificates allow trust in distrusted emSign intermediates",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0381"
+        },
+        {
+          "id": "RUSTSEC-2026-0382",
+          "aliases": [
+            "CVE-2026-111943"
+          ],
+          "package": "rustls-webpki",
+          "version": "0.103.15",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Certificate verification may accept distrusted intermediates",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0382"
         }
       ],
       "notices": [
@@ -445,12 +482,12 @@
         }
       ],
       "counts": {
-        "critical": 0,
+        "critical": 1,
         "high": 1,
         "moderate": 2,
         "low": 0,
-        "unknown": 4,
-        "total": 7
+        "unknown": 6,
+        "total": 10
       },
       "errors": []
     },

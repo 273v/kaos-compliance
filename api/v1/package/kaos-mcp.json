@@ -237,7 +237,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 6.466,
+      "median_pr_age_days": 6.632,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 621,
@@ -264,6 +264,17 @@
       "source": "osv.dev",
       "scanned_components": 51,
       "open": [
+        {
+          "id": "GHSA-6q48-6c7w-9gw2",
+          "aliases": [],
+          "package": "certifi",
+          "version": "2026.2.25",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+          "url": "https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2"
+        },
         {
           "id": "GHSA-42vr-xj54-vc7v",
           "aliases": [
@@ -295,12 +306,12 @@
       ],
       "notices": [],
       "counts": {
-        "critical": 0,
+        "critical": 1,
         "high": 0,
         "moderate": 2,
         "low": 0,
         "unknown": 0,
-        "total": 2
+        "total": 3
       },
       "errors": []
     },

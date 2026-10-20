@@ -123,13 +123,13 @@
         "#62 chore(deps): Bump the deps-minor group across 1 directory with 4 updates",
         "#60 chore(deps): Bump pyjwt from 2.13.0 to 2.15.0"
       ],
-      "oldest_age_days": 18,
+      "oldest_age_days": 19,
       "dependabot_count": 4
     },
     "freshness": {
-      "days_since_last_commit": 20,
-      "days_since_last_release": 20,
-      "days_since_last_security_scan": 20
+      "days_since_last_commit": 21,
+      "days_since_last_release": 21,
+      "days_since_last_security_scan": 21
     },
     "supply_chain": {
       "pypi_version": "0.1.7",
@@ -242,7 +242,7 @@
         "NOTICE"
       ],
       "releases_90d": 5,
-      "median_pr_age_days": 1.272,
+      "median_pr_age_days": 1.438,
       "open_pr_count": 4,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 126,
@@ -269,6 +269,17 @@
       "source": "osv.dev",
       "scanned_components": 61,
       "open": [
+        {
+          "id": "GHSA-6q48-6c7w-9gw2",
+          "aliases": [],
+          "package": "certifi",
+          "version": "2026.5.20",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+          "url": "https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2"
+        },
         {
           "id": "GHSA-ffc3-869f-jxw9",
           "aliases": [
@@ -481,12 +492,12 @@
       ],
       "notices": [],
       "counts": {
-        "critical": 1,
+        "critical": 2,
         "high": 5,
         "moderate": 9,
         "low": 0,
         "unknown": 0,
-        "total": 15
+        "total": 16
       },
       "errors": []
     },

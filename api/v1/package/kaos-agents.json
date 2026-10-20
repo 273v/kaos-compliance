@@ -251,7 +251,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 1.362,
+      "median_pr_age_days": 1.527,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 172,
@@ -279,6 +279,17 @@
       "scanned_components": 145,
       "open": [
         {
+          "id": "GHSA-6q48-6c7w-9gw2",
+          "aliases": [],
+          "package": "certifi",
+          "version": "2026.7.22",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+          "url": "https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2"
+        },
+        {
           "id": "GHSA-2g87-pp6c-29x5",
           "aliases": [],
           "package": "aiohttp",
@@ -301,6 +312,19 @@
           "informational": null,
           "summary": "aiohttp server lacks an initial request/header timeout",
           "url": "https://osv.dev/vulnerability/GHSA-5wr8-gcqf-gqf3"
+        },
+        {
+          "id": "GHSA-9xw5-w5jj-pvcg",
+          "aliases": [
+            "CVE-2026-111066"
+          ],
+          "package": "aiohttp",
+          "version": "3.14.3",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "AIOHTTP: File descriptor exhaustion in multipart requests",
+          "url": "https://osv.dev/vulnerability/GHSA-9xw5-w5jj-pvcg"
         },
         {
           "id": "GHSA-42vr-xj54-vc7v",
@@ -329,6 +353,19 @@
           "informational": null,
           "summary": "Multidict: Reference leak in CIMultiDict/MultiDict items-view union and subtraction",
           "url": "https://osv.dev/vulnerability/GHSA-54p9-h82j-f925"
+        },
+        {
+          "id": "GHSA-pqxq-w44r-73xw",
+          "aliases": [
+            "CVE-2026-111750"
+          ],
+          "package": "aiohttp",
+          "version": "3.14.3",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "AIOHTTP: Pure-Python parser request smuggling",
+          "url": "https://osv.dev/vulnerability/GHSA-pqxq-w44r-73xw"
         },
         {
           "id": "GHSA-x33g-cr3x-6449",
@@ -360,12 +397,12 @@
       ],
       "notices": [],
       "counts": {
-        "critical": 0,
-        "high": 2,
-        "moderate": 3,
+        "critical": 1,
+        "high": 3,
+        "moderate": 4,
         "low": 1,
         "unknown": 0,
-        "total": 6
+        "total": 9
       },
       "errors": []
     },
