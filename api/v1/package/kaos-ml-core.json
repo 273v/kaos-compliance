@@ -269,7 +269,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 2.309,
+      "median_pr_age_days": 2.476,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 242,
@@ -323,6 +323,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-8g5g-8vmr-9782"
         },
         {
+          "id": "GHSA-w889-685w-c8fh",
+          "aliases": [
+            "CVE-2026-112900"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "Pillow: Argument Injection in Ghostscript call, potentially leading into RCE",
+          "url": "https://osv.dev/vulnerability/GHSA-w889-685w-c8fh"
+        },
+        {
           "id": "GHSA-27vj-qcqg-25rc",
           "aliases": [
             "CVE-2026-104851",
@@ -363,6 +376,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-65qm-jvmh-6pqg"
         },
         {
+          "id": "GHSA-7mwm-ghpf-9vrm",
+          "aliases": [
+            "CVE-2026-112402"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform",
+          "url": "https://osv.dev/vulnerability/GHSA-7mwm-ghpf-9vrm"
+        },
+        {
           "id": "GHSA-c6hw-5grf-ff96",
           "aliases": [
             "CVE-2026-112404"
@@ -374,6 +400,19 @@
           "informational": null,
           "summary": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels",
           "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
+        },
+        {
+          "id": "GHSA-j4m9-6w36-pw47",
+          "aliases": [
+            "CVE-2026-112893"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
+          "url": "https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47"
         },
         {
           "id": "GHSA-p4wg-p73j-c528",
@@ -429,6 +468,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
         },
         {
+          "id": "GHSA-4558-3h8r-v8xp",
+          "aliases": [
+            "CVE-2026-112394"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size",
+          "url": "https://osv.dev/vulnerability/GHSA-4558-3h8r-v8xp"
+        },
+        {
           "id": "GHSA-462x-pgg6-55fp",
           "aliases": [
             "CVE-2026-112395"
@@ -471,12 +523,12 @@
       ],
       "notices": [],
       "counts": {
-        "critical": 2,
-        "high": 7,
-        "moderate": 4,
+        "critical": 3,
+        "high": 9,
+        "moderate": 5,
         "low": 0,
         "unknown": 0,
-        "total": 13
+        "total": 17
       },
       "errors": []
     },

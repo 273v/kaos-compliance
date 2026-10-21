@@ -109,7 +109,7 @@ footer a{color:var(--muted)}
      </span>
      <strong>advisories_open</strong>:
      <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      3 &rarr; 12
+      3 &rarr; 16
      </span>
     </li>
   </ul>
@@ -132,7 +132,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 12 open advisories (OSV.dev): 2 critical, 6 high, 4 moderate</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 16 open advisories (OSV.dev): 3 critical, 8 high, 5 moderate</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -225,7 +225,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-12 <span style="color:var(--muted);font-size:0.75rem">across 63 locked dependencies (OSV.dev)</span>   </dd>
+16 <span style="color:var(--muted);font-size:0.75rem">across 63 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -251,6 +251,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: Heap buffer overflow in ImagingJpegDecode</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-w889-685w-c8fh" target="_blank" rel="noopener">GHSA-w889-685w-c8fh</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">critical</td>
+     <td data-h="Summary">Pillow: Argument Injection in Ghostscript call, potentially leading into RCE</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8" target="_blank" rel="noopener">GHSA-58r4-6rv3-gfh8</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
@@ -263,10 +269,22 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-7mwm-ghpf-9vrm" target="_blank" rel="noopener">GHSA-7mwm-ghpf-9vrm</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96" target="_blank" rel="noopener">GHSA-c6hw-5grf-ff96</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47" target="_blank" rel="noopener">GHSA-j4m9-6w36-pw47</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: Invalid free in FreeType glyph rendering when a stroker is active</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-p4wg-p73j-c528" target="_blank" rel="noopener">GHSA-p4wg-p73j-c528</a></td>
@@ -291,6 +309,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pyjwt 2.14.0</td>
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-4558-3h8r-v8xp" target="_blank" rel="noopener">GHSA-4558-3h8r-v8xp</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp" target="_blank" rel="noopener">GHSA-462x-pgg6-55fp</a></td>
@@ -417,7 +441,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-21 16:22 UTC
+ Generated 2026-10-21 20:24 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
