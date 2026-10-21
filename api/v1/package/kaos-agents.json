@@ -251,7 +251,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 1.527,
+      "median_pr_age_days": 1.694,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 172,
@@ -280,7 +280,9 @@
       "open": [
         {
           "id": "GHSA-6q48-6c7w-9gw2",
-          "aliases": [],
+          "aliases": [
+            "PYSEC-2026-4320"
+          ],
           "package": "certifi",
           "version": "2026.7.22",
           "ecosystem": "pypi",
@@ -288,6 +290,19 @@
           "informational": null,
           "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
           "url": "https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2"
+        },
+        {
+          "id": "GHSA-8g5g-8vmr-9782",
+          "aliases": [
+            "CVE-2026-112403"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "Pillow: Heap buffer overflow in ImagingJpegDecode",
+          "url": "https://osv.dev/vulnerability/GHSA-8g5g-8vmr-9782"
         },
         {
           "id": "GHSA-2g87-pp6c-29x5",
@@ -299,6 +314,19 @@
           "informational": null,
           "summary": "aiohttp: Multiple instances of excessive or unbounded memory/CPU use",
           "url": "https://osv.dev/vulnerability/GHSA-2g87-pp6c-29x5"
+        },
+        {
+          "id": "GHSA-58r4-6rv3-gfh8",
+          "aliases": [
+            "CVE-2026-112397"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
+          "url": "https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8"
         },
         {
           "id": "GHSA-5wr8-gcqf-gqf3",
@@ -314,6 +342,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-5wr8-gcqf-gqf3"
         },
         {
+          "id": "GHSA-65qm-jvmh-6pqg",
+          "aliases": [
+            "CVE-2026-112400"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
+          "url": "https://osv.dev/vulnerability/GHSA-65qm-jvmh-6pqg"
+        },
+        {
           "id": "GHSA-9xw5-w5jj-pvcg",
           "aliases": [
             "CVE-2026-111066"
@@ -325,6 +366,58 @@
           "informational": null,
           "summary": "AIOHTTP: File descriptor exhaustion in multipart requests",
           "url": "https://osv.dev/vulnerability/GHSA-9xw5-w5jj-pvcg"
+        },
+        {
+          "id": "GHSA-c6hw-5grf-ff96",
+          "aliases": [
+            "CVE-2026-112404"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels",
+          "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
+        },
+        {
+          "id": "GHSA-p4wg-p73j-c528",
+          "aliases": [
+            "CVE-2026-112895"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Unbounded recursion parsing a PDF page tree or trailer chain (incomplete fix for CVE-2026-42310)",
+          "url": "https://osv.dev/vulnerability/GHSA-p4wg-p73j-c528"
+        },
+        {
+          "id": "GHSA-pchr-8j38-3x4p",
+          "aliases": [
+            "CVE-2026-112896"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read",
+          "url": "https://osv.dev/vulnerability/GHSA-pchr-8j38-3x4p"
+        },
+        {
+          "id": "GHSA-q45j-58j2-45rg",
+          "aliases": [
+            "CVE-2026-112897"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
+          "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
         },
         {
           "id": "GHSA-42vr-xj54-vc7v",
@@ -341,6 +434,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
         },
         {
+          "id": "GHSA-462x-pgg6-55fp",
+          "aliases": [
+            "CVE-2026-112395"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)",
+          "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
+        },
+        {
           "id": "GHSA-54p9-h82j-f925",
           "aliases": [
             "CVE-2026-104874",
@@ -355,6 +461,32 @@
           "url": "https://osv.dev/vulnerability/GHSA-54p9-h82j-f925"
         },
         {
+          "id": "GHSA-6cjc-53gc-5rqm",
+          "aliases": [
+            "CVE-2026-111065"
+          ],
+          "package": "aiohttp",
+          "version": "3.14.3",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "AIOHTTP: Connector pool exhaustion via Max-Age overflow",
+          "url": "https://osv.dev/vulnerability/GHSA-6cjc-53gc-5rqm"
+        },
+        {
+          "id": "GHSA-f9xw-jh8m-3mwq",
+          "aliases": [
+            "CVE-2026-111748"
+          ],
+          "package": "aiohttp",
+          "version": "3.14.3",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "AIOHTTP: Absolute-form request targets can spoof Request.scheme",
+          "url": "https://osv.dev/vulnerability/GHSA-f9xw-jh8m-3mwq"
+        },
+        {
           "id": "GHSA-pqxq-w44r-73xw",
           "aliases": [
             "CVE-2026-111750"
@@ -366,6 +498,19 @@
           "informational": null,
           "summary": "AIOHTTP: Pure-Python parser request smuggling",
           "url": "https://osv.dev/vulnerability/GHSA-pqxq-w44r-73xw"
+        },
+        {
+          "id": "GHSA-vx6w-vv9f-6gvg",
+          "aliases": [
+            "CVE-2026-112899"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit",
+          "url": "https://osv.dev/vulnerability/GHSA-vx6w-vv9f-6gvg"
         },
         {
           "id": "GHSA-x33g-cr3x-6449",
@@ -393,16 +538,29 @@
           "informational": null,
           "summary": "AIOHTTP: Secure attribute not enforced for shared cookie",
           "url": "https://osv.dev/vulnerability/GHSA-494j-54xm-rwp3"
+        },
+        {
+          "id": "GHSA-gx76-c99x-2c96",
+          "aliases": [
+            "CVE-2026-111749"
+          ],
+          "package": "aiohttp",
+          "version": "3.14.3",
+          "ecosystem": "pypi",
+          "severity": "low",
+          "informational": null,
+          "summary": "AIOHTTP: Cookie from subdomain can remove Host-Only Scope from existing cookies",
+          "url": "https://osv.dev/vulnerability/GHSA-gx76-c99x-2c96"
         }
       ],
       "notices": [],
       "counts": {
-        "critical": 1,
-        "high": 3,
-        "moderate": 4,
-        "low": 1,
+        "critical": 2,
+        "high": 9,
+        "moderate": 8,
+        "low": 2,
         "unknown": 0,
-        "total": 9
+        "total": 21
       },
       "errors": []
     },

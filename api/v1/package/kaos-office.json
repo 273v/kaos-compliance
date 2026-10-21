@@ -121,7 +121,7 @@
         "#69 build(deps): Bump the actions-all group across 1 directory with 5 updates",
         "#67 build(deps-dev): Bump the deps-minor group across 1 directory with 5 updates"
       ],
-      "oldest_age_days": 7,
+      "oldest_age_days": 8,
       "dependabot_count": 2
     },
     "freshness": {
@@ -238,7 +238,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 4.519,
+      "median_pr_age_days": 4.685,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 555,
@@ -267,7 +267,9 @@
       "open": [
         {
           "id": "GHSA-6q48-6c7w-9gw2",
-          "aliases": [],
+          "aliases": [
+            "PYSEC-2026-4320"
+          ],
           "package": "certifi",
           "version": "2026.4.22",
           "ecosystem": "pypi",
@@ -275,6 +277,97 @@
           "informational": null,
           "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
           "url": "https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2"
+        },
+        {
+          "id": "GHSA-8g5g-8vmr-9782",
+          "aliases": [
+            "CVE-2026-112403"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "Pillow: Heap buffer overflow in ImagingJpegDecode",
+          "url": "https://osv.dev/vulnerability/GHSA-8g5g-8vmr-9782"
+        },
+        {
+          "id": "GHSA-58r4-6rv3-gfh8",
+          "aliases": [
+            "CVE-2026-112397"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
+          "url": "https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8"
+        },
+        {
+          "id": "GHSA-65qm-jvmh-6pqg",
+          "aliases": [
+            "CVE-2026-112400"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
+          "url": "https://osv.dev/vulnerability/GHSA-65qm-jvmh-6pqg"
+        },
+        {
+          "id": "GHSA-c6hw-5grf-ff96",
+          "aliases": [
+            "CVE-2026-112404"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels",
+          "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
+        },
+        {
+          "id": "GHSA-p4wg-p73j-c528",
+          "aliases": [
+            "CVE-2026-112895"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Unbounded recursion parsing a PDF page tree or trailer chain (incomplete fix for CVE-2026-42310)",
+          "url": "https://osv.dev/vulnerability/GHSA-p4wg-p73j-c528"
+        },
+        {
+          "id": "GHSA-pchr-8j38-3x4p",
+          "aliases": [
+            "CVE-2026-112896"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read",
+          "url": "https://osv.dev/vulnerability/GHSA-pchr-8j38-3x4p"
+        },
+        {
+          "id": "GHSA-q45j-58j2-45rg",
+          "aliases": [
+            "CVE-2026-112897"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
+          "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
         },
         {
           "id": "GHSA-42vr-xj54-vc7v",
@@ -289,6 +382,32 @@
           "informational": null,
           "summary": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
           "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
+        },
+        {
+          "id": "GHSA-462x-pgg6-55fp",
+          "aliases": [
+            "CVE-2026-112395"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)",
+          "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
+        },
+        {
+          "id": "GHSA-vx6w-vv9f-6gvg",
+          "aliases": [
+            "CVE-2026-112899"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit",
+          "url": "https://osv.dev/vulnerability/GHSA-vx6w-vv9f-6gvg"
         },
         {
           "id": "GHSA-x33g-cr3x-6449",
@@ -307,12 +426,12 @@
       ],
       "notices": [],
       "counts": {
-        "critical": 1,
-        "high": 0,
-        "moderate": 2,
+        "critical": 2,
+        "high": 6,
+        "moderate": 4,
         "low": 0,
         "unknown": 0,
-        "total": 3
+        "total": 12
       },
       "errors": []
     },
