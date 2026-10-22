@@ -18,14 +18,55 @@
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35879906424,
-      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35879906424",
+      "workflow_run_id": 35879906387,
+      "workflow_run_url": "https://github.com/273v/kaos-office/actions/runs/35879906387",
       "head_sha": "e557c746ec8aa217bde0584e71e213d3690e9867",
-      "run_completed_at": "2026-09-23T15:13:26Z",
-      "matrix": [],
-      "compat_conclusion": null,
-      "compat_run_url": null,
-      "compat_completed_at": null,
+      "run_completed_at": "2026-09-23T15:14:51Z",
+      "matrix": [
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:32:34Z",
+          "completed_at": "2026-10-19T05:34:43Z",
+          "duration_seconds": 129
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:28:18Z",
+          "completed_at": "2026-10-19T05:29:25Z",
+          "duration_seconds": 67
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:33:18Z",
+          "completed_at": "2026-10-19T05:34:24Z",
+          "duration_seconds": 66
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:28:14Z",
+          "completed_at": "2026-10-19T05:30:35Z",
+          "duration_seconds": 141
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:35:28Z",
+          "completed_at": "2026-10-19T05:38:36Z",
+          "duration_seconds": 188
+        }
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-office/actions/runs/39204716057",
+      "compat_completed_at": "2026-10-19T05:38:37Z",
       "min_deps_conclusion": "success",
       "min_deps_run_url": "https://github.com/273v/kaos-office/actions/runs/39205098648",
       "min_deps_completed_at": "2026-10-19T05:37:49Z"
@@ -197,7 +238,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 6.353,
+      "median_pr_age_days": 6.517,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 555,
@@ -366,6 +407,17 @@
           "informational": null,
           "summary": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
           "url": "https://osv.dev/vulnerability/GHSA-65qm-jvmh-6pqg"
+        },
+        {
+          "id": "GHSA-78g4-xqwv-q3g8",
+          "aliases": [],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Bundled libopenjp2 2.5.4 in all wheels since 11.1.0 carries OSV-2025-219 heap-buffer-overflow write reachable from Image.open().load()",
+          "url": "https://osv.dev/vulnerability/GHSA-78g4-xqwv-q3g8"
         },
         {
           "id": "GHSA-7mwm-ghpf-9vrm",
@@ -763,11 +815,11 @@
       "notices": [],
       "counts": {
         "critical": 5,
-        "high": 22,
+        "high": 23,
         "moderate": 14,
         "low": 0,
         "unknown": 0,
-        "total": 41
+        "total": 42
       },
       "errors": []
     },

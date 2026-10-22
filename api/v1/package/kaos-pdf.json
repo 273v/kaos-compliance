@@ -18,10 +18,10 @@
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 39525127875,
-      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/39525127875",
+      "workflow_run_id": 39525127871,
+      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/39525127871",
       "head_sha": "dd7cf0f83c79a4fc476ee996c54e65ff25473893",
-      "run_completed_at": "2026-10-21T01:04:27Z",
+      "run_completed_at": "2026-10-21T01:06:41Z",
       "matrix": [
         {
           "name": "test (macos-arm64 / Python 3.13)",
@@ -239,11 +239,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 0,
+      "releases_90d": 2,
       "median_pr_age_days": null,
       "open_pr_count": 0,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": null,
+      "time_to_pypi_seconds_median": 340,
       "errors": []
     },
     "code_metrics": {
@@ -409,6 +409,17 @@
           "informational": null,
           "summary": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
           "url": "https://osv.dev/vulnerability/GHSA-65qm-jvmh-6pqg"
+        },
+        {
+          "id": "GHSA-78g4-xqwv-q3g8",
+          "aliases": [],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Bundled libopenjp2 2.5.4 in all wheels since 11.1.0 carries OSV-2025-219 heap-buffer-overflow write reachable from Image.open().load()",
+          "url": "https://osv.dev/vulnerability/GHSA-78g4-xqwv-q3g8"
         },
         {
           "id": "GHSA-7mwm-ghpf-9vrm",
@@ -848,11 +859,11 @@
       "notices": [],
       "counts": {
         "critical": 5,
-        "high": 24,
+        "high": 25,
         "moderate": 15,
         "low": 0,
         "unknown": 0,
-        "total": 44
+        "total": 45
       },
       "errors": []
     },

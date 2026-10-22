@@ -98,21 +98,7 @@ footer a{color:var(--muted)}
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
-   2026-10-21 &rarr; 2026-10-22
-  </p>
-  <ul style="margin:0;padding-left:var(--s-5)">
-    <li>
-     <span class="pill r" aria-label="Releases (90d): worse">
-      <span class="gly" aria-hidden="true">▼</span>
-      <span class="wd" aria-hidden="true">worse</span>
-     </span>
-     <strong>Releases (90d)</strong>:
-     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      1 &rarr; 0
-     </span>
-    </li>
-  </ul>
+  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-10-21.</p>
  </div>
 </section>
 
@@ -128,11 +114,11 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill g" aria-label="Tests: PR + compat + min-deps: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Tests: PR + compat + min-deps</div><div class="note">PR lanes: success; compat: unknown; min-deps: success</div></div>
+    <div class="body"><div class="lab">Tests: PR + compat + min-deps</div><div class="note">PR lanes: success; compat: success; min-deps: success</div></div>
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: unknown; security-full: failure; 6 open advisories (OSV.dev): 1 critical, 2 high, 3 moderate</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 6 open advisories (OSV.dev): 1 critical, 2 high, 3 moderate</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -174,6 +160,46 @@ footer a{color:var(--muted)}
    </tr>
   </thead>
   <tbody>
+   <tr>
+    <td class="env" data-h="Environment">linux-x64 / py3.14</td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+   </tr>
+   <tr>
+    <td class="env" data-h="Environment">linux-x64 / py3.14t</td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+   </tr>
+   <tr>
+    <td class="env" data-h="Environment">linux-x64 / py3.15</td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+   </tr>
+   <tr>
+    <td class="env" data-h="Environment">macos-arm64 / py3.13</td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+   </tr>
+   <tr>
+    <td class="env" data-h="Environment">windows-x64 / py3.13</td>
+     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
+   </tr>
   </tbody>
  </table>
  </div>
@@ -265,7 +291,7 @@ footer a{color:var(--muted)}
    <dd>
     6
 <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-client Commits 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.2 11.4,2.9 12.2,3.2 13.1,3.6 14.0,3.9 14.8,5.5 15.7,5.5 16.5,6.0 17.4,6.7 18.2,6.7 19.1,6.7 19.9,6.9 20.8,7.6 21.6,7.6 22.5,7.9 23.3,8.8 24.2,10.5 25.1,11.9 25.9,11.9 26.8,12.4 27.6,12.4 28.5,12.6 29.3,12.6 30.2,13.1 31.0,13.1 31.9,13.1 32.7,13.1 33.6,13.1 34.4,13.1 35.3,13.1 36.2,13.1 37.0,13.1 37.9,13.1 38.7,13.1 39.6,13.1 40.4,13.1 41.3,13.1 42.1,13.1 43.0,13.1 43.8,13.1 44.7,13.1 45.6,13.1 46.4,13.1 47.3,13.1 48.1,13.1 49.0,13.1 49.8,13.1 50.7,13.8 51.5,13.8 52.4,14.0 53.2,12.6 54.1,12.6 54.9,12.6 55.8,12.6 56.7,12.8 57.5,12.8 58.4,12.8 59.2,12.8 60.1,12.8 60.9,12.8 61.8,12.8 62.6,12.8 63.5,12.8 64.3,12.8 65.2,12.8 66.0,12.8 66.9,12.8 67.8,12.8 68.6,12.8 69.5,12.8 70.3,12.8 71.2,12.8 72.0,12.8 72.9,12.8 73.7,12.8 74.6,13.3 75.4,13.3 76.3,13.5 77.1,13.5 78.0,13.5"></polyline><circle cx="78.0" cy="13.5" r="1.5" fill="currentColor"></circle></svg>   </dd>
-   <dt>Releases 90d</dt><dd>—<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-client Releases 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.8 11.4,3.6 12.2,3.6 13.1,3.6 14.0,3.6 14.8,4.4 15.7,4.4 16.5,4.4 17.4,4.4 18.2,4.4 19.1,4.4 19.9,5.2 20.8,5.2 21.6,5.2 22.5,6.0 23.3,9.2 24.2,10.0 25.1,10.8 25.9,10.8 26.8,11.6 27.6,11.6 28.5,12.4 29.3,12.4 30.2,13.2 31.0,13.2 31.9,13.2 32.7,13.2 33.6,13.2 34.4,13.2 35.3,13.2 36.2,13.2 37.0,13.2 37.9,13.2 38.7,13.2 39.6,13.2 40.4,13.2 41.3,13.2 42.1,13.2 43.0,13.2 43.8,13.2 44.7,13.2 45.6,13.2 46.4,13.2 47.3,13.2 48.1,13.2 49.0,13.2 49.8,13.2 50.7,13.2 51.5,13.2 52.4,14.0 53.2,13.2 54.1,13.2 54.9,13.2 55.8,13.2 56.7,13.2 57.5,13.2 58.4,13.2 59.2,13.2 60.1,13.2 60.9,13.2 61.8,13.2 62.6,13.2 63.5,13.2 64.3,13.2 65.2,13.2 66.0,13.2 66.9,13.2 67.8,13.2 68.6,13.2 69.5,13.2 70.3,13.2 71.2,13.2 72.0,13.2 72.9,13.2 73.7,13.2 74.6,13.2 75.4,13.2 76.3,13.2 77.1,13.2 78.0,14.0"></polyline><circle cx="78.0" cy="14.0" r="1.5" fill="currentColor"></circle></svg></dd>
+   <dt>Releases 90d</dt><dd>1<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-llm-client Releases 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.8 11.4,3.6 12.2,3.6 13.1,3.6 14.0,3.6 14.8,4.4 15.7,4.4 16.5,4.4 17.4,4.4 18.2,4.4 19.1,4.4 19.9,5.2 20.8,5.2 21.6,5.2 22.5,6.0 23.3,9.2 24.2,10.0 25.1,10.8 25.9,10.8 26.8,11.6 27.6,11.6 28.5,12.4 29.3,12.4 30.2,13.2 31.0,13.2 31.9,13.2 32.7,13.2 33.6,13.2 34.4,13.2 35.3,13.2 36.2,13.2 37.0,13.2 37.9,13.2 38.7,13.2 39.6,13.2 40.4,13.2 41.3,13.2 42.1,13.2 43.0,13.2 43.8,13.2 44.7,13.2 45.6,13.2 46.4,13.2 47.3,13.2 48.1,13.2 49.0,13.2 49.8,13.2 50.7,13.2 51.5,13.2 52.4,14.0 53.2,13.2 54.1,13.2 54.9,13.2 55.8,13.2 56.7,13.2 57.5,13.2 58.4,13.2 59.2,13.2 60.1,13.2 60.9,13.2 61.8,13.2 62.6,13.2 63.5,13.2 64.3,13.2 65.2,13.2 66.0,13.2 66.9,13.2 67.8,13.2 68.6,13.2 69.5,13.2 70.3,13.2 71.2,13.2 72.0,13.2 72.9,13.2 73.7,13.2 74.6,13.2 75.4,13.2 76.3,13.2 77.1,13.2 78.0,13.2"></polyline><circle cx="78.0" cy="13.2" r="1.5" fill="currentColor"></circle></svg></dd>
   </dl>
  </div>
 </section>
@@ -320,7 +346,7 @@ footer a{color:var(--muted)}
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-llm-client">Repository</a></li><li><a href="https://pypi.org/project/kaos-llm-client/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-llm-client/actions/runs/35879460760">Latest CI run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-llm-client.json"><code>api/v1/package/kaos-llm-client.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-llm-client">Repository</a></li><li><a href="https://pypi.org/project/kaos-llm-client/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-llm-client/actions/runs/35879460697">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-llm-client/actions/runs/35879460833">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-llm-client.json"><code>api/v1/package/kaos-llm-client.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
@@ -341,7 +367,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-22 16:28 UTC
+ Generated 2026-10-22 20:23 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

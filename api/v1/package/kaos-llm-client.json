@@ -18,24 +18,84 @@
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35879460760,
-      "workflow_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/35879460760",
+      "workflow_run_id": 35879460697,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/35879460697",
       "head_sha": "acd44273da90da1dbc99934650a3eeea803fb335",
-      "run_completed_at": "2026-09-23T15:09:43Z",
-      "matrix": [],
-      "compat_conclusion": null,
-      "compat_run_url": null,
-      "compat_completed_at": null,
+      "run_completed_at": "2026-09-23T15:09:48Z",
+      "matrix": [
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:26:50Z",
+          "completed_at": "2026-10-19T05:27:11Z",
+          "duration_seconds": 21
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:26:50Z",
+          "completed_at": "2026-10-19T05:28:18Z",
+          "duration_seconds": 88
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:26:57Z",
+          "completed_at": "2026-10-19T05:27:23Z",
+          "duration_seconds": 26
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:26:50Z",
+          "completed_at": "2026-10-19T05:27:12Z",
+          "duration_seconds": 22
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:26:52Z",
+          "completed_at": "2026-10-19T05:27:30Z",
+          "duration_seconds": 38
+        }
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/39204597868",
+      "compat_completed_at": "2026-10-19T05:28:18Z",
       "min_deps_conclusion": "success",
       "min_deps_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/39205202624",
       "min_deps_completed_at": "2026-10-19T05:41:13Z"
     },
     "security": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "jobs": [],
-      "run_completed_at": null,
+      "workflow_conclusion": "success",
+      "workflow_run_id": 35879460833,
+      "workflow_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/35879460833",
+      "jobs": [
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:09:27Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:09:33Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:09:33Z"
+        }
+      ],
+      "run_completed_at": "2026-09-23T15:09:34Z",
       "full_workflow_conclusion": "failure",
       "full_workflow_run_id": 39188417594,
       "full_workflow_run_url": "https://github.com/273v/kaos-llm-client/actions/runs/39188417594",
@@ -67,7 +127,7 @@
     "freshness": {
       "days_since_last_commit": 29,
       "days_since_last_release": 29,
-      "days_since_last_security_scan": null
+      "days_since_last_security_scan": 29
     },
     "supply_chain": {
       "pypi_version": "0.1.11",
@@ -179,11 +239,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 0,
-      "median_pr_age_days": 3.2,
+      "releases_90d": 1,
+      "median_pr_age_days": 3.364,
       "open_pr_count": 2,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": null,
+      "time_to_pypi_seconds_median": 432,
       "errors": []
     },
     "code_metrics": {

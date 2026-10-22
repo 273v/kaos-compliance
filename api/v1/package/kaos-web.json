@@ -72,16 +72,48 @@
       "min_deps_completed_at": "2026-10-19T05:38:45Z"
     },
     "security": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "jobs": [],
-      "run_completed_at": null,
-      "full_workflow_conclusion": null,
-      "full_workflow_run_id": null,
-      "full_workflow_run_url": null,
-      "full_jobs": [],
-      "full_run_completed_at": null
+      "workflow_conclusion": "success",
+      "workflow_run_id": 39029984457,
+      "workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/39029984457",
+      "jobs": [
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-17T11:46:53Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-17T11:46:47Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-17T11:46:51Z"
+        }
+      ],
+      "run_completed_at": "2026-10-17T11:46:54Z",
+      "full_workflow_conclusion": "failure",
+      "full_workflow_run_id": 39188804332,
+      "full_workflow_run_url": "https://github.com/273v/kaos-web/actions/runs/39188804332",
+      "full_jobs": [
+        {
+          "name": "pip-audit (resolved lock)",
+          "conclusion": "failure",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:11:53Z"
+        },
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:11:46Z"
+        }
+      ],
+      "full_run_completed_at": "2026-10-19T02:11:53Z"
     },
     "open_prs": {
       "count": 2,
@@ -95,7 +127,7 @@
     "freshness": {
       "days_since_last_commit": 5,
       "days_since_last_release": 26,
-      "days_since_last_security_scan": null
+      "days_since_last_security_scan": 5
     },
     "supply_chain": {
       "pypi_version": "0.1.18",
@@ -206,7 +238,7 @@
         "NOTICE"
       ],
       "releases_90d": 4,
-      "median_pr_age_days": 6.362,
+      "median_pr_age_days": 6.526,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 168,

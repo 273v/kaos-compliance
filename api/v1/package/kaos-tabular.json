@@ -67,21 +67,53 @@
       "compat_conclusion": "success",
       "compat_run_url": "https://github.com/273v/kaos-tabular/actions/runs/39204650742",
       "compat_completed_at": "2026-10-19T05:32:02Z",
-      "min_deps_conclusion": null,
-      "min_deps_run_url": null,
-      "min_deps_completed_at": null
+      "min_deps_conclusion": "success",
+      "min_deps_run_url": "https://github.com/273v/kaos-tabular/actions/runs/39205077391",
+      "min_deps_completed_at": "2026-10-19T05:34:10Z"
     },
     "security": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "jobs": [],
-      "run_completed_at": null,
-      "full_workflow_conclusion": null,
-      "full_workflow_run_id": null,
-      "full_workflow_run_url": null,
-      "full_jobs": [],
-      "full_run_completed_at": null
+      "workflow_conclusion": "success",
+      "workflow_run_id": 35878781826,
+      "workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/35878781826",
+      "jobs": [
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:03:57Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:04:01Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:04:00Z"
+        }
+      ],
+      "run_completed_at": "2026-09-23T15:04:10Z",
+      "full_workflow_conclusion": "failure",
+      "full_workflow_run_id": 39188843403,
+      "full_workflow_run_url": "https://github.com/273v/kaos-tabular/actions/runs/39188843403",
+      "full_jobs": [
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:12:16Z"
+        },
+        {
+          "name": "pip-audit (resolved lock)",
+          "conclusion": "failure",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:12:19Z"
+        }
+      ],
+      "full_run_completed_at": "2026-10-19T02:12:20Z"
     },
     "open_prs": {
       "count": 2,
@@ -95,7 +127,7 @@
     "freshness": {
       "days_since_last_commit": 29,
       "days_since_last_release": 29,
-      "days_since_last_security_scan": null
+      "days_since_last_security_scan": 29
     },
     "supply_chain": {
       "pypi_version": "0.1.4",
@@ -204,7 +236,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 12.922,
+      "median_pr_age_days": 13.086,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 169,

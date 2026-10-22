@@ -22,13 +22,54 @@
       "workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/35879171420",
       "head_sha": "4bf0f1459367176ba8b6e79f952c196cb1bf33ad",
       "run_completed_at": "2026-09-23T15:08:17Z",
-      "matrix": [],
-      "compat_conclusion": null,
-      "compat_run_url": null,
-      "compat_completed_at": null,
-      "min_deps_conclusion": null,
-      "min_deps_run_url": null,
-      "min_deps_completed_at": null
+      "matrix": [
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:31:22Z",
+          "completed_at": "2026-10-19T05:32:15Z",
+          "duration_seconds": 53
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:29:47Z",
+          "completed_at": "2026-10-19T05:30:58Z",
+          "duration_seconds": 71
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:37:08Z",
+          "completed_at": "2026-10-19T05:38:22Z",
+          "duration_seconds": 74
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:29:33Z",
+          "completed_at": "2026-10-19T05:31:03Z",
+          "duration_seconds": 90
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:29:25Z",
+          "completed_at": "2026-10-19T05:31:43Z",
+          "duration_seconds": 138
+        }
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-graph/actions/runs/39204816446",
+      "compat_completed_at": "2026-10-19T05:38:22Z",
+      "min_deps_conclusion": "success",
+      "min_deps_run_url": "https://github.com/273v/kaos-graph/actions/runs/39205152676",
+      "min_deps_completed_at": "2026-10-19T05:39:47Z"
     },
     "security": {
       "workflow_conclusion": "success",
@@ -55,11 +96,36 @@
         }
       ],
       "run_completed_at": "2026-09-23T15:09:14Z",
-      "full_workflow_conclusion": null,
-      "full_workflow_run_id": null,
-      "full_workflow_run_url": null,
-      "full_jobs": [],
-      "full_run_completed_at": null
+      "full_workflow_conclusion": "failure",
+      "full_workflow_run_id": 39189478012,
+      "full_workflow_run_url": "https://github.com/273v/kaos-graph/actions/runs/39189478012",
+      "full_jobs": [
+        {
+          "name": "cargo-deny (advisories + licenses + bans + sources)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:22:31Z"
+        },
+        {
+          "name": "pip-audit (resolved lock)",
+          "conclusion": "failure",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:21:19Z"
+        },
+        {
+          "name": "cargo-audit",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:23:14Z"
+        },
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:20:27Z"
+        }
+      ],
+      "full_run_completed_at": "2026-10-19T02:23:14Z"
     },
     "open_prs": {
       "count": 3,
@@ -207,11 +273,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 0,
-      "median_pr_age_days": 3.398,
+      "releases_90d": 2,
+      "median_pr_age_days": 3.562,
       "open_pr_count": 3,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": null,
+      "time_to_pypi_seconds_median": 766,
       "errors": []
     },
     "code_metrics": {

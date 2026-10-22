@@ -17,25 +17,85 @@
       "last_commit_at": "2026-09-23T15:42:10Z"
     },
     "ci": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "head_sha": null,
-      "run_completed_at": null,
-      "matrix": [],
-      "compat_conclusion": null,
-      "compat_run_url": null,
-      "compat_completed_at": null,
-      "min_deps_conclusion": null,
-      "min_deps_run_url": null,
-      "min_deps_completed_at": null
+      "workflow_conclusion": "success",
+      "workflow_run_id": 35883495080,
+      "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/35883495080",
+      "head_sha": "142e634b6c8c44249b624dfb968a328f79a0308c",
+      "run_completed_at": "2026-09-23T15:43:27Z",
+      "matrix": [
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:30:28Z",
+          "completed_at": "2026-10-19T05:31:52Z",
+          "duration_seconds": 84
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:35:10Z",
+          "completed_at": "2026-10-19T05:35:53Z",
+          "duration_seconds": 43
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:31:08Z",
+          "completed_at": "2026-10-19T05:35:32Z",
+          "duration_seconds": 264
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:30:38Z",
+          "completed_at": "2026-10-19T05:31:37Z",
+          "duration_seconds": 59
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:40:06Z",
+          "completed_at": "2026-10-19T05:45:19Z",
+          "duration_seconds": 313
+        }
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-agents/actions/runs/39204910085",
+      "compat_completed_at": "2026-10-19T05:45:19Z",
+      "min_deps_conclusion": "success",
+      "min_deps_run_url": "https://github.com/273v/kaos-agents/actions/runs/39205255738",
+      "min_deps_completed_at": "2026-10-19T05:39:11Z"
     },
     "security": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "jobs": [],
-      "run_completed_at": null,
+      "workflow_conclusion": "success",
+      "workflow_run_id": 35883495091,
+      "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/35883495091",
+      "jobs": [
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:42:26Z"
+        },
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:42:31Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-09-23T15:42:23Z"
+        }
+      ],
+      "run_completed_at": "2026-09-23T15:42:31Z",
       "full_workflow_conclusion": "failure",
       "full_workflow_run_id": 39188438082,
       "full_workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/39188438082",
@@ -67,7 +127,7 @@
     "freshness": {
       "days_since_last_commit": 29,
       "days_since_last_release": 29,
-      "days_since_last_security_scan": null
+      "days_since_last_security_scan": 29
     },
     "supply_chain": {
       "pypi_version": "0.1.31",
@@ -190,11 +250,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 0,
-      "median_pr_age_days": 3.362,
+      "releases_90d": 1,
+      "median_pr_age_days": 3.527,
       "open_pr_count": 2,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": null,
+      "time_to_pypi_seconds_median": 172,
       "errors": []
     },
     "code_metrics": {
@@ -384,6 +444,17 @@
           "informational": null,
           "summary": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
           "url": "https://osv.dev/vulnerability/GHSA-65qm-jvmh-6pqg"
+        },
+        {
+          "id": "GHSA-78g4-xqwv-q3g8",
+          "aliases": [],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Bundled libopenjp2 2.5.4 in all wheels since 11.1.0 carries OSV-2025-219 heap-buffer-overflow write reachable from Image.open().load()",
+          "url": "https://osv.dev/vulnerability/GHSA-78g4-xqwv-q3g8"
         },
         {
           "id": "GHSA-7mwm-ghpf-9vrm",
@@ -831,6 +902,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
         },
         {
+          "id": "GHSA-xcq7-p3pf-p88h",
+          "aliases": [
+            "CVE-2026-114603"
+          ],
+          "package": "opentelemetry-api",
+          "version": "1.44.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "OpenTelemetry Python: Unbounded tracestate parsing in opentelemetry-api",
+          "url": "https://osv.dev/vulnerability/GHSA-xcq7-p3pf-p88h"
+        },
+        {
           "id": "GHSA-xgh8-jp6q-p5x8",
           "aliases": [
             "CVE-2026-112901"
@@ -873,11 +957,11 @@
       "notices": [],
       "counts": {
         "critical": 5,
-        "high": 25,
-        "moderate": 18,
+        "high": 26,
+        "moderate": 19,
         "low": 2,
         "unknown": 0,
-        "total": 50
+        "total": 52
       },
       "errors": []
     },

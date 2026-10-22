@@ -22,10 +22,51 @@
       "workflow_run_url": "https://github.com/273v/kaos-ui/actions/runs/38951882353",
       "head_sha": "c5dc38fc9b6e821ce27e7ff50553a2d3e0343d40",
       "run_completed_at": "2026-10-16T19:02:31Z",
-      "matrix": [],
-      "compat_conclusion": null,
-      "compat_run_url": null,
-      "compat_completed_at": null,
+      "matrix": [
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:40:39Z",
+          "completed_at": "2026-10-19T05:40:59Z",
+          "duration_seconds": 20
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:34:45Z",
+          "completed_at": "2026-10-19T05:35:04Z",
+          "duration_seconds": 19
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:28:57Z",
+          "completed_at": "2026-10-19T05:29:45Z",
+          "duration_seconds": 48
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:38:42Z",
+          "completed_at": "2026-10-19T05:40:10Z",
+          "duration_seconds": 88
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:29:04Z",
+          "completed_at": "2026-10-19T05:29:31Z",
+          "duration_seconds": 27
+        }
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-ui/actions/runs/39204778159",
+      "compat_completed_at": "2026-10-19T05:40:59Z",
       "min_deps_conclusion": "success",
       "min_deps_run_url": "https://github.com/273v/kaos-ui/actions/runs/39205259649",
       "min_deps_completed_at": "2026-10-19T05:38:33Z"
@@ -78,9 +119,9 @@
       "dependabot_count": 2
     },
     "freshness": {
-      "days_since_last_commit": 5,
-      "days_since_last_release": 120,
-      "days_since_last_security_scan": 5
+      "days_since_last_commit": 6,
+      "days_since_last_release": 121,
+      "days_since_last_security_scan": 6
     },
     "supply_chain": {
       "pypi_version": "0.1.0a16",
@@ -178,7 +219,7 @@
         "NOTICE"
       ],
       "releases_90d": 0,
-      "median_pr_age_days": 3.334,
+      "median_pr_age_days": 3.498,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": null,

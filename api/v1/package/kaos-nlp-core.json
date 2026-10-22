@@ -17,30 +17,115 @@
       "last_commit_at": "2026-10-16T19:06:56Z"
     },
     "ci": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "head_sha": null,
-      "run_completed_at": null,
-      "matrix": [],
-      "compat_conclusion": null,
-      "compat_run_url": null,
-      "compat_completed_at": null,
-      "min_deps_conclusion": null,
-      "min_deps_run_url": null,
-      "min_deps_completed_at": null
+      "workflow_conclusion": "success",
+      "workflow_run_id": 38952501310,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/38952501310",
+      "head_sha": "b54e4bb9f864b93e828a9524f9bcc7b7da958470",
+      "run_completed_at": "2026-10-16T19:10:48Z",
+      "matrix": [
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:34:57Z",
+          "completed_at": "2026-10-19T05:37:12Z",
+          "duration_seconds": 135
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:40:11Z",
+          "completed_at": "2026-10-19T05:42:41Z",
+          "duration_seconds": 150
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:40:47Z",
+          "completed_at": "2026-10-19T05:42:33Z",
+          "duration_seconds": 106
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:30:15Z",
+          "completed_at": "2026-10-19T05:33:27Z",
+          "duration_seconds": 192
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:29:49Z",
+          "completed_at": "2026-10-19T05:34:39Z",
+          "duration_seconds": 290
+        }
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/39204851411",
+      "compat_completed_at": "2026-10-19T05:42:42Z",
+      "min_deps_conclusion": "success",
+      "min_deps_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/39205164673",
+      "min_deps_completed_at": "2026-10-19T05:44:03Z"
     },
     "security": {
-      "workflow_conclusion": null,
-      "workflow_run_id": null,
-      "workflow_run_url": null,
-      "jobs": [],
-      "run_completed_at": null,
-      "full_workflow_conclusion": null,
-      "full_workflow_run_id": null,
-      "full_workflow_run_url": null,
-      "full_jobs": [],
-      "full_run_completed_at": null
+      "workflow_conclusion": "success",
+      "workflow_run_id": 38952501244,
+      "workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/38952501244",
+      "jobs": [
+        {
+          "name": "gitleaks (incremental)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-16T19:07:17Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-16T19:07:16Z"
+        },
+        {
+          "name": "bandit (static security)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-16T19:07:15Z"
+        }
+      ],
+      "run_completed_at": "2026-10-16T19:07:18Z",
+      "full_workflow_conclusion": "failure",
+      "full_workflow_run_id": 39188412058,
+      "full_workflow_run_url": "https://github.com/273v/kaos-nlp-core/actions/runs/39188412058",
+      "full_jobs": [
+        {
+          "name": "pip-audit (resolved lock)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:09:00Z"
+        },
+        {
+          "name": "gitleaks (full history)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:07:03Z"
+        },
+        {
+          "name": "cargo-audit",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:09:11Z"
+        },
+        {
+          "name": "cargo-deny (advisories + licenses + bans + sources)",
+          "conclusion": "failure",
+          "status": "completed",
+          "completed_at": "2026-10-19T02:09:01Z"
+        }
+      ],
+      "full_run_completed_at": "2026-10-19T02:09:12Z"
     },
     "open_prs": {
       "count": 4,
@@ -54,9 +139,9 @@
       "dependabot_count": 4
     },
     "freshness": {
-      "days_since_last_commit": 5,
+      "days_since_last_commit": 6,
       "days_since_last_release": 22,
-      "days_since_last_security_scan": null
+      "days_since_last_security_scan": 6
     },
     "supply_chain": {
       "pypi_version": "0.1.15",
@@ -212,7 +297,7 @@
         "NOTICE"
       ],
       "releases_90d": 4,
-      "median_pr_age_days": 3.213,
+      "median_pr_age_days": 3.376,
       "open_pr_count": 4,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 602,

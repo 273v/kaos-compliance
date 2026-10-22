@@ -18,17 +18,58 @@
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 35884183602,
-      "workflow_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/35884183602",
+      "workflow_run_id": 35884183556,
+      "workflow_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/35884183556",
       "head_sha": "a3d454a3d3d83272b726cbb206063a2a0790b000",
-      "run_completed_at": "2026-09-23T15:48:26Z",
-      "matrix": [],
-      "compat_conclusion": null,
-      "compat_run_url": null,
-      "compat_completed_at": null,
-      "min_deps_conclusion": null,
-      "min_deps_run_url": null,
-      "min_deps_completed_at": null
+      "run_completed_at": "2026-09-23T15:49:26Z",
+      "matrix": [
+        {
+          "name": "test (linux-x64 / Python 3.14)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:28:53Z",
+          "completed_at": "2026-10-19T05:29:42Z",
+          "duration_seconds": 49
+        },
+        {
+          "name": "test (macos-arm64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:28:07Z",
+          "completed_at": "2026-10-19T05:29:12Z",
+          "duration_seconds": 65
+        },
+        {
+          "name": "test (windows-x64 / Python 3.13)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:28:01Z",
+          "completed_at": "2026-10-19T05:29:41Z",
+          "duration_seconds": 100
+        },
+        {
+          "name": "test (linux-x64 / Python 3.14t)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:30:39Z",
+          "completed_at": "2026-10-19T05:33:40Z",
+          "duration_seconds": 181
+        },
+        {
+          "name": "test (linux-x64 / Python 3.15)",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-10-19T05:29:03Z",
+          "completed_at": "2026-10-19T05:30:37Z",
+          "duration_seconds": 94
+        }
+      ],
+      "compat_conclusion": "success",
+      "compat_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/39204697029",
+      "compat_completed_at": "2026-10-19T05:33:41Z",
+      "min_deps_conclusion": "success",
+      "min_deps_run_url": "https://github.com/273v/kaos-ml-core/actions/runs/39205100084",
+      "min_deps_completed_at": "2026-10-19T05:35:48Z"
     },
     "security": {
       "workflow_conclusion": "success",
@@ -228,7 +269,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 3.311,
+      "median_pr_age_days": 3.476,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 242,
@@ -411,6 +452,17 @@
           "informational": null,
           "summary": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
           "url": "https://osv.dev/vulnerability/GHSA-65qm-jvmh-6pqg"
+        },
+        {
+          "id": "GHSA-78g4-xqwv-q3g8",
+          "aliases": [],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Bundled libopenjp2 2.5.4 in all wheels since 11.1.0 carries OSV-2025-219 heap-buffer-overflow write reachable from Image.open().load()",
+          "url": "https://osv.dev/vulnerability/GHSA-78g4-xqwv-q3g8"
         },
         {
           "id": "GHSA-7mwm-ghpf-9vrm",
@@ -808,11 +860,11 @@
       "notices": [],
       "counts": {
         "critical": 5,
-        "high": 23,
+        "high": 24,
         "moderate": 14,
         "low": 0,
         "unknown": 0,
-        "total": 42
+        "total": 43
       },
       "errors": []
     },
