@@ -22,80 +22,20 @@
       "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/36600601988",
       "head_sha": "1842c18181622fb5b0308acdf1f3f8695750ff97",
       "run_completed_at": "2026-09-29T16:51:09Z",
-      "matrix": [
-        {
-          "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:29:15Z",
-          "completed_at": "2026-10-19T05:31:30Z",
-          "duration_seconds": 135
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:29:18Z",
-          "completed_at": "2026-10-19T05:29:45Z",
-          "duration_seconds": 27
-        },
-        {
-          "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:32:30Z",
-          "completed_at": "2026-10-19T05:33:40Z",
-          "duration_seconds": 70
-        },
-        {
-          "name": "test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:27:56Z",
-          "completed_at": "2026-10-19T05:28:51Z",
-          "duration_seconds": 55
-        },
-        {
-          "name": "test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:28:01Z",
-          "completed_at": "2026-10-19T05:28:36Z",
-          "duration_seconds": 35
-        }
-      ],
-      "compat_conclusion": "success",
-      "compat_run_url": "https://github.com/273v/kaos-citations/actions/runs/39204689470",
-      "compat_completed_at": "2026-10-19T05:33:41Z",
+      "matrix": [],
+      "compat_conclusion": null,
+      "compat_run_url": null,
+      "compat_completed_at": null,
       "min_deps_conclusion": "success",
       "min_deps_run_url": "https://github.com/273v/kaos-citations/actions/runs/39205200784",
       "min_deps_completed_at": "2026-10-19T05:34:20Z"
     },
     "security": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 36600603213,
-      "workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/36600603213",
-      "jobs": [
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-29T16:50:18Z"
-        },
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-29T16:50:16Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-29T16:50:18Z"
-        }
-      ],
-      "run_completed_at": "2026-09-29T16:50:19Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "jobs": [],
+      "run_completed_at": null,
       "full_workflow_conclusion": "failure",
       "full_workflow_run_id": 39190161330,
       "full_workflow_run_url": "https://github.com/273v/kaos-citations/actions/runs/39190161330",
@@ -129,7 +69,7 @@
     "freshness": {
       "days_since_last_commit": 22,
       "days_since_last_release": 22,
-      "days_since_last_security_scan": 22
+      "days_since_last_security_scan": null
     },
     "supply_chain": {
       "pypi_version": "0.1.7",
@@ -241,11 +181,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 5,
-      "median_pr_age_days": 3.109,
+      "releases_90d": 0,
+      "median_pr_age_days": 3.272,
       "open_pr_count": 4,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 126,
+      "time_to_pypi_seconds_median": null,
       "errors": []
     },
     "code_metrics": {
@@ -337,6 +277,17 @@
           "informational": null,
           "summary": "PyJWT: Public keys in DER form are accepted as HMAC secrets, bypassing the CVE-2022-29217 guard",
           "url": "https://osv.dev/vulnerability/GHSA-p4g4-x82p-q773"
+        },
+        {
+          "id": "GHSA-pxh4-856f-4h89",
+          "aliases": [],
+          "package": "pyjwt",
+          "version": "2.13.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "PyJWT: HS256/384/512 verify accepts empty HMAC key via oct JWK (PyJWK/PyJWKClient) enabling token forgery",
+          "url": "https://osv.dev/vulnerability/GHSA-pxh4-856f-4h89"
         },
         {
           "id": "GHSA-r6x4-923q-g947",
@@ -495,11 +446,11 @@
       "notices": [],
       "counts": {
         "critical": 2,
-        "high": 5,
+        "high": 6,
         "moderate": 9,
         "low": 0,
         "unknown": 0,
-        "total": 16
+        "total": 17
       },
       "errors": []
     },

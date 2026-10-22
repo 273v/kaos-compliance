@@ -17,85 +17,25 @@
       "last_commit_at": "2026-09-23T15:42:10Z"
     },
     "ci": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 35883495080,
-      "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/35883495080",
-      "head_sha": "142e634b6c8c44249b624dfb968a328f79a0308c",
-      "run_completed_at": "2026-09-23T15:43:27Z",
-      "matrix": [
-        {
-          "name": "test (windows-x64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:30:28Z",
-          "completed_at": "2026-10-19T05:31:52Z",
-          "duration_seconds": 84
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:35:10Z",
-          "completed_at": "2026-10-19T05:35:53Z",
-          "duration_seconds": 43
-        },
-        {
-          "name": "test (linux-x64 / Python 3.15)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:31:08Z",
-          "completed_at": "2026-10-19T05:35:32Z",
-          "duration_seconds": 264
-        },
-        {
-          "name": "test (macos-arm64 / Python 3.13)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:30:38Z",
-          "completed_at": "2026-10-19T05:31:37Z",
-          "duration_seconds": 59
-        },
-        {
-          "name": "test (linux-x64 / Python 3.14t)",
-          "conclusion": "success",
-          "status": "completed",
-          "started_at": "2026-10-19T05:40:06Z",
-          "completed_at": "2026-10-19T05:45:19Z",
-          "duration_seconds": 313
-        }
-      ],
-      "compat_conclusion": "success",
-      "compat_run_url": "https://github.com/273v/kaos-agents/actions/runs/39204910085",
-      "compat_completed_at": "2026-10-19T05:45:19Z",
-      "min_deps_conclusion": "success",
-      "min_deps_run_url": "https://github.com/273v/kaos-agents/actions/runs/39205255738",
-      "min_deps_completed_at": "2026-10-19T05:39:11Z"
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "head_sha": null,
+      "run_completed_at": null,
+      "matrix": [],
+      "compat_conclusion": null,
+      "compat_run_url": null,
+      "compat_completed_at": null,
+      "min_deps_conclusion": null,
+      "min_deps_run_url": null,
+      "min_deps_completed_at": null
     },
     "security": {
-      "workflow_conclusion": "success",
-      "workflow_run_id": 35883495091,
-      "workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/35883495091",
-      "jobs": [
-        {
-          "name": "bandit (static security)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T15:42:26Z"
-        },
-        {
-          "name": "gitleaks (incremental)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T15:42:31Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-09-23T15:42:23Z"
-        }
-      ],
-      "run_completed_at": "2026-09-23T15:42:31Z",
+      "workflow_conclusion": null,
+      "workflow_run_id": null,
+      "workflow_run_url": null,
+      "jobs": [],
+      "run_completed_at": null,
       "full_workflow_conclusion": "failure",
       "full_workflow_run_id": 39188438082,
       "full_workflow_run_url": "https://github.com/273v/kaos-agents/actions/runs/39188438082",
@@ -125,9 +65,9 @@
       "dependabot_count": 2
     },
     "freshness": {
-      "days_since_last_commit": 28,
+      "days_since_last_commit": 29,
       "days_since_last_release": 29,
-      "days_since_last_security_scan": 28
+      "days_since_last_security_scan": null
     },
     "supply_chain": {
       "pypi_version": "0.1.31",
@@ -250,11 +190,11 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 1,
-      "median_pr_age_days": 3.199,
+      "releases_90d": 0,
+      "median_pr_age_days": 3.362,
       "open_pr_count": 2,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 172,
+      "time_to_pypi_seconds_median": null,
       "errors": []
     },
     "code_metrics": {
@@ -318,6 +258,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-8g5g-8vmr-9782"
         },
         {
+          "id": "GHSA-v9pv-5gc8-w2m6",
+          "aliases": [
+            "CVE-2026-96639"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "Pillow multi-frame loaders can reuse stale native image storage after mode transitions",
+          "url": "https://osv.dev/vulnerability/GHSA-v9pv-5gc8-w2m6"
+        },
+        {
           "id": "GHSA-w889-685w-c8fh",
           "aliases": [
             "CVE-2026-112900"
@@ -366,6 +319,19 @@
           "informational": null,
           "summary": "aiohttp: Multiple instances of excessive or unbounded memory/CPU use",
           "url": "https://osv.dev/vulnerability/GHSA-2g87-pp6c-29x5"
+        },
+        {
+          "id": "GHSA-3j72-p6qg-6xp7",
+          "aliases": [
+            "CVE-2026-96642"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: TarIO negative size field causes infinite CPU-spin loop",
+          "url": "https://osv.dev/vulnerability/GHSA-3j72-p6qg-6xp7"
         },
         {
           "id": "GHSA-58r4-6rv3-gfh8",
@@ -433,6 +399,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-7mwm-ghpf-9vrm"
         },
         {
+          "id": "GHSA-9v9v-9qvf-h2hj",
+          "aliases": [
+            "CVE-2026-96644"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Heap over-read in WMF/EMF rendering via 16-bit dimension truncation (Windows builds)",
+          "url": "https://osv.dev/vulnerability/GHSA-9v9v-9qvf-h2hj"
+        },
+        {
           "id": "GHSA-9xw5-w5jj-pvcg",
           "aliases": [
             "CVE-2026-111066"
@@ -485,6 +464,45 @@
           "url": "https://osv.dev/vulnerability/GHSA-f2g6-542v-9j58"
         },
         {
+          "id": "GHSA-g4qv-2jxx-769h",
+          "aliases": [
+            "CVE-2026-96643"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: PNG eXIf chunk makes EXIF parsing run in quadratic time",
+          "url": "https://osv.dev/vulnerability/GHSA-g4qv-2jxx-769h"
+        },
+        {
+          "id": "GHSA-g7cr-3p24-7wf7",
+          "aliases": [
+            "CVE-2026-96778"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Heap buffer overflow writing JPEG comment after ICC profile fills buffer",
+          "url": "https://osv.dev/vulnerability/GHSA-g7cr-3p24-7wf7"
+        },
+        {
+          "id": "GHSA-g842-9rc4-69pw",
+          "aliases": [
+            "CVE-2026-96637"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Decompression bomb check bypass in SpiderImagePlugin.seek() leads to unbounded allocation DoS",
+          "url": "https://osv.dev/vulnerability/GHSA-g842-9rc4-69pw"
+        },
+        {
           "id": "GHSA-gg2r-wvfm-q9rx",
           "aliases": [
             "CVE-2026-112892"
@@ -522,6 +540,19 @@
           "informational": null,
           "summary": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
           "url": "https://osv.dev/vulnerability/GHSA-jg86-v3jv-hrpm"
+        },
+        {
+          "id": "GHSA-mrfp-p49p-3hf2",
+          "aliases": [
+            "CVE-2026-96640"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow PDF append accepts malformed shared page-tree DAG causing resource exhaustion",
+          "url": "https://osv.dev/vulnerability/GHSA-mrfp-p49p-3hf2"
         },
         {
           "id": "GHSA-p4wg-p73j-c528",
@@ -576,6 +607,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v"
         },
         {
+          "id": "GHSA-24rc-8hj2-v98c",
+          "aliases": [
+            "CVE-2026-96638"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow: BMP RLE decoder memory-amplification DoS via unbounded delta escape / absolute mode",
+          "url": "https://osv.dev/vulnerability/GHSA-24rc-8hj2-v98c"
+        },
+        {
           "id": "GHSA-254f-3936-288h",
           "aliases": [
             "CVE-2026-112391"
@@ -627,6 +671,19 @@
           "informational": null,
           "summary": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)",
           "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
+        },
+        {
+          "id": "GHSA-4rm8-3hmm-39fg",
+          "aliases": [
+            "CVE-2026-96641"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow: Reachable undefined behavior in native integer operations, potentially leading to denial of service or logic integrity compromise",
+          "url": "https://osv.dev/vulnerability/GHSA-4rm8-3hmm-39fg"
         },
         {
           "id": "GHSA-4rr5-89j8-mwwm",
@@ -706,6 +763,19 @@
           "informational": null,
           "summary": "Pillow: Quadratic GIF comment copying during save",
           "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+        },
+        {
+          "id": "GHSA-p8hx-v2p6-rp84",
+          "aliases": [
+            "CVE-2026-96636"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow: Decompression-bomb protection bypass via multi-frame seek() in MPO and DCX (MpoImageFile.seek / DcxImageFile.seek)",
+          "url": "https://osv.dev/vulnerability/GHSA-p8hx-v2p6-rp84"
         },
         {
           "id": "GHSA-pqxq-w44r-73xw",
@@ -802,12 +872,12 @@
       ],
       "notices": [],
       "counts": {
-        "critical": 4,
-        "high": 19,
-        "moderate": 15,
+        "critical": 5,
+        "high": 25,
+        "moderate": 18,
         "low": 2,
         "unknown": 0,
-        "total": 40
+        "total": 50
       },
       "errors": []
     },

@@ -98,14 +98,28 @@ footer a{color:var(--muted)}
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-10-21.</p>
+  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
+   2026-10-21 &rarr; 2026-10-22
+  </p>
+  <ul style="margin:0;padding-left:var(--s-5)">
+    <li>
+     <span class="pill g" aria-label="Tests: better">
+      <span class="gly" aria-hidden="true">▲</span>
+      <span class="wd" aria-hidden="true">better</span>
+     </span>
+     <strong>Tests</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      False &rarr; True
+     </span>
+    </li>
+  </ul>
  </div>
 </section>
 
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 7/9 green</div>
+  <div class="composite">Composite: 8/9 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
@@ -113,12 +127,12 @@ footer a{color:var(--muted)}
     <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: success</div></div>
    </div>
    <div class="check">
-    <span class="pill r" aria-label="Tests: PR + compat + min-deps: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Tests: PR + compat + min-deps</div><div class="note">PR lanes: success; compat: success; min-deps: failure</div></div>
+    <span class="pill g" aria-label="Tests: PR + compat + min-deps: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
+    <div class="body"><div class="lab">Tests: PR + compat + min-deps</div><div class="note">PR lanes: success; compat: unknown; min-deps: unknown</div></div>
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 10 open advisories (OSV.dev): 1 critical, 1 high, 2 moderate, 6 unknown</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: unknown; security-full: unknown; 10 open advisories (OSV.dev): 1 critical, 1 high, 2 moderate, 6 unknown</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -160,46 +174,6 @@ footer a{color:var(--muted)}
    </tr>
   </thead>
   <tbody>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.14</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.14t</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.15</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">macos-arm64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">windows-x64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
   </tbody>
  </table>
  </div>
@@ -371,7 +345,7 @@ footer a{color:var(--muted)}
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-nlp-transformers">Repository</a></li><li><a href="https://pypi.org/project/kaos-nlp-transformers/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-nlp-transformers/actions/runs/36203833210">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-nlp-transformers/actions/runs/36203833227">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-nlp-transformers.json"><code>api/v1/package/kaos-nlp-transformers.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-nlp-transformers">Repository</a></li><li><a href="https://pypi.org/project/kaos-nlp-transformers/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-nlp-transformers/actions/runs/36203833210">Latest CI run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-nlp-transformers.json"><code>api/v1/package/kaos-nlp-transformers.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
@@ -392,7 +366,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-22 12:32 UTC
+ Generated 2026-10-22 16:28 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

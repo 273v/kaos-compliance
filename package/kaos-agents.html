@@ -103,13 +103,43 @@ footer a{color:var(--muted)}
   </p>
   <ul style="margin:0;padding-left:var(--s-5)">
     <li>
+     <span class="pill r" aria-label="Build: worse">
+      <span class="gly" aria-hidden="true">▼</span>
+      <span class="wd" aria-hidden="true">worse</span>
+     </span>
+     <strong>Build</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      True &rarr; False
+     </span>
+    </li>
+    <li>
+     <span class="pill r" aria-label="Tests: worse">
+      <span class="gly" aria-hidden="true">▼</span>
+      <span class="wd" aria-hidden="true">worse</span>
+     </span>
+     <strong>Tests</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      True &rarr; False
+     </span>
+    </li>
+    <li>
      <span class="pill g" aria-label="advisories_open: better">
       <span class="gly" aria-hidden="true">▲</span>
       <span class="wd" aria-hidden="true">better</span>
      </span>
      <strong>advisories_open</strong>:
      <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      21 &rarr; 40
+      21 &rarr; 50
+     </span>
+    </li>
+    <li>
+     <span class="pill r" aria-label="Releases (90d): worse">
+      <span class="gly" aria-hidden="true">▼</span>
+      <span class="wd" aria-hidden="true">worse</span>
+     </span>
+     <strong>Releases (90d)</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      1 &rarr; 0
      </span>
     </li>
   </ul>
@@ -119,20 +149,20 @@ footer a{color:var(--muted)}
 <section aria-labelledby="sc-h">
  <div class="score-head">
   <h2 id="sc-h" style="margin:0">Trust scorecard</h2>
-  <div class="composite">Composite: 8/9 green</div>
+  <div class="composite">Composite: 6/9 green</div>
  </div>
  <div class="scorecard">
    <div class="check">
-    <span class="pill g" aria-label="Build passing: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: success</div></div>
+    <span class="pill n" aria-label="Build passing: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Build passing</div><div class="note">Latest CI conclusion: unknown</div></div>
    </div>
    <div class="check">
-    <span class="pill g" aria-label="Tests: PR + compat + min-deps: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
-    <div class="body"><div class="lab">Tests: PR + compat + min-deps</div><div class="note">PR lanes: success; compat: success; min-deps: success</div></div>
+    <span class="pill n" aria-label="Tests: PR + compat + min-deps: No signal"><span class="gly" aria-hidden="true">—</span><span class="wd" aria-hidden="true">No signal</span></span>
+    <div class="body"><div class="lab">Tests: PR + compat + min-deps</div><div class="note">PR lanes: unknown; compat: unknown; min-deps: unknown</div></div>
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 40 open advisories (OSV.dev): 4 critical, 19 high, 15 moderate, 2 low</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: unknown; security-full: failure; 50 open advisories (OSV.dev): 5 critical, 25 high, 18 moderate, 2 low</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -174,46 +204,6 @@ footer a{color:var(--muted)}
    </tr>
   </thead>
   <tbody>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.14</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.14t</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">linux-x64 / py3.15</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">macos-arm64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
-   <tr>
-    <td class="env" data-h="Environment">windows-x64 / py3.13</td>
-     <td data-h="pytest"><span class="pill g" aria-label="pytest: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ruff"><span class="pill g" aria-label="ruff: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="ty"><span class="pill g" aria-label="ty: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="bandit"><span class="pill g" aria-label="bandit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-     <td data-h="pip_audit"><span class="pill g" aria-label="pip_audit: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span></td>
-   </tr>
   </tbody>
  </table>
  </div>
@@ -225,7 +215,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-40 <span style="color:var(--muted);font-size:0.75rem">across 145 locked dependencies (OSV.dev)</span>   </dd>
+50 <span style="color:var(--muted);font-size:0.75rem">across 145 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -257,6 +247,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: Heap buffer overflow in ImagingJpegDecode</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-v9pv-5gc8-w2m6" target="_blank" rel="noopener">GHSA-v9pv-5gc8-w2m6</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">critical</td>
+     <td data-h="Summary">Pillow multi-frame loaders can reuse stale native image storage after mode transitions</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-w889-685w-c8fh" target="_blank" rel="noopener">GHSA-w889-685w-c8fh</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">critical</td>
@@ -279,6 +275,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">aiohttp 3.14.3</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">aiohttp: Multiple instances of excessive or unbounded memory/CPU use</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-3j72-p6qg-6xp7" target="_blank" rel="noopener">GHSA-3j72-p6qg-6xp7</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: TarIO negative size field causes infinite CPU-spin loop</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8" target="_blank" rel="noopener">GHSA-58r4-6rv3-gfh8</a></td>
@@ -311,6 +313,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-9v9v-9qvf-h2hj" target="_blank" rel="noopener">GHSA-9v9v-9qvf-h2hj</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: Heap over-read in WMF/EMF rendering via 16-bit dimension truncation (Windows builds)</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-9xw5-w5jj-pvcg" target="_blank" rel="noopener">GHSA-9xw5-w5jj-pvcg</a></td>
      <td data-h="Package">aiohttp 3.14.3</td>
      <td data-h="Severity">high</td>
@@ -335,6 +343,24 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-g4qv-2jxx-769h" target="_blank" rel="noopener">GHSA-g4qv-2jxx-769h</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: PNG eXIf chunk makes EXIF parsing run in quadratic time</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-g7cr-3p24-7wf7" target="_blank" rel="noopener">GHSA-g7cr-3p24-7wf7</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: Heap buffer overflow writing JPEG comment after ICC profile fills buffer</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-g842-9rc4-69pw" target="_blank" rel="noopener">GHSA-g842-9rc4-69pw</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: Decompression bomb check bypass in SpiderImagePlugin.seek() leads to unbounded allocation DoS</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-gg2r-wvfm-q9rx" target="_blank" rel="noopener">GHSA-gg2r-wvfm-q9rx</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
@@ -351,6 +377,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-mrfp-p49p-3hf2" target="_blank" rel="noopener">GHSA-mrfp-p49p-3hf2</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow PDF append accepts malformed shared page-tree DAG causing resource exhaustion</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-p4wg-p73j-c528" target="_blank" rel="noopener">GHSA-p4wg-p73j-c528</a></td>
@@ -377,6 +409,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary"> Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-24rc-8hj2-v98c" target="_blank" rel="noopener">GHSA-24rc-8hj2-v98c</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: BMP RLE decoder memory-amplification DoS via unbounded delta escape / absolute mode</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-254f-3936-288h" target="_blank" rel="noopener">GHSA-254f-3936-288h</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">moderate</td>
@@ -399,6 +437,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-4rm8-3hmm-39fg" target="_blank" rel="noopener">GHSA-4rm8-3hmm-39fg</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: Reachable undefined behavior in native integer operations, potentially leading to denial of service or logic integrity compromise</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm" target="_blank" rel="noopener">GHSA-4rr5-89j8-mwwm</a></td>
@@ -435,6 +479,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">Pillow: Quadratic GIF comment copying during save</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-p8hx-v2p6-rp84" target="_blank" rel="noopener">GHSA-p8hx-v2p6-rp84</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: Decompression-bomb protection bypass via multi-frame seek() in MPO and DCX (MpoImageFile.seek / DcxImageFile.seek)</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-pqxq-w44r-73xw" target="_blank" rel="noopener">GHSA-pqxq-w44r-73xw</a></td>
@@ -509,7 +559,7 @@ footer a{color:var(--muted)}
    <dd>
     6
 <svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-agents Commits 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,2.0 12.2,2.0 13.1,2.0 14.0,2.0 14.8,2.0 15.7,2.0 16.5,2.0 17.4,2.7 18.2,3.0 19.1,3.1 19.9,5.1 20.8,6.1 21.6,6.2 22.5,6.4 23.3,6.8 24.2,8.0 25.1,8.7 25.9,9.3 26.8,9.6 27.6,10.3 28.5,10.8 29.3,11.8 30.2,13.0 31.0,13.1 31.9,13.2 32.7,13.3 33.6,13.4 34.4,13.4 35.3,13.5 36.2,13.5 37.0,13.5 37.9,13.5 38.7,13.5 39.6,13.5 40.4,13.5 41.3,13.5 42.1,13.5 43.0,13.5 43.8,13.5 44.7,13.5 45.6,13.5 46.4,13.5 47.3,13.5 48.1,13.5 49.0,13.5 49.8,13.5 50.7,13.7 51.5,13.7 52.4,13.8 53.2,13.2 54.1,13.2 54.9,13.4 55.8,13.4 56.7,13.7 57.5,13.7 58.4,13.7 59.2,13.7 60.1,13.7 60.9,13.7 61.8,13.7 62.6,13.7 63.5,13.7 64.3,13.7 65.2,13.7 66.0,13.7 66.9,13.7 67.8,13.7 68.6,13.7 69.5,13.7 70.3,13.7 71.2,13.7 72.0,13.7 72.9,13.7 73.7,13.7 74.6,14.0 75.4,14.0 76.3,14.0 77.1,14.0 78.0,14.0"></polyline><circle cx="78.0" cy="14.0" r="1.5" fill="currentColor"></circle></svg>   </dd>
-   <dt>Releases 90d</dt><dd>1<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-agents Releases 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,2.0 12.2,2.0 13.1,2.0 14.0,2.0 14.8,2.0 15.7,2.0 16.5,2.0 17.4,2.3 18.2,2.8 19.1,3.3 19.9,5.1 20.8,5.9 21.6,6.2 22.5,6.7 23.3,7.7 24.2,9.0 25.1,9.6 25.9,10.9 26.8,11.1 27.6,11.7 28.5,12.4 29.3,12.7 30.2,13.2 31.0,13.5 31.9,13.5 32.7,13.5 33.6,13.5 34.4,13.5 35.3,13.7 36.2,13.7 37.0,13.7 37.9,13.7 38.7,13.7 39.6,13.7 40.4,13.7 41.3,13.7 42.1,13.7 43.0,13.7 43.8,13.7 44.7,13.7 45.6,13.7 46.4,13.7 47.3,13.7 48.1,13.7 49.0,13.7 49.8,13.7 50.7,13.7 51.5,13.7 52.4,14.0 53.2,13.7 54.1,13.7 54.9,14.0 55.8,14.0 56.7,14.0 57.5,14.0 58.4,14.0 59.2,14.0 60.1,14.0 60.9,14.0 61.8,14.0 62.6,14.0 63.5,14.0 64.3,14.0 65.2,14.0 66.0,14.0 66.9,14.0 67.8,14.0 68.6,14.0 69.5,14.0 70.3,14.0 71.2,14.0 72.0,14.0 72.9,14.0 73.7,14.0 74.6,14.0 75.4,14.0 76.3,14.0 77.1,14.0 78.0,14.0"></polyline><circle cx="78.0" cy="14.0" r="1.5" fill="currentColor"></circle></svg></dd>
+   <dt>Releases 90d</dt><dd>—<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-agents Releases 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,2.0 12.2,2.0 13.1,2.0 14.0,2.0 14.8,2.0 15.7,2.0 16.5,2.0 17.4,2.3 18.2,2.8 19.1,3.3 19.9,5.1 20.8,5.8 21.6,6.1 22.5,6.6 23.3,7.6 24.2,8.9 25.1,9.4 25.9,10.7 26.8,10.9 27.6,11.4 28.5,12.2 29.3,12.5 30.2,13.0 31.0,13.2 31.9,13.2 32.7,13.2 33.6,13.2 34.4,13.2 35.3,13.5 36.2,13.5 37.0,13.5 37.9,13.5 38.7,13.5 39.6,13.5 40.4,13.5 41.3,13.5 42.1,13.5 43.0,13.5 43.8,13.5 44.7,13.5 45.6,13.5 46.4,13.5 47.3,13.5 48.1,13.5 49.0,13.5 49.8,13.5 50.7,13.5 51.5,13.5 52.4,13.7 53.2,13.5 54.1,13.5 54.9,13.7 55.8,13.7 56.7,13.7 57.5,13.7 58.4,13.7 59.2,13.7 60.1,13.7 60.9,13.7 61.8,13.7 62.6,13.7 63.5,13.7 64.3,13.7 65.2,13.7 66.0,13.7 66.9,13.7 67.8,13.7 68.6,13.7 69.5,13.7 70.3,13.7 71.2,13.7 72.0,13.7 72.9,13.7 73.7,13.7 74.6,13.7 75.4,13.7 76.3,13.7 77.1,13.7 78.0,14.0"></polyline><circle cx="78.0" cy="14.0" r="1.5" fill="currentColor"></circle></svg></dd>
   </dl>
  </div>
 </section>
@@ -564,7 +614,7 @@ footer a{color:var(--muted)}
  </div>
  <div class="card">
   <ul>
-<li><a href="https://github.com/273v/kaos-agents">Repository</a></li><li><a href="https://pypi.org/project/kaos-agents/">PyPI project</a></li><li><a href="https://github.com/273v/kaos-agents/actions/runs/35883495080">Latest CI run</a></li><li><a href="https://github.com/273v/kaos-agents/actions/runs/35883495091">Latest Security run</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-agents.json"><code>api/v1/package/kaos-agents.json</code> &mdash; downloadable evidence bundle</a></li>
+<li><a href="https://github.com/273v/kaos-agents">Repository</a></li><li><a href="https://pypi.org/project/kaos-agents/">PyPI project</a></li><li><a href="methodology.html">Methodology</a></li>   <li><a href="api/v1/package/kaos-agents.json"><code>api/v1/package/kaos-agents.json</code> &mdash; downloadable evidence bundle</a></li>
   </ul>
  </div>
 </section>
@@ -585,7 +635,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-22 12:32 UTC
+ Generated 2026-10-22 16:28 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

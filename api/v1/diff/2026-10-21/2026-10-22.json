@@ -5,13 +5,13 @@
     "kaos-agents": {
       "build_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "tests_pass": {
         "from": true,
-        "to": true,
-        "delta": "same"
+        "to": false,
+        "delta": "worse"
       },
       "security_pass": {
         "from": false,
@@ -35,7 +35,7 @@
       },
       "advisories_open": {
         "from": 21,
-        "to": 40,
+        "to": 50,
         "delta": "better"
       },
       "commits_90d": {
@@ -45,8 +45,8 @@
       },
       "releases_90d": {
         "from": 1,
-        "to": 1,
-        "delta": "same"
+        "to": 0,
+        "delta": "worse"
       },
       "loc_total": {
         "from": 101534,
@@ -66,6 +66,73 @@
       "files_total": {
         "from": 639,
         "to": 639,
+        "delta": "same"
+      }
+    },
+    "kaos-citations": {
+      "build_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "security_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "updates_ok": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "advisories_open": {
+        "from": 16,
+        "to": 17,
+        "delta": "better"
+      },
+      "commits_90d": {
+        "from": 9,
+        "to": 9,
+        "delta": "same"
+      },
+      "releases_90d": {
+        "from": 5,
+        "to": 0,
+        "delta": "worse"
+      },
+      "loc_total": {
+        "from": 10487,
+        "to": 10487,
+        "delta": "same"
+      },
+      "src_loc": {
+        "from": 7875,
+        "to": 7875,
+        "delta": "same"
+      },
+      "tests_loc": {
+        "from": 2612,
+        "to": 2612,
+        "delta": "same"
+      },
+      "files_total": {
+        "from": 54,
+        "to": 54,
         "delta": "same"
       }
     },
@@ -102,7 +169,7 @@
       },
       "advisories_open": {
         "from": 15,
-        "to": 30,
+        "to": 40,
         "delta": "better"
       },
       "commits_90d": {
@@ -112,8 +179,8 @@
       },
       "releases_90d": {
         "from": 2,
-        "to": 2,
-        "delta": "same"
+        "to": 0,
+        "delta": "worse"
       },
       "loc_total": {
         "from": 40516,
@@ -136,7 +203,141 @@
         "delta": "same"
       }
     },
-    "kaos-llm-core": {
+    "kaos-core": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "updates_ok": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "advisories_open": {
+        "from": 1,
+        "to": 1,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 4,
+        "to": 4,
+        "delta": "same"
+      },
+      "releases_90d": {
+        "from": 0,
+        "to": 0,
+        "delta": "same"
+      },
+      "loc_total": {
+        "from": 14574,
+        "to": 14574,
+        "delta": "same"
+      },
+      "src_loc": {
+        "from": 7941,
+        "to": 7941,
+        "delta": "same"
+      },
+      "tests_loc": {
+        "from": 6633,
+        "to": 6633,
+        "delta": "same"
+      },
+      "files_total": {
+        "from": 145,
+        "to": 145,
+        "delta": "same"
+      }
+    },
+    "kaos-graph": {
+      "build_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "security_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "updates_ok": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "advisories_open": {
+        "from": 3,
+        "to": 3,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 10,
+        "to": 10,
+        "delta": "same"
+      },
+      "releases_90d": {
+        "from": 2,
+        "to": 0,
+        "delta": "worse"
+      },
+      "loc_total": {
+        "from": 17011,
+        "to": 17011,
+        "delta": "same"
+      },
+      "src_loc": {
+        "from": 12448,
+        "to": 12448,
+        "delta": "same"
+      },
+      "tests_loc": {
+        "from": 4563,
+        "to": 4563,
+        "delta": "same"
+      },
+      "files_total": {
+        "from": 78,
+        "to": 78,
+        "delta": "same"
+      }
+    },
+    "kaos-llm-client": {
       "build_pass": {
         "from": true,
         "to": true,
@@ -168,8 +369,75 @@
         "delta": "same"
       },
       "advisories_open": {
+        "from": 6,
+        "to": 6,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 6,
+        "to": 6,
+        "delta": "same"
+      },
+      "releases_90d": {
+        "from": 1,
+        "to": 0,
+        "delta": "worse"
+      },
+      "loc_total": {
+        "from": 21285,
+        "to": 21285,
+        "delta": "same"
+      },
+      "src_loc": {
+        "from": 7770,
+        "to": 7770,
+        "delta": "same"
+      },
+      "tests_loc": {
+        "from": 13515,
+        "to": 13515,
+        "delta": "same"
+      },
+      "files_total": {
+        "from": 111,
+        "to": 111,
+        "delta": "same"
+      }
+    },
+    "kaos-llm-core": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "updates_ok": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "advisories_open": {
         "from": 16,
-        "to": 31,
+        "to": 41,
         "delta": "better"
       },
       "commits_90d": {
@@ -179,8 +447,8 @@
       },
       "releases_90d": {
         "from": 1,
-        "to": 1,
-        "delta": "same"
+        "to": 0,
+        "delta": "worse"
       },
       "loc_total": {
         "from": 62023,
@@ -200,6 +468,73 @@
       "files_total": {
         "from": 406,
         "to": 406,
+        "delta": "same"
+      }
+    },
+    "kaos-mcp": {
+      "build_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "security_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "updates_ok": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "advisories_open": {
+        "from": 3,
+        "to": 3,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 6,
+        "to": 6,
+        "delta": "same"
+      },
+      "releases_90d": {
+        "from": 2,
+        "to": 0,
+        "delta": "worse"
+      },
+      "loc_total": {
+        "from": 4526,
+        "to": 4526,
+        "delta": "same"
+      },
+      "src_loc": {
+        "from": 2659,
+        "to": 2659,
+        "delta": "same"
+      },
+      "tests_loc": {
+        "from": 1867,
+        "to": 1867,
+        "delta": "same"
+      },
+      "files_total": {
+        "from": 38,
+        "to": 38,
         "delta": "same"
       }
     },
@@ -236,7 +571,7 @@
       },
       "advisories_open": {
         "from": 17,
-        "to": 32,
+        "to": 42,
         "delta": "better"
       },
       "commits_90d": {
@@ -267,6 +602,207 @@
       "files_total": {
         "from": 53,
         "to": 53,
+        "delta": "same"
+      }
+    },
+    "kaos-names": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "updates_ok": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "advisories_open": {
+        "from": 0,
+        "to": 0,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 5,
+        "to": 5,
+        "delta": "same"
+      },
+      "releases_90d": {
+        "from": 0,
+        "to": 0,
+        "delta": "same"
+      },
+      "loc_total": {
+        "from": 1000,
+        "to": 1000,
+        "delta": "same"
+      },
+      "src_loc": {
+        "from": 638,
+        "to": 638,
+        "delta": "same"
+      },
+      "tests_loc": {
+        "from": 362,
+        "to": 362,
+        "delta": "same"
+      },
+      "files_total": {
+        "from": 10,
+        "to": 10,
+        "delta": "same"
+      }
+    },
+    "kaos-nlp-core": {
+      "build_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "tests_pass": {
+        "from": true,
+        "to": false,
+        "delta": "worse"
+      },
+      "security_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "updates_ok": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "advisories_open": {
+        "from": 1,
+        "to": 1,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 11,
+        "to": 11,
+        "delta": "same"
+      },
+      "releases_90d": {
+        "from": 4,
+        "to": 4,
+        "delta": "same"
+      },
+      "loc_total": {
+        "from": 57394,
+        "to": 57394,
+        "delta": "same"
+      },
+      "src_loc": {
+        "from": 39698,
+        "to": 39698,
+        "delta": "same"
+      },
+      "tests_loc": {
+        "from": 17696,
+        "to": 17696,
+        "delta": "same"
+      },
+      "files_total": {
+        "from": 264,
+        "to": 264,
+        "delta": "same"
+      }
+    },
+    "kaos-nlp-transformers": {
+      "build_pass": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "tests_pass": {
+        "from": false,
+        "to": true,
+        "delta": "better"
+      },
+      "security_pass": {
+        "from": false,
+        "to": false,
+        "delta": "same"
+      },
+      "updates_ok": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "attestation_present": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "branch_protection_enabled": {
+        "from": true,
+        "to": true,
+        "delta": "same"
+      },
+      "advisories_open": {
+        "from": 10,
+        "to": 10,
+        "delta": "same"
+      },
+      "commits_90d": {
+        "from": 11,
+        "to": 11,
+        "delta": "same"
+      },
+      "releases_90d": {
+        "from": 2,
+        "to": 2,
+        "delta": "same"
+      },
+      "loc_total": {
+        "from": 12844,
+        "to": 12844,
+        "delta": "same"
+      },
+      "src_loc": {
+        "from": 8067,
+        "to": 8067,
+        "delta": "same"
+      },
+      "tests_loc": {
+        "from": 4777,
+        "to": 4777,
+        "delta": "same"
+      },
+      "files_total": {
+        "from": 87,
+        "to": 87,
         "delta": "same"
       }
     },
@@ -303,7 +839,7 @@
       },
       "advisories_open": {
         "from": 16,
-        "to": 31,
+        "to": 41,
         "delta": "better"
       },
       "commits_90d": {
@@ -370,7 +906,7 @@
       },
       "advisories_open": {
         "from": 19,
-        "to": 34,
+        "to": 44,
         "delta": "better"
       },
       "commits_90d": {
@@ -380,8 +916,8 @@
       },
       "releases_90d": {
         "from": 2,
-        "to": 2,
-        "delta": "same"
+        "to": 0,
+        "delta": "worse"
       },
       "loc_total": {
         "from": 8481,
@@ -437,7 +973,7 @@
       },
       "advisories_open": {
         "from": 16,
-        "to": 31,
+        "to": 41,
         "delta": "better"
       },
       "commits_90d": {
