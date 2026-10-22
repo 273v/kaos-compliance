@@ -99,7 +99,7 @@ footer a{color:var(--muted)}
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
   <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
-   2026-10-20 &rarr; 2026-10-21
+   2026-10-21 &rarr; 2026-10-22
   </p>
   <ul style="margin:0;padding-left:var(--s-5)">
     <li>
@@ -109,7 +109,7 @@ footer a{color:var(--muted)}
      </span>
      <strong>advisories_open</strong>:
      <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
-      2 &rarr; 15
+      15 &rarr; 30
      </span>
     </li>
   </ul>
@@ -132,7 +132,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 15 open advisories (OSV.dev): 3 critical, 9 high, 3 moderate</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 30 open advisories (OSV.dev): 4 critical, 17 high, 9 moderate</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -225,7 +225,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-15 <span style="color:var(--muted);font-size:0.75rem">across 58 locked dependencies (OSV.dev)</span>   </dd>
+30 <span style="color:var(--muted);font-size:0.75rem">across 58 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -238,6 +238,12 @@ footer a{color:var(--muted)}
   <table class="grid" style="margin-top:var(--s-3)" aria-label="Open advisories against locked dependencies">
    <thead><tr><th scope="col">Advisory</th><th scope="col">Package</th><th scope="col">Severity</th><th scope="col">Summary</th></tr></thead>
    <tbody>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf" target="_blank" rel="noopener">GHSA-332p-7hrc-92wf</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">critical</td>
+     <td data-h="Summary">Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO</td>
+    </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2" target="_blank" rel="noopener">GHSA-6q48-6c7w-9gw2</a></td>
      <td data-h="Package">certifi 2026.4.22</td>
@@ -257,6 +263,18 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: Argument Injection in Ghostscript call, potentially leading into RCE</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-22hg-r758-rrw9" target="_blank" rel="noopener">GHSA-22hg-r758-rrw9</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: Infinite loop in MIC n_frames when the embedded TIFF</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-27h8-gf7j-v5hc" target="_blank" rel="noopener">GHSA-27h8-gf7j-v5hc</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-27vj-qcqg-25rc" target="_blank" rel="noopener">GHSA-27vj-qcqg-25rc</a></td>
      <td data-h="Package">fsspec 2026.4.0</td>
      <td data-h="Severity">high</td>
@@ -267,6 +285,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">Pillow: Out-of-bounds access in _imagingmorph on a zero-width image</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-5xm2-6676-qcp9" target="_blank" rel="noopener">GHSA-5xm2-6676-qcp9</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: APNG background disposal allocates full canvas before decompression bomb check</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-65qm-jvmh-6pqg" target="_blank" rel="noopener">GHSA-65qm-jvmh-6pqg</a></td>
@@ -287,10 +311,34 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-cp9v-662q-vvx9" target="_blank" rel="noopener">GHSA-cp9v-662q-vvx9</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-f2g6-542v-9j58" target="_blank" rel="noopener">GHSA-f2g6-542v-9j58</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-gg2r-wvfm-q9rx" target="_blank" rel="noopener">GHSA-gg2r-wvfm-q9rx</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: MSP RLE decoder expands a tiny file into unbounded memory</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47" target="_blank" rel="noopener">GHSA-j4m9-6w36-pw47</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">Pillow: Invalid free in FreeType glyph rendering when a stroker is active</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-jg86-v3jv-hrpm" target="_blank" rel="noopener">GHSA-jg86-v3jv-hrpm</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-p4wg-p73j-c528" target="_blank" rel="noopener">GHSA-p4wg-p73j-c528</a></td>
@@ -311,6 +359,18 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v" target="_blank" rel="noopener">GHSA-xvh5-g6gv-559v</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary"> Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-254f-3936-288h" target="_blank" rel="noopener">GHSA-254f-3936-288h</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-4558-3h8r-v8xp" target="_blank" rel="noopener">GHSA-4558-3h8r-v8xp</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">moderate</td>
@@ -323,10 +383,40 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm" target="_blank" rel="noopener">GHSA-4rr5-89j8-mwwm</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2" target="_blank" rel="noopener">GHSA-74r2-7ff9-mjj2</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45" target="_blank" rel="noopener">GHSA-fc9g-5qg7-mf45</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: Quadratic GIF comment copying during save</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2" target="_blank" rel="noopener">GHSA-rfgq-q3w2-pmv2</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: Image.quantize() with empty palette leaks uninitialized stack memory</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-vx6w-vv9f-6gvg" target="_blank" rel="noopener">GHSA-vx6w-vv9f-6gvg</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8" target="_blank" rel="noopener">GHSA-xgh8-jp6q-p5x8</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes</td>
     </tr>
    </tbody>
   </table>
@@ -358,8 +448,8 @@ footer a{color:var(--muted)}
    <dt>Commits 90d</dt>
    <dd>
     9
-<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Commits 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,2.0 12.2,2.3 13.1,2.4 14.0,3.1 14.8,4.5 15.7,5.8 16.5,5.8 17.4,6.2 18.2,6.5 19.1,6.8 19.9,6.8 20.8,6.9 21.6,9.1 22.5,9.1 23.3,9.1 24.2,9.3 25.1,9.3 25.9,10.2 26.8,10.2 27.6,10.5 28.5,10.5 29.3,10.5 30.2,10.5 31.0,13.0 31.9,13.2 32.7,13.2 33.6,13.2 34.4,13.4 35.3,13.7 36.2,13.7 37.0,13.7 37.9,13.7 38.7,13.7 39.6,13.7 40.4,13.7 41.3,13.7 42.1,13.7 43.0,13.7 43.8,13.7 44.7,13.7 45.6,13.7 46.4,13.7 47.3,13.7 48.1,13.7 49.0,13.7 49.8,13.7 50.7,13.7 51.5,14.0 52.4,14.0 53.2,14.0 54.1,13.4 54.9,13.4 55.8,13.4 56.7,13.2 57.5,13.4 58.4,13.4 59.2,13.4 60.1,13.4 60.9,13.4 61.8,13.4 62.6,13.4 63.5,13.4 64.3,13.4 65.2,13.4 66.0,13.4 66.9,13.4 67.8,13.4 68.6,13.4 69.5,13.4 70.3,13.4 71.2,13.4 72.0,13.4 72.9,13.4 73.7,13.4 74.6,13.2 75.4,13.4 76.3,13.3 77.1,13.3 78.0,13.3"></polyline><circle cx="78.0" cy="13.3" r="1.5" fill="currentColor"></circle></svg>   </dd>
-   <dt>Releases 90d</dt><dd>2<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Releases 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,2.0 12.2,3.2 13.1,3.2 14.0,3.2 14.8,4.4 15.7,5.6 16.5,5.6 17.4,5.6 18.2,5.6 19.1,6.2 19.9,6.2 20.8,6.8 21.6,9.2 22.5,9.2 23.3,9.2 24.2,10.4 25.1,10.4 25.9,11.0 26.8,11.0 27.6,11.6 28.5,11.6 29.3,11.6 30.2,11.6 31.0,12.2 31.9,12.2 32.7,12.2 33.6,12.2 34.4,13.4 35.3,14.0 36.2,14.0 37.0,14.0 37.9,14.0 38.7,14.0 39.6,14.0 40.4,14.0 41.3,14.0 42.1,14.0 43.0,14.0 43.8,14.0 44.7,14.0 45.6,14.0 46.4,14.0 47.3,14.0 48.1,14.0 49.0,14.0 49.8,14.0 50.7,14.0 51.5,14.0 52.4,14.0 53.2,14.0 54.1,13.4 54.9,13.4 55.8,13.4 56.7,12.8 57.5,12.8 58.4,12.8 59.2,12.8 60.1,12.8 60.9,12.8 61.8,12.8 62.6,12.8 63.5,12.8 64.3,12.8 65.2,12.8 66.0,12.8 66.9,12.8 67.8,12.8 68.6,12.8 69.5,12.8 70.3,12.8 71.2,12.8 72.0,12.8 72.9,12.8 73.7,12.8 74.6,12.8 75.4,12.8 76.3,12.8 77.1,12.8 78.0,12.8"></polyline><circle cx="78.0" cy="12.8" r="1.5" fill="currentColor"></circle></svg></dd>
+<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Commits 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,2.3 12.2,2.4 13.1,3.1 14.0,4.5 14.8,5.8 15.7,5.8 16.5,6.2 17.4,6.5 18.2,6.8 19.1,6.8 19.9,6.9 20.8,9.1 21.6,9.1 22.5,9.1 23.3,9.3 24.2,9.3 25.1,10.2 25.9,10.2 26.8,10.5 27.6,10.5 28.5,10.5 29.3,10.5 30.2,13.0 31.0,13.2 31.9,13.2 32.7,13.2 33.6,13.4 34.4,13.7 35.3,13.7 36.2,13.7 37.0,13.7 37.9,13.7 38.7,13.7 39.6,13.7 40.4,13.7 41.3,13.7 42.1,13.7 43.0,13.7 43.8,13.7 44.7,13.7 45.6,13.7 46.4,13.7 47.3,13.7 48.1,13.7 49.0,13.7 49.8,13.7 50.7,14.0 51.5,14.0 52.4,14.0 53.2,13.4 54.1,13.4 54.9,13.4 55.8,13.2 56.7,13.4 57.5,13.4 58.4,13.4 59.2,13.4 60.1,13.4 60.9,13.4 61.8,13.4 62.6,13.4 63.5,13.4 64.3,13.4 65.2,13.4 66.0,13.4 66.9,13.4 67.8,13.4 68.6,13.4 69.5,13.4 70.3,13.4 71.2,13.4 72.0,13.4 72.9,13.4 73.7,13.2 74.6,13.4 75.4,13.3 76.3,13.3 77.1,13.3 78.0,13.3"></polyline><circle cx="78.0" cy="13.3" r="1.5" fill="currentColor"></circle></svg>   </dd>
+   <dt>Releases 90d</dt><dd>2<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Releases 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,3.2 12.2,3.2 13.1,3.2 14.0,4.4 14.8,5.6 15.7,5.6 16.5,5.6 17.4,5.6 18.2,6.2 19.1,6.2 19.9,6.8 20.8,9.2 21.6,9.2 22.5,9.2 23.3,10.4 24.2,10.4 25.1,11.0 25.9,11.0 26.8,11.6 27.6,11.6 28.5,11.6 29.3,11.6 30.2,12.2 31.0,12.2 31.9,12.2 32.7,12.2 33.6,13.4 34.4,14.0 35.3,14.0 36.2,14.0 37.0,14.0 37.9,14.0 38.7,14.0 39.6,14.0 40.4,14.0 41.3,14.0 42.1,14.0 43.0,14.0 43.8,14.0 44.7,14.0 45.6,14.0 46.4,14.0 47.3,14.0 48.1,14.0 49.0,14.0 49.8,14.0 50.7,14.0 51.5,14.0 52.4,14.0 53.2,13.4 54.1,13.4 54.9,13.4 55.8,12.8 56.7,12.8 57.5,12.8 58.4,12.8 59.2,12.8 60.1,12.8 60.9,12.8 61.8,12.8 62.6,12.8 63.5,12.8 64.3,12.8 65.2,12.8 66.0,12.8 66.9,12.8 67.8,12.8 68.6,12.8 69.5,12.8 70.3,12.8 71.2,12.8 72.0,12.8 72.9,12.8 73.7,12.8 74.6,12.8 75.4,12.8 76.3,12.8 77.1,12.8 78.0,12.8"></polyline><circle cx="78.0" cy="12.8" r="1.5" fill="currentColor"></circle></svg></dd>
   </dl>
  </div>
 </section>
@@ -386,7 +476,7 @@ footer a{color:var(--muted)}
    <dt>Rust tests (LoC)</dt>
    <dd>—</dd>
    <dt>Source lines of code</dt>
-   <dd>40,516 LoC<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Lines of code: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,14.0 2.9,14.0 3.7,14.0 4.6,14.0 5.4,14.0 6.3,14.0 7.1,14.0 8.0,14.0 8.8,14.0 9.7,14.0 10.5,14.0 11.4,14.0 12.2,14.0 13.1,14.0 14.0,14.0 14.8,14.0 15.7,14.0 16.5,14.0 17.4,14.0 18.2,14.0 19.1,14.0 19.9,14.0 20.8,14.0 21.6,14.0 22.5,14.0 23.3,14.0 24.2,14.0 25.1,14.0 25.9,14.0 26.8,14.0 27.6,14.0 28.5,14.0 29.3,14.0 30.2,14.0 31.0,14.0 31.9,14.0 32.7,14.0 33.6,14.0 34.4,14.0 35.3,14.0 36.2,14.0 37.0,14.0 37.9,14.0 38.7,14.0 39.6,14.0 40.4,14.0 41.3,14.0 42.1,14.0 43.0,14.0 43.8,14.0 44.7,14.0 45.6,14.0 46.4,14.0 47.3,14.0 48.1,14.0 49.0,14.0 49.8,14.0 50.7,14.0 51.5,14.0 52.4,14.0 53.2,14.0 54.1,14.0 54.9,14.0 55.8,14.0 56.7,10.1 57.5,10.1 58.4,10.1 59.2,10.1 60.1,10.1 60.9,10.1 61.8,10.1 62.6,10.1 63.5,10.1 64.3,10.1 65.2,10.1 66.0,10.1 66.9,10.1 67.8,10.1 68.6,10.1 69.5,10.1 70.3,10.1 71.2,10.1 72.0,10.1 72.9,10.1 73.7,10.1 74.6,3.0 75.4,3.0 76.3,2.0 77.1,2.0 78.0,2.0"></polyline><circle cx="78.0" cy="2.0" r="1.5" fill="currentColor"></circle></svg></dd>
+   <dd>40,516 LoC<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-content Lines of code: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,14.0 2.9,14.0 3.7,14.0 4.6,14.0 5.4,14.0 6.3,14.0 7.1,14.0 8.0,14.0 8.8,14.0 9.7,14.0 10.5,14.0 11.4,14.0 12.2,14.0 13.1,14.0 14.0,14.0 14.8,14.0 15.7,14.0 16.5,14.0 17.4,14.0 18.2,14.0 19.1,14.0 19.9,14.0 20.8,14.0 21.6,14.0 22.5,14.0 23.3,14.0 24.2,14.0 25.1,14.0 25.9,14.0 26.8,14.0 27.6,14.0 28.5,14.0 29.3,14.0 30.2,14.0 31.0,14.0 31.9,14.0 32.7,14.0 33.6,14.0 34.4,14.0 35.3,14.0 36.2,14.0 37.0,14.0 37.9,14.0 38.7,14.0 39.6,14.0 40.4,14.0 41.3,14.0 42.1,14.0 43.0,14.0 43.8,14.0 44.7,14.0 45.6,14.0 46.4,14.0 47.3,14.0 48.1,14.0 49.0,14.0 49.8,14.0 50.7,14.0 51.5,14.0 52.4,14.0 53.2,14.0 54.1,14.0 54.9,14.0 55.8,10.1 56.7,10.1 57.5,10.1 58.4,10.1 59.2,10.1 60.1,10.1 60.9,10.1 61.8,10.1 62.6,10.1 63.5,10.1 64.3,10.1 65.2,10.1 66.0,10.1 66.9,10.1 67.8,10.1 68.6,10.1 69.5,10.1 70.3,10.1 71.2,10.1 72.0,10.1 72.9,10.1 73.7,3.0 74.6,3.0 75.4,2.0 76.3,2.0 77.1,2.0 78.0,2.0"></polyline><circle cx="78.0" cy="2.0" r="1.5" fill="currentColor"></circle></svg></dd>
   </dl>
   <p style="color:var(--muted);font-size:0.75rem;margin-top:var(--s-3)">
    Counts non-blank, non-comment lines (sloc). Excludes <code>.venv</code>,
@@ -435,7 +525,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-21 20:24 UTC
+ Generated 2026-10-22 00:25 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

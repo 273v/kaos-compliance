@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-21T20:24:44Z",
+  "generated_at": "2026-10-22T00:25:41Z",
   "generator": {
     "name": "kaos-compliance",
     "version": "0.0.1"
   },
   "heartbeat": {
-    "last_full_sweep_at": "2026-10-21T20:24:44Z",
-    "last_light_sweep_at": "2026-10-21T20:24:44Z",
-    "last_security_sweep_at": "2026-10-21T20:24:44Z",
+    "last_full_sweep_at": "2026-10-22T00:25:41Z",
+    "last_light_sweep_at": "2026-10-22T00:25:41Z",
+    "last_security_sweep_at": "2026-10-22T00:25:41Z",
     "stale_threshold_hours": 26
   },
   "modules": [
@@ -260,7 +260,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 2.527,
+        "median_pr_age_days": 2.694,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 172,
@@ -288,6 +288,19 @@
         "scanned_components": 145,
         "open": [
           {
+            "id": "GHSA-332p-7hrc-92wf",
+            "aliases": [
+              "CVE-2026-112393"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+            "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
+          {
             "id": "GHSA-6q48-6c7w-9gw2",
             "aliases": [
               "PYSEC-2026-4320"
@@ -312,6 +325,45 @@
             "informational": null,
             "summary": "Pillow: Heap buffer overflow in ImagingJpegDecode",
             "url": "https://osv.dev/vulnerability/GHSA-8g5g-8vmr-9782"
+          },
+          {
+            "id": "GHSA-w889-685w-c8fh",
+            "aliases": [
+              "CVE-2026-112900"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Argument Injection in Ghostscript call, potentially leading into RCE",
+            "url": "https://osv.dev/vulnerability/GHSA-w889-685w-c8fh"
+          },
+          {
+            "id": "GHSA-22hg-r758-rrw9",
+            "aliases": [
+              "CVE-2026-112390"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+            "url": "https://osv.dev/vulnerability/GHSA-22hg-r758-rrw9"
+          },
+          {
+            "id": "GHSA-27h8-gf7j-v5hc",
+            "aliases": [
+              "CVE-2026-112392"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+            "url": "https://osv.dev/vulnerability/GHSA-27h8-gf7j-v5hc"
           },
           {
             "id": "GHSA-2g87-pp6c-29x5",
@@ -351,6 +403,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-5wr8-gcqf-gqf3"
           },
           {
+            "id": "GHSA-5xm2-6676-qcp9",
+            "aliases": [
+              "CVE-2026-112399"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+            "url": "https://osv.dev/vulnerability/GHSA-5xm2-6676-qcp9"
+          },
+          {
             "id": "GHSA-65qm-jvmh-6pqg",
             "aliases": [
               "CVE-2026-112400"
@@ -362,6 +427,19 @@
             "informational": null,
             "summary": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
             "url": "https://osv.dev/vulnerability/GHSA-65qm-jvmh-6pqg"
+          },
+          {
+            "id": "GHSA-7mwm-ghpf-9vrm",
+            "aliases": [
+              "CVE-2026-112402"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform",
+            "url": "https://osv.dev/vulnerability/GHSA-7mwm-ghpf-9vrm"
           },
           {
             "id": "GHSA-9xw5-w5jj-pvcg",
@@ -388,6 +466,71 @@
             "informational": null,
             "summary": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels",
             "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
+          },
+          {
+            "id": "GHSA-cp9v-662q-vvx9",
+            "aliases": [
+              "CVE-2026-112405"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+            "url": "https://osv.dev/vulnerability/GHSA-cp9v-662q-vvx9"
+          },
+          {
+            "id": "GHSA-f2g6-542v-9j58",
+            "aliases": [
+              "CVE-2026-112406"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+            "url": "https://osv.dev/vulnerability/GHSA-f2g6-542v-9j58"
+          },
+          {
+            "id": "GHSA-gg2r-wvfm-q9rx",
+            "aliases": [
+              "CVE-2026-112892"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+            "url": "https://osv.dev/vulnerability/GHSA-gg2r-wvfm-q9rx"
+          },
+          {
+            "id": "GHSA-j4m9-6w36-pw47",
+            "aliases": [
+              "CVE-2026-112893"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
+            "url": "https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47"
+          },
+          {
+            "id": "GHSA-jg86-v3jv-hrpm",
+            "aliases": [
+              "CVE-2026-112894"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+            "url": "https://osv.dev/vulnerability/GHSA-jg86-v3jv-hrpm"
           },
           {
             "id": "GHSA-p4wg-p73j-c528",
@@ -429,6 +572,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
           },
           {
+            "id": "GHSA-xvh5-g6gv-559v",
+            "aliases": [
+              "CVE-2026-112902"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+            "url": "https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v"
+          },
+          {
+            "id": "GHSA-254f-3936-288h",
+            "aliases": [
+              "CVE-2026-112391"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+            "url": "https://osv.dev/vulnerability/GHSA-254f-3936-288h"
+          },
+          {
             "id": "GHSA-42vr-xj54-vc7v",
             "aliases": [
               "CVE-2026-101918",
@@ -443,6 +612,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
           },
           {
+            "id": "GHSA-4558-3h8r-v8xp",
+            "aliases": [
+              "CVE-2026-112394"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size",
+            "url": "https://osv.dev/vulnerability/GHSA-4558-3h8r-v8xp"
+          },
+          {
             "id": "GHSA-462x-pgg6-55fp",
             "aliases": [
               "CVE-2026-112395"
@@ -454,6 +636,19 @@
             "informational": null,
             "summary": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)",
             "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
+          },
+          {
+            "id": "GHSA-4rr5-89j8-mwwm",
+            "aliases": [
+              "CVE-2026-112396"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+            "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
           },
           {
             "id": "GHSA-54p9-h82j-f925",
@@ -483,6 +678,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-6cjc-53gc-5rqm"
           },
           {
+            "id": "GHSA-74r2-7ff9-mjj2",
+            "aliases": [
+              "CVE-2026-112401"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+            "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
+          },
+          {
             "id": "GHSA-f9xw-jh8m-3mwq",
             "aliases": [
               "CVE-2026-111748"
@@ -496,6 +704,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-f9xw-jh8m-3mwq"
           },
           {
+            "id": "GHSA-fc9g-5qg7-mf45",
+            "aliases": [
+              "CVE-2026-112891"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment copying during save",
+            "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
             "id": "GHSA-pqxq-w44r-73xw",
             "aliases": [
               "CVE-2026-111750"
@@ -507,6 +728,19 @@
             "informational": null,
             "summary": "AIOHTTP: Pure-Python parser request smuggling",
             "url": "https://osv.dev/vulnerability/GHSA-pqxq-w44r-73xw"
+          },
+          {
+            "id": "GHSA-rfgq-q3w2-pmv2",
+            "aliases": [
+              "CVE-2026-112898"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+            "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
           },
           {
             "id": "GHSA-vx6w-vv9f-6gvg",
@@ -534,6 +768,19 @@
             "informational": null,
             "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
             "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+          },
+          {
+            "id": "GHSA-xgh8-jp6q-p5x8",
+            "aliases": [
+              "CVE-2026-112901"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+            "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
           },
           {
             "id": "GHSA-494j-54xm-rwp3",
@@ -564,12 +811,12 @@
         ],
         "notices": [],
         "counts": {
-          "critical": 2,
-          "high": 9,
-          "moderate": 8,
+          "critical": 4,
+          "high": 19,
+          "moderate": 15,
           "low": 2,
           "unknown": 0,
-          "total": 21
+          "total": 40
         },
         "errors": []
       },
@@ -814,7 +1061,7 @@
           "NOTICE"
         ],
         "releases_90d": 5,
-        "median_pr_age_days": 2.437,
+        "median_pr_age_days": 2.604,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 126,
@@ -1200,7 +1447,7 @@
       },
       "freshness": {
         "days_since_last_commit": 2,
-        "days_since_last_release": 25,
+        "days_since_last_release": 26,
         "days_since_last_security_scan": 2
       },
       "supply_chain": {
@@ -1318,7 +1565,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.478,
+        "median_pr_age_days": 2.645,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 309,
@@ -1345,6 +1592,19 @@
         "source": "osv.dev",
         "scanned_components": 58,
         "open": [
+          {
+            "id": "GHSA-332p-7hrc-92wf",
+            "aliases": [
+              "CVE-2026-112393"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+            "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
             "aliases": [
@@ -1385,6 +1645,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-w889-685w-c8fh"
           },
           {
+            "id": "GHSA-22hg-r758-rrw9",
+            "aliases": [
+              "CVE-2026-112390"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+            "url": "https://osv.dev/vulnerability/GHSA-22hg-r758-rrw9"
+          },
+          {
+            "id": "GHSA-27h8-gf7j-v5hc",
+            "aliases": [
+              "CVE-2026-112392"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+            "url": "https://osv.dev/vulnerability/GHSA-27h8-gf7j-v5hc"
+          },
+          {
             "id": "GHSA-27vj-qcqg-25rc",
             "aliases": [
               "CVE-2026-104851",
@@ -1410,6 +1696,19 @@
             "informational": null,
             "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
             "url": "https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8"
+          },
+          {
+            "id": "GHSA-5xm2-6676-qcp9",
+            "aliases": [
+              "CVE-2026-112399"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+            "url": "https://osv.dev/vulnerability/GHSA-5xm2-6676-qcp9"
           },
           {
             "id": "GHSA-65qm-jvmh-6pqg",
@@ -1451,6 +1750,45 @@
             "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
           },
           {
+            "id": "GHSA-cp9v-662q-vvx9",
+            "aliases": [
+              "CVE-2026-112405"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+            "url": "https://osv.dev/vulnerability/GHSA-cp9v-662q-vvx9"
+          },
+          {
+            "id": "GHSA-f2g6-542v-9j58",
+            "aliases": [
+              "CVE-2026-112406"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+            "url": "https://osv.dev/vulnerability/GHSA-f2g6-542v-9j58"
+          },
+          {
+            "id": "GHSA-gg2r-wvfm-q9rx",
+            "aliases": [
+              "CVE-2026-112892"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+            "url": "https://osv.dev/vulnerability/GHSA-gg2r-wvfm-q9rx"
+          },
+          {
             "id": "GHSA-j4m9-6w36-pw47",
             "aliases": [
               "CVE-2026-112893"
@@ -1462,6 +1800,19 @@
             "informational": null,
             "summary": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
             "url": "https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47"
+          },
+          {
+            "id": "GHSA-jg86-v3jv-hrpm",
+            "aliases": [
+              "CVE-2026-112894"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+            "url": "https://osv.dev/vulnerability/GHSA-jg86-v3jv-hrpm"
           },
           {
             "id": "GHSA-p4wg-p73j-c528",
@@ -1503,6 +1854,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
           },
           {
+            "id": "GHSA-xvh5-g6gv-559v",
+            "aliases": [
+              "CVE-2026-112902"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+            "url": "https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v"
+          },
+          {
+            "id": "GHSA-254f-3936-288h",
+            "aliases": [
+              "CVE-2026-112391"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+            "url": "https://osv.dev/vulnerability/GHSA-254f-3936-288h"
+          },
+          {
             "id": "GHSA-4558-3h8r-v8xp",
             "aliases": [
               "CVE-2026-112394"
@@ -1529,6 +1906,58 @@
             "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
           },
           {
+            "id": "GHSA-4rr5-89j8-mwwm",
+            "aliases": [
+              "CVE-2026-112396"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+            "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
+          },
+          {
+            "id": "GHSA-74r2-7ff9-mjj2",
+            "aliases": [
+              "CVE-2026-112401"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+            "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
+          },
+          {
+            "id": "GHSA-fc9g-5qg7-mf45",
+            "aliases": [
+              "CVE-2026-112891"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment copying during save",
+            "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
+            "id": "GHSA-rfgq-q3w2-pmv2",
+            "aliases": [
+              "CVE-2026-112898"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+            "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
+          },
+          {
             "id": "GHSA-vx6w-vv9f-6gvg",
             "aliases": [
               "CVE-2026-112899"
@@ -1540,16 +1969,29 @@
             "informational": null,
             "summary": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit",
             "url": "https://osv.dev/vulnerability/GHSA-vx6w-vv9f-6gvg"
+          },
+          {
+            "id": "GHSA-xgh8-jp6q-p5x8",
+            "aliases": [
+              "CVE-2026-112901"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+            "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
           }
         ],
         "notices": [],
         "counts": {
-          "critical": 3,
-          "high": 9,
-          "moderate": 3,
+          "critical": 4,
+          "high": 17,
+          "moderate": 9,
           "low": 0,
           "unknown": 0,
-          "total": 15
+          "total": 30
         },
         "errors": []
       },
@@ -1787,7 +2229,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 2.432,
+        "median_pr_age_days": 2.6,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -2112,7 +2554,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.562,
+        "median_pr_age_days": 2.73,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 766,
@@ -2431,7 +2873,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 2.364,
+        "median_pr_age_days": 2.531,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 432,
@@ -2673,7 +3115,7 @@
           "#96 chore(deps): bump the actions-all group across 1 directory with 5 updates",
           "#94 chore(deps): bump the deps-minor group across 1 directory with 7 updates"
         ],
-        "oldest_age_days": 8,
+        "oldest_age_days": 9,
         "dependabot_count": 2
       },
       "freshness": {
@@ -2790,7 +3232,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 5.532,
+        "median_pr_age_days": 5.699,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 175,
@@ -2817,6 +3259,19 @@
         "source": "osv.dev",
         "scanned_components": 60,
         "open": [
+          {
+            "id": "GHSA-332p-7hrc-92wf",
+            "aliases": [
+              "CVE-2026-112393"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+            "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
             "aliases": [
@@ -2857,6 +3312,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-w889-685w-c8fh"
           },
           {
+            "id": "GHSA-22hg-r758-rrw9",
+            "aliases": [
+              "CVE-2026-112390"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+            "url": "https://osv.dev/vulnerability/GHSA-22hg-r758-rrw9"
+          },
+          {
+            "id": "GHSA-27h8-gf7j-v5hc",
+            "aliases": [
+              "CVE-2026-112392"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+            "url": "https://osv.dev/vulnerability/GHSA-27h8-gf7j-v5hc"
+          },
+          {
             "id": "GHSA-58r4-6rv3-gfh8",
             "aliases": [
               "CVE-2026-112397"
@@ -2868,6 +3349,19 @@
             "informational": null,
             "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
             "url": "https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8"
+          },
+          {
+            "id": "GHSA-5xm2-6676-qcp9",
+            "aliases": [
+              "CVE-2026-112399"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+            "url": "https://osv.dev/vulnerability/GHSA-5xm2-6676-qcp9"
           },
           {
             "id": "GHSA-65qm-jvmh-6pqg",
@@ -2909,6 +3403,45 @@
             "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
           },
           {
+            "id": "GHSA-cp9v-662q-vvx9",
+            "aliases": [
+              "CVE-2026-112405"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+            "url": "https://osv.dev/vulnerability/GHSA-cp9v-662q-vvx9"
+          },
+          {
+            "id": "GHSA-f2g6-542v-9j58",
+            "aliases": [
+              "CVE-2026-112406"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+            "url": "https://osv.dev/vulnerability/GHSA-f2g6-542v-9j58"
+          },
+          {
+            "id": "GHSA-gg2r-wvfm-q9rx",
+            "aliases": [
+              "CVE-2026-112892"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+            "url": "https://osv.dev/vulnerability/GHSA-gg2r-wvfm-q9rx"
+          },
+          {
             "id": "GHSA-j4m9-6w36-pw47",
             "aliases": [
               "CVE-2026-112893"
@@ -2920,6 +3453,19 @@
             "informational": null,
             "summary": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
             "url": "https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47"
+          },
+          {
+            "id": "GHSA-jg86-v3jv-hrpm",
+            "aliases": [
+              "CVE-2026-112894"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+            "url": "https://osv.dev/vulnerability/GHSA-jg86-v3jv-hrpm"
           },
           {
             "id": "GHSA-p4wg-p73j-c528",
@@ -2959,6 +3505,32 @@
             "informational": null,
             "summary": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
             "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
+          },
+          {
+            "id": "GHSA-xvh5-g6gv-559v",
+            "aliases": [
+              "CVE-2026-112902"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+            "url": "https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v"
+          },
+          {
+            "id": "GHSA-254f-3936-288h",
+            "aliases": [
+              "CVE-2026-112391"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+            "url": "https://osv.dev/vulnerability/GHSA-254f-3936-288h"
           },
           {
             "id": "GHSA-42vr-xj54-vc7v",
@@ -3001,6 +3573,58 @@
             "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
           },
           {
+            "id": "GHSA-4rr5-89j8-mwwm",
+            "aliases": [
+              "CVE-2026-112396"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+            "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
+          },
+          {
+            "id": "GHSA-74r2-7ff9-mjj2",
+            "aliases": [
+              "CVE-2026-112401"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+            "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
+          },
+          {
+            "id": "GHSA-fc9g-5qg7-mf45",
+            "aliases": [
+              "CVE-2026-112891"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment copying during save",
+            "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
+            "id": "GHSA-rfgq-q3w2-pmv2",
+            "aliases": [
+              "CVE-2026-112898"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+            "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
+          },
+          {
             "id": "GHSA-vx6w-vv9f-6gvg",
             "aliases": [
               "CVE-2026-112899"
@@ -3026,16 +3650,29 @@
             "informational": null,
             "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
             "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+          },
+          {
+            "id": "GHSA-xgh8-jp6q-p5x8",
+            "aliases": [
+              "CVE-2026-112901"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+            "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
           }
         ],
         "notices": [],
         "counts": {
-          "critical": 3,
-          "high": 8,
-          "moderate": 5,
+          "critical": 4,
+          "high": 16,
+          "moderate": 11,
           "low": 0,
           "unknown": 0,
-          "total": 16
+          "total": 31
         },
         "errors": []
       },
@@ -3275,7 +3912,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 7.631,
+        "median_pr_age_days": 7.799,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 621,
@@ -3623,7 +4260,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.476,
+        "median_pr_age_days": 2.643,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 242,
@@ -3650,6 +4287,19 @@
         "source": "osv.dev",
         "scanned_components": 92,
         "open": [
+          {
+            "id": "GHSA-332p-7hrc-92wf",
+            "aliases": [
+              "CVE-2026-112393"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+            "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
             "aliases": [
@@ -3690,6 +4340,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-w889-685w-c8fh"
           },
           {
+            "id": "GHSA-22hg-r758-rrw9",
+            "aliases": [
+              "CVE-2026-112390"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+            "url": "https://osv.dev/vulnerability/GHSA-22hg-r758-rrw9"
+          },
+          {
+            "id": "GHSA-27h8-gf7j-v5hc",
+            "aliases": [
+              "CVE-2026-112392"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+            "url": "https://osv.dev/vulnerability/GHSA-27h8-gf7j-v5hc"
+          },
+          {
             "id": "GHSA-27vj-qcqg-25rc",
             "aliases": [
               "CVE-2026-104851",
@@ -3715,6 +4391,19 @@
             "informational": null,
             "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
             "url": "https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8"
+          },
+          {
+            "id": "GHSA-5xm2-6676-qcp9",
+            "aliases": [
+              "CVE-2026-112399"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+            "url": "https://osv.dev/vulnerability/GHSA-5xm2-6676-qcp9"
           },
           {
             "id": "GHSA-65qm-jvmh-6pqg",
@@ -3756,6 +4445,45 @@
             "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
           },
           {
+            "id": "GHSA-cp9v-662q-vvx9",
+            "aliases": [
+              "CVE-2026-112405"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+            "url": "https://osv.dev/vulnerability/GHSA-cp9v-662q-vvx9"
+          },
+          {
+            "id": "GHSA-f2g6-542v-9j58",
+            "aliases": [
+              "CVE-2026-112406"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+            "url": "https://osv.dev/vulnerability/GHSA-f2g6-542v-9j58"
+          },
+          {
+            "id": "GHSA-gg2r-wvfm-q9rx",
+            "aliases": [
+              "CVE-2026-112892"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+            "url": "https://osv.dev/vulnerability/GHSA-gg2r-wvfm-q9rx"
+          },
+          {
             "id": "GHSA-j4m9-6w36-pw47",
             "aliases": [
               "CVE-2026-112893"
@@ -3767,6 +4495,19 @@
             "informational": null,
             "summary": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
             "url": "https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47"
+          },
+          {
+            "id": "GHSA-jg86-v3jv-hrpm",
+            "aliases": [
+              "CVE-2026-112894"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+            "url": "https://osv.dev/vulnerability/GHSA-jg86-v3jv-hrpm"
           },
           {
             "id": "GHSA-p4wg-p73j-c528",
@@ -3806,6 +4547,32 @@
             "informational": null,
             "summary": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
             "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
+          },
+          {
+            "id": "GHSA-xvh5-g6gv-559v",
+            "aliases": [
+              "CVE-2026-112902"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+            "url": "https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v"
+          },
+          {
+            "id": "GHSA-254f-3936-288h",
+            "aliases": [
+              "CVE-2026-112391"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+            "url": "https://osv.dev/vulnerability/GHSA-254f-3936-288h"
           },
           {
             "id": "GHSA-42vr-xj54-vc7v",
@@ -3848,6 +4615,58 @@
             "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
           },
           {
+            "id": "GHSA-4rr5-89j8-mwwm",
+            "aliases": [
+              "CVE-2026-112396"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+            "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
+          },
+          {
+            "id": "GHSA-74r2-7ff9-mjj2",
+            "aliases": [
+              "CVE-2026-112401"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+            "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
+          },
+          {
+            "id": "GHSA-fc9g-5qg7-mf45",
+            "aliases": [
+              "CVE-2026-112891"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment copying during save",
+            "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
+            "id": "GHSA-rfgq-q3w2-pmv2",
+            "aliases": [
+              "CVE-2026-112898"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+            "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
+          },
+          {
             "id": "GHSA-vx6w-vv9f-6gvg",
             "aliases": [
               "CVE-2026-112899"
@@ -3873,16 +4692,29 @@
             "informational": null,
             "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
             "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+          },
+          {
+            "id": "GHSA-xgh8-jp6q-p5x8",
+            "aliases": [
+              "CVE-2026-112901"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+            "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
           }
         ],
         "notices": [],
         "counts": {
-          "critical": 3,
-          "high": 9,
-          "moderate": 5,
+          "critical": 4,
+          "high": 17,
+          "moderate": 11,
           "low": 0,
           "unknown": 0,
-          "total": 17
+          "total": 32
         },
         "errors": []
       },
@@ -4114,7 +4946,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 12.899,
+        "median_pr_age_days": 13.067,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -4291,7 +5123,7 @@
       },
       "freshness": {
         "days_since_last_commit": 5,
-        "days_since_last_release": 21,
+        "days_since_last_release": 22,
         "days_since_last_security_scan": 5
       },
       "supply_chain": {
@@ -4448,7 +5280,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 2.377,
+        "median_pr_age_days": 2.544,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 602,
@@ -4637,9 +5469,9 @@
         "dependabot_count": 3
       },
       "freshness": {
-        "days_since_last_commit": 25,
-        "days_since_last_release": 25,
-        "days_since_last_security_scan": 25
+        "days_since_last_commit": 26,
+        "days_since_last_release": 26,
+        "days_since_last_security_scan": 26
       },
       "supply_chain": {
         "pypi_version": "0.1.10",
@@ -4808,7 +5640,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.704,
+        "median_pr_age_days": 2.871,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 812,
@@ -5118,7 +5950,7 @@
           "#69 build(deps): Bump the actions-all group across 1 directory with 5 updates",
           "#67 build(deps-dev): Bump the deps-minor group across 1 directory with 5 updates"
         ],
-        "oldest_age_days": 8,
+        "oldest_age_days": 9,
         "dependabot_count": 2
       },
       "freshness": {
@@ -5235,7 +6067,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 5.518,
+        "median_pr_age_days": 5.685,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 555,
@@ -5262,6 +6094,19 @@
         "source": "osv.dev",
         "scanned_components": 63,
         "open": [
+          {
+            "id": "GHSA-332p-7hrc-92wf",
+            "aliases": [
+              "CVE-2026-112393"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+            "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
             "aliases": [
@@ -5302,6 +6147,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-w889-685w-c8fh"
           },
           {
+            "id": "GHSA-22hg-r758-rrw9",
+            "aliases": [
+              "CVE-2026-112390"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+            "url": "https://osv.dev/vulnerability/GHSA-22hg-r758-rrw9"
+          },
+          {
+            "id": "GHSA-27h8-gf7j-v5hc",
+            "aliases": [
+              "CVE-2026-112392"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+            "url": "https://osv.dev/vulnerability/GHSA-27h8-gf7j-v5hc"
+          },
+          {
             "id": "GHSA-58r4-6rv3-gfh8",
             "aliases": [
               "CVE-2026-112397"
@@ -5313,6 +6184,19 @@
             "informational": null,
             "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
             "url": "https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8"
+          },
+          {
+            "id": "GHSA-5xm2-6676-qcp9",
+            "aliases": [
+              "CVE-2026-112399"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+            "url": "https://osv.dev/vulnerability/GHSA-5xm2-6676-qcp9"
           },
           {
             "id": "GHSA-65qm-jvmh-6pqg",
@@ -5354,6 +6238,45 @@
             "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
           },
           {
+            "id": "GHSA-cp9v-662q-vvx9",
+            "aliases": [
+              "CVE-2026-112405"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+            "url": "https://osv.dev/vulnerability/GHSA-cp9v-662q-vvx9"
+          },
+          {
+            "id": "GHSA-f2g6-542v-9j58",
+            "aliases": [
+              "CVE-2026-112406"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+            "url": "https://osv.dev/vulnerability/GHSA-f2g6-542v-9j58"
+          },
+          {
+            "id": "GHSA-gg2r-wvfm-q9rx",
+            "aliases": [
+              "CVE-2026-112892"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+            "url": "https://osv.dev/vulnerability/GHSA-gg2r-wvfm-q9rx"
+          },
+          {
             "id": "GHSA-j4m9-6w36-pw47",
             "aliases": [
               "CVE-2026-112893"
@@ -5365,6 +6288,19 @@
             "informational": null,
             "summary": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
             "url": "https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47"
+          },
+          {
+            "id": "GHSA-jg86-v3jv-hrpm",
+            "aliases": [
+              "CVE-2026-112894"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+            "url": "https://osv.dev/vulnerability/GHSA-jg86-v3jv-hrpm"
           },
           {
             "id": "GHSA-p4wg-p73j-c528",
@@ -5404,6 +6340,32 @@
             "informational": null,
             "summary": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
             "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
+          },
+          {
+            "id": "GHSA-xvh5-g6gv-559v",
+            "aliases": [
+              "CVE-2026-112902"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+            "url": "https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v"
+          },
+          {
+            "id": "GHSA-254f-3936-288h",
+            "aliases": [
+              "CVE-2026-112391"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+            "url": "https://osv.dev/vulnerability/GHSA-254f-3936-288h"
           },
           {
             "id": "GHSA-42vr-xj54-vc7v",
@@ -5446,6 +6408,58 @@
             "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
           },
           {
+            "id": "GHSA-4rr5-89j8-mwwm",
+            "aliases": [
+              "CVE-2026-112396"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+            "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
+          },
+          {
+            "id": "GHSA-74r2-7ff9-mjj2",
+            "aliases": [
+              "CVE-2026-112401"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+            "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
+          },
+          {
+            "id": "GHSA-fc9g-5qg7-mf45",
+            "aliases": [
+              "CVE-2026-112891"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment copying during save",
+            "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
+            "id": "GHSA-rfgq-q3w2-pmv2",
+            "aliases": [
+              "CVE-2026-112898"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+            "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
+          },
+          {
             "id": "GHSA-vx6w-vv9f-6gvg",
             "aliases": [
               "CVE-2026-112899"
@@ -5471,16 +6485,29 @@
             "informational": null,
             "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
             "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+          },
+          {
+            "id": "GHSA-xgh8-jp6q-p5x8",
+            "aliases": [
+              "CVE-2026-112901"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+            "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
           }
         ],
         "notices": [],
         "counts": {
-          "critical": 3,
-          "high": 8,
-          "moderate": 5,
+          "critical": 4,
+          "high": 16,
+          "moderate": 11,
           "low": 0,
           "unknown": 0,
-          "total": 16
+          "total": 31
         },
         "errors": []
       },
@@ -5751,6 +6778,19 @@
         "scanned_components": 76,
         "open": [
           {
+            "id": "GHSA-332p-7hrc-92wf",
+            "aliases": [
+              "CVE-2026-112393"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+            "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
+          {
             "id": "GHSA-6q48-6c7w-9gw2",
             "aliases": [
               "PYSEC-2026-4320"
@@ -5790,6 +6830,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-w889-685w-c8fh"
           },
           {
+            "id": "GHSA-22hg-r758-rrw9",
+            "aliases": [
+              "CVE-2026-112390"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+            "url": "https://osv.dev/vulnerability/GHSA-22hg-r758-rrw9"
+          },
+          {
+            "id": "GHSA-27h8-gf7j-v5hc",
+            "aliases": [
+              "CVE-2026-112392"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+            "url": "https://osv.dev/vulnerability/GHSA-27h8-gf7j-v5hc"
+          },
+          {
             "id": "GHSA-58r4-6rv3-gfh8",
             "aliases": [
               "CVE-2026-112397"
@@ -5801,6 +6867,19 @@
             "informational": null,
             "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
             "url": "https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8"
+          },
+          {
+            "id": "GHSA-5xm2-6676-qcp9",
+            "aliases": [
+              "CVE-2026-112399"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+            "url": "https://osv.dev/vulnerability/GHSA-5xm2-6676-qcp9"
           },
           {
             "id": "GHSA-65qm-jvmh-6pqg",
@@ -5856,6 +6935,45 @@
             "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
           },
           {
+            "id": "GHSA-cp9v-662q-vvx9",
+            "aliases": [
+              "CVE-2026-112405"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+            "url": "https://osv.dev/vulnerability/GHSA-cp9v-662q-vvx9"
+          },
+          {
+            "id": "GHSA-f2g6-542v-9j58",
+            "aliases": [
+              "CVE-2026-112406"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+            "url": "https://osv.dev/vulnerability/GHSA-f2g6-542v-9j58"
+          },
+          {
+            "id": "GHSA-gg2r-wvfm-q9rx",
+            "aliases": [
+              "CVE-2026-112892"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+            "url": "https://osv.dev/vulnerability/GHSA-gg2r-wvfm-q9rx"
+          },
+          {
             "id": "GHSA-j4m9-6w36-pw47",
             "aliases": [
               "CVE-2026-112893"
@@ -5867,6 +6985,19 @@
             "informational": null,
             "summary": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
             "url": "https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47"
+          },
+          {
+            "id": "GHSA-jg86-v3jv-hrpm",
+            "aliases": [
+              "CVE-2026-112894"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+            "url": "https://osv.dev/vulnerability/GHSA-jg86-v3jv-hrpm"
           },
           {
             "id": "GHSA-p4wg-p73j-c528",
@@ -5922,6 +7053,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-vxq7-64xx-v4gw"
           },
           {
+            "id": "GHSA-xvh5-g6gv-559v",
+            "aliases": [
+              "CVE-2026-112902"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+            "url": "https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v"
+          },
+          {
+            "id": "GHSA-254f-3936-288h",
+            "aliases": [
+              "CVE-2026-112391"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+            "url": "https://osv.dev/vulnerability/GHSA-254f-3936-288h"
+          },
+          {
             "id": "GHSA-42vr-xj54-vc7v",
             "aliases": [
               "CVE-2026-101918",
@@ -5962,6 +7119,45 @@
             "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
           },
           {
+            "id": "GHSA-4rr5-89j8-mwwm",
+            "aliases": [
+              "CVE-2026-112396"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+            "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
+          },
+          {
+            "id": "GHSA-74r2-7ff9-mjj2",
+            "aliases": [
+              "CVE-2026-112401"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+            "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
+          },
+          {
+            "id": "GHSA-fc9g-5qg7-mf45",
+            "aliases": [
+              "CVE-2026-112891"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment copying during save",
+            "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
             "id": "GHSA-gh4c-6fx4-qh6g",
             "aliases": [
               "CVE-2026-97688",
@@ -5974,6 +7170,19 @@
             "informational": null,
             "summary": "urllib3: Chunked Deflate streaming can enter an infinite loop",
             "url": "https://osv.dev/vulnerability/GHSA-gh4c-6fx4-qh6g"
+          },
+          {
+            "id": "GHSA-rfgq-q3w2-pmv2",
+            "aliases": [
+              "CVE-2026-112898"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+            "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
           },
           {
             "id": "GHSA-vx6w-vv9f-6gvg",
@@ -6001,16 +7210,29 @@
             "informational": null,
             "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
             "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+          },
+          {
+            "id": "GHSA-xgh8-jp6q-p5x8",
+            "aliases": [
+              "CVE-2026-112901"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+            "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
           }
         ],
         "notices": [],
         "counts": {
-          "critical": 3,
-          "high": 10,
-          "moderate": 6,
+          "critical": 4,
+          "high": 18,
+          "moderate": 12,
           "low": 0,
           "unknown": 0,
-          "total": 19
+          "total": 34
         },
         "errors": []
       },
@@ -6252,7 +7474,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 5.087,
+        "median_pr_age_days": 5.254,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 496,
@@ -6279,6 +7501,19 @@
         "source": "osv.dev",
         "scanned_components": 59,
         "open": [
+          {
+            "id": "GHSA-332p-7hrc-92wf",
+            "aliases": [
+              "CVE-2026-112393"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+            "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
             "aliases": [
@@ -6319,6 +7554,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-w889-685w-c8fh"
           },
           {
+            "id": "GHSA-22hg-r758-rrw9",
+            "aliases": [
+              "CVE-2026-112390"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+            "url": "https://osv.dev/vulnerability/GHSA-22hg-r758-rrw9"
+          },
+          {
+            "id": "GHSA-27h8-gf7j-v5hc",
+            "aliases": [
+              "CVE-2026-112392"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+            "url": "https://osv.dev/vulnerability/GHSA-27h8-gf7j-v5hc"
+          },
+          {
             "id": "GHSA-58r4-6rv3-gfh8",
             "aliases": [
               "CVE-2026-112397"
@@ -6330,6 +7591,19 @@
             "informational": null,
             "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
             "url": "https://osv.dev/vulnerability/GHSA-58r4-6rv3-gfh8"
+          },
+          {
+            "id": "GHSA-5xm2-6676-qcp9",
+            "aliases": [
+              "CVE-2026-112399"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+            "url": "https://osv.dev/vulnerability/GHSA-5xm2-6676-qcp9"
           },
           {
             "id": "GHSA-65qm-jvmh-6pqg",
@@ -6371,6 +7645,45 @@
             "url": "https://osv.dev/vulnerability/GHSA-c6hw-5grf-ff96"
           },
           {
+            "id": "GHSA-cp9v-662q-vvx9",
+            "aliases": [
+              "CVE-2026-112405"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+            "url": "https://osv.dev/vulnerability/GHSA-cp9v-662q-vvx9"
+          },
+          {
+            "id": "GHSA-f2g6-542v-9j58",
+            "aliases": [
+              "CVE-2026-112406"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+            "url": "https://osv.dev/vulnerability/GHSA-f2g6-542v-9j58"
+          },
+          {
+            "id": "GHSA-gg2r-wvfm-q9rx",
+            "aliases": [
+              "CVE-2026-112892"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+            "url": "https://osv.dev/vulnerability/GHSA-gg2r-wvfm-q9rx"
+          },
+          {
             "id": "GHSA-j4m9-6w36-pw47",
             "aliases": [
               "CVE-2026-112893"
@@ -6382,6 +7695,19 @@
             "informational": null,
             "summary": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
             "url": "https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47"
+          },
+          {
+            "id": "GHSA-jg86-v3jv-hrpm",
+            "aliases": [
+              "CVE-2026-112894"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+            "url": "https://osv.dev/vulnerability/GHSA-jg86-v3jv-hrpm"
           },
           {
             "id": "GHSA-p4wg-p73j-c528",
@@ -6421,6 +7747,32 @@
             "informational": null,
             "summary": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
             "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
+          },
+          {
+            "id": "GHSA-xvh5-g6gv-559v",
+            "aliases": [
+              "CVE-2026-112902"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+            "url": "https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v"
+          },
+          {
+            "id": "GHSA-254f-3936-288h",
+            "aliases": [
+              "CVE-2026-112391"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+            "url": "https://osv.dev/vulnerability/GHSA-254f-3936-288h"
           },
           {
             "id": "GHSA-42vr-xj54-vc7v",
@@ -6463,6 +7815,58 @@
             "url": "https://osv.dev/vulnerability/GHSA-462x-pgg6-55fp"
           },
           {
+            "id": "GHSA-4rr5-89j8-mwwm",
+            "aliases": [
+              "CVE-2026-112396"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+            "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
+          },
+          {
+            "id": "GHSA-74r2-7ff9-mjj2",
+            "aliases": [
+              "CVE-2026-112401"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+            "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
+          },
+          {
+            "id": "GHSA-fc9g-5qg7-mf45",
+            "aliases": [
+              "CVE-2026-112891"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Quadratic GIF comment copying during save",
+            "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
+            "id": "GHSA-rfgq-q3w2-pmv2",
+            "aliases": [
+              "CVE-2026-112898"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+            "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
+          },
+          {
             "id": "GHSA-vx6w-vv9f-6gvg",
             "aliases": [
               "CVE-2026-112899"
@@ -6488,16 +7892,29 @@
             "informational": null,
             "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
             "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+          },
+          {
+            "id": "GHSA-xgh8-jp6q-p5x8",
+            "aliases": [
+              "CVE-2026-112901"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+            "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
           }
         ],
         "notices": [],
         "counts": {
-          "critical": 3,
-          "high": 8,
-          "moderate": 5,
+          "critical": 4,
+          "high": 16,
+          "moderate": 11,
           "low": 0,
           "unknown": 0,
-          "total": 16
+          "total": 31
         },
         "errors": []
       },
@@ -6736,7 +8153,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 12.087,
+        "median_pr_age_days": 12.254,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 169,
@@ -7034,7 +8451,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 2.498,
+        "median_pr_age_days": 2.666,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -7192,12 +8609,12 @@
           "#80 chore(deps): bump the actions-all group across 1 directory with 5 updates",
           "#75 chore(deps): bump the deps-minor group across 1 directory with 6 updates"
         ],
-        "oldest_age_days": 8,
+        "oldest_age_days": 9,
         "dependabot_count": 2
       },
       "freshness": {
         "days_since_last_commit": 4,
-        "days_since_last_release": 25,
+        "days_since_last_release": 26,
         "days_since_last_security_scan": 4
       },
       "supply_chain": {
@@ -7309,7 +8726,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 5.526,
+        "median_pr_age_days": 5.694,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 168,
