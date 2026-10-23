@@ -309,7 +309,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 4.375,
+      "median_pr_age_days": 4.538,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 812,
@@ -474,6 +474,17 @@
           "informational": null,
           "summary": "Certificate verification may accept distrusted intermediates",
           "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0382"
+        },
+        {
+          "id": "RUSTSEC-2026-0386",
+          "aliases": [],
+          "package": "tokio",
+          "version": "1.53.1",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "`AsyncFd::new` and related constructors violate I/O safety",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0386"
         }
       ],
       "notices": [
@@ -494,8 +505,8 @@
         "high": 1,
         "moderate": 2,
         "low": 0,
-        "unknown": 6,
-        "total": 10
+        "unknown": 7,
+        "total": 11
       },
       "errors": []
     },
