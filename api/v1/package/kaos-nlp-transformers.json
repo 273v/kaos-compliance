@@ -138,9 +138,9 @@
       "dependabot_count": 3
     },
     "freshness": {
-      "days_since_last_commit": 27,
-      "days_since_last_release": 27,
-      "days_since_last_security_scan": 27
+      "days_since_last_commit": 28,
+      "days_since_last_release": 28,
+      "days_since_last_security_scan": 28
     },
     "supply_chain": {
       "pypi_version": "0.1.10",
@@ -309,7 +309,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 4.703,
+      "median_pr_age_days": 4.871,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 812,
@@ -364,6 +364,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-27vj-qcqg-25rc"
         },
         {
+          "id": "GHSA-v4x8-3wr5-3wq8",
+          "aliases": [
+            "CVE-2026-112940"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "filelock ReadWriteLock: SQLite reopens the lock database by name, so a planted symlink or journal file makes the lock user's process overwrite or unlink its own files",
+          "url": "https://osv.dev/vulnerability/GHSA-v4x8-3wr5-3wq8"
+        },
+        {
           "id": "GHSA-42vr-xj54-vc7v",
           "aliases": [
             "CVE-2026-101918",
@@ -390,6 +403,32 @@
           "informational": null,
           "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
           "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+        },
+        {
+          "id": "GHSA-567q-5qvw-pf92",
+          "aliases": [
+            "CVE-2026-112907"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "low",
+          "informational": null,
+          "summary": "filelock: On Windows an oplock on a soft lock's marker holds SoftFileLock.acquire() past its timeout and blocks the stale break",
+          "url": "https://osv.dev/vulnerability/GHSA-567q-5qvw-pf92"
+        },
+        {
+          "id": "GHSA-9vhv-jxww-xfm5",
+          "aliases": [
+            "CVE-2026-112913"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "low",
+          "informational": null,
+          "summary": "filelock: ReadWriteLock on Windows acts on SQLite side files another local user places beside its database",
+          "url": "https://osv.dev/vulnerability/GHSA-9vhv-jxww-xfm5"
         },
         {
           "id": "RUSTSEC-2026-0346",
@@ -502,11 +541,11 @@
       ],
       "counts": {
         "critical": 1,
-        "high": 1,
+        "high": 2,
         "moderate": 2,
-        "low": 0,
+        "low": 2,
         "unknown": 7,
-        "total": 11
+        "total": 14
       },
       "errors": []
     },

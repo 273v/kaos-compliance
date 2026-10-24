@@ -98,7 +98,21 @@ footer a{color:var(--muted)}
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-10-22.</p>
+  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
+   2026-10-23 &rarr; 2026-10-24
+  </p>
+  <ul style="margin:0;padding-left:var(--s-5)">
+    <li>
+     <span class="pill g" aria-label="advisories_open: better">
+      <span class="gly" aria-hidden="true">▲</span>
+      <span class="wd" aria-hidden="true">better</span>
+     </span>
+     <strong>advisories_open</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      43 &rarr; 48
+     </span>
+    </li>
+  </ul>
  </div>
 </section>
 
@@ -118,7 +132,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 43 open advisories (OSV.dev): 5 critical, 24 high, 14 moderate</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 48 open advisories (OSV.dev): 6 critical, 25 high, 15 moderate, 2 low</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -211,7 +225,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-43 <span style="color:var(--muted);font-size:0.75rem">across 92 locked dependencies (OSV.dev)</span>   </dd>
+48 <span style="color:var(--muted);font-size:0.75rem">across 92 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -229,6 +243,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">critical</td>
      <td data-h="Summary">Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h" target="_blank" rel="noopener">GHSA-5x8w-8jj5-q52h</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">critical</td>
+     <td data-h="Summary">Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2" target="_blank" rel="noopener">GHSA-6q48-6c7w-9gw2</a></td>
@@ -393,6 +413,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-v4x8-3wr5-3wq8" target="_blank" rel="noopener">GHSA-v4x8-3wr5-3wq8</a></td>
+     <td data-h="Package">filelock 3.29.0</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">filelock ReadWriteLock: SQLite reopens the lock database by name, so a planted symlink or journal file makes the lock user's process overwrite or unlink its own files</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v" target="_blank" rel="noopener">GHSA-xvh5-g6gv-559v</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
@@ -441,6 +467,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c" target="_blank" rel="noopener">GHSA-654x-cwwv-5j9c</a></td>
+     <td data-h="Package">pillow 12.3.0</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2" target="_blank" rel="noopener">GHSA-74r2-7ff9-mjj2</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">moderate</td>
@@ -482,6 +514,18 @@ footer a{color:var(--muted)}
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes</td>
     </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-567q-5qvw-pf92" target="_blank" rel="noopener">GHSA-567q-5qvw-pf92</a></td>
+     <td data-h="Package">filelock 3.29.0</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">filelock: On Windows an oplock on a soft lock's marker holds SoftFileLock.acquire() past its timeout and blocks the stale break</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-9vhv-jxww-xfm5" target="_blank" rel="noopener">GHSA-9vhv-jxww-xfm5</a></td>
+     <td data-h="Package">filelock 3.29.0</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">filelock: ReadWriteLock on Windows acts on SQLite side files another local user places beside its database</td>
+    </tr>
    </tbody>
   </table>
   <p style="margin:var(--s-3) 0 0;color:var(--muted);font-size:0.75rem">
@@ -512,8 +556,8 @@ footer a{color:var(--muted)}
    <dt>Commits 90d</dt>
    <dd>
     9
-<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ml-core Commits 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,4.1 12.2,4.7 13.1,5.2 14.0,7.3 14.8,7.3 15.7,7.9 16.5,8.1 17.4,8.1 18.2,8.1 19.1,8.4 19.9,10.0 20.8,10.0 21.6,10.3 22.5,10.8 23.3,11.1 24.2,12.4 25.1,12.4 25.9,12.9 26.8,12.9 27.6,12.9 28.5,12.9 29.3,12.9 30.2,12.9 31.0,12.9 31.9,12.9 32.7,12.9 33.6,12.9 34.4,12.9 35.3,12.9 36.2,12.9 37.0,12.9 37.9,12.9 38.7,12.9 39.6,12.9 40.4,12.9 41.3,12.9 42.1,12.9 43.0,12.9 43.8,12.9 44.7,12.9 45.6,12.9 46.4,12.9 47.3,12.9 48.1,12.9 49.0,12.9 49.8,13.7 50.7,13.7 51.5,14.0 52.4,11.6 53.2,11.6 54.1,11.6 54.9,11.6 55.8,12.1 56.7,12.1 57.5,12.1 58.4,12.1 59.2,12.1 60.1,12.1 60.9,12.1 61.8,12.1 62.6,12.1 63.5,12.1 64.3,12.1 65.2,12.1 66.0,12.1 66.9,12.1 67.8,12.1 68.6,12.1 69.5,12.1 70.3,12.1 71.2,12.1 72.0,12.1 72.9,12.1 73.7,12.7 74.6,12.7 75.4,12.7 76.3,12.7 77.1,12.7 78.0,12.7"></polyline><circle cx="78.0" cy="12.7" r="1.5" fill="currentColor"></circle></svg>   </dd>
-   <dt>Releases 90d</dt><dd>2<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ml-core Releases 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,2.0 11.4,3.3 12.2,3.3 13.1,3.3 14.0,4.7 14.8,4.7 15.7,4.7 16.5,4.7 17.4,4.7 18.2,4.7 19.1,6.0 19.9,6.0 20.8,6.0 21.6,7.3 22.5,10.0 23.3,10.0 24.2,11.3 25.1,11.3 25.9,12.7 26.8,12.7 27.6,12.7 28.5,12.7 29.3,12.7 30.2,12.7 31.0,12.7 31.9,12.7 32.7,12.7 33.6,12.7 34.4,12.7 35.3,12.7 36.2,12.7 37.0,12.7 37.9,12.7 38.7,12.7 39.6,12.7 40.4,12.7 41.3,12.7 42.1,12.7 43.0,12.7 43.8,12.7 44.7,12.7 45.6,12.7 46.4,12.7 47.3,12.7 48.1,12.7 49.0,12.7 49.8,12.7 50.7,12.7 51.5,14.0 52.4,11.3 53.2,11.3 54.1,11.3 54.9,11.3 55.8,11.3 56.7,11.3 57.5,11.3 58.4,11.3 59.2,11.3 60.1,11.3 60.9,11.3 61.8,11.3 62.6,11.3 63.5,11.3 64.3,11.3 65.2,11.3 66.0,11.3 66.9,11.3 67.8,11.3 68.6,11.3 69.5,11.3 70.3,11.3 71.2,11.3 72.0,11.3 72.9,11.3 73.7,11.3 74.6,11.3 75.4,11.3 76.3,11.3 77.1,11.3 78.0,11.3"></polyline><circle cx="78.0" cy="11.3" r="1.5" fill="currentColor"></circle></svg></dd>
+<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ml-core Commits 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,4.1 11.4,4.7 12.2,5.2 13.1,7.3 14.0,7.3 14.8,7.9 15.7,8.1 16.5,8.1 17.4,8.1 18.2,8.4 19.1,10.0 19.9,10.0 20.8,10.3 21.6,10.8 22.5,11.1 23.3,12.4 24.2,12.4 25.1,12.9 25.9,12.9 26.8,12.9 27.6,12.9 28.5,12.9 29.3,12.9 30.2,12.9 31.0,12.9 31.9,12.9 32.7,12.9 33.6,12.9 34.4,12.9 35.3,12.9 36.2,12.9 37.0,12.9 37.9,12.9 38.7,12.9 39.6,12.9 40.4,12.9 41.3,12.9 42.1,12.9 43.0,12.9 43.8,12.9 44.7,12.9 45.6,12.9 46.4,12.9 47.3,12.9 48.1,12.9 49.0,13.7 49.8,13.7 50.7,14.0 51.5,11.6 52.4,11.6 53.2,11.6 54.1,11.6 54.9,12.1 55.8,12.1 56.7,12.1 57.5,12.1 58.4,12.1 59.2,12.1 60.1,12.1 60.9,12.1 61.8,12.1 62.6,12.1 63.5,12.1 64.3,12.1 65.2,12.1 66.0,12.1 66.9,12.1 67.8,12.1 68.6,12.1 69.5,12.1 70.3,12.1 71.2,12.1 72.0,12.1 72.9,12.7 73.7,12.7 74.6,12.7 75.4,12.7 76.3,12.7 77.1,12.7 78.0,12.7"></polyline><circle cx="78.0" cy="12.7" r="1.5" fill="currentColor"></circle></svg>   </dd>
+   <dt>Releases 90d</dt><dd>2<svg class="spark" width="80" height="16" viewBox="0 0 80 16" role="img" aria-label="kaos-ml-core Releases 90d: 90 days of history"><polyline fill="none" stroke="currentColor" stroke-width="1.25" points="2.0,2.0 2.9,2.0 3.7,2.0 4.6,2.0 5.4,2.0 6.3,2.0 7.1,2.0 8.0,2.0 8.8,2.0 9.7,2.0 10.5,3.3 11.4,3.3 12.2,3.3 13.1,4.7 14.0,4.7 14.8,4.7 15.7,4.7 16.5,4.7 17.4,4.7 18.2,6.0 19.1,6.0 19.9,6.0 20.8,7.3 21.6,10.0 22.5,10.0 23.3,11.3 24.2,11.3 25.1,12.7 25.9,12.7 26.8,12.7 27.6,12.7 28.5,12.7 29.3,12.7 30.2,12.7 31.0,12.7 31.9,12.7 32.7,12.7 33.6,12.7 34.4,12.7 35.3,12.7 36.2,12.7 37.0,12.7 37.9,12.7 38.7,12.7 39.6,12.7 40.4,12.7 41.3,12.7 42.1,12.7 43.0,12.7 43.8,12.7 44.7,12.7 45.6,12.7 46.4,12.7 47.3,12.7 48.1,12.7 49.0,12.7 49.8,12.7 50.7,14.0 51.5,11.3 52.4,11.3 53.2,11.3 54.1,11.3 54.9,11.3 55.8,11.3 56.7,11.3 57.5,11.3 58.4,11.3 59.2,11.3 60.1,11.3 60.9,11.3 61.8,11.3 62.6,11.3 63.5,11.3 64.3,11.3 65.2,11.3 66.0,11.3 66.9,11.3 67.8,11.3 68.6,11.3 69.5,11.3 70.3,11.3 71.2,11.3 72.0,11.3 72.9,11.3 73.7,11.3 74.6,11.3 75.4,11.3 76.3,11.3 77.1,11.3 78.0,11.3"></polyline><circle cx="78.0" cy="11.3" r="1.5" fill="currentColor"></circle></svg></dd>
   </dl>
  </div>
 </section>
@@ -589,7 +633,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-23 20:22 UTC
+ Generated 2026-10-24 00:26 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

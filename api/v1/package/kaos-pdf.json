@@ -242,7 +242,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 0.093,
+      "median_pr_age_days": 0.262,
       "open_pr_count": 1,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 340,
@@ -281,6 +281,19 @@
           "informational": null,
           "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
           "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+        },
+        {
+          "id": "GHSA-5x8w-8jj5-q52h",
+          "aliases": [
+            "CVE-2026-112398"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+          "url": "https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h"
         },
         {
           "id": "GHSA-6q48-6c7w-9gw2",
@@ -752,6 +765,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
         },
         {
+          "id": "GHSA-654x-cwwv-5j9c",
+          "aliases": [
+            "CVE-2026-114501"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+          "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
+        },
+        {
           "id": "GHSA-74r2-7ff9-mjj2",
           "aliases": [
             "CVE-2026-112401"
@@ -860,12 +886,12 @@
       ],
       "notices": [],
       "counts": {
-        "critical": 5,
+        "critical": 6,
         "high": 25,
-        "moderate": 15,
+        "moderate": 16,
         "low": 0,
         "unknown": 0,
-        "total": 45
+        "total": 47
       },
       "errors": []
     },

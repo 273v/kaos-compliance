@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-23T20:22:58Z",
+  "generated_at": "2026-10-24T00:26:22Z",
   "generator": {
     "name": "kaos-compliance",
     "version": "0.0.1"
   },
   "heartbeat": {
-    "last_full_sweep_at": "2026-10-23T20:22:58Z",
-    "last_light_sweep_at": "2026-10-23T20:22:58Z",
-    "last_security_sweep_at": "2026-10-23T20:22:58Z",
+    "last_full_sweep_at": "2026-10-24T00:26:22Z",
+    "last_light_sweep_at": "2026-10-24T00:26:22Z",
+    "last_security_sweep_at": "2026-10-24T00:26:22Z",
     "stale_threshold_hours": 26
   },
   "modules": [
@@ -260,7 +260,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 4.527,
+        "median_pr_age_days": 4.695,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 172,
@@ -299,6 +299,19 @@
             "informational": null,
             "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
             "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
+          {
+            "id": "GHSA-5x8w-8jj5-q52h",
+            "aliases": [
+              "CVE-2026-112398"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+            "url": "https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h"
           },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
@@ -674,6 +687,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
           },
           {
+            "id": "GHSA-v4x8-3wr5-3wq8",
+            "aliases": [
+              "CVE-2026-112940"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "filelock ReadWriteLock: SQLite reopens the lock database by name, so a planted symlink or journal file makes the lock user's process overwrite or unlink its own files",
+            "url": "https://osv.dev/vulnerability/GHSA-v4x8-3wr5-3wq8"
+          },
+          {
             "id": "GHSA-xvh5-g6gv-559v",
             "aliases": [
               "CVE-2026-112902"
@@ -791,6 +817,19 @@
             "informational": null,
             "summary": "Multidict: Reference leak in CIMultiDict/MultiDict items-view union and subtraction",
             "url": "https://osv.dev/vulnerability/GHSA-54p9-h82j-f925"
+          },
+          {
+            "id": "GHSA-654x-cwwv-5j9c",
+            "aliases": [
+              "CVE-2026-114501"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+            "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
           },
           {
             "id": "GHSA-6cjc-53gc-5rqm",
@@ -950,6 +989,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-494j-54xm-rwp3"
           },
           {
+            "id": "GHSA-567q-5qvw-pf92",
+            "aliases": [
+              "CVE-2026-112907"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "filelock: On Windows an oplock on a soft lock's marker holds SoftFileLock.acquire() past its timeout and blocks the stale break",
+            "url": "https://osv.dev/vulnerability/GHSA-567q-5qvw-pf92"
+          },
+          {
+            "id": "GHSA-9vhv-jxww-xfm5",
+            "aliases": [
+              "CVE-2026-112913"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "filelock: ReadWriteLock on Windows acts on SQLite side files another local user places beside its database",
+            "url": "https://osv.dev/vulnerability/GHSA-9vhv-jxww-xfm5"
+          },
+          {
             "id": "GHSA-gx76-c99x-2c96",
             "aliases": [
               "CVE-2026-111749"
@@ -965,12 +1030,12 @@
         ],
         "notices": [],
         "counts": {
-          "critical": 5,
-          "high": 26,
-          "moderate": 19,
-          "low": 2,
+          "critical": 6,
+          "high": 27,
+          "moderate": 20,
+          "low": 4,
           "unknown": 0,
-          "total": 52
+          "total": 57
         },
         "errors": []
       },
@@ -1215,7 +1280,7 @@
           "NOTICE"
         ],
         "releases_90d": 5,
-        "median_pr_age_days": 4.437,
+        "median_pr_age_days": 4.605,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 126,
@@ -1612,7 +1677,7 @@
       },
       "freshness": {
         "days_since_last_commit": 4,
-        "days_since_last_release": 27,
+        "days_since_last_release": 28,
         "days_since_last_security_scan": 4
       },
       "supply_chain": {
@@ -1730,7 +1795,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 4.478,
+        "median_pr_age_days": 4.646,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 309,
@@ -1769,6 +1834,19 @@
             "informational": null,
             "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
             "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
+          {
+            "id": "GHSA-5x8w-8jj5-q52h",
+            "aliases": [
+              "CVE-2026-112398"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+            "url": "https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h"
           },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
@@ -2121,6 +2199,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
           },
           {
+            "id": "GHSA-v4x8-3wr5-3wq8",
+            "aliases": [
+              "CVE-2026-112940"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "filelock ReadWriteLock: SQLite reopens the lock database by name, so a planted symlink or journal file makes the lock user's process overwrite or unlink its own files",
+            "url": "https://osv.dev/vulnerability/GHSA-v4x8-3wr5-3wq8"
+          },
+          {
             "id": "GHSA-xvh5-g6gv-559v",
             "aliases": [
               "CVE-2026-112902"
@@ -2212,6 +2303,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
           },
           {
+            "id": "GHSA-654x-cwwv-5j9c",
+            "aliases": [
+              "CVE-2026-114501"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+            "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
+          },
+          {
             "id": "GHSA-74r2-7ff9-mjj2",
             "aliases": [
               "CVE-2026-112401"
@@ -2288,16 +2392,42 @@
             "informational": null,
             "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
             "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
+          },
+          {
+            "id": "GHSA-567q-5qvw-pf92",
+            "aliases": [
+              "CVE-2026-112907"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "filelock: On Windows an oplock on a soft lock's marker holds SoftFileLock.acquire() past its timeout and blocks the stale break",
+            "url": "https://osv.dev/vulnerability/GHSA-567q-5qvw-pf92"
+          },
+          {
+            "id": "GHSA-9vhv-jxww-xfm5",
+            "aliases": [
+              "CVE-2026-112913"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "filelock: ReadWriteLock on Windows acts on SQLite side files another local user places beside its database",
+            "url": "https://osv.dev/vulnerability/GHSA-9vhv-jxww-xfm5"
           }
         ],
         "notices": [],
         "counts": {
-          "critical": 5,
-          "high": 24,
-          "moderate": 12,
-          "low": 0,
+          "critical": 6,
+          "high": 25,
+          "moderate": 13,
+          "low": 2,
           "unknown": 0,
-          "total": 41
+          "total": 46
         },
         "errors": []
       },
@@ -2535,7 +2665,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 4.432,
+        "median_pr_age_days": 4.6,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -2860,7 +2990,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 4.562,
+        "median_pr_age_days": 4.73,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 766,
@@ -3179,7 +3309,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 4.364,
+        "median_pr_age_days": 4.532,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 432,
@@ -3421,7 +3551,7 @@
           "#96 chore(deps): bump the actions-all group across 1 directory with 5 updates",
           "#94 chore(deps): bump the deps-minor group across 1 directory with 7 updates"
         ],
-        "oldest_age_days": 10,
+        "oldest_age_days": 11,
         "dependabot_count": 2
       },
       "freshness": {
@@ -3538,7 +3668,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 7.532,
+        "median_pr_age_days": 7.7,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 175,
@@ -3577,6 +3707,19 @@
             "informational": null,
             "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
             "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
+          {
+            "id": "GHSA-5x8w-8jj5-q52h",
+            "aliases": [
+              "CVE-2026-112398"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+            "url": "https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h"
           },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
@@ -4020,6 +4163,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
           },
           {
+            "id": "GHSA-654x-cwwv-5j9c",
+            "aliases": [
+              "CVE-2026-114501"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+            "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
+          },
+          {
             "id": "GHSA-74r2-7ff9-mjj2",
             "aliases": [
               "CVE-2026-112401"
@@ -4127,12 +4283,12 @@
         ],
         "notices": [],
         "counts": {
-          "critical": 5,
+          "critical": 6,
           "high": 23,
-          "moderate": 15,
+          "moderate": 16,
           "low": 0,
           "unknown": 0,
-          "total": 43
+          "total": 45
         },
         "errors": []
       },
@@ -4372,7 +4528,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 9.631,
+        "median_pr_age_days": 9.799,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 621,
@@ -4720,7 +4876,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 4.475,
+        "median_pr_age_days": 4.644,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 242,
@@ -4759,6 +4915,19 @@
             "informational": null,
             "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
             "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
+          {
+            "id": "GHSA-5x8w-8jj5-q52h",
+            "aliases": [
+              "CVE-2026-112398"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+            "url": "https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h"
           },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
@@ -5111,6 +5280,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
           },
           {
+            "id": "GHSA-v4x8-3wr5-3wq8",
+            "aliases": [
+              "CVE-2026-112940"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "filelock ReadWriteLock: SQLite reopens the lock database by name, so a planted symlink or journal file makes the lock user's process overwrite or unlink its own files",
+            "url": "https://osv.dev/vulnerability/GHSA-v4x8-3wr5-3wq8"
+          },
+          {
             "id": "GHSA-xvh5-g6gv-559v",
             "aliases": [
               "CVE-2026-112902"
@@ -5216,6 +5398,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
           },
           {
+            "id": "GHSA-654x-cwwv-5j9c",
+            "aliases": [
+              "CVE-2026-114501"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+            "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
+          },
+          {
             "id": "GHSA-74r2-7ff9-mjj2",
             "aliases": [
               "CVE-2026-112401"
@@ -5306,16 +5501,42 @@
             "informational": null,
             "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
             "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
+          },
+          {
+            "id": "GHSA-567q-5qvw-pf92",
+            "aliases": [
+              "CVE-2026-112907"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "filelock: On Windows an oplock on a soft lock's marker holds SoftFileLock.acquire() past its timeout and blocks the stale break",
+            "url": "https://osv.dev/vulnerability/GHSA-567q-5qvw-pf92"
+          },
+          {
+            "id": "GHSA-9vhv-jxww-xfm5",
+            "aliases": [
+              "CVE-2026-112913"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "filelock: ReadWriteLock on Windows acts on SQLite side files another local user places beside its database",
+            "url": "https://osv.dev/vulnerability/GHSA-9vhv-jxww-xfm5"
           }
         ],
         "notices": [],
         "counts": {
-          "critical": 5,
-          "high": 24,
-          "moderate": 14,
-          "low": 0,
+          "critical": 6,
+          "high": 25,
+          "moderate": 15,
+          "low": 2,
           "unknown": 0,
-          "total": 43
+          "total": 48
         },
         "errors": []
       },
@@ -5547,7 +5768,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 14.899,
+        "median_pr_age_days": 15.067,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -5724,7 +5945,7 @@
       },
       "freshness": {
         "days_since_last_commit": 7,
-        "days_since_last_release": 23,
+        "days_since_last_release": 24,
         "days_since_last_security_scan": 7
       },
       "supply_chain": {
@@ -5881,7 +6102,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 4.376,
+        "median_pr_age_days": 4.545,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 602,
@@ -6070,9 +6291,9 @@
         "dependabot_count": 3
       },
       "freshness": {
-        "days_since_last_commit": 27,
-        "days_since_last_release": 27,
-        "days_since_last_security_scan": 27
+        "days_since_last_commit": 28,
+        "days_since_last_release": 28,
+        "days_since_last_security_scan": 28
       },
       "supply_chain": {
         "pypi_version": "0.1.10",
@@ -6241,7 +6462,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 4.703,
+        "median_pr_age_days": 4.871,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 812,
@@ -6296,6 +6517,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-27vj-qcqg-25rc"
           },
           {
+            "id": "GHSA-v4x8-3wr5-3wq8",
+            "aliases": [
+              "CVE-2026-112940"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "high",
+            "informational": null,
+            "summary": "filelock ReadWriteLock: SQLite reopens the lock database by name, so a planted symlink or journal file makes the lock user's process overwrite or unlink its own files",
+            "url": "https://osv.dev/vulnerability/GHSA-v4x8-3wr5-3wq8"
+          },
+          {
             "id": "GHSA-42vr-xj54-vc7v",
             "aliases": [
               "CVE-2026-101918",
@@ -6322,6 +6556,32 @@
             "informational": null,
             "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
             "url": "https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449"
+          },
+          {
+            "id": "GHSA-567q-5qvw-pf92",
+            "aliases": [
+              "CVE-2026-112907"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "filelock: On Windows an oplock on a soft lock's marker holds SoftFileLock.acquire() past its timeout and blocks the stale break",
+            "url": "https://osv.dev/vulnerability/GHSA-567q-5qvw-pf92"
+          },
+          {
+            "id": "GHSA-9vhv-jxww-xfm5",
+            "aliases": [
+              "CVE-2026-112913"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "filelock: ReadWriteLock on Windows acts on SQLite side files another local user places beside its database",
+            "url": "https://osv.dev/vulnerability/GHSA-9vhv-jxww-xfm5"
           },
           {
             "id": "RUSTSEC-2026-0346",
@@ -6434,11 +6694,11 @@
         ],
         "counts": {
           "critical": 1,
-          "high": 1,
+          "high": 2,
           "moderate": 2,
-          "low": 0,
+          "low": 2,
           "unknown": 7,
-          "total": 11
+          "total": 14
         },
         "errors": []
       },
@@ -6562,7 +6822,7 @@
           "#69 build(deps): Bump the actions-all group across 1 directory with 5 updates",
           "#67 build(deps-dev): Bump the deps-minor group across 1 directory with 5 updates"
         ],
-        "oldest_age_days": 10,
+        "oldest_age_days": 11,
         "dependabot_count": 2
       },
       "freshness": {
@@ -6679,7 +6939,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 7.517,
+        "median_pr_age_days": 7.686,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 555,
@@ -6718,6 +6978,19 @@
             "informational": null,
             "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
             "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
+          {
+            "id": "GHSA-5x8w-8jj5-q52h",
+            "aliases": [
+              "CVE-2026-112398"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+            "url": "https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h"
           },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
@@ -7161,6 +7434,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
           },
           {
+            "id": "GHSA-654x-cwwv-5j9c",
+            "aliases": [
+              "CVE-2026-114501"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+            "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
+          },
+          {
             "id": "GHSA-74r2-7ff9-mjj2",
             "aliases": [
               "CVE-2026-112401"
@@ -7255,12 +7541,12 @@
         ],
         "notices": [],
         "counts": {
-          "critical": 5,
+          "critical": 6,
           "high": 23,
-          "moderate": 14,
+          "moderate": 15,
           "low": 0,
           "unknown": 0,
-          "total": 42
+          "total": 44
         },
         "errors": []
       },
@@ -7505,7 +7791,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 0.093,
+        "median_pr_age_days": 0.262,
         "open_pr_count": 1,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 340,
@@ -7544,6 +7830,19 @@
             "informational": null,
             "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
             "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
+          {
+            "id": "GHSA-5x8w-8jj5-q52h",
+            "aliases": [
+              "CVE-2026-112398"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+            "url": "https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h"
           },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
@@ -8015,6 +8314,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
           },
           {
+            "id": "GHSA-654x-cwwv-5j9c",
+            "aliases": [
+              "CVE-2026-114501"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+            "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
+          },
+          {
             "id": "GHSA-74r2-7ff9-mjj2",
             "aliases": [
               "CVE-2026-112401"
@@ -8123,12 +8435,12 @@
         ],
         "notices": [],
         "counts": {
-          "critical": 5,
+          "critical": 6,
           "high": 25,
-          "moderate": 15,
+          "moderate": 16,
           "low": 0,
           "unknown": 0,
-          "total": 45
+          "total": 47
         },
         "errors": []
       },
@@ -8370,7 +8682,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 7.086,
+        "median_pr_age_days": 7.255,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 496,
@@ -8409,6 +8721,19 @@
             "informational": null,
             "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
             "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+          },
+          {
+            "id": "GHSA-5x8w-8jj5-q52h",
+            "aliases": [
+              "CVE-2026-112398"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "critical",
+            "informational": null,
+            "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+            "url": "https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h"
           },
           {
             "id": "GHSA-6q48-6c7w-9gw2",
@@ -8852,6 +9177,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
           },
           {
+            "id": "GHSA-654x-cwwv-5j9c",
+            "aliases": [
+              "CVE-2026-114501"
+            ],
+            "package": "pillow",
+            "version": "12.3.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+            "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
+          },
+          {
             "id": "GHSA-74r2-7ff9-mjj2",
             "aliases": [
               "CVE-2026-112401"
@@ -8946,12 +9284,12 @@
         ],
         "notices": [],
         "counts": {
-          "critical": 5,
+          "critical": 6,
           "high": 23,
-          "moderate": 14,
+          "moderate": 15,
           "low": 0,
           "unknown": 0,
-          "total": 42
+          "total": 44
         },
         "errors": []
       },
@@ -9190,7 +9528,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 14.086,
+        "median_pr_age_days": 14.255,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 169,
@@ -9488,7 +9826,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 4.497,
+        "median_pr_age_days": 4.666,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -9646,12 +9984,12 @@
           "#80 chore(deps): bump the actions-all group across 1 directory with 5 updates",
           "#75 chore(deps): bump the deps-minor group across 1 directory with 6 updates"
         ],
-        "oldest_age_days": 10,
+        "oldest_age_days": 11,
         "dependabot_count": 2
       },
       "freshness": {
         "days_since_last_commit": 6,
-        "days_since_last_release": 27,
+        "days_since_last_release": 28,
         "days_since_last_security_scan": 6
       },
       "supply_chain": {
@@ -9763,7 +10101,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 7.525,
+        "median_pr_age_days": 7.694,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 168,

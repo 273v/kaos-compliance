@@ -269,7 +269,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 4.475,
+      "median_pr_age_days": 4.644,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 242,
@@ -308,6 +308,19 @@
           "informational": null,
           "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
           "url": "https://osv.dev/vulnerability/GHSA-332p-7hrc-92wf"
+        },
+        {
+          "id": "GHSA-5x8w-8jj5-q52h",
+          "aliases": [
+            "CVE-2026-112398"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "critical",
+          "informational": null,
+          "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+          "url": "https://osv.dev/vulnerability/GHSA-5x8w-8jj5-q52h"
         },
         {
           "id": "GHSA-6q48-6c7w-9gw2",
@@ -660,6 +673,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg"
         },
         {
+          "id": "GHSA-v4x8-3wr5-3wq8",
+          "aliases": [
+            "CVE-2026-112940"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "filelock ReadWriteLock: SQLite reopens the lock database by name, so a planted symlink or journal file makes the lock user's process overwrite or unlink its own files",
+          "url": "https://osv.dev/vulnerability/GHSA-v4x8-3wr5-3wq8"
+        },
+        {
           "id": "GHSA-xvh5-g6gv-559v",
           "aliases": [
             "CVE-2026-112902"
@@ -765,6 +791,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-4rr5-89j8-mwwm"
         },
         {
+          "id": "GHSA-654x-cwwv-5j9c",
+          "aliases": [
+            "CVE-2026-114501"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+          "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
+        },
+        {
           "id": "GHSA-74r2-7ff9-mjj2",
           "aliases": [
             "CVE-2026-112401"
@@ -855,16 +894,42 @@
           "informational": null,
           "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
           "url": "https://osv.dev/vulnerability/GHSA-xgh8-jp6q-p5x8"
+        },
+        {
+          "id": "GHSA-567q-5qvw-pf92",
+          "aliases": [
+            "CVE-2026-112907"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "low",
+          "informational": null,
+          "summary": "filelock: On Windows an oplock on a soft lock's marker holds SoftFileLock.acquire() past its timeout and blocks the stale break",
+          "url": "https://osv.dev/vulnerability/GHSA-567q-5qvw-pf92"
+        },
+        {
+          "id": "GHSA-9vhv-jxww-xfm5",
+          "aliases": [
+            "CVE-2026-112913"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "low",
+          "informational": null,
+          "summary": "filelock: ReadWriteLock on Windows acts on SQLite side files another local user places beside its database",
+          "url": "https://osv.dev/vulnerability/GHSA-9vhv-jxww-xfm5"
         }
       ],
       "notices": [],
       "counts": {
-        "critical": 5,
-        "high": 24,
-        "moderate": 14,
-        "low": 0,
+        "critical": 6,
+        "high": 25,
+        "moderate": 15,
+        "low": 2,
         "unknown": 0,
-        "total": 43
+        "total": 48
       },
       "errors": []
     },
