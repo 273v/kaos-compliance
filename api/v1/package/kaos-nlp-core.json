@@ -130,12 +130,12 @@
     "open_prs": {
       "count": 4,
       "titles": [
-        "#94 chore(deps): bump the actions-all group across 1 directory with 5 updates",
-        "#93 chore(deps): bump the cargo-minor group across 1 directory with 6 updates",
+        "#96 chore(deps): bump the actions-all group across 1 directory with 7 updates",
+        "#95 chore(deps): bump the cargo-minor group across 1 directory with 6 updates",
         "#92 chore(deps): bump the deps-minor group across 1 directory with 4 updates",
         "#84 chore(deps): bump zstd from 0.13.3 to 0.14.0"
       ],
-      "oldest_age_days": 27,
+      "oldest_age_days": 28,
       "dependabot_count": 4
     },
     "freshness": {
@@ -297,7 +297,7 @@
         "NOTICE"
       ],
       "releases_90d": 4,
-      "median_pr_age_days": 7.106,
+      "median_pr_age_days": 3.713,
       "open_pr_count": 4,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 602,
@@ -336,6 +336,160 @@
           "informational": null,
           "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
           "url": "https://osv.dev/vulnerability/GHSA-6q48-6c7w-9gw2"
+        },
+        {
+          "id": "RUSTSEC-2026-0391",
+          "aliases": [],
+          "package": "zstd",
+          "version": "0.13.3",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Data from an abandoned stream leaks into the next stream on a reused context",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0391"
+        },
+        {
+          "id": "RUSTSEC-2026-0395",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "Use-after-free with `CParameter::StableInBuffer`",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0395"
+        },
+        {
+          "id": "RUSTSEC-2026-0396",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "`Seekable` reads a NULL or out-of-bounds seek table",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0396"
+        },
+        {
+          "id": "RUSTSEC-2026-0397",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "`OutBuffer::around_pos` exposes uninitialized memory",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0397"
+        },
+        {
+          "id": "RUSTSEC-2026-0398",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "`Seekable::decompress` sets a `Vec` length beyond its capacity for offsets past the end",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0398"
+        },
+        {
+          "id": "RUSTSEC-2026-0399",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "Use-after-free through `init_using_cdict` and `init_using_ddict`",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0399"
+        },
+        {
+          "id": "RUSTSEC-2026-0400",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "Use-after-free of a dictionary after a one-shot call on a context with an open stream",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0400"
+        },
+        {
+          "id": "RUSTSEC-2026-0401",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "Out-of-bounds read in `train_from_buffer` when sample sizes overflow",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0401"
+        },
+        {
+          "id": "RUSTSEC-2026-0402",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "Heap buffer overflow in `CCtx::try_clone` on a multithreaded context",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0402"
+        },
+        {
+          "id": "RUSTSEC-2026-0403",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Uninitialized memory exposed when streaming decompression of a legacy frame fails",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0403"
+        },
+        {
+          "id": "RUSTSEC-2026-0404",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "Double free in `DCtx::try_clone`",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0404"
+        },
+        {
+          "id": "RUSTSEC-2026-0405",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "Out-of-bounds read with an out-of-range `InBuffer::pos`",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0405"
+        },
+        {
+          "id": "RUSTSEC-2026-0406",
+          "aliases": [],
+          "package": "zstd-safe",
+          "version": "7.3.0",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "Use-after-free when changing a multithreaded context with an unfinished frame",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0406"
+        },
+        {
+          "id": "RUSTSEC-2026-0410",
+          "aliases": [],
+          "package": "zstd-sys",
+          "version": "2.1.0+zstd.1.5.7",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "WebAssembly allocator shim corrupts memory on allocation failure",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0410"
         }
       ],
       "notices": [],
@@ -344,8 +498,8 @@
         "high": 0,
         "moderate": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 1
+        "unknown": 14,
+        "total": 15
       },
       "errors": []
     },
