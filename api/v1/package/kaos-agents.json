@@ -125,9 +125,9 @@
       "dependabot_count": 2
     },
     "freshness": {
-      "days_since_last_commit": 33,
+      "days_since_last_commit": 34,
       "days_since_last_release": 34,
-      "days_since_last_security_scan": 33
+      "days_since_last_security_scan": 34
     },
     "supply_chain": {
       "pypi_version": "0.1.31",
@@ -251,7 +251,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 4.699,
+      "median_pr_age_days": 4.86,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 172,
@@ -412,6 +412,19 @@
           "informational": null,
           "summary": "Pillow: TarIO negative size field causes infinite CPU-spin loop",
           "url": "https://osv.dev/vulnerability/GHSA-3j72-p6qg-6xp7"
+        },
+        {
+          "id": "GHSA-45c3-73f7-pv4m",
+          "aliases": [
+            "CVE-2026-114605"
+          ],
+          "package": "dnspython",
+          "version": "2.8.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "dnspython dns.name.from_wire_parser() excessive CPU use",
+          "url": "https://osv.dev/vulnerability/GHSA-45c3-73f7-pv4m"
         },
         {
           "id": "GHSA-58r4-6rv3-gfh8",
@@ -1052,11 +1065,11 @@
       "notices": [],
       "counts": {
         "critical": 6,
-        "high": 27,
+        "high": 28,
         "moderate": 21,
         "low": 3,
         "unknown": 0,
-        "total": 57
+        "total": 58
       },
       "errors": []
     },

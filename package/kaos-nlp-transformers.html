@@ -118,7 +118,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 14 open advisories (OSV.dev): 1 critical, 2 high, 2 moderate, 2 low, 7 unknown</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 14 open advisories (OSV.dev): 1 critical, 2 high, 3 moderate, 5 low, 3 unknown</div></div>
    </div>
    <div class="check">
     <span class="pill g" aria-label="Updates merged promptly: Pass"><span class="gly" aria-hidden="true">✓</span><span class="wd" aria-hidden="true">Pass</span></span>
@@ -250,6 +250,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-c8m5-c952-6cm4" target="_blank" rel="noopener">GHSA-c8m5-c952-6cm4</a></td>
+     <td data-h="Package">rustls 0.23.45</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">Rustls: Session Debug formatting exposes TLS master secrets and resumption PSKs</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-x33g-cr3x-6449" target="_blank" rel="noopener">GHSA-x33g-cr3x-6449</a></td>
      <td data-h="Package">pyjwt 2.14.0</td>
      <td data-h="Severity">moderate</td>
@@ -268,28 +274,22 @@ footer a{color:var(--muted)}
      <td data-h="Summary">filelock: ReadWriteLock on Windows acts on SQLite side files another local user places beside its database</td>
     </tr>
     <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0346" target="_blank" rel="noopener">RUSTSEC-2026-0346</a></td>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-h2v8-394m-p7vv" target="_blank" rel="noopener">GHSA-h2v8-394m-p7vv</a></td>
      <td data-h="Package">rustls 0.23.45</td>
-     <td data-h="Severity">unknown</td>
-     <td data-h="Summary">`Debug` impls for client session values expose TLS secrets</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">Rustls: Brotli certificate decompression can allocate an attacker-controlled amount of memory up to 1 GiB before authentication.</td>
     </tr>
     <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0347" target="_blank" rel="noopener">RUSTSEC-2026-0347</a></td>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-vp88-798v-h67f" target="_blank" rel="noopener">GHSA-vp88-798v-h67f</a></td>
      <td data-h="Package">rustls 0.23.45</td>
-     <td data-h="Severity">unknown</td>
-     <td data-h="Summary">Buffered application data sent to outer server after ECH rejection</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">rustls: ECH rejection can expose buffered application data to authenticated outer server before `ech_required` alert</td>
     </tr>
     <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0348" target="_blank" rel="noopener">RUSTSEC-2026-0348</a></td>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-w44r-93j7-qv28" target="_blank" rel="noopener">GHSA-w44r-93j7-qv28</a></td>
      <td data-h="Package">rustls 0.23.45</td>
-     <td data-h="Severity">unknown</td>
-     <td data-h="Summary">Brotli certificate decompression can allocate up to 1 GiB before authentication</td>
-    </tr>
-    <tr>
-     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0349" target="_blank" rel="noopener">RUSTSEC-2026-0349</a></td>
-     <td data-h="Package">rustls 0.23.45</td>
-     <td data-h="Severity">unknown</td>
-     <td data-h="Summary">Unauthenticated ServerHello can downgrade later connections to classical key exchange</td>
+     <td data-h="Severity">low</td>
+     <td data-h="Summary">rustls: An unauthenticated ServerHello poisons the per-name key-exchange record, so later ClientHellos carry only a classical X25519 share</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0381" target="_blank" rel="noopener">RUSTSEC-2026-0381</a></td>
@@ -416,7 +416,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-10-27 12:30 UTC
+ Generated 2026-10-27 16:25 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

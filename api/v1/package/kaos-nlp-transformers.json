@@ -309,7 +309,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 8.221,
+      "median_pr_age_days": 8.383,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 812,
@@ -391,6 +391,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
         },
         {
+          "id": "GHSA-c8m5-c952-6cm4",
+          "aliases": [
+            "RUSTSEC-2026-0346"
+          ],
+          "package": "rustls",
+          "version": "0.23.45",
+          "ecosystem": "cargo",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Rustls: Session Debug formatting exposes TLS master secrets and resumption PSKs",
+          "url": "https://osv.dev/vulnerability/GHSA-c8m5-c952-6cm4"
+        },
+        {
           "id": "GHSA-x33g-cr3x-6449",
           "aliases": [
             "CVE-2026-102275",
@@ -431,56 +444,43 @@
           "url": "https://osv.dev/vulnerability/GHSA-9vhv-jxww-xfm5"
         },
         {
-          "id": "RUSTSEC-2026-0346",
+          "id": "GHSA-h2v8-394m-p7vv",
           "aliases": [
-            "GHSA-c8m5-c952-6cm4"
+            "RUSTSEC-2026-0348"
           ],
           "package": "rustls",
           "version": "0.23.45",
           "ecosystem": "cargo",
-          "severity": "unknown",
+          "severity": "low",
           "informational": null,
-          "summary": "`Debug` impls for client session values expose TLS secrets",
-          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0346"
+          "summary": "Rustls: Brotli certificate decompression can allocate an attacker-controlled amount of memory up to 1 GiB before authentication.",
+          "url": "https://osv.dev/vulnerability/GHSA-h2v8-394m-p7vv"
         },
         {
-          "id": "RUSTSEC-2026-0347",
+          "id": "GHSA-vp88-798v-h67f",
           "aliases": [
-            "GHSA-vp88-798v-h67f"
+            "RUSTSEC-2026-0347"
           ],
           "package": "rustls",
           "version": "0.23.45",
           "ecosystem": "cargo",
-          "severity": "unknown",
+          "severity": "low",
           "informational": null,
-          "summary": "Buffered application data sent to outer server after ECH rejection",
-          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0347"
+          "summary": "rustls: ECH rejection can expose buffered application data to authenticated outer server before `ech_required` alert",
+          "url": "https://osv.dev/vulnerability/GHSA-vp88-798v-h67f"
         },
         {
-          "id": "RUSTSEC-2026-0348",
+          "id": "GHSA-w44r-93j7-qv28",
           "aliases": [
-            "GHSA-h2v8-394m-p7vv"
+            "RUSTSEC-2026-0349"
           ],
           "package": "rustls",
           "version": "0.23.45",
           "ecosystem": "cargo",
-          "severity": "unknown",
+          "severity": "low",
           "informational": null,
-          "summary": "Brotli certificate decompression can allocate up to 1 GiB before authentication",
-          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0348"
-        },
-        {
-          "id": "RUSTSEC-2026-0349",
-          "aliases": [
-            "GHSA-w44r-93j7-qv28"
-          ],
-          "package": "rustls",
-          "version": "0.23.45",
-          "ecosystem": "cargo",
-          "severity": "unknown",
-          "informational": null,
-          "summary": "Unauthenticated ServerHello can downgrade later connections to classical key exchange",
-          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0349"
+          "summary": "rustls: An unauthenticated ServerHello poisons the per-name key-exchange record, so later ClientHellos carry only a classical X25519 share",
+          "url": "https://osv.dev/vulnerability/GHSA-w44r-93j7-qv28"
         },
         {
           "id": "RUSTSEC-2026-0381",
@@ -542,9 +542,9 @@
       "counts": {
         "critical": 1,
         "high": 2,
-        "moderate": 2,
-        "low": 2,
-        "unknown": 7,
+        "moderate": 3,
+        "low": 5,
+        "unknown": 3,
         "total": 14
       },
       "errors": []
