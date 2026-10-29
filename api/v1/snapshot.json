@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-28T20:20:44Z",
+  "generated_at": "2026-10-29T00:24:15Z",
   "generator": {
     "name": "kaos-compliance",
     "version": "0.0.1"
   },
   "heartbeat": {
-    "last_full_sweep_at": "2026-10-28T20:20:44Z",
-    "last_light_sweep_at": "2026-10-28T20:20:44Z",
-    "last_security_sweep_at": "2026-10-28T20:20:44Z",
+    "last_full_sweep_at": "2026-10-29T00:24:15Z",
+    "last_light_sweep_at": "2026-10-29T00:24:15Z",
+    "last_security_sweep_at": "2026-10-29T00:24:15Z",
     "stale_threshold_hours": 26
   },
   "modules": [
@@ -260,7 +260,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 6.025,
+        "median_pr_age_days": 6.193,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 172,
@@ -897,6 +897,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
           },
           {
+            "id": "GHSA-6627-m3xw-93mp",
+            "aliases": [
+              "CVE-2026-112908"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: StrictSoftFileLock creates its claim directories without the lock mode, so another local user with a write bit on them can end a live hold",
+            "url": "https://osv.dev/vulnerability/GHSA-6627-m3xw-93mp"
+          },
+          {
+            "id": "GHSA-69hj-f68j-2879",
+            "aliases": [
+              "CVE-2026-112909"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: UnixFileLock truncates and chmods any regular file another user renames or hard-links onto the lock path",
+            "url": "https://osv.dev/vulnerability/GHSA-69hj-f68j-2879"
+          },
+          {
             "id": "GHSA-6cjc-53gc-5rqm",
             "aliases": [
               "CVE-2026-111065"
@@ -924,6 +950,45 @@
             "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
           },
           {
+            "id": "GHSA-8mx5-7m5m-r77g",
+            "aliases": [
+              "CVE-2026-112910"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: WindowsFileLock ignores mode: a 0o600 lock file and the ReadWriteLock database inherit the directory ACL",
+            "url": "https://osv.dev/vulnerability/GHSA-8mx5-7m5m-r77g"
+          },
+          {
+            "id": "GHSA-9c4x-gm8v-wgc4",
+            "aliases": [
+              "CVE-2026-112911"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: StrictSoftFileLock and SoftReadWriteLock adopt a protocol directory another user created first, losing mutual exclusion",
+            "url": "https://osv.dev/vulnerability/GHSA-9c4x-gm8v-wgc4"
+          },
+          {
+            "id": "GHSA-cwqr-hh33-gh44",
+            "aliases": [
+              "CVE-2026-112915"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock ReadWriteLock: a crafted lock database makes every acquire stall or hang regardless of timeout",
+            "url": "https://osv.dev/vulnerability/GHSA-cwqr-hh33-gh44"
+          },
+          {
             "id": "GHSA-f9xw-jh8m-3mwq",
             "aliases": [
               "CVE-2026-111748"
@@ -949,6 +1014,58 @@
             "informational": null,
             "summary": "Pillow: Quadratic GIF comment copying during save",
             "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
+            "id": "GHSA-fj95-fr6c-h845",
+            "aliases": [
+              "CVE-2026-112934"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: SoftReadWriteLock holder refresh writes through a hard link and hangs on a named pipe that another local user renames over its record",
+            "url": "https://osv.dev/vulnerability/GHSA-fj95-fr6c-h845"
+          },
+          {
+            "id": "GHSA-fq56-3cx3-fjxp",
+            "aliases": [
+              "CVE-2026-112935"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: SoftFileLock stale-lock break removes a live lock file on a reused inode number and admits two holders",
+            "url": "https://osv.dev/vulnerability/GHSA-fq56-3cx3-fjxp"
+          },
+          {
+            "id": "GHSA-j8f7-rjxc-mr56",
+            "aliases": [
+              "CVE-2026-112936"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: ReadWriteLock follows a symlink at the lock path into SQLite",
+            "url": "https://osv.dev/vulnerability/GHSA-j8f7-rjxc-mr56"
+          },
+          {
+            "id": "GHSA-m462-7rxw-wvpg",
+            "aliases": [
+              "CVE-2026-112938"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: StrictSoftFileLock follows a symbolic link swapped in at <path>.filelock and creates claim files in a directory another local user chooses",
+            "url": "https://osv.dev/vulnerability/GHSA-m462-7rxw-wvpg"
           },
           {
             "id": "GHSA-p8hx-v2p6-rp84",
@@ -990,6 +1107,19 @@
             "informational": null,
             "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
             "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
+          },
+          {
+            "id": "GHSA-rfpc-qcw5-3pc4",
+            "aliases": [
+              "CVE-2026-112939"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: SoftFileLock removes a live holder's marker when another user forges the PID in a writable marker",
+            "url": "https://osv.dev/vulnerability/GHSA-rfpc-qcw5-3pc4"
           },
           {
             "id": "GHSA-vx6w-vv9f-6gvg",
@@ -1060,6 +1190,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-567q-5qvw-pf92"
           },
           {
+            "id": "GHSA-9j6q-wvj5-jgjg",
+            "aliases": [
+              "CVE-2026-112912"
+            ],
+            "package": "filelock",
+            "version": "4.0.1",
+            "ecosystem": "pypi",
+            "severity": "low",
+            "informational": null,
+            "summary": "filelock: Symlink swap during SoftFileLock's writability check leaks whether a path exists and is writable by the lock taker",
+            "url": "https://osv.dev/vulnerability/GHSA-9j6q-wvj5-jgjg"
+          },
+          {
             "id": "GHSA-9vhv-jxww-xfm5",
             "aliases": [
               "CVE-2026-112913"
@@ -1090,10 +1233,10 @@
         "counts": {
           "critical": 6,
           "high": 28,
-          "moderate": 21,
-          "low": 3,
+          "moderate": 31,
+          "low": 4,
           "unknown": 0,
-          "total": 58
+          "total": 69
         },
         "errors": []
       },
@@ -1339,7 +1482,7 @@
           "NOTICE"
         ],
         "releases_90d": 5,
-        "median_pr_age_days": 8.991,
+        "median_pr_age_days": 9.158,
         "open_pr_count": 5,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 126,
@@ -1775,7 +1918,7 @@
       },
       "freshness": {
         "days_since_last_commit": 9,
-        "days_since_last_release": 32,
+        "days_since_last_release": 33,
         "days_since_last_security_scan": 9
       },
       "supply_chain": {
@@ -1893,7 +2036,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.476,
+        "median_pr_age_days": 2.644,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 309,
@@ -2453,6 +2596,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
           },
           {
+            "id": "GHSA-69hj-f68j-2879",
+            "aliases": [
+              "CVE-2026-112909"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: UnixFileLock truncates and chmods any regular file another user renames or hard-links onto the lock path",
+            "url": "https://osv.dev/vulnerability/GHSA-69hj-f68j-2879"
+          },
+          {
             "id": "GHSA-74r2-7ff9-mjj2",
             "aliases": [
               "BIT-pillow-2026-112401",
@@ -2467,6 +2623,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
           },
           {
+            "id": "GHSA-8mx5-7m5m-r77g",
+            "aliases": [
+              "CVE-2026-112910"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: WindowsFileLock ignores mode: a 0o600 lock file and the ReadWriteLock database inherit the directory ACL",
+            "url": "https://osv.dev/vulnerability/GHSA-8mx5-7m5m-r77g"
+          },
+          {
+            "id": "GHSA-cwqr-hh33-gh44",
+            "aliases": [
+              "CVE-2026-112915"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock ReadWriteLock: a crafted lock database makes every acquire stall or hang regardless of timeout",
+            "url": "https://osv.dev/vulnerability/GHSA-cwqr-hh33-gh44"
+          },
+          {
             "id": "GHSA-fc9g-5qg7-mf45",
             "aliases": [
               "BIT-pillow-2026-112891",
@@ -2479,6 +2661,32 @@
             "informational": null,
             "summary": "Pillow: Quadratic GIF comment copying during save",
             "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
+            "id": "GHSA-fq56-3cx3-fjxp",
+            "aliases": [
+              "CVE-2026-112935"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: SoftFileLock stale-lock break removes a live lock file on a reused inode number and admits two holders",
+            "url": "https://osv.dev/vulnerability/GHSA-fq56-3cx3-fjxp"
+          },
+          {
+            "id": "GHSA-j8f7-rjxc-mr56",
+            "aliases": [
+              "CVE-2026-112936"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: ReadWriteLock follows a symlink at the lock path into SQLite",
+            "url": "https://osv.dev/vulnerability/GHSA-j8f7-rjxc-mr56"
           },
           {
             "id": "GHSA-p8hx-v2p6-rp84",
@@ -2507,6 +2715,19 @@
             "informational": null,
             "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
             "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
+          },
+          {
+            "id": "GHSA-rfpc-qcw5-3pc4",
+            "aliases": [
+              "CVE-2026-112939"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: SoftFileLock removes a live holder's marker when another user forges the PID in a writable marker",
+            "url": "https://osv.dev/vulnerability/GHSA-rfpc-qcw5-3pc4"
           },
           {
             "id": "GHSA-vx6w-vv9f-6gvg",
@@ -2567,10 +2788,10 @@
         "counts": {
           "critical": 6,
           "high": 25,
-          "moderate": 13,
+          "moderate": 19,
           "low": 2,
           "unknown": 0,
-          "total": 46
+          "total": 52
         },
         "errors": []
       },
@@ -2809,7 +3030,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 2.905,
+        "median_pr_age_days": 3.073,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -3134,7 +3355,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.556,
+        "median_pr_age_days": 2.724,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 766,
@@ -3453,7 +3674,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 5.862,
+        "median_pr_age_days": 6.03,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 432,
@@ -3695,7 +3916,7 @@
           "#97 chore(deps): bump the actions-all group across 1 directory with 6 updates",
           "#94 chore(deps): bump the deps-minor group across 1 directory with 7 updates"
         ],
-        "oldest_age_days": 15,
+        "oldest_age_days": 16,
         "dependabot_count": 2
       },
       "freshness": {
@@ -3812,7 +4033,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 9.03,
+        "median_pr_age_days": 9.198,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 175,
@@ -4717,7 +4938,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 9.546,
+        "median_pr_age_days": 9.714,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 621,
@@ -5066,7 +5287,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.403,
+        "median_pr_age_days": 2.571,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 242,
@@ -5640,6 +5861,19 @@
             "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
           },
           {
+            "id": "GHSA-69hj-f68j-2879",
+            "aliases": [
+              "CVE-2026-112909"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: UnixFileLock truncates and chmods any regular file another user renames or hard-links onto the lock path",
+            "url": "https://osv.dev/vulnerability/GHSA-69hj-f68j-2879"
+          },
+          {
             "id": "GHSA-74r2-7ff9-mjj2",
             "aliases": [
               "BIT-pillow-2026-112401",
@@ -5654,6 +5888,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
           },
           {
+            "id": "GHSA-8mx5-7m5m-r77g",
+            "aliases": [
+              "CVE-2026-112910"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: WindowsFileLock ignores mode: a 0o600 lock file and the ReadWriteLock database inherit the directory ACL",
+            "url": "https://osv.dev/vulnerability/GHSA-8mx5-7m5m-r77g"
+          },
+          {
+            "id": "GHSA-cwqr-hh33-gh44",
+            "aliases": [
+              "CVE-2026-112915"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock ReadWriteLock: a crafted lock database makes every acquire stall or hang regardless of timeout",
+            "url": "https://osv.dev/vulnerability/GHSA-cwqr-hh33-gh44"
+          },
+          {
             "id": "GHSA-fc9g-5qg7-mf45",
             "aliases": [
               "BIT-pillow-2026-112891",
@@ -5666,6 +5926,32 @@
             "informational": null,
             "summary": "Pillow: Quadratic GIF comment copying during save",
             "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+          },
+          {
+            "id": "GHSA-fq56-3cx3-fjxp",
+            "aliases": [
+              "CVE-2026-112935"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: SoftFileLock stale-lock break removes a live lock file on a reused inode number and admits two holders",
+            "url": "https://osv.dev/vulnerability/GHSA-fq56-3cx3-fjxp"
+          },
+          {
+            "id": "GHSA-j8f7-rjxc-mr56",
+            "aliases": [
+              "CVE-2026-112936"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: ReadWriteLock follows a symlink at the lock path into SQLite",
+            "url": "https://osv.dev/vulnerability/GHSA-j8f7-rjxc-mr56"
           },
           {
             "id": "GHSA-p8hx-v2p6-rp84",
@@ -5694,6 +5980,19 @@
             "informational": null,
             "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
             "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
+          },
+          {
+            "id": "GHSA-rfpc-qcw5-3pc4",
+            "aliases": [
+              "CVE-2026-112939"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: SoftFileLock removes a live holder's marker when another user forges the PID in a writable marker",
+            "url": "https://osv.dev/vulnerability/GHSA-rfpc-qcw5-3pc4"
           },
           {
             "id": "GHSA-vx6w-vv9f-6gvg",
@@ -5768,10 +6067,10 @@
         "counts": {
           "critical": 6,
           "high": 25,
-          "moderate": 15,
+          "moderate": 21,
           "low": 2,
           "unknown": 0,
-          "total": 48
+          "total": 54
         },
         "errors": []
       },
@@ -6003,7 +6302,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 16.397,
+        "median_pr_age_days": 16.565,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -6180,7 +6479,7 @@
       },
       "freshness": {
         "days_since_last_commit": 12,
-        "days_since_last_release": 28,
+        "days_since_last_release": 29,
         "days_since_last_security_scan": 12
       },
       "supply_chain": {
@@ -6337,7 +6636,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 5.874,
+        "median_pr_age_days": 6.043,
         "open_pr_count": 4,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 602,
@@ -6680,9 +6979,9 @@
         "dependabot_count": 3
       },
       "freshness": {
-        "days_since_last_commit": 32,
+        "days_since_last_commit": 33,
         "days_since_last_release": 32,
-        "days_since_last_security_scan": 32
+        "days_since_last_security_scan": 33
       },
       "supply_chain": {
         "pypi_version": "0.1.10",
@@ -6851,7 +7150,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 9.547,
+        "median_pr_age_days": 9.715,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 812,
@@ -6933,6 +7232,32 @@
             "url": "https://osv.dev/vulnerability/GHSA-42vr-xj54-vc7v"
           },
           {
+            "id": "GHSA-69hj-f68j-2879",
+            "aliases": [
+              "CVE-2026-112909"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: UnixFileLock truncates and chmods any regular file another user renames or hard-links onto the lock path",
+            "url": "https://osv.dev/vulnerability/GHSA-69hj-f68j-2879"
+          },
+          {
+            "id": "GHSA-8mx5-7m5m-r77g",
+            "aliases": [
+              "CVE-2026-112910"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: WindowsFileLock ignores mode: a 0o600 lock file and the ReadWriteLock database inherit the directory ACL",
+            "url": "https://osv.dev/vulnerability/GHSA-8mx5-7m5m-r77g"
+          },
+          {
             "id": "GHSA-c8m5-c952-6cm4",
             "aliases": [
               "RUSTSEC-2026-0346"
@@ -6944,6 +7269,58 @@
             "informational": null,
             "summary": "Rustls: Session Debug formatting exposes TLS master secrets and resumption PSKs",
             "url": "https://osv.dev/vulnerability/GHSA-c8m5-c952-6cm4"
+          },
+          {
+            "id": "GHSA-cwqr-hh33-gh44",
+            "aliases": [
+              "CVE-2026-112915"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock ReadWriteLock: a crafted lock database makes every acquire stall or hang regardless of timeout",
+            "url": "https://osv.dev/vulnerability/GHSA-cwqr-hh33-gh44"
+          },
+          {
+            "id": "GHSA-fq56-3cx3-fjxp",
+            "aliases": [
+              "CVE-2026-112935"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: SoftFileLock stale-lock break removes a live lock file on a reused inode number and admits two holders",
+            "url": "https://osv.dev/vulnerability/GHSA-fq56-3cx3-fjxp"
+          },
+          {
+            "id": "GHSA-j8f7-rjxc-mr56",
+            "aliases": [
+              "CVE-2026-112936"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: ReadWriteLock follows a symlink at the lock path into SQLite",
+            "url": "https://osv.dev/vulnerability/GHSA-j8f7-rjxc-mr56"
+          },
+          {
+            "id": "GHSA-rfpc-qcw5-3pc4",
+            "aliases": [
+              "CVE-2026-112939"
+            ],
+            "package": "filelock",
+            "version": "3.29.0",
+            "ecosystem": "pypi",
+            "severity": "moderate",
+            "informational": null,
+            "summary": "filelock: SoftFileLock removes a live holder's marker when another user forges the PID in a writable marker",
+            "url": "https://osv.dev/vulnerability/GHSA-rfpc-qcw5-3pc4"
           },
           {
             "id": "GHSA-x33g-cr3x-6449",
@@ -7084,10 +7461,10 @@
         "counts": {
           "critical": 1,
           "high": 2,
-          "moderate": 3,
+          "moderate": 9,
           "low": 5,
           "unknown": 3,
-          "total": 14
+          "total": 20
         },
         "errors": []
       },
@@ -7328,7 +7705,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 2.312,
+        "median_pr_age_days": 2.481,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 555,
@@ -8227,7 +8604,7 @@
           "NOTICE"
         ],
         "releases_90d": 2,
-        "median_pr_age_days": 2.548,
+        "median_pr_age_days": 2.716,
         "open_pr_count": 3,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 340,
@@ -9163,7 +9540,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 5.751,
+        "median_pr_age_days": 5.919,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 496,
@@ -10054,7 +10431,7 @@
           "NOTICE"
         ],
         "releases_90d": 1,
-        "median_pr_age_days": 2.251,
+        "median_pr_age_days": 2.42,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 169,
@@ -10253,7 +10630,7 @@
       },
       "freshness": {
         "days_since_last_commit": 12,
-        "days_since_last_release": 126,
+        "days_since_last_release": 127,
         "days_since_last_security_scan": 12
       },
       "supply_chain": {
@@ -10352,7 +10729,7 @@
           "NOTICE"
         ],
         "releases_90d": 0,
-        "median_pr_age_days": 5.994,
+        "median_pr_age_days": 6.163,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": null,
@@ -10510,12 +10887,12 @@
           "#81 chore(deps): bump the actions-all group across 1 directory with 6 updates",
           "#75 chore(deps): bump the deps-minor group across 1 directory with 6 updates"
         ],
-        "oldest_age_days": 15,
+        "oldest_age_days": 16,
         "dependabot_count": 2
       },
       "freshness": {
         "days_since_last_commit": 11,
-        "days_since_last_release": 32,
+        "days_since_last_release": 33,
         "days_since_last_security_scan": 11
       },
       "supply_chain": {
@@ -10627,7 +11004,7 @@
           "NOTICE"
         ],
         "releases_90d": 4,
-        "median_pr_age_days": 9.023,
+        "median_pr_age_days": 9.192,
         "open_pr_count": 2,
         "open_issue_count": 0,
         "time_to_pypi_seconds_median": 168,

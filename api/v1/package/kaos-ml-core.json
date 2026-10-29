@@ -270,7 +270,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 2.403,
+      "median_pr_age_days": 2.571,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 242,
@@ -844,6 +844,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c"
         },
         {
+          "id": "GHSA-69hj-f68j-2879",
+          "aliases": [
+            "CVE-2026-112909"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "filelock: UnixFileLock truncates and chmods any regular file another user renames or hard-links onto the lock path",
+          "url": "https://osv.dev/vulnerability/GHSA-69hj-f68j-2879"
+        },
+        {
           "id": "GHSA-74r2-7ff9-mjj2",
           "aliases": [
             "BIT-pillow-2026-112401",
@@ -858,6 +871,32 @@
           "url": "https://osv.dev/vulnerability/GHSA-74r2-7ff9-mjj2"
         },
         {
+          "id": "GHSA-8mx5-7m5m-r77g",
+          "aliases": [
+            "CVE-2026-112910"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "filelock: WindowsFileLock ignores mode: a 0o600 lock file and the ReadWriteLock database inherit the directory ACL",
+          "url": "https://osv.dev/vulnerability/GHSA-8mx5-7m5m-r77g"
+        },
+        {
+          "id": "GHSA-cwqr-hh33-gh44",
+          "aliases": [
+            "CVE-2026-112915"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "filelock ReadWriteLock: a crafted lock database makes every acquire stall or hang regardless of timeout",
+          "url": "https://osv.dev/vulnerability/GHSA-cwqr-hh33-gh44"
+        },
+        {
           "id": "GHSA-fc9g-5qg7-mf45",
           "aliases": [
             "BIT-pillow-2026-112891",
@@ -870,6 +909,32 @@
           "informational": null,
           "summary": "Pillow: Quadratic GIF comment copying during save",
           "url": "https://osv.dev/vulnerability/GHSA-fc9g-5qg7-mf45"
+        },
+        {
+          "id": "GHSA-fq56-3cx3-fjxp",
+          "aliases": [
+            "CVE-2026-112935"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "filelock: SoftFileLock stale-lock break removes a live lock file on a reused inode number and admits two holders",
+          "url": "https://osv.dev/vulnerability/GHSA-fq56-3cx3-fjxp"
+        },
+        {
+          "id": "GHSA-j8f7-rjxc-mr56",
+          "aliases": [
+            "CVE-2026-112936"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "filelock: ReadWriteLock follows a symlink at the lock path into SQLite",
+          "url": "https://osv.dev/vulnerability/GHSA-j8f7-rjxc-mr56"
         },
         {
           "id": "GHSA-p8hx-v2p6-rp84",
@@ -898,6 +963,19 @@
           "informational": null,
           "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
           "url": "https://osv.dev/vulnerability/GHSA-rfgq-q3w2-pmv2"
+        },
+        {
+          "id": "GHSA-rfpc-qcw5-3pc4",
+          "aliases": [
+            "CVE-2026-112939"
+          ],
+          "package": "filelock",
+          "version": "3.29.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "filelock: SoftFileLock removes a live holder's marker when another user forges the PID in a writable marker",
+          "url": "https://osv.dev/vulnerability/GHSA-rfpc-qcw5-3pc4"
         },
         {
           "id": "GHSA-vx6w-vv9f-6gvg",
@@ -972,10 +1050,10 @@
       "counts": {
         "critical": 6,
         "high": 25,
-        "moderate": 15,
+        "moderate": 21,
         "low": 2,
         "unknown": 0,
-        "total": 48
+        "total": 54
       },
       "errors": []
     },
