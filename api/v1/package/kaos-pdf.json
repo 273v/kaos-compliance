@@ -2,26 +2,26 @@
   "schema_version": "1.0",
   "bundle_kind": "kaos-compliance.package",
   "package": "kaos-pdf",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "snapshot_slice": {
     "name": "kaos-pdf",
     "identity": {
-      "pypi_version": "0.1.8",
-      "pypi_url": "https://pypi.org/project/kaos-pdf/0.1.8/",
-      "main_head_sha": "dd7cf0f83c79a4fc476ee996c54e65ff25473893",
+      "pypi_version": "0.1.9",
+      "pypi_url": "https://pypi.org/project/kaos-pdf/0.1.9/",
+      "main_head_sha": "b096afc92881f4ae4c1ec818972a496a9a91997e",
       "latest_tag": "v0.1.9",
-      "latest_tag_sha": "dd7cf0f83c79a4fc476ee996c54e65ff25473893",
+      "latest_tag_sha": "b096afc92881f4ae4c1ec818972a496a9a91997e",
       "tag_at_head": true,
       "commits_past_tag": null,
       "repo_visibility": "public",
-      "last_commit_at": "2026-10-21T01:04:09Z"
+      "last_commit_at": "2026-11-06T04:23:30Z"
     },
     "ci": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 39525127871,
-      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/39525127871",
-      "head_sha": "dd7cf0f83c79a4fc476ee996c54e65ff25473893",
-      "run_completed_at": "2026-10-21T01:06:41Z",
+      "workflow_run_id": 42162228468,
+      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/42162228468",
+      "head_sha": "b096afc92881f4ae4c1ec818972a496a9a91997e",
+      "run_completed_at": "2026-11-06T04:27:43Z",
       "matrix": [
         {
           "name": "test (linux-x64 / Python 3.15)",
@@ -73,29 +73,29 @@
     },
     "security": {
       "workflow_conclusion": "success",
-      "workflow_run_id": 39525127859,
-      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/39525127859",
+      "workflow_run_id": 42162228386,
+      "workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/42162228386",
       "jobs": [
         {
           "name": "bandit (static security)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-10-21T01:04:24Z"
-        },
-        {
-          "name": "vulture (dead-code scan)",
-          "conclusion": "success",
-          "status": "completed",
-          "completed_at": "2026-10-21T01:04:25Z"
+          "completed_at": "2026-11-06T04:23:51Z"
         },
         {
           "name": "gitleaks (incremental)",
           "conclusion": "success",
           "status": "completed",
-          "completed_at": "2026-10-21T01:04:27Z"
+          "completed_at": "2026-11-06T04:23:50Z"
+        },
+        {
+          "name": "vulture (dead-code scan)",
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-11-06T04:23:54Z"
         }
       ],
-      "run_completed_at": "2026-10-21T01:04:27Z",
+      "run_completed_at": "2026-11-06T04:23:54Z",
       "full_workflow_conclusion": "failure",
       "full_workflow_run_id": 41375923674,
       "full_workflow_run_url": "https://github.com/273v/kaos-pdf/actions/runs/41375923674",
@@ -116,10 +116,8 @@
       "full_run_completed_at": "2026-11-02T02:06:54Z"
     },
     "open_prs": {
-      "count": 5,
+      "count": 3,
       "titles": [
-        "#81 chore(release): 0.1.9",
-        "#80 fix: recover letter pairs a font's ToUnicode table leaves out",
         "#79 chore(deps): bump the deps-minor group across 1 directory with 6 updates",
         "#78 chore(deps): bump the actions-all group with 3 updates",
         "#76 fix: remove page furniture (CM/ECF bands, running page numbers) from OCRed pages"
@@ -128,19 +126,19 @@
       "dependabot_count": 2
     },
     "freshness": {
-      "days_since_last_commit": 16,
-      "days_since_last_release": 43,
-      "days_since_last_security_scan": 16
+      "days_since_last_commit": 0,
+      "days_since_last_release": 0,
+      "days_since_last_security_scan": 0
     },
     "supply_chain": {
-      "pypi_version": "0.1.8",
-      "pypi_release_iso": "2026-09-23T12:13:26.814614Z",
+      "pypi_version": "0.1.9",
+      "pypi_release_iso": "2026-11-06T04:26:55.991755Z",
       "wheel_platforms": [
         "any"
       ],
       "wheel_sha256s": {
-        "kaos_pdf-0.1.8-py3-none-any.whl": "9cfa1713f313714b3d20082479d87053953f8dcbbd8c0d8d54e821d9ed77306e",
-        "kaos_pdf-0.1.8.tar.gz": "746b6c27ba368dc49f5c576b4b268f08e39ddec8561de14f19326135c964ef6d"
+        "kaos_pdf-0.1.9-py3-none-any.whl": "f4190227693a7a791c78f9f59054fd507496359f6a5ceb89c85ce111314e95d6",
+        "kaos_pdf-0.1.9.tar.gz": "2dfb93f2b2776c069ba4566d088d72548d19ecaf940a20b6272023fa5887db7e"
       },
       "is_abi3": false,
       "has_musllinux_wheel": false,
@@ -154,7 +152,7 @@
         "publisher_kind": "GitHub",
         "publisher_source_repo": "273v/kaos-pdf",
         "publisher_workflow_ref": "release.yml@pypi",
-        "rekor_log_index": 2919379620,
+        "rekor_log_index": 3709103051,
         "verified_count": 2,
         "total_count": 2
       },
@@ -184,15 +182,15 @@
         "unknown_license": [
           "protobuf"
         ],
-        "sbom_artifact_path": "data/sbom/kaos-pdf-0.1.8.cdx.json"
+        "sbom_artifact_path": "data/sbom/kaos-pdf-0.1.9.cdx.json"
       },
       "errors": []
     },
     "governance": {
-      "dco_signoff_rate_90d": 0.769,
-      "conventional_commits_rate_90d": 0.846,
+      "dco_signoff_rate_90d": 0.667,
+      "conventional_commits_rate_90d": 0.867,
       "verified_commit_ratio_90d": 1.0,
-      "commits_90d": 13,
+      "commits_90d": 15,
       "unique_committers_90d": 2,
       "branch_protection_enabled": true,
       "branch_protection_summary": {
@@ -245,20 +243,20 @@
         "LICENSE",
         "NOTICE"
       ],
-      "releases_90d": 2,
-      "median_pr_age_days": 3.883,
-      "open_pr_count": 5,
+      "releases_90d": 3,
+      "median_pr_age_days": 10.552,
+      "open_pr_count": 3,
       "open_issue_count": 0,
-      "time_to_pypi_seconds_median": 340,
+      "time_to_pypi_seconds_median": 223,
       "errors": []
     },
     "code_metrics": {
       "python": {
-        "src_loc": 4664,
-        "tests_loc": 3817,
-        "src_files": 20,
-        "tests_files": 26,
-        "tests_count": 372
+        "src_loc": 4879,
+        "tests_loc": 3918,
+        "src_files": 21,
+        "tests_files": 27,
+        "tests_count": 380
       },
       "rust": {
         "src_loc": 0,
@@ -958,15 +956,15 @@
     "errors": []
   },
   "sbom": {
-    "mirror_path": "api/v1/sbom/kaos-pdf-0.1.8.cdx.json",
-    "github_release_url": "https://github.com/273v/kaos-pdf/releases/download/v0.1.8/kaos-pdf-0.1.8.cdx.json"
+    "mirror_path": "api/v1/sbom/kaos-pdf-0.1.9.cdx.json",
+    "github_release_url": "https://github.com/273v/kaos-pdf/releases/download/v0.1.9/kaos-pdf-0.1.9.cdx.json"
   },
   "attestation": {
     "present": true,
     "publisher_kind": "GitHub",
     "publisher_source_repo": "273v/kaos-pdf",
     "publisher_workflow_ref": "release.yml@pypi",
-    "rekor_log_index": 2919379620,
+    "rekor_log_index": 3709103051,
     "verified_count": 2,
     "total_count": 2,
     "pypi_simple_index_url": "https://pypi.org/simple/kaos-pdf/"
