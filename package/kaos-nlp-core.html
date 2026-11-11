@@ -98,7 +98,21 @@ footer a{color:var(--muted)}
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-11-10.</p>
+  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
+   2026-11-10 &rarr; 2026-11-11
+  </p>
+  <ul style="margin:0;padding-left:var(--s-5)">
+    <li>
+     <span class="pill g" aria-label="advisories_open: better">
+      <span class="gly" aria-hidden="true">▲</span>
+      <span class="wd" aria-hidden="true">better</span>
+     </span>
+     <strong>advisories_open</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      15 &rarr; 16
+     </span>
+    </li>
+  </ul>
  </div>
 </section>
 
@@ -118,7 +132,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 15 open advisories (OSV.dev): 1 critical, 14 unknown</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 16 open advisories (OSV.dev): 1 critical, 15 unknown</div></div>
    </div>
    <div class="check">
     <span class="pill r" aria-label="Updates merged promptly: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
@@ -211,7 +225,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-15 <span style="color:var(--muted);font-size:0.75rem">across 211 locked dependencies (OSV.dev)</span>   </dd>
+16 <span style="color:var(--muted);font-size:0.75rem">across 211 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -313,6 +327,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">zstd-sys 2.1.0+zstd.1.5.7</td>
      <td data-h="Severity">unknown</td>
      <td data-h="Summary">WebAssembly allocator shim corrupts memory on allocation failure</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/RUSTSEC-2026-0486" target="_blank" rel="noopener">RUSTSEC-2026-0486</a></td>
+     <td data-h="Package">rustix 1.1.5</td>
+     <td data-h="Severity">unknown (unsound)</td>
+     <td data-h="Summary">xattr functions mark unwritten bytes as initialized when given a zero-length buffer</td>
     </tr>
    </tbody>
   </table>
@@ -421,7 +441,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-11-11 08:21 UTC
+ Generated 2026-11-11 12:25 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>

@@ -297,7 +297,7 @@
         "NOTICE"
       ],
       "releases_90d": 4,
-      "median_pr_age_days": 8.874,
+      "median_pr_age_days": 9.042,
       "open_pr_count": 4,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 602,
@@ -490,6 +490,19 @@
           "informational": null,
           "summary": "WebAssembly allocator shim corrupts memory on allocation failure",
           "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0410"
+        },
+        {
+          "id": "RUSTSEC-2026-0486",
+          "aliases": [
+            "GHSA-jh2m-fhpj-3vr7"
+          ],
+          "package": "rustix",
+          "version": "1.1.5",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "xattr functions mark unwritten bytes as initialized when given a zero-length buffer",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0486"
         }
       ],
       "notices": [],
@@ -498,8 +511,8 @@
         "high": 0,
         "moderate": 0,
         "low": 0,
-        "unknown": 14,
-        "total": 15
+        "unknown": 15,
+        "total": 16
       },
       "errors": []
     },

@@ -309,7 +309,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 16.203,
+      "median_pr_age_days": 16.372,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 812,
@@ -608,6 +608,19 @@
           "informational": "unsound",
           "summary": "`AsyncFd::new` and related constructors violate I/O safety",
           "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0386"
+        },
+        {
+          "id": "RUSTSEC-2026-0486",
+          "aliases": [
+            "GHSA-jh2m-fhpj-3vr7"
+          ],
+          "package": "rustix",
+          "version": "1.1.5",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": "unsound",
+          "summary": "xattr functions mark unwritten bytes as initialized when given a zero-length buffer",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0486"
         }
       ],
       "notices": [
@@ -628,8 +641,8 @@
         "high": 2,
         "moderate": 9,
         "low": 5,
-        "unknown": 3,
-        "total": 20
+        "unknown": 4,
+        "total": 21
       },
       "errors": []
     },
