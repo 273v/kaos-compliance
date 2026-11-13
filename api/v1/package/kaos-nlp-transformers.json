@@ -309,7 +309,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 18.37,
+      "median_pr_age_days": 18.536,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 812,
@@ -621,6 +621,45 @@
           "informational": "unsound",
           "summary": "xattr functions mark unwritten bytes as initialized when given a zero-length buffer",
           "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0486"
+        },
+        {
+          "id": "RUSTSEC-2026-0523",
+          "aliases": [
+            "GHSA-53rm-773f-4q8c"
+          ],
+          "package": "quinn-proto",
+          "version": "0.11.18",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "MAX_STREAM_DATA frame can open streams beyond the stream limit",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0523"
+        },
+        {
+          "id": "RUSTSEC-2026-0524",
+          "aliases": [
+            "GHSA-wppq-2f6r-wfvm"
+          ],
+          "package": "quinn-proto",
+          "version": "0.11.18",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Long Retry token can panic or exhaust memory in a QUIC client",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0524"
+        },
+        {
+          "id": "RUSTSEC-2026-0538",
+          "aliases": [
+            "GHSA-6pp4-4cxf-xf88"
+          ],
+          "package": "quinn-udp",
+          "version": "0.5.15",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Receive loop can spin after a truncated datagram",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0538"
         }
       ],
       "notices": [
@@ -641,8 +680,8 @@
         "high": 2,
         "moderate": 9,
         "low": 5,
-        "unknown": 4,
-        "total": 21
+        "unknown": 7,
+        "total": 24
       },
       "errors": []
     },
