@@ -251,7 +251,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 14.023,
+      "median_pr_age_days": 14.191,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 172,
@@ -744,6 +744,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-v4x8-3wr5-3wq8"
         },
         {
+          "id": "GHSA-xcvg-w56q-r89m",
+          "aliases": [
+            "CVE-2026-128067"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "Pillow: Heap buffer overflow saving TIFF with libtiff when tags override image size",
+          "url": "https://osv.dev/vulnerability/GHSA-xcvg-w56q-r89m"
+        },
+        {
           "id": "GHSA-xvh5-g6gv-559v",
           "aliases": [
             "CVE-2026-112902",
@@ -1140,6 +1153,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-vx6w-vv9f-6gvg"
         },
         {
+          "id": "GHSA-wqgw-9xfh-qf2g",
+          "aliases": [
+            "CVE-2026-128066"
+          ],
+          "package": "pillow",
+          "version": "12.3.0",
+          "ecosystem": "pypi",
+          "severity": "moderate",
+          "informational": null,
+          "summary": "Pillow: Memory DoS in TIFF and EXIF IFD parsing via overlapping tag data",
+          "url": "https://osv.dev/vulnerability/GHSA-wqgw-9xfh-qf2g"
+        },
+        {
           "id": "GHSA-x33g-cr3x-6449",
           "aliases": [
             "CVE-2026-102275",
@@ -1237,11 +1263,11 @@
       "notices": [],
       "counts": {
         "critical": 6,
-        "high": 28,
-        "moderate": 31,
+        "high": 29,
+        "moderate": 32,
         "low": 4,
         "unknown": 0,
-        "total": 69
+        "total": 71
       },
       "errors": []
     },
