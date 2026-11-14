@@ -251,7 +251,7 @@
         "NOTICE"
       ],
       "releases_90d": 1,
-      "median_pr_age_days": 15.023,
+      "median_pr_age_days": 15.191,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 172,
@@ -742,6 +742,19 @@
           "informational": null,
           "summary": "filelock ReadWriteLock: SQLite reopens the lock database by name, so a planted symlink or journal file makes the lock user's process overwrite or unlink its own files",
           "url": "https://osv.dev/vulnerability/GHSA-v4x8-3wr5-3wq8"
+        },
+        {
+          "id": "GHSA-vvf4-9x63-8xvv",
+          "aliases": [
+            "CVE-2026-128089"
+          ],
+          "package": "dnspython",
+          "version": "2.8.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "dnspython has excessive memory and CPU use",
+          "url": "https://osv.dev/vulnerability/GHSA-vvf4-9x63-8xvv"
         },
         {
           "id": "GHSA-xcvg-w56q-r89m",
@@ -1276,11 +1289,11 @@
       "notices": [],
       "counts": {
         "critical": 6,
-        "high": 29,
+        "high": 30,
         "moderate": 33,
         "low": 4,
         "unknown": 0,
-        "total": 72
+        "total": 73
       },
       "errors": []
     },

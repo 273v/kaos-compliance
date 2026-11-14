@@ -126,7 +126,7 @@
     },
     "freshness": {
       "days_since_last_commit": 27,
-      "days_since_last_release": 48,
+      "days_since_last_release": 49,
       "days_since_last_security_scan": 27
     },
     "supply_chain": {
@@ -238,7 +238,7 @@
         "NOTICE"
       ],
       "releases_90d": 4,
-      "median_pr_age_days": 11.319,
+      "median_pr_age_days": 11.488,
       "open_pr_count": 2,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 168,
@@ -292,6 +292,19 @@
           "url": "https://osv.dev/vulnerability/GHSA-45c3-73f7-pv4m"
         },
         {
+          "id": "GHSA-vvf4-9x63-8xvv",
+          "aliases": [
+            "CVE-2026-128089"
+          ],
+          "package": "dnspython",
+          "version": "2.8.0",
+          "ecosystem": "pypi",
+          "severity": "high",
+          "informational": null,
+          "summary": "dnspython has excessive memory and CPU use",
+          "url": "https://osv.dev/vulnerability/GHSA-vvf4-9x63-8xvv"
+        },
+        {
           "id": "GHSA-42vr-xj54-vc7v",
           "aliases": [
             "CVE-2026-101918",
@@ -323,11 +336,11 @@
       "notices": [],
       "counts": {
         "critical": 1,
-        "high": 1,
+        "high": 2,
         "moderate": 2,
         "low": 0,
         "unknown": 0,
-        "total": 4
+        "total": 5
       },
       "errors": []
     },
