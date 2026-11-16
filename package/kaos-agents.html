@@ -98,7 +98,21 @@ footer a{color:var(--muted)}
 <section aria-labelledby="changes-h">
  <h2 id="changes-h">Changes since last sweep</h2>
  <div class="card">
-  <p style="color:var(--muted);margin:0">No signal changes detected since 2026-11-15.</p>
+  <p style="margin:0 0 var(--s-2);font-size:0.8125rem;color:var(--muted);font-family:var(--mono)">
+   2026-11-15 &rarr; 2026-11-16
+  </p>
+  <ul style="margin:0;padding-left:var(--s-5)">
+    <li>
+     <span class="pill g" aria-label="advisories_open: better">
+      <span class="gly" aria-hidden="true">▲</span>
+      <span class="wd" aria-hidden="true">better</span>
+     </span>
+     <strong>advisories_open</strong>:
+     <span style="font-family:var(--mono);color:var(--muted);font-size:0.8125rem">
+      73 &rarr; 82
+     </span>
+    </li>
+  </ul>
  </div>
 </section>
 
@@ -118,7 +132,7 @@ footer a{color:var(--muted)}
    </div>
    <div class="check">
     <span class="pill r" aria-label="Security scans + dependency advisories: Fail"><span class="gly" aria-hidden="true">✗</span><span class="wd" aria-hidden="true">Fail</span></span>
-    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 73 open advisories (OSV.dev): 6 critical, 30 high, 33 moderate, 4 low</div></div>
+    <div class="body"><div class="lab">Security scans + dependency advisories</div><div class="note">security-light: success; security-full: failure; 82 open advisories (OSV.dev): 6 critical, 38 high, 34 moderate, 4 low</div></div>
    </div>
    <div class="check">
     <span class="pill y" aria-label="Updates merged promptly: Warn"><span class="gly" aria-hidden="true">⚠</span><span class="wd" aria-hidden="true">Warn</span></span>
@@ -211,7 +225,7 @@ footer a{color:var(--muted)}
  <div class="card">
   <dl class="kv">
    <dt>Open advisories</dt><dd>
-73 <span style="color:var(--muted);font-size:0.75rem">across 145 locked dependencies (OSV.dev)</span>   </dd>
+82 <span style="color:var(--muted);font-size:0.75rem">across 145 locked dependencies (OSV.dev)</span>   </dd>
    <dt>Maintenance notices</dt><dd>
 0   </dd>
    <dt>Fixed in 90d</dt><dd><span style="color:var(--muted)">not tracked</span></dd>
@@ -267,10 +281,22 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: Infinite loop in MIC n_frames when the embedded TIFF</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-24c4-3p7v-29cm" target="_blank" rel="noopener">GHSA-24c4-3p7v-29cm</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">AIOHTTP: Base64 multipart parts bypass client_max_size</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-27h8-gf7j-v5hc" target="_blank" rel="noopener">GHSA-27h8-gf7j-v5hc</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-28qf-cpwq-vmc2" target="_blank" rel="noopener">GHSA-28qf-cpwq-vmc2</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">AIOHTTP: Pure-Python parser request replay and buffer growth behind a declined upgrade</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-2g87-pp6c-29x5" target="_blank" rel="noopener">GHSA-2g87-pp6c-29x5</a></td>
@@ -285,6 +311,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: TarIO negative size field causes infinite CPU-spin loop</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-3rp8-rxj8-mvjw" target="_blank" rel="noopener">GHSA-3rp8-rxj8-mvjw</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">AIOHTTP: WebSocket max_msg_size bypass via integer overflow</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-45c3-73f7-pv4m" target="_blank" rel="noopener">GHSA-45c3-73f7-pv4m</a></td>
      <td data-h="Package">dnspython 2.8.0</td>
      <td data-h="Severity">high</td>
@@ -295,6 +327,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">Pillow: Out-of-bounds access in _imagingmorph on a zero-width image</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-5rmc-48h2-hvcm" target="_blank" rel="noopener">GHSA-5rmc-48h2-hvcm</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">AIOHTTP: WebSocket receive queue limits bypassed by small or compressed messages</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-5wr8-gcqf-gqf3" target="_blank" rel="noopener">GHSA-5wr8-gcqf-gqf3</a></td>
@@ -381,6 +419,12 @@ footer a{color:var(--muted)}
      <td data-h="Summary">Pillow: MSP RLE decoder expands a tiny file into unbounded memory</td>
     </tr>
     <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-h4cc-hm5h-fmm9" target="_blank" rel="noopener">GHSA-h4cc-hm5h-fmm9</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">AIOHTTP: Concatenated compressed streams cause excessive CPU use</td>
+    </tr>
+    <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-j4m9-6w36-pw47" target="_blank" rel="noopener">GHSA-j4m9-6w36-pw47</a></td>
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
@@ -391,6 +435,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-jm3w-gw2p-xjfj" target="_blank" rel="noopener">GHSA-jm3w-gw2p-xjfj</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">AIOHTTP: Event loop stall in add_domain() wildcard matching</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-mrfp-p49p-3hf2" target="_blank" rel="noopener">GHSA-mrfp-p49p-3hf2</a></td>
@@ -409,6 +459,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-pw86-h8fm-j323" target="_blank" rel="noopener">GHSA-pw86-h8fm-j323</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">AIOHTTP: Unbounded buffering of data received during an upgrade request</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-q45j-58j2-45rg" target="_blank" rel="noopener">GHSA-q45j-58j2-45rg</a></td>
@@ -433,6 +489,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">pillow 12.3.0</td>
      <td data-h="Severity">high</td>
      <td data-h="Summary">Pillow: Heap buffer overflow saving TIFF with libtiff when tags override image size</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-xgw8-8ccx-rmqh" target="_blank" rel="noopener">GHSA-xgw8-8ccx-rmqh</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">high</td>
+     <td data-h="Summary">AIOHTTP: Too many URL-encoded form fields block the event loop</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-xvh5-g6gv-559v" target="_blank" rel="noopener">GHSA-xvh5-g6gv-559v</a></td>
@@ -493,6 +555,12 @@ footer a{color:var(--muted)}
      <td data-h="Package">multidict 6.9.0</td>
      <td data-h="Severity">moderate</td>
      <td data-h="Summary">Multidict: Reference leak in CIMultiDict/MultiDict items-view union and subtraction</td>
+    </tr>
+    <tr>
+     <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-5pv8-vvhc-h7jv" target="_blank" rel="noopener">GHSA-5pv8-vvhc-h7jv</a></td>
+     <td data-h="Package">aiohttp 3.14.3</td>
+     <td data-h="Severity">moderate</td>
+     <td data-h="Summary">AIOHTTP: Unbounded cookie storage in client CookieJar</td>
     </tr>
     <tr>
      <td data-h="Advisory"><a href="https://osv.dev/vulnerability/GHSA-654x-cwwv-5j9c" target="_blank" rel="noopener">GHSA-654x-cwwv-5j9c</a></td>
@@ -769,7 +837,7 @@ footer a{color:var(--muted)}
 </div>
 
 <footer>
- Generated 2026-11-16 12:30 UTC
+ Generated 2026-11-16 16:20 UTC
  | Source: <a href="https://github.com/273v/kaos-compliance">github.com/273v/kaos-compliance</a>
  | Methodology: <a href="methodology.html">methodology.html</a>
  | Data: <a href="api/v1/snapshot.json">snapshot.json</a>
