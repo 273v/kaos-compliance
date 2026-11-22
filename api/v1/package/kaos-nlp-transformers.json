@@ -309,7 +309,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 27.203,
+      "median_pr_age_days": 27.369,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 812,
@@ -660,6 +660,19 @@
           "informational": null,
           "summary": "Receive loop can spin after a truncated datagram",
           "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0538"
+        },
+        {
+          "id": "RUSTSEC-2026-0592",
+          "aliases": [
+            "GHSA-hrj5-67jp-wqp9"
+          ],
+          "package": "url",
+          "version": "2.5.8",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Stack overflow in `Url::origin()` on nested `blob:` URLs",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0592"
         }
       ],
       "notices": [
@@ -680,8 +693,8 @@
         "high": 2,
         "moderate": 9,
         "low": 5,
-        "unknown": 7,
-        "total": 24
+        "unknown": 8,
+        "total": 25
       },
       "errors": []
     },
