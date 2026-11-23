@@ -309,7 +309,7 @@
         "NOTICE"
       ],
       "releases_90d": 2,
-      "median_pr_age_days": 14.049,
+      "median_pr_age_days": 14.216,
       "open_pr_count": 3,
       "open_issue_count": 0,
       "time_to_pypi_seconds_median": 812,
@@ -673,6 +673,19 @@
           "informational": null,
           "summary": "Stack overflow in `Url::origin()` on nested `blob:` URLs",
           "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0592"
+        },
+        {
+          "id": "RUSTSEC-2026-0594",
+          "aliases": [
+            "GHSA-8wcq-xq25-7fhm"
+          ],
+          "package": "cookie",
+          "version": "0.18.2",
+          "ecosystem": "cargo",
+          "severity": "unknown",
+          "informational": null,
+          "summary": "Private cookie nonces can repeat in processes that fork",
+          "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0594"
         }
       ],
       "notices": [
@@ -693,8 +706,8 @@
         "high": 2,
         "moderate": 9,
         "low": 5,
-        "unknown": 8,
-        "total": 25
+        "unknown": 9,
+        "total": 26
       },
       "errors": []
     },
